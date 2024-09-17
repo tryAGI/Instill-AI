@@ -7,7 +7,7 @@ public partial class Tests
     {
         using var client = GetAuthenticatedClient();
 
-        GetRemainingCreditResponse response = await client.Credit.GetRemainingCreditAsync(namespaceId: "");
+        GetRemainingCreditResponse response = await client.Credit.GetRemainingCreditAsync(namespaceId: "havendv");
         
         Console.WriteLine($"Perishable: {response.Perishable}");
         Console.WriteLine($"Imperishable: {response.Imperishable}");

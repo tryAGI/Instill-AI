@@ -13,7 +13,7 @@ namespace Instill
         {
             Authorizing(_httpClient, ref apiKey);
 
-            AuthorizeUsingApiKey(apiKey);
+            AuthorizeUsingBearer(apiKey);
 
             Authorized(_httpClient);
         }

@@ -5,19 +5,43 @@ using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Readers;
 
 var path = args[0];
+var artifactPath = args[1];
 var text = await File.ReadAllTextAsync(path);
+var artifactText = await File.ReadAllTextAsync(artifactPath);
 
 text = text
         .Replace("  v1beta", "  ")
         .Replace("#/definitions/v1beta", "#/definitions/")
+        .Replace("MgmtPublicService_", string.Empty)
+    ;
+artifactText = artifactText
+        .Replace("  v1alpha", "  ")
+        .Replace("#/definitions/v1alpha", "#/definitions/")
+        .Replace("  ArtifactPublicService", "  ")
+        .Replace("#/definitions/ArtifactPublicService", "#/definitions/")
+        .Replace("ArtifactPublicService_", string.Empty)
     ;
 
 var openApiDocument = new OpenApiStringReader().Read(text, out var diagnostics);
+var artifactOpenApiDocument = new OpenApiStringReader().Read(artifactText, out var artifactDiagnostics);
 
-foreach (var (_, operation) in openApiDocument.Paths.SelectMany(x => x.Value.Operations))
+foreach (var pair in artifactOpenApiDocument.Components.Schemas)
 {
-    operation.OperationId = operation.OperationId.Replace("MgmtPublicService_", string.Empty);
+    if (openApiDocument.Components.Schemas.ContainsKey(pair.Key))
+    {
+        Console.WriteLine($"Removing {pair.Key} because it already exists in the document");
+        openApiDocument.Components.Schemas.Remove(pair.Key);
+    }
+    
+    openApiDocument.Components.Schemas.Add(pair);
 }
+foreach (var pair in artifactOpenApiDocument.Paths)
+{
+    openApiDocument.Paths.Add(pair.Key, pair.Value);
+}
+
+openApiDocument.Components.SecuritySchemes["Bearer"].Type = SecuritySchemeType.Http;
+openApiDocument.Components.SecuritySchemes["Bearer"].Scheme = "bearer";
 
 //openApiDocument.Components.Schemas["GenerateCompletionRequest"]!.Properties["stream"]!.Default = new OpenApiBoolean(true);
 

@@ -56,5 +56,10 @@ namespace Instill
         /// </summary>
         public UtilsClient Utils { get; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public CatalogClient Catalog { get; }
+
     }
 }

@@ -1092,6 +1092,573 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
+  '/v1alpha/namespaces/{namespaceId}/catalogs':
+    get:
+      tags:
+        - Catalog
+      summary: Get all catalogs info
+      operationId: ListCatalogs
+      parameters:
+        - name: namespaceId
+          in: path
+          description: User ID for which to list the catalogs
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCatalogsResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+    post:
+      tags:
+        - Catalog
+      summary: Create a catalog
+      operationId: CreateCatalog
+      parameters:
+        - name: namespaceId
+          in: path
+          description: The catalog's owner(namespaces).
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCatalogBody'
+        required: true
+        x-bodyName: body
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateCatalogResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+  '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}':
+    get:
+      tags:
+        - Catalog
+      summary: Get file catalog
+      operationId: GetFileCatalog
+      parameters:
+        - name: namespaceId
+          in: path
+          description: id of the namespace
+          required: true
+          schema:
+            type: string
+        - name: catalogId
+          in: path
+          description: id of the catalog
+          required: true
+          schema:
+            type: string
+        - name: fileId
+          in: query
+          description: id of the file(i.e. file name)
+          schema:
+            type: string
+        - name: fileUid
+          in: query
+          description: Uid of the file
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFileCatalogResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+    put:
+      tags:
+        - Catalog
+      summary: Update a catalog info
+      operationId: UpdateCatalog
+      parameters:
+        - name: namespaceId
+          in: path
+          description: The catalog owner(namespace).
+          required: true
+          schema:
+            type: string
+        - name: catalogId
+          in: path
+          description: The catalog id.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCatalogBody'
+        required: true
+        x-bodyName: body
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateCatalogResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+    delete:
+      tags:
+        - Catalog
+      summary: Delete a catalog
+      operationId: DeleteCatalog
+      parameters:
+        - name: namespaceId
+          in: path
+          description: The owner's id. i.e. namespace.
+          required: true
+          schema:
+            type: string
+        - name: catalogId
+          in: path
+          description: The catalog id.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteCatalogResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+  '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/files':
+    get:
+      tags:
+        - Catalog
+      summary: List catalog files
+      operationId: ListCatalogFiles
+      parameters:
+        - name: namespaceId
+          in: path
+          description: The owner/namespace uid id.
+          required: true
+          schema:
+            type: string
+        - name: catalogId
+          in: path
+          description: The catalog id.
+          required: true
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          description: The page size (default:10; max 100).
+          schema:
+            type: integer
+            format: int32
+        - name: pageToken
+          in: query
+          description: The next page token(default from first file's token).
+          schema:
+            type: string
+        - name: filter.fileUids
+          in: query
+          description: The file uids.
+          style: form
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCatalogFilesResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+    post:
+      tags:
+        - Catalog
+      summary: Create a file
+      operationId: UploadCatalogFile
+      parameters:
+        - name: namespaceId
+          in: path
+          description: owner/namespace uid
+          required: true
+          schema:
+            type: string
+        - name: catalogId
+          in: path
+          description: catalog id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: file
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/File'
+        required: true
+        x-bodyName: file
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadCatalogFileResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+  /v1alpha/catalogs/files:
+    delete:
+      tags:
+        - Catalog
+      summary: Delete a file
+      operationId: DeleteCatalogFile
+      parameters:
+        - name: fileUid
+          in: query
+          description: The file uid.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteCatalogFileResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+  /v1alpha/catalogs/files/processAsync:
+    post:
+      tags:
+        - Catalog
+      summary: Process catalog files
+      operationId: ProcessCatalogFiles
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProcessCatalogFilesRequest'
+        required: true
+        x-bodyName: body
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessCatalogFilesResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+  '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/chunks':
+    get:
+      tags:
+        - Catalog
+      summary: List catalog chunks
+      operationId: ListChunks
+      parameters:
+        - name: namespaceId
+          in: path
+          description: owner/namespace id (not uid)
+          required: true
+          schema:
+            type: string
+        - name: catalogId
+          in: path
+          description: catalog id (not uid)
+          required: true
+          schema:
+            type: string
+        - name: fileUid
+          in: query
+          description: unique identifier of the file
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListChunksResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+  '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/files/{fileUid}/source':
+    get:
+      tags:
+        - Catalog
+      summary: Get catalog single-source-of-truth file
+      operationId: GetSourceFile
+      parameters:
+        - name: namespaceId
+          in: path
+          description: owner/namespace id
+          required: true
+          schema:
+            type: string
+        - name: catalogId
+          in: path
+          description: catalog id
+          required: true
+          schema:
+            type: string
+        - name: fileUid
+          in: path
+          description: unique identifier of the original uploaded file
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSourceFileResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+  '/v1alpha/chunks/{chunkUid}':
+    post:
+      tags:
+        - Catalog
+      summary: Update catalog chunk
+      operationId: UpdateChunk
+      parameters:
+        - name: chunkUid
+          in: path
+          description: chunk uid
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateChunkBody'
+        required: true
+        x-bodyName: body
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateChunkResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+  '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/chunks/retrieve':
+    post:
+      tags:
+        - Catalog
+      summary: Retrieve similar chunks
+      operationId: SimilarityChunksSearch
+      parameters:
+        - name: namespaceId
+          in: path
+          description: owner/namespace id
+          required: true
+          schema:
+            type: string
+        - name: catalogId
+          in: path
+          description: catalog id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SimilarityChunksSearchBody'
+        required: true
+        x-bodyName: body
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SimilarityChunksSearchResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+  '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/ask':
+    post:
+      tags:
+        - Catalog
+      summary: Ask a question
+      operationId: QuestionAnswering
+      parameters:
+        - name: namespaceId
+          in: path
+          description: id of the namespace
+          required: true
+          schema:
+            type: string
+        - name: catalogId
+          in: path
+          description: id of the catalog
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuestionAnsweringBody'
+        required: true
+        x-bodyName: body
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuestionAnsweringResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
 components:
   schemas:
     ApiTokenState:
@@ -2080,12 +2647,631 @@ components:
         - VIEW_FULL
       type: string
       description: "View defines how a resource is presented. It can be used as a parameter in a\nmethod request to allow clients to select the amount of information they\nwant in the response.\n\n - VIEW_BASIC: Default view, only includes basic information.\n - VIEW_FULL: Full representation."
+    CreateCatalogBody:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The catalog name.
+        description:
+          type: string
+          description: The catalog description.
+        tags:
+          type: array
+          items:
+            type: string
+          description: The catalog tags.
+      description: CreateCatalogRequest represents a request to create a catalog.
+    QuestionAnsweringBody:
+      title: QuestionAnsweringRequest
+      type: object
+      properties:
+        question:
+          title: question to be answered
+          type: string
+        topK:
+          title: top k default to 5
+          type: integer
+          format: int32
+    SimilarityChunksSearchBody:
+      title: Similar chunk search request
+      type: object
+      properties:
+        textPrompt:
+          title: text prompt
+          type: string
+        topK:
+          title: top k
+          type: integer
+          format: int64
+    UpdateCatalogBody:
+      type: object
+      properties:
+        description:
+          type: string
+          description: The catalog description.
+        tags:
+          type: array
+          items:
+            type: string
+          description: The catalog tags.
+      description: UpdateCatalogRequest represents a request to update a catalog.
+    UpdateChunkBody:
+      title: Create chunk response
+      type: object
+      properties:
+        retrievable:
+          title: whether the chunk is retrievable
+          type: boolean
+    GetFileCatalogResponseChunkType:
+      title: chunk type
+      enum:
+        - CHUNK_TYPE_TEXT
+        - CHUNK_TYPE_IMAGE
+        - CHUNK_TYPE_AUDIO
+        - CHUNK_TYPE_VIDEO
+      type: string
+      description: "- CHUNK_TYPE_TEXT: text\n - CHUNK_TYPE_IMAGE: image\n - CHUNK_TYPE_AUDIO: audio\n - CHUNK_TYPE_VIDEO: video"
+    GetFileCatalogResponseMetadata:
+      title: metadata
+      type: object
+      properties:
+        fileUid:
+          title: file uid
+          type: string
+        fileId:
+          title: file id
+          type: string
+        fileType:
+          title: file type
+          allOf:
+            - $ref: '#/components/schemas/FileType'
+        fileSize:
+          title: file size in bytes
+          type: string
+          format: int64
+        fileUploadTime:
+          title: upload time
+          type: string
+          format: date-time
+        fileProcessStatus:
+          title: file process status
+          allOf:
+            - $ref: '#/components/schemas/FileProcessStatus'
+    GetFileCatalogResponseText:
+      title: text message
+      type: object
+      properties:
+        pipelineIds:
+          title: pipelines
+          type: array
+          items:
+            type: string
+        transformedContent:
+          title: transformed content
+          type: string
+        transformedContentChunkNum:
+          title: transformed content chunk number
+          type: integer
+          format: int32
+        transformedContentTokenNum:
+          title: transformed content token number
+          type: integer
+          format: int32
+        transformedContentUpdateTime:
+          title: transformed content update time
+          type: string
+          format: date-time
+    artifactv1alphaChunk:
+      type: object
+      properties:
+        chunkUid:
+          title: unique identifier of the chunk
+          type: string
+        retrievable:
+          title: whether the chunk is retrievable
+          type: boolean
+        startPos:
+          title: start position of the chunk in the source file
+          type: integer
+          format: int64
+        endPos:
+          title: end position of the chunk in the source file
+          type: integer
+          format: int64
+        tokens:
+          title: tokens of the chunk
+          type: integer
+          format: int64
+        createTime:
+          title: creation time of the chunk
+          type: string
+          format: date-time
+        originalFileUid:
+          title: original file unique identifier
+          type: string
+      description: The Chunk message represents a chunk of data in the artifact system.
+    rpcStatus:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/protobufAny'
+    Catalog:
+      type: object
+      properties:
+        catalogId:
+          type: string
+          description: The catalog id.
+        name:
+          type: string
+          description: The catalog name.
+        description:
+          type: string
+          description: The catalog description.
+        createTime:
+          type: string
+          description: The creation time of the catalog.
+        updateTime:
+          type: string
+          description: The last update time of the catalog.
+        ownerName:
+          type: string
+          description: The owner/namespace of the catalog.
+        tags:
+          type: array
+          items:
+            type: string
+          description: The catalog tags.
+        convertingPipelines:
+          type: array
+          items:
+            type: string
+          description: The catalog converting pipelines.
+        splittingPipelines:
+          type: array
+          items:
+            type: string
+          description: The catalog splitting pipelines.
+        embeddingPipelines:
+          type: array
+          items:
+            type: string
+          description: The catalog embedding pipelines.
+        downstreamApps:
+          title: The downstream apps
+          type: array
+          items:
+            type: string
+        totalFiles:
+          type: integer
+          description: The total files in catalog.
+          format: int64
+        totalTokens:
+          type: integer
+          description: The total tokens in catalog.
+          format: int64
+        usedStorage:
+          type: string
+          description: The current used storage in catalog.
+          format: uint64
+      description: Catalog represents a catalog.
+    CreateCatalogResponse:
+      type: object
+      properties:
+        catalog:
+          allOf:
+            - $ref: '#/components/schemas/Catalog'
+          description: The created catalog.
+      description: CreateCatalogResponse represents a response for creating a catalog.
+    CreateRepositoryTagResponse:
+      type: object
+      properties:
+        tag:
+          allOf:
+            - $ref: '#/components/schemas/RepositoryTag'
+          description: The created tag.
+      description: CreateRepositoryTagResponse contains the created tag.
+    DeleteCatalogFileResponse:
+      title: delete file response
+      type: object
+      properties:
+        fileUid:
+          type: string
+          description: The file uid.
+    DeleteCatalogResponse:
+      type: object
+      properties:
+        catalog:
+          allOf:
+            - $ref: '#/components/schemas/Catalog'
+          description: The catalog identifier.
+      description: DeleteCatalogResponse represents a response for deleting a catalog.
+    DeleteRepositoryTagResponse:
+      type: object
+      description: DeleteRepositoryTagResponse represent an empty response.
+    File:
+      title: file
+      required:
+        - name
+        - type
+      type: object
+      properties:
+        fileUid:
+          title: file uid
+          type: string
+          readOnly: true
+        name:
+          title: file name
+          type: string
+        type:
+          title: file type
+          allOf:
+            - $ref: '#/components/schemas/FileType'
+        processStatus:
+          title: file process status
+          allOf:
+            - $ref: '#/components/schemas/FileProcessStatus'
+          readOnly: true
+        processOutcome:
+          title: file process message
+          type: string
+          readOnly: true
+        retrievable:
+          title: retrievable(this is reserved for future use)
+          type: boolean
+          readOnly: true
+        content:
+          title: content(this is reserved for future use)
+          type: string
+        ownerUid:
+          title: owner/namespace uid
+          type: string
+          readOnly: true
+        creatorUid:
+          title: creator uid from authn token
+          type: string
+          readOnly: true
+        catalogUid:
+          title: catalog uid
+          type: string
+          readOnly: true
+        createTime:
+          title: create time
+          type: string
+          format: date-time
+          readOnly: true
+        updateTime:
+          title: update time
+          type: string
+          format: date-time
+          readOnly: true
+        deleteTime:
+          title: delete time
+          type: string
+          format: date-time
+          readOnly: true
+        size:
+          title: file size in bytes
+          type: string
+          format: int64
+          readOnly: true
+        totalChunks:
+          title: total chunks
+          type: integer
+          format: int32
+          readOnly: true
+        totalTokens:
+          title: total tokens
+          type: integer
+          format: int32
+          readOnly: true
+    FileProcessStatus:
+      title: file embedding process status
+      enum:
+        - FILE_PROCESS_STATUS_NOTSTARTED
+        - FILE_PROCESS_STATUS_WAITING
+        - FILE_PROCESS_STATUS_CONVERTING
+        - FILE_PROCESS_STATUS_CHUNKING
+        - FILE_PROCESS_STATUS_EMBEDDING
+        - FILE_PROCESS_STATUS_COMPLETED
+        - FILE_PROCESS_STATUS_FAILED
+      type: string
+      description: "- FILE_PROCESS_STATUS_NOTSTARTED: NOTSTARTED\n - FILE_PROCESS_STATUS_WAITING: file is waiting for embedding process\n - FILE_PROCESS_STATUS_CONVERTING: file is converting\n - FILE_PROCESS_STATUS_CHUNKING: file is chunking\n - FILE_PROCESS_STATUS_EMBEDDING: file is embedding\n - FILE_PROCESS_STATUS_COMPLETED: completed\n - FILE_PROCESS_STATUS_FAILED: failed"
+    FileType:
+      title: file type
+      enum:
+        - FILE_TYPE_TEXT
+        - FILE_TYPE_PDF
+        - FILE_TYPE_MARKDOWN
+        - FILE_TYPE_PNG
+        - FILE_TYPE_JPEG
+        - FILE_TYPE_JPG
+        - FILE_TYPE_HTML
+        - FILE_TYPE_DOCX
+        - FILE_TYPE_DOC
+        - FILE_TYPE_PPT
+        - FILE_TYPE_PPTX
+        - FILE_TYPE_XLS
+        - FILE_TYPE_XLSX
+      type: string
+      description: "- FILE_TYPE_TEXT: text\n - FILE_TYPE_PDF: PDF\n - FILE_TYPE_MARKDOWN: MARKDOWN\n - FILE_TYPE_PNG: PNG(not supported yet)\n - FILE_TYPE_JPEG: JPEG(not supported yet)\n - FILE_TYPE_JPG: JPG(not supported yet)\n - FILE_TYPE_HTML: HTML\n - FILE_TYPE_DOCX: DOCX\n - FILE_TYPE_DOC: DOC\n - FILE_TYPE_PPT: PPT\n - FILE_TYPE_PPTX: PPTX\n - FILE_TYPE_XLS: XLS(not supported yet)\n - FILE_TYPE_XLSX: XLSX"
+    GetFileCatalogResponse:
+      title: GetFileCatalogResponse
+      type: object
+      properties:
+        originalData:
+          title: original data is encoded in base64
+          type: string
+        metadata:
+          title: file catalog
+          allOf:
+            - $ref: '#/components/schemas/GetFileCatalogResponseMetadata'
+        text:
+          title: text
+          allOf:
+            - $ref: '#/components/schemas/GetFileCatalogResponseText'
+        chunks:
+          title: chunks
+          type: array
+          items:
+            $ref: '#/components/schemas/GetFileCatalogResponseChunk'
+    GetFileCatalogResponseChunk:
+      title: chunk message
+      type: object
+      properties:
+        uid:
+          title: chunk uid
+          type: string
+        type:
+          title: 'chunk type. i.e. text, image, audio, and video'
+          allOf:
+            - $ref: '#/components/schemas/GetFileCatalogResponseChunkType'
+        startPos:
+          title: chunk start position
+          type: integer
+          format: int32
+        endPos:
+          title: chunk end position
+          type: integer
+          format: int32
+        content:
+          title: chunk content
+          type: string
+        tokensNum:
+          title: chunk tokens num
+          type: integer
+          format: int32
+        embedding:
+          title: embedding. float32 array
+          type: array
+          items:
+            type: number
+            format: float
+        createTime:
+          title: chunk create time
+          type: string
+          format: date-time
+        retrievable:
+          title: chunk retrievable
+          type: boolean
+    GetRepositoryTagResponse:
+      type: object
+      properties:
+        tag:
+          allOf:
+            - $ref: '#/components/schemas/RepositoryTag'
+          description: The created tag.
+      description: GetRepositoryTagResponse contains the created tag.
+    GetSourceFileResponse:
+      title: get source file response
+      type: object
+      properties:
+        sourceFile:
+          title: source file(either original file or converted file)
+          allOf:
+            - $ref: '#/components/schemas/SourceFile'
+    ListCatalogFilesFilter:
+      title: "list file filter\ntodo: support more parameters"
+      type: object
+      properties:
+        fileUids:
+          type: array
+          items:
+            type: string
+          description: The file uids.
+    ListCatalogFilesResponse:
+      title: list files response
+      type: object
+      properties:
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/File'
+          description: The list of files.
+        totalSize:
+          type: integer
+          description: The total number of files.
+          format: int32
+        pageSize:
+          type: integer
+          description: The requested page size.
+          format: int32
+        nextPageToken:
+          title: next page token
+          type: string
+        filter:
+          allOf:
+            - $ref: '#/components/schemas/ListCatalogFilesFilter'
+          description: The filter.
+    ListCatalogsResponse:
+      type: object
+      properties:
+        catalogs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Catalog'
+          description: The catalogs container.
+      description: GetCatalogsResponse represents a response for getting all catalogs from users.
+    ListChunksResponse:
+      type: object
+      properties:
+        chunks:
+          title: repeated chunks
+          type: array
+          items:
+            $ref: '#/components/schemas/artifactv1alphaChunk'
+      description: The ListChunksResponse message represents a response containing a list of chunks in the artifact system.
+    ListRepositoryTagsResponse:
+      type: object
+      properties:
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/RepositoryTag'
+          description: A list of repository tags.
+        totalSize:
+          type: integer
+          description: Total number of tags.
+          format: int32
+        pageSize:
+          type: integer
+          description: The requested page size.
+          format: int32
+        page:
+          type: integer
+          description: The requested page offset.
+          format: int32
+      description: ListRepositoryTagsResponse contains a list of container image tags.
+    ProcessCatalogFilesRequest:
+      title: Process Catalog File Request
+      required:
+        - fileUids
+      type: object
+      properties:
+        fileUids:
+          type: array
+          items:
+            type: string
+          description: The file uid.
+    ProcessCatalogFilesResponse:
+      title: Process Catalog File Response
+      type: object
+      properties:
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/File'
+          description: The file uid.
+    QuestionAnsweringResponse:
+      title: QuestionAnsweringResponse
+      type: object
+      properties:
+        answer:
+          title: answer to the question
+          type: string
+        similarChunks:
+          title: chunks
+          type: array
+          items:
+            $ref: '#/components/schemas/SimilarityChunk'
+    RepositoryTag:
+      type: object
+      properties:
+        name:
+          type: string
+          description: "The name of the tag, defined by its parent repository and ID.\n- Format: `repositories/{repository.id}/tags/{tag.id}`."
+        id:
+          type: string
+          description: The tag identifier.
+        digest:
+          type: string
+          description: 'Unique identifier, computed from the manifest the tag refers to.'
+        updateTime:
+          type: string
+          description: 'Tag update time, i.e. timestamp of the last push.'
+          format: date-time
+          readOnly: true
+      description: "RepositoryTag contains information about the version of some content in a\nrepository."
+    SimilarityChunk:
+      title: similarity chunks
+      type: object
+      properties:
+        chunkUid:
+          title: chunk uid
+          type: string
+        similarityScore:
+          title: similarity score
+          type: number
+          format: float
+        textContent:
+          title: content
+          type: string
+        sourceFile:
+          title: source file
+          type: string
+    SimilarityChunksSearchResponse:
+      title: Similar chunk search response
+      type: object
+      properties:
+        similarChunks:
+          title: chunks
+          type: array
+          items:
+            $ref: '#/components/schemas/SimilarityChunk'
+    SourceFile:
+      type: object
+      properties:
+        originalFileUid:
+          title: original file unique identifier
+          type: string
+        content:
+          title: content
+          type: string
+        createTime:
+          title: creation time of the source file
+          type: string
+          format: date-time
+        updateTime:
+          title: update time of the source file
+          type: string
+          format: date-time
+      description: The SourceFile message represents a source file in the artifact system.
+    UpdateCatalogResponse:
+      type: object
+      properties:
+        catalog:
+          allOf:
+            - $ref: '#/components/schemas/Catalog'
+          description: The updated catalog.
+      description: UpdateCatalogResponse represents a response for updating a catalog.
+    UpdateChunkResponse:
+      title: update chunk response
+      type: object
+      properties:
+        chunk:
+          title: chunk
+          allOf:
+            - $ref: '#/components/schemas/artifactv1alphaChunk'
+    UploadCatalogFileResponse:
+      title: upload file response
+      type: object
+      properties:
+        file:
+          title: file
+          allOf:
+            - $ref: '#/components/schemas/File'
   securitySchemes:
     Bearer:
-      type: apiKey
+      type: http
       description: 'Enter the token with the `Bearer ` prefix, e.g. `Bearer abcde12345`'
-      name: Authorization
-      in: header
+      scheme: bearer
       x-default: Bearer instill_sk_***
 security:
   - Bearer: [ ]

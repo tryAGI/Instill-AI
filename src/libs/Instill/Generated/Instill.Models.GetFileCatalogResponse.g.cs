@@ -1,6 +1,4 @@
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 #nullable enable
 
 namespace Instill
@@ -19,16 +17,14 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.AllOfJsonConverterFactory1))]
-        public global::Instill.AllOf<global::Instill.GetFileCatalogResponseMetadata>? Metadata { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
+        public global::Instill.GetFileCatalogResponseText? Text { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.AllOfJsonConverterFactory1))]
-        public global::Instill.AllOf<global::Instill.GetFileCatalogResponseText>? Text { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
+        public global::Instill.GetFileCatalogResponseMetadata? Metadata { get; set; }
 
         /// <summary>
         /// 

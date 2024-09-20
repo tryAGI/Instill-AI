@@ -1,6 +1,4 @@
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 #nullable enable
 
 namespace Instill
@@ -24,18 +22,22 @@ namespace Instill
         public string? PipelineUid { get; set; }
 
         /// <summary>
-        /// Trigger mode.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("triggerMode")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.AllOfJsonConverterFactory1))]
-        public global::Instill.AllOf<global::Instill.Mode?>? TriggerMode { get; set; }
-
-        /// <summary>
-        /// Final status.
+        /// Status describes the output of an execution.<br/>
+        ///  - STATUS_COMPLETED: Successfully completed.<br/>
+        ///  - STATUS_ERRORED: Finished with error.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.AllOfJsonConverterFactory1))]
-        public global::Instill.AllOf<global::Instill.Mgmtv1betaStatus?>? Status { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.Mgmtv1betaStatusJsonConverter))]
+        public global::Instill.Mgmtv1betaStatus? Status { get; set; }
+
+        /// <summary>
+        /// Mode describes the execution mode of the pipeline (sync or async).<br/>
+        ///  - MODE_SYNC: Synchronous (result is returned in the response).<br/>
+        ///  - MODE_ASYNC: Asynchronous (response only contains acknowledgement).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("triggerMode")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.ModeJsonConverter))]
+        public global::Instill.Mode? TriggerMode { get; set; }
 
         /// <summary>
         /// Time buckets.

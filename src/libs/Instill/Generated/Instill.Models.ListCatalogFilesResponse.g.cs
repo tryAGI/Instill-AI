@@ -1,6 +1,4 @@
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 #nullable enable
 
 namespace Instill
@@ -35,11 +33,10 @@ namespace Instill
         public string? NextPageToken { get; set; }
 
         /// <summary>
-        /// The filter.
+        /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("filter")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.AllOfJsonConverterFactory1))]
-        public global::Instill.AllOf<global::Instill.ListCatalogFilesFilter>? Filter { get; set; }
+        public global::Instill.ListCatalogFilesFilter? Filter { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

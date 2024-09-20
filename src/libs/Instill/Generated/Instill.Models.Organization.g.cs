@@ -1,6 +1,4 @@
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 #nullable enable
 
 namespace Instill
@@ -9,7 +7,7 @@ namespace Instill
     /// Organizations group several users. As entities, they can own resources such<br/>
     /// as pipelines or releases.
     /// </summary>
-    public sealed partial class Organization7
+    public sealed partial class Organization
     {
         /// <summary>
         /// The name of the organization, defined by its ID.<br/>
@@ -47,26 +45,24 @@ namespace Instill
         public global::System.DateTime? UpdateTime { get; set; }
 
         /// <summary>
-        /// The user that owns the organization.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("owner")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.AllOfJsonConverterFactory1))]
-        public global::Instill.AllOf<global::Instill.User9>? Owner { get; set; }
-
-        /// <summary>
-        /// Profile.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("profile")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.AllOfJsonConverterFactory1))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Instill.AllOf<global::Instill.OrganizationProfile> Profile { get; set; }
-
-        /// <summary>
-        /// 
+        /// Permission defines how a resource can be used.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("permission")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.AllOfJsonConverterFactory1))]
-        public global::Instill.AllOf<global::Instill.Permission2>? Permission { get; set; }
+        public global::Instill.Permission? Permission { get; set; }
+
+        /// <summary>
+        /// OrganizationProfile describes the public data of an organization.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("profile")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Instill.OrganizationProfile Profile { get; set; }
+
+        /// <summary>
+        /// User describes an individual that interacts with Instill AI. It doesn't<br/>
+        /// contain any private information about the user.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("owner")]
+        public global::Instill.User? Owner { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

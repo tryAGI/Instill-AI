@@ -67,11 +67,14 @@ namespace Instill
         /// <param name="cookieToken">
         /// Console cookie token.
         /// </param>
-        /// <param name="onboardingStatus">
-        /// Onboarding Status.
-        /// </param>
         /// <param name="profile">
-        /// Profile.
+        /// UserProfile describes the public data of a user.
+        /// </param>
+        /// <param name="onboardingStatus">
+        /// OnboardingStatus describes the status of the user onboarding process.<br/>
+        ///  - ONBOARDING_STATUS_IN_PROGRESS: In progress, i.e., the user has initiated the onboarding process<br/>
+        /// but has not yet completed it.<br/>
+        ///  - ONBOARDING_STATUS_COMPLETED: Completed.
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -86,8 +89,8 @@ namespace Instill
             string? customerId = default,
             string? role = default,
             string? cookieToken = default,
-            global::Instill.AllOf<global::Instill.OnboardingStatus2?>? onboardingStatus = default,
-            global::Instill.AllOf<global::Instill.UserProfile>? profile = default,
+            global::Instill.UserProfile? profile = default,
+            global::Instill.OnboardingStatus? onboardingStatus = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

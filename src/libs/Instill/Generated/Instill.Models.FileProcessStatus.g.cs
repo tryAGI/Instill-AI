@@ -12,7 +12,7 @@ namespace Instill
     ///  - FILE_PROCESS_STATUS_COMPLETED: completed<br/>
     ///  - FILE_PROCESS_STATUS_FAILED: failed
     /// </summary>
-    public enum FileProcessStatus2
+    public enum FileProcessStatus
     {
         /// <summary>
         /// 
@@ -47,39 +47,39 @@ namespace Instill
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class FileProcessStatus2Extensions
+    public static class FileProcessStatusExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this FileProcessStatus2 value)
+        public static string ToValueString(this FileProcessStatus value)
         {
             return value switch
             {
-                FileProcessStatus2.FILEPROCESSSTATUSNOTSTARTED => "FILE_PROCESS_STATUS_NOTSTARTED",
-                FileProcessStatus2.FILEPROCESSSTATUSWAITING => "FILE_PROCESS_STATUS_WAITING",
-                FileProcessStatus2.FILEPROCESSSTATUSCONVERTING => "FILE_PROCESS_STATUS_CONVERTING",
-                FileProcessStatus2.FILEPROCESSSTATUSCHUNKING => "FILE_PROCESS_STATUS_CHUNKING",
-                FileProcessStatus2.FILEPROCESSSTATUSEMBEDDING => "FILE_PROCESS_STATUS_EMBEDDING",
-                FileProcessStatus2.FILEPROCESSSTATUSCOMPLETED => "FILE_PROCESS_STATUS_COMPLETED",
-                FileProcessStatus2.FILEPROCESSSTATUSFAILED => "FILE_PROCESS_STATUS_FAILED",
+                FileProcessStatus.FILEPROCESSSTATUSNOTSTARTED => "FILE_PROCESS_STATUS_NOTSTARTED",
+                FileProcessStatus.FILEPROCESSSTATUSWAITING => "FILE_PROCESS_STATUS_WAITING",
+                FileProcessStatus.FILEPROCESSSTATUSCONVERTING => "FILE_PROCESS_STATUS_CONVERTING",
+                FileProcessStatus.FILEPROCESSSTATUSCHUNKING => "FILE_PROCESS_STATUS_CHUNKING",
+                FileProcessStatus.FILEPROCESSSTATUSEMBEDDING => "FILE_PROCESS_STATUS_EMBEDDING",
+                FileProcessStatus.FILEPROCESSSTATUSCOMPLETED => "FILE_PROCESS_STATUS_COMPLETED",
+                FileProcessStatus.FILEPROCESSSTATUSFAILED => "FILE_PROCESS_STATUS_FAILED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static FileProcessStatus2? ToEnum(string value)
+        public static FileProcessStatus? ToEnum(string value)
         {
             return value switch
             {
-                "FILE_PROCESS_STATUS_NOTSTARTED" => FileProcessStatus2.FILEPROCESSSTATUSNOTSTARTED,
-                "FILE_PROCESS_STATUS_WAITING" => FileProcessStatus2.FILEPROCESSSTATUSWAITING,
-                "FILE_PROCESS_STATUS_CONVERTING" => FileProcessStatus2.FILEPROCESSSTATUSCONVERTING,
-                "FILE_PROCESS_STATUS_CHUNKING" => FileProcessStatus2.FILEPROCESSSTATUSCHUNKING,
-                "FILE_PROCESS_STATUS_EMBEDDING" => FileProcessStatus2.FILEPROCESSSTATUSEMBEDDING,
-                "FILE_PROCESS_STATUS_COMPLETED" => FileProcessStatus2.FILEPROCESSSTATUSCOMPLETED,
-                "FILE_PROCESS_STATUS_FAILED" => FileProcessStatus2.FILEPROCESSSTATUSFAILED,
+                "FILE_PROCESS_STATUS_NOTSTARTED" => FileProcessStatus.FILEPROCESSSTATUSNOTSTARTED,
+                "FILE_PROCESS_STATUS_WAITING" => FileProcessStatus.FILEPROCESSSTATUSWAITING,
+                "FILE_PROCESS_STATUS_CONVERTING" => FileProcessStatus.FILEPROCESSSTATUSCONVERTING,
+                "FILE_PROCESS_STATUS_CHUNKING" => FileProcessStatus.FILEPROCESSSTATUSCHUNKING,
+                "FILE_PROCESS_STATUS_EMBEDDING" => FileProcessStatus.FILEPROCESSSTATUSEMBEDDING,
+                "FILE_PROCESS_STATUS_COMPLETED" => FileProcessStatus.FILEPROCESSSTATUSCOMPLETED,
+                "FILE_PROCESS_STATUS_FAILED" => FileProcessStatus.FILEPROCESSSTATUSFAILED,
                 _ => null,
             };
         }

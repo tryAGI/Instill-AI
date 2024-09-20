@@ -6,7 +6,7 @@ namespace Instill
     /// <summary>
     /// Permission defines how a resource can be used.
     /// </summary>
-    public sealed partial class Permission2
+    public sealed partial class Permission
     {
         /// <summary>
         /// Defines whether the resource can be modified.

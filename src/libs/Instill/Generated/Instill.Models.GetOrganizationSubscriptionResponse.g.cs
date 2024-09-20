@@ -1,6 +1,4 @@
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 #nullable enable
 
 namespace Instill
@@ -11,11 +9,10 @@ namespace Instill
     public sealed partial class GetOrganizationSubscriptionResponse
     {
         /// <summary>
-        /// The subscription resource.
+        /// OrganizationSubscription details describe the plan (i.e., features) an organization has access to.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("subscription")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.AllOfJsonConverterFactory1))]
-        public global::Instill.AllOf<global::Instill.OrganizationSubscription>? Subscription { get; set; }
+        public global::Instill.OrganizationSubscription? Subscription { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

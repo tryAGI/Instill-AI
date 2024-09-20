@@ -3,10 +3,10 @@
 namespace Instill.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class FileType2JsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Instill.FileType2>
+    public sealed class FileProcessStatusNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Instill.FileProcessStatus?>
     {
         /// <inheritdoc />
-        public override global::Instill.FileType2 Read(
+        public override global::Instill.FileProcessStatus? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Instill.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Instill.FileType2Extensions.ToEnum(stringValue) ?? default;
+                        return global::Instill.FileProcessStatusExtensions.ToEnum(stringValue);
                     }
                     
                     break;
@@ -26,7 +26,7 @@ namespace Instill.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Instill.FileType2)numValue;
+                    return (global::Instill.FileProcessStatus)numValue;
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -38,12 +38,19 @@ namespace Instill.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Instill.FileType2 value,
+            global::Instill.FileProcessStatus? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            writer.WriteStringValue(global::Instill.FileType2Extensions.ToValueString(value));
+            if (value == null)
+            {
+                writer.WriteNullValue();
+            }
+            else
+            {
+                writer.WriteStringValue(global::Instill.FileProcessStatusExtensions.ToValueString(value.Value));
+            }
         }
     }
 }

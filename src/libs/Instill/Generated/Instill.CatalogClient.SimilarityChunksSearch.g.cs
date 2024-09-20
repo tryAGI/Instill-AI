@@ -9,12 +9,14 @@ namespace Instill
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
             ref string catalogId,
+            ref string? instillRequesterUid,
             global::Instill.SimilarityChunksSearchBody request);
         partial void PrepareSimilarityChunksSearchRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
             string catalogId,
+            string? instillRequesterUid,
             global::Instill.SimilarityChunksSearchBody request);
         partial void ProcessSimilarityChunksSearchResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -30,6 +32,7 @@ namespace Instill
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>
+        /// <param name="instillRequesterUid"></param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -37,6 +40,7 @@ namespace Instill
             string namespaceId,
             string catalogId,
             global::Instill.SimilarityChunksSearchBody request,
+            string? instillRequesterUid = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -47,6 +51,7 @@ namespace Instill
                 httpClient: _httpClient,
                 namespaceId: ref namespaceId,
                 catalogId: ref catalogId,
+                instillRequesterUid: ref instillRequesterUid,
                 request: request);
 
             var __pathBuilder = new PathBuilder(
@@ -71,6 +76,7 @@ namespace Instill
                 httpRequestMessage: httpRequest,
                 namespaceId: namespaceId,
                 catalogId: catalogId,
+                instillRequesterUid: instillRequesterUid,
                 request: request);
 
             using var response = await _httpClient.SendAsync(
@@ -115,6 +121,7 @@ namespace Instill
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>
+        /// <param name="instillRequesterUid"></param>
         /// <param name="textPrompt"></param>
         /// <param name="topK"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -122,6 +129,7 @@ namespace Instill
         public async global::System.Threading.Tasks.Task<global::Instill.SimilarityChunksSearchResponse> SimilarityChunksSearchAsync(
             string namespaceId,
             string catalogId,
+            string? instillRequesterUid = default,
             string? textPrompt = default,
             long? topK = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -135,6 +143,7 @@ namespace Instill
             return await SimilarityChunksSearchAsync(
                 namespaceId: namespaceId,
                 catalogId: catalogId,
+                instillRequesterUid: instillRequesterUid,
                 request: request,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
         }

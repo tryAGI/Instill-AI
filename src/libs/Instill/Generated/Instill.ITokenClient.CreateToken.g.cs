@@ -50,7 +50,10 @@ namespace Instill
         /// that issued the token.
         /// </param>
         /// <param name="state">
-        /// State.
+        /// State describes the state of an API token.<br/>
+        ///  - STATE_INACTIVE: Inactive.<br/>
+        ///  - STATE_ACTIVE: Active.<br/>
+        ///  - STATE_EXPIRED: Expired.
         /// </param>
         /// <param name="tokenType">
         /// Token type. Value is fixed to "Bearer".
@@ -71,7 +74,7 @@ namespace Instill
             global::System.DateTime? createTime = default,
             global::System.DateTime? updateTime = default,
             string? accessToken = default,
-            global::Instill.AllOf<global::Instill.ApiTokenState?>? state = default,
+            global::Instill.ApiTokenState? state = default,
             string? tokenType = default,
             int? ttl = default,
             global::System.DateTime? expireTime = default,

@@ -12,7 +12,7 @@ namespace Instill
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("users")]
-        public global::System.Collections.Generic.IList<global::Instill.User9>? Users { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.User>? Users { get; set; }
 
         /// <summary>
         /// Next page token.

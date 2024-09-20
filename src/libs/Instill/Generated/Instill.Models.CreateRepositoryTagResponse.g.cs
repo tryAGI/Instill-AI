@@ -1,6 +1,4 @@
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 #nullable enable
 
 namespace Instill
@@ -11,11 +9,11 @@ namespace Instill
     public sealed partial class CreateRepositoryTagResponse
     {
         /// <summary>
-        /// The created tag.
+        /// RepositoryTag contains information about the version of some content in a<br/>
+        /// repository.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tag")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.AllOfJsonConverterFactory1))]
-        public global::Instill.AllOf<global::Instill.RepositoryTag>? Tag { get; set; }
+        public global::Instill.RepositoryTag? Tag { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

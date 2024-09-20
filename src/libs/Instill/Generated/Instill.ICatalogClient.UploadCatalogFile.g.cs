@@ -49,7 +49,7 @@ namespace Instill
             string? fileUid = default,
             global::Instill.AllOf<global::Instill.FileProcessStatus2?>? processStatus = default,
             string? processOutcome = default,
-            bool retrievable = default,
+            bool? retrievable = default,
             string? content = default,
             string? ownerUid = default,
             string? creatorUid = default,
@@ -58,8 +58,8 @@ namespace Instill
             global::System.DateTime? updateTime = default,
             global::System.DateTime? deleteTime = default,
             string? size = default,
-            int totalChunks = default,
-            int totalTokens = default,
+            int? totalChunks = default,
+            int? totalTokens = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

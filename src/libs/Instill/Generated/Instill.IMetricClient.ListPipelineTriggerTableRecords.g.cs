@@ -15,7 +15,7 @@ namespace Instill
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Instill.ListPipelineTriggerTableRecordsResponse> ListPipelineTriggerTableRecordsAsync(
-            int pageSize = default,
+            int? pageSize = default,
             string? pageToken = default,
             string? filter = default,
             global::System.Threading.CancellationToken cancellationToken = default);

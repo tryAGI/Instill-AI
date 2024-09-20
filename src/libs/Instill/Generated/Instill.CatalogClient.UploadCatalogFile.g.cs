@@ -49,9 +49,13 @@ namespace Instill
                 catalogId: ref catalogId,
                 request: request);
 
+            var __pathBuilder = new PathBuilder(
+                path: $"/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/files",
+                baseUri: _httpClient.BaseAddress); 
+            var __path = __pathBuilder.ToString();
             using var httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
-                requestUri: new global::System.Uri(_httpClient.BaseAddress?.AbsoluteUri.TrimEnd('/') + $"/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/files", global::System.UriKind.RelativeOrAbsolute));
+                requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
             var __httpRequestContentBody = global::System.Text.Json.JsonSerializer.Serialize(request, request.GetType(), JsonSerializerContext);
             var __httpRequestContent = new global::System.Net.Http.StringContent(
                 content: __httpRequestContentBody,
@@ -137,7 +141,7 @@ namespace Instill
             string? fileUid = default,
             global::Instill.AllOf<global::Instill.FileProcessStatus2?>? processStatus = default,
             string? processOutcome = default,
-            bool retrievable = default,
+            bool? retrievable = default,
             string? content = default,
             string? ownerUid = default,
             string? creatorUid = default,
@@ -146,8 +150,8 @@ namespace Instill
             global::System.DateTime? updateTime = default,
             global::System.DateTime? deleteTime = default,
             string? size = default,
-            int totalChunks = default,
-            int totalTokens = default,
+            int? totalChunks = default,
+            int? totalTokens = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var request = new global::Instill.File

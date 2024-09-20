@@ -1,4 +1,3 @@
-using System.Linq;
 
 #nullable enable
 
@@ -10,7 +9,7 @@ namespace Instill
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
             ref string catalogId,
-            ref int pageSize,
+            ref int? pageSize,
             ref string? pageToken,
             global::System.Collections.Generic.IList<string>? filterFileUids);
         partial void PrepareListCatalogFilesRequest(
@@ -18,7 +17,7 @@ namespace Instill
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
             string catalogId,
-            int pageSize,
+            int? pageSize,
             string? pageToken,
             global::System.Collections.Generic.IList<string>? filterFileUids);
         partial void ProcessListCatalogFilesResponse(
@@ -43,7 +42,7 @@ namespace Instill
         public async global::System.Threading.Tasks.Task<global::Instill.ListCatalogFilesResponse> ListCatalogFilesAsync(
             string namespaceId,
             string catalogId,
-            int pageSize = default,
+            int? pageSize = default,
             string? pageToken = default,
             global::System.Collections.Generic.IList<string>? filterFileUids = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -58,9 +57,18 @@ namespace Instill
                 pageToken: ref pageToken,
                 filterFileUids: filterFileUids);
 
+            var __pathBuilder = new PathBuilder(
+                path: $"/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/files",
+                baseUri: _httpClient.BaseAddress); 
+            __pathBuilder 
+                .AddOptionalParameter("pageSize", pageSize?.ToString()) 
+                .AddOptionalParameter("pageToken", pageToken) 
+                .AddOptionalParameter("filter.fileUids", filterFileUids, delimiter: ",", explode: true) 
+                ; 
+            var __path = __pathBuilder.ToString();
             using var httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
-                requestUri: new global::System.Uri(_httpClient.BaseAddress?.AbsoluteUri.TrimEnd('/') + $"/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/files?pageSize={pageSize}&pageToken={pageToken}&{string.Join("&", filterFileUids?.Select(static x => $"filterFileUids={x}") ?? global::System.Array.Empty<string>())}", global::System.UriKind.RelativeOrAbsolute));
+                requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 
             PrepareRequest(
                 client: _httpClient,

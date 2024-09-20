@@ -40,9 +40,13 @@ namespace Instill
                 httpClient: _httpClient,
                 request: request);
 
+            var __pathBuilder = new PathBuilder(
+                path: "/v1beta/tokens",
+                baseUri: _httpClient.BaseAddress); 
+            var __path = __pathBuilder.ToString();
             using var httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
-                requestUri: new global::System.Uri(_httpClient.BaseAddress?.AbsoluteUri.TrimEnd('/') + "/v1beta/tokens", global::System.UriKind.RelativeOrAbsolute));
+                requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
             var __httpRequestContentBody = global::System.Text.Json.JsonSerializer.Serialize(request, request.GetType(), JsonSerializerContext);
             var __httpRequestContent = new global::System.Net.Http.StringContent(
                 content: __httpRequestContentBody,
@@ -144,17 +148,17 @@ namespace Instill
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Instill.CreateTokenResponse> CreateTokenAsync(
-            global::System.DateTime lastUseTime = default,
+            global::System.DateTime? lastUseTime = default,
             string? name = default,
             string? uid = default,
             string? id = default,
-            global::System.DateTime createTime = default,
-            global::System.DateTime updateTime = default,
+            global::System.DateTime? createTime = default,
+            global::System.DateTime? updateTime = default,
             string? accessToken = default,
             global::Instill.AllOf<global::Instill.ApiTokenState?>? state = default,
             string? tokenType = default,
-            int ttl = default,
-            global::System.DateTime expireTime = default,
+            int? ttl = default,
+            global::System.DateTime? expireTime = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var request = new global::Instill.ApiToken

@@ -7,13 +7,13 @@ namespace Instill
     {
         partial void PrepareListPipelineTriggerTableRecordsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref int pageSize,
+            ref int? pageSize,
             ref string? pageToken,
             ref string? filter);
         partial void PrepareListPipelineTriggerTableRecordsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            int pageSize,
+            int? pageSize,
             string? pageToken,
             string? filter);
         partial void ProcessListPipelineTriggerTableRecordsResponse(
@@ -36,7 +36,7 @@ namespace Instill
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Instill.ListPipelineTriggerTableRecordsResponse> ListPipelineTriggerTableRecordsAsync(
-            int pageSize = default,
+            int? pageSize = default,
             string? pageToken = default,
             string? filter = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -49,9 +49,18 @@ namespace Instill
                 pageToken: ref pageToken,
                 filter: ref filter);
 
+            var __pathBuilder = new PathBuilder(
+                path: "/v1beta/metrics/vdp/pipeline/tables",
+                baseUri: _httpClient.BaseAddress); 
+            __pathBuilder 
+                .AddOptionalParameter("pageSize", pageSize?.ToString()) 
+                .AddOptionalParameter("pageToken", pageToken) 
+                .AddOptionalParameter("filter", filter) 
+                ; 
+            var __path = __pathBuilder.ToString();
             using var httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
-                requestUri: new global::System.Uri(_httpClient.BaseAddress?.AbsoluteUri.TrimEnd('/') + $"/v1beta/metrics/vdp/pipeline/tables?pageSize={pageSize}&pageToken={pageToken}&filter={filter}", global::System.UriKind.RelativeOrAbsolute));
+                requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 
             PrepareRequest(
                 client: _httpClient,

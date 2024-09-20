@@ -32,7 +32,7 @@ namespace Instill
         /// Tag update time, i.e. timestamp of the last push.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
-        public global::System.DateTime UpdateTime { get; set; }
+        public global::System.DateTime? UpdateTime { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

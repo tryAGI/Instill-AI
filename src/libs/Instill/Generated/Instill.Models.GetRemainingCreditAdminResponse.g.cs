@@ -13,7 +13,7 @@ namespace Instill
         /// The requested credit.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("amount")]
-        public float Amount { get; set; }
+        public float? Amount { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

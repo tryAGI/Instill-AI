@@ -20,8 +20,8 @@ namespace Instill
         global::System.Threading.Tasks.Task<global::Instill.ListCreditConsumptionChartRecordsResponse> ListCreditConsumptionChartRecordsAsync(
             string namespaceId,
             string? aggregationWindow = default,
-            global::System.DateTime start = default,
-            global::System.DateTime stop = default,
+            global::System.DateTime? start = default,
+            global::System.DateTime? stop = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

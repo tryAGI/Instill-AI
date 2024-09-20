@@ -49,9 +49,13 @@ namespace Instill
                 catalogId: ref catalogId,
                 request: request);
 
+            var __pathBuilder = new PathBuilder(
+                path: $"/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/chunks/retrieve",
+                baseUri: _httpClient.BaseAddress); 
+            var __path = __pathBuilder.ToString();
             using var httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
-                requestUri: new global::System.Uri(_httpClient.BaseAddress?.AbsoluteUri.TrimEnd('/') + $"/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/chunks/retrieve", global::System.UriKind.RelativeOrAbsolute));
+                requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
             var __httpRequestContentBody = global::System.Text.Json.JsonSerializer.Serialize(request, request.GetType(), JsonSerializerContext);
             var __httpRequestContent = new global::System.Net.Http.StringContent(
                 content: __httpRequestContentBody,
@@ -119,7 +123,7 @@ namespace Instill
             string namespaceId,
             string catalogId,
             string? textPrompt = default,
-            long topK = default,
+            long? topK = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var request = new global::Instill.SimilarityChunksSearchBody

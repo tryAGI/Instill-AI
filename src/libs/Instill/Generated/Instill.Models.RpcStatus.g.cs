@@ -12,7 +12,7 @@ namespace Instill
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("code")]
-        public int Code { get; set; }
+        public int? Code { get; set; }
 
         /// <summary>
         /// 

@@ -18,7 +18,7 @@ namespace Instill
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("topK")]
-        public int TopK { get; set; }
+        public int? TopK { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

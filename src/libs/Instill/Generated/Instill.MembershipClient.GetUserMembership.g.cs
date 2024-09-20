@@ -49,9 +49,16 @@ namespace Instill
                 organizationId: ref organizationId,
                 view: ref view);
 
+            var __pathBuilder = new PathBuilder(
+                path: $"/v1beta/users/{userId}/memberships/{organizationId}",
+                baseUri: _httpClient.BaseAddress); 
+            __pathBuilder 
+                .AddOptionalParameter("view", view?.ToValueString()) 
+                ; 
+            var __path = __pathBuilder.ToString();
             using var httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
-                requestUri: new global::System.Uri(_httpClient.BaseAddress?.AbsoluteUri.TrimEnd('/') + $"/v1beta/users/{userId}/memberships/{organizationId}?view={(global::System.Uri.EscapeDataString(view?.ToValueString() ?? string.Empty))}", global::System.UriKind.RelativeOrAbsolute));
+                requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 
             PrepareRequest(
                 client: _httpClient,

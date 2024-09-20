@@ -31,9 +31,6 @@ public partial class Tests
             name: "midsummer-nights-dream.pdf",
             type: FileType2.FILETYPEPDF,
             content: Convert.ToBase64String(H.Resources.midsummer_nights_dream_pdf.AsBytes()),
-            // createTime: DateTime.UtcNow,
-            // updateTime: DateTime.UtcNow,
-            // deleteTime: DateTime.UtcNow,
             cancellationToken: cancellationToken);
         
         var file = uploadFileResponse.File?.Value1;

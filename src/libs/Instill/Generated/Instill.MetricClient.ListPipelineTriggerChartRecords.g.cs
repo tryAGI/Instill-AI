@@ -7,12 +7,12 @@ namespace Instill
     {
         partial void PrepareListPipelineTriggerChartRecordsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref int aggregationWindow,
+            ref int? aggregationWindow,
             ref string? filter);
         partial void PrepareListPipelineTriggerChartRecordsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            int aggregationWindow,
+            int? aggregationWindow,
             string? filter);
         partial void ProcessListPipelineTriggerChartRecordsResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -34,7 +34,7 @@ namespace Instill
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Instill.ListPipelineTriggerChartRecordsResponse> ListPipelineTriggerChartRecordsAsync(
-            int aggregationWindow = default,
+            int? aggregationWindow = default,
             string? filter = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -45,9 +45,17 @@ namespace Instill
                 aggregationWindow: ref aggregationWindow,
                 filter: ref filter);
 
+            var __pathBuilder = new PathBuilder(
+                path: "/v1beta/metrics/vdp/pipeline/charts",
+                baseUri: _httpClient.BaseAddress); 
+            __pathBuilder 
+                .AddOptionalParameter("aggregationWindow", aggregationWindow?.ToString()) 
+                .AddOptionalParameter("filter", filter) 
+                ; 
+            var __path = __pathBuilder.ToString();
             using var httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
-                requestUri: new global::System.Uri(_httpClient.BaseAddress?.AbsoluteUri.TrimEnd('/') + $"/v1beta/metrics/vdp/pipeline/charts?aggregationWindow={aggregationWindow}&filter={filter}", global::System.UriKind.RelativeOrAbsolute));
+                requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 
             PrepareRequest(
                 client: _httpClient,

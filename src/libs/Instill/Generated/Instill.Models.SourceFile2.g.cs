@@ -24,13 +24,13 @@ namespace Instill
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
-        public global::System.DateTime CreateTime { get; set; }
+        public global::System.DateTime? CreateTime { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
-        public global::System.DateTime UpdateTime { get; set; }
+        public global::System.DateTime? UpdateTime { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

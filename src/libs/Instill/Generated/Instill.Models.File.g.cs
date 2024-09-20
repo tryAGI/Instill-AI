@@ -48,7 +48,7 @@ namespace Instill
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("retrievable")]
-        public bool Retrievable { get; set; }
+        public bool? Retrievable { get; set; }
 
         /// <summary>
         /// 
@@ -102,13 +102,13 @@ namespace Instill
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("totalChunks")]
-        public int TotalChunks { get; set; }
+        public int? TotalChunks { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("totalTokens")]
-        public int TotalTokens { get; set; }
+        public int? TotalTokens { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

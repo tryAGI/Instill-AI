@@ -7,14 +7,14 @@ namespace Instill
     {
         partial void PrepareListUsersArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref int pageSize,
+            ref int? pageSize,
             ref string? pageToken,
             ref global::Instill.ListUsersView? view,
             ref string? filter);
         partial void PrepareListUsersRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            int pageSize,
+            int? pageSize,
             string? pageToken,
             global::Instill.ListUsersView? view,
             string? filter);
@@ -38,7 +38,7 @@ namespace Instill
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Instill.ListUsersResponse> ListUsersAsync(
-            int pageSize = default,
+            int? pageSize = default,
             string? pageToken = default,
             global::Instill.ListUsersView? view = default,
             string? filter = default,
@@ -53,9 +53,19 @@ namespace Instill
                 view: ref view,
                 filter: ref filter);
 
+            var __pathBuilder = new PathBuilder(
+                path: "/v1beta/users",
+                baseUri: _httpClient.BaseAddress); 
+            __pathBuilder 
+                .AddOptionalParameter("pageSize", pageSize?.ToString()) 
+                .AddOptionalParameter("pageToken", pageToken) 
+                .AddOptionalParameter("view", view?.ToValueString()) 
+                .AddOptionalParameter("filter", filter) 
+                ; 
+            var __path = __pathBuilder.ToString();
             using var httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
-                requestUri: new global::System.Uri(_httpClient.BaseAddress?.AbsoluteUri.TrimEnd('/') + $"/v1beta/users?pageSize={pageSize}&pageToken={pageToken}&view={(global::System.Uri.EscapeDataString(view?.ToValueString() ?? string.Empty))}&filter={filter}", global::System.UriKind.RelativeOrAbsolute));
+                requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 
             PrepareRequest(
                 client: _httpClient,

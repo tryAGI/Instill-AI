@@ -9,15 +9,15 @@ namespace Instill
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
             ref string? aggregationWindow,
-            ref global::System.DateTime start,
-            ref global::System.DateTime stop);
+            ref global::System.DateTime? start,
+            ref global::System.DateTime? stop);
         partial void PrepareListCreditConsumptionChartRecordsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
             string? aggregationWindow,
-            global::System.DateTime start,
-            global::System.DateTime stop);
+            global::System.DateTime? start,
+            global::System.DateTime? stop);
         partial void ProcessListCreditConsumptionChartRecordsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -43,8 +43,8 @@ namespace Instill
         public async global::System.Threading.Tasks.Task<global::Instill.ListCreditConsumptionChartRecordsResponse> ListCreditConsumptionChartRecordsAsync(
             string namespaceId,
             string? aggregationWindow = default,
-            global::System.DateTime start = default,
-            global::System.DateTime stop = default,
+            global::System.DateTime? start = default,
+            global::System.DateTime? stop = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
@@ -56,9 +56,19 @@ namespace Instill
                 start: ref start,
                 stop: ref stop);
 
+            var __pathBuilder = new PathBuilder(
+                path: "/v1beta/metrics/credit/charts",
+                baseUri: _httpClient.BaseAddress); 
+            __pathBuilder 
+                .AddRequiredParameter("namespaceId", namespaceId) 
+                .AddOptionalParameter("aggregationWindow", aggregationWindow) 
+                .AddOptionalParameter("start", start?.ToString("yyyy-MM-ddTHH:mm:ssZ")) 
+                .AddOptionalParameter("stop", stop?.ToString("yyyy-MM-ddTHH:mm:ssZ")) 
+                ; 
+            var __path = __pathBuilder.ToString();
             using var httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
-                requestUri: new global::System.Uri(_httpClient.BaseAddress?.AbsoluteUri.TrimEnd('/') + $"/v1beta/metrics/credit/charts?namespaceId={namespaceId}&aggregationWindow={aggregationWindow}&start={start:yyyy-MM-ddTHH:mm:ssZ}&stop={stop:yyyy-MM-ddTHH:mm:ssZ}", global::System.UriKind.RelativeOrAbsolute));
+                requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 
             PrepareRequest(
                 client: _httpClient,

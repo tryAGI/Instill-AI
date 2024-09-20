@@ -64,17 +64,17 @@ namespace Instill
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Instill.CreateTokenResponse> CreateTokenAsync(
-            global::System.DateTime lastUseTime = default,
+            global::System.DateTime? lastUseTime = default,
             string? name = default,
             string? uid = default,
             string? id = default,
-            global::System.DateTime createTime = default,
-            global::System.DateTime updateTime = default,
+            global::System.DateTime? createTime = default,
+            global::System.DateTime? updateTime = default,
             string? accessToken = default,
             global::Instill.AllOf<global::Instill.ApiTokenState?>? state = default,
             string? tokenType = default,
-            int ttl = default,
-            global::System.DateTime expireTime = default,
+            int? ttl = default,
+            global::System.DateTime? expireTime = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

@@ -24,19 +24,19 @@ namespace Instill
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("transformedContentChunkNum")]
-        public int TransformedContentChunkNum { get; set; }
+        public int? TransformedContentChunkNum { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("transformedContentTokenNum")]
-        public int TransformedContentTokenNum { get; set; }
+        public int? TransformedContentTokenNum { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("transformedContentUpdateTime")]
-        public global::System.DateTime TransformedContentUpdateTime { get; set; }
+        public global::System.DateTime? TransformedContentUpdateTime { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

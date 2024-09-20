@@ -78,13 +78,13 @@ namespace Instill
         /// The total files in catalog.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("totalFiles")]
-        public long TotalFiles { get; set; }
+        public long? TotalFiles { get; set; }
 
         /// <summary>
         /// The total tokens in catalog.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("totalTokens")]
-        public long TotalTokens { get; set; }
+        public long? TotalTokens { get; set; }
 
         /// <summary>
         /// The current used storage in catalog.

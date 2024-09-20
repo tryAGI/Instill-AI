@@ -7,12 +7,12 @@ namespace Instill
     {
         partial void PrepareListTokensArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref int pageSize,
+            ref int? pageSize,
             ref string? pageToken);
         partial void PrepareListTokensRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            int pageSize,
+            int? pageSize,
             string? pageToken);
         partial void ProcessListTokensResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -32,7 +32,7 @@ namespace Instill
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Instill.ListTokensResponse> ListTokensAsync(
-            int pageSize = default,
+            int? pageSize = default,
             string? pageToken = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -43,9 +43,17 @@ namespace Instill
                 pageSize: ref pageSize,
                 pageToken: ref pageToken);
 
+            var __pathBuilder = new PathBuilder(
+                path: "/v1beta/tokens",
+                baseUri: _httpClient.BaseAddress); 
+            __pathBuilder 
+                .AddOptionalParameter("pageSize", pageSize?.ToString()) 
+                .AddOptionalParameter("pageToken", pageToken) 
+                ; 
+            var __path = __pathBuilder.ToString();
             using var httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
-                requestUri: new global::System.Uri(_httpClient.BaseAddress?.AbsoluteUri.TrimEnd('/') + $"/v1beta/tokens?pageSize={pageSize}&pageToken={pageToken}", global::System.UriKind.RelativeOrAbsolute));
+                requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 
             PrepareRequest(
                 client: _httpClient,

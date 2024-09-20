@@ -3,10 +3,10 @@
 namespace Instill.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class FileProcessStatus2JsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Instill.FileProcessStatus2>
+    public sealed class OnboardingStatusNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Instill.OnboardingStatus?>
     {
         /// <inheritdoc />
-        public override global::Instill.FileProcessStatus2 Read(
+        public override global::Instill.OnboardingStatus? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Instill.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Instill.FileProcessStatus2Extensions.ToEnum(stringValue) ?? default;
+                        return global::Instill.OnboardingStatusExtensions.ToEnum(stringValue);
                     }
                     
                     break;
@@ -26,7 +26,7 @@ namespace Instill.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Instill.FileProcessStatus2)numValue;
+                    return (global::Instill.OnboardingStatus)numValue;
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -38,12 +38,19 @@ namespace Instill.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Instill.FileProcessStatus2 value,
+            global::Instill.OnboardingStatus? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            writer.WriteStringValue(global::Instill.FileProcessStatus2Extensions.ToValueString(value));
+            if (value == null)
+            {
+                writer.WriteNullValue();
+            }
+            else
+            {
+                writer.WriteStringValue(global::Instill.OnboardingStatusExtensions.ToValueString(value.Value));
+            }
         }
     }
 }

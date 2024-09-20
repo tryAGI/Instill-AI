@@ -9,7 +9,7 @@ namespace Instill
     /// but has not yet completed it.<br/>
     ///  - ONBOARDING_STATUS_COMPLETED: Completed.
     /// </summary>
-    public enum OnboardingStatus2
+    public enum OnboardingStatus
     {
         /// <summary>
         /// 
@@ -24,29 +24,29 @@ namespace Instill
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class OnboardingStatus2Extensions
+    public static class OnboardingStatusExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this OnboardingStatus2 value)
+        public static string ToValueString(this OnboardingStatus value)
         {
             return value switch
             {
-                OnboardingStatus2.ONBOARDINGSTATUSINPROGRESS => "ONBOARDING_STATUS_IN_PROGRESS",
-                OnboardingStatus2.ONBOARDINGSTATUSCOMPLETED => "ONBOARDING_STATUS_COMPLETED",
+                OnboardingStatus.ONBOARDINGSTATUSINPROGRESS => "ONBOARDING_STATUS_IN_PROGRESS",
+                OnboardingStatus.ONBOARDINGSTATUSCOMPLETED => "ONBOARDING_STATUS_COMPLETED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static OnboardingStatus2? ToEnum(string value)
+        public static OnboardingStatus? ToEnum(string value)
         {
             return value switch
             {
-                "ONBOARDING_STATUS_IN_PROGRESS" => OnboardingStatus2.ONBOARDINGSTATUSINPROGRESS,
-                "ONBOARDING_STATUS_COMPLETED" => OnboardingStatus2.ONBOARDINGSTATUSCOMPLETED,
+                "ONBOARDING_STATUS_IN_PROGRESS" => OnboardingStatus.ONBOARDINGSTATUSINPROGRESS,
+                "ONBOARDING_STATUS_COMPLETED" => OnboardingStatus.ONBOARDINGSTATUSCOMPLETED,
                 _ => null,
             };
         }

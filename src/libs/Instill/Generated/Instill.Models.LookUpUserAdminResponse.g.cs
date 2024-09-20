@@ -1,6 +1,4 @@
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 #nullable enable
 
 namespace Instill
@@ -11,11 +9,11 @@ namespace Instill
     public sealed partial class LookUpUserAdminResponse
     {
         /// <summary>
-        /// 
+        /// User describes an individual that interacts with Instill AI. It doesn't<br/>
+        /// contain any private information about the user.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("user")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.AllOfJsonConverterFactory1))]
-        public global::Instill.AllOf<global::Instill.User9>? User { get; set; }
+        public global::Instill.User? User { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

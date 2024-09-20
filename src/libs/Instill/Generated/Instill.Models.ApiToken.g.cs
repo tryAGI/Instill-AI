@@ -1,6 +1,4 @@
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 #nullable enable
 
 namespace Instill
@@ -62,11 +60,14 @@ namespace Instill
         public string? AccessToken { get; set; }
 
         /// <summary>
-        /// State.
+        /// State describes the state of an API token.<br/>
+        ///  - STATE_INACTIVE: Inactive.<br/>
+        ///  - STATE_ACTIVE: Active.<br/>
+        ///  - STATE_EXPIRED: Expired.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("state")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.AllOfJsonConverterFactory1))]
-        public global::Instill.AllOf<global::Instill.ApiTokenState?>? State { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.ApiTokenStateJsonConverter))]
+        public global::Instill.ApiTokenState? State { get; set; }
 
         /// <summary>
         /// Token type. Value is fixed to "Bearer".

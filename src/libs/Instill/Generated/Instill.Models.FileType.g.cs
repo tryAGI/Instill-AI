@@ -15,10 +15,11 @@ namespace Instill
     ///  - FILE_TYPE_DOC: DOC<br/>
     ///  - FILE_TYPE_PPT: PPT<br/>
     ///  - FILE_TYPE_PPTX: PPTX<br/>
-    ///  - FILE_TYPE_XLS: XLS(not supported yet)<br/>
-    ///  - FILE_TYPE_XLSX: XLSX
+    ///  - FILE_TYPE_XLS: XLS<br/>
+    ///  - FILE_TYPE_XLSX: XLSX<br/>
+    ///  - FILE_TYPE_CSV: CSV
     /// </summary>
-    public enum FileType2
+    public enum FileType
     {
         /// <summary>
         /// 
@@ -72,56 +73,62 @@ namespace Instill
         /// 
         /// </summary>
         FILETYPEXLSX,
+        /// <summary>
+        /// 
+        /// </summary>
+        FILETYPECSV,
     }
 
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class FileType2Extensions
+    public static class FileTypeExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this FileType2 value)
+        public static string ToValueString(this FileType value)
         {
             return value switch
             {
-                FileType2.FILETYPETEXT => "FILE_TYPE_TEXT",
-                FileType2.FILETYPEPDF => "FILE_TYPE_PDF",
-                FileType2.FILETYPEMARKDOWN => "FILE_TYPE_MARKDOWN",
-                FileType2.FILETYPEPNG => "FILE_TYPE_PNG",
-                FileType2.FILETYPEJPEG => "FILE_TYPE_JPEG",
-                FileType2.FILETYPEJPG => "FILE_TYPE_JPG",
-                FileType2.FILETYPEHTML => "FILE_TYPE_HTML",
-                FileType2.FILETYPEDOCX => "FILE_TYPE_DOCX",
-                FileType2.FILETYPEDOC => "FILE_TYPE_DOC",
-                FileType2.FILETYPEPPT => "FILE_TYPE_PPT",
-                FileType2.FILETYPEPPTX => "FILE_TYPE_PPTX",
-                FileType2.FILETYPEXLS => "FILE_TYPE_XLS",
-                FileType2.FILETYPEXLSX => "FILE_TYPE_XLSX",
+                FileType.FILETYPETEXT => "FILE_TYPE_TEXT",
+                FileType.FILETYPEPDF => "FILE_TYPE_PDF",
+                FileType.FILETYPEMARKDOWN => "FILE_TYPE_MARKDOWN",
+                FileType.FILETYPEPNG => "FILE_TYPE_PNG",
+                FileType.FILETYPEJPEG => "FILE_TYPE_JPEG",
+                FileType.FILETYPEJPG => "FILE_TYPE_JPG",
+                FileType.FILETYPEHTML => "FILE_TYPE_HTML",
+                FileType.FILETYPEDOCX => "FILE_TYPE_DOCX",
+                FileType.FILETYPEDOC => "FILE_TYPE_DOC",
+                FileType.FILETYPEPPT => "FILE_TYPE_PPT",
+                FileType.FILETYPEPPTX => "FILE_TYPE_PPTX",
+                FileType.FILETYPEXLS => "FILE_TYPE_XLS",
+                FileType.FILETYPEXLSX => "FILE_TYPE_XLSX",
+                FileType.FILETYPECSV => "FILE_TYPE_CSV",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static FileType2? ToEnum(string value)
+        public static FileType? ToEnum(string value)
         {
             return value switch
             {
-                "FILE_TYPE_TEXT" => FileType2.FILETYPETEXT,
-                "FILE_TYPE_PDF" => FileType2.FILETYPEPDF,
-                "FILE_TYPE_MARKDOWN" => FileType2.FILETYPEMARKDOWN,
-                "FILE_TYPE_PNG" => FileType2.FILETYPEPNG,
-                "FILE_TYPE_JPEG" => FileType2.FILETYPEJPEG,
-                "FILE_TYPE_JPG" => FileType2.FILETYPEJPG,
-                "FILE_TYPE_HTML" => FileType2.FILETYPEHTML,
-                "FILE_TYPE_DOCX" => FileType2.FILETYPEDOCX,
-                "FILE_TYPE_DOC" => FileType2.FILETYPEDOC,
-                "FILE_TYPE_PPT" => FileType2.FILETYPEPPT,
-                "FILE_TYPE_PPTX" => FileType2.FILETYPEPPTX,
-                "FILE_TYPE_XLS" => FileType2.FILETYPEXLS,
-                "FILE_TYPE_XLSX" => FileType2.FILETYPEXLSX,
+                "FILE_TYPE_TEXT" => FileType.FILETYPETEXT,
+                "FILE_TYPE_PDF" => FileType.FILETYPEPDF,
+                "FILE_TYPE_MARKDOWN" => FileType.FILETYPEMARKDOWN,
+                "FILE_TYPE_PNG" => FileType.FILETYPEPNG,
+                "FILE_TYPE_JPEG" => FileType.FILETYPEJPEG,
+                "FILE_TYPE_JPG" => FileType.FILETYPEJPG,
+                "FILE_TYPE_HTML" => FileType.FILETYPEHTML,
+                "FILE_TYPE_DOCX" => FileType.FILETYPEDOCX,
+                "FILE_TYPE_DOC" => FileType.FILETYPEDOC,
+                "FILE_TYPE_PPT" => FileType.FILETYPEPPT,
+                "FILE_TYPE_PPTX" => FileType.FILETYPEPPTX,
+                "FILE_TYPE_XLS" => FileType.FILETYPEXLS,
+                "FILE_TYPE_XLSX" => FileType.FILETYPEXLSX,
+                "FILE_TYPE_CSV" => FileType.FILETYPECSV,
                 _ => null,
             };
         }

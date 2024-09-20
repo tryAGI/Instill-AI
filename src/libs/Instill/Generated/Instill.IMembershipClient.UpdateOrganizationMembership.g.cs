@@ -36,14 +36,19 @@ namespace Instill
         /// <param name="role">
         /// Role of the user in the organization.
         /// </param>
-        /// <param name="state">
-        /// State of the membership.
+        /// <param name="organization">
+        /// Organizations group several users. As entities, they can own resources such<br/>
+        /// as pipelines or releases.
         /// </param>
         /// <param name="user">
-        /// User information.
+        /// User describes an individual that interacts with Instill AI. It doesn't<br/>
+        /// contain any private information about the user.
         /// </param>
-        /// <param name="organization">
-        /// Organization information.
+        /// <param name="state">
+        /// MembershipState describes the state of a user membership to an organization.<br/>
+        ///  - MEMBERSHIP_STATE_ACTIVE: Active.<br/>
+        ///  - MEMBERSHIP_STATE_PENDING: Pending, i.e., a request has been sent to the user to join an<br/>
+        /// organization.
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -53,9 +58,9 @@ namespace Instill
             string updateMask,
             string role,
             string? name = default,
-            global::Instill.AllOf<global::Instill.MembershipState?>? state = default,
-            global::Instill.AllOf<global::Instill.User9>? user = default,
-            global::Instill.AllOf<global::Instill.Organization7>? organization = default,
+            global::Instill.Organization? organization = default,
+            global::Instill.User? user = default,
+            global::Instill.MembershipState? state = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

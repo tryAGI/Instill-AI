@@ -1,6 +1,4 @@
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 #nullable enable
 
 namespace Instill
@@ -11,11 +9,10 @@ namespace Instill
     public sealed partial class GetSourceFileResponse
     {
         /// <summary>
-        /// 
+        /// The SourceFile message represents a source file in the artifact system.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sourceFile")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.AllOfJsonConverterFactory1))]
-        public global::Instill.AllOf<global::Instill.SourceFile2>? SourceFile { get; set; }
+        public global::Instill.SourceFile? SourceFile { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

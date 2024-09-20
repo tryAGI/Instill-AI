@@ -1,6 +1,4 @@
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 #nullable enable
 
 namespace Instill
@@ -11,11 +9,11 @@ namespace Instill
     public sealed partial class UpdateOrganizationMembershipResponse
     {
         /// <summary>
-        /// The updated membership resource.
+        /// An organization membership defines the relationship between an organization<br/>
+        /// and a user that is attached to it.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("membership")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.AllOfJsonConverterFactory1))]
-        public global::Instill.AllOf<global::Instill.OrganizationMembership>? Membership { get; set; }
+        public global::Instill.OrganizationMembership? Membership { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

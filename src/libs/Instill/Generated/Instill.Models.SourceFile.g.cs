@@ -6,7 +6,7 @@ namespace Instill
     /// <summary>
     /// The SourceFile message represents a source file in the artifact system.
     /// </summary>
-    public sealed partial class SourceFile2
+    public sealed partial class SourceFile
     {
         /// <summary>
         /// 

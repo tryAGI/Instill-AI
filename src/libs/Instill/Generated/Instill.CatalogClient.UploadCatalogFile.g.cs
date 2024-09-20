@@ -117,8 +117,31 @@ namespace Instill
         /// <param name="catalogId"></param>
         /// <param name="fileUid"></param>
         /// <param name="name"></param>
-        /// <param name="type"></param>
-        /// <param name="processStatus"></param>
+        /// <param name="processStatus">
+        /// - FILE_PROCESS_STATUS_NOTSTARTED: NOTSTARTED<br/>
+        ///  - FILE_PROCESS_STATUS_WAITING: file is waiting for embedding process<br/>
+        ///  - FILE_PROCESS_STATUS_CONVERTING: file is converting<br/>
+        ///  - FILE_PROCESS_STATUS_CHUNKING: file is chunking<br/>
+        ///  - FILE_PROCESS_STATUS_EMBEDDING: file is embedding<br/>
+        ///  - FILE_PROCESS_STATUS_COMPLETED: completed<br/>
+        ///  - FILE_PROCESS_STATUS_FAILED: failed
+        /// </param>
+        /// <param name="type">
+        /// - FILE_TYPE_TEXT: text<br/>
+        ///  - FILE_TYPE_PDF: PDF<br/>
+        ///  - FILE_TYPE_MARKDOWN: MARKDOWN<br/>
+        ///  - FILE_TYPE_PNG: PNG(not supported yet)<br/>
+        ///  - FILE_TYPE_JPEG: JPEG(not supported yet)<br/>
+        ///  - FILE_TYPE_JPG: JPG(not supported yet)<br/>
+        ///  - FILE_TYPE_HTML: HTML<br/>
+        ///  - FILE_TYPE_DOCX: DOCX<br/>
+        ///  - FILE_TYPE_DOC: DOC<br/>
+        ///  - FILE_TYPE_PPT: PPT<br/>
+        ///  - FILE_TYPE_PPTX: PPTX<br/>
+        ///  - FILE_TYPE_XLS: XLS<br/>
+        ///  - FILE_TYPE_XLSX: XLSX<br/>
+        ///  - FILE_TYPE_CSV: CSV
+        /// </param>
         /// <param name="processOutcome"></param>
         /// <param name="retrievable"></param>
         /// <param name="content"></param>
@@ -137,9 +160,9 @@ namespace Instill
             string namespaceId,
             string catalogId,
             string name,
-            global::Instill.AllOf<global::Instill.FileType2?> type,
+            global::Instill.FileType type,
             string? fileUid = default,
-            global::Instill.AllOf<global::Instill.FileProcessStatus2?>? processStatus = default,
+            global::Instill.FileProcessStatus? processStatus = default,
             string? processOutcome = default,
             bool? retrievable = default,
             string? content = default,
@@ -158,8 +181,8 @@ namespace Instill
             {
                 FileUid = fileUid,
                 Name = name,
-                Type = type,
                 ProcessStatus = processStatus,
+                Type = type,
                 ProcessOutcome = processOutcome,
                 Retrievable = retrievable,
                 Content = content,

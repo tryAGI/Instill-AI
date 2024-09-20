@@ -1,6 +1,4 @@
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 #nullable enable
 
 namespace Instill
@@ -9,7 +7,7 @@ namespace Instill
     /// User describes an individual that interacts with Instill AI. It doesn't<br/>
     /// contain any private information about the user.
     /// </summary>
-    public sealed partial class User9
+    public sealed partial class User
     {
         /// <summary>
         /// The name of the user, defined by its ID.<br/>
@@ -48,11 +46,10 @@ namespace Instill
         public global::System.DateTime? UpdateTime { get; set; }
 
         /// <summary>
-        /// Profile.
+        /// UserProfile describes the public data of a user.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("profile")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.AllOfJsonConverterFactory1))]
-        public global::Instill.AllOf<global::Instill.UserProfile>? Profile { get; set; }
+        public global::Instill.UserProfile? Profile { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

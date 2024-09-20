@@ -1,6 +1,4 @@
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 #nullable enable
 
 namespace Instill
@@ -11,11 +9,10 @@ namespace Instill
     public sealed partial class UpdateCatalogResponse
     {
         /// <summary>
-        /// The updated catalog.
+        /// Catalog represents a catalog.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("catalog")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.AllOfJsonConverterFactory1))]
-        public global::Instill.AllOf<global::Instill.Catalog>? Catalog { get; set; }
+        public global::Instill.Catalog? Catalog { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

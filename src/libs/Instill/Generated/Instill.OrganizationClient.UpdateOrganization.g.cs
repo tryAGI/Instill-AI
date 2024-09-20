@@ -8,12 +8,12 @@ namespace Instill
         partial void PrepareUpdateOrganizationArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string organizationId,
-            global::Instill.Organization7 request);
+            global::Instill.Organization request);
         partial void PrepareUpdateOrganizationRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string organizationId,
-            global::Instill.Organization7 request);
+            global::Instill.Organization request);
         partial void ProcessUpdateOrganizationResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -35,7 +35,7 @@ namespace Instill
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Instill.UpdateOrganizationResponse> UpdateOrganizationAsync(
             string organizationId,
-            global::Instill.Organization7 request,
+            global::Instill.Organization request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -134,37 +134,40 @@ namespace Instill
         /// <param name="updateTime">
         /// Update time.
         /// </param>
-        /// <param name="owner">
-        /// The user that owns the organization.
+        /// <param name="permission">
+        /// Permission defines how a resource can be used.
         /// </param>
         /// <param name="profile">
-        /// Profile.
+        /// OrganizationProfile describes the public data of an organization.
         /// </param>
-        /// <param name="permission"></param>
+        /// <param name="owner">
+        /// User describes an individual that interacts with Instill AI. It doesn't<br/>
+        /// contain any private information about the user.
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Instill.UpdateOrganizationResponse> UpdateOrganizationAsync(
             string organizationId,
-            global::Instill.AllOf<global::Instill.OrganizationProfile> profile,
+            global::Instill.OrganizationProfile profile,
             string? name = default,
             string? uid = default,
             string? id = default,
             global::System.DateTime? createTime = default,
             global::System.DateTime? updateTime = default,
-            global::Instill.AllOf<global::Instill.User9>? owner = default,
-            global::Instill.AllOf<global::Instill.Permission2>? permission = default,
+            global::Instill.Permission? permission = default,
+            global::Instill.User? owner = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var request = new global::Instill.Organization7
+            var request = new global::Instill.Organization
             {
                 Name = name,
                 Uid = uid,
                 Id = id,
                 CreateTime = createTime,
                 UpdateTime = updateTime,
-                Owner = owner,
-                Profile = profile,
                 Permission = permission,
+                Profile = profile,
+                Owner = owner,
             };
 
             return await UpdateOrganizationAsync(

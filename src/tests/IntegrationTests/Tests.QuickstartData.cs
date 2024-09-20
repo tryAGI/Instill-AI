@@ -11,7 +11,7 @@ public partial class Tests
 
         CreateCatalogResponse createCatalogResponse = await client.Catalog.CreateCatalogAsync(
             namespaceId: "havendv",
-            name: "shakespeare",
+            name: $"shakespeare_{Random.Shared.Next(1_000_000)}",
             description: "Works of Shakespeare",
             cancellationToken: cancellationToken);
         
@@ -88,5 +88,12 @@ public partial class Tests
             Console.WriteLine($"  SourceFile: {chunk.SourceFile}");
             Console.WriteLine("----------------------------------------");
         }
+        
+        DeleteCatalogResponse deleteCatalogResponse = await client.Catalog.DeleteCatalogAsync(
+            namespaceId: "havendv",
+            catalogId: catalog?.CatalogId!,
+            cancellationToken: cancellationToken);
+        
+        deleteCatalogResponse.Catalog?.Value1?.CatalogId.Should().Be(catalog?.CatalogId);
     }
 }

@@ -15,8 +15,8 @@ namespace Instill
         { 
             typeof(global::Instill.JsonConverters.ApiTokenStateJsonConverter),
             typeof(global::Instill.JsonConverters.ApiTokenStateNullableJsonConverter),
-            typeof(global::Instill.JsonConverters.Mgmtv1betaStatusJsonConverter),
-            typeof(global::Instill.JsonConverters.Mgmtv1betaStatusNullableJsonConverter),
+            typeof(global::Instill.JsonConverters.StatusJsonConverter),
+            typeof(global::Instill.JsonConverters.StatusNullableJsonConverter),
             typeof(global::Instill.JsonConverters.OnboardingStatusJsonConverter),
             typeof(global::Instill.JsonConverters.OnboardingStatusNullableJsonConverter),
             typeof(global::Instill.JsonConverters.CheckNamespaceAdminResponseNamespaceJsonConverter),

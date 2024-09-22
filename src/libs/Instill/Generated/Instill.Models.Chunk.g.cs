@@ -6,7 +6,7 @@ namespace Instill
     /// <summary>
     /// The Chunk message represents a chunk of data in the artifact system.
     /// </summary>
-    public sealed partial class Artifactv1alphaChunk
+    public sealed partial class Chunk
     {
         /// <summary>
         /// 

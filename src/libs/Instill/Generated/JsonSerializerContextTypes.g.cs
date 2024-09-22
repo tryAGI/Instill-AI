@@ -37,7 +37,7 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Mgmtv1betaStatus? Type6 { get; set; }
+        public global::Instill.Status? Type6 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -421,7 +421,7 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Artifactv1alphaChunk? Type102 { get; set; }
+        public global::Instill.Chunk? Type102 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -509,7 +509,7 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.Artifactv1alphaChunk>? Type124 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.Chunk>? Type124 { get; set; }
         /// <summary>
         /// 
         /// </summary>

@@ -48,7 +48,7 @@ public partial class Tests
             fileUids: [file.FileUid],
             cancellationToken: cancellationToken);
         
-        processFilesResponse.Files?[0].ProcessStatus.Should().Be(FileProcessStatus.WAITING);
+        processFilesResponse.Files[0].ProcessStatus.Should().Be(FileProcessStatus.WAITING);
 
         while (!cancellationToken.IsCancellationRequested)
         {
@@ -59,7 +59,7 @@ public partial class Tests
                 catalogId: catalog.CatalogId,
                 cancellationToken: cancellationToken);
 
-            if (listFilesResponse.Files?[0].ProcessStatus is
+            if (listFilesResponse.Files[0].ProcessStatus is
                     FileProcessStatus.COMPLETED or
                     FileProcessStatus.FAILED)
             {
@@ -78,6 +78,8 @@ public partial class Tests
             cancellationToken: cancellationToken);
         
         Console.WriteLine($"Answer: {questionAnsweringResponse.Answer}");
+        // Answer: The main characters involved in the love triangle in Act I are Hermia, Lysander, and Demetrius.
+        
         Console.WriteLine("SimilarChunks:");
 
         foreach (var chunk in questionAnsweringResponse.SimilarChunks ?? [])

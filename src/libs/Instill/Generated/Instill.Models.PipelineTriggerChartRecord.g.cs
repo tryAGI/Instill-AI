@@ -33,8 +33,8 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.Mgmtv1betaStatusJsonConverter))]
-        public global::Instill.Mgmtv1betaStatus? Status { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.StatusJsonConverter))]
+        public global::Instill.Status? Status { get; set; }
 
         /// <summary>
         /// Time buckets.<br/>

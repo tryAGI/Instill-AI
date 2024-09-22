@@ -1690,7 +1690,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/protobufAny'
-    mgmtv1betaStatus:
+    Status:
       enum:
         - STATUS_COMPLETED
         - STATUS_ERRORED
@@ -2394,7 +2394,7 @@ components:
           description: Trigger mode.
         status:
           allOf:
-            - $ref: '#/components/schemas/mgmtv1betaStatus'
+            - $ref: '#/components/schemas/Status'
           description: Final status.
           readOnly: true
         timeBuckets:
@@ -2772,7 +2772,7 @@ components:
           title: transformed content update time
           type: string
           format: date-time
-    artifactv1alphaChunk:
+    Chunk:
       type: object
       properties:
         chunkUid:
@@ -3104,6 +3104,8 @@ components:
           description: The file uids.
     ListCatalogFilesResponse:
       title: list files response
+      required:
+        - files
       type: object
       properties:
         files:
@@ -3142,7 +3144,7 @@ components:
           title: repeated chunks
           type: array
           items:
-            $ref: '#/components/schemas/artifactv1alphaChunk'
+            $ref: '#/components/schemas/Chunk'
       description: The ListChunksResponse message represents a response containing a list of chunks in the artifact system.
     ListRepositoryTagsResponse:
       type: object
@@ -3178,6 +3180,8 @@ components:
           description: The file uid.
     ProcessCatalogFilesResponse:
       title: Process Catalog File Response
+      required:
+        - files
       type: object
       properties:
         files:
@@ -3274,7 +3278,7 @@ components:
         chunk:
           title: chunk
           allOf:
-            - $ref: '#/components/schemas/artifactv1alphaChunk'
+            - $ref: '#/components/schemas/Chunk'
     UploadCatalogFileResponse:
       title: upload file response
       required:

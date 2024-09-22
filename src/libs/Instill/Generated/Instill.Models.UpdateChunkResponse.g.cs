@@ -12,7 +12,7 @@ namespace Instill
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chunk")]
-        public global::Instill.Artifactv1alphaChunk? Chunk { get; set; }
+        public global::Instill.Chunk? Chunk { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

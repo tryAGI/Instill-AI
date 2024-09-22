@@ -8,44 +8,44 @@ namespace Instill
     ///  - STATUS_COMPLETED: Successfully completed.<br/>
     ///  - STATUS_ERRORED: Finished with error.
     /// </summary>
-    public enum Mgmtv1betaStatus
+    public enum Status
     {
         /// <summary>
         /// Successfully completed.
         /// </summary>
-        STATUSCOMPLETED,
+        COMPLETED,
         /// <summary>
         /// Finished with error.
         /// </summary>
-        STATUSERRORED,
+        ERRORED,
     }
 
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class Mgmtv1betaStatusExtensions
+    public static class StatusExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this Mgmtv1betaStatus value)
+        public static string ToValueString(this Status value)
         {
             return value switch
             {
-                Mgmtv1betaStatus.STATUSCOMPLETED => "STATUS_COMPLETED",
-                Mgmtv1betaStatus.STATUSERRORED => "STATUS_ERRORED",
+                Status.COMPLETED => "STATUS_COMPLETED",
+                Status.ERRORED => "STATUS_ERRORED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static Mgmtv1betaStatus? ToEnum(string value)
+        public static Status? ToEnum(string value)
         {
             return value switch
             {
-                "STATUS_COMPLETED" => Mgmtv1betaStatus.STATUSCOMPLETED,
-                "STATUS_ERRORED" => Mgmtv1betaStatus.STATUSERRORED,
+                "STATUS_COMPLETED" => Status.COMPLETED,
+                "STATUS_ERRORED" => Status.ERRORED,
                 _ => null,
             };
         }

@@ -1,5 +1,4 @@
 using Microsoft.OpenApi;
-using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Readers;
@@ -13,6 +12,7 @@ text = text
         .Replace("  v1beta", "  ")
         .Replace("#/definitions/v1beta", "#/definitions/")
         .Replace("MgmtPublicService_", string.Empty)
+        .Replace("mgmtv1beta", string.Empty)
     ;
 artifactText = artifactText
         .Replace("  v1alpha", "  ")
@@ -20,6 +20,7 @@ artifactText = artifactText
         .Replace("  ArtifactPublicService", "  ")
         .Replace("#/definitions/ArtifactPublicService", "#/definitions/")
         .Replace("ArtifactPublicService_", string.Empty)
+        .Replace("artifactv1alpha", string.Empty)
     ;
 
 var openApiDocument = new OpenApiStringReader().Read(text, out var diagnostics);
@@ -48,6 +49,9 @@ openApiDocument.Components.Schemas["Catalog"]!.Required.Add("catalogId");
 
 openApiDocument.Components.Schemas["UploadCatalogFileResponse"]!.Required.Add("file");
 openApiDocument.Components.Schemas["File"]!.Required.Add("fileUid");
+
+openApiDocument.Components.Schemas["ProcessCatalogFilesResponse"]!.Required.Add("files");
+openApiDocument.Components.Schemas["ListCatalogFilesResponse"]!.Required.Add("files");
 
 text = openApiDocument.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0);
 _ = new OpenApiStringReader().Read(text, out diagnostics);

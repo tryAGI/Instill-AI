@@ -9,8 +9,7 @@ namespace Instill
     public sealed partial class GetUserMembershipResponse
     {
         /// <summary>
-        /// A user membership defines the relationship between a user and an<br/>
-        /// organization they belong to.
+        /// The requested user membership.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("membership")]
         public global::Instill.UserMembership? Membership { get; set; }

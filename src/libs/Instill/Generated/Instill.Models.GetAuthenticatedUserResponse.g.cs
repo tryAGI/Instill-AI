@@ -9,9 +9,7 @@ namespace Instill
     public sealed partial class GetAuthenticatedUserResponse
     {
         /// <summary>
-        /// AuthenticatedUser contains the information of an authenticated user, i.e.,<br/>
-        /// the public user information plus some fields that should only be accessed by<br/>
-        /// the user themselves.
+        /// The authenticated user resource.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("user")]
         public global::Instill.AuthenticatedUser? User { get; set; }

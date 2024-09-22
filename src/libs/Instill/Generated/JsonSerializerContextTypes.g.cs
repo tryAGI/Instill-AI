@@ -57,15 +57,15 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UserProfile? Type11 { get; set; }
+        public global::Instill.OnboardingStatus? Type11 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UserProfileSocialProfileLinks? Type12 { get; set; }
+        public global::Instill.UserProfile? Type12 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.OnboardingStatus? Type13 { get; set; }
+        public global::Instill.UserProfileSocialProfileLinks? Type13 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -73,27 +73,27 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Organization? Type15 { get; set; }
+        public global::Instill.CheckNamespaceAdminResponseNamespace? Type15 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Permission? Type16 { get; set; }
+        public global::Instill.User? Type16 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.OrganizationProfile? Type17 { get; set; }
+        public global::Instill.Organization? Type17 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.OrganizationProfileSocialProfileLinks? Type18 { get; set; }
+        public global::Instill.OrganizationProfile? Type18 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.User? Type19 { get; set; }
+        public global::Instill.OrganizationProfileSocialProfileLinks? Type19 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.CheckNamespaceAdminResponseNamespace? Type20 { get; set; }
+        public global::Instill.Permission? Type20 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -169,15 +169,15 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.StripeSubscriptionDetail? Type39 { get; set; }
+        public global::Instill.UserSubscriptionPlan? Type39 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.StripeSubscriptionDetailStatus? Type40 { get; set; }
+        public global::Instill.StripeSubscriptionDetail? Type40 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UserSubscriptionPlan? Type41 { get; set; }
+        public global::Instill.StripeSubscriptionDetailStatus? Type41 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -409,11 +409,11 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.FileProcessStatus? Type99 { get; set; }
+        public global::Instill.FileType? Type99 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.FileType? Type100 { get; set; }
+        public global::Instill.FileProcessStatus? Type100 { get; set; }
         /// <summary>
         /// 
         /// </summary>

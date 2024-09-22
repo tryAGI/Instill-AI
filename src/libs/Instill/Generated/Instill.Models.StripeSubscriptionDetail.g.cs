@@ -45,15 +45,7 @@ namespace Instill
         public int? TrialEnd { get; set; }
 
         /// <summary>
-        /// Enumerates the status types for the user's subscription.<br/>
-        ///  - STATUS_INCOMPLETE: Incomplete.<br/>
-        ///  - STATUS_INCOMPLETE_EXPIRED: Incomplete Expired.<br/>
-        ///  - STATUS_TRIALING: Trialing.<br/>
-        ///  - STATUS_ACTIVE: Active.<br/>
-        ///  - STATUS_PAST_DUE: Past due.<br/>
-        ///  - STATUS_CANCELED: Canceled.<br/>
-        ///  - STATUS_UNPAID: Unpaid.<br/>
-        ///  - STATUS_PAUSED: Paused.
+        /// Status of the subscription.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.StripeSubscriptionDetailStatusJsonConverter))]

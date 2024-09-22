@@ -33,7 +33,7 @@ namespace Instill
         public string? NextPageToken { get; set; }
 
         /// <summary>
-        /// 
+        /// The filter.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("filter")]
         public global::Instill.ListCatalogFilesFilter? Filter { get; set; }

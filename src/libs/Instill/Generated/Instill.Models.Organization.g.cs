@@ -11,13 +11,15 @@ namespace Instill
     {
         /// <summary>
         /// The name of the organization, defined by its ID.<br/>
-        /// - Format: `organization/{organization.id}`.
+        /// - Format: `organization/{organization.id}`.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         public string? Name { get; set; }
 
         /// <summary>
-        /// Organization UUID.
+        /// Organization UUID.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("uid")]
         public string? Uid { get; set; }
@@ -33,19 +35,22 @@ namespace Instill
         public string? Id { get; set; }
 
         /// <summary>
-        /// Creation time.
+        /// Creation time.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
         public global::System.DateTime? CreateTime { get; set; }
 
         /// <summary>
-        /// Update time.
+        /// Update time.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
         public global::System.DateTime? UpdateTime { get; set; }
 
         /// <summary>
-        /// The user that owns the organization.
+        /// The user that owns the organization.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("owner")]
         public global::Instill.User? Owner { get; set; }
@@ -58,7 +63,7 @@ namespace Instill
         public required global::Instill.OrganizationProfile Profile { get; set; }
 
         /// <summary>
-        /// 
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("permission")]
         public global::Instill.Permission? Permission { get; set; }

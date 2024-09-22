@@ -114,13 +114,6 @@ namespace Instill
         /// account when updating the resource.
         /// </summary>
         /// <param name="organizationId"></param>
-        /// <param name="name">
-        /// The name of the organization, defined by its ID.<br/>
-        /// - Format: `organization/{organization.id}`.
-        /// </param>
-        /// <param name="uid">
-        /// Organization UUID.
-        /// </param>
         /// <param name="id">
         /// Resource ID (used in `name` as the last segment). This conforms to<br/>
         /// RFC-1034, which restricts to letters, numbers, and hyphen, with the first<br/>
@@ -128,43 +121,21 @@ namespace Instill
         /// maximum.<br/>
         /// Note that the ID can be updated.
         /// </param>
-        /// <param name="createTime">
-        /// Creation time.
-        /// </param>
-        /// <param name="updateTime">
-        /// Update time.
-        /// </param>
-        /// <param name="owner">
-        /// The user that owns the organization.
-        /// </param>
         /// <param name="profile">
         /// Profile.
         /// </param>
-        /// <param name="permission"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Instill.UpdateOrganizationResponse> UpdateOrganizationAsync(
             string organizationId,
             global::Instill.OrganizationProfile profile,
-            string? name = default,
-            string? uid = default,
             string? id = default,
-            global::System.DateTime? createTime = default,
-            global::System.DateTime? updateTime = default,
-            global::Instill.User? owner = default,
-            global::Instill.Permission? permission = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var request = new global::Instill.Organization
             {
-                Name = name,
-                Uid = uid,
                 Id = id,
-                CreateTime = createTime,
-                UpdateTime = updateTime,
-                Owner = owner,
                 Profile = profile,
-                Permission = permission,
             };
 
             return await UpdateOrganizationAsync(

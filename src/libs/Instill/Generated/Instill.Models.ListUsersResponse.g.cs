@@ -9,19 +9,22 @@ namespace Instill
     public sealed partial class ListUsersResponse
     {
         /// <summary>
-        /// A list of user resources.
+        /// A list of user resources.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("users")]
         public global::System.Collections.Generic.IList<global::Instill.User>? Users { get; set; }
 
         /// <summary>
-        /// Next page token.
+        /// Next page token.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("nextPageToken")]
         public string? NextPageToken { get; set; }
 
         /// <summary>
-        /// Total number of users.
+        /// Total number of users.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("totalSize")]
         public int? TotalSize { get; set; }

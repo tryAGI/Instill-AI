@@ -9,7 +9,8 @@ namespace Instill
     public sealed partial class GetAuthenticatedUserSubscriptionResponse
     {
         /// <summary>
-        /// The subscription resource.
+        /// The subscription resource.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("subscription")]
         public global::Instill.UserSubscription? Subscription { get; set; }

@@ -9,7 +9,7 @@ namespace Instill
     public sealed partial class GetSourceFileResponse
     {
         /// <summary>
-        /// The SourceFile message represents a source file in the artifact system.
+        /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sourceFile")]
         public global::Instill.SourceFile? SourceFile { get; set; }

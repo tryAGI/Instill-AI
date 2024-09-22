@@ -9,8 +9,7 @@ namespace Instill
     public sealed partial class UpdateOrganizationResponse
     {
         /// <summary>
-        /// Organizations group several users. As entities, they can own resources such<br/>
-        /// as pipelines or releases.
+        /// The organization resource.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("organization")]
         public global::Instill.Organization? Organization { get; set; }

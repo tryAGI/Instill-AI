@@ -9,7 +9,7 @@ namespace Instill
     public sealed partial class UpdateCatalogResponse
     {
         /// <summary>
-        /// Catalog represents a catalog.
+        /// The updated catalog.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("catalog")]
         public global::Instill.Catalog? Catalog { get; set; }

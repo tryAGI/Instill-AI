@@ -9,7 +9,7 @@ namespace Instill
     public sealed partial class CreateTokenResponse
     {
         /// <summary>
-        /// API tokens allow users to make requests to the Instill AI API.
+        /// The created API token resource.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("token")]
         public global::Instill.ApiToken? Token { get; set; }

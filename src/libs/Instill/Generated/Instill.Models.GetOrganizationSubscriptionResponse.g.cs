@@ -9,7 +9,7 @@ namespace Instill
     public sealed partial class GetOrganizationSubscriptionResponse
     {
         /// <summary>
-        /// OrganizationSubscription details describe the plan (i.e., features) an organization has access to.
+        /// The subscription resource.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("subscription")]
         public global::Instill.OrganizationSubscription? Subscription { get; set; }

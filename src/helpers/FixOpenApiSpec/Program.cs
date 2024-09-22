@@ -43,7 +43,11 @@ foreach (var pair in artifactOpenApiDocument.Paths)
 openApiDocument.Components.SecuritySchemes["Bearer"].Type = SecuritySchemeType.Http;
 openApiDocument.Components.SecuritySchemes["Bearer"].Scheme = "bearer";
 
-//openApiDocument.Components.Schemas["GenerateCompletionRequest"]!.Properties["stream"]!.Default = new OpenApiBoolean(true);
+openApiDocument.Components.Schemas["CreateCatalogResponse"]!.Required.Add("catalog");
+openApiDocument.Components.Schemas["Catalog"]!.Required.Add("catalogId");
+
+openApiDocument.Components.Schemas["UploadCatalogFileResponse"]!.Required.Add("file");
+openApiDocument.Components.Schemas["File"]!.Required.Add("fileUid");
 
 text = openApiDocument.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0);
 _ = new OpenApiStringReader().Read(text, out diagnostics);

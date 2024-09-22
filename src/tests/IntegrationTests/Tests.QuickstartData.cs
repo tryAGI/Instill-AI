@@ -15,40 +15,40 @@ public partial class Tests
             description: "Works of Shakespeare",
             cancellationToken: cancellationToken);
         
-        var catalog = createCatalogResponse.Catalog?.Value1;
-        Console.WriteLine($"CatalogId: {catalog?.CatalogId}");
-        Console.WriteLine($"Name: {catalog?.Name}");
-        Console.WriteLine($"Description: {catalog?.Description}");
-        Console.WriteLine($"TotalFiles: {catalog?.TotalFiles}");
-        Console.WriteLine($"TotalTokens: {catalog?.TotalTokens}");
+        var catalog = createCatalogResponse.Catalog;
+        Console.WriteLine($"CatalogId: {catalog.CatalogId}");
+        Console.WriteLine($"Name: {catalog.Name}");
+        Console.WriteLine($"Description: {catalog.Description}");
+        Console.WriteLine($"TotalFiles: {catalog.TotalFiles}");
+        Console.WriteLine($"TotalTokens: {catalog.TotalTokens}");
         
         catalog.Should().NotBeNull();
-        catalog?.CatalogId.Should().NotBeNull();
+        catalog.CatalogId.Should().NotBeNull();
         
         UploadCatalogFileResponse uploadFileResponse = await client.Catalog.UploadCatalogFileAsync(
             namespaceId: "havendv",
-            catalogId: catalog?.CatalogId!,
+            catalogId: catalog.CatalogId,
             name: "midsummer-nights-dream.pdf",
-            type: FileType2.FILETYPEPDF,
+            type: FileType.FILETYPEPDF,
             content: Convert.ToBase64String(H.Resources.midsummer_nights_dream_pdf.AsBytes()),
             cancellationToken: cancellationToken);
         
-        var file = uploadFileResponse.File?.Value1;
-        Console.WriteLine($"FileUid: {file?.FileUid}");
-        Console.WriteLine($"Name: {file?.Name}");
-        Console.WriteLine($"Type: {file?.Type.Value1}");
-        Console.WriteLine($"Size: {file?.Size}");
-        Console.WriteLine($"TotalTokens: {file?.TotalTokens}");
-        Console.WriteLine($"TotalChunks: {file?.TotalChunks}");
+        var file = uploadFileResponse.File;
+        Console.WriteLine($"FileUid: {file.FileUid}");
+        Console.WriteLine($"Name: {file.Name}");
+        Console.WriteLine($"Type: {file.Type}");
+        Console.WriteLine($"Size: {file.Size}");
+        Console.WriteLine($"TotalTokens: {file.TotalTokens}");
+        Console.WriteLine($"TotalChunks: {file.TotalChunks}");
         
         file.Should().NotBeNull();
-        file?.FileUid.Should().NotBeNull();
+        file.FileUid.Should().NotBeNull();
         
         ProcessCatalogFilesResponse processFilesResponse = await client.Catalog.ProcessCatalogFilesAsync(
-            fileUids: [file?.FileUid!],
+            fileUids: [file.FileUid],
             cancellationToken: cancellationToken);
         
-        processFilesResponse.Files?[0].ProcessStatus?.Value1.Should().Be(FileProcessStatus2.FILEPROCESSSTATUSWAITING);
+        processFilesResponse.Files?[0].ProcessStatus.Should().Be(FileProcessStatus.FILEPROCESSSTATUSWAITING);
 
         while (!cancellationToken.IsCancellationRequested)
         {
@@ -56,12 +56,12 @@ public partial class Tests
             
             ListCatalogFilesResponse listFilesResponse = await client.Catalog.ListCatalogFilesAsync(
                 namespaceId: "havendv",
-                catalogId: catalog?.CatalogId!,
+                catalogId: catalog.CatalogId,
                 cancellationToken: cancellationToken);
 
-            if (listFilesResponse.Files?[0].ProcessStatus?.Value1 is
-                    FileProcessStatus2.FILEPROCESSSTATUSCOMPLETED or
-                    FileProcessStatus2.FILEPROCESSSTATUSFAILED)
+            if (listFilesResponse.Files?[0].ProcessStatus is
+                    FileProcessStatus.FILEPROCESSSTATUSCOMPLETED or
+                    FileProcessStatus.FILEPROCESSSTATUSFAILED)
             {
                 break;
             }
@@ -72,7 +72,7 @@ public partial class Tests
         
         QuestionAnsweringResponse questionAnsweringResponse = await client.Catalog.QuestionAnsweringAsync(
             namespaceId: "havendv",
-            catalogId: catalog?.CatalogId!,
+            catalogId: catalog.CatalogId,
             question: question,
             topK: 5,
             cancellationToken: cancellationToken);
@@ -91,9 +91,9 @@ public partial class Tests
         
         DeleteCatalogResponse deleteCatalogResponse = await client.Catalog.DeleteCatalogAsync(
             namespaceId: "havendv",
-            catalogId: catalog?.CatalogId!,
+            catalogId: catalog.CatalogId,
             cancellationToken: cancellationToken);
         
-        deleteCatalogResponse.Catalog?.Value1?.CatalogId.Should().Be(catalog?.CatalogId);
+        deleteCatalogResponse.Catalog?.CatalogId.Should().Be(catalog.CatalogId);
     }
 }

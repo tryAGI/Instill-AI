@@ -2814,6 +2814,8 @@ components:
           items:
             $ref: '#/components/schemas/protobufAny'
     Catalog:
+      required:
+        - catalogId
       type: object
       properties:
         catalogId:
@@ -2873,6 +2875,8 @@ components:
           format: uint64
       description: Catalog represents a catalog.
     CreateCatalogResponse:
+      required:
+        - catalog
       type: object
       properties:
         catalog:
@@ -2911,6 +2915,7 @@ components:
       required:
         - name
         - type
+        - fileUid
       type: object
       properties:
         fileUid:
@@ -3272,6 +3277,8 @@ components:
             - $ref: '#/components/schemas/artifactv1alphaChunk'
     UploadCatalogFileResponse:
       title: upload file response
+      required:
+        - file
       type: object
       properties:
         file:

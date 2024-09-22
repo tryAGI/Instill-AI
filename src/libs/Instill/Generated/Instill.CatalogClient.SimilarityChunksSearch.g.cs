@@ -54,6 +54,11 @@ namespace Instill
                 instillRequesterUid: ref instillRequesterUid,
                 request: request);
 
+            if (instillRequesterUid != default)
+            {
+                _httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Instill-Requester-Uid", instillRequesterUid);
+            }
+
             var __pathBuilder = new PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/chunks/retrieve",
                 baseUri: _httpClient.BaseAddress); 

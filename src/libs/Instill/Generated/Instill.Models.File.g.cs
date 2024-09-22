@@ -12,7 +12,7 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("fileUid")]
-        public string? FileUid { get; set; }
+        public string FileUid { get; set; } = default!;
 
         /// <summary>
         /// 

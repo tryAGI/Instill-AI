@@ -9,11 +9,11 @@ namespace Instill
     public enum GetOrganizationView
     {
         /// <summary>
-        /// 
+        /// Default view, only includes basic information.
         /// </summary>
         VIEWBASIC,
         /// <summary>
-        /// 
+        /// Full representation.
         /// </summary>
         VIEWFULL,
     }

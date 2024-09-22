@@ -12,19 +12,19 @@ namespace Instill
     public enum GetFileCatalogResponseChunkType
     {
         /// <summary>
-        /// 
+        /// text
         /// </summary>
         CHUNKTYPETEXT,
         /// <summary>
-        /// 
+        /// image
         /// </summary>
         CHUNKTYPEIMAGE,
         /// <summary>
-        /// 
+        /// audio
         /// </summary>
         CHUNKTYPEAUDIO,
         /// <summary>
-        /// 
+        /// video
         /// </summary>
         CHUNKTYPEVIDEO,
     }

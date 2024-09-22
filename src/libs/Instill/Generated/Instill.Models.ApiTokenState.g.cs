@@ -12,15 +12,15 @@ namespace Instill
     public enum ApiTokenState
     {
         /// <summary>
-        /// 
+        /// Inactive.
         /// </summary>
         STATEINACTIVE,
         /// <summary>
-        /// 
+        /// Active.
         /// </summary>
         STATEACTIVE,
         /// <summary>
-        /// 
+        /// Expired.
         /// </summary>
         STATEEXPIRED,
     }

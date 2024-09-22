@@ -9,11 +9,11 @@ namespace Instill
     public enum ListUsersView
     {
         /// <summary>
-        /// 
+        /// Default view, only includes basic information.
         /// </summary>
         VIEWBASIC,
         /// <summary>
-        /// 
+        /// Full representation.
         /// </summary>
         VIEWFULL,
     }

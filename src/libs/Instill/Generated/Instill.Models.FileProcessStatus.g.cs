@@ -15,33 +15,33 @@ namespace Instill
     public enum FileProcessStatus
     {
         /// <summary>
-        /// 
+        /// NOTSTARTED
         /// </summary>
-        FILEPROCESSSTATUSNOTSTARTED,
+        NOTSTARTED,
         /// <summary>
-        /// 
+        /// file is waiting for embedding process
         /// </summary>
-        FILEPROCESSSTATUSWAITING,
+        WAITING,
         /// <summary>
-        /// 
+        /// file is converting
         /// </summary>
-        FILEPROCESSSTATUSCONVERTING,
+        CONVERTING,
         /// <summary>
-        /// 
+        /// file is chunking
         /// </summary>
-        FILEPROCESSSTATUSCHUNKING,
+        CHUNKING,
         /// <summary>
-        /// 
+        /// file is embedding
         /// </summary>
-        FILEPROCESSSTATUSEMBEDDING,
+        EMBEDDING,
         /// <summary>
-        /// 
+        /// completed
         /// </summary>
-        FILEPROCESSSTATUSCOMPLETED,
+        COMPLETED,
         /// <summary>
-        /// 
+        /// failed
         /// </summary>
-        FILEPROCESSSTATUSFAILED,
+        FAILED,
     }
 
     /// <summary>
@@ -56,13 +56,13 @@ namespace Instill
         {
             return value switch
             {
-                FileProcessStatus.FILEPROCESSSTATUSNOTSTARTED => "FILE_PROCESS_STATUS_NOTSTARTED",
-                FileProcessStatus.FILEPROCESSSTATUSWAITING => "FILE_PROCESS_STATUS_WAITING",
-                FileProcessStatus.FILEPROCESSSTATUSCONVERTING => "FILE_PROCESS_STATUS_CONVERTING",
-                FileProcessStatus.FILEPROCESSSTATUSCHUNKING => "FILE_PROCESS_STATUS_CHUNKING",
-                FileProcessStatus.FILEPROCESSSTATUSEMBEDDING => "FILE_PROCESS_STATUS_EMBEDDING",
-                FileProcessStatus.FILEPROCESSSTATUSCOMPLETED => "FILE_PROCESS_STATUS_COMPLETED",
-                FileProcessStatus.FILEPROCESSSTATUSFAILED => "FILE_PROCESS_STATUS_FAILED",
+                FileProcessStatus.NOTSTARTED => "FILE_PROCESS_STATUS_NOTSTARTED",
+                FileProcessStatus.WAITING => "FILE_PROCESS_STATUS_WAITING",
+                FileProcessStatus.CONVERTING => "FILE_PROCESS_STATUS_CONVERTING",
+                FileProcessStatus.CHUNKING => "FILE_PROCESS_STATUS_CHUNKING",
+                FileProcessStatus.EMBEDDING => "FILE_PROCESS_STATUS_EMBEDDING",
+                FileProcessStatus.COMPLETED => "FILE_PROCESS_STATUS_COMPLETED",
+                FileProcessStatus.FAILED => "FILE_PROCESS_STATUS_FAILED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -73,13 +73,13 @@ namespace Instill
         {
             return value switch
             {
-                "FILE_PROCESS_STATUS_NOTSTARTED" => FileProcessStatus.FILEPROCESSSTATUSNOTSTARTED,
-                "FILE_PROCESS_STATUS_WAITING" => FileProcessStatus.FILEPROCESSSTATUSWAITING,
-                "FILE_PROCESS_STATUS_CONVERTING" => FileProcessStatus.FILEPROCESSSTATUSCONVERTING,
-                "FILE_PROCESS_STATUS_CHUNKING" => FileProcessStatus.FILEPROCESSSTATUSCHUNKING,
-                "FILE_PROCESS_STATUS_EMBEDDING" => FileProcessStatus.FILEPROCESSSTATUSEMBEDDING,
-                "FILE_PROCESS_STATUS_COMPLETED" => FileProcessStatus.FILEPROCESSSTATUSCOMPLETED,
-                "FILE_PROCESS_STATUS_FAILED" => FileProcessStatus.FILEPROCESSSTATUSFAILED,
+                "FILE_PROCESS_STATUS_NOTSTARTED" => FileProcessStatus.NOTSTARTED,
+                "FILE_PROCESS_STATUS_WAITING" => FileProcessStatus.WAITING,
+                "FILE_PROCESS_STATUS_CONVERTING" => FileProcessStatus.CONVERTING,
+                "FILE_PROCESS_STATUS_CHUNKING" => FileProcessStatus.CHUNKING,
+                "FILE_PROCESS_STATUS_EMBEDDING" => FileProcessStatus.EMBEDDING,
+                "FILE_PROCESS_STATUS_COMPLETED" => FileProcessStatus.COMPLETED,
+                "FILE_PROCESS_STATUS_FAILED" => FileProcessStatus.FAILED,
                 _ => null,
             };
         }

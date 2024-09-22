@@ -9,11 +9,11 @@ namespace Instill
     public enum ListOrganizationsView
     {
         /// <summary>
-        /// 
+        /// Default view, only includes basic information.
         /// </summary>
         VIEWBASIC,
         /// <summary>
-        /// 
+        /// Full representation.
         /// </summary>
         VIEWFULL,
     }

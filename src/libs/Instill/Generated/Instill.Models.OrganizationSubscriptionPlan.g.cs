@@ -12,15 +12,15 @@ namespace Instill
     public enum OrganizationSubscriptionPlan
     {
         /// <summary>
-        /// 
+        /// Free plan.
         /// </summary>
         PLANFREE,
         /// <summary>
-        /// 
+        /// Team plan.
         /// </summary>
         PLANTEAM,
         /// <summary>
-        /// 
+        /// Enterprise plan.
         /// </summary>
         PLANENTERPRISE,
     }

@@ -17,35 +17,35 @@ namespace Instill
     public enum StripeSubscriptionDetailStatus
     {
         /// <summary>
-        /// 
+        /// Incomplete.
         /// </summary>
         STATUSINCOMPLETE,
         /// <summary>
-        /// 
+        /// Incomplete Expired.
         /// </summary>
         STATUSINCOMPLETEEXPIRED,
         /// <summary>
-        /// 
+        /// Trialing.
         /// </summary>
         STATUSTRIALING,
         /// <summary>
-        /// 
+        /// Active.
         /// </summary>
         STATUSACTIVE,
         /// <summary>
-        /// 
+        /// Past due.
         /// </summary>
         STATUSPASTDUE,
         /// <summary>
-        /// 
+        /// Canceled.
         /// </summary>
         STATUSCANCELED,
         /// <summary>
-        /// 
+        /// Unpaid.
         /// </summary>
         STATUSUNPAID,
         /// <summary>
-        /// 
+        /// Paused.
         /// </summary>
         STATUSPAUSED,
     }

@@ -11,11 +11,11 @@ namespace Instill
     public enum Mgmtv1betaStatus
     {
         /// <summary>
-        /// 
+        /// Successfully completed.
         /// </summary>
         STATUSCOMPLETED,
         /// <summary>
-        /// 
+        /// Finished with error.
         /// </summary>
         STATUSERRORED,
     }

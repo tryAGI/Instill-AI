@@ -12,13 +12,13 @@ namespace Instill
     public enum OnboardingStatus
     {
         /// <summary>
-        /// 
+        /// In progress, i.e., the user has initiated the onboarding process
         /// </summary>
-        ONBOARDINGSTATUSINPROGRESS,
+        INPROGRESS,
         /// <summary>
-        /// 
+        /// Completed.
         /// </summary>
-        ONBOARDINGSTATUSCOMPLETED,
+        COMPLETED,
     }
 
     /// <summary>
@@ -33,8 +33,8 @@ namespace Instill
         {
             return value switch
             {
-                OnboardingStatus.ONBOARDINGSTATUSINPROGRESS => "ONBOARDING_STATUS_IN_PROGRESS",
-                OnboardingStatus.ONBOARDINGSTATUSCOMPLETED => "ONBOARDING_STATUS_COMPLETED",
+                OnboardingStatus.INPROGRESS => "ONBOARDING_STATUS_IN_PROGRESS",
+                OnboardingStatus.COMPLETED => "ONBOARDING_STATUS_COMPLETED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -45,8 +45,8 @@ namespace Instill
         {
             return value switch
             {
-                "ONBOARDING_STATUS_IN_PROGRESS" => OnboardingStatus.ONBOARDINGSTATUSINPROGRESS,
-                "ONBOARDING_STATUS_COMPLETED" => OnboardingStatus.ONBOARDINGSTATUSCOMPLETED,
+                "ONBOARDING_STATUS_IN_PROGRESS" => OnboardingStatus.INPROGRESS,
+                "ONBOARDING_STATUS_COMPLETED" => OnboardingStatus.COMPLETED,
                 _ => null,
             };
         }

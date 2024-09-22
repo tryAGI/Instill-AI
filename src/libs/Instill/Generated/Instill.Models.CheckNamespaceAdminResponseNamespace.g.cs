@@ -13,19 +13,19 @@ namespace Instill
     public enum CheckNamespaceAdminResponseNamespace
     {
         /// <summary>
-        /// 
+        /// Available.
         /// </summary>
         NAMESPACEAVAILABLE,
         /// <summary>
-        /// 
+        /// Namespace belongs to a user.
         /// </summary>
         NAMESPACEUSER,
         /// <summary>
-        /// 
+        /// Namespace belongs to an organization.
         /// </summary>
         NAMESPACEORGANIZATION,
         /// <summary>
-        /// 
+        /// Reserved.
         /// </summary>
         NAMESPACERESERVED,
     }

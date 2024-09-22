@@ -12,13 +12,13 @@ namespace Instill
     public enum MembershipState
     {
         /// <summary>
-        /// 
+        /// Active.
         /// </summary>
-        MEMBERSHIPSTATEACTIVE,
+        ACTIVE,
         /// <summary>
-        /// 
+        /// Pending, i.e., a request has been sent to the user to join an
         /// </summary>
-        MEMBERSHIPSTATEPENDING,
+        PENDING,
     }
 
     /// <summary>
@@ -33,8 +33,8 @@ namespace Instill
         {
             return value switch
             {
-                MembershipState.MEMBERSHIPSTATEACTIVE => "MEMBERSHIP_STATE_ACTIVE",
-                MembershipState.MEMBERSHIPSTATEPENDING => "MEMBERSHIP_STATE_PENDING",
+                MembershipState.ACTIVE => "MEMBERSHIP_STATE_ACTIVE",
+                MembershipState.PENDING => "MEMBERSHIP_STATE_PENDING",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -45,8 +45,8 @@ namespace Instill
         {
             return value switch
             {
-                "MEMBERSHIP_STATE_ACTIVE" => MembershipState.MEMBERSHIPSTATEACTIVE,
-                "MEMBERSHIP_STATE_PENDING" => MembershipState.MEMBERSHIPSTATEPENDING,
+                "MEMBERSHIP_STATE_ACTIVE" => MembershipState.ACTIVE,
+                "MEMBERSHIP_STATE_PENDING" => MembershipState.PENDING,
                 _ => null,
             };
         }

@@ -9,20 +9,23 @@ namespace Instill
     public sealed partial class OrganizationSubscription
     {
         /// <summary>
-        /// Plan identifier.
+        /// Plan identifier.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("plan")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.OrganizationSubscriptionPlanJsonConverter))]
         public global::Instill.OrganizationSubscriptionPlan? Plan { get; set; }
 
         /// <summary>
-        /// Details of the associated Stripe subscription.
+        /// Details of the associated Stripe subscription.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("detail")]
         public global::Instill.StripeSubscriptionDetail? Detail { get; set; }
 
         /// <summary>
-        /// Number of used seats within the organization subscription.
+        /// Number of used seats within the organization subscription.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usedSeats")]
         public int? UsedSeats { get; set; }

@@ -11,14 +11,16 @@ namespace Instill
     {
         /// <summary>
         /// The name of the user, defined by its ID.<br/>
-        /// - Format: `users/{user.id}`.
+        /// - Format: `users/{user.id}`.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         public string? Name { get; set; }
 
         /// <summary>
         /// User UUID. This field is optionally set by users on creation (it will be<br/>
-        /// server-generated if unspecified).
+        /// server-generated if unspecified).<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("uid")]
         public string? Uid { get; set; }
@@ -34,13 +36,15 @@ namespace Instill
         public string? Id { get; set; }
 
         /// <summary>
-        /// Creation time.
+        /// Creation time.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
         public global::System.DateTime? CreateTime { get; set; }
 
         /// <summary>
-        /// Update time.
+        /// Update time.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
         public global::System.DateTime? UpdateTime { get; set; }

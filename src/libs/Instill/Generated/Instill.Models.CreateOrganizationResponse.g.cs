@@ -9,7 +9,8 @@ namespace Instill
     public sealed partial class CreateOrganizationResponse
     {
         /// <summary>
-        /// The organization resource.
+        /// The organization resource.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("organization")]
         public global::Instill.Organization? Organization { get; set; }

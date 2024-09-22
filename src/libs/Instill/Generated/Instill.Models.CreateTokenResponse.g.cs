@@ -9,7 +9,8 @@ namespace Instill
     public sealed partial class CreateTokenResponse
     {
         /// <summary>
-        /// The created API token resource.
+        /// The created API token resource.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("token")]
         public global::Instill.ApiToken? Token { get; set; }

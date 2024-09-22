@@ -9,7 +9,8 @@ namespace Instill
     public sealed partial class PatchAuthenticatedUserResponse
     {
         /// <summary>
-        /// The updated user resource.
+        /// The updated user resource.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("user")]
         public global::Instill.AuthenticatedUser? User { get; set; }

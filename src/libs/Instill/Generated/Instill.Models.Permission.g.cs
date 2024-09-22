@@ -9,7 +9,8 @@ namespace Instill
     public sealed partial class Permission
     {
         /// <summary>
-        /// Defines whether the resource can be modified.
+        /// Defines whether the resource can be modified.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("canEdit")]
         public bool? CanEdit { get; set; }

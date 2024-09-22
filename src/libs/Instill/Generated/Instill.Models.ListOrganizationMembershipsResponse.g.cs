@@ -10,7 +10,8 @@ namespace Instill
     {
         /// <summary>
         /// The organization memberships, i.e., the users that belong to the<br/>
-        /// organization.
+        /// organization.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("memberships")]
         public global::System.Collections.Generic.IList<global::Instill.OrganizationMembership>? Memberships { get; set; }

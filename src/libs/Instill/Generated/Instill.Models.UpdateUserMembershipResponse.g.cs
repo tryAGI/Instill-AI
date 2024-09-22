@@ -9,7 +9,8 @@ namespace Instill
     public sealed partial class UpdateUserMembershipResponse
     {
         /// <summary>
-        /// The updated membership resource.
+        /// The updated membership resource.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("membership")]
         public global::Instill.UserMembership? Membership { get; set; }

@@ -12,7 +12,8 @@ namespace Instill
     {
         /// <summary>
         /// The name of the user, defined by its ID.<br/>
-        /// - Format: `users/{user.id}`.
+        /// - Format: `users/{user.id}`.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         public string? Name { get; set; }
@@ -36,13 +37,15 @@ namespace Instill
         public required string Id { get; set; }
 
         /// <summary>
-        /// Creation time.
+        /// Creation time.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
         public global::System.DateTime? CreateTime { get; set; }
 
         /// <summary>
-        /// Update time.
+        /// Update time.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
         public global::System.DateTime? UpdateTime { get; set; }
@@ -55,7 +58,8 @@ namespace Instill
         public required string Email { get; set; }
 
         /// <summary>
-        /// Stripe customer ID. This field is used in Instill Cloud.
+        /// Stripe customer ID. This field is used in Instill Cloud.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("customerId")]
         public string? CustomerId { get; set; }
@@ -95,7 +99,8 @@ namespace Instill
         public global::Instill.OnboardingStatus? OnboardingStatus { get; set; }
 
         /// <summary>
-        /// Profile.
+        /// Profile.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("profile")]
         public global::Instill.UserProfile? Profile { get; set; }

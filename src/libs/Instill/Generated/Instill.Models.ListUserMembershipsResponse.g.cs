@@ -9,7 +9,8 @@ namespace Instill
     public sealed partial class ListUserMembershipsResponse
     {
         /// <summary>
-        /// The user memberships, i.e., the organizations the user belongs to.
+        /// The user memberships, i.e., the organizations the user belongs to.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("memberships")]
         public global::System.Collections.Generic.IList<global::Instill.UserMembership>? Memberships { get; set; }

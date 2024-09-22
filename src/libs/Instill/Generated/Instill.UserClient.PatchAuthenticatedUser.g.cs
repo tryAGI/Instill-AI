@@ -107,10 +107,6 @@ namespace Instill
         /// In REST requests, only the supplied user fields will be taken into account<br/>
         /// when updating the resource.
         /// </summary>
-        /// <param name="name">
-        /// The name of the user, defined by its ID.<br/>
-        /// - Format: `users/{user.id}`.
-        /// </param>
         /// <param name="uid">
         /// User UUID. This field is optionally set by users on creation (it will be<br/>
         /// server-generated if unspecified).
@@ -122,17 +118,8 @@ namespace Instill
         /// maximum.<br/>
         /// Note that the ID can be updated.
         /// </param>
-        /// <param name="createTime">
-        /// Creation time.
-        /// </param>
-        /// <param name="updateTime">
-        /// Update time.
-        /// </param>
         /// <param name="email">
         /// Email.
-        /// </param>
-        /// <param name="customerId">
-        /// Stripe customer ID. This field is used in Instill Cloud.
         /// </param>
         /// <param name="role">
         /// Role.<br/>
@@ -154,40 +141,27 @@ namespace Instill
         /// <param name="onboardingStatus">
         /// Onboarding Status.
         /// </param>
-        /// <param name="profile">
-        /// Profile.
-        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Instill.PatchAuthenticatedUserResponse> PatchAuthenticatedUserAsync(
             string id,
             string email,
             bool newsletterSubscription,
-            string? name = default,
             string? uid = default,
-            global::System.DateTime? createTime = default,
-            global::System.DateTime? updateTime = default,
-            string? customerId = default,
             string? role = default,
             string? cookieToken = default,
             global::Instill.OnboardingStatus? onboardingStatus = default,
-            global::Instill.UserProfile? profile = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var request = new global::Instill.AuthenticatedUser
             {
-                Name = name,
                 Uid = uid,
                 Id = id,
-                CreateTime = createTime,
-                UpdateTime = updateTime,
                 Email = email,
-                CustomerId = customerId,
                 Role = role,
                 NewsletterSubscription = newsletterSubscription,
                 CookieToken = cookieToken,
                 OnboardingStatus = onboardingStatus,
-                Profile = profile,
             };
 
             return await PatchAuthenticatedUserAsync(

@@ -1423,6 +1423,12 @@ paths:
         - Catalog
       summary: Process catalog files
       operationId: ProcessCatalogFiles
+      parameters:
+        - name: Instill-Requester-Uid
+          in: header
+          description: 'Indicates the authenticated namespace is making the request on behalf of another entity, typically an organization they belong to'
+          schema:
+            type: string
       requestBody:
         content:
           application/json:

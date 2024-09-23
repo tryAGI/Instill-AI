@@ -7,10 +7,12 @@ namespace Instill
     {
         partial void PrepareProcessCatalogFilesArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref string? instillRequesterUid,
             global::Instill.ProcessCatalogFilesRequest request);
         partial void PrepareProcessCatalogFilesRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            string? instillRequesterUid,
             global::Instill.ProcessCatalogFilesRequest request);
         partial void ProcessProcessCatalogFilesResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -24,11 +26,13 @@ namespace Instill
         /// <summary>
         /// Process catalog files
         /// </summary>
+        /// <param name="instillRequesterUid"></param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Instill.ProcessCatalogFilesResponse> ProcessCatalogFilesAsync(
             global::Instill.ProcessCatalogFilesRequest request,
+            string? instillRequesterUid = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -37,7 +41,13 @@ namespace Instill
                 client: _httpClient);
             PrepareProcessCatalogFilesArguments(
                 httpClient: _httpClient,
+                instillRequesterUid: ref instillRequesterUid,
                 request: request);
+
+            if (instillRequesterUid != default)
+            {
+                _httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Instill-Requester-Uid", instillRequesterUid);
+            }
 
             var __pathBuilder = new PathBuilder(
                 path: "/v1alpha/catalogs/files/processAsync",
@@ -59,6 +69,7 @@ namespace Instill
             PrepareProcessCatalogFilesRequest(
                 httpClient: _httpClient,
                 httpRequestMessage: httpRequest,
+                instillRequesterUid: instillRequesterUid,
                 request: request);
 
             using var response = await _httpClient.SendAsync(
@@ -101,6 +112,7 @@ namespace Instill
         /// <summary>
         /// Process catalog files
         /// </summary>
+        /// <param name="instillRequesterUid"></param>
         /// <param name="fileUids">
         /// The file uid.
         /// </param>
@@ -108,6 +120,7 @@ namespace Instill
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Instill.ProcessCatalogFilesResponse> ProcessCatalogFilesAsync(
             global::System.Collections.Generic.IList<string> fileUids,
+            string? instillRequesterUid = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var request = new global::Instill.ProcessCatalogFilesRequest
@@ -116,6 +129,7 @@ namespace Instill
             };
 
             return await ProcessCatalogFilesAsync(
+                instillRequesterUid: instillRequesterUid,
                 request: request,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
         }

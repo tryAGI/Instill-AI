@@ -9,6 +9,12 @@ namespace Instill
     public sealed partial class Catalog
     {
         /// <summary>
+        /// The catalog uid.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("catalogUid")]
+        public string? CatalogUid { get; set; }
+
+        /// <summary>
         /// The catalog id.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("catalogId")]

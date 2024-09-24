@@ -964,48 +964,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-  /v1beta/metrics/vdp/pipeline/tables:
-    get:
-      tags:
-        - Metric
-      summary: List pipeline trigger metrics
-      description: "Returns a paginated list of pipeline executions aggregated by pipeline ID.\nNOTE: This method is deprecated and will be retired soon."
-      operationId: ListPipelineTriggerTableRecords
-      parameters:
-        - name: pageSize
-          in: query
-          description: "The maximum number of results to return. If this parameter is unspecified,\nat most 100 pipelines will be returned. The cap value for this parameter\nis 1000 (i.e. any value above that will be coerced to 1000)."
-          schema:
-            type: integer
-            format: int32
-        - name: pageToken
-          in: query
-          description: Page token.
-          schema:
-            type: string
-        - name: filter
-          in: query
-          description: "Filter can hold an [AIP-160](https://google.aip.dev/160)-compliant filter\nexpression.\n- Example: `create_time>timestamp(\"2000-06-19T23:31:08.657Z\")`."
-          schema:
-            type: string
-      responses:
-        '200':
-          description: A successful response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListPipelineTriggerTableRecordsResponse'
-        '401':
-          description: Returned when the client credentials are not valid.
-          content:
-            application/json:
-              schema: { }
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/googlerpcStatus'
   /v1beta/metrics/vdp/pipeline/charts:
     get:
       tags:
@@ -2141,22 +2099,6 @@ components:
             $ref: '#/components/schemas/PipelineTriggerChartRecord'
           description: A list of pipeline trigger records.
       description: "ListPipelineTriggerChartRecordsResponse contains a list of pipeline trigger\nchart records."
-    ListPipelineTriggerTableRecordsResponse:
-      type: object
-      properties:
-        pipelineTriggerTableRecords:
-          type: array
-          items:
-            $ref: '#/components/schemas/PipelineTriggerTableRecord'
-          description: A list of pipeline trigger tables.
-        nextPageToken:
-          type: string
-          description: Next page token.
-        totalSize:
-          title: Total number of pipeline trigger records
-          type: integer
-          format: int32
-      description: ListPipelineTriggerTableRecordsResponse contains the pipeline metrics.
     ListTokensResponse:
       type: object
       properties:
@@ -2433,34 +2375,6 @@ components:
           description: Release UUID for the triggered pipeline if it is a release pipeline.
           readOnly: true
       description: "PipelineTriggerChartRecord contains pipeline trigger metrics, aggregated by\npipeline ID and time frame."
-    PipelineTriggerTableRecord:
-      type: object
-      properties:
-        pipelineId:
-          type: string
-          description: Pipeline ID.
-        pipelineUid:
-          type: string
-          description: Pipeline UUID.
-        triggerCountCompleted:
-          type: integer
-          description: Number of triggers with `STATUS_COMPLETED`.
-          format: int32
-          readOnly: true
-        triggerCountErrored:
-          type: integer
-          description: Number of triggers with `STATUS_ERRORED`.
-          format: int32
-          readOnly: true
-        pipelineReleaseId:
-          type: string
-          description: Version for the triggered pipeline if it is a release pipeline.
-          readOnly: true
-        pipelineReleaseUid:
-          type: string
-          description: Release UUID for the triggered pipeline if it is a release pipeline.
-          readOnly: true
-      description: "PipelineTriggerTableRecord contains pipeline trigger metrics, aggregated by\npipeline ID."
     StripeSubscriptionDetail:
       type: object
       properties:

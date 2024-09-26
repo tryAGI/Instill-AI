@@ -1633,6 +1633,65 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpcStatus'
+  '/v1beta/namespaces/{namespaceId}/catalogs/{catalogId}/runs':
+    get:
+      tags:
+        - Catalog
+      summary: List Catalog Runs
+      operationId: ListCatalogRuns
+      parameters:
+        - name: namespaceId
+          in: path
+          description: The ID of the owner of the catalog.
+          required: true
+          schema:
+            type: string
+        - name: catalogId
+          in: path
+          description: The ID of the catalog for which the runs will be listed.
+          required: true
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: The page number to retrieve.
+          schema:
+            type: integer
+            format: int32
+        - name: pageSize
+          in: query
+          description: "The maximum number of items per page to return. The default and cap values\nare 10 and 100, respectively."
+          schema:
+            type: integer
+            format: int32
+        - name: filter
+          in: query
+          description: "Filter can hold an [AIP-160](https://google.aip.dev/160)-compliant filter\nexpression.\n- Example: `create_time>timestamp(\"2000-06-19T23:31:08.657Z\")`."
+          schema:
+            type: string
+        - name: orderBy
+          in: query
+          description: "Order by field, with options for ordering by `id`, `create_time` or `update_time`.\nFormat: `order_by=id` or `order_by=create_time desc`, default is `asc`."
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCatalogRunsResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
 components:
   schemas:
     ApiTokenState:
@@ -2721,6 +2780,9 @@ components:
           title: original file unique identifier
           type: string
       description: The Chunk message represents a chunk of data in the artifact system.
+    protobufNullValue:
+      type: string
+      description: "`NullValue` is a singleton enumeration to represent the null value for the\n`Value` type union.\n\nThe JSON representation for `NullValue` is JSON `null`."
     rpcStatus:
       type: object
       properties:
@@ -2797,6 +2859,85 @@ components:
           description: The current used storage in catalog.
           format: uint64
       description: Catalog represents a catalog.
+    CatalogRun:
+      type: object
+      properties:
+        uid:
+          type: string
+          description: Unique identifier for each run.
+          readOnly: true
+        catalogUid:
+          title: catalog uid
+          type: string
+          readOnly: true
+        fileUids:
+          type: array
+          items:
+            type: string
+          description: The file uids.
+          readOnly: true
+        action:
+          allOf:
+            - $ref: '#/components/schemas/CatalogRunAction'
+          description: Action of the catalog run.
+          readOnly: true
+        status:
+          allOf:
+            - $ref: '#/components/schemas/RunStatus'
+          description: Current status of the run.
+          readOnly: true
+        source:
+          allOf:
+            - $ref: '#/components/schemas/RunSource'
+          description: Origin of the run.
+          readOnly: true
+        totalDuration:
+          type: integer
+          description: Time taken to complete the run in milliseconds.
+          format: int32
+          readOnly: true
+        runnerId:
+          title: Runner ID. (User UID)
+          type: string
+          readOnly: true
+        namespaceId:
+          type: string
+          description: Namespace ID.
+          readOnly: true
+        payload:
+          type: object
+          description: Run request payload.
+          readOnly: true
+        startTime:
+          type: string
+          description: Time when the run started execution.
+          format: date-time
+          readOnly: true
+        completeTime:
+          type: string
+          description: Time when the run completed.
+          format: date-time
+          readOnly: true
+        error:
+          type: string
+          description: Error message if the run failed.
+          readOnly: true
+        creditAmount:
+          type: number
+          description: Credits used of internal accounting metric.
+          format: float
+          readOnly: true
+      description: CatalogRun represents a single execution of a catalog action.
+    CatalogRunAction:
+      enum:
+        - CATALOG_RUN_ACTION_CREATE
+        - CATALOG_RUN_ACTION_UPDATE
+        - CATALOG_RUN_ACTION_DELETE
+        - CATALOG_RUN_ACTION_CREATE_FILE
+        - CATALOG_RUN_ACTION_PROCESS_FILE
+        - CATALOG_RUN_ACTION_DELETE_FILE
+      type: string
+      description: "CatalogRunAction describes the actions a user has over a catalog.\n\n - CATALOG_RUN_ACTION_CREATE: Create catalog.\n - CATALOG_RUN_ACTION_UPDATE: Update catalog.\n - CATALOG_RUN_ACTION_DELETE: Delete catalog.\n - CATALOG_RUN_ACTION_CREATE_FILE: Upload catalog file.\n - CATALOG_RUN_ACTION_PROCESS_FILE: Process catalog file.\n - CATALOG_RUN_ACTION_DELETE_FILE: Delete catalog file."
     CreateCatalogResponse:
       required:
         - catalog
@@ -3051,6 +3192,31 @@ components:
           allOf:
             - $ref: '#/components/schemas/ListCatalogFilesFilter'
           description: The filter.
+    ListCatalogRunsResponse:
+      type: object
+      properties:
+        catalogRuns:
+          type: array
+          items:
+            $ref: '#/components/schemas/CatalogRun'
+          description: The list of runs.
+          readOnly: true
+        totalSize:
+          type: string
+          description: The total number of runs matching the request.
+          format: int64
+          readOnly: true
+        page:
+          type: integer
+          description: The current page number.
+          format: int32
+          readOnly: true
+        pageSize:
+          type: integer
+          description: The number of items per page.
+          format: int32
+          readOnly: true
+      description: ListCatalogRunsResponse is the response message for ListCatalogRuns.
     ListCatalogsResponse:
       type: object
       properties:
@@ -3142,6 +3308,20 @@ components:
           format: date-time
           readOnly: true
       description: "RepositoryTag contains information about the version of some content in a\nrepository."
+    RunSource:
+      enum:
+        - RUN_SOURCE_CONSOLE
+        - RUN_SOURCE_API
+      type: string
+      description: "RunSource defines the source of a pipeline or model run.\n\n - RUN_SOURCE_CONSOLE: Run from frontend UI.\n - RUN_SOURCE_API: Run from API or SDK."
+    RunStatus:
+      enum:
+        - RUN_STATUS_PROCESSING
+        - RUN_STATUS_COMPLETED
+        - RUN_STATUS_FAILED
+        - RUN_STATUS_QUEUED
+      type: string
+      description: "RunStatus defines the status of a pipeline or model run.\n\n - RUN_STATUS_PROCESSING: Run in progress.\n - RUN_STATUS_COMPLETED: Run succeeded.\n - RUN_STATUS_FAILED: Run failed.\n - RUN_STATUS_QUEUED: Run is waiting to be executed."
     SimilarityChunk:
       title: similarity chunks
       type: object

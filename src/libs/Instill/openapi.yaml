@@ -1436,6 +1436,14 @@ paths:
           description: unique identifier of the file
           schema:
             type: string
+        - name: chunkUids
+          in: query
+          description: repeated chunk uid
+          style: form
+          schema:
+            type: array
+            items:
+              type: string
       responses:
         '200':
           description: A successful response.

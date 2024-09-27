@@ -6,8 +6,19 @@ namespace Instill
     /// <summary>
     /// 
     /// </summary>
-    public sealed partial class SimilarityChunksSearchResponse2
+    public sealed partial class ViewChunksBody
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("textPrompt")]
+        public string? TextPrompt { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("topK")]
+        public long? TopK { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

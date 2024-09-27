@@ -5,7 +5,7 @@ namespace Instill
     public partial interface ICatalogClient
     {
         /// <summary>
-        /// Retrieve similar chunks
+        /// View similar chunks
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>
@@ -13,15 +13,15 @@ namespace Instill
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Instill.SimilarityChunksSearchResponse> SimilarityChunksSearchAsync(
+        global::System.Threading.Tasks.Task<global::Instill.ViewChunksResponse> ViewChunksAsync(
             string namespaceId,
             string catalogId,
-            global::Instill.SimilarityChunksSearchBody request,
+            global::Instill.ViewChunksBody request,
             string? instillRequesterUid = default,
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Retrieve similar chunks
+        /// View similar chunks
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>
@@ -30,7 +30,7 @@ namespace Instill
         /// <param name="topK"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Instill.SimilarityChunksSearchResponse> SimilarityChunksSearchAsync(
+        global::System.Threading.Tasks.Task<global::Instill.ViewChunksResponse> ViewChunksAsync(
             string namespaceId,
             string catalogId,
             string? instillRequesterUid = default,

@@ -5,30 +5,30 @@ namespace Instill
 {
     public partial class CatalogClient
     {
-        partial void PrepareSimilarityChunksSearchArguments(
+        partial void PrepareViewChunksArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
             ref string catalogId,
             ref string? instillRequesterUid,
-            global::Instill.SimilarityChunksSearchBody request);
-        partial void PrepareSimilarityChunksSearchRequest(
+            global::Instill.ViewChunksBody request);
+        partial void PrepareViewChunksRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
             string catalogId,
             string? instillRequesterUid,
-            global::Instill.SimilarityChunksSearchBody request);
-        partial void ProcessSimilarityChunksSearchResponse(
+            global::Instill.ViewChunksBody request);
+        partial void ProcessViewChunksResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessSimilarityChunksSearchResponseContent(
+        partial void ProcessViewChunksResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Retrieve similar chunks
+        /// View similar chunks
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>
@@ -36,10 +36,10 @@ namespace Instill
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Instill.SimilarityChunksSearchResponse> SimilarityChunksSearchAsync(
+        public async global::System.Threading.Tasks.Task<global::Instill.ViewChunksResponse> ViewChunksAsync(
             string namespaceId,
             string catalogId,
-            global::Instill.SimilarityChunksSearchBody request,
+            global::Instill.ViewChunksBody request,
             string? instillRequesterUid = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -47,7 +47,7 @@ namespace Instill
 
             PrepareArguments(
                 client: _httpClient);
-            PrepareSimilarityChunksSearchArguments(
+            PrepareViewChunksArguments(
                 httpClient: _httpClient,
                 namespaceId: ref namespaceId,
                 catalogId: ref catalogId,
@@ -76,7 +76,7 @@ namespace Instill
             PrepareRequest(
                 client: _httpClient,
                 request: httpRequest);
-            PrepareSimilarityChunksSearchRequest(
+            PrepareViewChunksRequest(
                 httpClient: _httpClient,
                 httpRequestMessage: httpRequest,
                 namespaceId: namespaceId,
@@ -92,7 +92,7 @@ namespace Instill
             ProcessResponse(
                 client: _httpClient,
                 response: response);
-            ProcessSimilarityChunksSearchResponse(
+            ProcessViewChunksResponse(
                 httpClient: _httpClient,
                 httpResponseMessage: response);
 
@@ -102,7 +102,7 @@ namespace Instill
                 client: _httpClient,
                 response: response,
                 content: ref __content);
-            ProcessSimilarityChunksSearchResponseContent(
+            ProcessViewChunksResponseContent(
                 httpClient: _httpClient,
                 httpResponseMessage: response,
                 content: ref __content);
@@ -117,12 +117,12 @@ namespace Instill
             }
 
             return
-                global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::Instill.SimilarityChunksSearchResponse), JsonSerializerContext) as global::Instill.SimilarityChunksSearchResponse ??
+                global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::Instill.ViewChunksResponse), JsonSerializerContext) as global::Instill.ViewChunksResponse ??
                 throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
         }
 
         /// <summary>
-        /// Retrieve similar chunks
+        /// View similar chunks
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>
@@ -131,7 +131,7 @@ namespace Instill
         /// <param name="topK"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Instill.SimilarityChunksSearchResponse> SimilarityChunksSearchAsync(
+        public async global::System.Threading.Tasks.Task<global::Instill.ViewChunksResponse> ViewChunksAsync(
             string namespaceId,
             string catalogId,
             string? instillRequesterUid = default,
@@ -139,13 +139,13 @@ namespace Instill
             long? topK = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var request = new global::Instill.SimilarityChunksSearchBody
+            var request = new global::Instill.ViewChunksBody
             {
                 TextPrompt = textPrompt,
                 TopK = topK,
             };
 
-            return await SimilarityChunksSearchAsync(
+            return await ViewChunksAsync(
                 namespaceId: namespaceId,
                 catalogId: catalogId,
                 instillRequesterUid: instillRequesterUid,

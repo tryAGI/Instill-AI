@@ -6,13 +6,19 @@ namespace Instill
     /// <summary>
     /// 
     /// </summary>
-    public sealed partial class ViewChunksResponse
+    public sealed partial class SimilarityChunksSearchBody
     {
         /// <summary>
         /// 
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("similarChunks")]
-        public global::System.Collections.Generic.IList<global::Instill.SimilarityChunk>? SimilarChunks { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("textPrompt")]
+        public string? TextPrompt { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("topK")]
+        public long? TopK { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

@@ -1547,8 +1547,8 @@ paths:
     post:
       tags:
         - Catalog
-      summary: View similar chunks
-      operationId: ViewChunks
+      summary: Retrieve similar chunks
+      operationId: SimilarityChunksSearch
       parameters:
         - name: namespaceId
           in: path
@@ -1571,7 +1571,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ViewChunksBody'
+              $ref: '#/components/schemas/SimilarityChunksSearchBody'
         required: true
         x-bodyName: body
       responses:
@@ -1580,7 +1580,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ViewChunksResponse'
+                $ref: '#/components/schemas/SimilarityChunksSearchResponse'
         '401':
           description: Returned when the client credentials are not valid.
           content:
@@ -2670,6 +2670,17 @@ components:
           title: top k default to 5
           type: integer
           format: int32
+    SimilarityChunksSearchBody:
+      title: Similar chunk search request
+      type: object
+      properties:
+        textPrompt:
+          title: text prompt
+          type: string
+        topK:
+          title: top k
+          type: integer
+          format: int64
     UpdateCatalogBody:
       type: object
       properties:
@@ -2689,17 +2700,6 @@ components:
         retrievable:
           title: whether the chunk is retrievable
           type: boolean
-    ViewChunksBody:
-      title: View chunks request
-      type: object
-      properties:
-        textPrompt:
-          title: text prompt
-          type: string
-        topK:
-          title: top k
-          type: integer
-          format: int64
     GetFileCatalogResponseChunkType:
       title: chunk type
       enum:
@@ -3347,6 +3347,15 @@ components:
         sourceFile:
           title: source file
           type: string
+    SimilarityChunksSearchResponse:
+      title: Similar chunk search response
+      type: object
+      properties:
+        similarChunks:
+          title: chunks
+          type: array
+          items:
+            $ref: '#/components/schemas/SimilarityChunk'
     SourceFile:
       type: object
       properties:
@@ -3391,15 +3400,6 @@ components:
           title: file
           allOf:
             - $ref: '#/components/schemas/File'
-    ViewChunksResponse:
-      title: View chunks response
-      type: object
-      properties:
-        similarChunks:
-          title: chunks
-          type: array
-          items:
-            $ref: '#/components/schemas/SimilarityChunk'
   securitySchemes:
     Bearer:
       type: http

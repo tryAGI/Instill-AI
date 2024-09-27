@@ -373,19 +373,19 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UpdateCatalogBody? Type90 { get; set; }
+        public global::Instill.SimilarityChunksSearchBody? Type90 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UpdateChunkBody? Type91 { get; set; }
+        public long? Type91 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ViewChunksBody? Type92 { get; set; }
+        public global::Instill.UpdateCatalogBody? Type92 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public long? Type93 { get; set; }
+        public global::Instill.UpdateChunkBody? Type93 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -557,19 +557,19 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UpdateCatalogResponse? Type136 { get; set; }
+        public global::Instill.SimilarityChunksSearchResponse? Type136 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UpdateChunkResponse? Type137 { get; set; }
+        public global::Instill.UpdateCatalogResponse? Type137 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UploadCatalogFileResponse? Type138 { get; set; }
+        public global::Instill.UpdateChunkResponse? Type138 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ViewChunksResponse? Type139 { get; set; }
+        public global::Instill.UploadCatalogFileResponse? Type139 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -757,7 +757,7 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ViewChunksResponse2? Type186 { get; set; }
+        public global::Instill.SimilarityChunksSearchResponse2? Type186 { get; set; }
         /// <summary>
         /// 
         /// </summary>

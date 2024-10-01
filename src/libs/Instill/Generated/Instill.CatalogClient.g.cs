@@ -15,7 +15,7 @@ namespace Instill
         public const string BaseUrl = "https://api.instill.tech";
 
         private readonly global::System.Net.Http.HttpClient _httpClient;
-        private global::Instill.EndPointAuthorization? _authorization;
+        private global::System.Collections.Generic.List<global::Instill.EndPointAuthorization> _authorizations;
 
         /// <summary>
         /// 
@@ -30,15 +30,15 @@ namespace Instill
         /// </summary>
         /// <param name="httpClient"></param>
         /// <param name="baseUri"></param>
-        /// <param name="authorization"></param>
+        /// <param name="authorizations"></param>
         public CatalogClient(
             global::System.Net.Http.HttpClient? httpClient = null,
             global::System.Uri? baseUri = null,
-            global::Instill.EndPointAuthorization? authorization = null)
+            global::System.Collections.Generic.List<global::Instill.EndPointAuthorization>? authorizations = null)
         {
             _httpClient = httpClient ?? new global::System.Net.Http.HttpClient();
             _httpClient.BaseAddress ??= baseUri ?? new global::System.Uri(BaseUrl);
-            _authorization = authorization;
+            _authorizations = authorizations ?? new global::System.Collections.Generic.List<global::Instill.EndPointAuthorization>();
 
             Initialized(_httpClient);
         }

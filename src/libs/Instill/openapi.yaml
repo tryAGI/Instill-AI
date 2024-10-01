@@ -1438,7 +1438,7 @@ paths:
             type: string
         - name: chunkUids
           in: query
-          description: repeated chunk uid
+          description: repeated chunk uid(not implemented yet)
           style: form
           schema:
             type: array
@@ -3345,8 +3345,12 @@ components:
           title: content
           type: string
         sourceFile:
-          title: source file
+          title: source file's name
           type: string
+        chunkMetadata:
+          title: chunk
+          allOf:
+            - $ref: '#/components/schemas/Chunk'
     SimilarityChunksSearchResponse:
       title: Similar chunk search response
       type: object

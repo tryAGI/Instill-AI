@@ -54,11 +54,6 @@ namespace Instill
                 instillRequesterUid: ref instillRequesterUid,
                 request: request);
 
-            if (instillRequesterUid != default)
-            {
-                _httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Instill-Requester-Uid", instillRequesterUid);
-            }
-
             var __pathBuilder = new PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/chunks/retrieve",
                 baseUri: _httpClient.BaseAddress); 
@@ -66,6 +61,19 @@ namespace Instill
             using var httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
                 requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
+
+            if (_authorization != null)
+            {{
+                httpRequest.Headers.Authorization = new global::System.Net.Http.Headers.AuthenticationHeaderValue(
+                    scheme: _authorization.Name,
+                    parameter: _authorization.Value);
+            }}
+
+            if (instillRequesterUid != default)
+            {
+                httpRequest.Headers.TryAddWithoutValidation("Instill-Requester-Uid", instillRequesterUid.ToString());
+            }
+
             var __httpRequestContentBody = global::System.Text.Json.JsonSerializer.Serialize(request, request.GetType(), JsonSerializerContext);
             var __httpRequestContent = new global::System.Net.Http.StringContent(
                 content: __httpRequestContentBody,

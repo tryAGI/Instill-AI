@@ -16,6 +16,7 @@ namespace Instill
         public const string BaseUrl = "https://api.instill.tech";
 
         private readonly global::System.Net.Http.HttpClient _httpClient;
+        private global::Instill.EndPointAuthorization? _authorization;
 
         /// <summary>
         /// 
@@ -29,13 +30,16 @@ namespace Instill
         /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
         /// </summary>
         /// <param name="httpClient"></param>
-        /// <param name="baseUri"></param> 
+        /// <param name="baseUri"></param>
+        /// <param name="authorization"></param>
         public UtilsClient(
             global::System.Net.Http.HttpClient? httpClient = null,
-            global::System.Uri? baseUri = null)
+            global::System.Uri? baseUri = null,
+            global::Instill.EndPointAuthorization? authorization = null)
         {
             _httpClient = httpClient ?? new global::System.Net.Http.HttpClient();
             _httpClient.BaseAddress ??= baseUri ?? new global::System.Uri(BaseUrl);
+            _authorization = authorization;
 
             Initialized(_httpClient);
         }

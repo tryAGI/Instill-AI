@@ -16,6 +16,7 @@ namespace Instill
         public const string BaseUrl = "https://api.instill.tech";
 
         private readonly global::System.Net.Http.HttpClient _httpClient;
+        private global::Instill.EndPointAuthorization? _authorization;
 
         /// <summary>
         /// 
@@ -26,7 +27,7 @@ namespace Instill
         /// <summary>
         /// User endpoints
         /// </summary>
-        public UserClient User => new UserClient(_httpClient)
+        public UserClient User => new UserClient(_httpClient, authorization: _authorization)
         {
             JsonSerializerContext = JsonSerializerContext,
         };
@@ -34,7 +35,7 @@ namespace Instill
         /// <summary>
         /// Organization endpoints
         /// </summary>
-        public OrganizationClient Organization => new OrganizationClient(_httpClient)
+        public OrganizationClient Organization => new OrganizationClient(_httpClient, authorization: _authorization)
         {
             JsonSerializerContext = JsonSerializerContext,
         };
@@ -42,7 +43,7 @@ namespace Instill
         /// <summary>
         /// Membership endpoints
         /// </summary>
-        public MembershipClient Membership => new MembershipClient(_httpClient)
+        public MembershipClient Membership => new MembershipClient(_httpClient, authorization: _authorization)
         {
             JsonSerializerContext = JsonSerializerContext,
         };
@@ -50,7 +51,7 @@ namespace Instill
         /// <summary>
         /// Token endpoints
         /// </summary>
-        public TokenClient Token => new TokenClient(_httpClient)
+        public TokenClient Token => new TokenClient(_httpClient, authorization: _authorization)
         {
             JsonSerializerContext = JsonSerializerContext,
         };
@@ -58,7 +59,7 @@ namespace Instill
         /// <summary>
         /// Subscription endpoints
         /// </summary>
-        public SubscriptionClient Subscription => new SubscriptionClient(_httpClient)
+        public SubscriptionClient Subscription => new SubscriptionClient(_httpClient, authorization: _authorization)
         {
             JsonSerializerContext = JsonSerializerContext,
         };
@@ -66,7 +67,7 @@ namespace Instill
         /// <summary>
         /// Credit endpoints
         /// </summary>
-        public CreditClient Credit => new CreditClient(_httpClient)
+        public CreditClient Credit => new CreditClient(_httpClient, authorization: _authorization)
         {
             JsonSerializerContext = JsonSerializerContext,
         };
@@ -74,7 +75,7 @@ namespace Instill
         /// <summary>
         /// Metric endpoints
         /// </summary>
-        public MetricClient Metric => new MetricClient(_httpClient)
+        public MetricClient Metric => new MetricClient(_httpClient, authorization: _authorization)
         {
             JsonSerializerContext = JsonSerializerContext,
         };
@@ -82,7 +83,7 @@ namespace Instill
         /// <summary>
         /// Util endpoints
         /// </summary>
-        public UtilsClient Utils => new UtilsClient(_httpClient)
+        public UtilsClient Utils => new UtilsClient(_httpClient, authorization: _authorization)
         {
             JsonSerializerContext = JsonSerializerContext,
         };
@@ -90,7 +91,7 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public CatalogClient Catalog => new CatalogClient(_httpClient)
+        public CatalogClient Catalog => new CatalogClient(_httpClient, authorization: _authorization)
         {
             JsonSerializerContext = JsonSerializerContext,
         };
@@ -101,13 +102,16 @@ namespace Instill
         /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
         /// </summary>
         /// <param name="httpClient"></param>
-        /// <param name="baseUri"></param> 
+        /// <param name="baseUri"></param>
+        /// <param name="authorization"></param>
         public InstillClient(
             global::System.Net.Http.HttpClient? httpClient = null,
-            global::System.Uri? baseUri = null)
+            global::System.Uri? baseUri = null,
+            global::Instill.EndPointAuthorization? authorization = null)
         {
             _httpClient = httpClient ?? new global::System.Net.Http.HttpClient();
             _httpClient.BaseAddress ??= baseUri ?? new global::System.Uri(BaseUrl);
+            _authorization = authorization;
 
             Initialized(_httpClient);
         }

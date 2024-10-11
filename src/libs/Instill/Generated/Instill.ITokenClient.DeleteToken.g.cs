@@ -11,7 +11,7 @@ namespace Instill
         /// <param name="tokenId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Instill.DeleteTokenResponse> DeleteTokenAsync(
+        global::System.Threading.Tasks.Task<object> DeleteTokenAsync(
             string tokenId,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

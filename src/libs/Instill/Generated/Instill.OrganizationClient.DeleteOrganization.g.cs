@@ -28,7 +28,7 @@ namespace Instill
         /// <param name="organizationId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Instill.DeleteOrganizationResponse> DeleteOrganizationAsync(
+        public async global::System.Threading.Tasks.Task<object> DeleteOrganizationAsync(
             string organizationId,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -103,7 +103,7 @@ namespace Instill
             }
 
             return
-                global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::Instill.DeleteOrganizationResponse), JsonSerializerContext) as global::Instill.DeleteOrganizationResponse ??
+                global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(object), JsonSerializerContext) as object ??
                 throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
         }
     }

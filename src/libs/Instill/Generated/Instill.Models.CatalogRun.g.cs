@@ -77,7 +77,7 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("payload")]
-        public global::Instill.CatalogRunPayload? Payload { get; set; }
+        public object? Payload { get; set; }
 
         /// <summary>
         /// Time when the run started execution.<br/>

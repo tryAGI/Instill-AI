@@ -43,7 +43,7 @@ namespace Instill
         /// The key represents the provider, and the value is the corresponding URL.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("socialProfileLinks")]
-        public global::Instill.UserProfileSocialProfileLinks? SocialProfileLinks { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, string>? SocialProfileLinks { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

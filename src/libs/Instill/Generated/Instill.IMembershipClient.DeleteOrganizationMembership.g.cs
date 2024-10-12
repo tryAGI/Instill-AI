@@ -12,7 +12,7 @@ namespace Instill
         /// <param name="userId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<object> DeleteOrganizationMembershipAsync(
+        global::System.Threading.Tasks.Task<string> DeleteOrganizationMembershipAsync(
             string organizationId,
             string userId,
             global::System.Threading.CancellationToken cancellationToken = default);

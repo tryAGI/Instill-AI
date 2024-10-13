@@ -124,7 +124,7 @@ namespace Instill
             }
 
             return
-                global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::Instill.GetFileCatalogResponse), JsonSerializerContext) as global::Instill.GetFileCatalogResponse ??
+                global::Instill.GetFileCatalogResponse.FromJson(__content, JsonSerializerContext) ??
                 throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
         }
     }

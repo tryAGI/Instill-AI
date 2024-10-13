@@ -108,7 +108,7 @@ namespace Instill
             }
 
             return
-                global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::Instill.DeleteCatalogResponse), JsonSerializerContext) as global::Instill.DeleteCatalogResponse ??
+                global::Instill.DeleteCatalogResponse.FromJson(__content, JsonSerializerContext) ??
                 throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
         }
     }

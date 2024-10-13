@@ -124,7 +124,7 @@ namespace Instill
             }
 
             return
-                global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::Instill.ListChunksResponse), JsonSerializerContext) as global::Instill.ListChunksResponse ??
+                global::Instill.ListChunksResponse.FromJson(__content, JsonSerializerContext) ??
                 throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
         }
     }

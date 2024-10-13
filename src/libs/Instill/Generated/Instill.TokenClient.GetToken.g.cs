@@ -103,7 +103,7 @@ namespace Instill
             }
 
             return
-                global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::Instill.GetTokenResponse), JsonSerializerContext) as global::Instill.GetTokenResponse ??
+                global::Instill.GetTokenResponse.FromJson(__content, JsonSerializerContext) ??
                 throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
         }
     }

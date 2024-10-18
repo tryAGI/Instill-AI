@@ -462,118 +462,130 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetRepositoryTagResponse? Type111 { get; set; }
+        public global::Instill.GetObjectDownloadURLResponse? Type111 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetSourceFileResponse? Type112 { get; set; }
+        public global::Instill.Object? Type112 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.SourceFile? Type113 { get; set; }
+        public global::Instill.GetObjectUploadURLResponse? Type113 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListCatalogFilesFilter? Type114 { get; set; }
+        public global::Instill.GetRepositoryTagResponse? Type114 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListCatalogFilesResponse? Type115 { get; set; }
+        public global::Instill.GetSourceFileResponse? Type115 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.File>? Type116 { get; set; }
+        public global::Instill.SourceFile? Type116 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListCatalogRunsResponse? Type117 { get; set; }
+        public global::Instill.ListCatalogFilesFilter? Type117 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.CatalogRun>? Type118 { get; set; }
+        public global::Instill.ListCatalogFilesResponse? Type118 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListCatalogsResponse? Type119 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.File>? Type119 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.Catalog>? Type120 { get; set; }
+        public global::Instill.ListCatalogRunsResponse? Type120 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListChunksResponse? Type121 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.CatalogRun>? Type121 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.Chunk>? Type122 { get; set; }
+        public global::Instill.ListCatalogsResponse? Type122 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListRepositoryTagsResponse? Type123 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.Catalog>? Type123 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.RepositoryTag>? Type124 { get; set; }
+        public global::Instill.ListChunksResponse? Type124 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ProcessCatalogFilesRequest? Type125 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.Chunk>? Type125 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ProcessCatalogFilesResponse? Type126 { get; set; }
+        public global::Instill.ListRepositoryTagsResponse? Type126 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.QuestionAnsweringResponse? Type127 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.RepositoryTag>? Type127 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.SimilarityChunk>? Type128 { get; set; }
+        public global::Instill.ProcessCatalogFilesRequest? Type128 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.SimilarityChunk? Type129 { get; set; }
+        public global::Instill.ProcessCatalogFilesResponse? Type129 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.SimilarityChunksSearchResponse? Type130 { get; set; }
+        public global::Instill.QuestionAnsweringResponse? Type130 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UpdateCatalogResponse? Type131 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.SimilarityChunk>? Type131 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UpdateChunkResponse? Type132 { get; set; }
+        public global::Instill.SimilarityChunk? Type132 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UploadCatalogFileResponse? Type133 { get; set; }
+        public global::Instill.SimilarityChunksSearchResponse? Type133 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListUsersView? Type134 { get; set; }
+        public global::Instill.UpdateCatalogResponse? Type134 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetUserView? Type135 { get; set; }
+        public global::Instill.UpdateChunkResponse? Type135 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListOrganizationsView? Type136 { get; set; }
+        public global::Instill.UploadCatalogFileResponse? Type136 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetOrganizationView? Type137 { get; set; }
+        public global::Instill.ListUsersView? Type137 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetUserMembershipView? Type138 { get; set; }
+        public global::Instill.GetUserView? Type138 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetOrganizationMembershipView? Type139 { get; set; }
+        public global::Instill.ListOrganizationsView? Type139 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Instill.GetOrganizationView? Type140 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Instill.GetUserMembershipView? Type141 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Instill.GetOrganizationMembershipView? Type142 { get; set; }
     }
 }

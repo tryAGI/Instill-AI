@@ -97,6 +97,14 @@ namespace Instill
         };
 
         /// <summary>
+        /// 
+        /// </summary>
+        public ObjectClient Object => new ObjectClient(_httpClient, authorizations: _authorizations)
+        {
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
         /// Creates a new instance of the InstillClient.
         /// If no httpClient is provided, a new one will be created.
         /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.

@@ -1700,6 +1700,108 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpcStatus'
+  '/v1alpha/namespaces/{namespaceId}/object-upload-url':
+    get:
+      tags:
+        - Object
+      summary: Get Object Upload URL
+      operationId: GetObjectUploadURL
+      parameters:
+        - name: namespaceId
+          in: path
+          description: id of the namespace
+          required: true
+          schema:
+            type: string
+        - name: objectName
+          in: query
+          description: "name of the object with length limit to 1024 characters.\nthis is the unique identifier of the object in the namespace"
+          required: true
+          schema:
+            type: string
+        - name: expirationTime
+          in: query
+          description: "expiration time in minutes for the URL with a default value of 1440 minutes (1 day).\nminimum is 60 minutes (1 hour) and maximum is 20160 minutes (14 days)"
+          schema:
+            type: integer
+            format: int32
+        - name: lastModifiedTime
+          in: query
+          description: last modified time this value is provided by the client when the object url is created
+          schema:
+            type: string
+            format: date-time
+        - name: objectExpireDays
+          in: query
+          description: "object live time in days\nminimum is 1 day. if not set, the object will not be deleted automatically"
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetObjectUploadURLResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+  '/v1alpha/namespaces/{namespaceId}/object-download-url':
+    get:
+      tags:
+        - Object
+      summary: Get Object Download URL
+      operationId: GetObjectDownloadURL
+      parameters:
+        - name: namespaceId
+          in: path
+          description: id of the namespace
+          required: true
+          schema:
+            type: string
+        - name: objectUid
+          in: query
+          description: "uid of the object\nif provided, object name is not required\nuid has priority over name"
+          schema:
+            type: string
+        - name: objectName
+          in: query
+          description: "object name\nif provided, object uid is not required"
+          schema:
+            type: string
+        - name: expirationTime
+          in: query
+          description: "expiration time in minutes for url with default value to 1440 minutes (1 day).\nminimum is 60 minutes (1 hour) and maximum is 20160 minutes (14 days)"
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetObjectDownloadURLResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
 components:
   schemas:
     ApiTokenState:
@@ -3149,6 +3251,36 @@ components:
         retrievable:
           title: chunk retrievable
           type: boolean
+    GetObjectDownloadURLResponse:
+      title: GetObjectDownloadURLResponse
+      type: object
+      properties:
+        downloadUrl:
+          title: download url
+          type: string
+        urlExpireAt:
+          title: expire at in UTC (UTC+0)
+          type: string
+          format: date-time
+        object:
+          title: object
+          allOf:
+            - $ref: '#/components/schemas/Object'
+    GetObjectUploadURLResponse:
+      title: GetObjectUploadURLResponse
+      type: object
+      properties:
+        uploadUrl:
+          title: upload url
+          type: string
+        urlExpireAt:
+          title: expire at in UTC (UTC+0)
+          type: string
+          format: date-time
+        object:
+          title: object
+          allOf:
+            - $ref: '#/components/schemas/Object'
     GetRepositoryTagResponse:
       type: object
       properties:
@@ -3264,6 +3396,47 @@ components:
           description: The requested page offset.
           format: int32
       description: ListRepositoryTagsResponse contains a list of container image tags.
+    Object:
+      title: Object
+      type: object
+      properties:
+        uid:
+          title: uid
+          type: string
+        name:
+          title: name of the object
+          type: string
+        size:
+          title: size in bytes
+          type: string
+          format: int64
+        contentType:
+          title: "content type\nthis is from content-type header of http request"
+          type: string
+        namespaceUid:
+          title: namespace uid
+          type: string
+        creator:
+          title: creator
+          type: string
+        isUploaded:
+          title: if file is uploaded
+          type: boolean
+        path:
+          title: object path(optional)
+          type: string
+        objectExpireDays:
+          title: "object live time in days\nminimum is 1 day. if not set, the object will not be deleted automatically"
+          type: integer
+          format: int32
+        createdTime:
+          title: created time
+          type: string
+          format: date-time
+        updatedTime:
+          title: updated time
+          type: string
+          format: date-time
     ProcessCatalogFilesRequest:
       title: Process Catalog File Request
       required:

@@ -1719,21 +1719,21 @@ paths:
           required: true
           schema:
             type: string
-        - name: expirationTime
+        - name: urlExpireDays
           in: query
-          description: "expiration time in minutes for the URL with a default value of 1440 minutes (1 day).\nminimum is 60 minutes (1 hour) and maximum is 20160 minutes (14 days)"
+          description: "Expiration time in days for the URL.\nMinimum is 1 day and maximum is 7 days. If not set or set to 0, defaults to 1 day."
           schema:
             type: integer
             format: int32
         - name: lastModifiedTime
           in: query
-          description: last modified time this value is provided by the client when the object url is created
+          description: "last modified time this value is provided by the client when the object url is created\nit must be in RFC3339 formatted date-time string"
           schema:
             type: string
             format: date-time
         - name: objectExpireDays
           in: query
-          description: "object live time in days\nminimum is 1 day. if not set, the object will not be deleted automatically"
+          description: "object live time in days\nminimum is 1 day. if set to 0, the object will not be deleted automatically"
           schema:
             type: integer
             format: int32
@@ -1778,9 +1778,9 @@ paths:
           description: "object name\nif provided, object uid is not required"
           schema:
             type: string
-        - name: expirationTime
+        - name: urlExpireDays
           in: query
-          description: "expiration time in minutes for url with default value to 1440 minutes (1 day).\nminimum is 60 minutes (1 hour) and maximum is 20160 minutes (14 days)"
+          description: "Expiration time in days for the URL.\nMinimum is 1 day and maximum is 7 days. If not set or set to 0, defaults to 1 day."
           schema:
             type: integer
             format: int32
@@ -3411,7 +3411,7 @@ components:
           type: string
           format: int64
         contentType:
-          title: "content type\nthis is from content-type header of http request"
+          title: "content type\nthis is mime type from content-type header of http request or from file extension"
           type: string
         namespaceUid:
           title: namespace uid
@@ -3426,9 +3426,13 @@ components:
           title: object path(optional)
           type: string
         objectExpireDays:
-          title: "object live time in days\nminimum is 1 day. if not set, the object will not be deleted automatically"
+          title: "object live time in days\nif set to 0, the object will not be deleted automatically"
           type: integer
           format: int32
+        lastModifiedTime:
+          title: last modified time
+          type: string
+          format: date-time
         createdTime:
           title: created time
           type: string

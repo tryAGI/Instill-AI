@@ -3266,6 +3266,14 @@ components:
           title: object
           allOf:
             - $ref: '#/components/schemas/Object'
+    GetObjectURLResponse:
+      title: GetObjectURLResponse
+      type: object
+      properties:
+        objectUrl:
+          title: object upload url
+          allOf:
+            - $ref: '#/components/schemas/ObjectURL'
     GetObjectUploadURLResponse:
       title: GetObjectUploadURLResponse
       type: object
@@ -3439,6 +3447,44 @@ components:
           format: date-time
         updatedTime:
           title: updated time
+          type: string
+          format: date-time
+    ObjectURL:
+      title: ObjectUploadURL
+      type: object
+      properties:
+        uid:
+          title: The unique identifier of the ObjectURL
+          type: string
+        namespaceUid:
+          title: The namespace UID associated with this ObjectURL
+          type: string
+        objectUid:
+          title: The object UID associated with this ObjectURL
+          type: string
+        urlExpireAt:
+          title: The expiration time of the URL
+          type: string
+          format: date-time
+        minioUrlPath:
+          title: The MinIO URL path
+          type: string
+        encodedUrlPath:
+          title: The encoded URL path
+          type: string
+        type:
+          title: The type of URL (download or upload)
+          type: string
+        createTime:
+          title: The creation time of the ObjectURL
+          type: string
+          format: date-time
+        updateTime:
+          title: The last update time of the ObjectURL
+          type: string
+          format: date-time
+        deleteTime:
+          title: 'The deletion time of the ObjectURL, if applicable'
           type: string
           format: date-time
     ProcessCatalogFilesRequest:

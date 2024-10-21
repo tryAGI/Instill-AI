@@ -9,7 +9,7 @@ namespace Instill
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
             ref string objectName,
-            ref int? expirationTime,
+            ref int? urlExpireDays,
             ref global::System.DateTime? lastModifiedTime,
             ref int? objectExpireDays);
         partial void PrepareGetObjectUploadURLRequest(
@@ -17,7 +17,7 @@ namespace Instill
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
             string objectName,
-            int? expirationTime,
+            int? urlExpireDays,
             global::System.DateTime? lastModifiedTime,
             int? objectExpireDays);
         partial void ProcessGetObjectUploadURLResponse(
@@ -34,7 +34,7 @@ namespace Instill
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="objectName"></param>
-        /// <param name="expirationTime"></param>
+        /// <param name="urlExpireDays"></param>
         /// <param name="lastModifiedTime"></param>
         /// <param name="objectExpireDays"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -42,7 +42,7 @@ namespace Instill
         public async global::System.Threading.Tasks.Task<global::Instill.GetObjectUploadURLResponse> GetObjectUploadURLAsync(
             string namespaceId,
             string objectName,
-            int? expirationTime = default,
+            int? urlExpireDays = default,
             global::System.DateTime? lastModifiedTime = default,
             int? objectExpireDays = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -53,7 +53,7 @@ namespace Instill
                 httpClient: _httpClient,
                 namespaceId: ref namespaceId,
                 objectName: ref objectName,
-                expirationTime: ref expirationTime,
+                urlExpireDays: ref urlExpireDays,
                 lastModifiedTime: ref lastModifiedTime,
                 objectExpireDays: ref objectExpireDays);
 
@@ -62,7 +62,7 @@ namespace Instill
                 baseUri: _httpClient.BaseAddress); 
             __pathBuilder 
                 .AddRequiredParameter("objectName", objectName) 
-                .AddOptionalParameter("expirationTime", expirationTime?.ToString()) 
+                .AddOptionalParameter("urlExpireDays", urlExpireDays?.ToString()) 
                 .AddOptionalParameter("lastModifiedTime", lastModifiedTime?.ToString("yyyy-MM-ddTHH:mm:ssZ")) 
                 .AddOptionalParameter("objectExpireDays", objectExpireDays?.ToString()) 
                 ; 
@@ -95,7 +95,7 @@ namespace Instill
                 httpRequestMessage: httpRequest,
                 namespaceId: namespaceId,
                 objectName: objectName,
-                expirationTime: expirationTime,
+                urlExpireDays: urlExpireDays,
                 lastModifiedTime: lastModifiedTime,
                 objectExpireDays: objectExpireDays);
 

@@ -65,6 +65,12 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("lastModifiedTime")]
+        public global::System.DateTime? LastModifiedTime { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("createdTime")]
         public global::System.DateTime? CreatedTime { get; set; }
 

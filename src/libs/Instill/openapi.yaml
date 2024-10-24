@@ -3363,12 +3363,20 @@ components:
           title: object
           allOf:
             - $ref: '#/components/schemas/Object'
+    GetObjectResponse:
+      title: GetObjectResponse
+      type: object
+      properties:
+        object:
+          title: object
+          allOf:
+            - $ref: '#/components/schemas/Object'
     GetObjectURLResponse:
       title: GetObjectURLResponse
       type: object
       properties:
         objectUrl:
-          title: object upload url
+          title: object url
           allOf:
             - $ref: '#/components/schemas/ObjectURL'
     GetObjectUploadURLResponse:

@@ -1812,17 +1812,13 @@ paths:
             type: string
         - name: objectUid
           in: query
-          description: "uid of the object\nif provided, object name is not required\nuid has priority over name"
-          schema:
-            type: string
-        - name: objectName
-          in: query
-          description: "object name\nif provided, object uid is not required"
+          description: uid of the object
+          required: true
           schema:
             type: string
         - name: urlExpireDays
           in: query
-          description: "Expiration time in days for the URL.\nMinimum is 1 day and maximum is 7 days. If not set or set to 0, defaults to 1 day."
+          description: "expiration time in days for the URL.\nminimum is 1 day. if not set or set to 0, defaults to 1 day."
           schema:
             type: integer
             format: int32
@@ -3722,6 +3718,14 @@ components:
           title: chunk
           allOf:
             - $ref: '#/components/schemas/Chunk'
+    UpdateObjectResponse:
+      title: UpdateObjectResponse
+      type: object
+      properties:
+        object:
+          title: object
+          allOf:
+            - $ref: '#/components/schemas/Object'
     UploadCatalogFileResponse:
       title: upload file response
       required:

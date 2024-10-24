@@ -586,30 +586,34 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UploadCatalogFileResponse? Type142 { get; set; }
+        public global::Instill.UpdateObjectResponse? Type142 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListUsersView? Type143 { get; set; }
+        public global::Instill.UploadCatalogFileResponse? Type143 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetUserView? Type144 { get; set; }
+        public global::Instill.ListUsersView? Type144 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListOrganizationsView? Type145 { get; set; }
+        public global::Instill.GetUserView? Type145 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetOrganizationView? Type146 { get; set; }
+        public global::Instill.ListOrganizationsView? Type146 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetUserMembershipView? Type147 { get; set; }
+        public global::Instill.GetOrganizationView? Type147 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetOrganizationMembershipView? Type148 { get; set; }
+        public global::Instill.GetUserMembershipView? Type148 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Instill.GetOrganizationMembershipView? Type149 { get; set; }
     }
 }

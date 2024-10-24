@@ -8,13 +8,15 @@ namespace Instill
         partial void PrepareGetObjectDownloadURLArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
-            ref string objectUid,
+            ref string? objectUid,
+            ref string? objectName,
             ref int? urlExpireDays);
         partial void PrepareGetObjectDownloadURLRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
-            string objectUid,
+            string? objectUid,
+            string? objectName,
             int? urlExpireDays);
         partial void ProcessGetObjectDownloadURLResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -30,12 +32,14 @@ namespace Instill
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="objectUid"></param>
+        /// <param name="objectName"></param>
         /// <param name="urlExpireDays"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Instill.GetObjectDownloadURLResponse> GetObjectDownloadURLAsync(
             string namespaceId,
-            string objectUid,
+            string? objectUid = default,
+            string? objectName = default,
             int? urlExpireDays = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -45,13 +49,15 @@ namespace Instill
                 httpClient: HttpClient,
                 namespaceId: ref namespaceId,
                 objectUid: ref objectUid,
+                objectName: ref objectName,
                 urlExpireDays: ref urlExpireDays);
 
             var __pathBuilder = new PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/object-download-url",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 
-                .AddRequiredParameter("objectUid", objectUid) 
+                .AddOptionalParameter("objectUid", objectUid) 
+                .AddOptionalParameter("objectName", objectName) 
                 .AddOptionalParameter("urlExpireDays", urlExpireDays?.ToString()) 
                 ; 
             var __path = __pathBuilder.ToString();
@@ -83,6 +89,7 @@ namespace Instill
                 httpRequestMessage: __httpRequest,
                 namespaceId: namespaceId,
                 objectUid: objectUid,
+                objectName: objectName,
                 urlExpireDays: urlExpireDays);
 
             using var __response = await HttpClient.SendAsync(

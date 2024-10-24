@@ -4,7 +4,7 @@
 namespace Instill
 {
     /// <summary>
-    /// Core endpoints to manage user resources<br/>
+    /// Interact with Instill AI through its public API<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
@@ -33,7 +33,7 @@ namespace Instill
 
 
         /// <summary>
-        /// User endpoints
+        /// User namespaces
         /// </summary>
         public UserClient User => new UserClient(HttpClient, authorizations: Authorizations)
         {
@@ -41,7 +41,7 @@ namespace Instill
         };
 
         /// <summary>
-        /// Organization endpoints
+        /// Organization namespaces
         /// </summary>
         public OrganizationClient Organization => new OrganizationClient(HttpClient, authorizations: Authorizations)
         {
@@ -49,15 +49,15 @@ namespace Instill
         };
 
         /// <summary>
-        /// Membership endpoints
+        /// Organization memberships
         /// </summary>
-        public MembershipClient Membership => new MembershipClient(HttpClient, authorizations: Authorizations)
+        public MembershipsClient Memberships => new MembershipsClient(HttpClient, authorizations: Authorizations)
         {
             JsonSerializerContext = JsonSerializerContext,
         };
 
         /// <summary>
-        /// Token endpoints
+        /// API tokens
         /// </summary>
         public TokenClient Token => new TokenClient(HttpClient, authorizations: Authorizations)
         {
@@ -65,7 +65,7 @@ namespace Instill
         };
 
         /// <summary>
-        /// Subscription endpoints
+        /// Subscriptions to pricing plans
         /// </summary>
         public SubscriptionClient Subscription => new SubscriptionClient(HttpClient, authorizations: Authorizations)
         {
@@ -73,7 +73,7 @@ namespace Instill
         };
 
         /// <summary>
-        /// Credit endpoints
+        /// Instill Credit
         /// </summary>
         public CreditClient Credit => new CreditClient(HttpClient, authorizations: Authorizations)
         {
@@ -81,7 +81,7 @@ namespace Instill
         };
 
         /// <summary>
-        /// Metric endpoints
+        /// Usage metrics
         /// </summary>
         public MetricClient Metric => new MetricClient(HttpClient, authorizations: Authorizations)
         {
@@ -89,17 +89,137 @@ namespace Instill
         };
 
         /// <summary>
-        /// Util endpoints
+        /// Model regions
         /// </summary>
-        public UtilsClient Utils => new UtilsClient(HttpClient, authorizations: Authorizations)
+        public RegionClient Region => new RegionClient(HttpClient, authorizations: Authorizations)
         {
             JsonSerializerContext = JsonSerializerContext,
         };
 
         /// <summary>
-        /// 
+        /// Utils
+        /// </summary>
+        public UtilClient Util => new UtilClient(HttpClient, authorizations: Authorizations)
+        {
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// Components
+        /// </summary>
+        public ComponentClient Component => new ComponentClient(HttpClient, authorizations: Authorizations)
+        {
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// Pipelines
+        /// </summary>
+        public PipelineClient Pipeline => new PipelineClient(HttpClient, authorizations: Authorizations)
+        {
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// Pipeline Releases
+        /// </summary>
+        public PipelineReleaseClient PipelineRelease => new PipelineReleaseClient(HttpClient, authorizations: Authorizations)
+        {
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// Pipeline Triggers
+        /// </summary>
+        public PipelineTriggerClient PipelineTrigger => new PipelineTriggerClient(HttpClient, authorizations: Authorizations)
+        {
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// Namespace Secrets
+        /// </summary>
+        public SecretClient Secret => new SecretClient(HttpClient, authorizations: Authorizations)
+        {
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// Namespace Integrations
+        /// </summary>
+        public IntegrationClient Integration => new IntegrationClient(HttpClient, authorizations: Authorizations)
+        {
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// Model definitions
+        /// </summary>
+        public ModelDefinitionClient ModelDefinition => new ModelDefinitionClient(HttpClient, authorizations: Authorizations)
+        {
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// Models
+        /// </summary>
+        public ModelClient Model => new ModelClient(HttpClient, authorizations: Authorizations)
+        {
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// Model versions
+        /// </summary>
+        public ModelVersionClient ModelVersion => new ModelVersionClient(HttpClient, authorizations: Authorizations)
+        {
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// Model triggers
+        /// </summary>
+        public ModelTriggerClient ModelTrigger => new ModelTriggerClient(HttpClient, authorizations: Authorizations)
+        {
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// Catalogs
         /// </summary>
         public CatalogClient Catalog => new CatalogClient(HttpClient, authorizations: Authorizations)
+        {
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// Apps
+        /// </summary>
+        public AppClient App => new AppClient(HttpClient, authorizations: Authorizations)
+        {
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// Conversations
+        /// </summary>
+        public ConversationClient Conversation => new ConversationClient(HttpClient, authorizations: Authorizations)
+        {
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// Messages
+        /// </summary>
+        public MessageClient Message => new MessageClient(HttpClient, authorizations: Authorizations)
+        {
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// Playgrounds
+        /// </summary>
+        public PlaygroundClient Playground => new PlaygroundClient(HttpClient, authorizations: Authorizations)
         {
             JsonSerializerContext = JsonSerializerContext,
         };
@@ -108,6 +228,22 @@ namespace Instill
         /// 
         /// </summary>
         public ObjectClient Object => new ObjectClient(HttpClient, authorizations: Authorizations)
+        {
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public MembershipClient Membership => new MembershipClient(HttpClient, authorizations: Authorizations)
+        {
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public UtilsClient Utils => new UtilsClient(HttpClient, authorizations: Authorizations)
         {
             JsonSerializerContext = JsonSerializerContext,
         };

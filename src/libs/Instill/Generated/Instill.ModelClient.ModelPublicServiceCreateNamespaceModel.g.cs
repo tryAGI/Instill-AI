@@ -185,7 +185,7 @@ namespace Instill
             string id,
             string modelDefinition,
             object configuration,
-            global::Instill.Task task,
+            global::Instill.AITask task,
             global::Instill.ModelVisibility visibility,
             string region,
             string hardware,

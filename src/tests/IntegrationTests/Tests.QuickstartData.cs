@@ -3,7 +3,7 @@ namespace Instill.IntegrationTests;
 public partial class Tests
 {
     [TestMethod]
-    public async System.Threading.Tasks.Task QuickstartData()
+    public async Task QuickstartData()
     {
         using var client = GetAuthenticatedClient();
         using var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromMinutes(5));
@@ -52,7 +52,7 @@ public partial class Tests
 
         while (!cancellationToken.IsCancellationRequested)
         {
-            await System.Threading.Tasks.Task.Delay(TimeSpan.FromSeconds(5), cancellationToken);
+            await Task.Delay(TimeSpan.FromSeconds(5), cancellationToken);
             
             ListCatalogFilesResponse listFilesResponse = await client.Catalog.ListCatalogFilesAsync(
                 namespaceId: "havendv",

@@ -17,7 +17,10 @@ yamlOrJson = yamlOrJson
         .Replace("#/definitions/ArtifactPublicService", "#/definitions/")
         .Replace("ArtifactPublicService_", string.Empty)
         .Replace("artifactv1alpha", string.Empty)
-    ;
+        
+        // Fixing the Task schema because it conflicts with the Task class in C#
+        .Replace("#/definitions/Task", "#/definitions/AITask")
+        .Replace("  Task:", "  AITask:")
     ;
 
 var openApiDocument = new OpenApiStringReader().Read(yamlOrJson, out var diagnostics);

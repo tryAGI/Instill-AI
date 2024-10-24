@@ -59,9 +59,9 @@ namespace Instill
         /// Model task.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("task")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.TaskJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.AITaskJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Instill.Task Task { get; set; }
+        public required global::Instill.AITask Task { get; set; }
 
         /// <summary>
         /// Model visibility.

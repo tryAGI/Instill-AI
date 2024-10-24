@@ -3,10 +3,10 @@
 namespace Instill.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class TaskNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Instill.Task?>
+    public sealed class AITaskNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Instill.AITask?>
     {
         /// <inheritdoc />
-        public override global::Instill.Task? Read(
+        public override global::Instill.AITask? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Instill.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Instill.TaskExtensions.ToEnum(stringValue);
+                        return global::Instill.AITaskExtensions.ToEnum(stringValue);
                     }
                     
                     break;
@@ -26,7 +26,7 @@ namespace Instill.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Instill.Task)numValue;
+                    return (global::Instill.AITask)numValue;
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -38,7 +38,7 @@ namespace Instill.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Instill.Task? value,
+            global::Instill.AITask? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
@@ -49,7 +49,7 @@ namespace Instill.JsonConverters
             }
             else
             {
-                writer.WriteStringValue(global::Instill.TaskExtensions.ToValueString(value.Value));
+                writer.WriteStringValue(global::Instill.AITaskExtensions.ToValueString(value.Value));
             }
         }
     }

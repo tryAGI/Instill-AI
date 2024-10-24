@@ -3,7 +3,7 @@ namespace Instill.IntegrationTests;
 public partial class Tests
 {
     [TestMethod]
-    public async System.Threading.Tasks.Task GetRemainingCredit()
+    public async Task GetRemainingCredit()
     {
         using var client = GetAuthenticatedClient();
 

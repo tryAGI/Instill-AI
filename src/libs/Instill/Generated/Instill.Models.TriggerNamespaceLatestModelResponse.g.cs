@@ -13,8 +13,8 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("task")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.TaskJsonConverter))]
-        public global::Instill.Task? Task { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.AITaskJsonConverter))]
+        public global::Instill.AITask? Task { get; set; }
 
         /// <summary>
         /// Model inference outputs.<br/>

@@ -374,7 +374,7 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Task? Type89 { get; set; }
+        public global::Instill.AITask? Type89 { get; set; }
         /// <summary>
         /// 
         /// </summary>

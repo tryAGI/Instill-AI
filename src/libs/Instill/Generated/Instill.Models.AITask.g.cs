@@ -19,110 +19,110 @@ namespace Instill
     ///  - TASK_COMPLETION: Completion Text Generation - generate text following the input prompt.<br/>
     ///  - TASK_CUSTOM: Custom - custom task type for free form input/output.
     /// </summary>
-    public enum Task
+    public enum AITask
     {
         /// <summary>
         /// Image Classification - classify images into predefined categories.
         /// </summary>
-        CLASSIFICATION,
+        TASKCLASSIFICATION,
         /// <summary>
         /// Object Detection - detect and localize multiple objects in images.
         /// </summary>
-        DETECTION,
+        TASKDETECTION,
         /// <summary>
         /// Keypoint Detection - detect and localize multiple keypoints of objects in images.
         /// </summary>
-        KEYPOINT,
+        TASKKEYPOINT,
         /// <summary>
         /// OCR (Optical Character Recognition) - detect and recognize text in images.
         /// </summary>
-        OCR,
+        TASKOCR,
         /// <summary>
         /// Instance Segmentation - detect, localize and delineate multiple objects in images.
         /// </summary>
-        INSTANCESEGMENTATION,
+        TASKINSTANCESEGMENTATION,
         /// <summary>
         /// Semantic Segmentation - classify image pixels into predefined categories.
         /// </summary>
-        SEMANTICSEGMENTATION,
+        TASKSEMANTICSEGMENTATION,
         /// <summary>
         /// Text to Image - generate images from input text prompts.
         /// </summary>
-        TEXTTOIMAGE,
+        TASKTEXTTOIMAGE,
         /// <summary>
         /// Image to Image - generate an image from another image.
         /// </summary>
-        IMAGETOIMAGE,
+        TASKIMAGETOIMAGE,
         /// <summary>
         /// Embedding - generate an embedding (a representation as coordinates) from a multimodal input.
         /// </summary>
-        EMBEDDING,
+        TASKEMBEDDING,
         /// <summary>
         /// Speech Recognition - transcribe the words in an audio input.
         /// </summary>
-        SPEECHRECOGNITION,
+        TASKSPEECHRECOGNITION,
         /// <summary>
         /// Conversational Text Generation - generate text as responses to a dialog input.
         /// </summary>
-        CHAT,
+        TASKCHAT,
         /// <summary>
         /// Completion Text Generation - generate text following the input prompt.
         /// </summary>
-        COMPLETION,
+        TASKCOMPLETION,
         /// <summary>
         /// Custom - custom task type for free form input/output.
         /// </summary>
-        CUSTOM,
+        TASKCUSTOM,
     }
 
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class TaskExtensions
+    public static class AITaskExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this Task value)
+        public static string ToValueString(this AITask value)
         {
             return value switch
             {
-                Task.CLASSIFICATION => "TASK_CLASSIFICATION",
-                Task.DETECTION => "TASK_DETECTION",
-                Task.KEYPOINT => "TASK_KEYPOINT",
-                Task.OCR => "TASK_OCR",
-                Task.INSTANCESEGMENTATION => "TASK_INSTANCE_SEGMENTATION",
-                Task.SEMANTICSEGMENTATION => "TASK_SEMANTIC_SEGMENTATION",
-                Task.TEXTTOIMAGE => "TASK_TEXT_TO_IMAGE",
-                Task.IMAGETOIMAGE => "TASK_IMAGE_TO_IMAGE",
-                Task.EMBEDDING => "TASK_EMBEDDING",
-                Task.SPEECHRECOGNITION => "TASK_SPEECH_RECOGNITION",
-                Task.CHAT => "TASK_CHAT",
-                Task.COMPLETION => "TASK_COMPLETION",
-                Task.CUSTOM => "TASK_CUSTOM",
+                AITask.TASKCLASSIFICATION => "TASK_CLASSIFICATION",
+                AITask.TASKDETECTION => "TASK_DETECTION",
+                AITask.TASKKEYPOINT => "TASK_KEYPOINT",
+                AITask.TASKOCR => "TASK_OCR",
+                AITask.TASKINSTANCESEGMENTATION => "TASK_INSTANCE_SEGMENTATION",
+                AITask.TASKSEMANTICSEGMENTATION => "TASK_SEMANTIC_SEGMENTATION",
+                AITask.TASKTEXTTOIMAGE => "TASK_TEXT_TO_IMAGE",
+                AITask.TASKIMAGETOIMAGE => "TASK_IMAGE_TO_IMAGE",
+                AITask.TASKEMBEDDING => "TASK_EMBEDDING",
+                AITask.TASKSPEECHRECOGNITION => "TASK_SPEECH_RECOGNITION",
+                AITask.TASKCHAT => "TASK_CHAT",
+                AITask.TASKCOMPLETION => "TASK_COMPLETION",
+                AITask.TASKCUSTOM => "TASK_CUSTOM",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static Task? ToEnum(string value)
+        public static AITask? ToEnum(string value)
         {
             return value switch
             {
-                "TASK_CLASSIFICATION" => Task.CLASSIFICATION,
-                "TASK_DETECTION" => Task.DETECTION,
-                "TASK_KEYPOINT" => Task.KEYPOINT,
-                "TASK_OCR" => Task.OCR,
-                "TASK_INSTANCE_SEGMENTATION" => Task.INSTANCESEGMENTATION,
-                "TASK_SEMANTIC_SEGMENTATION" => Task.SEMANTICSEGMENTATION,
-                "TASK_TEXT_TO_IMAGE" => Task.TEXTTOIMAGE,
-                "TASK_IMAGE_TO_IMAGE" => Task.IMAGETOIMAGE,
-                "TASK_EMBEDDING" => Task.EMBEDDING,
-                "TASK_SPEECH_RECOGNITION" => Task.SPEECHRECOGNITION,
-                "TASK_CHAT" => Task.CHAT,
-                "TASK_COMPLETION" => Task.COMPLETION,
-                "TASK_CUSTOM" => Task.CUSTOM,
+                "TASK_CLASSIFICATION" => AITask.TASKCLASSIFICATION,
+                "TASK_DETECTION" => AITask.TASKDETECTION,
+                "TASK_KEYPOINT" => AITask.TASKKEYPOINT,
+                "TASK_OCR" => AITask.TASKOCR,
+                "TASK_INSTANCE_SEGMENTATION" => AITask.TASKINSTANCESEGMENTATION,
+                "TASK_SEMANTIC_SEGMENTATION" => AITask.TASKSEMANTICSEGMENTATION,
+                "TASK_TEXT_TO_IMAGE" => AITask.TASKTEXTTOIMAGE,
+                "TASK_IMAGE_TO_IMAGE" => AITask.TASKIMAGETOIMAGE,
+                "TASK_EMBEDDING" => AITask.TASKEMBEDDING,
+                "TASK_SPEECH_RECOGNITION" => AITask.TASKSPEECHRECOGNITION,
+                "TASK_CHAT" => AITask.TASKCHAT,
+                "TASK_COMPLETION" => AITask.TASKCOMPLETION,
+                "TASK_CUSTOM" => AITask.TASKCUSTOM,
                 _ => null,
             };
         }

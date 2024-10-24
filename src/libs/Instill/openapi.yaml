@@ -7406,7 +7406,7 @@ components:
           description: "Model configuration. This field is validated against the model\nspecification in the model definition (i.e. the `model_spec` field in the\nmodel definition)."
         task:
           allOf:
-            - $ref: '#/components/schemas/Task'
+            - $ref: '#/components/schemas/AITask'
           description: Model task.
         visibility:
           allOf:
@@ -7883,7 +7883,7 @@ components:
           type: string
           format: date-time
       description: The SourceFile message represents a source file in the artifact system.
-    Task:
+    AITask:
       enum:
         - TASK_CLASSIFICATION
         - TASK_DETECTION
@@ -7925,7 +7925,7 @@ components:
       properties:
         task:
           allOf:
-            - $ref: '#/components/schemas/Task'
+            - $ref: '#/components/schemas/AITask'
           description: Task type.
         taskOutputs:
           type: array
@@ -7939,7 +7939,7 @@ components:
       properties:
         task:
           allOf:
-            - $ref: '#/components/schemas/Task'
+            - $ref: '#/components/schemas/AITask'
           description: Task type.
           readOnly: true
         taskOutputs:
@@ -7956,7 +7956,7 @@ components:
       properties:
         task:
           allOf:
-            - $ref: '#/components/schemas/Task'
+            - $ref: '#/components/schemas/AITask'
           description: Task type.
         taskOutputs:
           type: array
@@ -7970,7 +7970,7 @@ components:
       properties:
         task:
           allOf:
-            - $ref: '#/components/schemas/Task'
+            - $ref: '#/components/schemas/AITask'
           description: Task type.
           readOnly: true
         taskOutputs:

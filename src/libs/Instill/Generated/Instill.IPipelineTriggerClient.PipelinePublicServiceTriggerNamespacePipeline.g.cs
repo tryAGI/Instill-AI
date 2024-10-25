@@ -22,7 +22,7 @@ namespace Instill
         global::System.Threading.Tasks.Task<global::Instill.TriggerNamespacePipelineResponse> PipelinePublicServiceTriggerNamespacePipelineAsync(
             string namespaceId,
             string pipelineId,
-            global::Instill.PipelinePublicServiceTriggerNamespacePipelineBody request,
+            global::Instill.TriggerNamespacePipelineBody request,
             string? instillRequesterUid = default,
             global::System.Threading.CancellationToken cancellationToken = default);
 

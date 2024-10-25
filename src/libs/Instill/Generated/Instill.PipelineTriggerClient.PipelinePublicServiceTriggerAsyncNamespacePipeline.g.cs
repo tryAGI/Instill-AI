@@ -10,14 +10,14 @@ namespace Instill
             ref string namespaceId,
             ref string pipelineId,
             ref string? instillRequesterUid,
-            global::Instill.PipelinePublicServiceTriggerAsyncNamespacePipelineBody request);
+            global::Instill.TriggerAsyncNamespacePipelineBody request);
         partial void PreparePipelinePublicServiceTriggerAsyncNamespacePipelineRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
             string pipelineId,
             string? instillRequesterUid,
-            global::Instill.PipelinePublicServiceTriggerAsyncNamespacePipelineBody request);
+            global::Instill.TriggerAsyncNamespacePipelineBody request);
         partial void ProcessPipelinePublicServiceTriggerAsyncNamespacePipelineResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -46,7 +46,7 @@ namespace Instill
         public async global::System.Threading.Tasks.Task<global::Instill.TriggerAsyncNamespacePipelineResponse> PipelinePublicServiceTriggerAsyncNamespacePipelineAsync(
             string namespaceId,
             string pipelineId,
-            global::Instill.PipelinePublicServiceTriggerAsyncNamespacePipelineBody request,
+            global::Instill.TriggerAsyncNamespacePipelineBody request,
             string? instillRequesterUid = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -172,7 +172,7 @@ namespace Instill
             global::System.Collections.Generic.IList<global::Instill.TriggerData>? data = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Instill.PipelinePublicServiceTriggerAsyncNamespacePipelineBody
+            var __request = new global::Instill.TriggerAsyncNamespacePipelineBody
             {
                 Inputs = inputs,
                 Data = data,

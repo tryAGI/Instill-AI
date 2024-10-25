@@ -7,13 +7,13 @@ namespace Instill
     {
         partial void PreparePipelinePublicServiceCreateNamespaceConnectionArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string connectionNamespaceId,
-            global::Instill.PipelinePublicServiceCreateNamespaceConnectionRequest request);
+            ref string namespaceId,
+            global::Instill.Connection request);
         partial void PreparePipelinePublicServiceCreateNamespaceConnectionRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string connectionNamespaceId,
-            global::Instill.PipelinePublicServiceCreateNamespaceConnectionRequest request);
+            string namespaceId,
+            global::Instill.Connection request);
         partial void ProcessPipelinePublicServiceCreateNamespaceConnectionResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -27,13 +27,13 @@ namespace Instill
         /// Create a connection<br/>
         /// Creates a connection under the ownership of a namespace.
         /// </summary>
-        /// <param name="connectionNamespaceId"></param>
+        /// <param name="namespaceId"></param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Instill.CreateNamespaceConnectionResponse> PipelinePublicServiceCreateNamespaceConnectionAsync(
-            string connectionNamespaceId,
-            global::Instill.PipelinePublicServiceCreateNamespaceConnectionRequest request,
+            string namespaceId,
+            global::Instill.Connection request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -42,11 +42,11 @@ namespace Instill
                 client: HttpClient);
             PreparePipelinePublicServiceCreateNamespaceConnectionArguments(
                 httpClient: HttpClient,
-                connectionNamespaceId: ref connectionNamespaceId,
+                namespaceId: ref namespaceId,
                 request: request);
 
             var __pathBuilder = new PathBuilder(
-                path: $"/v1beta/namespaces/{connectionNamespaceId}/connections",
+                path: $"/v1beta/namespaces/{namespaceId}/connections",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -81,7 +81,7 @@ namespace Instill
             PreparePipelinePublicServiceCreateNamespaceConnectionRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                connectionNamespaceId: connectionNamespaceId,
+                namespaceId: namespaceId,
                 request: request);
 
             using var __response = await HttpClient.SendAsync(
@@ -125,9 +125,12 @@ namespace Instill
         /// Create a connection<br/>
         /// Creates a connection under the ownership of a namespace.
         /// </summary>
-        /// <param name="connectionNamespaceId"></param>
+        /// <param name="namespaceId"></param>
         /// <param name="id">
         /// ID.
+        /// </param>
+        /// <param name="requestNamespaceId">
+        /// ID of the namespace owning the connection.
         /// </param>
         /// <param name="integrationId">
         /// Integration ID. It determines for which type of components can reference<br/>
@@ -160,19 +163,21 @@ namespace Instill
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Instill.CreateNamespaceConnectionResponse> PipelinePublicServiceCreateNamespaceConnectionAsync(
-            string connectionNamespaceId,
+            string namespaceId,
             string id,
+            string requestNamespaceId,
             string integrationId,
-            global::Instill.ConnectionMethod method,
+            global::Instill.Method method,
             object setup,
             global::System.Collections.Generic.IList<string>? scopes = default,
             string? identity = default,
             object? oAuthAccessDetails = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Instill.PipelinePublicServiceCreateNamespaceConnectionRequest
+            var __request = new global::Instill.Connection
             {
                 Id = id,
+                NamespaceId = requestNamespaceId,
                 IntegrationId = integrationId,
                 Method = method,
                 Setup = setup,
@@ -182,7 +187,7 @@ namespace Instill
             };
 
             return await PipelinePublicServiceCreateNamespaceConnectionAsync(
-                connectionNamespaceId: connectionNamespaceId,
+                namespaceId: namespaceId,
                 request: __request,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
         }

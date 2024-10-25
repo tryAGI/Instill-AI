@@ -10,14 +10,14 @@ namespace Instill
             ref string namespaceId,
             ref string appId,
             ref string conversationId,
-            global::Instill.AppPublicServiceUpdateConversationBody request);
+            global::Instill.UpdateConversationBody request);
         partial void PrepareAppPublicServiceUpdateConversationRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
             string appId,
             string conversationId,
-            global::Instill.AppPublicServiceUpdateConversationBody request);
+            global::Instill.UpdateConversationBody request);
         partial void ProcessAppPublicServiceUpdateConversationResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -28,7 +28,8 @@ namespace Instill
             ref string content);
 
         /// <summary>
-        /// Update a conversation
+        /// Update a conversation<br/>
+        /// Updates a conversation.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="appId"></param>
@@ -40,7 +41,7 @@ namespace Instill
             string namespaceId,
             string appId,
             string conversationId,
-            global::Instill.AppPublicServiceUpdateConversationBody request,
+            global::Instill.UpdateConversationBody request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -133,7 +134,8 @@ namespace Instill
         }
 
         /// <summary>
-        /// Update a conversation
+        /// Update a conversation<br/>
+        /// Updates a conversation.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="appId"></param>
@@ -152,7 +154,7 @@ namespace Instill
             long? lastUsedTopK = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Instill.AppPublicServiceUpdateConversationBody
+            var __request = new global::Instill.UpdateConversationBody
             {
                 NewConversationId = newConversationId,
                 LastUsedCatalogUid = lastUsedCatalogUid,

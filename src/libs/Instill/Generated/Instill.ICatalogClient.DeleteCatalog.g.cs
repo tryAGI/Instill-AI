@@ -5,7 +5,8 @@ namespace Instill
     public partial interface ICatalogClient
     {
         /// <summary>
-        /// Delete a catalog
+        /// Delete a catalog<br/>
+        /// Deletes a catalog.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>

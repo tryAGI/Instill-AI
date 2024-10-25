@@ -26,7 +26,8 @@ namespace Instill
             ref string content);
 
         /// <summary>
-        /// Delete a conversation
+        /// Delete a conversation<br/>
+        /// Deletes a conversation.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="appId"></param>

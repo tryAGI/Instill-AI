@@ -5,7 +5,8 @@ namespace Instill
     public partial interface IMessageClient
     {
         /// <summary>
-        /// Update a message
+        /// Update a message<br/>
+        /// Updates a message.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="appId"></param>
@@ -19,11 +20,12 @@ namespace Instill
             string appId,
             string conversationId,
             string messageUid,
-            global::Instill.AppPublicServiceUpdateMessageBody request,
+            global::Instill.UpdateMessageBody request,
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Update a message
+        /// Update a message<br/>
+        /// Updates a message.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="appId"></param>

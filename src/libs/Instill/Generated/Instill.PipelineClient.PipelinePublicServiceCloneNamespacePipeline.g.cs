@@ -9,13 +9,13 @@ namespace Instill
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
             ref string pipelineId,
-            global::Instill.PipelinePublicServiceCloneNamespacePipelineBody request);
+            global::Instill.CloneNamespacePipelineBody request);
         partial void PreparePipelinePublicServiceCloneNamespacePipelineRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
             string pipelineId,
-            global::Instill.PipelinePublicServiceCloneNamespacePipelineBody request);
+            global::Instill.CloneNamespacePipelineBody request);
         partial void ProcessPipelinePublicServiceCloneNamespacePipelineResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -38,7 +38,7 @@ namespace Instill
         public async global::System.Threading.Tasks.Task<string> PipelinePublicServiceCloneNamespacePipelineAsync(
             string namespaceId,
             string pipelineId,
-            global::Instill.PipelinePublicServiceCloneNamespacePipelineBody request,
+            global::Instill.CloneNamespacePipelineBody request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -156,7 +156,7 @@ namespace Instill
             global::Instill.Sharing? sharing = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Instill.PipelinePublicServiceCloneNamespacePipelineBody
+            var __request = new global::Instill.CloneNamespacePipelineBody
             {
                 Description = description,
                 Sharing = sharing,

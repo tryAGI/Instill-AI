@@ -13,7 +13,7 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("operation")]
-        public global::Instill.GooglelongrunningOperation? Operation { get; set; }
+        public global::Instill.LongrunningOperation? Operation { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

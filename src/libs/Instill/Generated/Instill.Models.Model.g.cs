@@ -155,7 +155,7 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("permission")]
-        public global::Instill.Modelv1alphaPermission? Permission { get; set; }
+        public global::Instill.Permission? Permission { get; set; }
 
         /// <summary>
         /// Included only in responses

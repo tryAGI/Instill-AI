@@ -28,7 +28,8 @@ namespace Instill
             ref string content);
 
         /// <summary>
-        /// List catalog chunks
+        /// List catalog chunks<br/>
+        /// Returns a paginated list of catalog chunks.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>

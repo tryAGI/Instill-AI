@@ -5,7 +5,8 @@ namespace Instill
     public partial interface IMessageClient
     {
         /// <summary>
-        /// Delete a message
+        /// Delete a message<br/>
+        /// Deletes a message.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="appId"></param>

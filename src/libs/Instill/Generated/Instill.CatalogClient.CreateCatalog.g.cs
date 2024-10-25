@@ -24,7 +24,8 @@ namespace Instill
             ref string content);
 
         /// <summary>
-        /// Create a catalog
+        /// Create a catalog<br/>
+        /// Creates a catalog.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="request"></param>
@@ -121,7 +122,8 @@ namespace Instill
         }
 
         /// <summary>
-        /// Create a catalog
+        /// Create a catalog<br/>
+        /// Creates a catalog.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="name">

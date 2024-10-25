@@ -24,7 +24,8 @@ namespace Instill
             ref string content);
 
         /// <summary>
-        /// Update catalog chunk
+        /// Update catalog chunk<br/>
+        /// Updates a catalog chunk.
         /// </summary>
         /// <param name="chunkUid"></param>
         /// <param name="request"></param>
@@ -121,7 +122,8 @@ namespace Instill
         }
 
         /// <summary>
-        /// Update catalog chunk
+        /// Update catalog chunk<br/>
+        /// Updates a catalog chunk.
         /// </summary>
         /// <param name="chunkUid"></param>
         /// <param name="retrievable"></param>

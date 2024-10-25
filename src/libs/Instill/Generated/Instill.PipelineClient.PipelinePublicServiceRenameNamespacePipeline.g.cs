@@ -9,13 +9,13 @@ namespace Instill
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
             ref string pipelineId,
-            global::Instill.PipelinePublicServiceRenameNamespacePipelineBody request);
+            global::Instill.RenameNamespacePipelineBody request);
         partial void PreparePipelinePublicServiceRenameNamespacePipelineRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
             string pipelineId,
-            global::Instill.PipelinePublicServiceRenameNamespacePipelineBody request);
+            global::Instill.RenameNamespacePipelineBody request);
         partial void ProcessPipelinePublicServiceRenameNamespacePipelineResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -43,7 +43,7 @@ namespace Instill
         public async global::System.Threading.Tasks.Task<global::Instill.RenameNamespacePipelineResponse> PipelinePublicServiceRenameNamespacePipelineAsync(
             string namespaceId,
             string pipelineId,
-            global::Instill.PipelinePublicServiceRenameNamespacePipelineBody request,
+            global::Instill.RenameNamespacePipelineBody request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -157,7 +157,7 @@ namespace Instill
             string newPipelineId,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Instill.PipelinePublicServiceRenameNamespacePipelineBody
+            var __request = new global::Instill.RenameNamespacePipelineBody
             {
                 NewPipelineId = newPipelineId,
             };

@@ -11,7 +11,7 @@ namespace Instill
             ref string pipelineId,
             ref string releaseId,
             ref string? instillRequesterUid,
-            global::Instill.PipelinePublicServiceTriggerNamespacePipelineReleaseBody request);
+            global::Instill.TriggerNamespacePipelineReleaseBody request);
         partial void PreparePipelinePublicServiceTriggerNamespacePipelineReleaseRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
@@ -19,7 +19,7 @@ namespace Instill
             string pipelineId,
             string releaseId,
             string? instillRequesterUid,
-            global::Instill.PipelinePublicServiceTriggerNamespacePipelineReleaseBody request);
+            global::Instill.TriggerNamespacePipelineReleaseBody request);
         partial void ProcessPipelinePublicServiceTriggerNamespacePipelineReleaseResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -49,7 +49,7 @@ namespace Instill
             string namespaceId,
             string pipelineId,
             string releaseId,
-            global::Instill.PipelinePublicServiceTriggerNamespacePipelineReleaseBody request,
+            global::Instill.TriggerNamespacePipelineReleaseBody request,
             string? instillRequesterUid = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -178,7 +178,7 @@ namespace Instill
             global::System.Collections.Generic.IList<global::Instill.TriggerData>? data = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Instill.PipelinePublicServiceTriggerNamespacePipelineReleaseBody
+            var __request = new global::Instill.TriggerNamespacePipelineReleaseBody
             {
                 Inputs = inputs,
                 Data = data,

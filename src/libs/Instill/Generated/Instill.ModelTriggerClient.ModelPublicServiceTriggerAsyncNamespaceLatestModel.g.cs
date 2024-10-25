@@ -10,14 +10,14 @@ namespace Instill
             ref string namespaceId,
             ref string modelId,
             ref string? instillRequesterUid,
-            global::Instill.ModelPublicServiceTriggerAsyncNamespaceLatestModelBody request);
+            global::Instill.TriggerAsyncNamespaceLatestModelBody request);
         partial void PrepareModelPublicServiceTriggerAsyncNamespaceLatestModelRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
             string modelId,
             string? instillRequesterUid,
-            global::Instill.ModelPublicServiceTriggerAsyncNamespaceLatestModelBody request);
+            global::Instill.TriggerAsyncNamespaceLatestModelBody request);
         partial void ProcessModelPublicServiceTriggerAsyncNamespaceLatestModelResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -41,7 +41,7 @@ namespace Instill
         public async global::System.Threading.Tasks.Task<global::Instill.TriggerAsyncNamespaceLatestModelResponse> ModelPublicServiceTriggerAsyncNamespaceLatestModelAsync(
             string namespaceId,
             string modelId,
-            global::Instill.ModelPublicServiceTriggerAsyncNamespaceLatestModelBody request,
+            global::Instill.TriggerAsyncNamespaceLatestModelBody request,
             string? instillRequesterUid = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -160,7 +160,7 @@ namespace Instill
             string? instillRequesterUid = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Instill.ModelPublicServiceTriggerAsyncNamespaceLatestModelBody
+            var __request = new global::Instill.TriggerAsyncNamespaceLatestModelBody
             {
                 TaskInputs = taskInputs,
             };

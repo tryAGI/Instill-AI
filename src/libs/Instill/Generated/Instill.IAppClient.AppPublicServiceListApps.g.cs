@@ -5,7 +5,8 @@ namespace Instill
     public partial interface IAppClient
     {
         /// <summary>
-        /// List all apps info
+        /// List all apps info<br/>
+        /// Returns a paginated list of apps.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

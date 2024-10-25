@@ -7,15 +7,15 @@ namespace Instill
     {
         partial void PreparePipelinePublicServiceUpdateNamespaceConnectionArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string connectionNamespaceId,
+            ref string namespaceId,
             ref string connectionId,
-            global::Instill.PipelinePublicServiceUpdateNamespaceConnectionRequest request);
+            global::Instill.Connection request);
         partial void PreparePipelinePublicServiceUpdateNamespaceConnectionRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string connectionNamespaceId,
+            string namespaceId,
             string connectionId,
-            global::Instill.PipelinePublicServiceUpdateNamespaceConnectionRequest request);
+            global::Instill.Connection request);
         partial void ProcessPipelinePublicServiceUpdateNamespaceConnectionResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -29,15 +29,15 @@ namespace Instill
         /// Update a connection<br/>
         /// Updates a connection with the supplied connection fields.
         /// </summary>
-        /// <param name="connectionNamespaceId"></param>
+        /// <param name="namespaceId"></param>
         /// <param name="connectionId"></param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Instill.UpdateNamespaceConnectionResponse> PipelinePublicServiceUpdateNamespaceConnectionAsync(
-            string connectionNamespaceId,
+            string namespaceId,
             string connectionId,
-            global::Instill.PipelinePublicServiceUpdateNamespaceConnectionRequest request,
+            global::Instill.Connection request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -46,12 +46,12 @@ namespace Instill
                 client: HttpClient);
             PreparePipelinePublicServiceUpdateNamespaceConnectionArguments(
                 httpClient: HttpClient,
-                connectionNamespaceId: ref connectionNamespaceId,
+                namespaceId: ref namespaceId,
                 connectionId: ref connectionId,
                 request: request);
 
             var __pathBuilder = new PathBuilder(
-                path: $"/v1beta/namespaces/{connectionNamespaceId}/connections/{connectionId}",
+                path: $"/v1beta/namespaces/{namespaceId}/connections/{connectionId}",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -86,7 +86,7 @@ namespace Instill
             PreparePipelinePublicServiceUpdateNamespaceConnectionRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                connectionNamespaceId: connectionNamespaceId,
+                namespaceId: namespaceId,
                 connectionId: connectionId,
                 request: request);
 
@@ -131,10 +131,13 @@ namespace Instill
         /// Update a connection<br/>
         /// Updates a connection with the supplied connection fields.
         /// </summary>
-        /// <param name="connectionNamespaceId"></param>
+        /// <param name="namespaceId"></param>
         /// <param name="connectionId"></param>
         /// <param name="id">
         /// ID.
+        /// </param>
+        /// <param name="requestNamespaceId">
+        /// ID of the namespace owning the connection.
         /// </param>
         /// <param name="integrationId">
         /// Integration ID. It determines for which type of components can reference<br/>
@@ -167,20 +170,22 @@ namespace Instill
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Instill.UpdateNamespaceConnectionResponse> PipelinePublicServiceUpdateNamespaceConnectionAsync(
-            string connectionNamespaceId,
+            string namespaceId,
             string connectionId,
             string id,
+            string requestNamespaceId,
             string integrationId,
-            global::Instill.ConnectionMethod method,
+            global::Instill.Method method,
             object setup,
             global::System.Collections.Generic.IList<string>? scopes = default,
             string? identity = default,
             object? oAuthAccessDetails = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Instill.PipelinePublicServiceUpdateNamespaceConnectionRequest
+            var __request = new global::Instill.Connection
             {
                 Id = id,
+                NamespaceId = requestNamespaceId,
                 IntegrationId = integrationId,
                 Method = method,
                 Setup = setup,
@@ -190,7 +195,7 @@ namespace Instill
             };
 
             return await PipelinePublicServiceUpdateNamespaceConnectionAsync(
-                connectionNamespaceId: connectionNamespaceId,
+                namespaceId: namespaceId,
                 connectionId: connectionId,
                 request: __request,
                 cancellationToken: cancellationToken).ConfigureAwait(false);

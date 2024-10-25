@@ -5,7 +5,8 @@ namespace Instill
     public partial interface IConversationClient
     {
         /// <summary>
-        /// Delete a conversation
+        /// Delete a conversation<br/>
+        /// Deletes a conversation.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="appId"></param>

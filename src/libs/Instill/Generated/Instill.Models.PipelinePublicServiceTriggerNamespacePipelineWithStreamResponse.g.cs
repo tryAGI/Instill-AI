@@ -24,7 +24,7 @@ namespace Instill
         /// [API Design Guide](https://cloud.google.com/apis/design/errors).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error")]
-        public global::Instill.GooglerpcStatus? Error { get; set; }
+        public global::Instill.RpcStatus? Error { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

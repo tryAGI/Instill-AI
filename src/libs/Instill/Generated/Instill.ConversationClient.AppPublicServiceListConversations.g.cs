@@ -34,7 +34,8 @@ namespace Instill
             ref string content);
 
         /// <summary>
-        /// List conversations
+        /// List conversations<br/>
+        /// Returns a paginated list of conversations.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="appId"></param>

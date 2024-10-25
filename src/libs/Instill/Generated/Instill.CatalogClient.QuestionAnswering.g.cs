@@ -28,7 +28,8 @@ namespace Instill
             ref string content);
 
         /// <summary>
-        /// Ask a question
+        /// Ask a question<br/>
+        /// Asks a question.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>
@@ -139,7 +140,8 @@ namespace Instill
         }
 
         /// <summary>
-        /// Ask a question
+        /// Ask a question<br/>
+        /// Asks a question.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>

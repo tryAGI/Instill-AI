@@ -18,7 +18,7 @@ namespace Instill
         global::System.Threading.Tasks.Task<global::Instill.TriggerNamespaceLatestModelResponse> ModelPublicServiceTriggerNamespaceLatestModelAsync(
             string namespaceId,
             string modelId,
-            global::Instill.ModelPublicServiceTriggerNamespaceLatestModelBody request,
+            global::Instill.TriggerNamespaceLatestModelBody request,
             string? instillRequesterUid = default,
             global::System.Threading.CancellationToken cancellationToken = default);
 

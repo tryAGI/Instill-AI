@@ -5,7 +5,8 @@ namespace Instill
     public partial interface ICatalogClient
     {
         /// <summary>
-        /// Update a catalog info
+        /// Update a catalog info<br/>
+        /// Updates the information of a catalog.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>
@@ -19,7 +20,8 @@ namespace Instill
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Update a catalog info
+        /// Update a catalog info<br/>
+        /// Updates the information of a catalog.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>

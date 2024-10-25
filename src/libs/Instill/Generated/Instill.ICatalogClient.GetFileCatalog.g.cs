@@ -5,7 +5,8 @@ namespace Instill
     public partial interface ICatalogClient
     {
         /// <summary>
-        /// Get file catalog
+        /// Get file catalog<br/>
+        /// Get the catalog file.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>

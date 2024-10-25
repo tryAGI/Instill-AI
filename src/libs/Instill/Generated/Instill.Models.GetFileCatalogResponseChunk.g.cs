@@ -18,8 +18,8 @@ namespace Instill
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.GetFileCatalogResponseChunkTypeJsonConverter))]
-        public global::Instill.GetFileCatalogResponseChunkType? Type { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.ChunkTypeJsonConverter))]
+        public global::Instill.ChunkType? Type { get; set; }
 
         /// <summary>
         /// 

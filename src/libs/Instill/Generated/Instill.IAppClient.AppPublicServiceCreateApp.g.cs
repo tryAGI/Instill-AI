@@ -5,7 +5,8 @@ namespace Instill
     public partial interface IAppClient
     {
         /// <summary>
-        /// Create a app
+        /// Create an app<br/>
+        /// Creates an app.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="request"></param>
@@ -13,11 +14,12 @@ namespace Instill
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Instill.CreateAppResponse> AppPublicServiceCreateAppAsync(
             string namespaceId,
-            global::Instill.AppPublicServiceCreateAppBody request,
+            global::Instill.CreateAppBody request,
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Create a app
+        /// Create an app<br/>
+        /// Creates an app.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="id">

@@ -30,7 +30,8 @@ namespace Instill
             ref string content);
 
         /// <summary>
-        /// Get Object Upload URL
+        /// Get Object Upload URL<br/>
+        /// Returns the upload URL of an object.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="objectName"></param>

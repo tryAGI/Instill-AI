@@ -9,13 +9,13 @@ namespace Instill
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
             ref string appId,
-            global::Instill.AppPublicServiceCreateConversationBody request);
+            global::Instill.CreateConversationBody request);
         partial void PrepareAppPublicServiceCreateConversationRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
             string appId,
-            global::Instill.AppPublicServiceCreateConversationBody request);
+            global::Instill.CreateConversationBody request);
         partial void ProcessAppPublicServiceCreateConversationResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -26,7 +26,8 @@ namespace Instill
             ref string content);
 
         /// <summary>
-        /// Create a Conversation
+        /// Create a conversation<br/>
+        /// Creates a conversation.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="appId"></param>
@@ -36,7 +37,7 @@ namespace Instill
         public async global::System.Threading.Tasks.Task<global::Instill.CreateConversationResponse> AppPublicServiceCreateConversationAsync(
             string namespaceId,
             string appId,
-            global::Instill.AppPublicServiceCreateConversationBody request,
+            global::Instill.CreateConversationBody request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -127,7 +128,8 @@ namespace Instill
         }
 
         /// <summary>
-        /// Create a Conversation
+        /// Create a conversation<br/>
+        /// Creates a conversation.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="appId"></param>
@@ -140,7 +142,7 @@ namespace Instill
             string conversationId,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Instill.AppPublicServiceCreateConversationBody
+            var __request = new global::Instill.CreateConversationBody
             {
                 ConversationId = conversationId,
             };

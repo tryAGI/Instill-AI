@@ -11,7 +11,7 @@ namespace Instill
             ref string modelId,
             ref string version,
             ref string? instillRequesterUid,
-            global::Instill.ModelPublicServiceTriggerAsyncNamespaceModelBody request);
+            global::Instill.TriggerAsyncNamespaceModelBody request);
         partial void PrepareModelPublicServiceTriggerAsyncNamespaceModelRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
@@ -19,7 +19,7 @@ namespace Instill
             string modelId,
             string version,
             string? instillRequesterUid,
-            global::Instill.ModelPublicServiceTriggerAsyncNamespaceModelBody request);
+            global::Instill.TriggerAsyncNamespaceModelBody request);
         partial void ProcessModelPublicServiceTriggerAsyncNamespaceModelResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -45,7 +45,7 @@ namespace Instill
             string namespaceId,
             string modelId,
             string version,
-            global::Instill.ModelPublicServiceTriggerAsyncNamespaceModelBody request,
+            global::Instill.TriggerAsyncNamespaceModelBody request,
             string? instillRequesterUid = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -168,7 +168,7 @@ namespace Instill
             string? instillRequesterUid = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Instill.ModelPublicServiceTriggerAsyncNamespaceModelBody
+            var __request = new global::Instill.TriggerAsyncNamespaceModelBody
             {
                 TaskInputs = taskInputs,
             };

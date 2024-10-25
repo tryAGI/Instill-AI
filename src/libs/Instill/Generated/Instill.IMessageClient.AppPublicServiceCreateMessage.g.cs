@@ -5,7 +5,8 @@ namespace Instill
     public partial interface IMessageClient
     {
         /// <summary>
-        /// Create a message
+        /// Create a message<br/>
+        /// Creates a message.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="appId"></param>
@@ -17,11 +18,12 @@ namespace Instill
             string namespaceId,
             string appId,
             string conversationId,
-            global::Instill.AppPublicServiceCreateMessageBody request,
+            global::Instill.CreateMessageBody request,
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Create a message
+        /// Create a message<br/>
+        /// Creates a message.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="appId"></param>
@@ -37,7 +39,7 @@ namespace Instill
             string conversationId,
             string content,
             string role,
-            global::Instill.MessageMessageType type = default,
+            global::Instill.MessageType type = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

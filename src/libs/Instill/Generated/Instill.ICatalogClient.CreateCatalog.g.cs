@@ -5,7 +5,8 @@ namespace Instill
     public partial interface ICatalogClient
     {
         /// <summary>
-        /// Create a catalog
+        /// Create a catalog<br/>
+        /// Creates a catalog.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="request"></param>
@@ -17,7 +18,8 @@ namespace Instill
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Create a catalog
+        /// Create a catalog<br/>
+        /// Creates a catalog.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="name">

@@ -58,7 +58,7 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("spec")]
-        public global::Instill.ComponentDefinitionSpec? Spec { get; set; }
+        public global::Instill.Spec? Spec { get; set; }
 
         /// <summary>
         /// Component definition type.<br/>

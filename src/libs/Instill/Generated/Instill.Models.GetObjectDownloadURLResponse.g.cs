@@ -24,7 +24,7 @@ namespace Instill
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("object")]
-        public global::Instill.Object? Object { get; set; }
+        public global::Instill.AIObject? Object { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

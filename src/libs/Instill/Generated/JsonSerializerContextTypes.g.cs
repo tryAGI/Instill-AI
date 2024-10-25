@@ -578,7 +578,7 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Object? Type140 { get; set; }
+        public global::Instill.AIObject? Type140 { get; set; }
         /// <summary>
         /// 
         /// </summary>

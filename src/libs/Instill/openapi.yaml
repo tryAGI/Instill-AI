@@ -6985,7 +6985,7 @@ components:
         object:
           title: object
           allOf:
-            - $ref: '#/components/schemas/Object'
+            - $ref: '#/components/schemas/AIObject'
     GetObjectResponse:
       title: GetObjectResponse
       type: object
@@ -6993,7 +6993,7 @@ components:
         object:
           title: object
           allOf:
-            - $ref: '#/components/schemas/Object'
+            - $ref: '#/components/schemas/AIObject'
     GetObjectURLResponse:
       title: GetObjectURLResponse
       type: object
@@ -7016,7 +7016,7 @@ components:
         object:
           title: object
           allOf:
-            - $ref: '#/components/schemas/Object'
+            - $ref: '#/components/schemas/AIObject'
     GetOperationResponse:
       type: object
       properties:
@@ -8345,7 +8345,7 @@ components:
           description: "A list of scopes that identify the resources that the connection will be\nable to access on the user's behalf."
           readOnly: true
       description: "OAuthConfig contains the configuration parameters for fetching an access\ntoken via an OAuth 2.0 flow."
-    Object:
+    AIObject:
       title: Object
       type: object
       properties:
@@ -9833,7 +9833,7 @@ components:
         object:
           title: object
           allOf:
-            - $ref: '#/components/schemas/Object'
+            - $ref: '#/components/schemas/AIObject'
     UpdateOrganizationMembershipResponse:
       type: object
       properties:

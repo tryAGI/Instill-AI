@@ -21,6 +21,10 @@ yamlOrJson = yamlOrJson
         // Fixing the Task schema because it conflicts with the Task class in C#
         .Replace("#/definitions/Task", "#/definitions/AITask")
         .Replace("  Task:", "  AITask:")
+        
+        // Fixing the Object schema because it conflicts with the Object class in C#
+        .Replace("'#/definitions/Object'", "'#/definitions/AIObject'")
+        .Replace("  Object:", "  AIObject:")
     ;
 
 var openApiDocument = new OpenApiStringReader().Read(yamlOrJson, out var diagnostics);

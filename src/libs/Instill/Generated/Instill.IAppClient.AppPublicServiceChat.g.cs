@@ -18,7 +18,7 @@ namespace Instill
         global::System.Threading.Tasks.Task<global::Instill.ChatResponse> AppPublicServiceChatAsync(
             string namespaceId,
             string appId,
-            global::Instill.AppPublicServiceChatBody request,
+            global::Instill.ChatBody request,
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>

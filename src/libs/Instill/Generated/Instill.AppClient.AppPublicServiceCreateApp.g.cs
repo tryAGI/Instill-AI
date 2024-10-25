@@ -8,12 +8,12 @@ namespace Instill
         partial void PrepareAppPublicServiceCreateAppArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
-            global::Instill.AppPublicServiceCreateAppBody request);
+            global::Instill.CreateAppBody request);
         partial void PrepareAppPublicServiceCreateAppRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
-            global::Instill.AppPublicServiceCreateAppBody request);
+            global::Instill.CreateAppBody request);
         partial void ProcessAppPublicServiceCreateAppResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -24,7 +24,8 @@ namespace Instill
             ref string content);
 
         /// <summary>
-        /// Create a app
+        /// Create an app<br/>
+        /// Creates an app.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="request"></param>
@@ -32,7 +33,7 @@ namespace Instill
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Instill.CreateAppResponse> AppPublicServiceCreateAppAsync(
             string namespaceId,
-            global::Instill.AppPublicServiceCreateAppBody request,
+            global::Instill.CreateAppBody request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -121,7 +122,8 @@ namespace Instill
         }
 
         /// <summary>
-        /// Create a app
+        /// Create an app<br/>
+        /// Creates an app.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="id">
@@ -144,7 +146,7 @@ namespace Instill
             global::System.Collections.Generic.IList<string>? tags = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Instill.AppPublicServiceCreateAppBody
+            var __request = new global::Instill.CreateAppBody
             {
                 Id = id,
                 Description = description,

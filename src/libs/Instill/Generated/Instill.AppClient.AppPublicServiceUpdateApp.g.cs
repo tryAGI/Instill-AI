@@ -9,13 +9,13 @@ namespace Instill
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
             ref string appId,
-            global::Instill.AppPublicServiceUpdateAppBody request);
+            global::Instill.UpdateAppBody request);
         partial void PrepareAppPublicServiceUpdateAppRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
             string appId,
-            global::Instill.AppPublicServiceUpdateAppBody request);
+            global::Instill.UpdateAppBody request);
         partial void ProcessAppPublicServiceUpdateAppResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -26,7 +26,8 @@ namespace Instill
             ref string content);
 
         /// <summary>
-        /// Update a app info
+        /// Update a app info<br/>
+        /// Updates the information of an app.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="appId"></param>
@@ -36,7 +37,7 @@ namespace Instill
         public async global::System.Threading.Tasks.Task<global::Instill.UpdateAppResponse> AppPublicServiceUpdateAppAsync(
             string namespaceId,
             string appId,
-            global::Instill.AppPublicServiceUpdateAppBody request,
+            global::Instill.UpdateAppBody request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -127,7 +128,8 @@ namespace Instill
         }
 
         /// <summary>
-        /// Update a app info
+        /// Update a app info<br/>
+        /// Updates the information of an app.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="appId"></param>
@@ -163,7 +165,7 @@ namespace Instill
             int? lastAiAssistantAppTopK = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Instill.AppPublicServiceUpdateAppBody
+            var __request = new global::Instill.UpdateAppBody
             {
                 NewAppId = newAppId,
                 NewDescription = newDescription,

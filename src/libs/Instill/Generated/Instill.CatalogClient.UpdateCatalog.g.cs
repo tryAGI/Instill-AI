@@ -26,7 +26,8 @@ namespace Instill
             ref string content);
 
         /// <summary>
-        /// Update a catalog info
+        /// Update a catalog info<br/>
+        /// Updates the information of a catalog.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>
@@ -127,7 +128,8 @@ namespace Instill
         }
 
         /// <summary>
-        /// Update a catalog info
+        /// Update a catalog info<br/>
+        /// Updates the information of a catalog.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>

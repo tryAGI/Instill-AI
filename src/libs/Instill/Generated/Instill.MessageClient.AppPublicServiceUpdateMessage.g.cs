@@ -11,7 +11,7 @@ namespace Instill
             ref string appId,
             ref string conversationId,
             ref string messageUid,
-            global::Instill.AppPublicServiceUpdateMessageBody request);
+            global::Instill.UpdateMessageBody request);
         partial void PrepareAppPublicServiceUpdateMessageRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
@@ -19,7 +19,7 @@ namespace Instill
             string appId,
             string conversationId,
             string messageUid,
-            global::Instill.AppPublicServiceUpdateMessageBody request);
+            global::Instill.UpdateMessageBody request);
         partial void ProcessAppPublicServiceUpdateMessageResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -30,7 +30,8 @@ namespace Instill
             ref string content);
 
         /// <summary>
-        /// Update a message
+        /// Update a message<br/>
+        /// Updates a message.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="appId"></param>
@@ -44,7 +45,7 @@ namespace Instill
             string appId,
             string conversationId,
             string messageUid,
-            global::Instill.AppPublicServiceUpdateMessageBody request,
+            global::Instill.UpdateMessageBody request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -139,7 +140,8 @@ namespace Instill
         }
 
         /// <summary>
-        /// Update a message
+        /// Update a message<br/>
+        /// Updates a message.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="appId"></param>
@@ -156,7 +158,7 @@ namespace Instill
             string content,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Instill.AppPublicServiceUpdateMessageBody
+            var __request = new global::Instill.UpdateMessageBody
             {
                 Content = content,
             };

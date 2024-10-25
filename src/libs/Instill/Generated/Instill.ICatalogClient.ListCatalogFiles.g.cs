@@ -5,7 +5,8 @@ namespace Instill
     public partial interface ICatalogClient
     {
         /// <summary>
-        /// List catalog files
+        /// List catalog files<br/>
+        /// Returns a paginated list of catalog files.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>

@@ -38,7 +38,8 @@ namespace Instill
             ref string content);
 
         /// <summary>
-        /// List messages
+        /// List messages<br/>
+        /// Returns a paginated list of messages.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="appId"></param>

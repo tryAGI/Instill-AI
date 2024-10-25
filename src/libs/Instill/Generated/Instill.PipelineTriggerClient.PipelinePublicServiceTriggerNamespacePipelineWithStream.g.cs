@@ -10,14 +10,14 @@ namespace Instill
             ref string namespaceId,
             ref string pipelineId,
             ref string? instillRequesterUid,
-            global::Instill.PipelinePublicServiceTriggerNamespacePipelineWithStreamBody request);
+            global::Instill.TriggerNamespacePipelineWithStreamBody request);
         partial void PreparePipelinePublicServiceTriggerNamespacePipelineWithStreamRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
             string pipelineId,
             string? instillRequesterUid,
-            global::Instill.PipelinePublicServiceTriggerNamespacePipelineWithStreamBody request);
+            global::Instill.TriggerNamespacePipelineWithStreamBody request);
         partial void ProcessPipelinePublicServiceTriggerNamespacePipelineWithStreamResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -44,7 +44,7 @@ namespace Instill
         public async global::System.Threading.Tasks.Task<global::Instill.PipelinePublicServiceTriggerNamespacePipelineWithStreamResponse> PipelinePublicServiceTriggerNamespacePipelineWithStreamAsync(
             string namespaceId,
             string pipelineId,
-            global::Instill.PipelinePublicServiceTriggerNamespacePipelineWithStreamBody request,
+            global::Instill.TriggerNamespacePipelineWithStreamBody request,
             string? instillRequesterUid = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -168,7 +168,7 @@ namespace Instill
             global::System.Collections.Generic.IList<global::Instill.TriggerData>? data = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Instill.PipelinePublicServiceTriggerNamespacePipelineWithStreamBody
+            var __request = new global::Instill.TriggerNamespacePipelineWithStreamBody
             {
                 Inputs = inputs,
                 Data = data,

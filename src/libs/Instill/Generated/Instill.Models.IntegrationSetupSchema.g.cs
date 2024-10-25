@@ -4,26 +4,12 @@
 namespace Instill
 {
     /// <summary>
-    /// SetupSchema defines the schema for a connection setup.<br/>
-    /// This message is deprecated.
+    /// The connection setup field definitions. Each integration will require<br/>
+    /// different data to connect to the 3rd party app.<br/>
+    /// Included only in responses
     /// </summary>
     public sealed partial class IntegrationSetupSchema
     {
-        /// <summary>
-        /// The connection method, which will define the fields in the schema.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("method")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.ConnectionMethodJsonConverter))]
-        public global::Instill.ConnectionMethod? Method { get; set; }
-
-        /// <summary>
-        /// The connection setup field definitions. Each integration will require<br/>
-        /// different data to connect to the 3rd party app.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("schema")]
-        public object? Schema { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

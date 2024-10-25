@@ -5,7 +5,8 @@ namespace Instill
     public partial interface ICatalogClient
     {
         /// <summary>
-        /// Retrieve similar chunks
+        /// Retrieve similar chunks<br/>
+        /// Returns the similar chunks.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>
@@ -21,7 +22,8 @@ namespace Instill
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Retrieve similar chunks
+        /// Retrieve similar chunks<br/>
+        /// Returns the similar chunks.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>

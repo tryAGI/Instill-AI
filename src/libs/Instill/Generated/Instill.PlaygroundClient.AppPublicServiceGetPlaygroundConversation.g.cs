@@ -25,7 +25,7 @@ namespace Instill
 
         /// <summary>
         /// Get Playground Conversation<br/>
-        /// get the latest conversation of auth user(e.g. login user and api key user)
+        /// Returns the latest conversation of auth user(e.g. login user and api key user).
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="appId"></param>

@@ -5,7 +5,8 @@ namespace Instill
     public partial interface ICatalogClient
     {
         /// <summary>
-        /// Process catalog files
+        /// Process catalog files<br/>
+        /// Processes catalog files.
         /// </summary>
         /// <param name="instillRequesterUid"></param>
         /// <param name="request"></param>
@@ -17,7 +18,8 @@ namespace Instill
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Process catalog files
+        /// Process catalog files<br/>
+        /// Processes catalog files.
         /// </summary>
         /// <param name="instillRequesterUid"></param>
         /// <param name="fileUids">

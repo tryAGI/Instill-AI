@@ -22,7 +22,8 @@ namespace Instill
             ref string content);
 
         /// <summary>
-        /// Delete a file
+        /// Delete a file<br/>
+        /// Deletes a file.
         /// </summary>
         /// <param name="fileUid"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

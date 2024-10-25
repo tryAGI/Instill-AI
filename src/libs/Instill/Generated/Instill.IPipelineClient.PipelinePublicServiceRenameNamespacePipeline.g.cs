@@ -22,7 +22,7 @@ namespace Instill
         global::System.Threading.Tasks.Task<global::Instill.RenameNamespacePipelineResponse> PipelinePublicServiceRenameNamespacePipelineAsync(
             string namespaceId,
             string pipelineId,
-            global::Instill.PipelinePublicServiceRenameNamespacePipelineBody request,
+            global::Instill.RenameNamespacePipelineBody request,
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>

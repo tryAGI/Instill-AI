@@ -24,7 +24,8 @@ namespace Instill
             ref string content);
 
         /// <summary>
-        /// Delete a catalog
+        /// Delete a catalog<br/>
+        /// Deletes a catalog.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>

@@ -5,7 +5,8 @@ namespace Instill
     public partial interface ICatalogClient
     {
         /// <summary>
-        /// Get all catalogs info
+        /// Get all catalogs info<br/>
+        /// Returns a paginated list of catalogs.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

@@ -5,7 +5,8 @@ namespace Instill
     public partial interface IConversationClient
     {
         /// <summary>
-        /// Create a Conversation
+        /// Create a conversation<br/>
+        /// Creates a conversation.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="appId"></param>
@@ -15,11 +16,12 @@ namespace Instill
         global::System.Threading.Tasks.Task<global::Instill.CreateConversationResponse> AppPublicServiceCreateConversationAsync(
             string namespaceId,
             string appId,
-            global::Instill.AppPublicServiceCreateConversationBody request,
+            global::Instill.CreateConversationBody request,
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Create a Conversation
+        /// Create a conversation<br/>
+        /// Creates a conversation.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="appId"></param>

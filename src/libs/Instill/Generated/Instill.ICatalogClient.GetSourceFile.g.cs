@@ -5,7 +5,8 @@ namespace Instill
     public partial interface ICatalogClient
     {
         /// <summary>
-        /// Get catalog single-source-of-truth file
+        /// Get catalog single-source-of-truth file<br/>
+        /// Gets the single-source-of-truth file of a catalog.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>

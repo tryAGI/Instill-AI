@@ -10,14 +10,14 @@ namespace Instill
             ref string namespaceId,
             ref string appId,
             ref string conversationId,
-            global::Instill.AppPublicServiceCreateMessageBody request);
+            global::Instill.CreateMessageBody request);
         partial void PrepareAppPublicServiceCreateMessageRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
             string appId,
             string conversationId,
-            global::Instill.AppPublicServiceCreateMessageBody request);
+            global::Instill.CreateMessageBody request);
         partial void ProcessAppPublicServiceCreateMessageResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -28,7 +28,8 @@ namespace Instill
             ref string content);
 
         /// <summary>
-        /// Create a message
+        /// Create a message<br/>
+        /// Creates a message.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="appId"></param>
@@ -40,7 +41,7 @@ namespace Instill
             string namespaceId,
             string appId,
             string conversationId,
-            global::Instill.AppPublicServiceCreateMessageBody request,
+            global::Instill.CreateMessageBody request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -133,7 +134,8 @@ namespace Instill
         }
 
         /// <summary>
-        /// Create a message
+        /// Create a message<br/>
+        /// Creates a message.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="appId"></param>
@@ -149,10 +151,10 @@ namespace Instill
             string conversationId,
             string content,
             string role,
-            global::Instill.MessageMessageType type = default,
+            global::Instill.MessageType type = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Instill.AppPublicServiceCreateMessageBody
+            var __request = new global::Instill.CreateMessageBody
             {
                 Content = content,
                 Role = role,

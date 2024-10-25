@@ -26,7 +26,8 @@ namespace Instill
             ref string content);
 
         /// <summary>
-        /// Create a file
+        /// Create a file<br/>
+        /// Creates a file.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>
@@ -127,7 +128,8 @@ namespace Instill
         }
 
         /// <summary>
-        /// Create a file
+        /// Create a file<br/>
+        /// Creates a file.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>

@@ -23,7 +23,7 @@ namespace Instill
         /// Defines the configuration to share a resource via link.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("shareCode")]
-        public global::Instill.SharingShareCode? ShareCode { get; set; }
+        public global::Instill.ShareCode? ShareCode { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

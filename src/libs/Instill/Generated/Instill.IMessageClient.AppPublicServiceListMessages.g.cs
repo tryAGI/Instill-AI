@@ -5,7 +5,8 @@ namespace Instill
     public partial interface IMessageClient
     {
         /// <summary>
-        /// List messages
+        /// List messages<br/>
+        /// Returns a paginated list of messages.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="appId"></param>

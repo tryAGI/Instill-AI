@@ -24,7 +24,8 @@ namespace Instill
             ref string content);
 
         /// <summary>
-        /// Process catalog files
+        /// Process catalog files<br/>
+        /// Processes catalog files.
         /// </summary>
         /// <param name="instillRequesterUid"></param>
         /// <param name="request"></param>
@@ -127,7 +128,8 @@ namespace Instill
         }
 
         /// <summary>
-        /// Process catalog files
+        /// Process catalog files<br/>
+        /// Processes catalog files.
         /// </summary>
         /// <param name="instillRequesterUid"></param>
         /// <param name="fileUids">

@@ -5,7 +5,8 @@ namespace Instill
     public partial interface IAppClient
     {
         /// <summary>
-        /// Update a app info
+        /// Update a app info<br/>
+        /// Updates the information of an app.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="appId"></param>
@@ -15,11 +16,12 @@ namespace Instill
         global::System.Threading.Tasks.Task<global::Instill.UpdateAppResponse> AppPublicServiceUpdateAppAsync(
             string namespaceId,
             string appId,
-            global::Instill.AppPublicServiceUpdateAppBody request,
+            global::Instill.UpdateAppBody request,
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Update a app info
+        /// Update a app info<br/>
+        /// Updates the information of an app.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="appId"></param>

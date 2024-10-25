@@ -28,7 +28,8 @@ namespace Instill
             ref string content);
 
         /// <summary>
-        /// Retrieve similar chunks
+        /// Retrieve similar chunks<br/>
+        /// Returns the similar chunks.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>
@@ -139,7 +140,8 @@ namespace Instill
         }
 
         /// <summary>
-        /// Retrieve similar chunks
+        /// Retrieve similar chunks<br/>
+        /// Returns the similar chunks.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>

@@ -10,14 +10,14 @@ namespace Instill
             ref string namespaceId,
             ref string modelId,
             ref string? instillRequesterUid,
-            global::Instill.ModelPublicServiceTriggerNamespaceLatestModelBody request);
+            global::Instill.TriggerNamespaceLatestModelBody request);
         partial void PrepareModelPublicServiceTriggerNamespaceLatestModelRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
             string modelId,
             string? instillRequesterUid,
-            global::Instill.ModelPublicServiceTriggerNamespaceLatestModelBody request);
+            global::Instill.TriggerNamespaceLatestModelBody request);
         partial void ProcessModelPublicServiceTriggerNamespaceLatestModelResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -41,7 +41,7 @@ namespace Instill
         public async global::System.Threading.Tasks.Task<global::Instill.TriggerNamespaceLatestModelResponse> ModelPublicServiceTriggerNamespaceLatestModelAsync(
             string namespaceId,
             string modelId,
-            global::Instill.ModelPublicServiceTriggerNamespaceLatestModelBody request,
+            global::Instill.TriggerNamespaceLatestModelBody request,
             string? instillRequesterUid = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -160,7 +160,7 @@ namespace Instill
             string? instillRequesterUid = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Instill.ModelPublicServiceTriggerNamespaceLatestModelBody
+            var __request = new global::Instill.TriggerNamespaceLatestModelBody
             {
                 TaskInputs = taskInputs,
             };

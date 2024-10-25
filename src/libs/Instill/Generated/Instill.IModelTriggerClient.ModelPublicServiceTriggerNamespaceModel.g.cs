@@ -20,7 +20,7 @@ namespace Instill
             string namespaceId,
             string modelId,
             string version,
-            global::Instill.ModelPublicServiceTriggerNamespaceModelBody request,
+            global::Instill.TriggerNamespaceModelBody request,
             string? instillRequesterUid = default,
             global::System.Threading.CancellationToken cancellationToken = default);
 

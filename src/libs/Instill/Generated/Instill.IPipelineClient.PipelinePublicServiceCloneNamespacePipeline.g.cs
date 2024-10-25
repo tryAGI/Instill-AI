@@ -17,7 +17,7 @@ namespace Instill
         global::System.Threading.Tasks.Task<string> PipelinePublicServiceCloneNamespacePipelineAsync(
             string namespaceId,
             string pipelineId,
-            global::Instill.PipelinePublicServiceCloneNamespacePipelineBody request,
+            global::Instill.CloneNamespacePipelineBody request,
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>

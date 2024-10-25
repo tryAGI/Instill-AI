@@ -12,7 +12,7 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("messages")]
-        public global::System.Collections.Generic.IList<global::Instill.Appappv1alphaMessage>? Messages { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.AppV1alphaMessage>? Messages { get; set; }
 
         /// <summary>
         /// Included only in responses

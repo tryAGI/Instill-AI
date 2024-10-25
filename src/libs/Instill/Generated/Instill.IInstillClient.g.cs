@@ -44,7 +44,7 @@ namespace Instill
         /// <summary>
         /// Organization memberships
         /// </summary>
-        public MembershipsClient Memberships { get; }
+        public MembershipClient Membership { get; }
 
         /// <summary>
         /// API tokens
@@ -132,6 +132,11 @@ namespace Instill
         public CatalogClient Catalog { get; }
 
         /// <summary>
+        /// Objects
+        /// </summary>
+        public ObjectClient Object { get; }
+
+        /// <summary>
         /// Apps
         /// </summary>
         public AppClient App { get; }
@@ -150,21 +155,6 @@ namespace Instill
         /// Playgrounds
         /// </summary>
         public PlaygroundClient Playground { get; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public ObjectClient Object { get; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public MembershipClient Membership { get; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public UtilsClient Utils { get; }
 
     }
 }

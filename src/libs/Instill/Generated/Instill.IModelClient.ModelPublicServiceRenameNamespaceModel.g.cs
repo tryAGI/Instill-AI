@@ -17,7 +17,7 @@ namespace Instill
         global::System.Threading.Tasks.Task<global::Instill.RenameNamespaceModelResponse> ModelPublicServiceRenameNamespaceModelAsync(
             string namespaceId,
             string modelId,
-            global::Instill.ModelPublicServiceRenameNamespaceModelBody request,
+            global::Instill.RenameNamespaceModelBody request,
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>

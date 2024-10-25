@@ -66,7 +66,7 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("permission")]
-        public global::Instill.CorePermission? Permission { get; set; }
+        public global::Instill.MgmtV1betaPermission? Permission { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

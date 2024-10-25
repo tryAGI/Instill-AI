@@ -51,7 +51,7 @@ namespace Instill
         /// <summary>
         /// Organization memberships
         /// </summary>
-        public MembershipsClient Memberships => new MembershipsClient(HttpClient, authorizations: Authorizations)
+        public MembershipClient Membership => new MembershipClient(HttpClient, authorizations: Authorizations)
         {
             JsonSerializerContext = JsonSerializerContext,
         };
@@ -193,6 +193,14 @@ namespace Instill
         };
 
         /// <summary>
+        /// Objects
+        /// </summary>
+        public ObjectClient Object => new ObjectClient(HttpClient, authorizations: Authorizations)
+        {
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
         /// Apps
         /// </summary>
         public AppClient App => new AppClient(HttpClient, authorizations: Authorizations)
@@ -220,30 +228,6 @@ namespace Instill
         /// Playgrounds
         /// </summary>
         public PlaygroundClient Playground => new PlaygroundClient(HttpClient, authorizations: Authorizations)
-        {
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public ObjectClient Object => new ObjectClient(HttpClient, authorizations: Authorizations)
-        {
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public MembershipClient Membership => new MembershipClient(HttpClient, authorizations: Authorizations)
-        {
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public UtilsClient Utils => new UtilsClient(HttpClient, authorizations: Authorizations)
         {
             JsonSerializerContext = JsonSerializerContext,
         };

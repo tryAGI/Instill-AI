@@ -9,13 +9,13 @@ namespace Instill
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
             ref string modelId,
-            global::Instill.ModelPublicServiceRenameNamespaceModelBody request);
+            global::Instill.RenameNamespaceModelBody request);
         partial void PrepareModelPublicServiceRenameNamespaceModelRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
             string modelId,
-            global::Instill.ModelPublicServiceRenameNamespaceModelBody request);
+            global::Instill.RenameNamespaceModelBody request);
         partial void ProcessModelPublicServiceRenameNamespaceModelResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -38,7 +38,7 @@ namespace Instill
         public async global::System.Threading.Tasks.Task<global::Instill.RenameNamespaceModelResponse> ModelPublicServiceRenameNamespaceModelAsync(
             string namespaceId,
             string modelId,
-            global::Instill.ModelPublicServiceRenameNamespaceModelBody request,
+            global::Instill.RenameNamespaceModelBody request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -147,7 +147,7 @@ namespace Instill
             string newModelId,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Instill.ModelPublicServiceRenameNamespaceModelBody
+            var __request = new global::Instill.RenameNamespaceModelBody
             {
                 NewModelId = newModelId,
             };

@@ -13,7 +13,7 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("webhooks")]
-        public global::System.Collections.Generic.Dictionary<string, global::Instill.EndpointsWebhookEndpoint>? Webhooks { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::Instill.WebhookEndpoint>? Webhooks { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

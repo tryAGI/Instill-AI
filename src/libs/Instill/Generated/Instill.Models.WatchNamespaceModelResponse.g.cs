@@ -13,8 +13,8 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("state")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.Modelv1alphaStateJsonConverter))]
-        public global::Instill.Modelv1alphaState? State { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.StateJsonConverter))]
+        public global::Instill.State? State { get; set; }
 
         /// <summary>
         /// Included only in responses

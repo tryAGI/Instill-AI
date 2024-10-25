@@ -106,7 +106,7 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("permission")]
-        public global::Instill.Vdppipelinev1betaPermission? Permission { get; set; }
+        public global::Instill.PipelineV1betaPermission? Permission { get; set; }
 
         /// <summary>
         /// Pipeline visibility.<br/>

@@ -53,9 +53,9 @@ namespace Instill
         /// integration.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("method")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.ConnectionMethodJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.MethodJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Instill.ConnectionMethod Method { get; set; }
+        public required global::Instill.Method Method { get; set; }
 
         /// <summary>
         /// Connection details. This field is required on creation, optional on view.<br/>
@@ -94,8 +94,8 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("view")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.Vdppipelinev1betaViewJsonConverter))]
-        public global::Instill.Vdppipelinev1betaView? View { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.PipelineV1betaViewJsonConverter))]
+        public global::Instill.PipelineV1betaView? View { get; set; }
 
         /// <summary>
         /// Creation timestamp.<br/>

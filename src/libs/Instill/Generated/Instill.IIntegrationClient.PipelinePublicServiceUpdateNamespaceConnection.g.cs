@@ -8,25 +8,28 @@ namespace Instill
         /// Update a connection<br/>
         /// Updates a connection with the supplied connection fields.
         /// </summary>
-        /// <param name="connectionNamespaceId"></param>
+        /// <param name="namespaceId"></param>
         /// <param name="connectionId"></param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Instill.UpdateNamespaceConnectionResponse> PipelinePublicServiceUpdateNamespaceConnectionAsync(
-            string connectionNamespaceId,
+            string namespaceId,
             string connectionId,
-            global::Instill.PipelinePublicServiceUpdateNamespaceConnectionRequest request,
+            global::Instill.Connection request,
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a connection<br/>
         /// Updates a connection with the supplied connection fields.
         /// </summary>
-        /// <param name="connectionNamespaceId"></param>
+        /// <param name="namespaceId"></param>
         /// <param name="connectionId"></param>
         /// <param name="id">
         /// ID.
+        /// </param>
+        /// <param name="requestNamespaceId">
+        /// ID of the namespace owning the connection.
         /// </param>
         /// <param name="integrationId">
         /// Integration ID. It determines for which type of components can reference<br/>
@@ -59,11 +62,12 @@ namespace Instill
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Instill.UpdateNamespaceConnectionResponse> PipelinePublicServiceUpdateNamespaceConnectionAsync(
-            string connectionNamespaceId,
+            string namespaceId,
             string connectionId,
             string id,
+            string requestNamespaceId,
             string integrationId,
-            global::Instill.ConnectionMethod method,
+            global::Instill.Method method,
             object setup,
             global::System.Collections.Generic.IList<string>? scopes = default,
             string? identity = default,

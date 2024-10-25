@@ -62,7 +62,7 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("helpLink")]
-        public global::Instill.IntegrationLink? HelpLink { get; set; }
+        public global::Instill.Link? HelpLink { get; set; }
 
         /// <summary>
         /// The connection setup field definitions. Each integration will require<br/>
@@ -78,14 +78,14 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("oAuthConfig")]
-        public global::Instill.IntegrationOAuthConfig? OAuthConfig { get; set; }
+        public global::Instill.OAuthConfig? OAuthConfig { get; set; }
 
         /// <summary>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("view")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.Vdppipelinev1betaViewJsonConverter))]
-        public global::Instill.Vdppipelinev1betaView? View { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.PipelineV1betaViewJsonConverter))]
+        public global::Instill.PipelineV1betaView? View { get; set; }
 
         /// <summary>
         /// Schemas defines the supported schemas for the connection setup.<br/>
@@ -96,7 +96,7 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("schemas")]
-        public global::System.Collections.Generic.IList<global::Instill.IntegrationSetupSchema>? Schemas { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.SetupSchema>? Schemas { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

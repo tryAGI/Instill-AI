@@ -5,7 +5,8 @@ namespace Instill
     public partial interface ICatalogClient
     {
         /// <summary>
-        /// Update catalog chunk
+        /// Update catalog chunk<br/>
+        /// Updates a catalog chunk.
         /// </summary>
         /// <param name="chunkUid"></param>
         /// <param name="request"></param>
@@ -17,7 +18,8 @@ namespace Instill
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Update catalog chunk
+        /// Update catalog chunk<br/>
+        /// Updates a catalog chunk.
         /// </summary>
         /// <param name="chunkUid"></param>
         /// <param name="retrievable"></param>

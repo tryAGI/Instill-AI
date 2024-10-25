@@ -19,7 +19,7 @@ namespace Instill
             string namespaceId,
             string pipelineId,
             string releaseId,
-            global::Instill.PipelinePublicServiceCloneNamespacePipelineReleaseBody request,
+            global::Instill.CloneNamespacePipelineReleaseBody request,
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>

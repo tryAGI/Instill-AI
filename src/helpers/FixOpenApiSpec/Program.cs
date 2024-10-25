@@ -1,4 +1,5 @@
 using Microsoft.OpenApi;
+using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Readers;
@@ -40,6 +41,24 @@ openApiDocument.Components.Schemas["File"]!.Required.Add("fileUid");
 
 openApiDocument.Components.Schemas["ProcessCatalogFilesResponse"]!.Required.Add("files");
 openApiDocument.Components.Schemas["ListCatalogFilesResponse"]!.Required.Add("files");
+
+foreach (var pair in openApiDocument.Paths)
+{
+    // if (pair.Key.Contains("/v1alpha/"))
+    // {
+    //     foreach (var operation in pair.Value.Operations)
+    //     {
+    //         operation.Value.Extensions.Add("x-stage", new OpenApiString("alpha"));
+    //     }
+    // }
+    // if (pair.Key.Contains("/v1beta/"))
+    // {
+    //     foreach (var operation in pair.Value.Operations)
+    //     {
+    //         operation.Value.Extensions.Add("x-stage", new OpenApiString("beta"));
+    //     }
+    // }
+}
 
 yamlOrJson = openApiDocument.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0);
 _ = new OpenApiStringReader().Read(yamlOrJson, out diagnostics);

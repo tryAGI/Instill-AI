@@ -6290,7 +6290,6 @@ components:
     Connection:
       required:
         - id
-        - namespaceId
         - integrationId
         - method
         - setup
@@ -6306,6 +6305,7 @@ components:
         namespaceId:
           type: string
           description: ID of the namespace owning the connection.
+          readOnly: true
         integrationId:
           type: string
           description: "Integration ID. It determines for which type of components can reference\nthis connection."

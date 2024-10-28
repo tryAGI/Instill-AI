@@ -25,11 +25,11 @@ namespace Instill
         public required string Id { get; set; }
 
         /// <summary>
-        /// ID of the namespace owning the connection.
+        /// ID of the namespace owning the connection.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("namespaceId")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string NamespaceId { get; set; }
+        public string? NamespaceId { get; set; }
 
         /// <summary>
         /// Integration ID. It determines for which type of components can reference<br/>

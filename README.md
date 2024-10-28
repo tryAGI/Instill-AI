@@ -20,7 +20,7 @@ using var api = new InstillClient(apiKey);
 using var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromMinutes(5));
 var cancellationToken = cancellationTokenSource.Token;
 
-CreateCatalogResponse createCatalogResponse = await client.Catalog.CreateCatalogAsync(
+CreateCatalogResponse createCatalogResponse = await client.x__Subscription.CreateCatalogAsync(
     namespaceId: "havendv",
     name: $"shakespeare_{Random.Shared.Next(1_000_000)}",
     description: "Works of Shakespeare",
@@ -33,7 +33,7 @@ Console.WriteLine($"Description: {catalog.Description}");
 Console.WriteLine($"TotalFiles: {catalog.TotalFiles}");
 Console.WriteLine($"TotalTokens: {catalog.TotalTokens}");
 
-UploadCatalogFileResponse uploadFileResponse = await client.Catalog.UploadCatalogFileAsync(
+UploadCatalogFileResponse uploadFileResponse = await client.x__Subscription.UploadCatalogFileAsync(
     namespaceId: "havendv",
     catalogId: catalog.CatalogId,
     name: "midsummer-nights-dream.pdf",
@@ -49,7 +49,7 @@ Console.WriteLine($"Size: {file.Size}");
 Console.WriteLine($"TotalTokens: {file.TotalTokens}");
 Console.WriteLine($"TotalChunks: {file.TotalChunks}");
 
-ProcessCatalogFilesResponse processFilesResponse = await client.Catalog.ProcessCatalogFilesAsync(
+ProcessCatalogFilesResponse processFilesResponse = await client.x__Subscription.ProcessCatalogFilesAsync(
     fileUids: [file.FileUid],
     cancellationToken: cancellationToken);
 
@@ -59,7 +59,7 @@ while (!cancellationToken.IsCancellationRequested)
 {
     await Task.Delay(TimeSpan.FromSeconds(5), cancellationToken);
     
-    ListCatalogFilesResponse listFilesResponse = await client.Catalog.ListCatalogFilesAsync(
+    ListCatalogFilesResponse listFilesResponse = await client.x__Subscription.ListCatalogFilesAsync(
         namespaceId: "havendv",
         catalogId: catalog.CatalogId,
         cancellationToken: cancellationToken);
@@ -75,7 +75,7 @@ while (!cancellationToken.IsCancellationRequested)
 const string question = "Who are the main characters involved in the love triangle in Act I?";
 Console.WriteLine($"Question: {question}");
 
-QuestionAnsweringResponse questionAnsweringResponse = await client.Catalog.QuestionAnsweringAsync(
+QuestionAnsweringResponse questionAnsweringResponse = await client.x__Subscription.QuestionAnsweringAsync(
     namespaceId: "havendv",
     catalogId: catalog.CatalogId,
     question: question,
@@ -96,7 +96,7 @@ foreach (var chunk in questionAnsweringResponse.SimilarChunks ?? [])
     Console.WriteLine("----------------------------------------");
 }
 
-DeleteCatalogResponse deleteCatalogResponse = await client.Catalog.DeleteCatalogAsync(
+DeleteCatalogResponse deleteCatalogResponse = await client.x__Subscription.DeleteCatalogAsync(
     namespaceId: "havendv",
     catalogId: catalog.CatalogId,
     cancellationToken: cancellationToken);

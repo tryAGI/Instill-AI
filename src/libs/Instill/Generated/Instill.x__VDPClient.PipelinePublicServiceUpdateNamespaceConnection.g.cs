@@ -136,9 +136,6 @@ namespace Instill
         /// <param name="id">
         /// ID.
         /// </param>
-        /// <param name="requestNamespaceId">
-        /// ID of the namespace owning the connection.
-        /// </param>
         /// <param name="integrationId">
         /// Integration ID. It determines for which type of components can reference<br/>
         /// this connection.
@@ -173,7 +170,6 @@ namespace Instill
             string namespaceId,
             string connectionId,
             string id,
-            string requestNamespaceId,
             string integrationId,
             global::Instill.Method method,
             object setup,
@@ -185,7 +181,6 @@ namespace Instill
             var __request = new global::Instill.Connection
             {
                 Id = id,
-                NamespaceId = requestNamespaceId,
                 IntegrationId = integrationId,
                 Method = method,
                 Setup = setup,

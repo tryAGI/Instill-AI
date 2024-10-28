@@ -25,9 +25,6 @@ namespace Instill
         /// <param name="id">
         /// ID.
         /// </param>
-        /// <param name="requestNamespaceId">
-        /// ID of the namespace owning the connection.
-        /// </param>
         /// <param name="integrationId">
         /// Integration ID. It determines for which type of components can reference<br/>
         /// this connection.
@@ -61,7 +58,6 @@ namespace Instill
         global::System.Threading.Tasks.Task<global::Instill.CreateNamespaceConnectionResponse> PipelinePublicServiceCreateNamespaceConnectionAsync(
             string namespaceId,
             string id,
-            string requestNamespaceId,
             string integrationId,
             global::Instill.Method method,
             object setup,

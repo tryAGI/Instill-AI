@@ -32,129 +32,39 @@ namespace Instill
 
 
         /// <summary>
-        /// User namespaces
+        /// Namespaces (e.g. User, Organization) that structure the resource hierarchy.
         /// </summary>
-        public UserClient User { get; }
+        public x__NamespaceClient x__Namespace { get; }
 
         /// <summary>
-        /// Organization namespaces
+        /// Pipeline orchestration in VDP (Versatile Data Pipeline).
         /// </summary>
-        public OrganizationClient Organization { get; }
+        public x__VDPClient x__VDP { get; }
 
         /// <summary>
-        /// Organization memberships
+        /// AI Model resources for MLOps/LLMOps.
         /// </summary>
-        public MembershipClient Membership { get; }
+        public x__ModelClient x__Model { get; }
 
         /// <summary>
-        /// API tokens
+        /// Data orchestration for unified unstructured data representation.
         /// </summary>
-        public TokenClient Token { get; }
+        public x__ArtifactClient x__Artifact { get; }
 
         /// <summary>
-        /// Subscriptions to pricing plans
+        /// Ready-to-use AI applications.
         /// </summary>
-        public SubscriptionClient Subscription { get; }
+        public x__AppClient x__App { get; }
 
         /// <summary>
-        /// Instill Credit
+        /// Resource usage metrics.
         /// </summary>
-        public CreditClient Credit { get; }
+        public x__MetricsClient x__Metrics { get; }
 
         /// <summary>
-        /// Usage metrics
+        /// Pricing plans on Instill Cloud.
         /// </summary>
-        public MetricClient Metric { get; }
-
-        /// <summary>
-        /// Model regions
-        /// </summary>
-        public RegionClient Region { get; }
-
-        /// <summary>
-        /// Utils
-        /// </summary>
-        public UtilClient Util { get; }
-
-        /// <summary>
-        /// Components
-        /// </summary>
-        public ComponentClient Component { get; }
-
-        /// <summary>
-        /// Pipelines
-        /// </summary>
-        public PipelineClient Pipeline { get; }
-
-        /// <summary>
-        /// Pipeline Releases
-        /// </summary>
-        public PipelineReleaseClient PipelineRelease { get; }
-
-        /// <summary>
-        /// Pipeline Triggers
-        /// </summary>
-        public PipelineTriggerClient PipelineTrigger { get; }
-
-        /// <summary>
-        /// Namespace Secrets
-        /// </summary>
-        public SecretClient Secret { get; }
-
-        /// <summary>
-        /// Namespace Integrations
-        /// </summary>
-        public IntegrationClient Integration { get; }
-
-        /// <summary>
-        /// Model definitions
-        /// </summary>
-        public ModelDefinitionClient ModelDefinition { get; }
-
-        /// <summary>
-        /// Models
-        /// </summary>
-        public ModelClient Model { get; }
-
-        /// <summary>
-        /// Model versions
-        /// </summary>
-        public ModelVersionClient ModelVersion { get; }
-
-        /// <summary>
-        /// Model triggers
-        /// </summary>
-        public ModelTriggerClient ModelTrigger { get; }
-
-        /// <summary>
-        /// Catalogs
-        /// </summary>
-        public CatalogClient Catalog { get; }
-
-        /// <summary>
-        /// Objects
-        /// </summary>
-        public ObjectClient Object { get; }
-
-        /// <summary>
-        /// Apps
-        /// </summary>
-        public AppClient App { get; }
-
-        /// <summary>
-        /// Conversations
-        /// </summary>
-        public ConversationClient Conversation { get; }
-
-        /// <summary>
-        /// Messages
-        /// </summary>
-        public MessageClient Message { get; }
-
-        /// <summary>
-        /// Playgrounds
-        /// </summary>
-        public PlaygroundClient Playground { get; }
+        public x__SubscriptionClient x__Subscription { get; }
 
     }
 }

@@ -4,11 +4,11 @@
 namespace Instill
 {
     /// <summary>
-    /// Interact with Instill AI through its public API<br/>
+    /// Data orchestration for unified unstructured data representation.<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
-    public sealed partial class InstillClient : global::Instill.IInstillClient, global::System.IDisposable
+    public sealed partial class x__ArtifactClient : global::Instill.Ix__ArtifactClient, global::System.IDisposable
     {
         /// <summary>
         /// 
@@ -33,63 +33,7 @@ namespace Instill
 
 
         /// <summary>
-        /// Namespaces (e.g. User, Organization) that structure the resource hierarchy.
-        /// </summary>
-        public x__NamespaceClient x__Namespace => new x__NamespaceClient(HttpClient, authorizations: Authorizations)
-        {
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
-        /// Pipeline orchestration in VDP (Versatile Data Pipeline).
-        /// </summary>
-        public x__VDPClient x__VDP => new x__VDPClient(HttpClient, authorizations: Authorizations)
-        {
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
-        /// AI Model resources for MLOps/LLMOps.
-        /// </summary>
-        public x__ModelClient x__Model => new x__ModelClient(HttpClient, authorizations: Authorizations)
-        {
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
-        /// Data orchestration for unified unstructured data representation.
-        /// </summary>
-        public x__ArtifactClient x__Artifact => new x__ArtifactClient(HttpClient, authorizations: Authorizations)
-        {
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
-        /// Ready-to-use AI applications.
-        /// </summary>
-        public x__AppClient x__App => new x__AppClient(HttpClient, authorizations: Authorizations)
-        {
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
-        /// Resource usage metrics.
-        /// </summary>
-        public x__MetricsClient x__Metrics => new x__MetricsClient(HttpClient, authorizations: Authorizations)
-        {
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
-        /// Pricing plans on Instill Cloud.
-        /// </summary>
-        public x__SubscriptionClient x__Subscription => new x__SubscriptionClient(HttpClient, authorizations: Authorizations)
-        {
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
-        /// Creates a new instance of the InstillClient.
+        /// Creates a new instance of the x__ArtifactClient.
         /// If no httpClient is provided, a new one will be created.
         /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
         /// </summary>
@@ -97,7 +41,7 @@ namespace Instill
         /// <param name="baseUri">The base URL for the API. If not provided, the default baseUri from OpenAPI spec will be used.</param>
         /// <param name="authorizations">The authorizations to use for the requests.</param>
         /// <param name="disposeHttpClient">Dispose the HttpClient when the instance is disposed. True by default.</param>
-        public InstillClient(
+        public x__ArtifactClient(
             global::System.Net.Http.HttpClient? httpClient = null,
             global::System.Uri? baseUri = null,
             global::System.Collections.Generic.List<global::Instill.EndPointAuthorization>? authorizations = null,

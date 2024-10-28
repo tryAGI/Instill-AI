@@ -9,7 +9,7 @@ info:
   license:
     name: Elastic License 2.0 (ELv2)
     url: https://github.com/instill-ai/protobufs/blob/main/LICENSE
-  version: v0.43.0-beta
+  version: v0.44.1-beta
 servers:
   - url: https://api.instill.tech
   - url: http://api.instill.tech
@@ -17,7 +17,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/apps':
     get:
       tags:
-        - App
+        - 🍎 App
       summary: List all apps info
       description: Returns a paginated list of apps.
       operationId: AppPublicService_ListApps
@@ -48,7 +48,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     post:
       tags:
-        - App
+        - 🍎 App
       summary: Create an app
       description: Creates an app.
       operationId: AppPublicService_CreateApp
@@ -87,7 +87,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/apps/{appId}':
     put:
       tags:
-        - App
+        - 🍎 App
       summary: Update a app info
       description: Updates the information of an app.
       operationId: AppPublicService_UpdateApp
@@ -131,7 +131,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     delete:
       tags:
-        - App
+        - 🍎 App
       summary: Delete a app
       description: Deletes an app.
       operationId: AppPublicService_DeleteApp
@@ -169,7 +169,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/apps/{appId}/conversations':
     get:
       tags:
-        - Conversation
+        - 🍎 App
       summary: List conversations
       description: Returns a paginated list of conversations.
       operationId: AppPublicService_ListConversations
@@ -232,7 +232,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     post:
       tags:
-        - Conversation
+        - 🍎 App
       summary: Create a conversation
       description: Creates a conversation.
       operationId: AppPublicService_CreateConversation
@@ -277,7 +277,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/apps/{appId}/conversations/{conversationId}':
     put:
       tags:
-        - Conversation
+        - 🍎 App
       summary: Update a conversation
       description: Updates a conversation.
       operationId: AppPublicService_UpdateConversation
@@ -327,7 +327,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     delete:
       tags:
-        - Conversation
+        - 🍎 App
       summary: Delete a conversation
       description: Deletes a conversation.
       operationId: AppPublicService_DeleteConversation
@@ -371,7 +371,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/apps/{appId}/conversations/{conversationId}/messages':
     get:
       tags:
-        - Message
+        - 🍎 App
       summary: List messages
       description: Returns a paginated list of messages.
       operationId: AppPublicService_ListMessages
@@ -446,7 +446,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     post:
       tags:
-        - Message
+        - 🍎 App
       summary: Create a message
       description: Creates a message.
       operationId: AppPublicService_CreateMessage
@@ -497,7 +497,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/apps/{appId}/conversations/{conversationId}/messages/{messageUid}':
     put:
       tags:
-        - Message
+        - 🍎 App
       summary: Update a message
       description: Updates a message.
       operationId: AppPublicService_UpdateMessage
@@ -553,7 +553,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     delete:
       tags:
-        - Message
+        - 🍎 App
       summary: Delete a message
       description: Deletes a message.
       operationId: AppPublicService_DeleteMessage
@@ -603,7 +603,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/apps/{appId}/ai_assistant_playground/conversation':
     get:
       tags:
-        - Playground
+        - 🍎 App
       summary: Get Playground Conversation
       description: Returns the latest conversation of auth user(e.g. login user and api key user).
       operationId: AppPublicService_GetPlaygroundConversation
@@ -641,7 +641,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/apps/{appId}/ai_assistant_playground/restart':
     post:
       tags:
-        - Playground
+        - 🍎 App
       summary: Restart Playground Conversation
       description: "Creates a new conversation and uses the auth user UID as creator UID and\nauto-generates a new conversation ID on the behalf of auth user."
       operationId: AppPublicService_RestartPlaygroundConversation
@@ -679,7 +679,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/apps/{appId}/chat':
     post:
       tags:
-        - App
+        - 🍎 App
       summary: Chat
       description: "Chat sends a message asynchronously and streams back the response.\nThis method is intended for real-time conversation with a chatbot\nand the response needs to be processed incrementally."
       operationId: AppPublicService_Chat
@@ -724,7 +724,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/catalogs':
     get:
       tags:
-        - Catalog
+        - 💾 Artifact
       summary: Get all catalogs info
       description: Returns a paginated list of catalogs.
       operationId: ListCatalogs
@@ -755,7 +755,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     post:
       tags:
-        - Catalog
+        - 💾 Artifact
       summary: Create a catalog
       description: Creates a catalog.
       operationId: CreateCatalog
@@ -794,7 +794,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}':
     get:
       tags:
-        - Catalog
+        - 💾 Artifact
       summary: Get file catalog
       description: Get the catalog file.
       operationId: GetFileCatalog
@@ -841,7 +841,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     put:
       tags:
-        - Catalog
+        - 💾 Artifact
       summary: Update a catalog info
       description: Updates the information of a catalog.
       operationId: UpdateCatalog
@@ -885,7 +885,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     delete:
       tags:
-        - Catalog
+        - 💾 Artifact
       summary: Delete a catalog
       description: Deletes a catalog.
       operationId: DeleteCatalog
@@ -923,7 +923,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/files':
     get:
       tags:
-        - Catalog
+        - 💾 Artifact
       summary: List catalog files
       description: Returns a paginated list of catalog files.
       operationId: ListCatalogFiles
@@ -979,7 +979,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     post:
       tags:
-        - Catalog
+        - 💾 Artifact
       summary: Create a file
       description: Creates a file.
       operationId: UploadCatalogFile
@@ -1025,7 +1025,7 @@ paths:
   /v1alpha/catalogs/files:
     delete:
       tags:
-        - Catalog
+        - 💾 Artifact
       summary: Delete a file
       description: Deletes a file.
       operationId: DeleteCatalogFile
@@ -1057,7 +1057,7 @@ paths:
   /v1alpha/catalogs/files/processAsync:
     post:
       tags:
-        - Catalog
+        - 💾 Artifact
       summary: Process catalog files
       description: Processes catalog files.
       operationId: ProcessCatalogFiles
@@ -1095,7 +1095,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/chunks':
     get:
       tags:
-        - Catalog
+        - 💾 Artifact
       summary: List catalog chunks
       description: Returns a paginated list of catalog chunks.
       operationId: ListChunks
@@ -1146,7 +1146,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/files/{fileUid}/source':
     get:
       tags:
-        - Catalog
+        - 💾 Artifact
       summary: Get catalog single-source-of-truth file
       description: Gets the single-source-of-truth file of a catalog.
       operationId: GetSourceFile
@@ -1190,7 +1190,7 @@ paths:
   '/v1alpha/chunks/{chunkUid}':
     post:
       tags:
-        - Catalog
+        - 💾 Artifact
       summary: Update catalog chunk
       description: Updates a catalog chunk.
       operationId: UpdateChunk
@@ -1229,7 +1229,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/chunks/retrieve':
     post:
       tags:
-        - Catalog
+        - 💾 Artifact
       summary: Retrieve similar chunks
       description: Returns the similar chunks.
       operationId: SimilarityChunksSearch
@@ -1279,7 +1279,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/ask':
     post:
       tags:
-        - Catalog
+        - 💾 Artifact
       summary: Ask a question
       description: Asks a question.
       operationId: QuestionAnswering
@@ -1329,7 +1329,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/catalogs/{catalogId}/runs':
     get:
       tags:
-        - Catalog
+        - 💾 Artifact
       summary: List Catalog Runs
       description: Returns a paginated list of catalog runs.
       operationId: ListCatalogRuns
@@ -1389,7 +1389,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/object-upload-url':
     get:
       tags:
-        - Object
+        - 💾 Artifact
       summary: Get Object Upload URL
       description: Returns the upload URL of an object.
       operationId: GetObjectUploadURL
@@ -1445,7 +1445,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/object-download-url':
     get:
       tags:
-        - Object
+        - 💾 Artifact
       summary: Get Object Download URL
       description: Returns the download URL of an object.
       operationId: GetObjectDownloadURL
@@ -1489,7 +1489,7 @@ paths:
   /v1beta/user:
     get:
       tags:
-        - User
+        - 🪆 Namespace
       summary: Get the authenticated user
       description: Returns the details of the authenticated user.
       operationId: GetAuthenticatedUser
@@ -1513,7 +1513,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     patch:
       tags:
-        - User
+        - 🪆 Namespace
       summary: Update the authenticated user
       description: "Updates the information of the authenticated user.\n\nIn REST requests, only the supplied user fields will be taken into account\nwhen updating the resource."
       operationId: PatchAuthenticatedUser
@@ -1546,7 +1546,7 @@ paths:
   /v1beta/users:
     get:
       tags:
-        - User
+        - 🪆 Namespace
       summary: List users
       description: Returns a paginated list of users.
       operationId: ListUsers
@@ -1596,7 +1596,7 @@ paths:
   '/v1beta/users/{userId}':
     get:
       tags:
-        - User
+        - 🪆 Namespace
       summary: Get a user
       description: Returns the details of a user by their ID.
       operationId: GetUser
@@ -1636,7 +1636,7 @@ paths:
   /v1beta/organizations:
     get:
       tags:
-        - Organization
+        - 🪆 Namespace
       summary: List organizations
       description: Returns a paginated list of organizations.
       operationId: ListOrganizations
@@ -1685,7 +1685,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     post:
       tags:
-        - Organization
+        - 🪆 Namespace
       summary: Create an organization
       description: Creates an organization.
       operationId: CreateOrganization
@@ -1718,7 +1718,7 @@ paths:
   '/v1beta/organizations/{organizationId}':
     get:
       tags:
-        - Organization
+        - 🪆 Namespace
       summary: Get an organization
       description: Returns the organization details by its ID.
       operationId: GetOrganization
@@ -1757,7 +1757,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     delete:
       tags:
-        - Organization
+        - 🪆 Namespace
       summary: Delete an organization
       description: Accesses and deletes an organization by ID.
       operationId: DeleteOrganization
@@ -1788,7 +1788,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     patch:
       tags:
-        - Organization
+        - 🪆 Namespace
       summary: Update an organization
       description: "Accesses and updates an organization by ID.\n\nIn REST requests, only the supplied organization fields will be taken into\naccount when updating the resource."
       operationId: UpdateOrganization
@@ -1828,7 +1828,7 @@ paths:
   '/v1beta/users/{userId}/memberships':
     get:
       tags:
-        - Membership
+        - 🪆 Namespace
       summary: List user memberships
       description: Returns the memberships of a user.
       operationId: ListUserMemberships
@@ -1860,7 +1860,7 @@ paths:
   '/v1beta/users/{userId}/memberships/{organizationId}':
     get:
       tags:
-        - Membership
+        - 🪆 Namespace
       summary: Get a user membership
       description: "Returns the details of the relationship between a user and an\norganization. The authenticated must match the membership parent."
       operationId: GetUserMembership
@@ -1905,7 +1905,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     put:
       tags:
-        - Membership
+        - 🪆 Namespace
       summary: Update a user membership
       description: Accesses and updates a user membership by parent and membership IDs.
       operationId: UpdateUserMembership
@@ -1956,7 +1956,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     delete:
       tags:
-        - Membership
+        - 🪆 Namespace
       summary: Delete a user membership
       description: Accesses and deletes a user membership by parent and membership IDs.
       operationId: DeleteUserMembership
@@ -1994,7 +1994,7 @@ paths:
   '/v1beta/organizations/{organizationId}/memberships':
     get:
       tags:
-        - Membership
+        - 🪆 Namespace
       summary: List organization memberships
       description: Returns a paginated list of the user memberships in an organization.
       operationId: ListOrganizationMemberships
@@ -2026,7 +2026,7 @@ paths:
   '/v1beta/organizations/{organizationId}/memberships/{userId}':
     get:
       tags:
-        - Membership
+        - 🪆 Namespace
       summary: Get a an organization membership
       description: Returns the details of a user membership within an organization.
       operationId: GetOrganizationMembership
@@ -2071,7 +2071,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     put:
       tags:
-        - Membership
+        - 🪆 Namespace
       summary: Uppdate an organization membership
       description: Updates a user membership within an organization.
       operationId: UpdateOrganizationMembership
@@ -2122,7 +2122,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     delete:
       tags:
-        - Membership
+        - 🪆 Namespace
       summary: Delete an organization membership
       description: Deletes a user membership within an organization.
       operationId: DeleteOrganizationMembership
@@ -2160,7 +2160,7 @@ paths:
   /v1beta/user/subscription:
     get:
       tags:
-        - Subscription
+        - 🤝 Subscription
       summary: Get the subscription of the authenticated user
       description: Returns the subscription details of the authenticated user.
       operationId: GetAuthenticatedUserSubscription
@@ -2185,7 +2185,7 @@ paths:
   '/v1beta/organizations/{organizationId}/subscription':
     get:
       tags:
-        - Subscription
+        - 🤝 Subscription
       summary: Get the subscription of an organization
       description: Returns the subscription details of an organization.
       operationId: GetOrganizationSubscription
@@ -2217,7 +2217,7 @@ paths:
   /v1beta/tokens:
     get:
       tags:
-        - Token
+        - 🪆 Namespace
       summary: List API tokens
       description: Returns a paginated list of the API tokens of the authenticated user.
       operationId: ListTokens
@@ -2253,7 +2253,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     post:
       tags:
-        - Token
+        - 🪆 Namespace
       summary: Create an API token
       description: Creates an API token for the authenticated user.
       operationId: CreateToken
@@ -2286,7 +2286,7 @@ paths:
   '/v1beta/tokens/{tokenId}':
     get:
       tags:
-        - Token
+        - 🪆 Namespace
       summary: Get an API token
       description: Returns the details of an API token.
       operationId: GetToken
@@ -2317,7 +2317,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     delete:
       tags:
-        - Token
+        - 🪆 Namespace
       summary: Delete an API token
       description: Deletes an API token.
       operationId: DeleteToken
@@ -2349,7 +2349,7 @@ paths:
   /v1beta/validate_token:
     post:
       tags:
-        - Token
+        - 🪆 Namespace
       summary: Validate an API token
       description: Validates an API token.
       operationId: ValidateToken
@@ -2374,7 +2374,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/credit':
     get:
       tags:
-        - Credit
+        - 🤝 Subscription
       summary: Get the remaining Instill Credit
       description: "This endpoint returns the remaining [Instill Credit](https://www.instill.tech/docs/vdp/credit) of a given user or\norganization. The requested credit owner must be either the authenticated\nuser or an organization they belong to.\n\nOn Instill Core, this endpoint will return a 404 Not Found status."
       operationId: GetRemainingCredit
@@ -2406,7 +2406,7 @@ paths:
   /v1beta/check-namespace:
     post:
       tags:
-        - Util
+        - 🪆 Namespace
       summary: Check if a namespace is in use
       description: "Returns the availability of a namespace or, alternatively, the type of\nresource that is using it."
       operationId: CheckNamespace
@@ -2439,7 +2439,7 @@ paths:
   /v1beta/metrics/vdp/pipeline/triggers:
     get:
       tags:
-        - Metric
+        - 📊 Metrics
       summary: List pipeline triggers
       description: Returns a paginated list of pipeline executions.
       operationId: ListPipelineTriggerRecords
@@ -2481,7 +2481,7 @@ paths:
   /v1beta/metrics/vdp/pipeline/charts:
     get:
       tags:
-        - Metric
+        - 📊 Metrics
       summary: List pipeline trigger time charts
       description: "Returns a timeline of pipline trigger counts for the pipelines of a given\nowner.\nNOTE: This method will soon return the trigger counts of a given requester."
       operationId: ListPipelineTriggerChartRecords
@@ -2518,7 +2518,7 @@ paths:
   /v1beta/metrics/credit/charts:
     get:
       tags:
-        - Metric
+        - 📊 Metrics
       summary: List Instill Credit consumption time charts
       description: "Returns a timeline of Instill Credit consumption for a given owner. The\nresponse will contain one set of records (datapoints) per consumption\nsource (e.g. \"pipeline\", \"model\"). Each datapoint represents the amount\nconsumed in a time bucket."
       operationId: ListCreditConsumptionChartRecords
@@ -2567,7 +2567,7 @@ paths:
   /v1alpha/model-definitions:
     get:
       tags:
-        - Model Definition
+        - ⚗️ Model
       summary: List model definitions
       description: Returns a paginated list of model definitions.
       operationId: ModelPublicService_ListModelDefinitions
@@ -2612,7 +2612,7 @@ paths:
   /v1alpha/available-regions:
     get:
       tags:
-        - Region
+        - ⚗️ Model
       summary: List available regions
       description: Returns a paginated list of available regions.
       operationId: ModelPublicService_ListAvailableRegions
@@ -2637,7 +2637,7 @@ paths:
   '/v1alpha/model-definitions/{modelDefinitionId}':
     get:
       tags:
-        - Model Definition
+        - ⚗️ Model
       summary: Get a model definition
       description: Returns the details of a model definition.
       operationId: ModelPublicService_GetModelDefinition
@@ -2677,7 +2677,7 @@ paths:
   /v1alpha/models:
     get:
       tags:
-        - Model
+        - ⚗️ Model
       summary: List models
       description: Returns a paginated list of models.
       operationId: ModelPublicService_ListModels
@@ -2745,7 +2745,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/models':
     get:
       tags:
-        - Model
+        - ⚗️ Model
       summary: List namespace models
       description: Returns a paginated list of models.
       operationId: ModelPublicService_ListNamespaceModels
@@ -2818,7 +2818,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     post:
       tags:
-        - Model
+        - ⚗️ Model
       summary: Create a new model
       description: "Creates a new model under the parenthood of a namespace. This is an\nasynchronous endpoint, i.e., the server will not wait for the model to be\ncreated in order to respond. Instead, it will return a response with the\nnecessary information to access the result and status of the creation\noperation."
       operationId: ModelPublicService_CreateNamespaceModel
@@ -2858,7 +2858,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}':
     get:
       tags:
-        - Model
+        - ⚗️ Model
       summary: Get a model
       description: 'Returns the detail of a model, accessing it by the model ID and its parent namespace.'
       operationId: ModelPublicService_GetNamespaceModel
@@ -2903,7 +2903,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     delete:
       tags:
-        - Model
+        - ⚗️ Model
       summary: Delete a model
       description: "Deletes a model, accesing it by its resource name, which is defined by the\nparent namespace and the ID of the model."
       operationId: ModelPublicService_DeleteNamespaceModel
@@ -2940,7 +2940,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     patch:
       tags:
-        - Model
+        - ⚗️ Model
       summary: Update a model
       description: "Updates a model, accessing it by its resource name, which is defined by\nthe parent namespace and the ID of the model.\n\nIn REST requests, only the supplied model fields will be taken into\naccount when updating the resource."
       operationId: ModelPublicService_UpdateNamespaceModel
@@ -2986,7 +2986,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}/rename':
     post:
       tags:
-        - Model
+        - ⚗️ Model
       summary: Rename a model
       description: "Renames a model, accesing it by its resource name, which is defined by the\nparent namespace and the ID of the model."
       operationId: ModelPublicService_RenameNamespaceModel
@@ -3031,7 +3031,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}/versions/{version}/watch':
     get:
       tags:
-        - Model Version
+        - ⚗️ Model
       summary: Watch the state of a model version
       description: "Returns the state of a model. The model resource allocation and scaling actions take some\ntime, during which a model will be in various state. This endpoint\nallows clients to track the state."
       operationId: ModelPublicService_WatchNamespaceModel
@@ -3075,7 +3075,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}/watch':
     get:
       tags:
-        - Model
+        - ⚗️ Model
       summary: Watch the state of the latest model version
       description: "Returns the state of the latest model version. The model resource allocation and scaling actions\ntake some time, during which a model will be in various state. This endpoint\nallows clients to track the state."
       operationId: ModelPublicService_WatchNamespaceLatestModel
@@ -3113,7 +3113,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}/versions':
     get:
       tags:
-        - Model Version
+        - ⚗️ Model
       summary: List namespace model versions
       description: "Returns a paginated list of version of a model namespace that belong to the specified namespace.\nContains model version and digest."
       operationId: ModelPublicService_ListNamespaceModelVersions
@@ -3163,7 +3163,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}/versions/{version}':
     delete:
       tags:
-        - Model Version
+        - ⚗️ Model
       summary: Delete a model version
       description: "Deletes a model version, accesing it by its resource name, which is defined by the\nparent namespace and the ID of the model, and version."
       operationId: ModelPublicService_DeleteNamespaceModelVersion
@@ -3207,7 +3207,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}/versions/{version}/trigger':
     post:
       tags:
-        - Model Trigger
+        - ⚗️ Model
       summary: Trigger model inference
       description: "Triggers a deployed model to infer the result of a set of task or\nquestions."
       operationId: ModelPublicService_TriggerNamespaceModel
@@ -3263,7 +3263,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}/versions/{version}/trigger-async':
     post:
       tags:
-        - Model Trigger
+        - ⚗️ Model
       summary: Trigger model inference asynchronously
       description: "Triggers a deployed model to infer the result of a set of task or\nquestions."
       operationId: ModelPublicService_TriggerAsyncNamespaceModel
@@ -3319,7 +3319,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}/trigger':
     post:
       tags:
-        - Model Trigger
+        - ⚗️ Model
       summary: Trigger model inference
       description: "Triggers the latest deployed model version to infer the result of a set of task or\nquestions."
       operationId: ModelPublicService_TriggerNamespaceLatestModel
@@ -3369,7 +3369,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}/trigger-async':
     post:
       tags:
-        - Model Trigger
+        - ⚗️ Model
       summary: Trigger model inference asynchronously
       description: "Triggers the latest deployed model version to infer the result of a set of task or\nquestions."
       operationId: ModelPublicService_TriggerAsyncNamespaceLatestModel
@@ -3419,7 +3419,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}/versions/{version}/operation':
     get:
       tags:
-        - Model
+        - ⚗️ Model
       summary: "Get the details of the long-running operation from a namespace model\nwith a particular version"
       description: "This method allows requesters to request the status and outcome of\nlong-running operations in a model, such as trigger."
       operationId: ModelPublicService_GetNamespaceModelOperation
@@ -3471,7 +3471,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}/operation':
     get:
       tags:
-        - Model
+        - ⚗️ Model
       summary: Get the details of the latest long-running operation from a namespace model
       description: "This method allows requesters to request the status and outcome of\nlong-running operations in a model, such as trigger."
       operationId: ModelPublicService_GetNamespaceLatestModelOperation
@@ -3517,7 +3517,7 @@ paths:
   '/v1alpha/operations/{operationId}':
     get:
       tags:
-        - Model
+        - ⚗️ Model
       summary: Get the details of a long-running operation
       description: "This method allows requesters to request the status and outcome of\nlong-running operations in a model, such as trigger."
       operationId: ModelPublicService_GetModelOperation
@@ -3557,7 +3557,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}/runs':
     get:
       tags:
-        - Model Trigger
+        - ⚗️ Model
       summary: List model runs
       description: Returns a paginated list of model runs.
       operationId: ModelPublicService_ListModelRuns
@@ -3622,7 +3622,7 @@ paths:
   /v1alpha/dashboard/models/runs:
     get:
       tags:
-        - Model Trigger
+        - ⚗️ Model
       summary: List Model Runs of a Namespace (user or organization)
       description: "Returns a paginated list of runs for 1 or more models. This is mainly used by dashboard.\nThe requester can view all the runs by the requester across different models."
       operationId: ModelPublicService_ListModelRunsByRequester
@@ -3693,7 +3693,7 @@ paths:
   /v1beta/pipelines:
     get:
       tags:
-        - Pipeline
+        - 💧 VDP
       summary: List accessible pipelines
       description: Returns a paginated list of pipelines that are visible to the requester.
       operationId: PipelinePublicService_ListPipelines
@@ -3762,7 +3762,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines':
     get:
       tags:
-        - Pipeline
+        - 💧 VDP
       summary: List namespace pipelines
       description: Returns a paginated list of pipelines of a namespace
       operationId: PipelinePublicService_ListNamespacePipelines
@@ -3836,7 +3836,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     post:
       tags:
-        - Pipeline
+        - 💧 VDP
       summary: Create a new pipeline
       description: Creates a new pipeline under a namespace.
       operationId: PipelinePublicService_CreateNamespacePipeline
@@ -3876,7 +3876,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}':
     get:
       tags:
-        - Pipeline
+        - 💧 VDP
       summary: Get a pipeline
       description: Returns the details of a pipeline.
       operationId: PipelinePublicService_GetNamespacePipeline
@@ -3922,7 +3922,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     delete:
       tags:
-        - Pipeline
+        - 💧 VDP
       summary: Delete a pipeline
       description: "Deletes a pipeline, accesing it by its resource name, which is defined by\nthe parent namespace and the ID of the pipeline. The authenticated namespace must be\nthe parent of the pipeline in order to delete it."
       operationId: PipelinePublicService_DeleteNamespacePipeline
@@ -3959,7 +3959,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     patch:
       tags:
-        - Pipeline
+        - 💧 VDP
       summary: Update a pipeline
       description: "Udpates a pipeline, accessing it by its resource name, which is defined by\nthe parent namespace and the ID of the pipeline. The authenticated namespace must be\nthe parent of the pipeline in order to modify it.\n\nIn REST requests, only the supplied pipeline fields will be taken into\naccount when updating the resource."
       operationId: PipelinePublicService_UpdateNamespacePipeline
@@ -4005,7 +4005,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/validate':
     post:
       tags:
-        - Pipeline
+        - 💧 VDP
       summary: Validate a pipeline
       description: "Validates a pipeline by its resource name, which is defined by the parent\nnamespace and the ID of the pipeline.\n\nValidation checks the recipe of the pipeline and the status of its components."
       operationId: PipelinePublicService_ValidateNamespacePipeline
@@ -4050,7 +4050,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/rename':
     post:
       tags:
-        - Pipeline
+        - 💧 VDP
       summary: Rename a pipeline
       description: "Updates the ID of a pipeline. Since this is an output-only field, a custom\nmethod is required to modify it.\n\nThe pipeline name will be updated accordingly, as it is  composed by the\nparent namespace and ID of the pipeline (e.g.\n`namespaces/luigi/pipelines/pizza-recipe-generator`).\n\nThe authenticated namespace must be the parent of the pipeline in order to\nperform this action."
       operationId: PipelinePublicService_RenameNamespacePipeline
@@ -4095,7 +4095,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/clone':
     post:
       tags:
-        - Pipeline
+        - 💧 VDP
       summary: Clone a pipeline
       description: "Clones a pipeline owned by a namespace. The new pipeline may have a different\nparent, and this can be either a namespace or an organization."
       operationId: PipelinePublicService_CloneNamespacePipeline
@@ -4140,7 +4140,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/trigger':
     post:
       tags:
-        - Pipeline Trigger
+        - 💧 VDP
       summary: Trigger a pipeline
       description: "Triggers the execution of a pipeline synchronously, i.e., the result is\nsent back to the namespace right after the data is processed. This method is\nintended for real-time inference when low latency is of concern.\n\nThe pipeline is identified by its resource name, formed by the parent namespace\nand ID of the pipeline.\n\nFor more information, see [Run NamespacePipeline](https://www.instill.tech/docs/vdp/run)."
       operationId: PipelinePublicService_TriggerNamespacePipeline
@@ -4190,7 +4190,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/trigger-stream':
     post:
       tags:
-        - Pipeline Trigger
+        - 💧 VDP
       summary: Trigger a pipeline via streaming
       description: "Triggers the execution of a pipeline asynchronously and streams back the response.\nThis method is intended for real-time inference when low latency is of concern\nand the response needs to be processed incrementally.\n\nThe pipeline is identified by its resource name, formed by the parent namespace\nand ID of the pipeline."
       operationId: PipelinePublicService_TriggerNamespacePipelineWithStream
@@ -4246,7 +4246,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/trigger-async':
     post:
       tags:
-        - Pipeline Trigger
+        - 💧 VDP
       summary: Trigger a pipeline asynchronously
       description: "Triggers the execution of a pipeline asynchronously, i.e., the result\ncontains the necessary information to access the result and status of the\noperation. This method is intended for cases that require long-running\nworkloads.\n\nThe pipeline is identified by its resource name, formed by the parent namespace\nand ID of the pipeline.\n\nFor more information, see [Run NamespacePipeline](https://www.instill.tech/docs/vdp/run)."
       operationId: PipelinePublicService_TriggerAsyncNamespacePipeline
@@ -4296,7 +4296,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/releases':
     get:
       tags:
-        - Pipeline Release
+        - 💧 VDP
       summary: List the releases in a pipeline
       description: "Lists the commited versions of a pipeline, identified by its resource\nname, which is formed by the parent namespace and ID of the pipeline."
       operationId: PipelinePublicService_ListNamespacePipelineReleases
@@ -4363,7 +4363,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     post:
       tags:
-        - Pipeline Release
+        - 💧 VDP
       summary: Create a pipeline release
       description: "Commits the version of a pipeline, identified by its resource name, which\nis formed by the parent namespace and ID of the pipeline.\n\nThe authenticated namespace must be the parent of the pipeline in order to\nperform this action."
       operationId: PipelinePublicService_CreateNamespacePipelineRelease
@@ -4409,7 +4409,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/releases/{releaseId}':
     get:
       tags:
-        - Pipeline Release
+        - 💧 VDP
       summary: Get a pipeline release
       description: "Gets the details of a pipeline release, where the pipeline is identified\nby its resource name, formed by its parent namespace and ID."
       operationId: PipelinePublicService_GetNamespacePipelineRelease
@@ -4461,7 +4461,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     delete:
       tags:
-        - Pipeline Release
+        - 💧 VDP
       summary: Delete a pipeline release
       description: "Deletes a pipeline release, where the pipeline is identified by its\nresource name, formed by its parent namespace and ID.\n\nThe authenticated namespace must be the parent of the pipeline in order to\nperform this action."
       operationId: PipelinePublicService_DeleteNamespacePipelineRelease
@@ -4504,7 +4504,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     patch:
       tags:
-        - Pipeline Release
+        - 💧 VDP
       summary: Update a pipeline release
       description: "Updates the details of a pipeline release, where the pipeline is\nidentified by its resource name, formed by its parent namespace and ID.\n\nThe authenticated namespace must be the parent of the pipeline in order to\nperform this action."
       operationId: PipelinePublicService_UpdateNamespacePipelineRelease
@@ -4556,7 +4556,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/releases/{releaseId}/clone':
     post:
       tags:
-        - Pipeline Release
+        - 💧 VDP
       summary: Clone a pipeline release
       description: "Clones a pipeline release owned by a namespace. The new pipeline may have a different\nparent, and this can be either a namespace or an organization."
       operationId: PipelinePublicService_CloneNamespacePipelineRelease
@@ -4607,7 +4607,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/releases/{releaseId}/trigger':
     post:
       tags:
-        - Pipeline Trigger
+        - 💧 VDP
       summary: Trigger a pipeline release
       description: "Triggers the synchronous execution of of a pipeline. While the trigger\nendpoint (where the release version isn't specified) triggers the pipeline\nat its latest release, this method allows the client to specified any\ncommitted release.\n\nThe pipeline is identified by its resource name, formed by its parent namespace\nand ID."
       operationId: PipelinePublicService_TriggerNamespacePipelineRelease
@@ -4663,7 +4663,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/releases/{releaseId}/trigger-async':
     post:
       tags:
-        - Pipeline Trigger
+        - 💧 VDP
       summary: Trigger a pipeline release asynchronously
       description: "Triggers the asynchronous execution of of a pipeline. While the trigger\nendpoint (where the release version isn't specified) triggers the pipeline\nat its latest release, this method allows the client to specified any\ncommitted release.\n\nThe pipeline is identified by its resource name, formed by its parent namespace\nand ID."
       operationId: PipelinePublicService_TriggerAsyncNamespacePipelineRelease
@@ -4719,7 +4719,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/secrets':
     get:
       tags:
-        - Secret
+        - 💧 VDP
       summary: List secrets
       description: "Returns a paginated list of secrets that belong to the specified\nnamespace."
       operationId: PipelinePublicService_ListNamespaceSecrets
@@ -4761,7 +4761,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     post:
       tags:
-        - Secret
+        - 💧 VDP
       summary: Create a secret
       description: Creates a new secret under the parenthood of an namespace.
       operationId: PipelinePublicService_CreateNamespaceSecret
@@ -4801,7 +4801,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/secrets/{secretId}':
     get:
       tags:
-        - Secret
+        - 💧 VDP
       summary: Get a secret
       description: "Returns the details of an namespace-owned secret by its resource name,\nwhich is defined by the parent namespace and the ID of the secret."
       operationId: PipelinePublicService_GetNamespaceSecret
@@ -4838,7 +4838,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     delete:
       tags:
-        - Secret
+        - 💧 VDP
       summary: Delete a secret
       description: "Deletes a secret, accesing it by its resource name, which is defined by\nthe parent namespace and the ID of the secret."
       operationId: PipelinePublicService_DeleteNamespaceSecret
@@ -4875,7 +4875,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     patch:
       tags:
-        - Secret
+        - 💧 VDP
       summary: Update a secret
       description: "Udpates a secret, accessing it by its resource name, which is defined by\n\nIn REST requests, only the supplied secret fields will be taken into\naccount when updating the resource."
       operationId: PipelinePublicService_UpdateNamespaceSecret
@@ -4921,7 +4921,7 @@ paths:
   /v1beta/component-definitions:
     get:
       tags:
-        - Component
+        - 💧 VDP
       summary: List component definitions
       description: "Returns a paginated list of component definitions, regardless their type.\nThis offers a single source of truth, with pagination and filter\ncapabilities, for the components that might be used in a VDP pipeline."
       operationId: PipelinePublicService_ListComponentDefinitions
@@ -4972,7 +4972,7 @@ paths:
   '/v1beta/operations/{operationId}':
     get:
       tags:
-        - Pipeline Trigger
+        - 💧 VDP
       summary: Get the details of a long-running operation
       description: "This method allows requesters to request the status and outcome of\nlong-running operations such as asynchronous pipeline triggers."
       operationId: PipelinePublicService_GetOperation
@@ -5009,7 +5009,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/runs':
     get:
       tags:
-        - Pipeline Trigger
+        - 💧 VDP
       summary: List Pipeline Runs
       description: "Returns a paginated list of runs for a given pipeline. When the requester\nis the owner of the pipeline, they will be able to all the pipeline runs,\nregardless the requester. Other requesters will only be able to see the\nruns requested by themselves."
       operationId: PipelinePublicService_ListPipelineRuns
@@ -5074,7 +5074,7 @@ paths:
   '/v1beta/pipeline-runs/{pipelineRunId}/component-runs':
     get:
       tags:
-        - Pipeline Trigger
+        - 💧 VDP
       summary: List Component runs
       description: Returns the information of each component execution within a pipeline run.
       operationId: PipelinePublicService_ListComponentRuns
@@ -5142,7 +5142,7 @@ paths:
   /v1beta/dashboard/pipelines/runs:
     get:
       tags:
-        - Pipeline Trigger
+        - 💧 VDP
       summary: List Pipeline Runs of a Namespace (user or organization)
       description: "Returns a paginated list of runs for 1 or more pipelines. This is mainly used by dashboard.\nThe requester can view all the runs by the requester across different pipelines."
       operationId: PipelinePublicService_ListPipelineRunsByRequester
@@ -5213,7 +5213,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/connections':
     get:
       tags:
-        - Integration
+        - 💧 VDP
       summary: List namespace connections
       description: Returns a paginated list of connections created by a namespace.
       operationId: PipelinePublicService_ListNamespaceConnections
@@ -5260,7 +5260,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     post:
       tags:
-        - Integration
+        - 💧 VDP
       summary: Create a connection
       description: Creates a connection under the ownership of a namespace.
       operationId: PipelinePublicService_CreateNamespaceConnection
@@ -5300,7 +5300,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/connections/{connectionId}':
     get:
       tags:
-        - Integration
+        - 💧 VDP
       summary: Get a namespace connection
       description: Returns the details of a connection.
       operationId: PipelinePublicService_GetNamespaceConnection
@@ -5345,7 +5345,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     delete:
       tags:
-        - Integration
+        - 💧 VDP
       summary: Delete a connection
       description: Deletes a connection.
       operationId: PipelinePublicService_DeleteNamespaceConnection
@@ -5382,7 +5382,7 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
     patch:
       tags:
-        - Integration
+        - 💧 VDP
       summary: Update a connection
       description: Updates a connection with the supplied connection fields.
       operationId: PipelinePublicService_UpdateNamespaceConnection
@@ -5428,7 +5428,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/connections/{connectionId}/test':
     post:
       tags:
-        - Integration
+        - 💧 VDP
       summary: Test a connection
       description: "Makes a request to the 3rd party app that the connection is configured to\ncommunicate with, and checks the result of the call. If the test fails,\nthe response status and error message will provide more information about\nthe failure.\n\nNote that this action might affect the quota or billing of the integrated\naccount in the 3rd party app."
       operationId: PipelinePublicService_TestNamespaceConnection
@@ -5466,7 +5466,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/connections/{connectionId}/referenced-pipelines':
     get:
       tags:
-        - Integration
+        - 💧 VDP
       summary: List pipelines that reference a connection
       description: "Returns a paginated list with the IDs of the pipelines that reference a\ngiven connection. All the pipelines will belong to the same namespace as\nthe connection."
       operationId: PipelinePublicService_ListPipelineIDsByConnectionID
@@ -5520,7 +5520,7 @@ paths:
   /v1beta/integrations:
     get:
       tags:
-        - Integration
+        - 💧 VDP
       summary: List integrations
       description: Returns a paginated list of available integrations.
       operationId: PipelinePublicService_ListIntegrations
@@ -5562,7 +5562,7 @@ paths:
   '/v1beta/integrations/{integrationId}':
     get:
       tags:
-        - Integration
+        - 💧 VDP
       summary: Get an integration
       description: Returns the details of an integration.
       operationId: PipelinePublicService_GetIntegration
@@ -10229,56 +10229,20 @@ components:
 security:
   - Bearer: [ ]
 tags:
-  - name: User
-    description: User namespaces
-  - name: Organization
-    description: Organization namespaces
-  - name: Membership
-    description: Organization memberships
-  - name: Token
-    description: API tokens
-  - name: Subscription
-    description: Subscriptions to pricing plans
-  - name: Credit
-    description: Instill Credit
-  - name: Metric
-    description: Usage metrics
-  - name: Region
-    description: Model regions
-  - name: Util
-    description: Utils
-  - name: Component
-    description: Components
-  - name: Pipeline
-    description: Pipelines
-  - name: Pipeline Release
-    description: Pipeline Releases
-  - name: Pipeline Trigger
-    description: Pipeline Triggers
-  - name: Secret
-    description: Namespace Secrets
-  - name: Integration
-    description: Namespace Integrations
-  - name: Model Definition
-    description: Model definitions
-  - name: Model
-    description: Models
-  - name: Model Version
-    description: Model versions
-  - name: Model Trigger
-    description: Model triggers
-  - name: Catalog
-    description: Catalogs
-  - name: Object
-    description: Objects
-  - name: App
-    description: Apps
-  - name: Conversation
-    description: Conversations
-  - name: Message
-    description: Messages
-  - name: Playground
-    description: Playgrounds
+  - name: 🪆 Namespace
+    description: 'Namespaces (e.g. User, Organization) that structure the resource hierarchy.'
+  - name: 💧 VDP
+    description: Pipeline orchestration in VDP (Versatile Data Pipeline).
+  - name: ⚗️ Model
+    description: AI Model resources for MLOps/LLMOps.
+  - name: 💾 Artifact
+    description: Data orchestration for unified unstructured data representation.
+  - name: 🍎 App
+    description: Ready-to-use AI applications.
+  - name: 📊 Metrics
+    description: Resource usage metrics.
+  - name: 🤝 Subscription
+    description: Pricing plans on Instill Cloud.
 externalDocs:
   description: More about Instill AI
   url: https://www.instill.tech/docs

@@ -9,7 +9,7 @@ public partial class Tests
         using var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromMinutes(5));
         var cancellationToken = cancellationTokenSource.Token;
 
-        CreateCatalogResponse createCatalogResponse = await client.Catalog.CreateCatalogAsync(
+        CreateCatalogResponse createCatalogResponse = await client.x__Artifact.CreateCatalogAsync(
             namespaceId: "havendv",
             name: $"shakespeare_{Random.Shared.Next(1_000_000)}",
             description: "Works of Shakespeare",
@@ -25,7 +25,7 @@ public partial class Tests
         catalog.Should().NotBeNull();
         catalog.CatalogId.Should().NotBeNull();
         
-        UploadCatalogFileResponse uploadFileResponse = await client.Catalog.UploadCatalogFileAsync(
+        UploadCatalogFileResponse uploadFileResponse = await client.x__Artifact.UploadCatalogFileAsync(
             namespaceId: "havendv",
             catalogId: catalog.CatalogId,
             name: "midsummer-nights-dream.pdf",
@@ -44,7 +44,7 @@ public partial class Tests
         file.Should().NotBeNull();
         file.FileUid.Should().NotBeNull();
         
-        ProcessCatalogFilesResponse processFilesResponse = await client.Catalog.ProcessCatalogFilesAsync(
+        ProcessCatalogFilesResponse processFilesResponse = await client.x__Artifact.ProcessCatalogFilesAsync(
             fileUids: [file.FileUid],
             cancellationToken: cancellationToken);
         
@@ -54,7 +54,7 @@ public partial class Tests
         {
             await Task.Delay(TimeSpan.FromSeconds(5), cancellationToken);
             
-            ListCatalogFilesResponse listFilesResponse = await client.Catalog.ListCatalogFilesAsync(
+            ListCatalogFilesResponse listFilesResponse = await client.x__Artifact.ListCatalogFilesAsync(
                 namespaceId: "havendv",
                 catalogId: catalog.CatalogId,
                 cancellationToken: cancellationToken);
@@ -70,7 +70,7 @@ public partial class Tests
         const string question = "Who are the main characters involved in the love triangle in Act I?";
         Console.WriteLine($"Question: {question}");
         
-        QuestionAnsweringResponse questionAnsweringResponse = await client.Catalog.QuestionAnsweringAsync(
+        QuestionAnsweringResponse questionAnsweringResponse = await client.x__Artifact.QuestionAnsweringAsync(
             namespaceId: "havendv",
             catalogId: catalog.CatalogId,
             question: question,
@@ -91,7 +91,7 @@ public partial class Tests
             Console.WriteLine("----------------------------------------");
         }
         
-        DeleteCatalogResponse deleteCatalogResponse = await client.Catalog.DeleteCatalogAsync(
+        DeleteCatalogResponse deleteCatalogResponse = await client.x__Artifact.DeleteCatalogAsync(
             namespaceId: "havendv",
             catalogId: catalog.CatalogId,
             cancellationToken: cancellationToken);

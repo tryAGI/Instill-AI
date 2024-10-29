@@ -1408,7 +1408,7 @@ paths:
             type: string
         - name: urlExpireDays
           in: query
-          description: "Expiration time in days for the URL.\nMinimum is 1 day and maximum is 7 days. If not set or set to 0, defaults to 1 day."
+          description: "expiration time in days for the URL.\nmaximum is 7 days. if set to 0, URL will not expire."
           schema:
             type: integer
             format: int32
@@ -1464,7 +1464,7 @@ paths:
             type: string
         - name: urlExpireDays
           in: query
-          description: "expiration time in days for the URL.\nminimum is 1 day. if not set or set to 0, defaults to 1 day."
+          description: "expiration time in days for the URL.\nmaximum is 7 days. if set to 0, URL will not expire."
           schema:
             type: integer
             format: int32
@@ -6802,6 +6802,9 @@ components:
           type: integer
           format: int32
           readOnly: true
+        externalMetadata:
+          title: Custom metadata provided by the user during file upload
+          type: object
     FileProcessStatus:
       title: file embedding process status
       enum:

@@ -28,6 +28,7 @@ namespace Instill
         /// <param name="name"></param>
         /// <param name="type"></param>
         /// <param name="content"></param>
+        /// <param name="externalMetadata"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Instill.UploadCatalogFileResponse> UploadCatalogFileAsync(
@@ -36,6 +37,7 @@ namespace Instill
             string name,
             global::Instill.FileType type,
             string? content = default,
+            object? externalMetadata = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

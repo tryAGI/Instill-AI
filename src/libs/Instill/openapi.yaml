@@ -2515,6 +2515,55 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
+  /v1beta/model-runs:query-charts:
+    get:
+      tags:
+        - 📊 Metrics
+      summary: List model trigger time charts
+      description: "Returns a timeline of model trigger counts for a given requester. The\nresponse will contain one set of records (datapoints), representing the\namount of triggers in a time bucket."
+      operationId: ListModelTriggerChartRecords
+      parameters:
+        - name: requesterId
+          in: query
+          description: The ID of the namespace that requested the model triggers.
+          required: true
+          schema:
+            type: string
+        - name: aggregationWindow
+          in: query
+          description: "Aggregation window. The value is a positive duration string, i.e. a\nsequence of decimal numbers, each with optional fraction and a unit\nsuffix, such as \"300ms\", \"1.5h\" or \"2h45m\".\nThe minimum (and default) window is 1h."
+          schema:
+            type: string
+        - name: start
+          in: query
+          description: "Beginning of the time range from which the records will be fetched.\nThe default value is the beginning of the current day, in UTC."
+          schema:
+            type: string
+            format: date-time
+        - name: stop
+          in: query
+          description: "End of the time range from which the records will be fetched.\nThe default value is the current timestamp."
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListModelTriggerChartRecordsResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
   /v1beta/metrics/credit/charts:
     get:
       tags:
@@ -7511,6 +7560,15 @@ components:
           format: int32
           readOnly: true
       description: ListModelRunsResponse contains a list of model runs.
+    ListModelTriggerChartRecordsResponse:
+      type: object
+      properties:
+        modelTriggerChartRecords:
+          type: array
+          items:
+            $ref: '#/components/schemas/ModelTriggerChartRecord'
+          description: "Model trigger counts. Until we allow filtering or grouping by fields\nlike model ID, this list will contain only one element with the\ntimeline of trigger counts for a given requester, regardless the model\nID, trigger mode, final status or other fields."
+      description: "ListModelTriggerChartRecordsResponse contains a list of model trigger\nchart records."
     ListModelsAdminResponse:
       title: ListModelsAdminResponse represents a response for a list of models
       type: object
@@ -8301,6 +8359,32 @@ components:
           description: "Requester ID. This field might be empty if the model run belongs to a\ndeleted namespace."
           readOnly: true
       description: ModelRun contains information about a run of models.
+    ModelTriggerChartRecord:
+      type: object
+      properties:
+        modelId:
+          type: string
+          description: This field will be present present when the information is grouped by model.
+          readOnly: true
+        timeBuckets:
+          type: array
+          items:
+            type: string
+            format: date-time
+          description: Time buckets.
+          readOnly: true
+        triggerCounts:
+          type: array
+          items:
+            type: integer
+            format: int32
+          description: Aggregated trigger count in each time bucket.
+          readOnly: true
+        requesterId:
+          type: string
+          description: The ID of the namespace that requested the model triggers.
+          readOnly: true
+      description: "ModelTriggerChartRecord represents a timeline of model triggers. It\ncontains a collection of (timestamp, count) pairs that represent the total\nmodel triggers in a given time bucket."
     ModelVersion:
       type: object
       properties:

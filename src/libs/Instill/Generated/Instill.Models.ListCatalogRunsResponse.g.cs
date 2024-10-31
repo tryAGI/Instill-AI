@@ -20,7 +20,7 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("totalSize")]
-        public string? TotalSize { get; set; }
+        public int? TotalSize { get; set; }
 
         /// <summary>
         /// The current page number.<br/>

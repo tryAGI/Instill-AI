@@ -49,6 +49,7 @@ namespace Instill
         /// <param name="orderBy"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
         public async global::System.Threading.Tasks.Task<global::Instill.ListNamespaceModelsResponse> ModelPublicServiceListNamespaceModelsAsync(
             string namespaceId,
             int? pageSize = default,

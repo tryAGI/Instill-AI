@@ -13,6 +13,10 @@
 - Support .Net Framework/.Net Standard 2.0
 
 ### Usage
+> [!NOTE]  
+> Most APIs are now marked as Alpha or Beta, and you need to do one of:
+> - Hide it within the file via `#pragma warning disable INSTILL_BETA_001`
+> - Hide it at the project level via `<NoWarn>$(NoWarn);INSTILL_BETA_001</NoWarn>`
 ```csharp
 using Instill;
 

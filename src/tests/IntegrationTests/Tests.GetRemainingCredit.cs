@@ -1,5 +1,7 @@
 namespace Instill.IntegrationTests;
 
+#pragma warning disable INSTILL_BETA_001
+
 public partial class Tests
 {
     [TestMethod]

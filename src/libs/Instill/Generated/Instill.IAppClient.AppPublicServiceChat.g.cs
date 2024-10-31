@@ -15,6 +15,7 @@ namespace Instill
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
         global::System.Threading.Tasks.Task<global::Instill.ChatResponse> AppPublicServiceChatAsync(
             string namespaceId,
             string appId,
@@ -35,6 +36,7 @@ namespace Instill
         /// <param name="topK"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
         global::System.Threading.Tasks.Task<global::Instill.ChatResponse> AppPublicServiceChatAsync(
             string namespaceId,
             string appId,

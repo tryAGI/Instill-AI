@@ -16,6 +16,7 @@ namespace Instill
         /// <param name="page"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
         global::System.Threading.Tasks.Task<global::Instill.ListComponentDefinitionsResponse> PipelinePublicServiceListComponentDefinitionsAsync(
             int? pageSize = default,
             global::Instill.PipelinePublicServiceListComponentDefinitionsView? view = default,

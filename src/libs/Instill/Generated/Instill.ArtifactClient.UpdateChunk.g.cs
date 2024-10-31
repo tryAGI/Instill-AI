@@ -31,6 +31,7 @@ namespace Instill
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
         public async global::System.Threading.Tasks.Task<global::Instill.UpdateChunkResponse> UpdateChunkAsync(
             string chunkUid,
             global::Instill.UpdateChunkBody request,
@@ -129,6 +130,7 @@ namespace Instill
         /// <param name="retrievable"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
         public async global::System.Threading.Tasks.Task<global::Instill.UpdateChunkResponse> UpdateChunkAsync(
             string chunkUid,
             bool? retrievable = default,

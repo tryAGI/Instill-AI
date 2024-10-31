@@ -14,6 +14,7 @@ namespace Instill
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
         global::System.Threading.Tasks.Task<global::Instill.UpdateOrganizationResponse> UpdateOrganizationAsync(
             string organizationId,
             global::Instill.Organization request,
@@ -38,6 +39,7 @@ namespace Instill
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
         global::System.Threading.Tasks.Task<global::Instill.UpdateOrganizationResponse> UpdateOrganizationAsync(
             string organizationId,
             global::Instill.OrganizationProfile profile,

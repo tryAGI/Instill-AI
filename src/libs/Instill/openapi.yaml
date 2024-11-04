@@ -2572,7 +2572,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
       x-stage: beta
-  /v1beta/model-runs:query-charts:
+  /v1beta/model-runs/query-charts:
     get:
       tags:
         - 📊 Metrics

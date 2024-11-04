@@ -57,7 +57,7 @@ namespace Instill
                 stop: ref stop);
 
             var __pathBuilder = new PathBuilder(
-                path: "/v1beta/model-runs:query-charts",
+                path: "/v1beta/model-runs/query-charts",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 
                 .AddRequiredParameter("requesterId", requesterId) 

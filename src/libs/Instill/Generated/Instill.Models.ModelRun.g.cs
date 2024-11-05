@@ -124,6 +124,13 @@ namespace Instill
         public string? RequesterId { get; set; }
 
         /// <summary>
+        /// Namespace ID.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("namespaceId")]
+        public string? NamespaceId { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]

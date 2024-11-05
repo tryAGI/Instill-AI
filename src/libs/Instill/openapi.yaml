@@ -8467,6 +8467,10 @@ components:
           type: string
           description: "Requester ID. This field might be empty if the model run belongs to a\ndeleted namespace."
           readOnly: true
+        namespaceId:
+          type: string
+          description: Namespace ID.
+          readOnly: true
       description: ModelRun contains information about a run of models.
     ModelTriggerChartRecord:
       type: object
@@ -9047,6 +9051,10 @@ components:
         requesterId:
           type: string
           description: "Requester ID. This field might be empty if the pipeline run belongs to a\ndeleted namespace."
+          readOnly: true
+        namespaceId:
+          title: Namespace ID
+          type: string
           readOnly: true
       description: PipelineRun represents a single execution of a pipeline.
     PipelineTriggerChartRecord:

@@ -150,91 +150,135 @@ namespace Instill
         [global::System.Text.Json.Serialization.JsonExtensionData]
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
-
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
+        /// Initializes a new instance of the <see cref="ComponentDefinition" /> class.
         /// </summary>
-        public string ToJson(
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
+        /// <param name="name">
+        /// Included only in responses
+        /// </param>
+        /// <param name="uid">
+        /// Component definition UUID.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="id">
+        /// Component definition resource ID (used in `name` as the last segment). This<br/>
+        /// conforms to RFC-1034, which restricts to letters, numbers, and hyphen,<br/>
+        /// with the first character a letter, the last a letter or a number, and a 63<br/>
+        /// character maximum.
+        /// </param>
+        /// <param name="title">
+        /// Component definition title.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="documentationUrl">
+        /// Component definition documentation URL.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="icon">
+        /// Component definition icon. This is a path that's relative to the root of<br/>
+        /// the component implementation (see `source_url`) and that allows<br/>
+        /// frontend applications to pull and locate the icons.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="spec">
+        /// Component definition specification.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="type">
+        /// Component definition type.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="tombstone">
+        /// Component definition tombstone. If true, this configuration is permanently<br/>
+        /// off. Otherwise, the configuration is active.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="public">
+        /// The public flag determines whether this connector definition is available<br/>
+        /// to all workspaces.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="custom">
+        /// Component definition custom flag, i.e., whether this is a custom<br/>
+        /// component definition.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="vendor">
+        /// Component definition vendor name.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="vendorAttributes">
+        /// Vendor-specific attributes.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="sourceUrl">
+        /// Source code URL. This points to the source code where the component is<br/>
+        /// implemented.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="version">
+        /// Component definition version. This is a string that fulfills the SemVer<br/>
+        /// specification (e.g. `1.0.0-beta`).<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="tasks">
+        /// List of tasks that can be executed by the component.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="description">
+        /// Short description of the component.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="releaseStage">
+        /// Release stage.<br/>
+        /// Included only in responses
+        /// </param>
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+        public ComponentDefinition(
+            string? name,
+            string? uid,
+            string? id,
+            string? title,
+            string? documentationUrl,
+            string? icon,
+            global::Instill.Spec? spec,
+            global::Instill.ComponentType? type,
+            bool? tombstone,
+            bool? @public,
+            bool? custom,
+            string? vendor,
+            object? vendorAttributes,
+            string? sourceUrl,
+            string? version,
+            global::System.Collections.Generic.IList<global::Instill.ComponentTask>? tasks,
+            string? description,
+            global::Instill.ComponentDefinitionReleaseStage? releaseStage)
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                this.GetType(),
-                jsonSerializerContext);
+            this.Name = name;
+            this.Uid = uid;
+            this.Id = id;
+            this.Title = title;
+            this.DocumentationUrl = documentationUrl;
+            this.Icon = icon;
+            this.Spec = spec;
+            this.Type = type;
+            this.Tombstone = tombstone;
+            this.Public = @public;
+            this.Custom = custom;
+            this.Vendor = vendor;
+            this.VendorAttributes = vendorAttributes;
+            this.SourceUrl = sourceUrl;
+            this.Version = version;
+            this.Tasks = tasks;
+            this.Description = description;
+            this.ReleaseStage = releaseStage;
         }
 
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerOptions.
+        /// Initializes a new instance of the <see cref="ComponentDefinition" /> class.
         /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public string ToJson(
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
+        public ComponentDefinition()
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                jsonSerializerOptions);
         }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerContext.
-        /// </summary>
-        public static global::Instill.ComponentDefinition? FromJson(
-            string json,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize(
-                json,
-                typeof(global::Instill.ComponentDefinition),
-                jsonSerializerContext) as global::Instill.ComponentDefinition;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::Instill.ComponentDefinition? FromJson(
-            string json,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Instill.ComponentDefinition>(
-                json,
-                jsonSerializerOptions);
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerContext.
-        /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Instill.ComponentDefinition?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
-                jsonStream,
-                typeof(global::Instill.ComponentDefinition),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Instill.ComponentDefinition;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::System.Threading.Tasks.ValueTask<global::Instill.ComponentDefinition?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Instill.ComponentDefinition?>(
-                jsonStream,
-                jsonSerializerOptions);
-        }
-
     }
 }

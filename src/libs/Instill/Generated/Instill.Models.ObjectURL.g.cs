@@ -74,91 +74,49 @@ namespace Instill
         [global::System.Text.Json.Serialization.JsonExtensionData]
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
-
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
+        /// Initializes a new instance of the <see cref="ObjectURL" /> class.
         /// </summary>
-        public string ToJson(
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
+        /// <param name="uid"></param>
+        /// <param name="namespaceUid"></param>
+        /// <param name="objectUid"></param>
+        /// <param name="urlExpireAt"></param>
+        /// <param name="minioUrlPath"></param>
+        /// <param name="encodedUrlPath"></param>
+        /// <param name="type"></param>
+        /// <param name="createTime"></param>
+        /// <param name="updateTime"></param>
+        /// <param name="deleteTime"></param>
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+        public ObjectURL(
+            string? uid,
+            string? namespaceUid,
+            string? objectUid,
+            global::System.DateTime? urlExpireAt,
+            string? minioUrlPath,
+            string? encodedUrlPath,
+            string? type,
+            global::System.DateTime? createTime,
+            global::System.DateTime? updateTime,
+            global::System.DateTime? deleteTime)
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                this.GetType(),
-                jsonSerializerContext);
+            this.Uid = uid;
+            this.NamespaceUid = namespaceUid;
+            this.ObjectUid = objectUid;
+            this.UrlExpireAt = urlExpireAt;
+            this.MinioUrlPath = minioUrlPath;
+            this.EncodedUrlPath = encodedUrlPath;
+            this.Type = type;
+            this.CreateTime = createTime;
+            this.UpdateTime = updateTime;
+            this.DeleteTime = deleteTime;
         }
 
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerOptions.
+        /// Initializes a new instance of the <see cref="ObjectURL" /> class.
         /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public string ToJson(
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
+        public ObjectURL()
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                jsonSerializerOptions);
         }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerContext.
-        /// </summary>
-        public static global::Instill.ObjectURL? FromJson(
-            string json,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize(
-                json,
-                typeof(global::Instill.ObjectURL),
-                jsonSerializerContext) as global::Instill.ObjectURL;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::Instill.ObjectURL? FromJson(
-            string json,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Instill.ObjectURL>(
-                json,
-                jsonSerializerOptions);
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerContext.
-        /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Instill.ObjectURL?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
-                jsonStream,
-                typeof(global::Instill.ObjectURL),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Instill.ObjectURL;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::System.Threading.Tasks.ValueTask<global::Instill.ObjectURL?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Instill.ObjectURL?>(
-                jsonStream,
-                jsonSerializerOptions);
-        }
-
     }
 }

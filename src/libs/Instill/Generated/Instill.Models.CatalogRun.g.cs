@@ -113,91 +113,101 @@ namespace Instill
         [global::System.Text.Json.Serialization.JsonExtensionData]
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
-
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
+        /// Initializes a new instance of the <see cref="CatalogRun" /> class.
         /// </summary>
-        public string ToJson(
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
+        /// <param name="uid">
+        /// Unique identifier for each run.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="catalogUid">
+        /// Included only in responses
+        /// </param>
+        /// <param name="fileUids">
+        /// The file uids.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="action">
+        /// Action of the catalog run.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="status">
+        /// Current status of the run.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="source">
+        /// Origin of the run.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="totalDuration">
+        /// Time taken to complete the run in milliseconds.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="runnerId">
+        /// Included only in responses
+        /// </param>
+        /// <param name="namespaceId">
+        /// Namespace ID.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="payload">
+        /// Run request payload.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="startTime">
+        /// Time when the run started execution.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="completeTime">
+        /// Time when the run completed.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="error">
+        /// Error message if the run failed.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="creditAmount">
+        /// Credits used of internal accounting metric.<br/>
+        /// Included only in responses
+        /// </param>
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+        public CatalogRun(
+            string? uid,
+            string? catalogUid,
+            global::System.Collections.Generic.IList<string>? fileUids,
+            global::Instill.CatalogRunAction? action,
+            global::Instill.RunStatus? status,
+            global::Instill.RunSource? source,
+            int? totalDuration,
+            string? runnerId,
+            string? namespaceId,
+            object? payload,
+            global::System.DateTime? startTime,
+            global::System.DateTime? completeTime,
+            string? error,
+            float? creditAmount)
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                this.GetType(),
-                jsonSerializerContext);
+            this.Uid = uid;
+            this.CatalogUid = catalogUid;
+            this.FileUids = fileUids;
+            this.Action = action;
+            this.Status = status;
+            this.Source = source;
+            this.TotalDuration = totalDuration;
+            this.RunnerId = runnerId;
+            this.NamespaceId = namespaceId;
+            this.Payload = payload;
+            this.StartTime = startTime;
+            this.CompleteTime = completeTime;
+            this.Error = error;
+            this.CreditAmount = creditAmount;
         }
 
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerOptions.
+        /// Initializes a new instance of the <see cref="CatalogRun" /> class.
         /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public string ToJson(
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
+        public CatalogRun()
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                jsonSerializerOptions);
         }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerContext.
-        /// </summary>
-        public static global::Instill.CatalogRun? FromJson(
-            string json,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize(
-                json,
-                typeof(global::Instill.CatalogRun),
-                jsonSerializerContext) as global::Instill.CatalogRun;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::Instill.CatalogRun? FromJson(
-            string json,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Instill.CatalogRun>(
-                json,
-                jsonSerializerOptions);
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerContext.
-        /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Instill.CatalogRun?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
-                jsonStream,
-                typeof(global::Instill.CatalogRun),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Instill.CatalogRun;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::System.Threading.Tasks.ValueTask<global::Instill.CatalogRun?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Instill.CatalogRun?>(
-                jsonStream,
-                jsonSerializerOptions);
-        }
-
     }
 }

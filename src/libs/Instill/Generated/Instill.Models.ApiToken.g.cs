@@ -97,91 +97,90 @@ namespace Instill
         [global::System.Text.Json.Serialization.JsonExtensionData]
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
-
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
+        /// Initializes a new instance of the <see cref="ApiToken" /> class.
         /// </summary>
-        public string ToJson(
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
+        /// <param name="lastUseTime">
+        /// When users trigger a pipeline which uses an API token, the token is<br/>
+        /// updated with the current time. This field is used to track the last time<br/>
+        /// the token was used.
+        /// </param>
+        /// <param name="name">
+        /// The name of the token, define by its ID.<br/>
+        /// - Format: `tokens/{token.id}`.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="uid">
+        /// API token UUID.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="id">
+        /// API token resource ID (used in `name` as the last segment). This conforms<br/>
+        /// to RFC-1034, which restricts to letters, numbers, and hyphen, with the<br/>
+        /// first character a letter, the last a letter or a number, and a 63<br/>
+        /// character maximum.<br/>
+        /// This field can reflect the client(s) that will use the token.
+        /// </param>
+        /// <param name="createTime">
+        /// Creation time.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="updateTime">
+        /// Update time.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="accessToken">
+        /// An opaque access token representing the API token string.<br/>
+        /// To validate the token, the recipient of the token needs to call the server<br/>
+        /// that issued the token.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="state">
+        /// State.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="tokenType">
+        /// Token type. Value is fixed to "Bearer".<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="ttl">
+        /// The time-to-live in seconds for this resource.
+        /// </param>
+        /// <param name="expireTime">
+        /// Expiration time.
+        /// </param>
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+        public ApiToken(
+            global::System.DateTime? lastUseTime,
+            string? name,
+            string? uid,
+            string? id,
+            global::System.DateTime? createTime,
+            global::System.DateTime? updateTime,
+            string? accessToken,
+            global::Instill.ApiTokenState? state,
+            string? tokenType,
+            int? ttl,
+            global::System.DateTime? expireTime)
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                this.GetType(),
-                jsonSerializerContext);
+            this.LastUseTime = lastUseTime;
+            this.Name = name;
+            this.Uid = uid;
+            this.Id = id;
+            this.CreateTime = createTime;
+            this.UpdateTime = updateTime;
+            this.AccessToken = accessToken;
+            this.State = state;
+            this.TokenType = tokenType;
+            this.Ttl = ttl;
+            this.ExpireTime = expireTime;
         }
 
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerOptions.
+        /// Initializes a new instance of the <see cref="ApiToken" /> class.
         /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public string ToJson(
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
+        public ApiToken()
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                jsonSerializerOptions);
         }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerContext.
-        /// </summary>
-        public static global::Instill.ApiToken? FromJson(
-            string json,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize(
-                json,
-                typeof(global::Instill.ApiToken),
-                jsonSerializerContext) as global::Instill.ApiToken;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::Instill.ApiToken? FromJson(
-            string json,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Instill.ApiToken>(
-                json,
-                jsonSerializerOptions);
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerContext.
-        /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Instill.ApiToken?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
-                jsonStream,
-                typeof(global::Instill.ApiToken),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Instill.ApiToken;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::System.Threading.Tasks.ValueTask<global::Instill.ApiToken?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Instill.ApiToken?>(
-                jsonStream,
-                jsonSerializerOptions);
-        }
-
     }
 }

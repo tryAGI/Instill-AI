@@ -28,91 +28,30 @@ namespace Instill
         [global::System.Text.Json.Serialization.JsonExtensionData]
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
-
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
+        /// Initializes a new instance of the <see cref="WatchNamespaceModelResponse" /> class.
         /// </summary>
-        public string ToJson(
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
+        /// <param name="state">
+        /// State.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="message">
+        /// Included only in responses
+        /// </param>
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+        public WatchNamespaceModelResponse(
+            global::Instill.State? state,
+            string? message)
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                this.GetType(),
-                jsonSerializerContext);
+            this.State = state;
+            this.Message = message;
         }
 
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerOptions.
+        /// Initializes a new instance of the <see cref="WatchNamespaceModelResponse" /> class.
         /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public string ToJson(
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
+        public WatchNamespaceModelResponse()
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                jsonSerializerOptions);
         }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerContext.
-        /// </summary>
-        public static global::Instill.WatchNamespaceModelResponse? FromJson(
-            string json,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize(
-                json,
-                typeof(global::Instill.WatchNamespaceModelResponse),
-                jsonSerializerContext) as global::Instill.WatchNamespaceModelResponse;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::Instill.WatchNamespaceModelResponse? FromJson(
-            string json,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Instill.WatchNamespaceModelResponse>(
-                json,
-                jsonSerializerOptions);
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerContext.
-        /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Instill.WatchNamespaceModelResponse?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
-                jsonStream,
-                typeof(global::Instill.WatchNamespaceModelResponse),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Instill.WatchNamespaceModelResponse;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::System.Threading.Tasks.ValueTask<global::Instill.WatchNamespaceModelResponse?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Instill.WatchNamespaceModelResponse?>(
-                jsonStream,
-                jsonSerializerOptions);
-        }
-
     }
 }

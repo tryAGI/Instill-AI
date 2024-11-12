@@ -16,7 +16,7 @@ namespace Instill
         /// <param name="visibility"></param>
         /// <param name="orderBy"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
+        /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
         global::System.Threading.Tasks.Task<global::Instill.ListPipelinesResponse> PipelinePublicServiceListPipelinesAsync(
             int? pageSize = default,

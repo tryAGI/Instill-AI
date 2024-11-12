@@ -14,7 +14,7 @@ namespace Instill
         /// <param name="pageSize"></param>
         /// <param name="page"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
+        /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
         global::System.Threading.Tasks.Task<global::Instill.ListNamespaceModelVersionsResponse> ModelPublicServiceListNamespaceModelVersionsAsync(
             string namespaceId,

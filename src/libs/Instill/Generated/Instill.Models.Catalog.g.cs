@@ -105,91 +105,92 @@ namespace Instill
         [global::System.Text.Json.Serialization.JsonExtensionData]
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
-
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
+        /// Initializes a new instance of the <see cref="Catalog" /> class.
         /// </summary>
-        public string ToJson(
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
+        /// <param name="catalogUid">
+        /// The catalog uid.
+        /// </param>
+        /// <param name="catalogId">
+        /// The catalog id.
+        /// </param>
+        /// <param name="name">
+        /// The catalog name.
+        /// </param>
+        /// <param name="description">
+        /// The catalog description.
+        /// </param>
+        /// <param name="createTime">
+        /// The creation time of the catalog.
+        /// </param>
+        /// <param name="updateTime">
+        /// The last update time of the catalog.
+        /// </param>
+        /// <param name="ownerName">
+        /// The owner/namespace of the catalog.
+        /// </param>
+        /// <param name="tags">
+        /// The catalog tags.
+        /// </param>
+        /// <param name="convertingPipelines">
+        /// The catalog converting pipelines.
+        /// </param>
+        /// <param name="splittingPipelines">
+        /// The catalog splitting pipelines.
+        /// </param>
+        /// <param name="embeddingPipelines">
+        /// The catalog embedding pipelines.
+        /// </param>
+        /// <param name="downstreamApps"></param>
+        /// <param name="totalFiles">
+        /// The total files in catalog.
+        /// </param>
+        /// <param name="totalTokens">
+        /// The total tokens in catalog.
+        /// </param>
+        /// <param name="usedStorage">
+        /// The current used storage in catalog.
+        /// </param>
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+        public Catalog(
+            string catalogId,
+            string? catalogUid,
+            string? name,
+            string? description,
+            string? createTime,
+            string? updateTime,
+            string? ownerName,
+            global::System.Collections.Generic.IList<string>? tags,
+            global::System.Collections.Generic.IList<string>? convertingPipelines,
+            global::System.Collections.Generic.IList<string>? splittingPipelines,
+            global::System.Collections.Generic.IList<string>? embeddingPipelines,
+            global::System.Collections.Generic.IList<string>? downstreamApps,
+            long? totalFiles,
+            long? totalTokens,
+            string? usedStorage)
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                this.GetType(),
-                jsonSerializerContext);
+            this.CatalogId = catalogId ?? throw new global::System.ArgumentNullException(nameof(catalogId));
+            this.CatalogUid = catalogUid;
+            this.Name = name;
+            this.Description = description;
+            this.CreateTime = createTime;
+            this.UpdateTime = updateTime;
+            this.OwnerName = ownerName;
+            this.Tags = tags;
+            this.ConvertingPipelines = convertingPipelines;
+            this.SplittingPipelines = splittingPipelines;
+            this.EmbeddingPipelines = embeddingPipelines;
+            this.DownstreamApps = downstreamApps;
+            this.TotalFiles = totalFiles;
+            this.TotalTokens = totalTokens;
+            this.UsedStorage = usedStorage;
         }
 
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerOptions.
+        /// Initializes a new instance of the <see cref="Catalog" /> class.
         /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public string ToJson(
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
+        public Catalog()
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                jsonSerializerOptions);
         }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerContext.
-        /// </summary>
-        public static global::Instill.Catalog? FromJson(
-            string json,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize(
-                json,
-                typeof(global::Instill.Catalog),
-                jsonSerializerContext) as global::Instill.Catalog;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::Instill.Catalog? FromJson(
-            string json,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Instill.Catalog>(
-                json,
-                jsonSerializerOptions);
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerContext.
-        /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Instill.Catalog?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
-                jsonStream,
-                typeof(global::Instill.Catalog),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Instill.Catalog;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::System.Threading.Tasks.ValueTask<global::Instill.Catalog?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Instill.Catalog?>(
-                jsonStream,
-                jsonSerializerOptions);
-        }
-
     }
 }

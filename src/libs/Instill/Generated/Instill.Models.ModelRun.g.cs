@@ -136,91 +136,122 @@ namespace Instill
         [global::System.Text.Json.Serialization.JsonExtensionData]
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
-
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
+        /// Initializes a new instance of the <see cref="ModelRun" /> class.
         /// </summary>
-        public string ToJson(
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
+        /// <param name="uid">
+        /// Model Run UUID.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="modelUid">
+        /// Model UUID.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="status">
+        /// Model run status.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="source">
+        /// Run source.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="totalDuration">
+        /// Run total duration in milliseconds.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="endTime">
+        /// Run end time.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="runnerId">
+        /// Runner ID. If current viewing requester does not have enough permission, it will return null.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="creditAmount">
+        /// The amount of Instill Credit consumed by the run. This field will only be present on Instill Cloud.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="error">
+        /// Error message occurred during model run.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="createTime">
+        /// Model run created time.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="updateTime">
+        /// Model run updated time.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="version">
+        /// The model version identifier, which is same as image tag.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="taskInputs">
+        /// Model inference input.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="taskOutputs">
+        /// Model inference outputs.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="modelId">
+        /// Model ID.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="requesterId">
+        /// Requester ID. This field might be empty if the model run belongs to a<br/>
+        /// deleted namespace.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="namespaceId">
+        /// Namespace ID.<br/>
+        /// Included only in responses
+        /// </param>
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+        public ModelRun(
+            string? uid,
+            string? modelUid,
+            global::Instill.RunStatus? status,
+            global::Instill.RunSource? source,
+            int? totalDuration,
+            global::System.DateTime? endTime,
+            string? runnerId,
+            float? creditAmount,
+            string? error,
+            global::System.DateTime? createTime,
+            global::System.DateTime? updateTime,
+            string? version,
+            global::System.Collections.Generic.IList<object>? taskInputs,
+            global::System.Collections.Generic.IList<object>? taskOutputs,
+            string? modelId,
+            string? requesterId,
+            string? namespaceId)
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                this.GetType(),
-                jsonSerializerContext);
+            this.Uid = uid;
+            this.ModelUid = modelUid;
+            this.Status = status;
+            this.Source = source;
+            this.TotalDuration = totalDuration;
+            this.EndTime = endTime;
+            this.RunnerId = runnerId;
+            this.CreditAmount = creditAmount;
+            this.Error = error;
+            this.CreateTime = createTime;
+            this.UpdateTime = updateTime;
+            this.Version = version;
+            this.TaskInputs = taskInputs;
+            this.TaskOutputs = taskOutputs;
+            this.ModelId = modelId;
+            this.RequesterId = requesterId;
+            this.NamespaceId = namespaceId;
         }
 
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerOptions.
+        /// Initializes a new instance of the <see cref="ModelRun" /> class.
         /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public string ToJson(
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
+        public ModelRun()
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                jsonSerializerOptions);
         }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerContext.
-        /// </summary>
-        public static global::Instill.ModelRun? FromJson(
-            string json,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize(
-                json,
-                typeof(global::Instill.ModelRun),
-                jsonSerializerContext) as global::Instill.ModelRun;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::Instill.ModelRun? FromJson(
-            string json,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Instill.ModelRun>(
-                json,
-                jsonSerializerOptions);
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerContext.
-        /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Instill.ModelRun?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
-                jsonStream,
-                typeof(global::Instill.ModelRun),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Instill.ModelRun;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::System.Threading.Tasks.ValueTask<global::Instill.ModelRun?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Instill.ModelRun?>(
-                jsonStream,
-                jsonSerializerOptions);
-        }
-
     }
 }

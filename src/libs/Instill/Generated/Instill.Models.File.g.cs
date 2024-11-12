@@ -11,6 +11,7 @@ namespace Instill
         /// <summary>
         /// Included only in responses
         /// </summary>
+        /// <default>default!</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("fileUid")]
         public string FileUid { get; set; } = default!;
 
@@ -120,91 +121,96 @@ namespace Instill
         [global::System.Text.Json.Serialization.JsonExtensionData]
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
-
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
+        /// Initializes a new instance of the <see cref="File" /> class.
         /// </summary>
-        public string ToJson(
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
+        /// <param name="fileUid">
+        /// Included only in responses
+        /// </param>
+        /// <param name="name"></param>
+        /// <param name="type"></param>
+        /// <param name="processStatus">
+        /// Included only in responses
+        /// </param>
+        /// <param name="processOutcome">
+        /// Included only in responses
+        /// </param>
+        /// <param name="retrievable">
+        /// Included only in responses
+        /// </param>
+        /// <param name="content"></param>
+        /// <param name="ownerUid">
+        /// Included only in responses
+        /// </param>
+        /// <param name="creatorUid">
+        /// Included only in responses
+        /// </param>
+        /// <param name="catalogUid">
+        /// Included only in responses
+        /// </param>
+        /// <param name="createTime">
+        /// Included only in responses
+        /// </param>
+        /// <param name="updateTime">
+        /// Included only in responses
+        /// </param>
+        /// <param name="deleteTime">
+        /// Included only in responses
+        /// </param>
+        /// <param name="size">
+        /// Included only in responses
+        /// </param>
+        /// <param name="totalChunks">
+        /// Included only in responses
+        /// </param>
+        /// <param name="totalTokens">
+        /// Included only in responses
+        /// </param>
+        /// <param name="externalMetadata"></param>
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+        public File(
+            string name,
+            global::Instill.FileType type,
+            global::Instill.FileProcessStatus? processStatus,
+            string? processOutcome,
+            bool? retrievable,
+            string? content,
+            string? ownerUid,
+            string? creatorUid,
+            string? catalogUid,
+            global::System.DateTime? createTime,
+            global::System.DateTime? updateTime,
+            global::System.DateTime? deleteTime,
+            string? size,
+            int? totalChunks,
+            int? totalTokens,
+            object? externalMetadata,
+            string fileUid = default!)
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                this.GetType(),
-                jsonSerializerContext);
+            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+            this.Type = type;
+            this.FileUid = fileUid;
+            this.ProcessStatus = processStatus;
+            this.ProcessOutcome = processOutcome;
+            this.Retrievable = retrievable;
+            this.Content = content;
+            this.OwnerUid = ownerUid;
+            this.CreatorUid = creatorUid;
+            this.CatalogUid = catalogUid;
+            this.CreateTime = createTime;
+            this.UpdateTime = updateTime;
+            this.DeleteTime = deleteTime;
+            this.Size = size;
+            this.TotalChunks = totalChunks;
+            this.TotalTokens = totalTokens;
+            this.ExternalMetadata = externalMetadata;
         }
 
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerOptions.
+        /// Initializes a new instance of the <see cref="File" /> class.
         /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public string ToJson(
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
+        public File()
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                jsonSerializerOptions);
         }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerContext.
-        /// </summary>
-        public static global::Instill.File? FromJson(
-            string json,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize(
-                json,
-                typeof(global::Instill.File),
-                jsonSerializerContext) as global::Instill.File;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::Instill.File? FromJson(
-            string json,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Instill.File>(
-                json,
-                jsonSerializerOptions);
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerContext.
-        /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Instill.File?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
-                jsonStream,
-                typeof(global::Instill.File),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Instill.File;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::System.Threading.Tasks.ValueTask<global::Instill.File?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Instill.File?>(
-                jsonStream,
-                jsonSerializerOptions);
-        }
-
     }
 }

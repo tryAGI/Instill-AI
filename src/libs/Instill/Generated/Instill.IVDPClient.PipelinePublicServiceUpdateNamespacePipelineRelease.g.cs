@@ -16,7 +16,7 @@ namespace Instill
         /// <param name="releaseId"></param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
+        /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
         global::System.Threading.Tasks.Task<global::Instill.UpdateNamespacePipelineReleaseResponse> PipelinePublicServiceUpdateNamespacePipelineReleaseAsync(
             string namespaceId,

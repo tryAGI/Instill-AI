@@ -12,7 +12,7 @@ namespace Instill
         /// <param name="operationId"></param>
         /// <param name="instillRequesterUid"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
+        /// <exception cref="global::Instill.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Instill.GetOperationResponse> PipelinePublicServiceGetOperationAsync(
             string operationId,
             string? instillRequesterUid = default,

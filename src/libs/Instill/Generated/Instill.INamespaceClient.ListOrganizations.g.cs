@@ -13,7 +13,7 @@ namespace Instill
         /// <param name="view"></param>
         /// <param name="filter"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
+        /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
         global::System.Threading.Tasks.Task<global::Instill.ListOrganizationsResponse> ListOrganizationsAsync(
             int? pageSize = default,

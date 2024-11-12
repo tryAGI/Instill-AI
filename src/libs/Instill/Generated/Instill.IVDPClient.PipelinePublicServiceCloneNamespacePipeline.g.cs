@@ -13,7 +13,7 @@ namespace Instill
         /// <param name="pipelineId"></param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
+        /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
         global::System.Threading.Tasks.Task<string> PipelinePublicServiceCloneNamespacePipelineAsync(
             string namespaceId,

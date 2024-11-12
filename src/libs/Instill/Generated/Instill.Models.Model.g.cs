@@ -196,91 +196,166 @@ namespace Instill
         [global::System.Text.Json.Serialization.JsonExtensionData]
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
-
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
+        /// Initializes a new instance of the <see cref="Model" /> class.
         /// </summary>
-        public string ToJson(
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
+        /// <param name="name">
+        /// The resource name of the model, which allows its access by owner and ID.<br/>
+        /// - Format: `users/{user.id}/models/{model.id}`.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="uid">
+        /// Model UUID.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="id">
+        /// Model resource ID (used in `name` as the last segment). This conforms to<br/>
+        /// RFC-1034, which restricts to letters, numbers, and hyphen, with the first<br/>
+        /// character a letter, the last a letter or a number, and a 63 character<br/>
+        /// maximum.
+        /// </param>
+        /// <param name="description">
+        /// Model description.
+        /// </param>
+        /// <param name="modelDefinition">
+        /// The model definition that has been used to import the model.
+        /// </param>
+        /// <param name="configuration">
+        /// Model configuration. This field is validated against the model<br/>
+        /// specification in the model definition (i.e. the `model_spec` field in the<br/>
+        /// model definition).
+        /// </param>
+        /// <param name="task">
+        /// Model task.
+        /// </param>
+        /// <param name="visibility">
+        /// Model visibility.
+        /// </param>
+        /// <param name="createTime">
+        /// Model creation time.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="updateTime">
+        /// Model update time.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="deleteTime">
+        /// Model deletion time.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="ownerName">
+        /// Resource name of the owner.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="owner">
+        /// Model owner.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="region">
+        /// Region of choice for the particular provider to host the model.
+        /// </param>
+        /// <param name="hardware">
+        /// Hardware of choice to serve the model.
+        /// </param>
+        /// <param name="readme">
+        /// README holds the model documentation.
+        /// </param>
+        /// <param name="sourceUrl">
+        /// A link to the source code of the model (e.g. to a GitHub repository).
+        /// </param>
+        /// <param name="documentationUrl">
+        /// A link to any extra information.
+        /// </param>
+        /// <param name="license">
+        /// License under which the model is distributed.
+        /// </param>
+        /// <param name="profileImage">
+        /// Model profile image in base64 format.
+        /// </param>
+        /// <param name="permission">
+        /// Permission defines how a pipeline can be used.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="inputSchema">
+        /// Included only in responses
+        /// </param>
+        /// <param name="outputSchema">
+        /// Included only in responses
+        /// </param>
+        /// <param name="tags">
+        /// Tags.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="versions">
+        /// Version names.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="stats">
+        /// Statistic data.<br/>
+        /// Included only in responses
+        /// </param>
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+        public Model(
+            string id,
+            string modelDefinition,
+            object configuration,
+            global::Instill.AITask task,
+            global::Instill.ModelVisibility visibility,
+            string region,
+            string hardware,
+            string? name,
+            string? uid,
+            string? description,
+            global::System.DateTime? createTime,
+            global::System.DateTime? updateTime,
+            global::System.DateTime? deleteTime,
+            string? ownerName,
+            global::Instill.Owner? owner,
+            string? readme,
+            string? sourceUrl,
+            string? documentationUrl,
+            string? license,
+            string? profileImage,
+            global::Instill.Permission? permission,
+            object? inputSchema,
+            object? outputSchema,
+            global::System.Collections.Generic.IList<string>? tags,
+            global::System.Collections.Generic.IList<string>? versions,
+            global::Instill.ModelStats? stats)
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                this.GetType(),
-                jsonSerializerContext);
+            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
+            this.ModelDefinition = modelDefinition ?? throw new global::System.ArgumentNullException(nameof(modelDefinition));
+            this.Configuration = configuration ?? throw new global::System.ArgumentNullException(nameof(configuration));
+            this.Task = task;
+            this.Visibility = visibility;
+            this.Region = region ?? throw new global::System.ArgumentNullException(nameof(region));
+            this.Hardware = hardware ?? throw new global::System.ArgumentNullException(nameof(hardware));
+            this.Name = name;
+            this.Uid = uid;
+            this.Description = description;
+            this.CreateTime = createTime;
+            this.UpdateTime = updateTime;
+            this.DeleteTime = deleteTime;
+            this.OwnerName = ownerName;
+            this.Owner = owner;
+            this.Readme = readme;
+            this.SourceUrl = sourceUrl;
+            this.DocumentationUrl = documentationUrl;
+            this.License = license;
+            this.ProfileImage = profileImage;
+            this.Permission = permission;
+            this.InputSchema = inputSchema;
+            this.OutputSchema = outputSchema;
+            this.Tags = tags;
+            this.Versions = versions;
+            this.Stats = stats;
         }
 
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerOptions.
+        /// Initializes a new instance of the <see cref="Model" /> class.
         /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public string ToJson(
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
+        public Model()
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                jsonSerializerOptions);
         }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerContext.
-        /// </summary>
-        public static global::Instill.Model? FromJson(
-            string json,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize(
-                json,
-                typeof(global::Instill.Model),
-                jsonSerializerContext) as global::Instill.Model;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::Instill.Model? FromJson(
-            string json,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Instill.Model>(
-                json,
-                jsonSerializerOptions);
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerContext.
-        /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Instill.Model?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
-                jsonStream,
-                typeof(global::Instill.Model),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Instill.Model;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::System.Threading.Tasks.ValueTask<global::Instill.Model?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Instill.Model?>(
-                jsonStream,
-                jsonSerializerOptions);
-        }
-
     }
 }

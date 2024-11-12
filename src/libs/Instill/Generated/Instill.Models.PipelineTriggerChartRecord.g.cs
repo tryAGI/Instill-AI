@@ -77,91 +77,70 @@ namespace Instill
         [global::System.Text.Json.Serialization.JsonExtensionData]
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
-
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
+        /// Initializes a new instance of the <see cref="PipelineTriggerChartRecord" /> class.
         /// </summary>
-        public string ToJson(
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
+        /// <param name="pipelineId">
+        /// Pipeline ID.
+        /// </param>
+        /// <param name="pipelineUid">
+        /// Pipeline UUID.
+        /// </param>
+        /// <param name="triggerMode">
+        /// Trigger mode.
+        /// </param>
+        /// <param name="status">
+        /// Final status.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="timeBuckets">
+        /// Time buckets.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="triggerCounts">
+        /// Aggregated trigger count in each time bucket.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="computeTimeDuration">
+        /// Total computation time duration in each time bucket.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="pipelineReleaseId">
+        /// Version for the triggered pipeline if it is a release pipeline.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="pipelineReleaseUid">
+        /// Release UUID for the triggered pipeline if it is a release pipeline.<br/>
+        /// Included only in responses
+        /// </param>
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+        public PipelineTriggerChartRecord(
+            string? pipelineId,
+            string? pipelineUid,
+            global::Instill.Mode? triggerMode,
+            global::Instill.Status? status,
+            global::System.Collections.Generic.IList<global::System.DateTime>? timeBuckets,
+            global::System.Collections.Generic.IList<int>? triggerCounts,
+            global::System.Collections.Generic.IList<float>? computeTimeDuration,
+            string? pipelineReleaseId,
+            string? pipelineReleaseUid)
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                this.GetType(),
-                jsonSerializerContext);
+            this.PipelineId = pipelineId;
+            this.PipelineUid = pipelineUid;
+            this.TriggerMode = triggerMode;
+            this.Status = status;
+            this.TimeBuckets = timeBuckets;
+            this.TriggerCounts = triggerCounts;
+            this.ComputeTimeDuration = computeTimeDuration;
+            this.PipelineReleaseId = pipelineReleaseId;
+            this.PipelineReleaseUid = pipelineReleaseUid;
         }
 
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerOptions.
+        /// Initializes a new instance of the <see cref="PipelineTriggerChartRecord" /> class.
         /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public string ToJson(
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
+        public PipelineTriggerChartRecord()
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                jsonSerializerOptions);
         }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerContext.
-        /// </summary>
-        public static global::Instill.PipelineTriggerChartRecord? FromJson(
-            string json,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize(
-                json,
-                typeof(global::Instill.PipelineTriggerChartRecord),
-                jsonSerializerContext) as global::Instill.PipelineTriggerChartRecord;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::Instill.PipelineTriggerChartRecord? FromJson(
-            string json,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Instill.PipelineTriggerChartRecord>(
-                json,
-                jsonSerializerOptions);
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerContext.
-        /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Instill.PipelineTriggerChartRecord?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
-                jsonStream,
-                typeof(global::Instill.PipelineTriggerChartRecord),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Instill.PipelineTriggerChartRecord;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::System.Threading.Tasks.ValueTask<global::Instill.PipelineTriggerChartRecord?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Instill.PipelineTriggerChartRecord?>(
-                jsonStream,
-                jsonSerializerOptions);
-        }
-
     }
 }

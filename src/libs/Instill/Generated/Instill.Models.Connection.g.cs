@@ -117,91 +117,101 @@ namespace Instill
         [global::System.Text.Json.Serialization.JsonExtensionData]
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
-
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
+        /// Initializes a new instance of the <see cref="Connection" /> class.
         /// </summary>
-        public string ToJson(
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
+        /// <param name="uid">
+        /// UUID-formatted unique identifier.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="id">
+        /// ID.
+        /// </param>
+        /// <param name="namespaceId">
+        /// ID of the namespace owning the connection.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="integrationId">
+        /// Integration ID. It determines for which type of components can reference<br/>
+        /// this connection.
+        /// </param>
+        /// <param name="integrationTitle">
+        /// Integration title. This helps the console display the results grouped by<br/>
+        /// integration ID without needing an extra call to fetch title by integration<br/>
+        /// ID.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="method">
+        /// Connection method. It references the setup schema provided by the<br/>
+        /// integration.
+        /// </param>
+        /// <param name="setup">
+        /// Connection details. This field is required on creation, optional on view.<br/>
+        /// When viewing the connection details, the setup values will be redacted.
+        /// </param>
+        /// <param name="scopes">
+        /// A list of scopes that identify the resources that the connection will be<br/>
+        /// able to access on the user's behalf. This is typically passed on creation<br/>
+        /// when the setup has been generated through an OAuth flow with a limited set<br/>
+        /// of scopes.
+        /// </param>
+        /// <param name="identity">
+        /// When the connection method is METHOD_OAUTH, this field will hold the<br/>
+        /// identity (e.g., email, username) with which the access token has been<br/>
+        /// generated.
+        /// </param>
+        /// <param name="oAuthAccessDetails">
+        /// When the connection method is METHOD_OAUTH, the access token might come<br/>
+        /// with some extra information that might vary across vendors. This<br/>
+        /// information is passed as connection metadata.
+        /// </param>
+        /// <param name="view">
+        /// Included only in responses
+        /// </param>
+        /// <param name="createTime">
+        /// Creation timestamp.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="updateTime">
+        /// Last update timestamp.<br/>
+        /// Included only in responses
+        /// </param>
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+        public Connection(
+            string id,
+            string integrationId,
+            global::Instill.Method method,
+            object setup,
+            string? uid,
+            string? namespaceId,
+            string? integrationTitle,
+            global::System.Collections.Generic.IList<string>? scopes,
+            string? identity,
+            object? oAuthAccessDetails,
+            global::Instill.PipelineV1betaView? view,
+            global::System.DateTime? createTime,
+            global::System.DateTime? updateTime)
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                this.GetType(),
-                jsonSerializerContext);
+            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
+            this.IntegrationId = integrationId ?? throw new global::System.ArgumentNullException(nameof(integrationId));
+            this.Method = method;
+            this.Setup = setup ?? throw new global::System.ArgumentNullException(nameof(setup));
+            this.Uid = uid;
+            this.NamespaceId = namespaceId;
+            this.IntegrationTitle = integrationTitle;
+            this.Scopes = scopes;
+            this.Identity = identity;
+            this.OAuthAccessDetails = oAuthAccessDetails;
+            this.View = view;
+            this.CreateTime = createTime;
+            this.UpdateTime = updateTime;
         }
 
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerOptions.
+        /// Initializes a new instance of the <see cref="Connection" /> class.
         /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public string ToJson(
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
+        public Connection()
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                jsonSerializerOptions);
         }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerContext.
-        /// </summary>
-        public static global::Instill.Connection? FromJson(
-            string json,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize(
-                json,
-                typeof(global::Instill.Connection),
-                jsonSerializerContext) as global::Instill.Connection;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::Instill.Connection? FromJson(
-            string json,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Instill.Connection>(
-                json,
-                jsonSerializerOptions);
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerContext.
-        /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Instill.Connection?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
-                jsonStream,
-                typeof(global::Instill.Connection),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Instill.Connection;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::System.Threading.Tasks.ValueTask<global::Instill.Connection?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Instill.Connection?>(
-                jsonStream,
-                jsonSerializerOptions);
-        }
-
     }
 }

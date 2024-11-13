@@ -145,6 +145,13 @@ namespace Instill
         public global::Instill.ComponentDefinitionReleaseStage? ReleaseStage { get; set; }
 
         /// <summary>
+        /// List of events that can be produced by the component.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("events")]
+        public global::System.Collections.Generic.IList<global::Instill.ComponentEvent>? Events { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -233,6 +240,10 @@ namespace Instill
         /// Release stage.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="events">
+        /// List of events that can be produced by the component.<br/>
+        /// Included only in responses
+        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public ComponentDefinition(
             string? name,
@@ -252,7 +263,8 @@ namespace Instill
             string? version,
             global::System.Collections.Generic.IList<global::Instill.ComponentTask>? tasks,
             string? description,
-            global::Instill.ComponentDefinitionReleaseStage? releaseStage)
+            global::Instill.ComponentDefinitionReleaseStage? releaseStage,
+            global::System.Collections.Generic.IList<global::Instill.ComponentEvent>? events)
         {
             this.Name = name;
             this.Uid = uid;
@@ -272,6 +284,7 @@ namespace Instill
             this.Tasks = tasks;
             this.Description = description;
             this.ReleaseStage = releaseStage;
+            this.Events = events;
         }
 
         /// <summary>

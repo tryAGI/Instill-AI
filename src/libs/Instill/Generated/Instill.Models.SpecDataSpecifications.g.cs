@@ -5,7 +5,9 @@ namespace Instill
 {
     /// <summary>
     /// Data specifications.<br/>
-    /// The key represents the task, and the value is the corresponding data_specification.
+    /// The key represents the task, and the value is the corresponding data_specification.<br/>
+    /// Note: This field will be renamed to task_specifications in the future.<br/>
+    /// Included only in responses
     /// </summary>
     public sealed partial class SpecDataSpecifications
     {

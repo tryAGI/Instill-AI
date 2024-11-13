@@ -4,10 +4,10 @@
 namespace Instill
 {
     /// <summary>
-    /// Component specification.<br/>
+    /// JSON schema describing the component event setup data.<br/>
     /// Included only in responses
     /// </summary>
-    public sealed partial class SpecComponentSpecification
+    public sealed partial class EventSpecificationSetupSchema
     {
 
         /// <summary>
@@ -17,10 +17,10 @@ namespace Instill
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SpecComponentSpecification" /> class.
+        /// Initializes a new instance of the <see cref="EventSpecificationSetupSchema" /> class.
         /// </summary>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
-        public SpecComponentSpecification(
+        public EventSpecificationSetupSchema(
  )
         {
         }

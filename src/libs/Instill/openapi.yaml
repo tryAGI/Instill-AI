@@ -6335,6 +6335,12 @@ components:
             - $ref: '#/components/schemas/ComponentDefinition.ReleaseStage'
           description: Release stage.
           readOnly: true
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/ComponentEvent'
+          description: List of events that can be produced by the component.
+          readOnly: true
       description: ComponentDefinition describes a certain type of Component.
     ComponentDefinition.ReleaseStage:
       title: "ReleaseStage defines the release stage of a component. This is used to\ngroup components with the same pre-relase groups (e.g. `0.1.0-beta`,\n`0.1.0-beta.1` -> `RELEASE_STAGE_BETA`) and to include other \"in progress\"\n(i.e. coming soon, open for contributions) stages that may not be relevant\nwithin semantic versioning.\nSee the documentation of each value for potential constraints between\n`version` and `release_stage` fields.`"
@@ -6352,6 +6358,22 @@ components:
         - VIEW_FULL
       type: string
       description: "View defines how a component definition is presented.\n\n - VIEW_BASIC: Default view, only includes basic information (removes the `spec`\nfield).\n - VIEW_FULL: Full representation."
+    ComponentEvent:
+      type: object
+      properties:
+        name:
+          type: string
+          description: 'The event name, e.g. `EVENT_NEW`.'
+          readOnly: true
+        title:
+          type: string
+          description: Title is the event name in a human-friendly format.
+          readOnly: true
+        description:
+          type: string
+          description: Description contains information about the event.
+          readOnly: true
+      description: "ComponentEvent contains information about an event that a component can\nproduce."
     ComponentRun:
       type: object
       properties:
@@ -6744,7 +6766,7 @@ components:
           type: object
           description: JSON schema describing the component output data.
           readOnly: true
-      description: DataSpecification describes the JSON schema of component input and output.
+      description: "DataSpecification describes the JSON schema of component input and output.\nNote: This message will be renamed to TaskSpecifications in the future."
     DeleteAppResponse:
       type: object
       description: DeleteAppResponse represents a response for deleting a app.
@@ -6831,6 +6853,24 @@ components:
           title: error
           type: string
       description: "ErrPipelineValidation contains information about a failed pipeline\nvalidation."
+    EventSpecification:
+      type: object
+      properties:
+        setupSchema:
+          type: object
+          description: JSON schema describing the component event setup data.
+          readOnly: true
+        messageSchema:
+          type: object
+          description: JSON schema describing the component event message data.
+          readOnly: true
+        messageExamples:
+          type: array
+          items:
+            type: object
+          description: JSON schema describing the component event examples.
+          readOnly: true
+      description: EventSpecification describes the JSON schema of component event setup and examples.
     File:
       title: file
       required:
@@ -9429,19 +9469,24 @@ components:
           format: date-time
       description: The SourceFile message represents a source file in the artifact system.
     Spec:
-      required:
-        - componentSpecification
-        - dataSpecifications
       type: object
       properties:
         componentSpecification:
           type: object
           description: Component specification.
+          readOnly: true
         dataSpecifications:
           type: object
           additionalProperties:
             $ref: '#/components/schemas/DataSpecification'
-          description: "Data specifications.\nThe key represents the task, and the value is the corresponding data_specification."
+          description: "Data specifications.\nThe key represents the task, and the value is the corresponding data_specification.\nNote: This field will be renamed to task_specifications in the future."
+          readOnly: true
+        eventSpecifications:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/EventSpecification'
+          description: "Event specifications.\nThe key represents the event, and the value is the corresponding event_specification."
+          readOnly: true
       description: Spec represents a specification data model.
     StripeSubscriptionDetail:
       type: object

@@ -9,19 +9,28 @@ namespace Instill
     public sealed partial class Spec
     {
         /// <summary>
-        /// Component specification.
+        /// Component specification.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("componentSpecification")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required object ComponentSpecification { get; set; }
+        public object? ComponentSpecification { get; set; }
 
         /// <summary>
         /// Data specifications.<br/>
-        /// The key represents the task, and the value is the corresponding data_specification.
+        /// The key represents the task, and the value is the corresponding data_specification.<br/>
+        /// Note: This field will be renamed to task_specifications in the future.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("dataSpecifications")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.Dictionary<string, global::Instill.DataSpecification> DataSpecifications { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::Instill.DataSpecification>? DataSpecifications { get; set; }
+
+        /// <summary>
+        /// Event specifications.<br/>
+        /// The key represents the event, and the value is the corresponding event_specification.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("eventSpecifications")]
+        public global::System.Collections.Generic.Dictionary<string, global::Instill.EventSpecification>? EventSpecifications { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -33,19 +42,29 @@ namespace Instill
         /// Initializes a new instance of the <see cref="Spec" /> class.
         /// </summary>
         /// <param name="componentSpecification">
-        /// Component specification.
+        /// Component specification.<br/>
+        /// Included only in responses
         /// </param>
         /// <param name="dataSpecifications">
         /// Data specifications.<br/>
-        /// The key represents the task, and the value is the corresponding data_specification.
+        /// The key represents the task, and the value is the corresponding data_specification.<br/>
+        /// Note: This field will be renamed to task_specifications in the future.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="eventSpecifications">
+        /// Event specifications.<br/>
+        /// The key represents the event, and the value is the corresponding event_specification.<br/>
+        /// Included only in responses
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public Spec(
-            object componentSpecification,
-            global::System.Collections.Generic.Dictionary<string, global::Instill.DataSpecification> dataSpecifications)
+            object? componentSpecification,
+            global::System.Collections.Generic.Dictionary<string, global::Instill.DataSpecification>? dataSpecifications,
+            global::System.Collections.Generic.Dictionary<string, global::Instill.EventSpecification>? eventSpecifications)
         {
-            this.ComponentSpecification = componentSpecification ?? throw new global::System.ArgumentNullException(nameof(componentSpecification));
-            this.DataSpecifications = dataSpecifications ?? throw new global::System.ArgumentNullException(nameof(dataSpecifications));
+            this.ComponentSpecification = componentSpecification;
+            this.DataSpecifications = dataSpecifications;
+            this.EventSpecifications = eventSpecifications;
         }
 
         /// <summary>

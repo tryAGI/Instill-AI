@@ -4,7 +4,8 @@
 namespace Instill
 {
     /// <summary>
-    /// DataSpecification describes the JSON schema of component input and output.
+    /// DataSpecification describes the JSON schema of component input and output.<br/>
+    /// Note: This message will be renamed to TaskSpecifications in the future.
     /// </summary>
     public sealed partial class DataSpecification
     {

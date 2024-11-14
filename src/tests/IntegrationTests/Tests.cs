@@ -3,8 +3,7 @@ namespace Instill.IntegrationTests;
 [TestClass]
 public partial class Tests
 {
-    [TestMethod]
-    public InstillClient GetAuthenticatedClient()
+    public static InstillClient GetAuthenticatedClient()
     {
         var apiKey =
             Environment.GetEnvironmentVariable("API_KEY") ??

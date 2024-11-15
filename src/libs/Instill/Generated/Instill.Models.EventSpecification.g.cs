@@ -9,11 +9,25 @@ namespace Instill
     public sealed partial class EventSpecification
     {
         /// <summary>
-        /// JSON schema describing the component event setup data.<br/>
+        /// Event title.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("setupSchema")]
-        public object? SetupSchema { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        /// <summary>
+        /// Event description.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// JSON schema describing the component event config data.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("configSchema")]
+        public object? ConfigSchema { get; set; }
 
         /// <summary>
         /// JSON schema describing the component event message data.<br/>
@@ -38,8 +52,16 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="EventSpecification" /> class.
         /// </summary>
-        /// <param name="setupSchema">
-        /// JSON schema describing the component event setup data.<br/>
+        /// <param name="title">
+        /// Event title.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="description">
+        /// Event description.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="configSchema">
+        /// JSON schema describing the component event config data.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="messageSchema">
@@ -52,11 +74,15 @@ namespace Instill
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public EventSpecification(
-            object? setupSchema,
+            string? title,
+            string? description,
+            object? configSchema,
             object? messageSchema,
             global::System.Collections.Generic.IList<object>? messageExamples)
         {
-            this.SetupSchema = setupSchema;
+            this.Title = title;
+            this.Description = description;
+            this.ConfigSchema = configSchema;
             this.MessageSchema = messageSchema;
             this.MessageExamples = messageExamples;
         }

@@ -4,10 +4,10 @@
 namespace Instill
 {
     /// <summary>
-    /// JSON schema describing the component event setup data.<br/>
+    /// JSON schema describing the component event config data.<br/>
     /// Included only in responses
     /// </summary>
-    public sealed partial class EventSpecificationSetupSchema
+    public sealed partial class EventSpecificationConfigSchema
     {
 
         /// <summary>
@@ -17,10 +17,10 @@ namespace Instill
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EventSpecificationSetupSchema" /> class.
+        /// Initializes a new instance of the <see cref="EventSpecificationConfigSchema" /> class.
         /// </summary>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
-        public EventSpecificationSetupSchema(
+        public EventSpecificationConfigSchema(
  )
         {
         }

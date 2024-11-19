@@ -6105,6 +6105,12 @@ components:
           title: 'top k, defaults to 5'
           type: integer
           format: int64
+        llmModel:
+          title: 'LLM model name, defaults to `gpt-4o`'
+          type: string
+        userInstruction:
+          title: 'Instruction for the model to follow, defaults to `Please answer user question accurately and in the same language as the Follow-up Question.`'
+          type: string
       description: "ChatRequest represents a request to send a message\nto a chatbot synchronously and streams back the results."
     ChatResponse:
       type: object

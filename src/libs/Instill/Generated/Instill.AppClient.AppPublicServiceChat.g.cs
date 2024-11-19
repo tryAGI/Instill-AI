@@ -237,6 +237,8 @@ namespace Instill
         /// <param name="conversationUid"></param>
         /// <param name="message"></param>
         /// <param name="topK"></param>
+        /// <param name="llmModel"></param>
+        /// <param name="userInstruction"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
@@ -247,6 +249,8 @@ namespace Instill
             string conversationUid,
             string message,
             long? topK = default,
+            string? llmModel = default,
+            string? userInstruction = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Instill.ChatBody
@@ -255,6 +259,8 @@ namespace Instill
                 ConversationUid = conversationUid,
                 Message = message,
                 TopK = topK,
+                LlmModel = llmModel,
+                UserInstruction = userInstruction,
             };
 
             return await AppPublicServiceChatAsync(

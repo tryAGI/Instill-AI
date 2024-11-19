@@ -37,6 +37,18 @@ namespace Instill
         public long? TopK { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("llmModel")]
+        public string? LlmModel { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("userInstruction")]
+        public string? UserInstruction { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -49,17 +61,23 @@ namespace Instill
         /// <param name="conversationUid"></param>
         /// <param name="message"></param>
         /// <param name="topK"></param>
+        /// <param name="llmModel"></param>
+        /// <param name="userInstruction"></param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public ChatBody(
             string catalogId,
             string conversationUid,
             string message,
-            long? topK)
+            long? topK,
+            string? llmModel,
+            string? userInstruction)
         {
             this.CatalogId = catalogId ?? throw new global::System.ArgumentNullException(nameof(catalogId));
             this.ConversationUid = conversationUid ?? throw new global::System.ArgumentNullException(nameof(conversationUid));
             this.Message = message ?? throw new global::System.ArgumentNullException(nameof(message));
             this.TopK = topK;
+            this.LlmModel = llmModel;
+            this.UserInstruction = userInstruction;
         }
 
         /// <summary>

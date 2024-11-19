@@ -135,6 +135,7 @@ namespace Instill
             typeof(global::Instill.JsonConverters.PipelinePublicServiceGetNamespaceConnectionViewNullableJsonConverter),
             typeof(global::Instill.JsonConverters.PipelinePublicServiceGetIntegrationViewJsonConverter),
             typeof(global::Instill.JsonConverters.PipelinePublicServiceGetIntegrationViewNullableJsonConverter),
+            typeof(global::Instill.JsonConverters.UnixTimestampJsonConverter),
         })]
 
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.JsonSerializerContextTypes))]

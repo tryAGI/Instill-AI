@@ -7,13 +7,17 @@ namespace Instill
     {
         partial void PrepareListPipelineTriggerChartRecordsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref int? aggregationWindow,
-            ref string? filter);
+            ref string requesterId,
+            ref string? aggregationWindow,
+            ref global::System.DateTime? start,
+            ref global::System.DateTime? stop);
         partial void PrepareListPipelineTriggerChartRecordsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            int? aggregationWindow,
-            string? filter);
+            string requesterId,
+            string? aggregationWindow,
+            global::System.DateTime? start,
+            global::System.DateTime? stop);
         partial void ProcessListPipelineTriggerChartRecordsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -25,33 +29,41 @@ namespace Instill
 
         /// <summary>
         /// List pipeline trigger time charts<br/>
-        /// Returns a timeline of pipline trigger counts for the pipelines of a given<br/>
-        /// owner.<br/>
-        /// NOTE: This method will soon return the trigger counts of a given requester.
+        /// Returns a timeline of pipline trigger counts for a given requester. The<br/>
+        /// response will contain one set of records (datapoints), representing the<br/>
+        /// amount of triggers in a time bucket.
         /// </summary>
+        /// <param name="requesterId"></param>
         /// <param name="aggregationWindow"></param>
-        /// <param name="filter"></param>
+        /// <param name="start"></param>
+        /// <param name="stop"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
         public async global::System.Threading.Tasks.Task<global::Instill.ListPipelineTriggerChartRecordsResponse> ListPipelineTriggerChartRecordsAsync(
-            int? aggregationWindow = default,
-            string? filter = default,
+            string requesterId,
+            string? aggregationWindow = default,
+            global::System.DateTime? start = default,
+            global::System.DateTime? stop = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
             PrepareListPipelineTriggerChartRecordsArguments(
                 httpClient: HttpClient,
+                requesterId: ref requesterId,
                 aggregationWindow: ref aggregationWindow,
-                filter: ref filter);
+                start: ref start,
+                stop: ref stop);
 
             var __pathBuilder = new PathBuilder(
-                path: "/v1beta/metrics/vdp/pipeline/charts",
+                path: "/v1beta/pipeline-runs/query-charts",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 
-                .AddOptionalParameter("aggregationWindow", aggregationWindow?.ToString()) 
-                .AddOptionalParameter("filter", filter) 
+                .AddRequiredParameter("requesterId", requesterId) 
+                .AddOptionalParameter("aggregationWindow", aggregationWindow) 
+                .AddOptionalParameter("start", start?.ToString("yyyy-MM-ddTHH:mm:ssZ")) 
+                .AddOptionalParameter("stop", stop?.ToString("yyyy-MM-ddTHH:mm:ssZ")) 
                 ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -80,8 +92,10 @@ namespace Instill
             PrepareListPipelineTriggerChartRecordsRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
+                requesterId: requesterId,
                 aggregationWindow: aggregationWindow,
-                filter: filter);
+                start: start,
+                stop: stop);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,

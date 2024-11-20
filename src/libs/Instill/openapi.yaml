@@ -2491,68 +2491,37 @@ paths:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
       x-stage: beta
-  /v1beta/metrics/vdp/pipeline/triggers:
-    get:
-      tags:
-        - 📊 Metrics
-      summary: List pipeline triggers
-      description: Returns a paginated list of pipeline executions.
-      operationId: ListPipelineTriggerRecords
-      parameters:
-        - name: pageSize
-          in: query
-          description: "The maximum number of triggers to return. If this parameter is unspecified,\nat most 100 pipelines will be returned. The cap value for this parameter is\n1000 (i.e. any value above that will be coerced to 100)."
-          schema:
-            type: integer
-            format: int32
-        - name: pageToken
-          in: query
-          description: Page token.
-          schema:
-            type: string
-        - name: filter
-          in: query
-          description: "Filter can hold an [AIP-160](https://google.aip.dev/160)-compliant filter\nexpression.\n- Example: `create_time>timestamp(\"2000-06-19T23:31:08.657Z\")`."
-          schema:
-            type: string
-      responses:
-        '200':
-          description: A successful response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListPipelineTriggerRecordsResponse'
-        '401':
-          description: Returned when the client credentials are not valid.
-          content:
-            application/json:
-              schema: { }
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpc.Status'
-      x-stage: beta
-  /v1beta/metrics/vdp/pipeline/charts:
+  /v1beta/pipeline-runs/query-charts:
     get:
       tags:
         - 📊 Metrics
       summary: List pipeline trigger time charts
-      description: "Returns a timeline of pipline trigger counts for the pipelines of a given\nowner.\nNOTE: This method will soon return the trigger counts of a given requester."
+      description: "Returns a timeline of pipline trigger counts for a given requester. The\nresponse will contain one set of records (datapoints), representing the\namount of triggers in a time bucket."
       operationId: ListPipelineTriggerChartRecords
       parameters:
-        - name: aggregationWindow
+        - name: requesterId
           in: query
-          description: Aggregation window in nanoseconds.
-          schema:
-            type: integer
-            format: int32
-        - name: filter
-          in: query
-          description: "Filter can hold an [AIP-160](https://google.aip.dev/160)-compliant filter\nexpression.\n- Example: `create_time>timestamp(\"2000-06-19T23:31:08.657Z\")`."
+          description: The ID of the namespace that requested the pipeline triggers.
+          required: true
           schema:
             type: string
+        - name: aggregationWindow
+          in: query
+          description: "Aggregation window. The value is a positive duration string, i.e. a\nsequence of decimal numbers, each with optional fraction and a unit\nsuffix, such as \"300ms\", \"1.5h\" or \"2h45m\".\nThe minimum (and default) window is 1h."
+          schema:
+            type: string
+        - name: start
+          in: query
+          description: "Beginning of the time range from which the records will be fetched.\nThe default value is the beginning of the current day, in UTC."
+          schema:
+            type: string
+            format: date-time
+        - name: stop
+          in: query
+          description: "End of the time range from which the records will be fetched.\nThe default value is the current timestamp."
+          schema:
+            type: string
+            format: date-time
       responses:
         '200':
           description: A successful response.
@@ -2622,12 +2591,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
       x-stage: beta
-  /v1beta/metrics/credit/charts:
+  /v1beta/credit/query-charts:
     get:
       tags:
         - 📊 Metrics
       summary: List Instill Credit consumption time charts
-      description: "Returns a timeline of Instill Credit consumption for a given owner. The\nresponse will contain one set of records (datapoints) per consumption\nsource (e.g. \"pipeline\", \"model\"). Each datapoint represents the amount\nconsumed in a time bucket."
+      description: "Returns a timeline of Instill Credit consumption for a given owner. The\nresponse will contain one set of records (datapoints) per consumption\nsource (e.g. \"pipeline\", \"model\"). Each datapoint represents the amount\nconsumed in a time bucket.\n\nThis endpoint is only exposed on Instill Cloud."
       operationId: ListCreditConsumptionChartRecords
       parameters:
         - name: namespaceId
@@ -8024,24 +7993,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PipelineTriggerChartRecord'
-          description: A list of pipeline trigger records.
+          description: "Pipeline trigger counts. Until we allow filtering or grouping by fields\nlike pipeline ID, this list will contain only one element with the\ntimeline of trigger counts for a given requester, regardless the pipeline\nID, trigger mode, final status or other fields."
       description: "ListPipelineTriggerChartRecordsResponse contains a list of pipeline trigger\nchart records."
-    ListPipelineTriggerRecordsResponse:
-      type: object
-      properties:
-        pipelineTriggerRecords:
-          type: array
-          items:
-            $ref: '#/components/schemas/PipelineTriggerRecord'
-          description: A list of pipeline triggers.
-        nextPageToken:
-          type: string
-          description: Next page token.
-        totalSize:
-          type: integer
-          description: Total number of pipeline triggers.
-          format: int32
-      description: ListPipelineTriggerRecordsResponse contains a list of pipeline triggers.
     ListPipelinesAdminResponse:
       type: object
       properties:
@@ -8255,12 +8208,6 @@ components:
         - METHOD_OAUTH
       type: string
       description: "Method defines how the connection is set up.\n\n - METHOD_DICTIONARY: Key-value collection. The user is responsible of fetching the connection\ndetails from the 3rd party service.\n - METHOD_OAUTH: Access token created via OAuth 2.0 authorization."
-    Mode:
-      enum:
-        - MODE_SYNC
-        - MODE_ASYNC
-      type: string
-      description: "Mode describes the execution mode of the pipeline (sync or async).\n\n - MODE_SYNC: Synchronous (result is returned in the response).\n - MODE_ASYNC: Asynchronous (response only contains acknowledgement)."
     Model:
       title: "Model represents an AI model, i.e. a program that performs tasks as decision\nmaking or or pattern recognition based on its training data"
       required:
@@ -9116,18 +9063,7 @@ components:
       properties:
         pipelineId:
           type: string
-          description: Pipeline ID.
-        pipelineUid:
-          type: string
-          description: Pipeline UUID.
-        triggerMode:
-          allOf:
-            - $ref: '#/components/schemas/Mode'
-          description: Trigger mode.
-        status:
-          allOf:
-            - $ref: '#/components/schemas/.Status'
-          description: Final status.
+          description: This field will be present present when the information is grouped by pipeline.
           readOnly: true
         timeBuckets:
           type: array
@@ -9143,61 +9079,11 @@ components:
             format: int32
           description: Aggregated trigger count in each time bucket.
           readOnly: true
-        computeTimeDuration:
-          type: array
-          items:
-            type: number
-            format: float
-          description: Total computation time duration in each time bucket.
+        requesterId:
+          type: string
+          description: The ID of the namespace that requested the pipeline triggers.
           readOnly: true
-        pipelineReleaseId:
-          type: string
-          description: Version for the triggered pipeline if it is a release pipeline.
-          readOnly: true
-        pipelineReleaseUid:
-          type: string
-          description: Release UUID for the triggered pipeline if it is a release pipeline.
-          readOnly: true
-      description: "PipelineTriggerChartRecord contains pipeline trigger metrics, aggregated by\npipeline ID and time frame."
-    PipelineTriggerRecord:
-      type: object
-      properties:
-        triggerTime:
-          type: string
-          description: The moment when the pipeline was triggered.
-          format: date-time
-        pipelineTriggerId:
-          type: string
-          description: UUID of the trigger.
-        pipelineId:
-          type: string
-          description: Pipeline ID.
-        pipelineUid:
-          type: string
-          description: Pipeline UUID.
-        triggerMode:
-          allOf:
-            - $ref: '#/components/schemas/Mode'
-          description: Trigger mode.
-        computeTimeDuration:
-          type: number
-          description: Total execution duration.
-          format: float
-          readOnly: true
-        status:
-          allOf:
-            - $ref: '#/components/schemas/.Status'
-          description: Final status.
-          readOnly: true
-        pipelineReleaseId:
-          type: string
-          description: 'If a release of the pipeline was triggered, pipeline version.'
-          readOnly: true
-        pipelineReleaseUid:
-          type: string
-          description: 'If a release of the pipeline was triggered, release UUID.'
-          readOnly: true
-      description: PipelineTriggerRecord represents a pipeline execution event.
+      description: "PipelineTriggerChartRecord represents a timeline of pipeline triggers. It\ncontains a collection of (timestamp, count) pairs that represent the total\npipeline triggers in a given time bucket.\npipeline ID and time frame."
     ProcessCatalogFilesRequest:
       title: Process Catalog File Request
       required:
@@ -10445,12 +10331,6 @@ components:
         - VIEW_FULL
       type: string
       description: "View defines how a model definition is presented.\n\n - VIEW_BASIC: Default view, only includes basic information (omits `model_spec`).\n - VIEW_FULL: Full representation."
-    .Status:
-      enum:
-        - STATUS_COMPLETED
-        - STATUS_ERRORED
-      type: string
-      description: "Status describes the output of an execution.\n\n - STATUS_COMPLETED: Successfully completed.\n - STATUS_ERRORED: Finished with error."
     .User:
       type: object
       properties:

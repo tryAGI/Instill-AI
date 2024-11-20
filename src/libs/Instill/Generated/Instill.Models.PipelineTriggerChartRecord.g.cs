@@ -4,37 +4,19 @@
 namespace Instill
 {
     /// <summary>
-    /// PipelineTriggerChartRecord contains pipeline trigger metrics, aggregated by<br/>
+    /// PipelineTriggerChartRecord represents a timeline of pipeline triggers. It<br/>
+    /// contains a collection of (timestamp, count) pairs that represent the total<br/>
+    /// pipeline triggers in a given time bucket.<br/>
     /// pipeline ID and time frame.
     /// </summary>
     public sealed partial class PipelineTriggerChartRecord
     {
         /// <summary>
-        /// Pipeline ID.
+        /// This field will be present present when the information is grouped by pipeline.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("pipelineId")]
         public string? PipelineId { get; set; }
-
-        /// <summary>
-        /// Pipeline UUID.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("pipelineUid")]
-        public string? PipelineUid { get; set; }
-
-        /// <summary>
-        /// Trigger mode.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("triggerMode")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.ModeJsonConverter))]
-        public global::Instill.Mode? TriggerMode { get; set; }
-
-        /// <summary>
-        /// Final status.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.StatusJsonConverter))]
-        public global::Instill.Status? Status { get; set; }
 
         /// <summary>
         /// Time buckets.<br/>
@@ -51,25 +33,11 @@ namespace Instill
         public global::System.Collections.Generic.IList<int>? TriggerCounts { get; set; }
 
         /// <summary>
-        /// Total computation time duration in each time bucket.<br/>
+        /// The ID of the namespace that requested the pipeline triggers.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("computeTimeDuration")]
-        public global::System.Collections.Generic.IList<float>? ComputeTimeDuration { get; set; }
-
-        /// <summary>
-        /// Version for the triggered pipeline if it is a release pipeline.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("pipelineReleaseId")]
-        public string? PipelineReleaseId { get; set; }
-
-        /// <summary>
-        /// Release UUID for the triggered pipeline if it is a release pipeline.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("pipelineReleaseUid")]
-        public string? PipelineReleaseUid { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("requesterId")]
+        public string? RequesterId { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -81,16 +49,7 @@ namespace Instill
         /// Initializes a new instance of the <see cref="PipelineTriggerChartRecord" /> class.
         /// </summary>
         /// <param name="pipelineId">
-        /// Pipeline ID.
-        /// </param>
-        /// <param name="pipelineUid">
-        /// Pipeline UUID.
-        /// </param>
-        /// <param name="triggerMode">
-        /// Trigger mode.
-        /// </param>
-        /// <param name="status">
-        /// Final status.<br/>
+        /// This field will be present present when the information is grouped by pipeline.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="timeBuckets">
@@ -101,39 +60,21 @@ namespace Instill
         /// Aggregated trigger count in each time bucket.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="computeTimeDuration">
-        /// Total computation time duration in each time bucket.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="pipelineReleaseId">
-        /// Version for the triggered pipeline if it is a release pipeline.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="pipelineReleaseUid">
-        /// Release UUID for the triggered pipeline if it is a release pipeline.<br/>
+        /// <param name="requesterId">
+        /// The ID of the namespace that requested the pipeline triggers.<br/>
         /// Included only in responses
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public PipelineTriggerChartRecord(
             string? pipelineId,
-            string? pipelineUid,
-            global::Instill.Mode? triggerMode,
-            global::Instill.Status? status,
             global::System.Collections.Generic.IList<global::System.DateTime>? timeBuckets,
             global::System.Collections.Generic.IList<int>? triggerCounts,
-            global::System.Collections.Generic.IList<float>? computeTimeDuration,
-            string? pipelineReleaseId,
-            string? pipelineReleaseUid)
+            string? requesterId)
         {
             this.PipelineId = pipelineId;
-            this.PipelineUid = pipelineUid;
-            this.TriggerMode = triggerMode;
-            this.Status = status;
             this.TimeBuckets = timeBuckets;
             this.TriggerCounts = triggerCounts;
-            this.ComputeTimeDuration = computeTimeDuration;
-            this.PipelineReleaseId = pipelineReleaseId;
-            this.PipelineReleaseUid = pipelineReleaseUid;
+            this.RequesterId = requesterId;
         }
 
         /// <summary>

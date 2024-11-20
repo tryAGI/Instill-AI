@@ -9,7 +9,8 @@ namespace Instill
         /// Returns a timeline of Instill Credit consumption for a given owner. The<br/>
         /// response will contain one set of records (datapoints) per consumption<br/>
         /// source (e.g. "pipeline", "model"). Each datapoint represents the amount<br/>
-        /// consumed in a time bucket.
+        /// consumed in a time bucket.<br/>
+        /// This endpoint is only exposed on Instill Cloud.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="aggregationWindow"></param>

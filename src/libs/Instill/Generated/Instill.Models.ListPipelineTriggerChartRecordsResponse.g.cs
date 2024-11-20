@@ -10,7 +10,10 @@ namespace Instill
     public sealed partial class ListPipelineTriggerChartRecordsResponse
     {
         /// <summary>
-        /// A list of pipeline trigger records.
+        /// Pipeline trigger counts. Until we allow filtering or grouping by fields<br/>
+        /// like pipeline ID, this list will contain only one element with the<br/>
+        /// timeline of trigger counts for a given requester, regardless the pipeline<br/>
+        /// ID, trigger mode, final status or other fields.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("pipelineTriggerChartRecords")]
         public global::System.Collections.Generic.IList<global::Instill.PipelineTriggerChartRecord>? PipelineTriggerChartRecords { get; set; }
@@ -25,7 +28,10 @@ namespace Instill
         /// Initializes a new instance of the <see cref="ListPipelineTriggerChartRecordsResponse" /> class.
         /// </summary>
         /// <param name="pipelineTriggerChartRecords">
-        /// A list of pipeline trigger records.
+        /// Pipeline trigger counts. Until we allow filtering or grouping by fields<br/>
+        /// like pipeline ID, this list will contain only one element with the<br/>
+        /// timeline of trigger counts for a given requester, regardless the pipeline<br/>
+        /// ID, trigger mode, final status or other fields.
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public ListPipelineTriggerChartRecordsResponse(

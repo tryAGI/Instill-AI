@@ -9,7 +9,7 @@ info:
   license:
     name: Elastic License 2.0 (ELv2)
     url: https://github.com/instill-ai/protobufs/blob/main/LICENSE
-  version: v0.44.1-beta
+  version: v0.46.0-beta
 servers:
   - url: https://api.instill.tech
   - url: http://api.instill.tech

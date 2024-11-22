@@ -56,6 +56,13 @@ namespace Instill
         public global::Instill.AIAssistantAppMetadata? AiAssistantApp { get; set; }
 
         /// <summary>
+        /// The AI agent app metadata.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("aiAgentApp")]
+        public global::Instill.AIAgentAppMetadata? AiAgentApp { get; set; }
+
+        /// <summary>
         /// The app type.<br/>
         /// Included only in responses
         /// </summary>
@@ -109,6 +116,10 @@ namespace Instill
         /// The AI assistant app metadata.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="aiAgentApp">
+        /// The AI agent app metadata.<br/>
+        /// Included only in responses
+        /// </param>
         /// <param name="appType">
         /// The app type.<br/>
         /// Included only in responses
@@ -128,6 +139,7 @@ namespace Instill
             string? ownerUid,
             global::System.Collections.Generic.IList<string>? tags,
             global::Instill.AIAssistantAppMetadata? aiAssistantApp,
+            global::Instill.AIAgentAppMetadata? aiAgentApp,
             global::Instill.AppType? appType,
             string? appUid,
             string? creatorUid)
@@ -139,6 +151,7 @@ namespace Instill
             this.OwnerUid = ownerUid;
             this.Tags = tags;
             this.AiAssistantApp = aiAssistantApp;
+            this.AiAgentApp = aiAgentApp;
             this.AppType = appType;
             this.AppUid = appUid;
             this.CreatorUid = creatorUid;

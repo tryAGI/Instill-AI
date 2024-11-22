@@ -34,14 +34,20 @@ namespace Instill
         /// <param name="tags">
         /// The app tags.
         /// </param>
+        /// <param name="appType"></param>
+        /// <param name="aiAssistantApp"></param>
+        /// <param name="aiAgentApp"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
         global::System.Threading.Tasks.Task<global::Instill.CreateAppResponse> AppPublicServiceCreateAppAsync(
             string namespaceId,
             string id,
+            global::Instill.AppType appType,
             string? description = default,
             global::System.Collections.Generic.IList<string>? tags = default,
+            global::Instill.AIAssistantAppMetadata? aiAssistantApp = default,
+            global::Instill.AIAgentAppMetadata? aiAgentApp = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

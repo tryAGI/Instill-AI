@@ -7,11 +7,13 @@ namespace Instill
     {
         partial void PrepareAppPublicServiceListAppsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string namespaceId);
+            ref string namespaceId,
+            ref global::Instill.AppPublicServiceListAppsAppType? appType);
         partial void PrepareAppPublicServiceListAppsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string namespaceId);
+            string namespaceId,
+            global::Instill.AppPublicServiceListAppsAppType? appType);
         partial void ProcessAppPublicServiceListAppsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -26,22 +28,28 @@ namespace Instill
         /// Returns a paginated list of apps.
         /// </summary>
         /// <param name="namespaceId"></param>
+        /// <param name="appType"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
         public async global::System.Threading.Tasks.Task<global::Instill.ListAppsResponse> AppPublicServiceListAppsAsync(
             string namespaceId,
+            global::Instill.AppPublicServiceListAppsAppType? appType = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
             PrepareAppPublicServiceListAppsArguments(
                 httpClient: HttpClient,
-                namespaceId: ref namespaceId);
+                namespaceId: ref namespaceId,
+                appType: ref appType);
 
             var __pathBuilder = new PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/apps",
                 baseUri: HttpClient.BaseAddress); 
+            __pathBuilder 
+                .AddOptionalParameter("appType", appType?.ToValueString()) 
+                ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -69,7 +77,8 @@ namespace Instill
             PrepareAppPublicServiceListAppsRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                namespaceId: namespaceId);
+                namespaceId: namespaceId,
+                appType: appType);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,

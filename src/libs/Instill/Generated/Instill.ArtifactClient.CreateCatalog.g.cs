@@ -231,6 +231,7 @@ namespace Instill
         /// <param name="tags">
         /// The catalog tags.
         /// </param>
+        /// <param name="type"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
@@ -239,6 +240,7 @@ namespace Instill
             string? name = default,
             string? description = default,
             global::System.Collections.Generic.IList<string>? tags = default,
+            global::Instill.CatalogType? type = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Instill.CreateCatalogBody
@@ -246,6 +248,7 @@ namespace Instill
                 Name = name,
                 Description = description,
                 Tags = tags,
+                Type = type,
             };
 
             return await CreateCatalogAsync(

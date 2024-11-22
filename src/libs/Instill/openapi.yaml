@@ -28,6 +28,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: appType
+          in: query
+          description: "app type(default is APP_TYPE_AI_ASSISTANT)\n\n - APP_TYPE_AI_ASSISTANT: AppType is a AI assistant app.\n - APP_TYPE_AI_AGENT: AppType is a AI agent app."
+          schema:
+            enum:
+              - APP_TYPE_AI_ASSISTANT
+              - APP_TYPE_AI_AGENT
+            type: string
       responses:
         '200':
           description: A successful response.
@@ -216,6 +224,14 @@ paths:
           description: 'If true, all conversations will be returned. This has higher priority over conversation_id, page_size, and page_token.'
           schema:
             type: boolean
+        - name: chatWith
+          in: query
+          description: "chat with\n\n - CHAT_WITH_AI_ASSISTANT: chat with ai assistant(default)\n - CHAT_WITH_AI_AGENT: chat with ai agent"
+          schema:
+            enum:
+              - CHAT_WITH_AI_ASSISTANT
+              - CHAT_WITH_AI_AGENT
+            type: string
       responses:
         '200':
           description: A successful response.
@@ -5725,6 +5741,31 @@ paths:
       x-stage: beta
 components:
   schemas:
+    AIAgentAppMetadata:
+      type: object
+      properties:
+        instructions:
+          type: string
+          description: The instructions for the AI agent app.
+        tools:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tool'
+          description: The tools(pipelines) that the AI agent app can use.
+        catalogUids:
+          type: array
+          items:
+            type: string
+          description: The catalog uids that the AI agent app can use.
+        chunkTopK:
+          type: integer
+          description: The AI agent app top k.
+          format: int32
+        chunkWeight:
+          type: number
+          description: The AI agent chunk weight.
+          format: float
+      description: AIAgentAppMetadata represents the metadata for the AI agent app.
     AIAssistantAppMetadata:
       required:
         - catalogUid
@@ -5839,6 +5880,11 @@ components:
             - $ref: '#/components/schemas/AIAssistantAppMetadata'
           description: The AI assistant app metadata.
           readOnly: true
+        aiAgentApp:
+          allOf:
+            - $ref: '#/components/schemas/AIAgentAppMetadata'
+          description: The AI agent app metadata.
+          readOnly: true
         appType:
           allOf:
             - $ref: '#/components/schemas/AppType'
@@ -5856,8 +5902,9 @@ components:
     AppType:
       enum:
         - APP_TYPE_AI_ASSISTANT
+        - APP_TYPE_AI_AGENT
       type: string
-      description: "AppType represents the type of the app.\n\n - APP_TYPE_AI_ASSISTANT: AppType is a AI assistant app."
+      description: "AppType represents the type of the app.\n\n - APP_TYPE_AI_ASSISTANT: AppType is a AI assistant app.\n - APP_TYPE_AI_AGENT: AppType is a AI agent app."
     AuthenticatedUser:
       required:
         - id
@@ -6054,6 +6101,13 @@ components:
         - CATALOG_RUN_ACTION_DELETE_FILE
       type: string
       description: "CatalogRunAction describes the actions a user has over a catalog.\n\n - CATALOG_RUN_ACTION_CREATE: Create catalog.\n - CATALOG_RUN_ACTION_UPDATE: Update catalog.\n - CATALOG_RUN_ACTION_DELETE: Delete catalog.\n - CATALOG_RUN_ACTION_CREATE_FILE: Upload catalog file.\n - CATALOG_RUN_ACTION_PROCESS_FILE: Process catalog file.\n - CATALOG_RUN_ACTION_DELETE_FILE: Delete catalog file."
+    CatalogType:
+      title: Catalog Type. e.g. "persistent" or "ephemeral"
+      enum:
+        - CATALOG_TYPE_PERSISTENT
+        - CATALOG_TYPE_EPHEMERAL
+      type: string
+      description: "- CATALOG_TYPE_PERSISTENT: PERSISTENT\n - CATALOG_TYPE_EPHEMERAL: EPHEMERAL"
     ChatBody:
       required:
         - catalogId
@@ -6097,6 +6151,13 @@ components:
             $ref: '#/components/schemas/SimilarityChunk'
           readOnly: true
       description: ChatResponse contains the chatbot response.
+    ChatWith:
+      title: ChatWith enum
+      enum:
+        - CHAT_WITH_AI_ASSISTANT
+        - CHAT_WITH_AI_AGENT
+      type: string
+      description: "- CHAT_WITH_AI_ASSISTANT: chat with ai assistant(default)\n - CHAT_WITH_AI_AGENT: chat with ai agent"
     CheckNamespaceAdminResponse:
       type: object
       properties:
@@ -6537,9 +6598,26 @@ components:
           type: string
           format: date-time
           readOnly: true
+        aiAgentApp:
+          title: agent metadata
+          allOf:
+            - $ref: '#/components/schemas/AIAgentAppMetadata'
+          readOnly: true
+        tempCatalogId:
+          title: temp catalog id automatically created for ai agent app
+          type: string
+        chatWith:
+          title: chat with
+          allOf:
+            - $ref: '#/components/schemas/ChatWith'
+          readOnly: true
+        conversationDisplayName:
+          title: conversation display name
+          type: string
     CreateAppBody:
       required:
         - id
+        - appType
       type: object
       properties:
         id:
@@ -6553,6 +6631,18 @@ components:
           items:
             type: string
           description: The app tags.
+        appType:
+          title: app type(default is APP_TYPE_AI_ASSISTANT)
+          allOf:
+            - $ref: '#/components/schemas/AppType'
+        aiAssistantApp:
+          title: ai assistant app metadata
+          allOf:
+            - $ref: '#/components/schemas/AIAssistantAppMetadata'
+        aiAgentApp:
+          title: ai agent app metadata
+          allOf:
+            - $ref: '#/components/schemas/AIAgentAppMetadata'
       description: CreateAppRequest represents a request to create a app.
     CreateAppResponse:
       type: object
@@ -6577,6 +6667,10 @@ components:
           items:
             type: string
           description: The catalog tags.
+        type:
+          title: The catalog type. default is PERSISTENT
+          allOf:
+            - $ref: '#/components/schemas/CatalogType'
       description: CreateCatalogRequest represents a request to create a catalog.
     CreateCatalogResponse:
       required:
@@ -6597,6 +6691,17 @@ components:
         conversationId:
           title: conversation id. only allow kebab case
           type: string
+        chatWith:
+          title: chat with(optional) default is CHAT_WITH_AI_ASSISTANT
+          allOf:
+            - $ref: '#/components/schemas/ChatWith'
+        conversationDisplayName:
+          title: conversation display name
+          type: string
+        aiAgentApp:
+          title: agent metadata
+          allOf:
+            - $ref: '#/components/schemas/AIAgentAppMetadata'
     CreateConversationResponse:
       title: CreateConversationResponse returns the created conversation
       type: object
@@ -6934,6 +7039,10 @@ components:
         externalMetadata:
           title: Custom metadata provided by the user during file upload
           type: object
+        objectUid:
+          type: string
+          description: "objectUid in blob storage. user can upload to blob storage directly, then put objectUid here.\nthen no need the base64 encoding for the file content."
+          readOnly: true
     FileProcessStatus:
       title: file embedding process status
       enum:
@@ -9492,6 +9601,18 @@ components:
           title: transformed content update time
           type: string
           format: date-time
+    Tool:
+      title: tool definitions
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+          description: 'The tool name. e.g. ["preset/pipeline@v1.0.0", "preset/pipeline-2@v2.0.0"].'
+        config:
+          title: The tool config
+          type: object
     Trace:
       type: object
       properties:
@@ -9842,6 +9963,14 @@ components:
           type: integer
           description: "last AI assistant app top k\nIf the last AI assistant app top k is empty, the last AI assistant app top k will be set to empty."
           format: int32
+        aiAssistantApp:
+          title: ai assistant app metadata
+          allOf:
+            - $ref: '#/components/schemas/AIAssistantAppMetadata'
+        aiAgentApp:
+          title: ai agent app metadata
+          allOf:
+            - $ref: '#/components/schemas/AIAgentAppMetadata'
       description: UpdateAppRequest represents a request to update a app.
     UpdateAppResponse:
       type: object
@@ -9895,12 +10024,19 @@ components:
           title: new conversation id
           type: string
         lastUsedCatalogUid:
-          title: last used catalog uid
+          title: last used catalog uid(only for ai assistant app)
           type: string
         lastUsedTopK:
-          title: last used top k
+          title: last used top k(only for ai assistant app)
           type: integer
           format: int64
+        aiAgentApp:
+          title: ai agent app metadata
+          allOf:
+            - $ref: '#/components/schemas/AIAgentAppMetadata'
+        conversationDisplayName:
+          title: conversation display name
+          type: string
     UpdateConversationResponse:
       title: UpdateConversationResponse returns the updated conversation
       type: object
@@ -10176,7 +10312,7 @@ components:
           title: message content
           type: string
         role:
-          title: 'message role e.g., "user" or "assistant"'
+          title: 'message role e.g., "user" or "assistant" or "agent"'
           type: string
         type:
           title: message type
@@ -10194,6 +10330,16 @@ components:
           readOnly: true
         msgSenderUid:
           title: message sender uid
+          type: string
+          readOnly: true
+        chunks:
+          title: the chunks attached to the message
+          type: array
+          items:
+            $ref: '#/components/schemas/.Chunk'
+          readOnly: true
+        standaloneQuestion:
+          title: standalone question
           type: string
           readOnly: true
     longrunning.Operation:

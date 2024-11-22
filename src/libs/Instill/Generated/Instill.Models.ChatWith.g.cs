@@ -4,18 +4,17 @@
 namespace Instill
 {
     /// <summary>
-    /// AppType represents the type of the app.<br/>
-    ///  - APP_TYPE_AI_ASSISTANT: AppType is a AI assistant app.<br/>
-    ///  - APP_TYPE_AI_AGENT: AppType is a AI agent app.
+    /// - CHAT_WITH_AI_ASSISTANT: chat with ai assistant(default)<br/>
+    ///  - CHAT_WITH_AI_AGENT: chat with ai agent
     /// </summary>
-    public enum AppType
+    public enum ChatWith
     {
         /// <summary>
-        /// AppType is a AI assistant app.
+        /// chat with ai assistant(default)
         /// </summary>
         AIASSISTANT,
         /// <summary>
-        /// AppType is a AI agent app.
+        /// chat with ai agent
         /// </summary>
         AIAGENT,
     }
@@ -23,29 +22,29 @@ namespace Instill
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class AppTypeExtensions
+    public static class ChatWithExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this AppType value)
+        public static string ToValueString(this ChatWith value)
         {
             return value switch
             {
-                AppType.AIASSISTANT => "APP_TYPE_AI_ASSISTANT",
-                AppType.AIAGENT => "APP_TYPE_AI_AGENT",
+                ChatWith.AIASSISTANT => "CHAT_WITH_AI_ASSISTANT",
+                ChatWith.AIAGENT => "CHAT_WITH_AI_AGENT",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static AppType? ToEnum(string value)
+        public static ChatWith? ToEnum(string value)
         {
             return value switch
             {
-                "APP_TYPE_AI_ASSISTANT" => AppType.AIASSISTANT,
-                "APP_TYPE_AI_AGENT" => AppType.AIAGENT,
+                "CHAT_WITH_AI_ASSISTANT" => ChatWith.AIASSISTANT,
+                "CHAT_WITH_AI_AGENT" => ChatWith.AIAGENT,
                 _ => null,
             };
         }

@@ -4,48 +4,47 @@
 namespace Instill
 {
     /// <summary>
-    /// AppType represents the type of the app.<br/>
-    ///  - APP_TYPE_AI_ASSISTANT: AppType is a AI assistant app.<br/>
-    ///  - APP_TYPE_AI_AGENT: AppType is a AI agent app.
+    /// - CATALOG_TYPE_PERSISTENT: PERSISTENT<br/>
+    ///  - CATALOG_TYPE_EPHEMERAL: EPHEMERAL
     /// </summary>
-    public enum AppType
+    public enum CatalogType
     {
         /// <summary>
-        /// AppType is a AI assistant app.
+        /// PERSISTENT
         /// </summary>
-        AIASSISTANT,
+        PERSISTENT,
         /// <summary>
-        /// AppType is a AI agent app.
+        /// EPHEMERAL
         /// </summary>
-        AIAGENT,
+        EPHEMERAL,
     }
 
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class AppTypeExtensions
+    public static class CatalogTypeExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this AppType value)
+        public static string ToValueString(this CatalogType value)
         {
             return value switch
             {
-                AppType.AIASSISTANT => "APP_TYPE_AI_ASSISTANT",
-                AppType.AIAGENT => "APP_TYPE_AI_AGENT",
+                CatalogType.PERSISTENT => "CATALOG_TYPE_PERSISTENT",
+                CatalogType.EPHEMERAL => "CATALOG_TYPE_EPHEMERAL",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static AppType? ToEnum(string value)
+        public static CatalogType? ToEnum(string value)
         {
             return value switch
             {
-                "APP_TYPE_AI_ASSISTANT" => AppType.AIASSISTANT,
-                "APP_TYPE_AI_AGENT" => AppType.AIAGENT,
+                "CATALOG_TYPE_PERSISTENT" => CatalogType.PERSISTENT,
+                "CATALOG_TYPE_EPHEMERAL" => CatalogType.EPHEMERAL,
                 _ => null,
             };
         }

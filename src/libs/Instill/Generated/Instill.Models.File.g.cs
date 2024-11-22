@@ -116,6 +116,14 @@ namespace Instill
         public object? ExternalMetadata { get; set; }
 
         /// <summary>
+        /// objectUid in blob storage. user can upload to blob storage directly, then put objectUid here.<br/>
+        /// then no need the base64 encoding for the file content.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("objectUid")]
+        public string? ObjectUid { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -167,6 +175,11 @@ namespace Instill
         /// Included only in responses
         /// </param>
         /// <param name="externalMetadata"></param>
+        /// <param name="objectUid">
+        /// objectUid in blob storage. user can upload to blob storage directly, then put objectUid here.<br/>
+        /// then no need the base64 encoding for the file content.<br/>
+        /// Included only in responses
+        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public File(
             string name,
@@ -185,6 +198,7 @@ namespace Instill
             int? totalChunks,
             int? totalTokens,
             object? externalMetadata,
+            string? objectUid,
             string fileUid = default!)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
@@ -204,6 +218,7 @@ namespace Instill
             this.TotalChunks = totalChunks;
             this.TotalTokens = totalTokens;
             this.ExternalMetadata = externalMetadata;
+            this.ObjectUid = objectUid;
         }
 
         /// <summary>

@@ -44,6 +44,18 @@ namespace Instill
         public int? LastAiAssistantAppTopK { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("aiAssistantApp")]
+        public global::Instill.AIAssistantAppMetadata? AiAssistantApp { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("aiAgentApp")]
+        public global::Instill.AIAgentAppMetadata? AiAgentApp { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -72,19 +84,25 @@ namespace Instill
         /// last AI assistant app top k<br/>
         /// If the last AI assistant app top k is empty, the last AI assistant app top k will be set to empty.
         /// </param>
+        /// <param name="aiAssistantApp"></param>
+        /// <param name="aiAgentApp"></param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public UpdateAppBody(
             string? newAppId,
             string? newDescription,
             global::System.Collections.Generic.IList<string>? newTags,
             string? lastAiAssistantAppCatalogUid,
-            int? lastAiAssistantAppTopK)
+            int? lastAiAssistantAppTopK,
+            global::Instill.AIAssistantAppMetadata? aiAssistantApp,
+            global::Instill.AIAgentAppMetadata? aiAgentApp)
         {
             this.NewAppId = newAppId;
             this.NewDescription = newDescription;
             this.NewTags = newTags;
             this.LastAiAssistantAppCatalogUid = lastAiAssistantAppCatalogUid;
             this.LastAiAssistantAppTopK = lastAiAssistantAppTopK;
+            this.AiAssistantApp = aiAssistantApp;
+            this.AiAgentApp = aiAgentApp;
         }
 
         /// <summary>

@@ -60,6 +60,31 @@ namespace Instill
         public global::System.DateTime? UpdateTime { get; set; }
 
         /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("aiAgentApp")]
+        public global::Instill.AIAgentAppMetadata? AiAgentApp { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("tempCatalogId")]
+        public string? TempCatalogId { get; set; }
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("chatWith")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.ChatWithJsonConverter))]
+        public global::Instill.ChatWith? ChatWith { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("conversationDisplayName")]
+        public string? ConversationDisplayName { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -82,6 +107,14 @@ namespace Instill
         /// <param name="updateTime">
         /// Included only in responses
         /// </param>
+        /// <param name="aiAgentApp">
+        /// Included only in responses
+        /// </param>
+        /// <param name="tempCatalogId"></param>
+        /// <param name="chatWith">
+        /// Included only in responses
+        /// </param>
+        /// <param name="conversationDisplayName"></param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public Conversation(
             string namespaceId,
@@ -91,7 +124,11 @@ namespace Instill
             string? lastUsedCatalogUid,
             long? lastUsedTopK,
             global::System.DateTime? createTime,
-            global::System.DateTime? updateTime)
+            global::System.DateTime? updateTime,
+            global::Instill.AIAgentAppMetadata? aiAgentApp,
+            string? tempCatalogId,
+            global::Instill.ChatWith? chatWith,
+            string? conversationDisplayName)
         {
             this.NamespaceId = namespaceId ?? throw new global::System.ArgumentNullException(nameof(namespaceId));
             this.AppId = appId ?? throw new global::System.ArgumentNullException(nameof(appId));
@@ -101,6 +138,10 @@ namespace Instill
             this.LastUsedTopK = lastUsedTopK;
             this.CreateTime = createTime;
             this.UpdateTime = updateTime;
+            this.AiAgentApp = aiAgentApp;
+            this.TempCatalogId = tempCatalogId;
+            this.ChatWith = chatWith;
+            this.ConversationDisplayName = conversationDisplayName;
         }
 
         /// <summary>

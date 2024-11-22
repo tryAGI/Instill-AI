@@ -46,6 +46,8 @@ namespace Instill
         /// last AI assistant app top k<br/>
         /// If the last AI assistant app top k is empty, the last AI assistant app top k will be set to empty.
         /// </param>
+        /// <param name="aiAssistantApp"></param>
+        /// <param name="aiAgentApp"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
@@ -57,6 +59,8 @@ namespace Instill
             global::System.Collections.Generic.IList<string>? newTags = default,
             string? lastAiAssistantAppCatalogUid = default,
             int? lastAiAssistantAppTopK = default,
+            global::Instill.AIAssistantAppMetadata? aiAssistantApp = default,
+            global::Instill.AIAgentAppMetadata? aiAgentApp = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

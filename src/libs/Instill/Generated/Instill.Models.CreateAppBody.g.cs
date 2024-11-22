@@ -30,6 +30,26 @@ namespace Instill
         public global::System.Collections.Generic.IList<string>? Tags { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("appType")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.AppTypeJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Instill.AppType AppType { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("aiAssistantApp")]
+        public global::Instill.AIAssistantAppMetadata? AiAssistantApp { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("aiAgentApp")]
+        public global::Instill.AIAgentAppMetadata? AiAgentApp { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -49,15 +69,24 @@ namespace Instill
         /// <param name="tags">
         /// The app tags.
         /// </param>
+        /// <param name="appType"></param>
+        /// <param name="aiAssistantApp"></param>
+        /// <param name="aiAgentApp"></param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public CreateAppBody(
             string id,
+            global::Instill.AppType appType,
             string? description,
-            global::System.Collections.Generic.IList<string>? tags)
+            global::System.Collections.Generic.IList<string>? tags,
+            global::Instill.AIAssistantAppMetadata? aiAssistantApp,
+            global::Instill.AIAgentAppMetadata? aiAgentApp)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
+            this.AppType = appType;
             this.Description = description;
             this.Tags = tags;
+            this.AiAssistantApp = aiAssistantApp;
+            this.AiAgentApp = aiAgentApp;
         }
 
         /// <summary>

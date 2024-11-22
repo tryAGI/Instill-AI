@@ -27,6 +27,13 @@ namespace Instill
         public global::System.Collections.Generic.IList<string>? Tags { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.CatalogTypeJsonConverter))]
+        public global::Instill.CatalogType? Type { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -44,15 +51,18 @@ namespace Instill
         /// <param name="tags">
         /// The catalog tags.
         /// </param>
+        /// <param name="type"></param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public CreateCatalogBody(
             string? name,
             string? description,
-            global::System.Collections.Generic.IList<string>? tags)
+            global::System.Collections.Generic.IList<string>? tags,
+            global::Instill.CatalogType? type)
         {
             this.Name = name;
             this.Description = description;
             this.Tags = tags;
+            this.Type = type;
         }
 
         /// <summary>

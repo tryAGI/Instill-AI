@@ -7,7 +7,7 @@ namespace Instill
     /// ChatRequest represents a request to send a message<br/>
     /// to a chatbot synchronously and streams back the results.
     /// </summary>
-    public sealed partial class ChatBody
+    public sealed partial class AppPublicServiceChatBody
     {
         /// <summary>
         /// 
@@ -55,7 +55,7 @@ namespace Instill
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChatBody" /> class.
+        /// Initializes a new instance of the <see cref="AppPublicServiceChatBody" /> class.
         /// </summary>
         /// <param name="catalogId"></param>
         /// <param name="conversationUid"></param>
@@ -64,7 +64,7 @@ namespace Instill
         /// <param name="llmModel"></param>
         /// <param name="userInstruction"></param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
-        public ChatBody(
+        public AppPublicServiceChatBody(
             string catalogId,
             string conversationUid,
             string message,
@@ -81,9 +81,9 @@ namespace Instill
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChatBody" /> class.
+        /// Initializes a new instance of the <see cref="AppPublicServiceChatBody" /> class.
         /// </summary>
-        public ChatBody()
+        public AppPublicServiceChatBody()
         {
         }
     }

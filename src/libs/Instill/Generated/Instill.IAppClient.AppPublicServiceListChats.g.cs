@@ -5,27 +5,23 @@ namespace Instill
     public partial interface IAppClient
     {
         /// <summary>
-        /// List conversations<br/>
+        /// List chats<br/>
         /// Returns a paginated list of conversations.
         /// </summary>
         /// <param name="namespaceId"></param>
-        /// <param name="appId"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
-        /// <param name="conversationUid"></param>
-        /// <param name="conversationId"></param>
         /// <param name="ifAll"></param>
+        /// <param name="chatUid"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
-        global::System.Threading.Tasks.Task<global::Instill.ListConversationsResponse> AppPublicServiceListConversationsAsync(
+        global::System.Threading.Tasks.Task<global::Instill.ListChatsResponse> AppPublicServiceListChatsAsync(
             string namespaceId,
-            string appId,
             int? pageSize = default,
             string? pageToken = default,
-            string? conversationUid = default,
-            string? conversationId = default,
             bool? ifAll = default,
+            string? chatUid = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

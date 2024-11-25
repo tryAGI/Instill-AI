@@ -9,13 +9,13 @@ namespace Instill
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
             ref string appId,
-            global::Instill.ChatBody request);
+            global::Instill.AppPublicServiceChatBody request);
         partial void PrepareAppPublicServiceChatRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
             string appId,
-            global::Instill.ChatBody request);
+            global::Instill.AppPublicServiceChatBody request);
         partial void ProcessAppPublicServiceChatResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -40,7 +40,7 @@ namespace Instill
         public async global::System.Threading.Tasks.Task<global::Instill.ChatResponse> AppPublicServiceChatAsync(
             string namespaceId,
             string appId,
-            global::Instill.ChatBody request,
+            global::Instill.AppPublicServiceChatBody request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -253,7 +253,7 @@ namespace Instill
             string? userInstruction = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Instill.ChatBody
+            var __request = new global::Instill.AppPublicServiceChatBody
             {
                 CatalogId = catalogId,
                 ConversationUid = conversationUid,

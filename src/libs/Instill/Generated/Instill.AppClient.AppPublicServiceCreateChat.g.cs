@@ -5,54 +5,49 @@ namespace Instill
 {
     public partial class AppClient
     {
-        partial void PrepareAppPublicServiceCreateConversationArguments(
+        partial void PrepareAppPublicServiceCreateChatArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
-            ref string appId,
-            global::Instill.CreateConversationBody request);
-        partial void PrepareAppPublicServiceCreateConversationRequest(
+            global::Instill.CreateChatBody request);
+        partial void PrepareAppPublicServiceCreateChatRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
-            string appId,
-            global::Instill.CreateConversationBody request);
-        partial void ProcessAppPublicServiceCreateConversationResponse(
+            global::Instill.CreateChatBody request);
+        partial void ProcessAppPublicServiceCreateChatResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessAppPublicServiceCreateConversationResponseContent(
+        partial void ProcessAppPublicServiceCreateChatResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Create a conversation<br/>
-        /// Creates a conversation.
+        /// Create a chat<br/>
+        /// Creates a chat.
         /// </summary>
         /// <param name="namespaceId"></param>
-        /// <param name="appId"></param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
-        public async global::System.Threading.Tasks.Task<global::Instill.CreateConversationResponse> AppPublicServiceCreateConversationAsync(
+        public async global::System.Threading.Tasks.Task<global::Instill.CreateChatResponse> AppPublicServiceCreateChatAsync(
             string namespaceId,
-            string appId,
-            global::Instill.CreateConversationBody request,
+            global::Instill.CreateChatBody request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
 
             PrepareArguments(
                 client: HttpClient);
-            PrepareAppPublicServiceCreateConversationArguments(
+            PrepareAppPublicServiceCreateChatArguments(
                 httpClient: HttpClient,
                 namespaceId: ref namespaceId,
-                appId: ref appId,
                 request: request);
 
             var __pathBuilder = new PathBuilder(
-                path: $"/v1alpha/namespaces/{namespaceId}/apps/{appId}/conversations",
+                path: $"/v1alpha/namespaces/{namespaceId}/chats",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -84,11 +79,10 @@ namespace Instill
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareAppPublicServiceCreateConversationRequest(
+            PrepareAppPublicServiceCreateChatRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
                 namespaceId: namespaceId,
-                appId: appId,
                 request: request);
 
             using var __response = await HttpClient.SendAsync(
@@ -99,7 +93,7 @@ namespace Instill
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessAppPublicServiceCreateConversationResponse(
+            ProcessAppPublicServiceCreateChatResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
             // Returned when the client credentials are not valid.
@@ -167,7 +161,7 @@ namespace Instill
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessAppPublicServiceCreateConversationResponseContent(
+                ProcessAppPublicServiceCreateChatResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -192,7 +186,7 @@ namespace Instill
                 }
 
                 return
-                    global::Instill.CreateConversationResponse.FromJson(__content, JsonSerializerContext) ??
+                    global::Instill.CreateChatResponse.FromJson(__content, JsonSerializerContext) ??
                     throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
@@ -218,35 +212,35 @@ namespace Instill
                 using var __content = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
 
                 return
-                    await global::Instill.CreateConversationResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    await global::Instill.CreateChatResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                     throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }
 
         /// <summary>
-        /// Create a conversation<br/>
-        /// Creates a conversation.
+        /// Create a chat<br/>
+        /// Creates a chat.
         /// </summary>
         /// <param name="namespaceId"></param>
-        /// <param name="appId"></param>
-        /// <param name="conversationId"></param>
+        /// <param name="chatDisplayName"></param>
+        /// <param name="aiAgentApp"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
-        public async global::System.Threading.Tasks.Task<global::Instill.CreateConversationResponse> AppPublicServiceCreateConversationAsync(
+        public async global::System.Threading.Tasks.Task<global::Instill.CreateChatResponse> AppPublicServiceCreateChatAsync(
             string namespaceId,
-            string appId,
-            string conversationId,
+            string? chatDisplayName = default,
+            global::Instill.AIAgentAppMetadata? aiAgentApp = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Instill.CreateConversationBody
+            var __request = new global::Instill.CreateChatBody
             {
-                ConversationId = conversationId,
+                ChatDisplayName = chatDisplayName,
+                AiAgentApp = aiAgentApp,
             };
 
-            return await AppPublicServiceCreateConversationAsync(
+            return await AppPublicServiceCreateChatAsync(
                 namespaceId: namespaceId,
-                appId: appId,
                 request: __request,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
         }

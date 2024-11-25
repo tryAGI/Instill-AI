@@ -13,8 +13,7 @@ namespace Instill
             ref string? pageToken,
             ref string? conversationUid,
             ref string? conversationId,
-            ref bool? ifAll,
-            ref global::Instill.AppPublicServiceListConversationsChatWith? chatWith);
+            ref bool? ifAll);
         partial void PrepareAppPublicServiceListConversationsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
@@ -24,8 +23,7 @@ namespace Instill
             string? pageToken,
             string? conversationUid,
             string? conversationId,
-            bool? ifAll,
-            global::Instill.AppPublicServiceListConversationsChatWith? chatWith);
+            bool? ifAll);
         partial void ProcessAppPublicServiceListConversationsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -46,7 +44,6 @@ namespace Instill
         /// <param name="conversationUid"></param>
         /// <param name="conversationId"></param>
         /// <param name="ifAll"></param>
-        /// <param name="chatWith"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
@@ -58,7 +55,6 @@ namespace Instill
             string? conversationUid = default,
             string? conversationId = default,
             bool? ifAll = default,
-            global::Instill.AppPublicServiceListConversationsChatWith? chatWith = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
@@ -71,8 +67,7 @@ namespace Instill
                 pageToken: ref pageToken,
                 conversationUid: ref conversationUid,
                 conversationId: ref conversationId,
-                ifAll: ref ifAll,
-                chatWith: ref chatWith);
+                ifAll: ref ifAll);
 
             var __pathBuilder = new PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/apps/{appId}/conversations",
@@ -83,7 +78,6 @@ namespace Instill
                 .AddOptionalParameter("conversationUid", conversationUid) 
                 .AddOptionalParameter("conversationId", conversationId) 
                 .AddOptionalParameter("ifAll", ifAll?.ToString()) 
-                .AddOptionalParameter("chatWith", chatWith?.ToValueString()) 
                 ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -118,8 +112,7 @@ namespace Instill
                 pageToken: pageToken,
                 conversationUid: conversationUid,
                 conversationId: conversationId,
-                ifAll: ifAll,
-                chatWith: chatWith);
+                ifAll: ifAll);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,

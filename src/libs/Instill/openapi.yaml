@@ -7709,15 +7709,9 @@ components:
           description: "Configuration parameters required for the OAuth setup flow. This field\nwill be present only if the integration supports OAuth 2.0."
           readOnly: true
         view:
-          title: "View defines how the integration is presented. The following fields are\nonly shown in the FULL view:\n- schemas\n- setupSchema\n- oAuthConfig"
+          title: "View defines how the integration is presented. The following fields are\nonly shown in the FULL view:\n- setupSchema\n- oAuthConfig"
           allOf:
             - $ref: '#/components/schemas/pipeline.v1beta.View'
-          readOnly: true
-        schemas:
-          type: array
-          items:
-            $ref: '#/components/schemas/SetupSchema'
-          description: "Schemas defines the supported schemas for the connection setup.\nWe haven't found a case for a schema that changes on the connection method\n(components don't care about how the connection was built), so the schema\nwill be provided in the setupSchema field and the OAuth support and\nconfiguration will be provided in oAuthConfig."
           readOnly: true
       description: "Integration contains the parameters to create a connection between\ncomponents and 3rd party apps."
     Link:
@@ -9615,19 +9609,6 @@ components:
           title: Description
           type: string
       description: API secrets allow users to make requests to the Instill AI API.
-    SetupSchema:
-      type: object
-      properties:
-        method:
-          allOf:
-            - $ref: '#/components/schemas/Method'
-          description: 'The connection method, which will define the fields in the schema.'
-          readOnly: true
-        schema:
-          type: object
-          description: "The connection setup field definitions. Each integration will require\ndifferent data to connect to the 3rd party app."
-          readOnly: true
-      description: "SetupSchema defines the schema for a connection setup.\nThis message is deprecated."
     ShareCode:
       type: object
       properties:

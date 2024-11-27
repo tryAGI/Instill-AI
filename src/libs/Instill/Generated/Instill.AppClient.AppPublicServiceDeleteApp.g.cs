@@ -24,7 +24,7 @@ namespace Instill
             ref string content);
 
         /// <summary>
-        /// Delete a app<br/>
+        /// Delete an app<br/>
         /// Deletes an app.
         /// </summary>
         /// <param name="namespaceId"></param>

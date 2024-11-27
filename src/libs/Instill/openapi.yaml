@@ -98,7 +98,7 @@ paths:
     put:
       tags:
         - 🍎 App
-      summary: Update a app info
+      summary: Update an app's information
       description: Updates the information of an app.
       operationId: AppPublicService_UpdateApp
       parameters:
@@ -143,7 +143,7 @@ paths:
     delete:
       tags:
         - 🍎 App
-      summary: Delete a app
+      summary: Delete an app
       description: Deletes an app.
       operationId: AppPublicService_DeleteApp
       parameters:
@@ -384,12 +384,168 @@ paths:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
       x-stage: alpha
+  '/v1alpha/namespaces/{namespaceId}/agents':
+    get:
+      tags:
+        - 🍎 App
+      summary: List all agents info
+      description: Returns a paginated list of agents.
+      operationId: AppPublicService_ListAgents
+      parameters:
+        - name: namespaceId
+          in: path
+          description: The app's owner(namespaces).
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAgentsResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
+    post:
+      tags:
+        - 🍎 App
+      summary: Create an agent
+      description: Creates an agent.
+      operationId: AppPublicService_CreateAgent
+      parameters:
+        - name: namespaceId
+          in: path
+          description: The app's owner(namespaces).
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAgentBody'
+        required: true
+        x-bodyName: body
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateAgentResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
+  '/v1alpha/namespaces/{namespaceId}/agents/{agentUid}':
+    put:
+      tags:
+        - 🍎 App
+      summary: Update an agent
+      description: Updates the information of an agent.
+      operationId: AppPublicService_UpdateAgent
+      parameters:
+        - name: namespaceId
+          in: path
+          description: The app's owner(namespaces).
+          required: true
+          schema:
+            type: string
+        - name: agentUid
+          in: path
+          description: The agent uid.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAgentBody'
+        required: true
+        x-bodyName: body
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateAgentResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
+    delete:
+      tags:
+        - 🍎 App
+      summary: Delete an agent
+      description: Deletes an agent.
+      operationId: AppPublicService_DeleteAgent
+      parameters:
+        - name: namespaceId
+          in: path
+          description: The app's owner(namespaces).
+          required: true
+          schema:
+            type: string
+        - name: agentUid
+          in: path
+          description: The agent uid.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteAgentResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
   '/v1alpha/namespaces/{namespaceId}/chats':
     get:
       tags:
         - 🍎 App
       summary: List chats
-      description: Returns a paginated list of conversations.
+      description: Returns a list of chats.
       operationId: AppPublicService_ListChats
       parameters:
         - name: namespaceId
@@ -802,7 +958,7 @@ paths:
       tags:
         - 🍎 App
       summary: Get Playground Conversation
-      description: Returns the latest conversation of auth user(e.g. login user and api key user).
+      description: 'Returns the latest conversation for the authenticated user (e.g., logged-in user or API key user).'
       operationId: AppPublicService_GetPlaygroundConversation
       parameters:
         - name: namespaceId
@@ -824,6 +980,39 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetPlaygroundConversationResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
+  '/v1alpha/namespaces/{namespaceId}/tools':
+    get:
+      tags:
+        - 🍎 App
+      summary: List all tools
+      description: Returns a list of tools.
+      operationId: AppPublicService_ListTools
+      parameters:
+        - name: namespaceId
+          in: path
+          description: The app's owner(namespaces).
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListToolsResponse'
         '401':
           description: Returned when the client credentials are not valid.
           content:
@@ -896,7 +1085,7 @@ paths:
       tags:
         - 🍎 App
       summary: Restart Playground Conversation
-      description: "Creates a new conversation and uses the auth user UID as creator UID and\nauto-generates a new conversation ID on the behalf of auth user."
+      description: "Creates a new conversation using the authenticated user's UID as creator and\nauto-generates a new conversation ID on behalf of the authenticated user."
       operationId: AppPublicService_RestartPlaygroundConversation
       parameters:
         - name: namespaceId
@@ -6004,6 +6193,50 @@ components:
           description: The AI assistant app top k.
           format: int32
       description: AIAssistantAppMetadata represents the metadata for the AI assistant app.
+    Agent:
+      required:
+        - displayName
+      type: object
+      properties:
+        agentUid:
+          title: agent uid
+          type: string
+          readOnly: true
+        displayName:
+          type: string
+          description: The agent display name.
+        description:
+          type: string
+          description: The agent description.
+        namespaceUid:
+          type: string
+          description: The namespace of the agent.
+          readOnly: true
+        tags:
+          type: array
+          items:
+            type: string
+          description: The agent tags.
+        aiAgentMetadata:
+          allOf:
+            - $ref: '#/components/schemas/AIAgentAppMetadata'
+          description: The agent metadata.
+          readOnly: true
+        creatorUid:
+          title: creator uid
+          type: string
+          readOnly: true
+        createTime:
+          type: string
+          description: The creation time of the agent.
+          format: date-time
+          readOnly: true
+        updateTime:
+          type: string
+          description: The last update time of the agent.
+          format: date-time
+          readOnly: true
+      description: Agent represents a agent.
     Any:
       type: object
       properties:
@@ -6815,6 +7048,34 @@ components:
           type: string
           format: date-time
           readOnly: true
+    CreateAgentBody:
+      type: object
+      properties:
+        displayName:
+          type: string
+          description: The agent display name.
+        description:
+          type: string
+          description: The agent description.
+        tags:
+          type: array
+          items:
+            type: string
+          description: The agent tags.
+        aiAgentApp:
+          allOf:
+            - $ref: '#/components/schemas/AIAgentAppMetadata'
+          description: The agent metadata.
+      description: CreateAgentRequest represents a request to create a agent.
+    CreateAgentResponse:
+      type: object
+      properties:
+        agent:
+          allOf:
+            - $ref: '#/components/schemas/Agent'
+          description: The created agent.
+          readOnly: true
+      description: CreateAgentResponse represents a response for creating a agent.
     CreateAppBody:
       required:
         - id
@@ -7057,6 +7318,9 @@ components:
           description: JSON schema describing the component output data.
           readOnly: true
       description: "DataSpecification describes the JSON schema of component input and output.\nNote: This message will be renamed to TaskSpecifications in the future."
+    DeleteAgentResponse:
+      type: object
+      description: DeleteAgentResponse represents a response for deleting a agent.
     DeleteAppResponse:
       type: object
       description: DeleteAppResponse represents a response for deleting a app.
@@ -7726,6 +7990,15 @@ components:
           description: URL contains the reference the link will redirect to.
           readOnly: true
       description: Link contains the information to display an reference to an external URL.
+    ListAgentsResponse:
+      type: object
+      properties:
+        agents:
+          type: array
+          items:
+            $ref: '#/components/schemas/Agent'
+          description: The agents.
+      description: ListAgentsResponse represents a response for listing agents.
     ListAppsResponse:
       type: object
       properties:
@@ -8421,6 +8694,15 @@ components:
           description: Total number of API token resources.
           format: int32
       description: ListTokensResponse contains a list of API tokens.
+    ListToolsResponse:
+      type: object
+      properties:
+        tools:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tool'
+          description: The tools.
+      description: ListToolsResponse represents a response for listing tools.
     ListUserMembershipsResponse:
       type: object
       properties:
@@ -9835,16 +10117,19 @@ components:
           format: date-time
     Tool:
       title: tool definitions
-      required:
-        - name
       type: object
       properties:
+        pipelineId:
+          title: The pipeline id of the tool. e.g. "preset/xxx-search"
+          type: string
         name:
           type: string
-          description: 'The tool name. e.g. ["preset/pipeline@v1.0.0", "preset/pipeline-2@v2.0.0"].'
+          description: The tool name.
         config:
-          title: The tool config
           type: object
+          additionalProperties:
+            type: string
+          description: The tool connection key(variable) and value(id).
     Trace:
       type: object
       properties:
@@ -10174,6 +10459,31 @@ components:
     UndeployUserModelAdminResponse:
       title: UndeployUserModelAdminResponse represents a response for a undeployed model
       type: object
+    UpdateAgentBody:
+      type: object
+      properties:
+        description:
+          type: string
+          description: The agent description.
+        tags:
+          type: array
+          items:
+            type: string
+          description: The agent tags.
+        aiAgentApp:
+          allOf:
+            - $ref: '#/components/schemas/AIAgentAppMetadata'
+          description: The agent metadata.
+      description: UpdateAgentRequest represents a request to update a agent.
+    UpdateAgentResponse:
+      type: object
+      properties:
+        agent:
+          allOf:
+            - $ref: '#/components/schemas/Agent'
+          description: The updated agent.
+          readOnly: true
+      description: UpdateAgentResponse represents a response for updating a agent.
     UpdateAppBody:
       type: object
       properties:
@@ -10240,7 +10550,7 @@ components:
         chatDisplayName:
           title: chat display name
           type: string
-        aiAgentApp:
+        aiAgentMetadata:
           title: ai agent app metadata
           allOf:
             - $ref: '#/components/schemas/AIAgentAppMetadata'
@@ -10282,13 +10592,6 @@ components:
           title: last used top k(only for ai assistant app)
           type: integer
           format: int64
-        aiAgentApp:
-          title: ai agent app metadata
-          allOf:
-            - $ref: '#/components/schemas/AIAgentAppMetadata'
-        conversationDisplayName:
-          title: conversation display name
-          type: string
     UpdateConversationResponse:
       title: UpdateConversationResponse returns the updated conversation
       type: object
@@ -10695,7 +10998,7 @@ components:
           type: string
           format: date-time
           readOnly: true
-        aiAgentApp:
+        aiAgentMetadata:
           title: agent metadata
           allOf:
             - $ref: '#/components/schemas/AIAgentAppMetadata'

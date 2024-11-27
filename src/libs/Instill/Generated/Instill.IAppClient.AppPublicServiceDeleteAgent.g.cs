@@ -5,17 +5,17 @@ namespace Instill
     public partial interface IAppClient
     {
         /// <summary>
-        /// Get Playground Conversation<br/>
-        /// Returns the latest conversation for the authenticated user (e.g., logged-in user or API key user).
+        /// Delete an agent<br/>
+        /// Deletes an agent.
         /// </summary>
         /// <param name="namespaceId"></param>
-        /// <param name="appId"></param>
+        /// <param name="agentUid"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
-        global::System.Threading.Tasks.Task<global::Instill.GetPlaygroundConversationResponse> AppPublicServiceGetPlaygroundConversationAsync(
+        global::System.Threading.Tasks.Task<string> AppPublicServiceDeleteAgentAsync(
             string namespaceId,
-            string appId,
+            string agentUid,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

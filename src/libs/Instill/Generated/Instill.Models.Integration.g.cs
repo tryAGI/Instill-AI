@@ -88,17 +88,6 @@ namespace Instill
         public global::Instill.PipelineV1betaView? View { get; set; }
 
         /// <summary>
-        /// Schemas defines the supported schemas for the connection setup.<br/>
-        /// We haven't found a case for a schema that changes on the connection method<br/>
-        /// (components don't care about how the connection was built), so the schema<br/>
-        /// will be provided in the setupSchema field and the OAuth support and<br/>
-        /// configuration will be provided in oAuthConfig.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("schemas")]
-        public global::System.Collections.Generic.IList<global::Instill.SetupSchema>? Schemas { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -154,14 +143,6 @@ namespace Instill
         /// <param name="view">
         /// Included only in responses
         /// </param>
-        /// <param name="schemas">
-        /// Schemas defines the supported schemas for the connection setup.<br/>
-        /// We haven't found a case for a schema that changes on the connection method<br/>
-        /// (components don't care about how the connection was built), so the schema<br/>
-        /// will be provided in the setupSchema field and the OAuth support and<br/>
-        /// configuration will be provided in oAuthConfig.<br/>
-        /// Included only in responses
-        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public Integration(
             string? uid,
@@ -173,8 +154,7 @@ namespace Instill
             global::Instill.Link? helpLink,
             object? setupSchema,
             global::Instill.OAuthConfig? oAuthConfig,
-            global::Instill.PipelineV1betaView? view,
-            global::System.Collections.Generic.IList<global::Instill.SetupSchema>? schemas)
+            global::Instill.PipelineV1betaView? view)
         {
             this.Uid = uid;
             this.Id = id;
@@ -186,7 +166,6 @@ namespace Instill
             this.SetupSchema = setupSchema;
             this.OAuthConfig = oAuthConfig;
             this.View = view;
-            this.Schemas = schemas;
         }
 
         /// <summary>

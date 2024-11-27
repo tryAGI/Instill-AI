@@ -48,8 +48,8 @@ namespace Instill
         /// <summary>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("aiAgentApp")]
-        public global::Instill.AIAgentAppMetadata? AiAgentApp { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("aiAgentMetadata")]
+        public global::Instill.AIAgentAppMetadata? AiAgentMetadata { get; set; }
 
         /// <summary>
         /// 
@@ -84,7 +84,7 @@ namespace Instill
         /// <param name="updateTime">
         /// Included only in responses
         /// </param>
-        /// <param name="aiAgentApp">
+        /// <param name="aiAgentMetadata">
         /// Included only in responses
         /// </param>
         /// <param name="tempCatalogId"></param>
@@ -97,7 +97,7 @@ namespace Instill
             long? lastUsedTopK,
             global::System.DateTime? createTime,
             global::System.DateTime? updateTime,
-            global::Instill.AIAgentAppMetadata? aiAgentApp,
+            global::Instill.AIAgentAppMetadata? aiAgentMetadata,
             string? tempCatalogId,
             string? chatDisplayName)
         {
@@ -107,7 +107,7 @@ namespace Instill
             this.LastUsedTopK = lastUsedTopK;
             this.CreateTime = createTime;
             this.UpdateTime = updateTime;
-            this.AiAgentApp = aiAgentApp;
+            this.AiAgentMetadata = aiAgentMetadata;
             this.TempCatalogId = tempCatalogId;
             this.ChatDisplayName = chatDisplayName;
         }

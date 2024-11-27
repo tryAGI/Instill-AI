@@ -5,17 +5,15 @@ namespace Instill
     public partial interface IAppClient
     {
         /// <summary>
-        /// Get Playground Conversation<br/>
-        /// Returns the latest conversation for the authenticated user (e.g., logged-in user or API key user).
+        /// List all agents info<br/>
+        /// Returns a paginated list of agents.
         /// </summary>
         /// <param name="namespaceId"></param>
-        /// <param name="appId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
-        global::System.Threading.Tasks.Task<global::Instill.GetPlaygroundConversationResponse> AppPublicServiceGetPlaygroundConversationAsync(
+        global::System.Threading.Tasks.Task<global::Instill.ListAgentsResponse> AppPublicServiceListAgentsAsync(
             string namespaceId,
-            string appId,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

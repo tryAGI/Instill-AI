@@ -6,7 +6,7 @@ namespace Instill
     {
         /// <summary>
         /// List chats<br/>
-        /// Returns a paginated list of conversations.
+        /// Returns a list of chats.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="pageSize"></param>

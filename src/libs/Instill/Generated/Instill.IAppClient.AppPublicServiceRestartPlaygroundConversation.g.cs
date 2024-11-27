@@ -6,8 +6,8 @@ namespace Instill
     {
         /// <summary>
         /// Restart Playground Conversation<br/>
-        /// Creates a new conversation and uses the auth user UID as creator UID and<br/>
-        /// auto-generates a new conversation ID on the behalf of auth user.
+        /// Creates a new conversation using the authenticated user's UID as creator and<br/>
+        /// auto-generates a new conversation ID on behalf of the authenticated user.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="appId"></param>

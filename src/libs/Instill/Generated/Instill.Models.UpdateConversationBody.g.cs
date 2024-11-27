@@ -27,18 +27,6 @@ namespace Instill
         public long? LastUsedTopK { get; set; }
 
         /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("aiAgentApp")]
-        public global::Instill.AIAgentAppMetadata? AiAgentApp { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("conversationDisplayName")]
-        public string? ConversationDisplayName { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -50,21 +38,15 @@ namespace Instill
         /// <param name="newConversationId"></param>
         /// <param name="lastUsedCatalogUid"></param>
         /// <param name="lastUsedTopK"></param>
-        /// <param name="aiAgentApp"></param>
-        /// <param name="conversationDisplayName"></param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public UpdateConversationBody(
             string? newConversationId,
             string? lastUsedCatalogUid,
-            long? lastUsedTopK,
-            global::Instill.AIAgentAppMetadata? aiAgentApp,
-            string? conversationDisplayName)
+            long? lastUsedTopK)
         {
             this.NewConversationId = newConversationId;
             this.LastUsedCatalogUid = lastUsedCatalogUid;
             this.LastUsedTopK = lastUsedTopK;
-            this.AiAgentApp = aiAgentApp;
-            this.ConversationDisplayName = conversationDisplayName;
         }
 
         /// <summary>

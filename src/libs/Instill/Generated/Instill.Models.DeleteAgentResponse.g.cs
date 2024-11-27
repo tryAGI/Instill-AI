@@ -4,9 +4,9 @@
 namespace Instill
 {
     /// <summary>
-    /// The tool connection key(variable) and value(id).
+    /// DeleteAgentResponse represents a response for deleting a agent.
     /// </summary>
-    public sealed partial class ToolConfig
+    public sealed partial class DeleteAgentResponse
     {
 
         /// <summary>
@@ -16,10 +16,10 @@ namespace Instill
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ToolConfig" /> class.
+        /// Initializes a new instance of the <see cref="DeleteAgentResponse" /> class.
         /// </summary>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
-        public ToolConfig(
+        public DeleteAgentResponse(
  )
         {
         }

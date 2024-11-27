@@ -27,7 +27,7 @@ namespace Instill
         /// <param name="namespaceId"></param>
         /// <param name="chatUid"></param>
         /// <param name="chatDisplayName"></param>
-        /// <param name="aiAgentApp"></param>
+        /// <param name="aiAgentMetadata"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
@@ -35,7 +35,7 @@ namespace Instill
             string namespaceId,
             string chatUid,
             string? chatDisplayName = default,
-            global::Instill.AIAgentAppMetadata? aiAgentApp = default,
+            global::Instill.AIAgentAppMetadata? aiAgentMetadata = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

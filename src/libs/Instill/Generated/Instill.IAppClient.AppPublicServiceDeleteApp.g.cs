@@ -5,7 +5,7 @@ namespace Instill
     public partial interface IAppClient
     {
         /// <summary>
-        /// Delete a app<br/>
+        /// Delete an app<br/>
         /// Deletes an app.
         /// </summary>
         /// <param name="namespaceId"></param>

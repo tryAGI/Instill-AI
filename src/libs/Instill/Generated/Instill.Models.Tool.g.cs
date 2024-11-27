@@ -9,17 +9,22 @@ namespace Instill
     public sealed partial class Tool
     {
         /// <summary>
-        /// The tool name. e.g. ["preset/pipeline@v1.0.0", "preset/pipeline-2@v2.0.0"].
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Name { get; set; }
-
-        /// <summary>
         /// 
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("pipelineId")]
+        public string? PipelineId { get; set; }
+
+        /// <summary>
+        /// The tool name.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// The tool connection key(variable) and value(id).
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("config")]
-        public object? Config { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, string>? Config { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -30,16 +35,21 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="Tool" /> class.
         /// </summary>
+        /// <param name="pipelineId"></param>
         /// <param name="name">
-        /// The tool name. e.g. ["preset/pipeline@v1.0.0", "preset/pipeline-2@v2.0.0"].
+        /// The tool name.
         /// </param>
-        /// <param name="config"></param>
+        /// <param name="config">
+        /// The tool connection key(variable) and value(id).
+        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public Tool(
-            string name,
-            object? config)
+            string? pipelineId,
+            string? name,
+            global::System.Collections.Generic.Dictionary<string, string>? config)
         {
-            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+            this.PipelineId = pipelineId;
+            this.Name = name;
             this.Config = config;
         }
 

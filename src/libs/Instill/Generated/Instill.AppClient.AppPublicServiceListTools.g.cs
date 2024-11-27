@@ -5,52 +5,46 @@ namespace Instill
 {
     public partial class AppClient
     {
-        partial void PrepareAppPublicServiceRestartPlaygroundConversationArguments(
+        partial void PrepareAppPublicServiceListToolsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string namespaceId,
-            ref string appId);
-        partial void PrepareAppPublicServiceRestartPlaygroundConversationRequest(
+            ref string namespaceId);
+        partial void PrepareAppPublicServiceListToolsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string namespaceId,
-            string appId);
-        partial void ProcessAppPublicServiceRestartPlaygroundConversationResponse(
+            string namespaceId);
+        partial void ProcessAppPublicServiceListToolsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessAppPublicServiceRestartPlaygroundConversationResponseContent(
+        partial void ProcessAppPublicServiceListToolsResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Restart Playground Conversation<br/>
-        /// Creates a new conversation using the authenticated user's UID as creator and<br/>
-        /// auto-generates a new conversation ID on behalf of the authenticated user.
+        /// List all tools<br/>
+        /// Returns a list of tools.
         /// </summary>
         /// <param name="namespaceId"></param>
-        /// <param name="appId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
-        public async global::System.Threading.Tasks.Task<global::Instill.RestartPlaygroundConversationResponse> AppPublicServiceRestartPlaygroundConversationAsync(
+        public async global::System.Threading.Tasks.Task<global::Instill.ListToolsResponse> AppPublicServiceListToolsAsync(
             string namespaceId,
-            string appId,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareAppPublicServiceRestartPlaygroundConversationArguments(
+            PrepareAppPublicServiceListToolsArguments(
                 httpClient: HttpClient,
-                namespaceId: ref namespaceId,
-                appId: ref appId);
+                namespaceId: ref namespaceId);
 
             var __pathBuilder = new PathBuilder(
-                path: $"/v1alpha/namespaces/{namespaceId}/apps/{appId}/ai_assistant_playground/restart",
+                path: $"/v1alpha/namespaces/{namespaceId}/tools",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                method: global::System.Net.Http.HttpMethod.Post,
+                method: global::System.Net.Http.HttpMethod.Get,
                 requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 
             foreach (var __authorization in Authorizations)
@@ -72,11 +66,10 @@ namespace Instill
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareAppPublicServiceRestartPlaygroundConversationRequest(
+            PrepareAppPublicServiceListToolsRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                namespaceId: namespaceId,
-                appId: appId);
+                namespaceId: namespaceId);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
@@ -86,7 +79,7 @@ namespace Instill
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessAppPublicServiceRestartPlaygroundConversationResponse(
+            ProcessAppPublicServiceListToolsResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
             // Returned when the client credentials are not valid.
@@ -154,7 +147,7 @@ namespace Instill
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessAppPublicServiceRestartPlaygroundConversationResponseContent(
+                ProcessAppPublicServiceListToolsResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -179,7 +172,7 @@ namespace Instill
                 }
 
                 return
-                    global::Instill.RestartPlaygroundConversationResponse.FromJson(__content, JsonSerializerContext) ??
+                    global::Instill.ListToolsResponse.FromJson(__content, JsonSerializerContext) ??
                     throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
@@ -205,7 +198,7 @@ namespace Instill
                 using var __content = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
 
                 return
-                    await global::Instill.RestartPlaygroundConversationResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    await global::Instill.ListToolsResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                     throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }

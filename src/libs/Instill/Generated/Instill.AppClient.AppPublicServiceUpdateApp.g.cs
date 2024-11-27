@@ -26,7 +26,7 @@ namespace Instill
             ref string content);
 
         /// <summary>
-        /// Update a app info<br/>
+        /// Update an app's information<br/>
         /// Updates the information of an app.
         /// </summary>
         /// <param name="namespaceId"></param>
@@ -224,7 +224,7 @@ namespace Instill
         }
 
         /// <summary>
-        /// Update a app info<br/>
+        /// Update an app's information<br/>
         /// Updates the information of an app.
         /// </summary>
         /// <param name="namespaceId"></param>

@@ -5,43 +5,45 @@ namespace Instill
     public partial interface IAppClient
     {
         /// <summary>
-        /// Update a conversation<br/>
-        /// Updates a conversation.
+        /// Create an agent<br/>
+        /// Creates an agent.
         /// </summary>
         /// <param name="namespaceId"></param>
-        /// <param name="appId"></param>
-        /// <param name="conversationId"></param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
-        global::System.Threading.Tasks.Task<global::Instill.UpdateConversationResponse> AppPublicServiceUpdateConversationAsync(
+        global::System.Threading.Tasks.Task<global::Instill.CreateAgentResponse> AppPublicServiceCreateAgentAsync(
             string namespaceId,
-            string appId,
-            string conversationId,
-            global::Instill.UpdateConversationBody request,
+            global::Instill.CreateAgentBody request,
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Update a conversation<br/>
-        /// Updates a conversation.
+        /// Create an agent<br/>
+        /// Creates an agent.
         /// </summary>
         /// <param name="namespaceId"></param>
-        /// <param name="appId"></param>
-        /// <param name="conversationId"></param>
-        /// <param name="newConversationId"></param>
-        /// <param name="lastUsedCatalogUid"></param>
-        /// <param name="lastUsedTopK"></param>
+        /// <param name="displayName">
+        /// The agent display name.
+        /// </param>
+        /// <param name="description">
+        /// The agent description.
+        /// </param>
+        /// <param name="tags">
+        /// The agent tags.
+        /// </param>
+        /// <param name="aiAgentApp">
+        /// The agent metadata.
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
-        global::System.Threading.Tasks.Task<global::Instill.UpdateConversationResponse> AppPublicServiceUpdateConversationAsync(
+        global::System.Threading.Tasks.Task<global::Instill.CreateAgentResponse> AppPublicServiceCreateAgentAsync(
             string namespaceId,
-            string appId,
-            string conversationId,
-            string? newConversationId = default,
-            string? lastUsedCatalogUid = default,
-            long? lastUsedTopK = default,
+            string? displayName = default,
+            string? description = default,
+            global::System.Collections.Generic.IList<string>? tags = default,
+            global::Instill.AIAgentAppMetadata? aiAgentApp = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

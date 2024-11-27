@@ -239,8 +239,6 @@ namespace Instill
         /// <param name="newConversationId"></param>
         /// <param name="lastUsedCatalogUid"></param>
         /// <param name="lastUsedTopK"></param>
-        /// <param name="aiAgentApp"></param>
-        /// <param name="conversationDisplayName"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
@@ -251,8 +249,6 @@ namespace Instill
             string? newConversationId = default,
             string? lastUsedCatalogUid = default,
             long? lastUsedTopK = default,
-            global::Instill.AIAgentAppMetadata? aiAgentApp = default,
-            string? conversationDisplayName = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Instill.UpdateConversationBody
@@ -260,8 +256,6 @@ namespace Instill
                 NewConversationId = newConversationId,
                 LastUsedCatalogUid = lastUsedCatalogUid,
                 LastUsedTopK = lastUsedTopK,
-                AiAgentApp = aiAgentApp,
-                ConversationDisplayName = conversationDisplayName,
             };
 
             return await AppPublicServiceUpdateConversationAsync(

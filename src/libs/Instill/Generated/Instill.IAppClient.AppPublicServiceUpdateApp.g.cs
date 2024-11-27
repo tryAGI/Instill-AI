@@ -5,7 +5,7 @@ namespace Instill
     public partial interface IAppClient
     {
         /// <summary>
-        /// Update a app info<br/>
+        /// Update an app's information<br/>
         /// Updates the information of an app.
         /// </summary>
         /// <param name="namespaceId"></param>
@@ -21,7 +21,7 @@ namespace Instill
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Update a app info<br/>
+        /// Update an app's information<br/>
         /// Updates the information of an app.
         /// </summary>
         /// <param name="namespaceId"></param>

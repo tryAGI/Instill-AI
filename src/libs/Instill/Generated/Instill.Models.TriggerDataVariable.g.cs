@@ -4,7 +4,7 @@
 namespace Instill
 {
     /// <summary>
-    /// 
+    /// The values of the pipeline variables.
     /// </summary>
     public sealed partial class TriggerDataVariable
     {

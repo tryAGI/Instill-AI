@@ -68,14 +68,14 @@ namespace Instill
         /// <summary>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("chunks")]
-        public global::System.Collections.Generic.IList<global::Instill.Chunk>? Chunks { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("standaloneQuestion")]
+        public string? StandaloneQuestion { get; set; }
 
         /// <summary>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("standaloneQuestion")]
-        public string? StandaloneQuestion { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("citations")]
+        public global::System.Collections.Generic.IList<global::Instill.Citation>? Citations { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -107,10 +107,10 @@ namespace Instill
         /// <param name="msgSenderUid">
         /// Included only in responses
         /// </param>
-        /// <param name="chunks">
+        /// <param name="standaloneQuestion">
         /// Included only in responses
         /// </param>
-        /// <param name="standaloneQuestion">
+        /// <param name="citations">
         /// Included only in responses
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -124,8 +124,8 @@ namespace Instill
             global::System.DateTime? createTime,
             global::System.DateTime? updateTime,
             string? msgSenderUid,
-            global::System.Collections.Generic.IList<global::Instill.Chunk>? chunks,
-            string? standaloneQuestion)
+            string? standaloneQuestion,
+            global::System.Collections.Generic.IList<global::Instill.Citation>? citations)
         {
             this.Content = content ?? throw new global::System.ArgumentNullException(nameof(content));
             this.Role = role ?? throw new global::System.ArgumentNullException(nameof(role));
@@ -136,8 +136,8 @@ namespace Instill
             this.CreateTime = createTime;
             this.UpdateTime = updateTime;
             this.MsgSenderUid = msgSenderUid;
-            this.Chunks = chunks;
             this.StandaloneQuestion = standaloneQuestion;
+            this.Citations = citations;
         }
 
         /// <summary>

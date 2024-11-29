@@ -1569,9 +1569,42 @@ paths:
           description: unique identifier of the file
           schema:
             type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListChunksResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: beta
+  '/v1alpha/namespaces/{namespaceId}/chunks':
+    get:
+      tags:
+        - 💾 Artifact
+      summary: Search catalog chunks
+      description: Returns a paginated list of catalog chunks based on search criteria.
+      operationId: SearchChunks
+      parameters:
+        - name: namespaceId
+          in: path
+          description: owner/namespace id (not uid)
+          required: true
+          schema:
+            type: string
         - name: chunkUids
           in: query
-          description: repeated chunk uid(not implemented yet)
+          description: chunk uids
           style: form
           schema:
             type: array
@@ -1583,7 +1616,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListChunksResponse'
+                $ref: '#/components/schemas/SearchChunksResponse'
         '401':
           description: Returned when the client credentials are not valid.
           content:
@@ -1629,6 +1662,47 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetSourceFileResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: beta
+  '/v1alpha/namespaces/{namespaceId}/source-files':
+    get:
+      tags:
+        - 💾 Artifact
+      summary: Search single-source-of-truth files
+      description: Searches the single-source-of-truth files of a catalog.
+      operationId: SearchSourceFiles
+      parameters:
+        - name: namespaceId
+          in: path
+          description: owner/namespace id
+          required: true
+          schema:
+            type: string
+        - name: fileUids
+          in: query
+          description: search file uid
+          style: form
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchSourceFilesResponse'
         '401':
           description: Returned when the client credentials are not valid.
           content:
@@ -9900,6 +9974,24 @@ components:
         - RUN_STATUS_QUEUED
       type: string
       description: "RunStatus defines the status of a pipeline or model run.\n\n - RUN_STATUS_PROCESSING: Run in progress.\n - RUN_STATUS_COMPLETED: Run succeeded.\n - RUN_STATUS_FAILED: Run failed.\n - RUN_STATUS_QUEUED: Run is waiting to be executed."
+    SearchChunksResponse:
+      title: Search chunks response
+      type: object
+      properties:
+        chunks:
+          title: repeated chunks
+          type: array
+          items:
+            $ref: '#/components/schemas/.Chunk'
+    SearchSourceFilesResponse:
+      title: search source file response
+      type: object
+      properties:
+        sourceFiles:
+          title: source files
+          type: array
+          items:
+            $ref: '#/components/schemas/SourceFile'
     Secret:
       type: object
       properties:
@@ -10030,6 +10122,9 @@ components:
           title: update time of the source file
           type: string
           format: date-time
+        originalFileName:
+          title: original file name
+          type: string
       description: The SourceFile message represents a source file in the artifact system.
     Spec:
       type: object

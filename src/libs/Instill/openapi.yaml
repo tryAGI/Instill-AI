@@ -1197,7 +1197,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
-      x-stage: beta
+      x-stage: alpha
     post:
       tags:
         - 💾 Artifact
@@ -1236,7 +1236,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
-      x-stage: beta
+      x-stage: alpha
   '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}':
     get:
       tags:
@@ -1285,7 +1285,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
-      x-stage: beta
+      x-stage: alpha
     put:
       tags:
         - 💾 Artifact
@@ -1330,7 +1330,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
-      x-stage: beta
+      x-stage: alpha
     delete:
       tags:
         - 💾 Artifact
@@ -1368,7 +1368,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
-      x-stage: beta
+      x-stage: alpha
   '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/files':
     get:
       tags:
@@ -1426,7 +1426,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
-      x-stage: beta
+      x-stage: alpha
     post:
       tags:
         - 💾 Artifact
@@ -1472,7 +1472,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
-      x-stage: beta
+      x-stage: alpha
   /v1alpha/catalogs/files:
     delete:
       tags:
@@ -1505,7 +1505,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
-      x-stage: beta
+      x-stage: alpha
   /v1alpha/catalogs/files/processAsync:
     post:
       tags:
@@ -1544,6 +1544,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
   '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/chunks':
     get:
       tags:
@@ -1587,7 +1588,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
-      x-stage: beta
+      x-stage: alpha
   '/v1alpha/namespaces/{namespaceId}/chunks':
     get:
       tags:
@@ -1673,7 +1674,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
-      x-stage: beta
+      x-stage: alpha
   '/v1alpha/namespaces/{namespaceId}/source-files':
     get:
       tags:
@@ -1754,7 +1755,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
-      x-stage: beta
+      x-stage: alpha
   '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/chunks/retrieve':
     post:
       tags:
@@ -1805,6 +1806,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
   '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/ask':
     post:
       tags:
@@ -1855,7 +1857,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
-  '/v1beta/namespaces/{namespaceId}/catalogs/{catalogId}/runs':
+      x-stage: alpha
+  '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/runs':
     get:
       tags:
         - 💾 Artifact
@@ -1915,7 +1918,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
-      x-stage: beta
+      x-stage: alpha
   '/v1alpha/namespaces/{namespaceId}/object-upload-url':
     get:
       tags:
@@ -1972,7 +1975,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
-      x-stage: beta
+      x-stage: alpha
   '/v1alpha/namespaces/{namespaceId}/object-download-url':
     get:
       tags:
@@ -2017,7 +2020,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
-      x-stage: beta
+      x-stage: alpha
   /v1beta/user:
     get:
       tags:
@@ -3854,6 +3857,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}/versions/{version}/trigger-async':
     post:
       tags:
@@ -3910,6 +3914,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}/trigger':
     post:
       tags:
@@ -3960,6 +3965,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}/trigger-async':
     post:
       tags:
@@ -4010,6 +4016,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}/versions/{version}/operation':
     get:
       tags:
@@ -4155,8 +4162,8 @@ paths:
     get:
       tags:
         - ⚗️ Model
-      summary: List model runs
-      description: Returns a paginated list of model runs.
+      summary: List Model Runs
+      description: "Returns a paginated list of runs for a given model. When the requester is\nthe owner of the model, they will be able to all the model runs,\nregardless who requested the trigger (the view will be partial to hide\nsensitive data like e.g. the trigger input and output). Other requesters\nwill only be able to see the runs requested by themselves."
       operationId: ModelPublicService_ListModelRuns
       parameters:
         - name: namespaceId
@@ -4216,12 +4223,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
   /v1alpha/dashboard/models/runs:
     get:
       tags:
         - ⚗️ Model
-      summary: List Model Runs of a Namespace (user or organization)
-      description: "Returns a paginated list of runs for 1 or more models. This is mainly used by dashboard.\nThe requester can view all the runs by the requester across different models."
+      summary: List Model Runs By Requester
+      description: "Returns a paginated list of runs requested by a namespace. The response\nmay contain runs from several models."
       operationId: ModelPublicService_ListModelRunsByRequester
       parameters:
         - name: pageSize
@@ -4264,11 +4272,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: Instill-Requester-Uid
-          in: header
-          description: 'Indicates the authenticated namespace is making the request on behalf of another entity, typically an organization they belong to'
-          schema:
-            type: string
       responses:
         '200':
           description: A successful response.
@@ -4287,6 +4290,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
   /v1beta/pipelines:
     get:
       tags:
@@ -4793,6 +4797,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
+      x-stage: beta
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/trigger-stream':
     post:
       tags:
@@ -4849,6 +4854,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
+      x-stage: beta
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/trigger-async':
     post:
       tags:
@@ -4899,6 +4905,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
+      x-stage: beta
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/releases':
     get:
       tags:
@@ -5272,6 +5279,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
+      x-stage: beta
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/releases/{releaseId}/trigger-async':
     post:
       tags:
@@ -5328,6 +5336,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
+      x-stage: beta
   '/v1beta/namespaces/{namespaceId}/secrets':
     get:
       tags:
@@ -5624,12 +5633,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
+      x-stage: beta
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/runs':
     get:
       tags:
         - 💧 VDP
       summary: List Pipeline Runs
-      description: "Returns a paginated list of runs for a given pipeline. When the requester\nis the owner of the pipeline, they will be able to all the pipeline runs,\nregardless the requester. Other requesters will only be able to see the\nruns requested by themselves."
+      description: "Returns a paginated list of runs for a given pipeline. When the requester\nis the owner of the pipeline, they will be able to all the pipeline runs,\nregardless who requested the trigger (the view will be partial to hide\nsensitive data like e.g. the trigger input and output). Other requesters\nwill only be able to see the runs requested by themselves."
       operationId: PipelinePublicService_ListPipelineRuns
       parameters:
         - name: namespaceId
@@ -5689,11 +5699,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
+      x-stage: beta
   '/v1beta/pipeline-runs/{pipelineRunId}/component-runs':
     get:
       tags:
         - 💧 VDP
-      summary: List Component runs
+      summary: List Component Runs
       description: Returns the information of each component execution within a pipeline run.
       operationId: PipelinePublicService_ListComponentRuns
       parameters:
@@ -5757,12 +5768,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
+      x-stage: beta
   /v1beta/dashboard/pipelines/runs:
     get:
       tags:
         - 💧 VDP
-      summary: List Pipeline Runs of a Namespace (user or organization)
-      description: "Returns a paginated list of runs for 1 or more pipelines. This is mainly used by dashboard.\nThe requester can view all the runs by the requester across different pipelines."
+      summary: List Pipeline Runs By Requester
+      description: "Returns a paginated list of runs for requested by a namespace. The\nresponse may contain runs from several pipelines."
       operationId: PipelinePublicService_ListPipelineRunsByRequester
       parameters:
         - name: page
@@ -5805,11 +5817,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: Instill-Requester-Uid
-          in: header
-          description: 'Indicates the authenticated namespace is making the request on behalf of another entity, typically an organization they belong to'
-          schema:
-            type: string
       responses:
         '200':
           description: A successful response.
@@ -5828,6 +5835,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
+      x-stage: beta
   '/v1beta/namespaces/{namespaceId}/connections':
     get:
       tags:
@@ -9147,10 +9155,6 @@ components:
           type: string
           description: Model Run UUID.
           readOnly: true
-        modelUid:
-          type: string
-          description: Model UUID.
-          readOnly: true
         status:
           allOf:
             - $ref: '#/components/schemas/RunStatus'
@@ -9216,11 +9220,11 @@ components:
           readOnly: true
         requesterId:
           type: string
-          description: "Requester ID. This field might be empty if the model run belongs to a\ndeleted namespace."
+          description: "Requester ID. The namespace used to trigger the run. This field might be\nempty if the model run belongs to a deleted namespace."
           readOnly: true
-        namespaceId:
+        modelNamespaceId:
           type: string
-          description: Namespace ID.
+          description: ID of the namespace that owns the model.
           readOnly: true
       description: ModelRun contains information about a run of models.
     ModelTriggerChartRecord:
@@ -9724,10 +9728,6 @@ components:
     PipelineRun:
       type: object
       properties:
-        pipelineUid:
-          type: string
-          description: Unique identifier for the pipeline.
-          readOnly: true
         pipelineRunUid:
           type: string
           description: Unique identifier for each run.
@@ -9753,7 +9753,7 @@ components:
           readOnly: true
         runnerId:
           type: string
-          description: 'Runner ID. If current viewing requester does not have enough permission, it will return null.'
+          description: "Runner ID. The authenticated user that triggered the run. If current\nviewing requester does not have enough permission, it will return null."
           readOnly: true
         inputs:
           type: array
@@ -9801,11 +9801,11 @@ components:
           readOnly: true
         requesterId:
           type: string
-          description: "Requester ID. This field might be empty if the pipeline run belongs to a\ndeleted namespace."
+          description: "Requester ID. The namespace used to trigger the run. This field might be\nempty if the pipeline run belongs to a deleted namespace."
           readOnly: true
-        namespaceId:
-          title: Namespace ID
+        pipelineNamespaceId:
           type: string
+          description: ID of the namespace that owns the pipeline.
           readOnly: true
       description: PipelineRun represents a single execution of a pipeline.
     PipelineTriggerChartRecord:

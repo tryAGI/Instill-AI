@@ -5,9 +5,9 @@ namespace Instill
     public partial interface IModelClient
     {
         /// <summary>
-        /// List Model Runs of a Namespace (user or organization)<br/>
-        /// Returns a paginated list of runs for 1 or more models. This is mainly used by dashboard.<br/>
-        /// The requester can view all the runs by the requester across different models.
+        /// List Model Runs By Requester<br/>
+        /// Returns a paginated list of runs requested by a namespace. The response<br/>
+        /// may contain runs from several models.
         /// </summary>
         /// <param name="pageSize"></param>
         /// <param name="page"></param>
@@ -16,9 +16,9 @@ namespace Instill
         /// <param name="start"></param>
         /// <param name="stop"></param>
         /// <param name="requesterId"></param>
-        /// <param name="instillRequesterUid"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
         global::System.Threading.Tasks.Task<global::Instill.ListModelRunsByRequesterResponse> ModelPublicServiceListModelRunsByRequesterAsync(
             string requesterId,
             int? pageSize = default,
@@ -27,7 +27,6 @@ namespace Instill
             string? filter = default,
             global::System.DateTime? start = default,
             global::System.DateTime? stop = default,
-            string? instillRequesterUid = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

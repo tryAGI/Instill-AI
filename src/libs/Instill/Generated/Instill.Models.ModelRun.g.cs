@@ -16,13 +16,6 @@ namespace Instill
         public string? Uid { get; set; }
 
         /// <summary>
-        /// Model UUID.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("modelUid")]
-        public string? ModelUid { get; set; }
-
-        /// <summary>
         /// Model run status.<br/>
         /// Included only in responses
         /// </summary>
@@ -116,19 +109,19 @@ namespace Instill
         public string? ModelId { get; set; }
 
         /// <summary>
-        /// Requester ID. This field might be empty if the model run belongs to a<br/>
-        /// deleted namespace.<br/>
+        /// Requester ID. The namespace used to trigger the run. This field might be<br/>
+        /// empty if the model run belongs to a deleted namespace.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("requesterId")]
         public string? RequesterId { get; set; }
 
         /// <summary>
-        /// Namespace ID.<br/>
+        /// ID of the namespace that owns the model.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("namespaceId")]
-        public string? NamespaceId { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("modelNamespaceId")]
+        public string? ModelNamespaceId { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -141,10 +134,6 @@ namespace Instill
         /// </summary>
         /// <param name="uid">
         /// Model Run UUID.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="modelUid">
-        /// Model UUID.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="status">
@@ -200,18 +189,17 @@ namespace Instill
         /// Included only in responses
         /// </param>
         /// <param name="requesterId">
-        /// Requester ID. This field might be empty if the model run belongs to a<br/>
-        /// deleted namespace.<br/>
+        /// Requester ID. The namespace used to trigger the run. This field might be<br/>
+        /// empty if the model run belongs to a deleted namespace.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="namespaceId">
-        /// Namespace ID.<br/>
+        /// <param name="modelNamespaceId">
+        /// ID of the namespace that owns the model.<br/>
         /// Included only in responses
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public ModelRun(
             string? uid,
-            string? modelUid,
             global::Instill.RunStatus? status,
             global::Instill.RunSource? source,
             int? totalDuration,
@@ -226,10 +214,9 @@ namespace Instill
             global::System.Collections.Generic.IList<object>? taskOutputs,
             string? modelId,
             string? requesterId,
-            string? namespaceId)
+            string? modelNamespaceId)
         {
             this.Uid = uid;
-            this.ModelUid = modelUid;
             this.Status = status;
             this.Source = source;
             this.TotalDuration = totalDuration;
@@ -244,7 +231,7 @@ namespace Instill
             this.TaskOutputs = taskOutputs;
             this.ModelId = modelId;
             this.RequesterId = requesterId;
-            this.NamespaceId = namespaceId;
+            this.ModelNamespaceId = modelNamespaceId;
         }
 
         /// <summary>

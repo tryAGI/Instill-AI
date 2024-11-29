@@ -9,13 +9,6 @@ namespace Instill
     public sealed partial class PipelineRun
     {
         /// <summary>
-        /// Unique identifier for the pipeline.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("pipelineUid")]
-        public string? PipelineUid { get; set; }
-
-        /// <summary>
         /// Unique identifier for each run.<br/>
         /// Included only in responses
         /// </summary>
@@ -53,7 +46,8 @@ namespace Instill
         public int? TotalDuration { get; set; }
 
         /// <summary>
-        /// Runner ID. If current viewing requester does not have enough permission, it will return null.<br/>
+        /// Runner ID. The authenticated user that triggered the run. If current<br/>
+        /// viewing requester does not have enough permission, it will return null.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("runnerId")]
@@ -122,18 +116,19 @@ namespace Instill
         public string? PipelineId { get; set; }
 
         /// <summary>
-        /// Requester ID. This field might be empty if the pipeline run belongs to a<br/>
-        /// deleted namespace.<br/>
+        /// Requester ID. The namespace used to trigger the run. This field might be<br/>
+        /// empty if the pipeline run belongs to a deleted namespace.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("requesterId")]
         public string? RequesterId { get; set; }
 
         /// <summary>
+        /// ID of the namespace that owns the pipeline.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("namespaceId")]
-        public string? NamespaceId { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("pipelineNamespaceId")]
+        public string? PipelineNamespaceId { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -144,10 +139,6 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="PipelineRun" /> class.
         /// </summary>
-        /// <param name="pipelineUid">
-        /// Unique identifier for the pipeline.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="pipelineRunUid">
         /// Unique identifier for each run.<br/>
         /// Included only in responses
@@ -169,7 +160,8 @@ namespace Instill
         /// Included only in responses
         /// </param>
         /// <param name="runnerId">
-        /// Runner ID. If current viewing requester does not have enough permission, it will return null.<br/>
+        /// Runner ID. The authenticated user that triggered the run. If current<br/>
+        /// viewing requester does not have enough permission, it will return null.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="inputs">
@@ -208,16 +200,16 @@ namespace Instill
         /// Included only in responses
         /// </param>
         /// <param name="requesterId">
-        /// Requester ID. This field might be empty if the pipeline run belongs to a<br/>
-        /// deleted namespace.<br/>
+        /// Requester ID. The namespace used to trigger the run. This field might be<br/>
+        /// empty if the pipeline run belongs to a deleted namespace.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="namespaceId">
+        /// <param name="pipelineNamespaceId">
+        /// ID of the namespace that owns the pipeline.<br/>
         /// Included only in responses
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public PipelineRun(
-            string? pipelineUid,
             string? pipelineRunUid,
             string? pipelineVersion,
             global::Instill.RunStatus? status,
@@ -234,9 +226,8 @@ namespace Instill
             global::Instill.DataSpecification? dataSpecification,
             string? pipelineId,
             string? requesterId,
-            string? namespaceId)
+            string? pipelineNamespaceId)
         {
-            this.PipelineUid = pipelineUid;
             this.PipelineRunUid = pipelineRunUid;
             this.PipelineVersion = pipelineVersion;
             this.Status = status;
@@ -253,7 +244,7 @@ namespace Instill
             this.DataSpecification = dataSpecification;
             this.PipelineId = pipelineId;
             this.RequesterId = requesterId;
-            this.NamespaceId = namespaceId;
+            this.PipelineNamespaceId = pipelineNamespaceId;
         }
 
         /// <summary>

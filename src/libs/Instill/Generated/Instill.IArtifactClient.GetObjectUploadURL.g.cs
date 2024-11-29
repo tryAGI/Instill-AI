@@ -15,7 +15,7 @@ namespace Instill
         /// <param name="objectExpireDays"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
-        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
         global::System.Threading.Tasks.Task<global::Instill.GetObjectUploadURLResponse> GetObjectUploadURLAsync(
             string namespaceId,
             string objectName,

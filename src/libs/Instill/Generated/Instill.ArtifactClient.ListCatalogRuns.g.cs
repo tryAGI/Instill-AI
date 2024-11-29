@@ -43,7 +43,7 @@ namespace Instill
         /// <param name="orderBy"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
-        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
         public async global::System.Threading.Tasks.Task<global::Instill.ListCatalogRunsResponse> ListCatalogRunsAsync(
             string namespaceId,
             string catalogId,
@@ -65,7 +65,7 @@ namespace Instill
                 orderBy: ref orderBy);
 
             var __pathBuilder = new PathBuilder(
-                path: $"/v1beta/namespaces/{namespaceId}/catalogs/{catalogId}/runs",
+                path: $"/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/runs",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 
                 .AddOptionalParameter("page", page?.ToString()) 

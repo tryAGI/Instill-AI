@@ -5,9 +5,9 @@ namespace Instill
     public partial interface IVDPClient
     {
         /// <summary>
-        /// List Pipeline Runs of a Namespace (user or organization)<br/>
-        /// Returns a paginated list of runs for 1 or more pipelines. This is mainly used by dashboard.<br/>
-        /// The requester can view all the runs by the requester across different pipelines.
+        /// List Pipeline Runs By Requester<br/>
+        /// Returns a paginated list of runs for requested by a namespace. The<br/>
+        /// response may contain runs from several pipelines.
         /// </summary>
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
@@ -16,9 +16,9 @@ namespace Instill
         /// <param name="start"></param>
         /// <param name="stop"></param>
         /// <param name="requesterId"></param>
-        /// <param name="instillRequesterUid"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
         global::System.Threading.Tasks.Task<global::Instill.ListPipelineRunsByRequesterResponse> PipelinePublicServiceListPipelineRunsByRequesterAsync(
             string requesterId,
             int? page = default,
@@ -27,7 +27,6 @@ namespace Instill
             string? orderBy = default,
             global::System.DateTime? start = default,
             global::System.DateTime? stop = default,
-            string? instillRequesterUid = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

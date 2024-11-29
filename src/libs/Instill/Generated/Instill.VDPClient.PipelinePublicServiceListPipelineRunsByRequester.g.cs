@@ -13,8 +13,7 @@ namespace Instill
             ref string? orderBy,
             ref global::System.DateTime? start,
             ref global::System.DateTime? stop,
-            ref string requesterId,
-            ref string? instillRequesterUid);
+            ref string requesterId);
         partial void PreparePipelinePublicServiceListPipelineRunsByRequesterRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
@@ -24,8 +23,7 @@ namespace Instill
             string? orderBy,
             global::System.DateTime? start,
             global::System.DateTime? stop,
-            string requesterId,
-            string? instillRequesterUid);
+            string requesterId);
         partial void ProcessPipelinePublicServiceListPipelineRunsByRequesterResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -36,9 +34,9 @@ namespace Instill
             ref string content);
 
         /// <summary>
-        /// List Pipeline Runs of a Namespace (user or organization)<br/>
-        /// Returns a paginated list of runs for 1 or more pipelines. This is mainly used by dashboard.<br/>
-        /// The requester can view all the runs by the requester across different pipelines.
+        /// List Pipeline Runs By Requester<br/>
+        /// Returns a paginated list of runs for requested by a namespace. The<br/>
+        /// response may contain runs from several pipelines.
         /// </summary>
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
@@ -47,9 +45,9 @@ namespace Instill
         /// <param name="start"></param>
         /// <param name="stop"></param>
         /// <param name="requesterId"></param>
-        /// <param name="instillRequesterUid"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
         public async global::System.Threading.Tasks.Task<global::Instill.ListPipelineRunsByRequesterResponse> PipelinePublicServiceListPipelineRunsByRequesterAsync(
             string requesterId,
             int? page = default,
@@ -58,7 +56,6 @@ namespace Instill
             string? orderBy = default,
             global::System.DateTime? start = default,
             global::System.DateTime? stop = default,
-            string? instillRequesterUid = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
@@ -71,8 +68,7 @@ namespace Instill
                 orderBy: ref orderBy,
                 start: ref start,
                 stop: ref stop,
-                requesterId: ref requesterId,
-                instillRequesterUid: ref instillRequesterUid);
+                requesterId: ref requesterId);
 
             var __pathBuilder = new PathBuilder(
                 path: "/v1beta/dashboard/pipelines/runs",
@@ -111,12 +107,6 @@ namespace Instill
                 }
             }
 
-            if (instillRequesterUid != default)
-            {
-                __httpRequest.Headers.TryAddWithoutValidation("Instill-Requester-Uid", instillRequesterUid.ToString());
-            }
-
-
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
@@ -129,8 +119,7 @@ namespace Instill
                 orderBy: orderBy,
                 start: start,
                 stop: stop,
-                requesterId: requesterId,
-                instillRequesterUid: instillRequesterUid);
+                requesterId: requesterId);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,

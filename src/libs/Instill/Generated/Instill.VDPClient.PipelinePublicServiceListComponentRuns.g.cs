@@ -34,7 +34,7 @@ namespace Instill
             ref string content);
 
         /// <summary>
-        /// List Component runs<br/>
+        /// List Component Runs<br/>
         /// Returns the information of each component execution within a pipeline run.
         /// </summary>
         /// <param name="pipelineRunId"></param>
@@ -46,6 +46,7 @@ namespace Instill
         /// <param name="instillRequesterUid"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
         public async global::System.Threading.Tasks.Task<global::Instill.ListComponentRunsResponse> PipelinePublicServiceListComponentRunsAsync(
             string pipelineRunId,
             int? page = default,

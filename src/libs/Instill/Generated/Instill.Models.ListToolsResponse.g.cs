@@ -9,7 +9,7 @@ namespace Instill
     public sealed partial class ListToolsResponse
     {
         /// <summary>
-        /// The tools.
+        /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tools")]
         public global::System.Collections.Generic.IList<global::Instill.Tool>? Tools { get; set; }
@@ -23,9 +23,7 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="ListToolsResponse" /> class.
         /// </summary>
-        /// <param name="tools">
-        /// The tools.
-        /// </param>
+        /// <param name="tools"></param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public ListToolsResponse(
             global::System.Collections.Generic.IList<global::Instill.Tool>? tools)

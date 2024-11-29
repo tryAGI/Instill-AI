@@ -23,18 +23,10 @@ namespace Instill
         /// Creates an agent.
         /// </summary>
         /// <param name="namespaceId"></param>
-        /// <param name="displayName">
-        /// The agent display name.
-        /// </param>
-        /// <param name="description">
-        /// The agent description.
-        /// </param>
-        /// <param name="tags">
-        /// The agent tags.
-        /// </param>
-        /// <param name="aiAgentApp">
-        /// The agent metadata.
-        /// </param>
+        /// <param name="displayName"></param>
+        /// <param name="description"></param>
+        /// <param name="tags"></param>
+        /// <param name="aiAgentMetadata"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
@@ -43,7 +35,7 @@ namespace Instill
             string? displayName = default,
             string? description = default,
             global::System.Collections.Generic.IList<string>? tags = default,
-            global::Instill.AIAgentAppMetadata? aiAgentApp = default,
+            global::Instill.AIAgentAppMetadata? aiAgentMetadata = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

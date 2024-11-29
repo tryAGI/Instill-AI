@@ -394,7 +394,7 @@ paths:
       parameters:
         - name: namespaceId
           in: path
-          description: The app's owner(namespaces).
+          description: namespace id
           required: true
           schema:
             type: string
@@ -426,7 +426,7 @@ paths:
       parameters:
         - name: namespaceId
           in: path
-          description: The app's owner(namespaces).
+          description: namespace id
           required: true
           schema:
             type: string
@@ -466,13 +466,13 @@ paths:
       parameters:
         - name: namespaceId
           in: path
-          description: The app's owner(namespaces).
+          description: namespace id
           required: true
           schema:
             type: string
         - name: agentUid
           in: path
-          description: The agent uid.
+          description: agent uid
           required: true
           schema:
             type: string
@@ -511,13 +511,13 @@ paths:
       parameters:
         - name: namespaceId
           in: path
-          description: The app's owner(namespaces).
+          description: namespace id
           required: true
           schema:
             type: string
         - name: agentUid
           in: path
-          description: The agent uid.
+          description: agent uid
           required: true
           schema:
             type: string
@@ -1002,7 +1002,7 @@ paths:
       parameters:
         - name: namespaceId
           in: path
-          description: The app's owner(namespaces).
+          description: namespace id
           required: true
           schema:
             type: string
@@ -6240,25 +6240,25 @@ components:
       type: object
       properties:
         instructions:
+          title: instructions
           type: string
-          description: The instructions for the AI agent app.
         tools:
+          title: tools(pipelines)
           type: array
           items:
             $ref: '#/components/schemas/Tool'
-          description: The tools(pipelines) that the AI agent app can use.
         catalogUids:
+          title: catalog uids
           type: array
           items:
             type: string
-          description: The catalog uids that the AI agent app can use.
         chunkTopK:
+          title: AI agent app top k
           type: integer
-          description: The AI agent app top k.
           format: int32
         chunkWeight:
+          title: AI agent chunk weight
           type: number
-          description: The AI agent chunk weight.
           format: float
       description: AIAgentAppMetadata represents the metadata for the AI agent app.
     AIAssistantAppMetadata:
@@ -6285,37 +6285,37 @@ components:
           type: string
           readOnly: true
         displayName:
+          title: agent display name
           type: string
-          description: The agent display name.
         description:
+          title: agent description
           type: string
-          description: The agent description.
         namespaceUid:
+          title: namespace uid
           type: string
-          description: The namespace of the agent.
           readOnly: true
         tags:
+          title: agent tags
           type: array
           items:
             type: string
-          description: The agent tags.
         aiAgentMetadata:
+          title: agent metadata
           allOf:
             - $ref: '#/components/schemas/AIAgentAppMetadata'
-          description: The agent metadata.
           readOnly: true
         creatorUid:
           title: creator uid
           type: string
           readOnly: true
         createTime:
+          title: creation time
           type: string
-          description: The creation time of the agent.
           format: date-time
           readOnly: true
         updateTime:
+          title: last update time
           type: string
-          description: The last update time of the agent.
           format: date-time
           readOnly: true
       description: Agent represents a agent.
@@ -7165,28 +7165,28 @@ components:
       type: object
       properties:
         displayName:
+          title: agent display name
           type: string
-          description: The agent display name.
         description:
+          title: agent description
           type: string
-          description: The agent description.
         tags:
+          title: agent tags
           type: array
           items:
             type: string
-          description: The agent tags.
-        aiAgentApp:
+        aiAgentMetadata:
+          title: agent metadata
           allOf:
             - $ref: '#/components/schemas/AIAgentAppMetadata'
-          description: The agent metadata.
       description: CreateAgentRequest represents a request to create a agent.
     CreateAgentResponse:
       type: object
       properties:
         agent:
+          title: created agent
           allOf:
             - $ref: '#/components/schemas/Agent'
-          description: The created agent.
           readOnly: true
       description: CreateAgentResponse represents a response for creating a agent.
     CreateAppBody:
@@ -8107,10 +8107,10 @@ components:
       type: object
       properties:
         agents:
+          title: agents
           type: array
           items:
             $ref: '#/components/schemas/Agent'
-          description: The agents.
       description: ListAgentsResponse represents a response for listing agents.
     ListAppsResponse:
       type: object
@@ -8811,10 +8811,10 @@ components:
       type: object
       properties:
         tools:
+          title: tools
           type: array
           items:
             $ref: '#/components/schemas/Tool'
-          description: The tools.
       description: ListToolsResponse represents a response for listing tools.
     ListUserMembershipsResponse:
       type: object
@@ -10602,26 +10602,29 @@ components:
     UpdateAgentBody:
       type: object
       properties:
-        description:
+        displayName:
+          title: agent display name
           type: string
-          description: The agent description.
+        description:
+          title: agent description
+          type: string
         tags:
+          title: agent tags
           type: array
           items:
             type: string
-          description: The agent tags.
-        aiAgentApp:
+        aiAgentMetadata:
+          title: agent metadata
           allOf:
             - $ref: '#/components/schemas/AIAgentAppMetadata'
-          description: The agent metadata.
       description: UpdateAgentRequest represents a request to update a agent.
     UpdateAgentResponse:
       type: object
       properties:
         agent:
+          title: updated agent
           allOf:
             - $ref: '#/components/schemas/Agent'
-          description: The updated agent.
           readOnly: true
       description: UpdateAgentResponse represents a response for updating a agent.
     UpdateAppBody:

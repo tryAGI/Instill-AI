@@ -5,55 +5,50 @@ namespace Instill
 {
     public partial class ArtifactClient
     {
-        partial void PrepareListChunksArguments(
+        partial void PrepareSearchChunksArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
-            ref string catalogId,
-            ref string? fileUid);
-        partial void PrepareListChunksRequest(
+            global::System.Collections.Generic.IList<string>? chunkUids);
+        partial void PrepareSearchChunksRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
-            string catalogId,
-            string? fileUid);
-        partial void ProcessListChunksResponse(
+            global::System.Collections.Generic.IList<string>? chunkUids);
+        partial void ProcessSearchChunksResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessListChunksResponseContent(
+        partial void ProcessSearchChunksResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// List catalog chunks<br/>
-        /// Returns a paginated list of catalog chunks.
+        /// Search catalog chunks<br/>
+        /// Returns a paginated list of catalog chunks based on search criteria.
         /// </summary>
         /// <param name="namespaceId"></param>
-        /// <param name="catalogId"></param>
-        /// <param name="fileUid"></param>
+        /// <param name="chunkUids"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
-        public async global::System.Threading.Tasks.Task<global::Instill.ListChunksResponse> ListChunksAsync(
+        public async global::System.Threading.Tasks.Task<global::Instill.SearchChunksResponse> SearchChunksAsync(
             string namespaceId,
-            string catalogId,
-            string? fileUid = default,
+            global::System.Collections.Generic.IList<string>? chunkUids = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareListChunksArguments(
+            PrepareSearchChunksArguments(
                 httpClient: HttpClient,
                 namespaceId: ref namespaceId,
-                catalogId: ref catalogId,
-                fileUid: ref fileUid);
+                chunkUids: chunkUids);
 
             var __pathBuilder = new PathBuilder(
-                path: $"/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/chunks",
+                path: $"/v1alpha/namespaces/{namespaceId}/chunks",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 
-                .AddOptionalParameter("fileUid", fileUid) 
+                .AddOptionalParameter("chunkUids", chunkUids, delimiter: ",", explode: true) 
                 ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -83,12 +78,11 @@ namespace Instill
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareListChunksRequest(
+            PrepareSearchChunksRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
                 namespaceId: namespaceId,
-                catalogId: catalogId,
-                fileUid: fileUid);
+                chunkUids: chunkUids);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
@@ -98,7 +92,7 @@ namespace Instill
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessListChunksResponse(
+            ProcessSearchChunksResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
             // Returned when the client credentials are not valid.
@@ -166,7 +160,7 @@ namespace Instill
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessListChunksResponseContent(
+                ProcessSearchChunksResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -191,7 +185,7 @@ namespace Instill
                 }
 
                 return
-                    global::Instill.ListChunksResponse.FromJson(__content, JsonSerializerContext) ??
+                    global::Instill.SearchChunksResponse.FromJson(__content, JsonSerializerContext) ??
                     throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
@@ -217,7 +211,7 @@ namespace Instill
                 using var __content = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
 
                 return
-                    await global::Instill.ListChunksResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    await global::Instill.SearchChunksResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                     throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }

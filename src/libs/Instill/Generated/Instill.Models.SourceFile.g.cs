@@ -33,6 +33,12 @@ namespace Instill
         public global::System.DateTime? UpdateTime { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("originalFileName")]
+        public string? OriginalFileName { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -45,17 +51,20 @@ namespace Instill
         /// <param name="content"></param>
         /// <param name="createTime"></param>
         /// <param name="updateTime"></param>
+        /// <param name="originalFileName"></param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public SourceFile(
             string? originalFileUid,
             string? content,
             global::System.DateTime? createTime,
-            global::System.DateTime? updateTime)
+            global::System.DateTime? updateTime,
+            string? originalFileName)
         {
             this.OriginalFileUid = originalFileUid;
             this.Content = content;
             this.CreateTime = createTime;
             this.UpdateTime = updateTime;
+            this.OriginalFileName = originalFileName;
         }
 
         /// <summary>

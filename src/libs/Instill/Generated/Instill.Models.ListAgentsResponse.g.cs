@@ -9,7 +9,7 @@ namespace Instill
     public sealed partial class ListAgentsResponse
     {
         /// <summary>
-        /// The agents.
+        /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("agents")]
         public global::System.Collections.Generic.IList<global::Instill.Agent>? Agents { get; set; }
@@ -23,9 +23,7 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="ListAgentsResponse" /> class.
         /// </summary>
-        /// <param name="agents">
-        /// The agents.
-        /// </param>
+        /// <param name="agents"></param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public ListAgentsResponse(
             global::System.Collections.Generic.IList<global::Instill.Agent>? agents)

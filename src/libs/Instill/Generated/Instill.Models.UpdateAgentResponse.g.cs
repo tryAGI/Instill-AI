@@ -9,7 +9,6 @@ namespace Instill
     public sealed partial class UpdateAgentResponse
     {
         /// <summary>
-        /// The updated agent.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("agent")]
@@ -25,7 +24,6 @@ namespace Instill
         /// Initializes a new instance of the <see cref="UpdateAgentResponse" /> class.
         /// </summary>
         /// <param name="agent">
-        /// The updated agent.<br/>
         /// Included only in responses
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

@@ -233,31 +233,28 @@ namespace Instill
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="agentUid"></param>
-        /// <param name="description">
-        /// The agent description.
-        /// </param>
-        /// <param name="tags">
-        /// The agent tags.
-        /// </param>
-        /// <param name="aiAgentApp">
-        /// The agent metadata.
-        /// </param>
+        /// <param name="displayName"></param>
+        /// <param name="description"></param>
+        /// <param name="tags"></param>
+        /// <param name="aiAgentMetadata"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
         public async global::System.Threading.Tasks.Task<global::Instill.UpdateAgentResponse> AppPublicServiceUpdateAgentAsync(
             string namespaceId,
             string agentUid,
+            string? displayName = default,
             string? description = default,
             global::System.Collections.Generic.IList<string>? tags = default,
-            global::Instill.AIAgentAppMetadata? aiAgentApp = default,
+            global::Instill.AIAgentAppMetadata? aiAgentMetadata = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Instill.UpdateAgentBody
             {
+                DisplayName = displayName,
                 Description = description,
                 Tags = tags,
-                AiAgentApp = aiAgentApp,
+                AiAgentMetadata = aiAgentMetadata,
             };
 
             return await AppPublicServiceUpdateAgentAsync(

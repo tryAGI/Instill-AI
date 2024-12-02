@@ -4,9 +4,9 @@
 namespace Instill
 {
     /// <summary>
-    /// The tool connection key(variable) and value(id).
+    /// The tool connection key(used connection id in recipe) and value(connection uid from namespace).
     /// </summary>
-    public sealed partial class ToolConfig
+    public sealed partial class ToolConnections
     {
 
         /// <summary>
@@ -16,10 +16,10 @@ namespace Instill
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ToolConfig" /> class.
+        /// Initializes a new instance of the <see cref="ToolConnections" /> class.
         /// </summary>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
-        public ToolConfig(
+        public ToolConnections(
  )
         {
         }

@@ -6260,6 +6260,11 @@ components:
           title: AI agent chunk weight
           type: number
           format: float
+        connections:
+          type: object
+          additionalProperties:
+            type: string
+          description: connection key(used connection id in recipe) and value(connection uid from namespace).
       description: AIAgentAppMetadata represents the metadata for the AI agent app.
     AIAssistantAppMetadata:
       required:
@@ -10260,11 +10265,11 @@ components:
         name:
           type: string
           description: The tool name.
-        config:
+        connections:
           type: object
           additionalProperties:
             type: string
-          description: The tool connection key(variable) and value(id).
+          description: The tool connection key(used connection id in recipe) and value(connection uid from namespace).
     Trace:
       type: object
       properties:
@@ -11152,6 +11157,10 @@ components:
         chatDisplayName:
           title: conversation display name
           type: string
+        breakpoint:
+          title: breakpoint. allow to continue the chat from breakpoint
+          type: string
+          readOnly: true
     .Chunk:
       type: object
       properties:

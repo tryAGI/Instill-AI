@@ -39,6 +39,12 @@ namespace Instill
         public float? ChunkWeight { get; set; }
 
         /// <summary>
+        /// connection key(used connection id in recipe) and value(connection uid from namespace).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("connections")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Connections { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -52,19 +58,24 @@ namespace Instill
         /// <param name="catalogUids"></param>
         /// <param name="chunkTopK"></param>
         /// <param name="chunkWeight"></param>
+        /// <param name="connections">
+        /// connection key(used connection id in recipe) and value(connection uid from namespace).
+        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public AIAgentAppMetadata(
             string? instructions,
             global::System.Collections.Generic.IList<global::Instill.Tool>? tools,
             global::System.Collections.Generic.IList<string>? catalogUids,
             int? chunkTopK,
-            float? chunkWeight)
+            float? chunkWeight,
+            global::System.Collections.Generic.Dictionary<string, string>? connections)
         {
             this.Instructions = instructions;
             this.Tools = tools;
             this.CatalogUids = catalogUids;
             this.ChunkTopK = chunkTopK;
             this.ChunkWeight = chunkWeight;
+            this.Connections = connections;
         }
 
         /// <summary>

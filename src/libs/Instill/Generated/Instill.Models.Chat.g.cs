@@ -64,6 +64,12 @@ namespace Instill
         public string? ChatDisplayName { get; set; }
 
         /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("breakpoint")]
+        public string? Breakpoint { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -89,6 +95,9 @@ namespace Instill
         /// </param>
         /// <param name="tempCatalogId"></param>
         /// <param name="chatDisplayName"></param>
+        /// <param name="breakpoint">
+        /// Included only in responses
+        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public Chat(
             string namespaceId,
@@ -99,7 +108,8 @@ namespace Instill
             global::System.DateTime? updateTime,
             global::Instill.AIAgentAppMetadata? aiAgentMetadata,
             string? tempCatalogId,
-            string? chatDisplayName)
+            string? chatDisplayName,
+            string? breakpoint)
         {
             this.NamespaceId = namespaceId ?? throw new global::System.ArgumentNullException(nameof(namespaceId));
             this.Uid = uid;
@@ -110,6 +120,7 @@ namespace Instill
             this.AiAgentMetadata = aiAgentMetadata;
             this.TempCatalogId = tempCatalogId;
             this.ChatDisplayName = chatDisplayName;
+            this.Breakpoint = breakpoint;
         }
 
         /// <summary>

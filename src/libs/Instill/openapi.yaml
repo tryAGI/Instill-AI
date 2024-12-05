@@ -10270,6 +10270,10 @@ components:
           additionalProperties:
             type: string
           description: The tool connection key(used connection id in recipe) and value(connection uid from namespace).
+        description:
+          type: string
+          description: The tool description.
+          readOnly: true
     Trace:
       type: object
       properties:

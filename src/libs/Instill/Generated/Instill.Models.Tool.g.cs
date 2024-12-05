@@ -27,6 +27,13 @@ namespace Instill
         public global::System.Collections.Generic.Dictionary<string, string>? Connections { get; set; }
 
         /// <summary>
+        /// The tool description.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -42,15 +49,21 @@ namespace Instill
         /// <param name="connections">
         /// The tool connection key(used connection id in recipe) and value(connection uid from namespace).
         /// </param>
+        /// <param name="description">
+        /// The tool description.<br/>
+        /// Included only in responses
+        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public Tool(
             string? pipelineId,
             string? name,
-            global::System.Collections.Generic.Dictionary<string, string>? connections)
+            global::System.Collections.Generic.Dictionary<string, string>? connections,
+            string? description)
         {
             this.PipelineId = pipelineId;
             this.Name = name;
             this.Connections = connections;
+            this.Description = description;
         }
 
         /// <summary>

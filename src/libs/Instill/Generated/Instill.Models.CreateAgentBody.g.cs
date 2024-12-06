@@ -29,8 +29,8 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("aiAgentMetadata")]
-        public global::Instill.AIAgentAppMetadata? AiAgentMetadata { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("aiAgentSettings")]
+        public global::Instill.AIAgentSettings? AiAgentSettings { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -44,18 +44,18 @@ namespace Instill
         /// <param name="displayName"></param>
         /// <param name="description"></param>
         /// <param name="tags"></param>
-        /// <param name="aiAgentMetadata"></param>
+        /// <param name="aiAgentSettings"></param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public CreateAgentBody(
             string? displayName,
             string? description,
             global::System.Collections.Generic.IList<string>? tags,
-            global::Instill.AIAgentAppMetadata? aiAgentMetadata)
+            global::Instill.AIAgentSettings? aiAgentSettings)
         {
             this.DisplayName = displayName;
             this.Description = description;
             this.Tags = tags;
-            this.AiAgentMetadata = aiAgentMetadata;
+            this.AiAgentSettings = aiAgentSettings;
         }
 
         /// <summary>

@@ -229,7 +229,7 @@ namespace Instill
         /// <param name="displayName"></param>
         /// <param name="description"></param>
         /// <param name="tags"></param>
-        /// <param name="aiAgentMetadata"></param>
+        /// <param name="aiAgentSettings"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
@@ -238,7 +238,7 @@ namespace Instill
             string? displayName = default,
             string? description = default,
             global::System.Collections.Generic.IList<string>? tags = default,
-            global::Instill.AIAgentAppMetadata? aiAgentMetadata = default,
+            global::Instill.AIAgentSettings? aiAgentSettings = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Instill.CreateAgentBody
@@ -246,7 +246,7 @@ namespace Instill
                 DisplayName = displayName,
                 Description = description,
                 Tags = tags,
-                AiAgentMetadata = aiAgentMetadata,
+                AiAgentSettings = aiAgentSettings,
             };
 
             return await AppPublicServiceCreateAgentAsync(

@@ -24,14 +24,14 @@ namespace Instill
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="chatDisplayName"></param>
-        /// <param name="aiAgentApp"></param>
+        /// <param name="aiAgentSettings"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
         global::System.Threading.Tasks.Task<global::Instill.CreateChatResponse> AppPublicServiceCreateChatAsync(
             string namespaceId,
             string? chatDisplayName = default,
-            global::Instill.AIAgentAppMetadata? aiAgentApp = default,
+            global::Instill.AIAgentSettings? aiAgentSettings = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

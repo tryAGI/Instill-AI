@@ -17,8 +17,8 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("aiAgentApp")]
-        public global::Instill.AIAgentAppMetadata? AiAgentApp { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("aiAgentSettings")]
+        public global::Instill.AIAgentSettings? AiAgentSettings { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -30,14 +30,14 @@ namespace Instill
         /// Initializes a new instance of the <see cref="CreateChatBody" /> class.
         /// </summary>
         /// <param name="chatDisplayName"></param>
-        /// <param name="aiAgentApp"></param>
+        /// <param name="aiAgentSettings"></param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public CreateChatBody(
             string? chatDisplayName,
-            global::Instill.AIAgentAppMetadata? aiAgentApp)
+            global::Instill.AIAgentSettings? aiAgentSettings)
         {
             this.ChatDisplayName = chatDisplayName;
-            this.AiAgentApp = aiAgentApp;
+            this.AiAgentSettings = aiAgentSettings;
         }
 
         /// <summary>

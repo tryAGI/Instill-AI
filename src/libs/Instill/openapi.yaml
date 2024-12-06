@@ -2021,6 +2021,52 @@ paths:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
       x-stage: alpha
+  '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/files:move':
+    post:
+      tags:
+        - 💾 Artifact
+      summary: Move file to another catalog
+      description: Moves a file to another catalog.
+      operationId: MoveFileToCatalog
+      parameters:
+        - name: namespaceId
+          in: path
+          description: namespace id
+          required: true
+          schema:
+            type: string
+        - name: catalogId
+          in: path
+          description: catalog id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MoveFileToCatalogBody'
+        required: true
+        x-bodyName: body
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MoveFileToCatalogResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
   /v1beta/user:
     get:
       tags:
@@ -9303,6 +9349,26 @@ components:
           format: date-time
           readOnly: true
       description: ModelVersion contains information about the version of a model.
+    MoveFileToCatalogBody:
+      required:
+        - fileUid
+        - toCatalogId
+      type: object
+      properties:
+        fileUid:
+          type: string
+          description: The file uid.
+        toCatalogId:
+          type: string
+          description: The target catalog id.
+      description: MoveFileToCatalogRequest represents a request to move a file to another catalog.
+    MoveFileToCatalogResponse:
+      type: object
+      properties:
+        fileUid:
+          type: string
+          description: The file uid.
+      description: MoveFileToCatalogResponse represents a response for moving a file to another catalog.
     NullValue:
       type: string
       description: "`NullValue` is a singleton enumeration to represent the null value for the\n`Value` type union.\n\nThe JSON representation for `NullValue` is JSON `null`."

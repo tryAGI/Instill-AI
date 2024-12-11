@@ -8117,6 +8117,16 @@ components:
           title: Subscription
           allOf:
             - $ref: '#/components/schemas/UserSubscription'
+    Hardware:
+      type: object
+      properties:
+        title:
+          title: Hardware display title
+          type: string
+        value:
+          title: Hardware name value
+          type: string
+      description: Hardware describes the hardware title and string value that backend consumes.
     Integration:
       type: object
       properties:
@@ -9982,7 +9992,7 @@ components:
           title: Hardware describes the available hardware types in this region
           type: array
           items:
-            type: string
+            $ref: '#/components/schemas/Hardware'
       description: "Region describes the supported cloud provider and regions, with\ntheir supported GPU respectively."
     RenameNamespaceModelBody:
       title: RenameNamespaceModelRequest represents a request to rename a model

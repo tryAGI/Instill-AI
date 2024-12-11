@@ -19,7 +19,7 @@ namespace Instill
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("hardware")]
-        public global::System.Collections.Generic.IList<string>? Hardware { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.Hardware>? Hardware { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -35,7 +35,7 @@ namespace Instill
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public Region(
             string? regionName,
-            global::System.Collections.Generic.IList<string>? hardware)
+            global::System.Collections.Generic.IList<global::Instill.Hardware>? hardware)
         {
             this.RegionName = regionName;
             this.Hardware = hardware;

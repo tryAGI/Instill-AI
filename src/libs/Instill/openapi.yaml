@@ -9986,7 +9986,7 @@ components:
       type: object
       properties:
         regionName:
-          title: Concate name of provider and region
+          title: Concatenate name of provider and region
           type: string
         hardware:
           title: Hardware describes the available hardware types in this region

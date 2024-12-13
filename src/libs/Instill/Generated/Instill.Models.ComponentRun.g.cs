@@ -94,6 +94,16 @@ namespace Instill
         public float? CreditAmount { get; set; }
 
         /// <summary>
+        /// Expiration time for the blob data associated with the component run (e.g.<br/>
+        /// input / output data). When the run is accessed after the expiration, that<br/>
+        /// information will be empty, but this field will allow the user identify<br/>
+        /// that the data isn't there because it has expired.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("blobDataExpirationTime")]
+        public global::System.DateTime? BlobDataExpirationTime { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -150,6 +160,13 @@ namespace Instill
         /// Credits used of internal accounting metric.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="blobDataExpirationTime">
+        /// Expiration time for the blob data associated with the component run (e.g.<br/>
+        /// input / output data). When the run is accessed after the expiration, that<br/>
+        /// information will be empty, but this field will allow the user identify<br/>
+        /// that the data isn't there because it has expired.<br/>
+        /// Included only in responses
+        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public ComponentRun(
             string? pipelineRunUid,
@@ -163,7 +180,8 @@ namespace Instill
             global::System.Collections.Generic.IList<object>? inputs,
             global::System.Collections.Generic.IList<global::Instill.FileReference>? outputsReference,
             global::System.Collections.Generic.IList<object>? outputs,
-            float? creditAmount)
+            float? creditAmount,
+            global::System.DateTime? blobDataExpirationTime)
         {
             this.PipelineRunUid = pipelineRunUid;
             this.ComponentId = componentId;
@@ -177,6 +195,7 @@ namespace Instill
             this.OutputsReference = outputsReference;
             this.Outputs = outputs;
             this.CreditAmount = creditAmount;
+            this.BlobDataExpirationTime = blobDataExpirationTime;
         }
 
         /// <summary>

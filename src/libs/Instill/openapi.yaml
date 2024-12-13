@@ -7110,6 +7110,11 @@ components:
           description: Credits used of internal accounting metric.
           format: float
           readOnly: true
+        blobDataExpirationTime:
+          type: string
+          description: "Expiration time for the blob data associated with the component run (e.g.\ninput / output data). When the run is accessed after the expiration, that\ninformation will be empty, but this field will allow the user identify\nthat the data isn't there because it has expired."
+          format: date-time
+          readOnly: true
       description: ComponentRun represents the execution details of a single component within a pipeline run.
     ComponentTask:
       type: object
@@ -9909,6 +9914,11 @@ components:
         pipelineNamespaceId:
           type: string
           description: ID of the namespace that owns the pipeline.
+          readOnly: true
+        blobDataExpirationTime:
+          type: string
+          description: "Expiration time for the blob data associated with the pipeline run (e.g.\ninput data, recipe). When the run is accessed after the expiration, that\ninformation will be empty, but this field will allow the user identify\nthat the data isn't there because it has expired."
+          format: date-time
           readOnly: true
       description: PipelineRun represents a single execution of a pipeline.
     PipelineTriggerChartRecord:

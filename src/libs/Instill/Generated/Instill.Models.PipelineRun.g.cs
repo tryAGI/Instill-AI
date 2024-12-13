@@ -131,6 +131,16 @@ namespace Instill
         public string? PipelineNamespaceId { get; set; }
 
         /// <summary>
+        /// Expiration time for the blob data associated with the pipeline run (e.g.<br/>
+        /// input data, recipe). When the run is accessed after the expiration, that<br/>
+        /// information will be empty, but this field will allow the user identify<br/>
+        /// that the data isn't there because it has expired.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("blobDataExpirationTime")]
+        public global::System.DateTime? BlobDataExpirationTime { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -208,6 +218,13 @@ namespace Instill
         /// ID of the namespace that owns the pipeline.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="blobDataExpirationTime">
+        /// Expiration time for the blob data associated with the pipeline run (e.g.<br/>
+        /// input data, recipe). When the run is accessed after the expiration, that<br/>
+        /// information will be empty, but this field will allow the user identify<br/>
+        /// that the data isn't there because it has expired.<br/>
+        /// Included only in responses
+        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public PipelineRun(
             string? pipelineRunUid,
@@ -226,7 +243,8 @@ namespace Instill
             global::Instill.DataSpecification? dataSpecification,
             string? pipelineId,
             string? requesterId,
-            string? pipelineNamespaceId)
+            string? pipelineNamespaceId,
+            global::System.DateTime? blobDataExpirationTime)
         {
             this.PipelineRunUid = pipelineRunUid;
             this.PipelineVersion = pipelineVersion;
@@ -245,6 +263,7 @@ namespace Instill
             this.PipelineId = pipelineId;
             this.RequesterId = requesterId;
             this.PipelineNamespaceId = pipelineNamespaceId;
+            this.BlobDataExpirationTime = blobDataExpirationTime;
         }
 
         /// <summary>

@@ -63,6 +63,11 @@ namespace Instill
         public AppClient App { get; }
 
         /// <summary>
+        /// Table resources for agents.
+        /// </summary>
+        public TableClient Table { get; }
+
+        /// <summary>
         /// Resource usage metrics.
         /// </summary>
         public MetricsClient Metrics { get; }

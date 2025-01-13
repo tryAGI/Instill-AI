@@ -10,14 +10,14 @@ namespace Instill
             ref string namespaceId,
             ref string tableUid,
             ref string rowUid,
-            global::Instill.Row request);
+            global::Instill.UpdateRowBody request);
         partial void PrepareAppPublicServiceUpdateRowRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
             string tableUid,
             string rowUid,
-            global::Instill.Row request);
+            global::Instill.UpdateRowBody request);
         partial void ProcessAppPublicServiceUpdateRowResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -42,7 +42,7 @@ namespace Instill
             string namespaceId,
             string tableUid,
             string rowUid,
-            global::Instill.Row request,
+            global::Instill.UpdateRowBody request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -240,8 +240,8 @@ namespace Instill
         /// <param name="namespaceId"></param>
         /// <param name="tableUid"></param>
         /// <param name="rowUid"></param>
-        /// <param name="cells">
-        /// Map of column names to their cell values.
+        /// <param name="row">
+        /// The new row data.
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -250,12 +250,12 @@ namespace Instill
             string namespaceId,
             string tableUid,
             string rowUid,
-            global::System.Collections.Generic.Dictionary<string, global::Instill.Cell> cells,
+            global::Instill.Row? row = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Instill.Row
+            var __request = new global::Instill.UpdateRowBody
             {
-                Cells = cells,
+                Row = row,
             };
 
             return await AppPublicServiceUpdateRowAsync(

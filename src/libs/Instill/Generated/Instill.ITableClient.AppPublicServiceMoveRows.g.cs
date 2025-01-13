@@ -5,41 +5,41 @@ namespace Instill
     public partial interface ITableClient
     {
         /// <summary>
-        /// Update row<br/>
-        /// Updates a row in a table.
+        /// Move row<br/>
+        /// Moves a row to a new position in a table.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="tableUid"></param>
-        /// <param name="rowUid"></param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
-        global::System.Threading.Tasks.Task<global::Instill.UpdateRowResponse> AppPublicServiceUpdateRowAsync(
+        global::System.Threading.Tasks.Task<string> AppPublicServiceMoveRowsAsync(
             string namespaceId,
             string tableUid,
-            string rowUid,
-            global::Instill.UpdateRowBody request,
+            global::Instill.MoveRowsBody request,
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Update row<br/>
-        /// Updates a row in a table.
+        /// Move row<br/>
+        /// Moves a row to a new position in a table.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="tableUid"></param>
-        /// <param name="rowUid"></param>
-        /// <param name="row">
-        /// The new row data.
+        /// <param name="rowUids">
+        /// The unique identifiers of the rows to be moved.
+        /// </param>
+        /// <param name="afterRowUid">
+        /// The unique identifier of the row to move after.
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
-        global::System.Threading.Tasks.Task<global::Instill.UpdateRowResponse> AppPublicServiceUpdateRowAsync(
+        global::System.Threading.Tasks.Task<string> AppPublicServiceMoveRowsAsync(
             string namespaceId,
             string tableUid,
-            string rowUid,
-            global::Instill.Row? row = default,
+            global::System.Collections.Generic.IList<string> rowUids,
+            string? afterRowUid = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

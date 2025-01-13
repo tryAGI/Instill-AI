@@ -5,29 +5,29 @@ namespace Instill
 {
     public partial class TableClient
     {
-        partial void PrepareAppPublicServiceInsertRowArguments(
+        partial void PrepareAppPublicServiceMoveRowsArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
             ref string tableUid,
-            global::Instill.InsertRowBody request);
-        partial void PrepareAppPublicServiceInsertRowRequest(
+            global::Instill.MoveRowsBody request);
+        partial void PrepareAppPublicServiceMoveRowsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
             string tableUid,
-            global::Instill.InsertRowBody request);
-        partial void ProcessAppPublicServiceInsertRowResponse(
+            global::Instill.MoveRowsBody request);
+        partial void ProcessAppPublicServiceMoveRowsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessAppPublicServiceInsertRowResponseContent(
+        partial void ProcessAppPublicServiceMoveRowsResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Insert row<br/>
-        /// Inserts a row into a table.
+        /// Move row<br/>
+        /// Moves a row to a new position in a table.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="tableUid"></param>
@@ -35,24 +35,24 @@ namespace Instill
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
-        public async global::System.Threading.Tasks.Task<global::Instill.InsertRowResponse> AppPublicServiceInsertRowAsync(
+        public async global::System.Threading.Tasks.Task<string> AppPublicServiceMoveRowsAsync(
             string namespaceId,
             string tableUid,
-            global::Instill.InsertRowBody request,
+            global::Instill.MoveRowsBody request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
 
             PrepareArguments(
                 client: HttpClient);
-            PrepareAppPublicServiceInsertRowArguments(
+            PrepareAppPublicServiceMoveRowsArguments(
                 httpClient: HttpClient,
                 namespaceId: ref namespaceId,
                 tableUid: ref tableUid,
                 request: request);
 
             var __pathBuilder = new PathBuilder(
-                path: $"/v1alpha/namespaces/{namespaceId}/tables/{tableUid}/rows",
+                path: $"/v1alpha/namespaces/{namespaceId}/tables/{tableUid}/move-rows",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -88,7 +88,7 @@ namespace Instill
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareAppPublicServiceInsertRowRequest(
+            PrepareAppPublicServiceMoveRowsRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
                 namespaceId: namespaceId,
@@ -103,7 +103,7 @@ namespace Instill
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessAppPublicServiceInsertRowResponse(
+            ProcessAppPublicServiceMoveRowsResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
             // Returned when the client credentials are not valid.
@@ -171,7 +171,7 @@ namespace Instill
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessAppPublicServiceInsertRowResponseContent(
+                ProcessAppPublicServiceMoveRowsResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -195,9 +195,7 @@ namespace Instill
                     };
                 }
 
-                return
-                    global::Instill.InsertRowResponse.FromJson(__content, JsonSerializerContext) ??
-                    throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                return __content;
             }
             else
             {
@@ -219,43 +217,41 @@ namespace Instill
                     };
                 }
 
-                using var __content = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                var __content = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
 
-                return
-                    await global::Instill.InsertRowResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
-                    throw new global::System.InvalidOperationException("Response deserialization failed.");
+                return __content;
             }
         }
 
         /// <summary>
-        /// Insert row<br/>
-        /// Inserts a row into a table.
+        /// Move row<br/>
+        /// Moves a row to a new position in a table.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="tableUid"></param>
-        /// <param name="row">
-        /// The rows to insert.
+        /// <param name="rowUids">
+        /// The unique identifiers of the rows to be moved.
         /// </param>
         /// <param name="afterRowUid">
-        /// The unique identifier of the row to insert after.
+        /// The unique identifier of the row to move after.
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
-        public async global::System.Threading.Tasks.Task<global::Instill.InsertRowResponse> AppPublicServiceInsertRowAsync(
+        public async global::System.Threading.Tasks.Task<string> AppPublicServiceMoveRowsAsync(
             string namespaceId,
             string tableUid,
-            global::Instill.Row? row = default,
+            global::System.Collections.Generic.IList<string> rowUids,
             string? afterRowUid = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Instill.InsertRowBody
+            var __request = new global::Instill.MoveRowsBody
             {
-                Row = row,
+                RowUids = rowUids,
                 AfterRowUid = afterRowUid,
             };
 
-            return await AppPublicServiceInsertRowAsync(
+            return await AppPublicServiceMoveRowsAsync(
                 namespaceId: namespaceId,
                 tableUid: tableUid,
                 request: __request,

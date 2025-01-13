@@ -17,7 +17,7 @@ namespace Instill
         global::System.Threading.Tasks.Task<global::Instill.InsertRowResponse> AppPublicServiceInsertRowAsync(
             string namespaceId,
             string tableUid,
-            global::Instill.Row request,
+            global::Instill.InsertRowBody request,
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
@@ -26,8 +26,11 @@ namespace Instill
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="tableUid"></param>
-        /// <param name="cells">
-        /// Map of column names to their cell values.
+        /// <param name="row">
+        /// The rows to insert.
+        /// </param>
+        /// <param name="afterRowUid">
+        /// The unique identifier of the row to insert after.
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -35,7 +38,8 @@ namespace Instill
         global::System.Threading.Tasks.Task<global::Instill.InsertRowResponse> AppPublicServiceInsertRowAsync(
             string namespaceId,
             string tableUid,
-            global::System.Collections.Generic.Dictionary<string, global::Instill.Cell> cells,
+            global::Instill.Row? row = default,
+            string? afterRowUid = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

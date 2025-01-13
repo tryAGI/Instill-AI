@@ -1529,13 +1529,12 @@ paths:
           schema:
             type: string
       requestBody:
-        description: The rows to insert.
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Row'
+              $ref: '#/components/schemas/InsertRowBody'
         required: true
-        x-bodyName: row
+        x-bodyName: body
       responses:
         '200':
           description: A successful response.
@@ -1622,15 +1621,12 @@ paths:
           schema:
             type: string
       requestBody:
-        description: The rows to update.
         content:
           application/json:
             schema:
-              type: array
-              items:
-                $ref: '#/components/schemas/Row'
+              $ref: '#/components/schemas/UpdateRowsBody'
         required: true
-        x-bodyName: rows
+        x-bodyName: body
       responses:
         '200':
           description: A successful response.
@@ -1721,13 +1717,12 @@ paths:
           schema:
             type: string
       requestBody:
-        description: The new row data.
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Row'
+              $ref: '#/components/schemas/UpdateRowBody'
         required: true
-        x-bodyName: row
+        x-bodyName: body
       responses:
         '200':
           description: A successful response.
@@ -1735,6 +1730,52 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateRowResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
+  '/v1alpha/namespaces/{namespaceId}/tables/{tableUid}/move-rows':
+    post:
+      tags:
+        - Table
+      summary: Move row
+      description: Moves a row to a new position in a table.
+      operationId: AppPublicService_MoveRows
+      parameters:
+        - name: namespaceId
+          in: path
+          description: The ID of the namespace that owns the table.
+          required: true
+          schema:
+            type: string
+        - name: tableUid
+          in: path
+          description: The UID of the table containing the row.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MoveRowsBody'
+        required: true
+        x-bodyName: body
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MoveRowsResponse'
         '401':
           description: Returned when the client credentials are not valid.
           content:
@@ -8927,6 +8968,17 @@ components:
           type: string
           description: The URL of the image resource.
       description: ImageCell represents a cell with a url of an image resource.
+    InsertRowBody:
+      type: object
+      properties:
+        row:
+          allOf:
+            - $ref: '#/components/schemas/Row'
+          description: The rows to insert.
+        afterRowUid:
+          type: string
+          description: The unique identifier of the row to insert after.
+      description: InsertRowRequest represents a request to insert a row into a table.
     InsertRowResponse:
       type: object
       properties:
@@ -10226,6 +10278,23 @@ components:
           type: string
           description: The file uid.
       description: MoveFileToCatalogResponse represents a response for moving a file to another catalog.
+    MoveRowsBody:
+      required:
+        - rowUids
+      type: object
+      properties:
+        rowUids:
+          type: array
+          items:
+            type: string
+          description: The unique identifiers of the rows to be moved.
+        afterRowUid:
+          type: string
+          description: The unique identifier of the row to move after.
+      description: MoveRowsRequest represents a request to move multiple rows.
+    MoveRowsResponse:
+      type: object
+      description: MoveRowsResponse is an empty response for moving multiple rows.
     NullValue:
       type: string
       description: "`NullValue` is a singleton enumeration to represent the null value for the\n`Value` type union.\n\nThe JSON representation for `NullValue` is JSON `null`."
@@ -10942,6 +11011,11 @@ components:
         createTime:
           type: string
           description: The timestamp when the row was created.
+          format: date-time
+          readOnly: true
+        updateTime:
+          type: string
+          description: The timestamp when the row was last updated.
           format: date-time
           readOnly: true
       description: Row represents a row in a table.
@@ -11873,6 +11947,14 @@ components:
           description: The organization resource.
           readOnly: true
       description: UpdateOrganizationResponse contains the updated organization.
+    UpdateRowBody:
+      type: object
+      properties:
+        row:
+          allOf:
+            - $ref: '#/components/schemas/Row'
+          description: The new row data.
+      description: UpdateRowRequest represents a request to update a row.
     UpdateRowResponse:
       type: object
       properties:
@@ -11882,6 +11964,15 @@ components:
           description: The updated row resource.
           readOnly: true
       description: UpdateRowResponse contains the updated row.
+    UpdateRowsBody:
+      type: object
+      properties:
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/Row'
+          description: The rows to update.
+      description: UpdateRowsRequest represents a request to update multiple rows.
     UpdateRowsResponse:
       type: object
       properties:

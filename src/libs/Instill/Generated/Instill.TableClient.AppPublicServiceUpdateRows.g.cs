@@ -9,13 +9,13 @@ namespace Instill
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
             ref string tableUid,
-            global::System.Collections.Generic.IList<global::Instill.Row> request);
+            global::Instill.UpdateRowsBody request);
         partial void PrepareAppPublicServiceUpdateRowsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
             string tableUid,
-            global::System.Collections.Generic.IList<global::Instill.Row> request);
+            global::Instill.UpdateRowsBody request);
         partial void ProcessAppPublicServiceUpdateRowsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -38,7 +38,7 @@ namespace Instill
         public async global::System.Threading.Tasks.Task<global::Instill.UpdateRowsResponse> AppPublicServiceUpdateRowsAsync(
             string namespaceId,
             string tableUid,
-            global::System.Collections.Generic.IList<global::Instill.Row> request,
+            global::Instill.UpdateRowsBody request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -78,7 +78,7 @@ namespace Instill
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 }
             }
-            var __httpRequestContentBody = global::System.Text.Json.JsonSerializer.Serialize(request, request.GetType(), JsonSerializerContext);
+            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
             var __httpRequestContent = new global::System.Net.Http.StringContent(
                 content: __httpRequestContentBody,
                 encoding: global::System.Text.Encoding.UTF8,
@@ -225,6 +225,36 @@ namespace Instill
                     await global::Instill.UpdateRowsResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                     throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
+        }
+
+        /// <summary>
+        /// Update rows<br/>
+        /// Updates multiple rows in a table.
+        /// </summary>
+        /// <param name="namespaceId"></param>
+        /// <param name="tableUid"></param>
+        /// <param name="rows">
+        /// The rows to update.
+        /// </param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
+        public async global::System.Threading.Tasks.Task<global::Instill.UpdateRowsResponse> AppPublicServiceUpdateRowsAsync(
+            string namespaceId,
+            string tableUid,
+            global::System.Collections.Generic.IList<global::Instill.Row>? rows = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __request = new global::Instill.UpdateRowsBody
+            {
+                Rows = rows,
+            };
+
+            return await AppPublicServiceUpdateRowsAsync(
+                namespaceId: namespaceId,
+                tableUid: tableUid,
+                request: __request,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

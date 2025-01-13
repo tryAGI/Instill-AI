@@ -30,6 +30,13 @@ namespace Instill
         public global::System.DateTime? CreateTime { get; set; }
 
         /// <summary>
+        /// The timestamp when the row was last updated.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
+        public global::System.DateTime? UpdateTime { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -49,15 +56,21 @@ namespace Instill
         /// The timestamp when the row was created.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="updateTime">
+        /// The timestamp when the row was last updated.<br/>
+        /// Included only in responses
+        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public Row(
             global::System.Collections.Generic.Dictionary<string, global::Instill.Cell> cells,
             string? uid,
-            global::System.DateTime? createTime)
+            global::System.DateTime? createTime,
+            global::System.DateTime? updateTime)
         {
             this.Cells = cells ?? throw new global::System.ArgumentNullException(nameof(cells));
             this.Uid = uid;
             this.CreateTime = createTime;
+            this.UpdateTime = updateTime;
         }
 
         /// <summary>

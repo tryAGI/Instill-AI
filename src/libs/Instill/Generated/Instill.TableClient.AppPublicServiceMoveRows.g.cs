@@ -232,8 +232,8 @@ namespace Instill
         /// <param name="rowUids">
         /// The unique identifiers of the rows to be moved.
         /// </param>
-        /// <param name="afterRowUid">
-        /// The unique identifier of the row to move after.
+        /// <param name="beforeRowUid">
+        /// The unique identifier of the row to move before.
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -242,13 +242,13 @@ namespace Instill
             string namespaceId,
             string tableUid,
             global::System.Collections.Generic.IList<string> rowUids,
-            string? afterRowUid = default,
+            string? beforeRowUid = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Instill.MoveRowsBody
             {
                 RowUids = rowUids,
-                AfterRowUid = afterRowUid,
+                BeforeRowUid = beforeRowUid,
             };
 
             return await AppPublicServiceMoveRowsAsync(

@@ -15,10 +15,10 @@ namespace Instill
         public global::Instill.Row? Row { get; set; }
 
         /// <summary>
-        /// The unique identifier of the row to insert after.
+        /// The unique identifier of the row to insert before.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("afterRowUid")]
-        public string? AfterRowUid { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("beforeRowUid")]
+        public string? BeforeRowUid { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -32,16 +32,16 @@ namespace Instill
         /// <param name="row">
         /// The rows to insert.
         /// </param>
-        /// <param name="afterRowUid">
-        /// The unique identifier of the row to insert after.
+        /// <param name="beforeRowUid">
+        /// The unique identifier of the row to insert before.
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public InsertRowBody(
             global::Instill.Row? row,
-            string? afterRowUid)
+            string? beforeRowUid)
         {
             this.Row = row;
-            this.AfterRowUid = afterRowUid;
+            this.BeforeRowUid = beforeRowUid;
         }
 
         /// <summary>

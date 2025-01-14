@@ -8975,9 +8975,9 @@ components:
           allOf:
             - $ref: '#/components/schemas/Row'
           description: The rows to insert.
-        afterRowUid:
+        beforeRowUid:
           type: string
-          description: The unique identifier of the row to insert after.
+          description: The unique identifier of the row to insert before.
       description: InsertRowRequest represents a request to insert a row into a table.
     InsertRowResponse:
       type: object
@@ -10288,9 +10288,9 @@ components:
           items:
             type: string
           description: The unique identifiers of the rows to be moved.
-        afterRowUid:
+        beforeRowUid:
           type: string
-          description: The unique identifier of the row to move after.
+          description: The unique identifier of the row to move before.
       description: MoveRowsRequest represents a request to move multiple rows.
     MoveRowsResponse:
       type: object

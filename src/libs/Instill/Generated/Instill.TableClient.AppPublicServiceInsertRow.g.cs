@@ -236,8 +236,8 @@ namespace Instill
         /// <param name="row">
         /// The rows to insert.
         /// </param>
-        /// <param name="afterRowUid">
-        /// The unique identifier of the row to insert after.
+        /// <param name="beforeRowUid">
+        /// The unique identifier of the row to insert before.
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -246,13 +246,13 @@ namespace Instill
             string namespaceId,
             string tableUid,
             global::Instill.Row? row = default,
-            string? afterRowUid = default,
+            string? beforeRowUid = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Instill.InsertRowBody
             {
                 Row = row,
-                AfterRowUid = afterRowUid,
+                BeforeRowUid = beforeRowUid,
             };
 
             return await AppPublicServiceInsertRowAsync(

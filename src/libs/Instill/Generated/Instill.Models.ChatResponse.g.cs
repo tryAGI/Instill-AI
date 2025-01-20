@@ -16,12 +16,6 @@ namespace Instill
         public global::System.Collections.Generic.IList<object>? Outputs { get; set; }
 
         /// <summary>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("chunks")]
-        public global::System.Collections.Generic.IList<global::Instill.SimilarityChunk>? Chunks { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -34,16 +28,11 @@ namespace Instill
         /// Conversation responses.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="chunks">
-        /// Included only in responses
-        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public ChatResponse(
-            global::System.Collections.Generic.IList<object>? outputs,
-            global::System.Collections.Generic.IList<global::Instill.SimilarityChunk>? chunks)
+            global::System.Collections.Generic.IList<object>? outputs)
         {
             this.Outputs = outputs;
-            this.Chunks = chunks;
         }
 
         /// <summary>

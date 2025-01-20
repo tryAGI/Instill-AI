@@ -8,15 +8,13 @@ namespace Instill
         partial void PrepareAppPublicServiceDeleteMessageArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
-            ref string appId,
-            ref string conversationId,
+            ref string chatUid,
             ref string messageUid);
         partial void PrepareAppPublicServiceDeleteMessageRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
-            string appId,
-            string conversationId,
+            string chatUid,
             string messageUid);
         partial void ProcessAppPublicServiceDeleteMessageResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -32,16 +30,14 @@ namespace Instill
         /// Deletes a message.
         /// </summary>
         /// <param name="namespaceId"></param>
-        /// <param name="appId"></param>
-        /// <param name="conversationId"></param>
+        /// <param name="chatUid"></param>
         /// <param name="messageUid"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
         public async global::System.Threading.Tasks.Task<string> AppPublicServiceDeleteMessageAsync(
             string namespaceId,
-            string appId,
-            string conversationId,
+            string chatUid,
             string messageUid,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -50,12 +46,11 @@ namespace Instill
             PrepareAppPublicServiceDeleteMessageArguments(
                 httpClient: HttpClient,
                 namespaceId: ref namespaceId,
-                appId: ref appId,
-                conversationId: ref conversationId,
+                chatUid: ref chatUid,
                 messageUid: ref messageUid);
 
             var __pathBuilder = new PathBuilder(
-                path: $"/v1alpha/namespaces/{namespaceId}/apps/{appId}/conversations/{conversationId}/messages/{messageUid}",
+                path: $"/v1alpha/namespaces/{namespaceId}/chats/{chatUid}/messages/{messageUid}",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -89,8 +84,7 @@ namespace Instill
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
                 namespaceId: namespaceId,
-                appId: appId,
-                conversationId: conversationId,
+                chatUid: chatUid,
                 messageUid: messageUid);
 
             using var __response = await HttpClient.SendAsync(

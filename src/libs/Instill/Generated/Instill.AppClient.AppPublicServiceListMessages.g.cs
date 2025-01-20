@@ -8,26 +8,18 @@ namespace Instill
         partial void PrepareAppPublicServiceListMessagesArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
-            ref string appId,
-            ref string conversationId,
-            ref int? latestK,
+            ref string chatUid,
             ref int? pageSize,
             ref string? pageToken,
-            ref bool? includeSystemMessages,
-            ref bool? ifAll,
-            ref string? messageUid);
+            ref bool? ifAll);
         partial void PrepareAppPublicServiceListMessagesRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
-            string appId,
-            string conversationId,
-            int? latestK,
+            string chatUid,
             int? pageSize,
             string? pageToken,
-            bool? includeSystemMessages,
-            bool? ifAll,
-            string? messageUid);
+            bool? ifAll);
         partial void ProcessAppPublicServiceListMessagesResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -42,27 +34,19 @@ namespace Instill
         /// Returns a paginated list of messages.
         /// </summary>
         /// <param name="namespaceId"></param>
-        /// <param name="appId"></param>
-        /// <param name="conversationId"></param>
-        /// <param name="latestK"></param>
+        /// <param name="chatUid"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
-        /// <param name="includeSystemMessages"></param>
         /// <param name="ifAll"></param>
-        /// <param name="messageUid"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
         public async global::System.Threading.Tasks.Task<global::Instill.ListMessagesResponse> AppPublicServiceListMessagesAsync(
             string namespaceId,
-            string appId,
-            string conversationId,
-            int? latestK = default,
+            string chatUid,
             int? pageSize = default,
             string? pageToken = default,
-            bool? includeSystemMessages = default,
             bool? ifAll = default,
-            string? messageUid = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
@@ -70,25 +54,18 @@ namespace Instill
             PrepareAppPublicServiceListMessagesArguments(
                 httpClient: HttpClient,
                 namespaceId: ref namespaceId,
-                appId: ref appId,
-                conversationId: ref conversationId,
-                latestK: ref latestK,
+                chatUid: ref chatUid,
                 pageSize: ref pageSize,
                 pageToken: ref pageToken,
-                includeSystemMessages: ref includeSystemMessages,
-                ifAll: ref ifAll,
-                messageUid: ref messageUid);
+                ifAll: ref ifAll);
 
             var __pathBuilder = new PathBuilder(
-                path: $"/v1alpha/namespaces/{namespaceId}/apps/{appId}/conversations/{conversationId}/messages",
+                path: $"/v1alpha/namespaces/{namespaceId}/chats/{chatUid}/messages",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 
-                .AddOptionalParameter("latestK", latestK?.ToString()) 
                 .AddOptionalParameter("pageSize", pageSize?.ToString()) 
                 .AddOptionalParameter("pageToken", pageToken) 
-                .AddOptionalParameter("includeSystemMessages", includeSystemMessages?.ToString()) 
                 .AddOptionalParameter("ifAll", ifAll?.ToString()) 
-                .AddOptionalParameter("messageUid", messageUid) 
                 ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -122,14 +99,10 @@ namespace Instill
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
                 namespaceId: namespaceId,
-                appId: appId,
-                conversationId: conversationId,
-                latestK: latestK,
+                chatUid: chatUid,
                 pageSize: pageSize,
                 pageToken: pageToken,
-                includeSystemMessages: includeSystemMessages,
-                ifAll: ifAll,
-                messageUid: messageUid);
+                ifAll: ifAll);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,

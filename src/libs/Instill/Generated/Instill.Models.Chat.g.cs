@@ -9,65 +9,52 @@ namespace Instill
     public sealed partial class Chat
     {
         /// <summary>
+        /// unique identifier of the conversation created by the system.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("uid")]
         public string? Uid { get; set; }
 
         /// <summary>
-        /// 
+        /// namespace id.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("namespaceId")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string NamespaceId { get; set; }
 
         /// <summary>
-        /// 
+        /// conversation display name.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("lastUsedCatalogUid")]
-        public string? LastUsedCatalogUid { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("chatDisplayName")]
+        public string? ChatDisplayName { get; set; }
 
         /// <summary>
-        /// 
+        /// agent config.<br/>
+        /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("lastUsedTopK")]
-        public long? LastUsedTopK { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("agentConfig")]
+        public global::Instill.AgentConfig? AgentConfig { get; set; }
 
         /// <summary>
+        /// chat create time.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
         public global::System.DateTime? CreateTime { get; set; }
 
         /// <summary>
+        /// chat update time.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
         public global::System.DateTime? UpdateTime { get; set; }
 
         /// <summary>
+        /// chat delete time.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("aiAgentMetadata")]
-        public global::Instill.AIAgentAppMetadata? AiAgentMetadata { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tempCatalogId")]
-        public string? TempCatalogId { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("chatDisplayName")]
-        public string? ChatDisplayName { get; set; }
-
-        /// <summary>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("breakpoint")]
-        public string? Breakpoint { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("deleteTime")]
+        public global::System.DateTime? DeleteTime { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -79,48 +66,48 @@ namespace Instill
         /// Initializes a new instance of the <see cref="Chat" /> class.
         /// </summary>
         /// <param name="uid">
+        /// unique identifier of the conversation created by the system.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="namespaceId"></param>
-        /// <param name="lastUsedCatalogUid"></param>
-        /// <param name="lastUsedTopK"></param>
+        /// <param name="namespaceId">
+        /// namespace id.
+        /// </param>
+        /// <param name="chatDisplayName">
+        /// conversation display name.
+        /// </param>
+        /// <param name="agentConfig">
+        /// agent config.<br/>
+        /// Included only in responses
+        /// </param>
         /// <param name="createTime">
+        /// chat create time.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="updateTime">
+        /// chat update time.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="aiAgentMetadata">
-        /// Included only in responses
-        /// </param>
-        /// <param name="tempCatalogId"></param>
-        /// <param name="chatDisplayName"></param>
-        /// <param name="breakpoint">
+        /// <param name="deleteTime">
+        /// chat delete time.<br/>
         /// Included only in responses
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public Chat(
             string namespaceId,
             string? uid,
-            string? lastUsedCatalogUid,
-            long? lastUsedTopK,
+            string? chatDisplayName,
+            global::Instill.AgentConfig? agentConfig,
             global::System.DateTime? createTime,
             global::System.DateTime? updateTime,
-            global::Instill.AIAgentAppMetadata? aiAgentMetadata,
-            string? tempCatalogId,
-            string? chatDisplayName,
-            string? breakpoint)
+            global::System.DateTime? deleteTime)
         {
             this.NamespaceId = namespaceId ?? throw new global::System.ArgumentNullException(nameof(namespaceId));
             this.Uid = uid;
-            this.LastUsedCatalogUid = lastUsedCatalogUid;
-            this.LastUsedTopK = lastUsedTopK;
+            this.ChatDisplayName = chatDisplayName;
+            this.AgentConfig = agentConfig;
             this.CreateTime = createTime;
             this.UpdateTime = updateTime;
-            this.AiAgentMetadata = aiAgentMetadata;
-            this.TempCatalogId = tempCatalogId;
-            this.ChatDisplayName = chatDisplayName;
-            this.Breakpoint = breakpoint;
+            this.DeleteTime = deleteTime;
         }
 
         /// <summary>

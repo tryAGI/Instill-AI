@@ -4,9 +4,9 @@
 namespace Instill
 {
     /// <summary>
-    /// 
+    /// connection key(used connection id in recipe) and value(connection uid from namespace).
     /// </summary>
-    public sealed partial class AppPublicServiceListAgentsResponse
+    public sealed partial class AgentConfigConnections
     {
 
         /// <summary>

@@ -12,8 +12,8 @@ namespace Instill
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.CitationsTypeJsonConverter))]
-        public global::Instill.CitationsType? Type { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.CitationTypeJsonConverter))]
+        public global::Instill.CitationType? Type { get; set; }
 
         /// <summary>
         /// Included only in responses
@@ -63,7 +63,7 @@ namespace Instill
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public Citation(
-            global::Instill.CitationsType? type,
+            global::Instill.CitationType? type,
             string? name,
             string? url,
             string? chunkUid,

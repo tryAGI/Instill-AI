@@ -4,9 +4,9 @@
 namespace Instill
 {
     /// <summary>
-    /// AIAgentSettings represents the settings for the AI agent.
+    /// AgentConfig represents the config for the chat agent.
     /// </summary>
-    public sealed partial class AIAgentSettings
+    public sealed partial class AgentConfig
     {
         /// <summary>
         /// 
@@ -15,22 +15,10 @@ namespace Instill
         public string? Instructions { get; set; }
 
         /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("catalogUids")]
-        public global::System.Collections.Generic.IList<string>? CatalogUids { get; set; }
-
-        /// <summary>
         /// connection key(used connection id in recipe) and value(connection uid from namespace).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("connections")]
         public global::System.Collections.Generic.Dictionary<string, string>? Connections { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("toolIds")]
-        public global::System.Collections.Generic.IList<string>? ToolIds { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -39,31 +27,25 @@ namespace Instill
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AIAgentSettings" /> class.
+        /// Initializes a new instance of the <see cref="AgentConfig" /> class.
         /// </summary>
         /// <param name="instructions"></param>
-        /// <param name="catalogUids"></param>
         /// <param name="connections">
         /// connection key(used connection id in recipe) and value(connection uid from namespace).
         /// </param>
-        /// <param name="toolIds"></param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
-        public AIAgentSettings(
+        public AgentConfig(
             string? instructions,
-            global::System.Collections.Generic.IList<string>? catalogUids,
-            global::System.Collections.Generic.Dictionary<string, string>? connections,
-            global::System.Collections.Generic.IList<string>? toolIds)
+            global::System.Collections.Generic.Dictionary<string, string>? connections)
         {
             this.Instructions = instructions;
-            this.CatalogUids = catalogUids;
             this.Connections = connections;
-            this.ToolIds = toolIds;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AIAgentSettings" /> class.
+        /// Initializes a new instance of the <see cref="AgentConfig" /> class.
         /// </summary>
-        public AIAgentSettings()
+        public AgentConfig()
         {
         }
     }

@@ -8,15 +8,13 @@ namespace Instill
         partial void PrepareAppPublicServiceCreateMessageArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
-            ref string appId,
-            ref string conversationId,
+            ref string chatUid,
             global::Instill.CreateMessageBody request);
         partial void PrepareAppPublicServiceCreateMessageRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
-            string appId,
-            string conversationId,
+            string chatUid,
             global::Instill.CreateMessageBody request);
         partial void ProcessAppPublicServiceCreateMessageResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -32,16 +30,14 @@ namespace Instill
         /// Creates a message.
         /// </summary>
         /// <param name="namespaceId"></param>
-        /// <param name="appId"></param>
-        /// <param name="conversationId"></param>
+        /// <param name="chatUid"></param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
         public async global::System.Threading.Tasks.Task<global::Instill.CreateMessageResponse> AppPublicServiceCreateMessageAsync(
             string namespaceId,
-            string appId,
-            string conversationId,
+            string chatUid,
             global::Instill.CreateMessageBody request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -52,12 +48,11 @@ namespace Instill
             PrepareAppPublicServiceCreateMessageArguments(
                 httpClient: HttpClient,
                 namespaceId: ref namespaceId,
-                appId: ref appId,
-                conversationId: ref conversationId,
+                chatUid: ref chatUid,
                 request: request);
 
             var __pathBuilder = new PathBuilder(
-                path: $"/v1alpha/namespaces/{namespaceId}/apps/{appId}/conversations/{conversationId}/messages",
+                path: $"/v1alpha/namespaces/{namespaceId}/chats/{chatUid}/messages",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -97,8 +92,7 @@ namespace Instill
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
                 namespaceId: namespaceId,
-                appId: appId,
-                conversationId: conversationId,
+                chatUid: chatUid,
                 request: request);
 
             using var __response = await HttpClient.SendAsync(
@@ -238,8 +232,7 @@ namespace Instill
         /// Creates a message.
         /// </summary>
         /// <param name="namespaceId"></param>
-        /// <param name="appId"></param>
-        /// <param name="conversationId"></param>
+        /// <param name="chatUid"></param>
         /// <param name="content"></param>
         /// <param name="role"></param>
         /// <param name="type"></param>
@@ -248,8 +241,7 @@ namespace Instill
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
         public async global::System.Threading.Tasks.Task<global::Instill.CreateMessageResponse> AppPublicServiceCreateMessageAsync(
             string namespaceId,
-            string appId,
-            string conversationId,
+            string chatUid,
             string content,
             string role,
             global::Instill.MessageType type = default,
@@ -264,8 +256,7 @@ namespace Instill
 
             return await AppPublicServiceCreateMessageAsync(
                 namespaceId: namespaceId,
-                appId: appId,
-                conversationId: conversationId,
+                chatUid: chatUid,
                 request: __request,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
         }

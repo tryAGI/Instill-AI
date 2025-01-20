@@ -234,7 +234,7 @@ namespace Instill
         /// <param name="namespaceId"></param>
         /// <param name="chatUid"></param>
         /// <param name="chatDisplayName"></param>
-        /// <param name="aiAgentSettings"></param>
+        /// <param name="agentConfig"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
@@ -242,13 +242,13 @@ namespace Instill
             string namespaceId,
             string chatUid,
             string? chatDisplayName = default,
-            global::Instill.AIAgentSettings? aiAgentSettings = default,
+            global::Instill.AgentConfig? agentConfig = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Instill.UpdateChatBody
             {
                 ChatDisplayName = chatDisplayName,
-                AiAgentSettings = aiAgentSettings,
+                AgentConfig = agentConfig,
             };
 
             return await AppPublicServiceUpdateChatAsync(

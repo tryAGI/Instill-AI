@@ -8,13 +8,13 @@ namespace Instill
         partial void PrepareAppPublicServiceChatArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
-            ref string appId,
+            ref string chatUid,
             global::Instill.AppPublicServiceChatBody request);
         partial void PrepareAppPublicServiceChatRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
-            string appId,
+            string chatUid,
             global::Instill.AppPublicServiceChatBody request);
         partial void ProcessAppPublicServiceChatResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -32,14 +32,14 @@ namespace Instill
         /// and the response needs to be processed incrementally.
         /// </summary>
         /// <param name="namespaceId"></param>
-        /// <param name="appId"></param>
+        /// <param name="chatUid"></param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
         public async global::System.Threading.Tasks.Task<global::Instill.ChatResponse> AppPublicServiceChatAsync(
             string namespaceId,
-            string appId,
+            string chatUid,
             global::Instill.AppPublicServiceChatBody request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -50,11 +50,11 @@ namespace Instill
             PrepareAppPublicServiceChatArguments(
                 httpClient: HttpClient,
                 namespaceId: ref namespaceId,
-                appId: ref appId,
+                chatUid: ref chatUid,
                 request: request);
 
             var __pathBuilder = new PathBuilder(
-                path: $"/v1alpha/namespaces/{namespaceId}/apps/{appId}/chat",
+                path: $"/v1alpha/namespaces/{namespaceId}/chats/{chatUid}/chat",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -94,7 +94,7 @@ namespace Instill
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
                 namespaceId: namespaceId,
-                appId: appId,
+                chatUid: chatUid,
                 request: request);
 
             using var __response = await HttpClient.SendAsync(
@@ -236,40 +236,25 @@ namespace Instill
         /// and the response needs to be processed incrementally.
         /// </summary>
         /// <param name="namespaceId"></param>
-        /// <param name="appId"></param>
-        /// <param name="catalogId"></param>
-        /// <param name="conversationUid"></param>
+        /// <param name="chatUid"></param>
         /// <param name="message"></param>
-        /// <param name="topK"></param>
-        /// <param name="llmModel"></param>
-        /// <param name="userInstruction"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
         public async global::System.Threading.Tasks.Task<global::Instill.ChatResponse> AppPublicServiceChatAsync(
             string namespaceId,
-            string appId,
-            string catalogId,
-            string conversationUid,
+            string chatUid,
             string message,
-            long? topK = default,
-            string? llmModel = default,
-            string? userInstruction = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Instill.AppPublicServiceChatBody
             {
-                CatalogId = catalogId,
-                ConversationUid = conversationUid,
                 Message = message,
-                TopK = topK,
-                LlmModel = llmModel,
-                UserInstruction = userInstruction,
             };
 
             return await AppPublicServiceChatAsync(
                 namespaceId: namespaceId,
-                appId: appId,
+                chatUid: chatUid,
                 request: __request,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
         }

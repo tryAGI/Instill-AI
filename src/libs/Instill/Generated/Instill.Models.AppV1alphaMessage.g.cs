@@ -17,14 +17,8 @@ namespace Instill
         /// <summary>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("appUid")]
-        public string? AppUid { get; set; }
-
-        /// <summary>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("conversationUid")]
-        public string? ConversationUid { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("chatUid")]
+        public string? ChatUid { get; set; }
 
         /// <summary>
         /// 
@@ -68,12 +62,6 @@ namespace Instill
         /// <summary>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("standaloneQuestion")]
-        public string? StandaloneQuestion { get; set; }
-
-        /// <summary>
-        /// Included only in responses
-        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("citations")]
         public global::System.Collections.Generic.IList<global::Instill.Citation>? Citations { get; set; }
 
@@ -89,10 +77,7 @@ namespace Instill
         /// <param name="uid">
         /// Included only in responses
         /// </param>
-        /// <param name="appUid">
-        /// Included only in responses
-        /// </param>
-        /// <param name="conversationUid">
+        /// <param name="chatUid">
         /// Included only in responses
         /// </param>
         /// <param name="content"></param>
@@ -107,9 +92,6 @@ namespace Instill
         /// <param name="msgSenderUid">
         /// Included only in responses
         /// </param>
-        /// <param name="standaloneQuestion">
-        /// Included only in responses
-        /// </param>
         /// <param name="citations">
         /// Included only in responses
         /// </param>
@@ -118,25 +100,21 @@ namespace Instill
             string content,
             string role,
             string? uid,
-            string? appUid,
-            string? conversationUid,
+            string? chatUid,
             global::Instill.MessageType type,
             global::System.DateTime? createTime,
             global::System.DateTime? updateTime,
             string? msgSenderUid,
-            string? standaloneQuestion,
             global::System.Collections.Generic.IList<global::Instill.Citation>? citations)
         {
             this.Content = content ?? throw new global::System.ArgumentNullException(nameof(content));
             this.Role = role ?? throw new global::System.ArgumentNullException(nameof(role));
             this.Uid = uid;
-            this.AppUid = appUid;
-            this.ConversationUid = conversationUid;
+            this.ChatUid = chatUid;
             this.Type = type;
             this.CreateTime = createTime;
             this.UpdateTime = updateTime;
             this.MsgSenderUid = msgSenderUid;
-            this.StandaloneQuestion = standaloneQuestion;
             this.Citations = citations;
         }
 

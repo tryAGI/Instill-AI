@@ -14,532 +14,6 @@ servers:
   - url: https://api.instill.tech
   - url: http://api.instill.tech
 paths:
-  '/v1alpha/namespaces/{namespaceId}/apps':
-    get:
-      tags:
-        - 🍎 App
-      summary: List all apps info
-      description: Returns a paginated list of apps.
-      operationId: AppPublicService_ListApps
-      parameters:
-        - name: namespaceId
-          in: path
-          description: User ID for which to list the apps
-          required: true
-          schema:
-            type: string
-        - name: appType
-          in: query
-          description: "app type(default is APP_TYPE_AI_ASSISTANT)\n\n - APP_TYPE_AI_ASSISTANT: AppType is a AI assistant app.\n - APP_TYPE_AI_AGENT: AppType is a AI agent app."
-          schema:
-            enum:
-              - APP_TYPE_AI_ASSISTANT
-              - APP_TYPE_AI_AGENT
-            type: string
-      responses:
-        '200':
-          description: A successful response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListAppsResponse'
-        '401':
-          description: Returned when the client credentials are not valid.
-          content:
-            application/json:
-              schema: { }
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpc.Status'
-      x-stage: alpha
-    post:
-      tags:
-        - 🍎 App
-      summary: Create an app
-      description: Creates an app.
-      operationId: AppPublicService_CreateApp
-      parameters:
-        - name: namespaceId
-          in: path
-          description: The app's owner(namespaces).
-          required: true
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateAppBody'
-        required: true
-        x-bodyName: body
-      responses:
-        '200':
-          description: A successful response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateAppResponse'
-        '401':
-          description: Returned when the client credentials are not valid.
-          content:
-            application/json:
-              schema: { }
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpc.Status'
-      x-stage: alpha
-  '/v1alpha/namespaces/{namespaceId}/apps/{appId}':
-    put:
-      tags:
-        - 🍎 App
-      summary: Update an app's information
-      description: Updates the information of an app.
-      operationId: AppPublicService_UpdateApp
-      parameters:
-        - name: namespaceId
-          in: path
-          description: Namespace id.
-          required: true
-          schema:
-            type: string
-        - name: appId
-          in: path
-          description: App id.
-          required: true
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateAppBody'
-        required: true
-        x-bodyName: body
-      responses:
-        '200':
-          description: A successful response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateAppResponse'
-        '401':
-          description: Returned when the client credentials are not valid.
-          content:
-            application/json:
-              schema: { }
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpc.Status'
-      x-stage: alpha
-    delete:
-      tags:
-        - 🍎 App
-      summary: Delete an app
-      description: Deletes an app.
-      operationId: AppPublicService_DeleteApp
-      parameters:
-        - name: namespaceId
-          in: path
-          description: The owner's id. i.e. namespace.
-          required: true
-          schema:
-            type: string
-        - name: appId
-          in: path
-          description: The app id.
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: A successful response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAppResponse'
-        '401':
-          description: Returned when the client credentials are not valid.
-          content:
-            application/json:
-              schema: { }
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpc.Status'
-      x-stage: alpha
-  '/v1alpha/namespaces/{namespaceId}/apps/{appId}/conversations':
-    get:
-      tags:
-        - 🍎 App
-      summary: List conversations
-      description: Returns a paginated list of conversations.
-      operationId: AppPublicService_ListConversations
-      parameters:
-        - name: namespaceId
-          in: path
-          description: namespace id
-          required: true
-          schema:
-            type: string
-        - name: appId
-          in: path
-          description: app id
-          required: true
-          schema:
-            type: string
-        - name: pageSize
-          in: query
-          description: page size
-          schema:
-            type: integer
-            format: int32
-        - name: pageToken
-          in: query
-          description: page token
-          schema:
-            type: string
-        - name: conversationUid
-          in: query
-          description: "conversation_uid this is optional, if provided, only the conversation with the given conversation_uid will be returned\nfirst check conversation_uid, then check conversation_id, then check if_all"
-          schema:
-            type: string
-        - name: conversationId
-          in: query
-          description: 'conversation_id this is optional, if provided, only the conversation with the given conversation_id will be returned'
-          schema:
-            type: string
-        - name: ifAll
-          in: query
-          description: 'If true, all conversations will be returned. This has higher priority over conversation_id, page_size, and page_token.'
-          schema:
-            type: boolean
-      responses:
-        '200':
-          description: A successful response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListConversationsResponse'
-        '401':
-          description: Returned when the client credentials are not valid.
-          content:
-            application/json:
-              schema: { }
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpc.Status'
-      x-stage: alpha
-    post:
-      tags:
-        - 🍎 App
-      summary: Create a conversation
-      description: Creates a conversation.
-      operationId: AppPublicService_CreateConversation
-      parameters:
-        - name: namespaceId
-          in: path
-          description: namespace id
-          required: true
-          schema:
-            type: string
-        - name: appId
-          in: path
-          description: app id
-          required: true
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateConversationBody'
-        required: true
-        x-bodyName: body
-      responses:
-        '200':
-          description: A successful response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateConversationResponse'
-        '401':
-          description: Returned when the client credentials are not valid.
-          content:
-            application/json:
-              schema: { }
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpc.Status'
-      x-stage: alpha
-  '/v1alpha/namespaces/{namespaceId}/apps/{appId}/conversations/{conversationId}':
-    put:
-      tags:
-        - 🍎 App
-      summary: Update a conversation
-      description: Updates a conversation.
-      operationId: AppPublicService_UpdateConversation
-      parameters:
-        - name: namespaceId
-          in: path
-          description: namespace id
-          required: true
-          schema:
-            type: string
-        - name: appId
-          in: path
-          description: app id
-          required: true
-          schema:
-            type: string
-        - name: conversationId
-          in: path
-          description: conversation id
-          required: true
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateConversationBody'
-        required: true
-        x-bodyName: body
-      responses:
-        '200':
-          description: A successful response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateConversationResponse'
-        '401':
-          description: Returned when the client credentials are not valid.
-          content:
-            application/json:
-              schema: { }
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpc.Status'
-      x-stage: alpha
-    delete:
-      tags:
-        - 🍎 App
-      summary: Delete a conversation
-      description: Deletes a conversation.
-      operationId: AppPublicService_DeleteConversation
-      parameters:
-        - name: namespaceId
-          in: path
-          description: namespace id
-          required: true
-          schema:
-            type: string
-        - name: appId
-          in: path
-          description: app id
-          required: true
-          schema:
-            type: string
-        - name: conversationId
-          in: path
-          description: conversation id
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: A successful response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteConversationResponse'
-        '401':
-          description: Returned when the client credentials are not valid.
-          content:
-            application/json:
-              schema: { }
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpc.Status'
-      x-stage: alpha
-  '/v1alpha/namespaces/{namespaceId}/agents':
-    get:
-      tags:
-        - 🍎 App
-      summary: List all agents info
-      description: Returns a paginated list of agents.
-      operationId: AppPublicService_ListAgents
-      parameters:
-        - name: namespaceId
-          in: path
-          description: namespace id
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: A successful response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListAgentsResponse'
-        '401':
-          description: Returned when the client credentials are not valid.
-          content:
-            application/json:
-              schema: { }
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpc.Status'
-      x-stage: alpha
-    post:
-      tags:
-        - 🍎 App
-      summary: Create an agent
-      description: Creates an agent.
-      operationId: AppPublicService_CreateAgent
-      parameters:
-        - name: namespaceId
-          in: path
-          description: namespace id
-          required: true
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateAgentBody'
-        required: true
-        x-bodyName: body
-      responses:
-        '200':
-          description: A successful response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateAgentResponse'
-        '401':
-          description: Returned when the client credentials are not valid.
-          content:
-            application/json:
-              schema: { }
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpc.Status'
-      x-stage: alpha
-  '/v1alpha/namespaces/{namespaceId}/agents/{agentUid}':
-    put:
-      tags:
-        - 🍎 App
-      summary: Update an agent
-      description: Updates the information of an agent.
-      operationId: AppPublicService_UpdateAgent
-      parameters:
-        - name: namespaceId
-          in: path
-          description: namespace id
-          required: true
-          schema:
-            type: string
-        - name: agentUid
-          in: path
-          description: agent uid
-          required: true
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateAgentBody'
-        required: true
-        x-bodyName: body
-      responses:
-        '200':
-          description: A successful response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateAgentResponse'
-        '401':
-          description: Returned when the client credentials are not valid.
-          content:
-            application/json:
-              schema: { }
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpc.Status'
-      x-stage: alpha
-    delete:
-      tags:
-        - 🍎 App
-      summary: Delete an agent
-      description: Deletes an agent.
-      operationId: AppPublicService_DeleteAgent
-      parameters:
-        - name: namespaceId
-          in: path
-          description: namespace id
-          required: true
-          schema:
-            type: string
-        - name: agentUid
-          in: path
-          description: agent uid
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: A successful response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAgentResponse'
-        '401':
-          description: Returned when the client credentials are not valid.
-          content:
-            application/json:
-              schema: { }
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpc.Status'
-      x-stage: alpha
   '/v1alpha/namespaces/{namespaceId}/chats':
     get:
       tags:
@@ -717,7 +191,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
       x-stage: alpha
-  '/v1alpha/namespaces/{namespaceId}/apps/{appId}/conversations/{conversationId}/messages':
+  '/v1alpha/namespaces/{namespaceId}/chats/{chatUid}/messages':
     get:
       tags:
         - 🍎 App
@@ -731,24 +205,12 @@ paths:
           required: true
           schema:
             type: string
-        - name: appId
+        - name: chatUid
           in: path
-          description: app id
+          description: chat uid
           required: true
           schema:
             type: string
-        - name: conversationId
-          in: path
-          description: conversation id
-          required: true
-          schema:
-            type: string
-        - name: latestK
-          in: query
-          description: latest k messages
-          schema:
-            type: integer
-            format: int32
         - name: pageSize
           in: query
           description: page size
@@ -760,21 +222,11 @@ paths:
           description: page token
           schema:
             type: string
-        - name: includeSystemMessages
-          in: query
-          description: include system messages
-          schema:
-            type: boolean
         - name: ifAll
           in: query
-          description: 'If true, all messages will be returned. This has higher priority over latest_k, page_size, and page_token.'
+          description: 'If true, all messages will be returned. This has higher priority over page_size and page_token.'
           schema:
             type: boolean
-        - name: messageUid
-          in: query
-          description: 'message_uid this is optional, if provided, only the message with the given message_uid will be returned'
-          schema:
-            type: string
       responses:
         '200':
           description: A successful response.
@@ -807,15 +259,9 @@ paths:
           required: true
           schema:
             type: string
-        - name: appId
+        - name: chatUid
           in: path
           description: app id
-          required: true
-          schema:
-            type: string
-        - name: conversationId
-          in: path
-          description: conversation id
           required: true
           schema:
             type: string
@@ -845,7 +291,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
       x-stage: alpha
-  '/v1alpha/namespaces/{namespaceId}/apps/{appId}/conversations/{conversationId}/messages/{messageUid}':
+  '/v1alpha/namespaces/{namespaceId}/chats/{chatUid}/messages/{messageUid}':
     put:
       tags:
         - 🍎 App
@@ -859,15 +305,9 @@ paths:
           required: true
           schema:
             type: string
-        - name: appId
+        - name: chatUid
           in: path
-          description: app id
-          required: true
-          schema:
-            type: string
-        - name: conversationId
-          in: path
-          description: conversation id
+          description: chat uid
           required: true
           schema:
             type: string
@@ -916,15 +356,9 @@ paths:
           required: true
           schema:
             type: string
-        - name: appId
+        - name: chatUid
           in: path
-          description: app id
-          required: true
-          schema:
-            type: string
-        - name: conversationId
-          in: path
-          description: conversation id
+          description: chat uid
           required: true
           schema:
             type: string
@@ -953,85 +387,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
       x-stage: alpha
-  '/v1alpha/namespaces/{namespaceId}/apps/{appId}/ai_assistant_playground/conversation':
-    get:
+  '/v1alpha/namespaces/{namespaceId}/chats/{chatUid}/chat':
+    post:
       tags:
         - 🍎 App
-      summary: Get Playground Conversation
-      description: 'Returns the latest conversation for the authenticated user (e.g., logged-in user or API key user).'
-      operationId: AppPublicService_GetPlaygroundConversation
-      parameters:
-        - name: namespaceId
-          in: path
-          description: The namespace id.
-          required: true
-          schema:
-            type: string
-        - name: appId
-          in: path
-          description: The app id.
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: A successful response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlaygroundConversationResponse'
-        '401':
-          description: Returned when the client credentials are not valid.
-          content:
-            application/json:
-              schema: { }
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpc.Status'
-      x-stage: alpha
-  '/v1alpha/namespaces/{namespaceId}/tools':
-    get:
-      tags:
-        - 🍎 App
-      summary: List all tools
-      description: Returns a list of tools.
-      operationId: AppPublicService_ListTools
-      parameters:
-        - name: namespaceId
-          in: path
-          description: namespace id
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: A successful response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListToolsResponse'
-        '401':
-          description: Returned when the client credentials are not valid.
-          content:
-            application/json:
-              schema: { }
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpc.Status'
-      x-stage: alpha
-  '/v1alpha/namespaces/{namespaceId}/chats/{chatUid}/messages':
-    get:
-      tags:
-        - 🍎 App
-      summary: List chat messages
-      description: Returns a paginated list of messages.
-      operationId: AppPublicService_ListChatMessages
+      summary: Chat
+      description: "Chat sends a message asynchronously and streams back the response.\nThis method is intended for real-time conversation with a chatbot\nand the response needs to be processed incrementally."
+      operationId: AppPublicService_Chat
       parameters:
         - name: namespaceId
           in: path
@@ -1042,100 +404,6 @@ paths:
         - name: chatUid
           in: path
           description: chat uid
-          required: true
-          schema:
-            type: string
-        - name: pageSize
-          in: query
-          description: page size
-          schema:
-            type: integer
-            format: int32
-        - name: pageToken
-          in: query
-          description: page token
-          schema:
-            type: string
-        - name: ifAll
-          in: query
-          description: 'If true, all messages will be returned. This has higher priority over page_size and page_token.'
-          schema:
-            type: boolean
-      responses:
-        '200':
-          description: A successful response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListChatMessagesResponse'
-        '401':
-          description: Returned when the client credentials are not valid.
-          content:
-            application/json:
-              schema: { }
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpc.Status'
-      x-stage: alpha
-  '/v1alpha/namespaces/{namespaceId}/apps/{appId}/ai_assistant_playground/restart':
-    post:
-      tags:
-        - 🍎 App
-      summary: Restart Playground Conversation
-      description: "Creates a new conversation using the authenticated user's UID as creator and\nauto-generates a new conversation ID on behalf of the authenticated user."
-      operationId: AppPublicService_RestartPlaygroundConversation
-      parameters:
-        - name: namespaceId
-          in: path
-          description: The namespace id.
-          required: true
-          schema:
-            type: string
-        - name: appId
-          in: path
-          description: The app id.
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: A successful response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RestartPlaygroundConversationResponse'
-        '401':
-          description: Returned when the client credentials are not valid.
-          content:
-            application/json:
-              schema: { }
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpc.Status'
-      x-stage: alpha
-  '/v1alpha/namespaces/{namespaceId}/apps/{appId}/chat':
-    post:
-      tags:
-        - 🍎 App
-      summary: Chat
-      description: "Chat sends a message asynchronously and streams back the response.\nThis method is intended for real-time conversation with a chatbot\nand the response needs to be processed incrementally."
-      operationId: AppPublicService_Chat
-      parameters:
-        - name: namespaceId
-          in: path
-          description: Namespace ID
-          required: true
-          schema:
-            type: string
-        - name: appId
-          in: path
-          description: App ID
           required: true
           schema:
             type: string
@@ -6950,116 +6218,18 @@ paths:
       x-stage: beta
 components:
   schemas:
-    AIAgentAppMetadata:
+    AgentConfig:
       type: object
       properties:
         instructions:
           title: instructions
           type: string
-        tools:
-          title: tools(pipelines)
-          type: array
-          items:
-            $ref: '#/components/schemas/Tool'
-        catalogUids:
-          title: catalog uids
-          type: array
-          items:
-            type: string
-        chunkTopK:
-          title: AI agent app top k
-          type: integer
-          format: int32
-        chunkWeight:
-          title: AI agent chunk weight
-          type: number
-          format: float
         connections:
           type: object
           additionalProperties:
             type: string
           description: connection key(used connection id in recipe) and value(connection uid from namespace).
-      description: AIAgentAppMetadata represents the metadata for the AI agent app.
-    AIAgentSettings:
-      type: object
-      properties:
-        instructions:
-          title: instructions
-          type: string
-        catalogUids:
-          title: catalog uids
-          type: array
-          items:
-            type: string
-        connections:
-          type: object
-          additionalProperties:
-            type: string
-          description: connection key(used connection id in recipe) and value(connection uid from namespace).
-        toolIds:
-          title: 'tool ids (pipeline ids) that this agent can use. e.g. "preset/web-search", "preset/google-search"'
-          type: array
-          items:
-            type: string
-      description: AIAgentSettings represents the settings for the AI agent.
-    AIAssistantAppMetadata:
-      required:
-        - catalogUid
-        - topK
-      type: object
-      properties:
-        catalogUid:
-          type: string
-          description: The AI assistant app catalog uid.
-        topK:
-          type: integer
-          description: The AI assistant app top k.
-          format: int32
-      description: AIAssistantAppMetadata represents the metadata for the AI assistant app.
-    Agent:
-      required:
-        - displayName
-      type: object
-      properties:
-        agentUid:
-          title: agent uid
-          type: string
-          readOnly: true
-        displayName:
-          title: agent display name
-          type: string
-        description:
-          title: agent description
-          type: string
-        namespaceUid:
-          title: namespace uid
-          type: string
-          readOnly: true
-        tags:
-          title: agent tags
-          type: array
-          items:
-            type: string
-        aiAgentMetadata:
-          title: agent metadata
-          allOf:
-            - $ref: '#/components/schemas/AIAgentAppMetadata'
-          readOnly: true
-        creatorUid:
-          title: creator uid
-          type: string
-          readOnly: true
-        createTime:
-          title: creation time
-          type: string
-          format: date-time
-          readOnly: true
-        updateTime:
-          title: last update time
-          type: string
-          format: date-time
-          readOnly: true
-      description: Agent represents a agent.
+      description: AgentConfig represents the config for the chat agent.
     Any:
       type: object
       properties:
@@ -7125,93 +6295,15 @@ components:
         - STATE_EXPIRED
       type: string
       description: "State describes the state of an API token.\n\n - STATE_INACTIVE: Inactive.\n - STATE_ACTIVE: Active.\n - STATE_EXPIRED: Expired."
-    App:
-      required:
-        - appId
-      type: object
-      properties:
-        appId:
-          type: string
-          description: The app id.
-        description:
-          type: string
-          description: The app description.
-        createTime:
-          type: string
-          description: The creation time of the app.
-          format: date-time
-          readOnly: true
-        updateTime:
-          type: string
-          description: The last update time of the app.
-          format: date-time
-          readOnly: true
-        ownerUid:
-          type: string
-          description: The owner/namespace of the app.
-          readOnly: true
-        tags:
-          type: array
-          items:
-            type: string
-          description: The app tags.
-        aiAssistantApp:
-          allOf:
-            - $ref: '#/components/schemas/AIAssistantAppMetadata'
-          description: The AI assistant app metadata.
-          readOnly: true
-        aiAgentApp:
-          allOf:
-            - $ref: '#/components/schemas/AIAgentAppMetadata'
-          description: The AI agent app metadata.
-          readOnly: true
-        appType:
-          allOf:
-            - $ref: '#/components/schemas/AppType'
-          description: The app type.
-          readOnly: true
-        appUid:
-          title: app uid
-          type: string
-          readOnly: true
-        creatorUid:
-          title: creator uid
-          type: string
-          readOnly: true
-      description: App represents a app.
     AppPublicService.ChatBody:
       required:
-        - catalogId
-        - conversationUid
         - message
       type: object
       properties:
-        catalogId:
-          title: Catalog ID
-          type: string
-        conversationUid:
-          title: Conversation UID
-          type: string
         message:
           title: User message
           type: string
-        topK:
-          title: 'top k, defaults to 5'
-          type: integer
-          format: int64
-        llmModel:
-          title: 'LLM model name, defaults to `gpt-4o`'
-          type: string
-        userInstruction:
-          title: 'Instruction for the model to follow, defaults to `Please answer user question accurately and in the same language as the Follow-up Question.`'
-          type: string
       description: "ChatRequest represents a request to send a message\nto a chatbot synchronously and streams back the results."
-    AppType:
-      enum:
-        - APP_TYPE_AI_ASSISTANT
-        - APP_TYPE_AI_AGENT
-      type: string
-      description: "AppType represents the type of the app.\n\n - APP_TYPE_AI_ASSISTANT: AppType is a AI assistant app.\n - APP_TYPE_AI_AGENT: AppType is a AI agent app."
     AudioCell:
       required:
         - url
@@ -7498,12 +6590,6 @@ components:
             type: object
           description: Conversation responses.
           readOnly: true
-        chunks:
-          title: Reference chunks
-          type: array
-          items:
-            $ref: '#/components/schemas/SimilarityChunk'
-          readOnly: true
       description: ChatResponse contains the chatbot response.
     CheckNamespaceAdminResponse:
       type: object
@@ -7600,7 +6686,7 @@ components:
         type:
           title: Type of citation
           allOf:
-            - $ref: '#/components/schemas/CitationsType'
+            - $ref: '#/components/schemas/CitationType'
         name:
           title: Name of the citation
           type: string
@@ -7617,13 +6703,13 @@ components:
           title: File UID (only applicable for chunk-type citations)
           type: string
           readOnly: true
-    CitationsType:
+    CitationType:
       title: type of the citations message
       enum:
-        - CITATIONS_TYPE_CHUNK
-        - CITATIONS_TYPE_URL
+        - CITATION_TYPE_CHUNK
+        - CITATION_TYPE_URL
       type: string
-      description: "- CITATIONS_TYPE_CHUNK: Chunk-based citation\n - CITATIONS_TYPE_URL: URL-based citation"
+      description: "- CITATION_TYPE_CHUNK: Chunk-based citation\n - CITATION_TYPE_URL: URL-based citation"
     CloneNamespacePipelineBody:
       required:
         - targetNamespaceId
@@ -7964,111 +7050,6 @@ components:
           format: date-time
           readOnly: true
       description: "Connection contains the parameters to communicate with a 3rd party app. A\ncomponent may reference a connection in their setup. One connection may be\nused by several components and pipelines."
-    Conversation:
-      title: Conversation represents a chat conversation
-      required:
-        - namespaceId
-        - appId
-        - id
-      type: object
-      properties:
-        uid:
-          title: unique identifier of the conversation created by the system
-          type: string
-          readOnly: true
-        namespaceId:
-          title: namespace id
-          type: string
-        appId:
-          title: app id
-          type: string
-        id:
-          title: conversation id/name
-          type: string
-        lastUsedCatalogUid:
-          title: last used catalog uid
-          type: string
-        lastUsedTopK:
-          title: last used top k
-          type: integer
-          format: int64
-        createTime:
-          title: creation time of the conversation
-          type: string
-          format: date-time
-          readOnly: true
-        updateTime:
-          title: update time of the conversation
-          type: string
-          format: date-time
-          readOnly: true
-    CreateAgentBody:
-      type: object
-      properties:
-        displayName:
-          title: agent display name
-          type: string
-        description:
-          title: agent description
-          type: string
-        tags:
-          title: agent tags
-          type: array
-          items:
-            type: string
-        aiAgentSettings:
-          title: agent metadata
-          allOf:
-            - $ref: '#/components/schemas/AIAgentSettings'
-      description: CreateAgentRequest represents a request to create a agent.
-    CreateAgentResponse:
-      type: object
-      properties:
-        agent:
-          title: created agent
-          allOf:
-            - $ref: '#/components/schemas/Agent'
-          readOnly: true
-      description: CreateAgentResponse represents a response for creating a agent.
-    CreateAppBody:
-      required:
-        - id
-        - appType
-      type: object
-      properties:
-        id:
-          type: string
-          description: "The app id.\nthe app id should be lowercase without any space or special character besides the hyphen,\nit can not start with number or hyphen, and should be less than 32 characters."
-        description:
-          type: string
-          description: The app description.
-        tags:
-          type: array
-          items:
-            type: string
-          description: The app tags.
-        appType:
-          title: app type(default is APP_TYPE_AI_ASSISTANT)
-          allOf:
-            - $ref: '#/components/schemas/AppType'
-        aiAssistantApp:
-          title: ai assistant app metadata
-          allOf:
-            - $ref: '#/components/schemas/AIAssistantAppMetadata'
-        aiAgentApp:
-          title: ai agent app metadata
-          allOf:
-            - $ref: '#/components/schemas/AIAgentAppMetadata'
-      description: CreateAppRequest represents a request to create a app.
-    CreateAppResponse:
-      type: object
-      properties:
-        app:
-          allOf:
-            - $ref: '#/components/schemas/App'
-          description: The created app.
-          readOnly: true
-      description: CreateAppResponse represents a response for creating a app.
     CreateCatalogBody:
       type: object
       properties:
@@ -8105,10 +7086,10 @@ components:
         chatDisplayName:
           title: chat display name
           type: string
-        aiAgentSettings:
-          title: agent settings
+        agentConfig:
+          title: agent config
           allOf:
-            - $ref: '#/components/schemas/AIAgentSettings'
+            - $ref: '#/components/schemas/AgentConfig'
     CreateChatResponse:
       title: CreateChatResponse returns the created chat
       type: object
@@ -8117,24 +7098,6 @@ components:
           title: chat
           allOf:
             - $ref: '#/components/schemas/.Chat'
-          readOnly: true
-    CreateConversationBody:
-      title: CreateConversationRequest is used to create a new conversation
-      required:
-        - conversationId
-      type: object
-      properties:
-        conversationId:
-          title: conversation id. only allow kebab case
-          type: string
-    CreateConversationResponse:
-      title: CreateConversationResponse returns the created conversation
-      type: object
-      properties:
-        conversation:
-          title: conversation
-          allOf:
-            - $ref: '#/components/schemas/Conversation'
           readOnly: true
     CreateMessageBody:
       title: CreateMessageRequest is used to create a new message
@@ -8158,6 +7121,9 @@ components:
       title: CreateMessageResponse returns the created message
       type: object
       properties:
+        chatUid:
+          title: chat uid
+          type: string
         message:
           title: message
           allOf:
@@ -8281,12 +7247,6 @@ components:
           description: JSON schema describing the component output data.
           readOnly: true
       description: "DataSpecification describes the JSON schema of component input and output.\nNote: This message will be renamed to TaskSpecifications in the future."
-    DeleteAgentResponse:
-      type: object
-      description: DeleteAgentResponse represents a response for deleting a agent.
-    DeleteAppResponse:
-      type: object
-      description: DeleteAppResponse represents a response for deleting a app.
     DeleteCatalogFileResponse:
       title: delete file response
       type: object
@@ -8304,9 +7264,6 @@ components:
       description: DeleteCatalogResponse represents a response for deleting a catalog.
     DeleteChatResponse:
       title: DeleteChatResponse is empty as no content needs to be returned
-      type: object
-    DeleteConversationResponse:
-      title: DeleteConversationResponse is empty as no content needs to be returned
       type: object
     DeleteMessageResponse:
       title: DeleteMessageResponse is empty as no content needs to be returned
@@ -8845,15 +7802,6 @@ components:
           description: The subscription resource.
           readOnly: true
       description: GetOrganizationSubscriptionResponse contains the requested subscription.
-    GetPlaygroundConversationResponse:
-      type: object
-      properties:
-        conversation:
-          title: conversation
-          allOf:
-            - $ref: '#/components/schemas/Conversation'
-          readOnly: true
-      description: GetPlaygroundConversationResponse represents a response for getting a playground conversation.
     GetRemainingCreditAdminResponse:
       type: object
       properties:
@@ -9047,25 +7995,6 @@ components:
           description: URL contains the reference the link will redirect to.
           readOnly: true
       description: Link contains the information to display an reference to an external URL.
-    ListAgentsResponse:
-      type: object
-      properties:
-        agents:
-          title: agents
-          type: array
-          items:
-            $ref: '#/components/schemas/Agent'
-      description: ListAgentsResponse represents a response for listing agents.
-    ListAppsResponse:
-      type: object
-      properties:
-        apps:
-          type: array
-          items:
-            $ref: '#/components/schemas/App'
-          description: The apps container.
-          readOnly: true
-      description: GetAppsResponse represents a response for getting all apps from users.
     ListAvailableRegionsResponse:
       type: object
       properties:
@@ -9145,25 +8074,6 @@ components:
             $ref: '#/components/schemas/Catalog'
           description: The catalogs container.
       description: GetCatalogsResponse represents a response for getting all catalogs from users.
-    ListChatMessagesResponse:
-      title: ListChatMessagesResponse returns a list of messages
-      type: object
-      properties:
-        messages:
-          title: messages
-          type: array
-          items:
-            $ref: '#/components/schemas/app.v1alpha.Message'
-          readOnly: true
-        nextPageToken:
-          title: next page token
-          type: string
-          readOnly: true
-        totalSize:
-          title: total size
-          type: integer
-          format: int32
-          readOnly: true
     ListChatsResponse:
       title: ListChatsResponse returns a list of chats
       type: object
@@ -9238,25 +8148,6 @@ components:
           format: int32
           readOnly: true
       description: ListComponentRunsResponse is the response message for ListComponentRuns.
-    ListConversationsResponse:
-      title: ListConversationsResponse returns a list of conversations
-      type: object
-      properties:
-        conversations:
-          title: conversations
-          type: array
-          items:
-            $ref: '#/components/schemas/Conversation'
-          readOnly: true
-        nextPageToken:
-          title: next page token
-          type: string
-          readOnly: true
-        totalSize:
-          title: total size
-          type: integer
-          format: int32
-          readOnly: true
     ListCreditConsumptionChartRecordsResponse:
       type: object
       properties:
@@ -9789,15 +8680,6 @@ components:
           description: Total number of API token resources.
           format: int32
       description: ListTokensResponse contains a list of API tokens.
-    ListToolsResponse:
-      type: object
-      properties:
-        tools:
-          title: tools
-          type: array
-          items:
-            $ref: '#/components/schemas/Tool'
-      description: ListToolsResponse represents a response for listing tools.
     ListUserMembershipsResponse:
       type: object
       properties:
@@ -10979,15 +9861,6 @@ components:
           format: date-time
           readOnly: true
       description: "RepositoryTag contains information about the version of some content in a\nrepository."
-    RestartPlaygroundConversationResponse:
-      type: object
-      properties:
-        conversation:
-          title: conversation
-          allOf:
-            - $ref: '#/components/schemas/Conversation'
-          readOnly: true
-      description: RestartPlaygroundConversationResponse represents a response for restarting a playground conversation.
     Role:
       enum:
         - ROLE_VIEWER
@@ -11351,25 +10224,6 @@ components:
           title: transformed content update time
           type: string
           format: date-time
-    Tool:
-      title: tool definitions
-      type: object
-      properties:
-        pipelineId:
-          title: The pipeline id of the tool. e.g. "preset/xxx-search"
-          type: string
-        name:
-          type: string
-          description: The tool name.
-        connections:
-          type: object
-          additionalProperties:
-            type: string
-          description: The tool connection key(used connection id in recipe) and value(connection uid from namespace).
-        description:
-          type: string
-          description: The tool description.
-          readOnly: true
     Trace:
       type: object
       properties:
@@ -11704,73 +10558,6 @@ components:
     UndeployUserModelAdminResponse:
       title: UndeployUserModelAdminResponse represents a response for a undeployed model
       type: object
-    UpdateAgentBody:
-      type: object
-      properties:
-        displayName:
-          title: agent display name
-          type: string
-        description:
-          title: agent description
-          type: string
-        tags:
-          title: agent tags
-          type: array
-          items:
-            type: string
-        aiAgentSettings:
-          title: agent settings
-          allOf:
-            - $ref: '#/components/schemas/AIAgentSettings'
-      description: UpdateAgentRequest represents a request to update a agent.
-    UpdateAgentResponse:
-      type: object
-      properties:
-        agent:
-          title: updated agent
-          allOf:
-            - $ref: '#/components/schemas/Agent'
-          readOnly: true
-      description: UpdateAgentResponse represents a response for updating a agent.
-    UpdateAppBody:
-      type: object
-      properties:
-        newAppId:
-          type: string
-          description: "The app id needs to follow the kebab case format.\nif the new app id is not provided, the app id will not be updated."
-        newDescription:
-          type: string
-          description: "The app description.\nIf the new description is empty, the description will be set to empty."
-        newTags:
-          type: array
-          items:
-            type: string
-          description: "The app tags.\nIf the new tags is empty, the tags will be set to empty."
-        lastAiAssistantAppCatalogUid:
-          type: string
-          description: "last AI assistant app catalog uid\nIf the last AI assistant app catalog uid is empty, the last AI assistant app catalog uid will be set to empty."
-        lastAiAssistantAppTopK:
-          type: integer
-          description: "last AI assistant app top k\nIf the last AI assistant app top k is empty, the last AI assistant app top k will be set to empty."
-          format: int32
-        aiAssistantApp:
-          title: ai assistant app metadata
-          allOf:
-            - $ref: '#/components/schemas/AIAssistantAppMetadata'
-        aiAgentApp:
-          title: ai agent app metadata
-          allOf:
-            - $ref: '#/components/schemas/AIAgentAppMetadata'
-      description: UpdateAppRequest represents a request to update a app.
-    UpdateAppResponse:
-      type: object
-      properties:
-        app:
-          allOf:
-            - $ref: '#/components/schemas/App'
-          description: The updated app.
-          readOnly: true
-      description: UpdateAppResponse represents a response for updating a app.
     UpdateCatalogBody:
       type: object
       properties:
@@ -11798,10 +10585,10 @@ components:
         chatDisplayName:
           title: chat display name
           type: string
-        aiAgentSettings:
+        agentConfig:
           title: ai agent settings
           allOf:
-            - $ref: '#/components/schemas/AIAgentSettings'
+            - $ref: '#/components/schemas/AgentConfig'
     UpdateChatResponse:
       title: UpdateChatResponse returns the updated chat
       type: object
@@ -11836,29 +10623,6 @@ components:
           description: The updated column definitions.
           readOnly: true
       description: UpdateColumnDefinitionsResponse contains the updated column definitions.
-    UpdateConversationBody:
-      title: UpdateConversationRequest is used to update a conversation
-      type: object
-      properties:
-        newConversationId:
-          title: new conversation id
-          type: string
-        lastUsedCatalogUid:
-          title: last used catalog uid(only for ai assistant app)
-          type: string
-        lastUsedTopK:
-          title: last used top k(only for ai assistant app)
-          type: integer
-          format: int64
-    UpdateConversationResponse:
-      title: UpdateConversationResponse returns the updated conversation
-      type: object
-      properties:
-        conversation:
-          title: conversation
-          allOf:
-            - $ref: '#/components/schemas/Conversation'
-          readOnly: true
     UpdateMessageBody:
       title: UpdateMessageRequest is used to update a message
       required:
@@ -12167,12 +10931,8 @@ components:
           title: message uid
           type: string
           readOnly: true
-        appUid:
-          title: app uid(deprecated)
-          type: string
-          readOnly: true
-        conversationUid:
-          title: conversation uid
+        chatUid:
+          title: chat uid
           type: string
           readOnly: true
         content:
@@ -12197,10 +10957,6 @@ components:
           readOnly: true
         msgSenderUid:
           title: message sender uid(only for user messages)
-          type: string
-          readOnly: true
-        standaloneQuestion:
-          title: standalone question(only for user messages)
           type: string
           readOnly: true
         citations:
@@ -12287,43 +11043,34 @@ components:
       type: object
       properties:
         uid:
-          title: unique identifier of the conversation created by the system
           type: string
+          description: unique identifier of the conversation created by the system.
           readOnly: true
         namespaceId:
-          title: namespace id
           type: string
-        lastUsedCatalogUid:
-          title: last used catalog uid
+          description: namespace id.
+        chatDisplayName:
           type: string
-        lastUsedTopK:
-          title: last used top k
-          type: integer
-          format: int64
+          description: conversation display name.
+        agentConfig:
+          allOf:
+            - $ref: '#/components/schemas/AgentConfig'
+          description: agent config.
+          readOnly: true
         createTime:
-          title: creation time of the chat
           type: string
+          description: chat create time.
           format: date-time
           readOnly: true
         updateTime:
-          title: update time of the chat
           type: string
+          description: chat update time.
           format: date-time
           readOnly: true
-        aiAgentMetadata:
-          title: agent metadata
-          allOf:
-            - $ref: '#/components/schemas/AIAgentAppMetadata'
-          readOnly: true
-        tempCatalogId:
-          title: temp catalog id automatically created for ai agent app
+        deleteTime:
           type: string
-        chatDisplayName:
-          title: conversation display name
-          type: string
-        breakpoint:
-          title: breakpoint. allow to continue the chat from breakpoint
-          type: string
+          description: chat delete time.
+          format: date-time
           readOnly: true
     .Chunk:
       type: object

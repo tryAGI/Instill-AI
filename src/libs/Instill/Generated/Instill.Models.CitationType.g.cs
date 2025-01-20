@@ -4,48 +4,47 @@
 namespace Instill
 {
     /// <summary>
-    /// AppType represents the type of the app.<br/>
-    ///  - APP_TYPE_AI_ASSISTANT: AppType is a AI assistant app.<br/>
-    ///  - APP_TYPE_AI_AGENT: AppType is a AI agent app.
+    /// - CITATION_TYPE_CHUNK: Chunk-based citation<br/>
+    ///  - CITATION_TYPE_URL: URL-based citation
     /// </summary>
-    public enum AppType
+    public enum CitationType
     {
         /// <summary>
-        /// AppType is a AI assistant app.
+        /// Chunk-based citation
         /// </summary>
-        AIASSISTANT,
+        CHUNK,
         /// <summary>
-        /// AppType is a AI agent app.
+        /// URL-based citation
         /// </summary>
-        AIAGENT,
+        URL,
     }
 
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class AppTypeExtensions
+    public static class CitationTypeExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this AppType value)
+        public static string ToValueString(this CitationType value)
         {
             return value switch
             {
-                AppType.AIASSISTANT => "APP_TYPE_AI_ASSISTANT",
-                AppType.AIAGENT => "APP_TYPE_AI_AGENT",
+                CitationType.CHUNK => "CITATION_TYPE_CHUNK",
+                CitationType.URL => "CITATION_TYPE_URL",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static AppType? ToEnum(string value)
+        public static CitationType? ToEnum(string value)
         {
             return value switch
             {
-                "APP_TYPE_AI_ASSISTANT" => AppType.AIASSISTANT,
-                "APP_TYPE_AI_AGENT" => AppType.AIAGENT,
+                "CITATION_TYPE_CHUNK" => CitationType.CHUNK,
+                "CITATION_TYPE_URL" => CitationType.URL,
                 _ => null,
             };
         }

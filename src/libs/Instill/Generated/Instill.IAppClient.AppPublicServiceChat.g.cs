@@ -11,14 +11,14 @@ namespace Instill
         /// and the response needs to be processed incrementally.
         /// </summary>
         /// <param name="namespaceId"></param>
-        /// <param name="appId"></param>
+        /// <param name="chatUid"></param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
         global::System.Threading.Tasks.Task<global::Instill.ChatResponse> AppPublicServiceChatAsync(
             string namespaceId,
-            string appId,
+            string chatUid,
             global::Instill.AppPublicServiceChatBody request,
             global::System.Threading.CancellationToken cancellationToken = default);
 
@@ -29,25 +29,15 @@ namespace Instill
         /// and the response needs to be processed incrementally.
         /// </summary>
         /// <param name="namespaceId"></param>
-        /// <param name="appId"></param>
-        /// <param name="catalogId"></param>
-        /// <param name="conversationUid"></param>
+        /// <param name="chatUid"></param>
         /// <param name="message"></param>
-        /// <param name="topK"></param>
-        /// <param name="llmModel"></param>
-        /// <param name="userInstruction"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
         global::System.Threading.Tasks.Task<global::Instill.ChatResponse> AppPublicServiceChatAsync(
             string namespaceId,
-            string appId,
-            string catalogId,
-            string conversationUid,
+            string chatUid,
             string message,
-            long? topK = default,
-            string? llmModel = default,
-            string? userInstruction = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

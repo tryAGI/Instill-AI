@@ -3,10 +3,10 @@
 namespace Instill.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class AppPublicServiceListAppsAppTypeNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Instill.AppPublicServiceListAppsAppType?>
+    public sealed class CitationTypeJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Instill.CitationType>
     {
         /// <inheritdoc />
-        public override global::Instill.AppPublicServiceListAppsAppType? Read(
+        public override global::Instill.CitationType Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Instill.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Instill.AppPublicServiceListAppsAppTypeExtensions.ToEnum(stringValue);
+                        return global::Instill.CitationTypeExtensions.ToEnum(stringValue) ?? default;
                     }
                     
                     break;
@@ -26,7 +26,7 @@ namespace Instill.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Instill.AppPublicServiceListAppsAppType)numValue;
+                    return (global::Instill.CitationType)numValue;
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -38,19 +38,12 @@ namespace Instill.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Instill.AppPublicServiceListAppsAppType? value,
+            global::Instill.CitationType value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            if (value == null)
-            {
-                writer.WriteNullValue();
-            }
-            else
-            {
-                writer.WriteStringValue(global::Instill.AppPublicServiceListAppsAppTypeExtensions.ToValueString(value.Value));
-            }
+            writer.WriteStringValue(global::Instill.CitationTypeExtensions.ToValueString(value));
         }
     }
 }

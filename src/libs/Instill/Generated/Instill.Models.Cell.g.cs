@@ -23,6 +23,13 @@ namespace Instill
         public string? ColumnUid { get; set; }
 
         /// <summary>
+        /// The row that this cell belongs to.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("rowUid")]
+        public string? RowUid { get; set; }
+
+        /// <summary>
         /// The timestamp when the cell was last updated.<br/>
         /// Included only in responses
         /// </summary>
@@ -97,6 +104,14 @@ namespace Instill
         public object? Metadata { get; set; }
 
         /// <summary>
+        /// The status of the cell.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.CellStatusJsonConverter))]
+        public global::Instill.CellStatus? Status { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -111,6 +126,10 @@ namespace Instill
         /// </param>
         /// <param name="columnUid">
         /// The unique identifier of the column this cell belongs to.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="rowUid">
+        /// The row that this cell belongs to.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="updateTime">
@@ -151,10 +170,15 @@ namespace Instill
         /// <param name="metadata">
         /// Additional metadata for the cell.
         /// </param>
+        /// <param name="status">
+        /// The status of the cell.<br/>
+        /// Included only in responses
+        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public Cell(
             string? uid,
             string? columnUid,
+            string? rowUid,
             global::System.DateTime? updateTime,
             string? type,
             global::Instill.StringCell? stringValue,
@@ -166,10 +190,12 @@ namespace Instill
             global::Instill.VideoCell? videoValue,
             global::Instill.AudioCell? audioValue,
             object? nullValue,
-            object? metadata)
+            object? metadata,
+            global::Instill.CellStatus? status)
         {
             this.Uid = uid;
             this.ColumnUid = columnUid;
+            this.RowUid = rowUid;
             this.UpdateTime = updateTime;
             this.Type = type;
             this.StringValue = stringValue;
@@ -182,6 +208,7 @@ namespace Instill
             this.AudioValue = audioValue;
             this.NullValue = nullValue;
             this.Metadata = metadata;
+            this.Status = status;
         }
 
         /// <summary>

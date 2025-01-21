@@ -25,6 +25,8 @@ namespace Instill
             typeof(global::Instill.JsonConverters.RunSourceNullableJsonConverter),
             typeof(global::Instill.JsonConverters.CatalogTypeJsonConverter),
             typeof(global::Instill.JsonConverters.CatalogTypeNullableJsonConverter),
+            typeof(global::Instill.JsonConverters.CellStatusJsonConverter),
+            typeof(global::Instill.JsonConverters.CellStatusNullableJsonConverter),
             typeof(global::Instill.JsonConverters.CheckNamespaceAdminResponseNamespaceJsonConverter),
             typeof(global::Instill.JsonConverters.CheckNamespaceAdminResponseNamespaceNullableJsonConverter),
             typeof(global::Instill.JsonConverters.CheckNamespaceByUIDAdminResponseNamespaceJsonConverter),

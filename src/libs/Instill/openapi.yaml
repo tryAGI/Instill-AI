@@ -1056,6 +1056,51 @@ paths:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
       x-stage: alpha
+  '/v1alpha/namespaces/{namespaceId}/tables/{tableUid}/events':
+    get:
+      tags:
+        - Table
+      summary: Get table events
+      description: Returns a list of events for a table.
+      operationId: AppPublicService_GetTableEvents
+      parameters:
+        - name: namespaceId
+          in: path
+          description: The ID of the namespace that owns the table.
+          required: true
+          schema:
+            type: string
+        - name: tableUid
+          in: path
+          description: The UID of the table to fetch events for.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response.(streaming responses)
+          content:
+            application/json:
+              schema:
+                title: Stream result of GetTableEventsResponse
+                type: object
+                properties:
+                  result:
+                    $ref: '#/components/schemas/GetTableEventsResponse'
+                  error:
+                    $ref: '#/components/schemas/rpc.Status'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
   '/v1alpha/namespaces/{namespaceId}/tables/{tableUid}/export':
     get:
       tags:
@@ -6536,6 +6581,10 @@ components:
           type: string
           description: The unique identifier of the column this cell belongs to.
           readOnly: true
+        rowUid:
+          type: string
+          description: The row that this cell belongs to.
+          readOnly: true
         updateTime:
           type: string
           description: The timestamp when the cell was last updated.
@@ -6584,7 +6633,34 @@ components:
         metadata:
           type: object
           description: Additional metadata for the cell.
+        status:
+          allOf:
+            - $ref: '#/components/schemas/CellStatus'
+          description: The status of the cell.
+          readOnly: true
       description: Cell represents a cell in a table.
+    CellStatus:
+      enum:
+        - CELL_STATUS_IDLE
+        - CELL_STATUS_PENDING
+        - CELL_STATUS_PROCESSING
+        - CELL_STATUS_FAILED
+        - CELL_STATUS_COMPLETED
+      type: string
+      description: "CellStatus represents the status of a cell.\n\n - CELL_STATUS_IDLE: The cell is idle.\n - CELL_STATUS_PENDING: The cell is pending.\n - CELL_STATUS_PROCESSING: The cell is processing.\n - CELL_STATUS_FAILED: The cell is failed.\n - CELL_STATUS_COMPLETED: The cell is completed."
+    CellUpdatedEvent:
+      type: object
+      properties:
+        cell:
+          allOf:
+            - $ref: '#/components/schemas/Cell'
+          description: The cell that was updated.
+          readOnly: true
+        deltaMode:
+          type: boolean
+          description: "Whether the event is a delta update.\nOnly cells with string type can be returned in delta mode. Delta mode returns\nonly the changes made to the cell value rather than the full value."
+          readOnly: true
+      description: CellUpdatedEvent represents an event for a cell being updated.
     ChatResponse:
       type: object
       properties:
@@ -6781,6 +6857,16 @@ components:
           description: The order of the column in the table.
           format: int32
       description: ColumnDefinition represents a column definition in a table.
+    ColumnDefinitionsUpdatedEvent:
+      type: object
+      properties:
+        columnDefinitions:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/ColumnDefinition'
+          description: The column definitions that were updated.
+          readOnly: true
+      description: ColumnDefinitionsUpdatedEvent represents an event for column definitions being updated.
     ComponentDefinition:
       type: object
       properties:
@@ -7849,6 +7935,15 @@ components:
           title: source file(either original file or converted file)
           allOf:
             - $ref: '#/components/schemas/SourceFile'
+    GetTableEventsResponse:
+      type: object
+      properties:
+        event:
+          allOf:
+            - $ref: '#/components/schemas/TableEvent'
+          description: The events for the table.
+          readOnly: true
+      description: GetTableEventsResponse contains the events for a table.
     GetTableResponse:
       type: object
       properties:
@@ -9899,6 +9994,50 @@ components:
           format: date-time
           readOnly: true
       description: Row represents a row in a table.
+    RowDeletedEvent:
+      type: object
+      properties:
+        rowUid:
+          type: string
+          description: The unique identifier of the row that was deleted.
+          readOnly: true
+      description: RowDeletedEvent represents an event for a row being deleted.
+    RowInsertedEvent:
+      type: object
+      properties:
+        row:
+          allOf:
+            - $ref: '#/components/schemas/Row'
+          description: "The row that was inserted.\nNote: Only the row metadata is returned, not the cell data."
+          readOnly: true
+        beforeRowUid:
+          type: string
+          description: The unique identifier of the row that was inserted before.
+          readOnly: true
+      description: RowInsertedEvent represents an event for a row being inserted.
+    RowUpdatedEvent:
+      type: object
+      properties:
+        row:
+          allOf:
+            - $ref: '#/components/schemas/Row'
+          description: "The row that was updated.\nNote: Only the row metadata is returned, not the cell data."
+          readOnly: true
+      description: RowUpdatedEvent represents an event for a row being updated.
+    RowsMovedEvent:
+      type: object
+      properties:
+        rowUids:
+          type: array
+          items:
+            type: string
+          description: The unique identifiers of the rows that were moved.
+          readOnly: true
+        beforeRowUid:
+          type: string
+          description: The unique identifier of the row that was moved before.
+          readOnly: true
+      description: RowsMovedEvent represents an event for multiple rows being moved.
     RunSource:
       enum:
         - RUN_SOURCE_CONSOLE
@@ -10187,6 +10326,62 @@ components:
           format: date-time
           readOnly: true
       description: Table represents a table resource.
+    TableDeletedEvent:
+      type: object
+      description: TableDeletedEvent represents an event for a table being deleted.
+    TableEvent:
+      type: object
+      properties:
+        event:
+          type: string
+          description: "The event type.\nIn text/event-stream format, this maps to the `event` field."
+          readOnly: true
+        id:
+          type: string
+          description: "The ID of the event.\nIn text/event-stream format, this maps to the `id` field."
+          readOnly: true
+        tableUpdatedEvent:
+          allOf:
+            - $ref: '#/components/schemas/TableUpdatedEvent'
+          description: The table that was updated.
+        tableDeletedEvent:
+          allOf:
+            - $ref: '#/components/schemas/TableDeletedEvent'
+          description: The table that was deleted.
+        columnDefinitionsUpdatedEvent:
+          allOf:
+            - $ref: '#/components/schemas/ColumnDefinitionsUpdatedEvent'
+          description: The column definitions that were updated.
+        rowInsertedEvent:
+          allOf:
+            - $ref: '#/components/schemas/RowInsertedEvent'
+          description: The row that was inserted.
+        rowUpdatedEvent:
+          allOf:
+            - $ref: '#/components/schemas/RowUpdatedEvent'
+          description: The row that was updated.
+        rowDeletedEvent:
+          allOf:
+            - $ref: '#/components/schemas/RowDeletedEvent'
+          description: The row that was deleted.
+        rowsMovedEvent:
+          allOf:
+            - $ref: '#/components/schemas/RowsMovedEvent'
+          description: The rows that were moved.
+        cellUpdatedEvent:
+          allOf:
+            - $ref: '#/components/schemas/CellUpdatedEvent'
+          description: The cell that was updated.
+      description: TableEvent represents an event for a table.
+    TableUpdatedEvent:
+      type: object
+      properties:
+        table:
+          allOf:
+            - $ref: '#/components/schemas/Table'
+          description: The table that was updated.
+          readOnly: true
+      description: TableUpdatedEvent represents an event for a table being updated.
     AITask:
       enum:
         - TASK_CLASSIFICATION

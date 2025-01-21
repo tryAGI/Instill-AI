@@ -6577,6 +6577,10 @@ components:
           allOf:
             - $ref: '#/components/schemas/AudioCell'
           description: The value of the cell as a url of an audio resource.
+        nullValue:
+          allOf:
+            - $ref: '#/components/schemas/NullCell'
+          description: The value of the cell as a null cell.
         metadata:
           type: object
           description: Additional metadata for the cell.
@@ -9177,6 +9181,9 @@ components:
     MoveRowsResponse:
       type: object
       description: MoveRowsResponse is an empty response for moving multiple rows.
+    NullCell:
+      type: object
+      description: NullCell represents a null cell.
     NullValue:
       type: string
       description: "`NullValue` is a singleton enumeration to represent the null value for the\n`Value` type union.\n\nThe JSON representation for `NullValue` is JSON `null`."

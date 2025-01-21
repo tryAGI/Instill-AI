@@ -85,6 +85,12 @@ namespace Instill
         public global::Instill.AudioCell? AudioValue { get; set; }
 
         /// <summary>
+        /// The value of the cell as a null cell.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("nullValue")]
+        public object? NullValue { get; set; }
+
+        /// <summary>
         /// Additional metadata for the cell.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
@@ -139,6 +145,9 @@ namespace Instill
         /// <param name="audioValue">
         /// The value of the cell as a url of an audio resource.
         /// </param>
+        /// <param name="nullValue">
+        /// The value of the cell as a null cell.
+        /// </param>
         /// <param name="metadata">
         /// Additional metadata for the cell.
         /// </param>
@@ -156,6 +165,7 @@ namespace Instill
             global::Instill.ImageCell? imageValue,
             global::Instill.VideoCell? videoValue,
             global::Instill.AudioCell? audioValue,
+            object? nullValue,
             object? metadata)
         {
             this.Uid = uid;
@@ -170,6 +180,7 @@ namespace Instill
             this.ImageValue = imageValue;
             this.VideoValue = videoValue;
             this.AudioValue = audioValue;
+            this.NullValue = nullValue;
             this.Metadata = metadata;
         }
 

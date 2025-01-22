@@ -31,7 +31,8 @@ namespace Instill
         public required string Type { get; set; }
 
         /// <summary>
-        /// The order of the column in the table.
+        /// The order of the column in the table, starting at 1. This determines the column's position<br/>
+        /// when displaying or processing table data.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("order")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -59,7 +60,8 @@ namespace Instill
         /// The type of the column.
         /// </param>
         /// <param name="order">
-        /// The order of the column in the table.
+        /// The order of the column in the table, starting at 1. This determines the column's position<br/>
+        /// when displaying or processing table data.
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public ColumnDefinition(

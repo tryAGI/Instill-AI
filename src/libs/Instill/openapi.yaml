@@ -6854,7 +6854,7 @@ components:
           description: The type of the column.
         order:
           type: integer
-          description: The order of the column in the table.
+          description: "The order of the column in the table, starting at 1. This determines the column's position\nwhen displaying or processing table data."
           format: int32
       description: ColumnDefinition represents a column definition in a table.
     ColumnDefinitionsUpdatedEvent:
@@ -9983,6 +9983,11 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/Cell'
           description: Map of column names to their cell values.
+        order:
+          type: integer
+          description: "The order of the row in the table, starting at 1. This determines the row's position\nwhen displaying or processing table data."
+          format: int32
+          readOnly: true
         createTime:
           type: string
           description: The timestamp when the row was created.

@@ -23,6 +23,14 @@ namespace Instill
         public required global::System.Collections.Generic.Dictionary<string, global::Instill.Cell> Cells { get; set; }
 
         /// <summary>
+        /// The order of the row in the table, starting at 1. This determines the row's position<br/>
+        /// when displaying or processing table data.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("order")]
+        public int? Order { get; set; }
+
+        /// <summary>
         /// The timestamp when the row was created.<br/>
         /// Included only in responses
         /// </summary>
@@ -52,6 +60,11 @@ namespace Instill
         /// <param name="cells">
         /// Map of column names to their cell values.
         /// </param>
+        /// <param name="order">
+        /// The order of the row in the table, starting at 1. This determines the row's position<br/>
+        /// when displaying or processing table data.<br/>
+        /// Included only in responses
+        /// </param>
         /// <param name="createTime">
         /// The timestamp when the row was created.<br/>
         /// Included only in responses
@@ -64,11 +77,13 @@ namespace Instill
         public Row(
             global::System.Collections.Generic.Dictionary<string, global::Instill.Cell> cells,
             string? uid,
+            int? order,
             global::System.DateTime? createTime,
             global::System.DateTime? updateTime)
         {
             this.Cells = cells ?? throw new global::System.ArgumentNullException(nameof(cells));
             this.Uid = uid;
+            this.Order = order;
             this.CreateTime = createTime;
             this.UpdateTime = updateTime;
         }

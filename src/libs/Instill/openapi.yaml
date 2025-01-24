@@ -1102,12 +1102,12 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
       x-stage: alpha
   '/v1alpha/namespaces/{namespaceId}/tables/{tableUid}/export':
-    get:
+    post:
       tags:
         - Table
       summary: Export table
       description: Exports table data.
-      operationId: AgentPublicService_Export
+      operationId: AgentPublicService_ExportTable
       parameters:
         - name: namespaceId
           in: path
@@ -1121,19 +1121,20 @@ paths:
           required: true
           schema:
             type: string
-        - name: type
-          in: query
-          description: 'The format to export the data in (csv, parquet).'
-          required: true
-          schema:
-            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExportTableBody'
+        required: true
+        x-bodyName: body
       responses:
         '200':
           description: A successful response.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ExportResponse'
+                $ref: '#/components/schemas/ExportTableResponse'
         '401':
           description: Returned when the client credentials are not valid.
           content:
@@ -7464,7 +7465,23 @@ components:
           description: JSON schema describing the component event examples.
           readOnly: true
       description: EventSpecification describes the JSON schema of component event setup and examples.
-    ExportResponse:
+    ExportFormat:
+      enum:
+        - EXPORT_FORMAT_CSV
+        - EXPORT_FORMAT_PARQUET
+      type: string
+      description: "ExportFormat represents the format to export the data in.\n\n - EXPORT_FORMAT_CSV: The format is CSV.\n - EXPORT_FORMAT_PARQUET: The format is Parquet."
+    ExportTableBody:
+      required:
+        - format
+      type: object
+      properties:
+        format:
+          allOf:
+            - $ref: '#/components/schemas/ExportFormat'
+          description: The format to export the data in.
+      description: ExportTableRequest represents a request to export table data.
+    ExportTableResponse:
       type: object
       properties:
         data:
@@ -7472,7 +7489,7 @@ components:
           description: The exported data.
           format: byte
           readOnly: true
-      description: ExportResponse is an empty response for exporting table data.
+      description: ExportTableResponse is an empty response for exporting table data.
     File:
       title: file
       required:

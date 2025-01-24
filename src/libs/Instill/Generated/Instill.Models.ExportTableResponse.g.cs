@@ -4,9 +4,9 @@
 namespace Instill
 {
     /// <summary>
-    /// ExportResponse is an empty response for exporting table data.
+    /// ExportTableResponse is an empty response for exporting table data.
     /// </summary>
-    public sealed partial class ExportResponse
+    public sealed partial class ExportTableResponse
     {
         /// <summary>
         /// The exported data.<br/>
@@ -22,23 +22,23 @@ namespace Instill
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ExportResponse" /> class.
+        /// Initializes a new instance of the <see cref="ExportTableResponse" /> class.
         /// </summary>
         /// <param name="data">
         /// The exported data.<br/>
         /// Included only in responses
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
-        public ExportResponse(
+        public ExportTableResponse(
             byte[]? data)
         {
             this.Data = data;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ExportResponse" /> class.
+        /// Initializes a new instance of the <see cref="ExportTableResponse" /> class.
         /// </summary>
-        public ExportResponse()
+        public ExportTableResponse()
         {
         }
     }

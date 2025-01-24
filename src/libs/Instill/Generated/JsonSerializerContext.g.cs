@@ -57,6 +57,8 @@ namespace Instill
             typeof(global::Instill.JsonConverters.ModelVisibilityNullableJsonConverter),
             typeof(global::Instill.JsonConverters.PipelineVisibilityJsonConverter),
             typeof(global::Instill.JsonConverters.PipelineVisibilityNullableJsonConverter),
+            typeof(global::Instill.JsonConverters.ExportFormatJsonConverter),
+            typeof(global::Instill.JsonConverters.ExportFormatNullableJsonConverter),
             typeof(global::Instill.JsonConverters.FileTypeJsonConverter),
             typeof(global::Instill.JsonConverters.FileTypeNullableJsonConverter),
             typeof(global::Instill.JsonConverters.FileProcessStatusJsonConverter),

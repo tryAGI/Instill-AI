@@ -6,7 +6,7 @@ namespace Instill
     /// <summary>
     /// 
     /// </summary>
-    public sealed partial class AgentPublicServiceExportResponse
+    public sealed partial class AgentPublicServiceExportTableResponse
     {
 
         /// <summary>

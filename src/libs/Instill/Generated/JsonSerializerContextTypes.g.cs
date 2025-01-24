@@ -38,31 +38,31 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Any? Type3 { get; set; }
+        public global::Instill.AgentPublicServiceChatBody? Type3 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public object? Type4 { get; set; }
+        public global::Instill.Any? Type4 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ApiToken? Type5 { get; set; }
+        public object? Type5 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.DateTime? Type6 { get; set; }
+        public global::Instill.ApiToken? Type6 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ApiTokenState? Type7 { get; set; }
+        public global::System.DateTime? Type7 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public int? Type8 { get; set; }
+        public global::Instill.ApiTokenState? Type8 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.AppPublicServiceChatBody? Type9 { get; set; }
+        public int? Type9 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -378,7 +378,7 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.AppV1alphaMessage? Type88 { get; set; }
+        public global::Instill.AgentV1alphaMessage? Type88 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -918,7 +918,7 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.AppV1alphaMessage>? Type223 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.AgentV1alphaMessage>? Type223 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -1590,7 +1590,7 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.AppPublicServiceGetTableEventsResponse? Type391 { get; set; }
+        public global::Instill.AgentPublicServiceGetTableEventsResponse? Type391 { get; set; }
         /// <summary>
         /// 
         /// </summary>

@@ -58,9 +58,9 @@ namespace Instill
         public ArtifactClient Artifact { get; }
 
         /// <summary>
-        /// Ready-to-use AI applications.
+        /// Ready-to-use AI agents.
         /// </summary>
-        public AppClient App { get; }
+        public AgentClient Agent { get; }
 
         /// <summary>
         /// Table resources for agents.

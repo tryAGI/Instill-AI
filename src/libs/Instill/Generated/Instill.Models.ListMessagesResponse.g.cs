@@ -12,7 +12,7 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("messages")]
-        public global::System.Collections.Generic.IList<global::Instill.AppV1alphaMessage>? Messages { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.AgentV1alphaMessage>? Messages { get; set; }
 
         /// <summary>
         /// Included only in responses
@@ -55,7 +55,7 @@ namespace Instill
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public ListMessagesResponse(
-            global::System.Collections.Generic.IList<global::Instill.AppV1alphaMessage>? messages,
+            global::System.Collections.Generic.IList<global::Instill.AgentV1alphaMessage>? messages,
             string? nextPageToken,
             int? totalSize,
             global::System.Collections.Generic.IList<global::Instill.MessageSenderProfile>? senderProfiles)

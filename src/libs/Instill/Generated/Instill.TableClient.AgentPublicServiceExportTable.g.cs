@@ -5,22 +5,22 @@ namespace Instill
 {
     public partial class TableClient
     {
-        partial void PrepareAgentPublicServiceExportArguments(
+        partial void PrepareAgentPublicServiceExportTableArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
             ref string tableUid,
-            ref string type);
-        partial void PrepareAgentPublicServiceExportRequest(
+            global::Instill.ExportTableBody request);
+        partial void PrepareAgentPublicServiceExportTableRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
             string tableUid,
-            string type);
-        partial void ProcessAgentPublicServiceExportResponse(
+            global::Instill.ExportTableBody request);
+        partial void ProcessAgentPublicServiceExportTableResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessAgentPublicServiceExportResponseContent(
+        partial void ProcessAgentPublicServiceExportTableResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
@@ -31,33 +31,32 @@ namespace Instill
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="tableUid"></param>
-        /// <param name="type"></param>
+        /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
-        public async global::System.Threading.Tasks.Task<global::Instill.ExportResponse> AgentPublicServiceExportAsync(
+        public async global::System.Threading.Tasks.Task<global::Instill.ExportTableResponse> AgentPublicServiceExportTableAsync(
             string namespaceId,
             string tableUid,
-            string type,
+            global::Instill.ExportTableBody request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
+
             PrepareArguments(
                 client: HttpClient);
-            PrepareAgentPublicServiceExportArguments(
+            PrepareAgentPublicServiceExportTableArguments(
                 httpClient: HttpClient,
                 namespaceId: ref namespaceId,
                 tableUid: ref tableUid,
-                type: ref type);
+                request: request);
 
             var __pathBuilder = new PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/tables/{tableUid}/export",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
-                .AddRequiredParameter("type", type) 
-                ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                method: global::System.Net.Http.HttpMethod.Get,
+                method: global::System.Net.Http.HttpMethod.Post,
                 requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
             __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -79,16 +78,22 @@ namespace Instill
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 }
             }
+            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
+            var __httpRequestContent = new global::System.Net.Http.StringContent(
+                content: __httpRequestContentBody,
+                encoding: global::System.Text.Encoding.UTF8,
+                mediaType: "application/json");
+            __httpRequest.Content = __httpRequestContent;
 
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareAgentPublicServiceExportRequest(
+            PrepareAgentPublicServiceExportTableRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
                 namespaceId: namespaceId,
                 tableUid: tableUid,
-                type: type);
+                request: request);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
@@ -98,7 +103,7 @@ namespace Instill
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessAgentPublicServiceExportResponse(
+            ProcessAgentPublicServiceExportTableResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
             // Returned when the client credentials are not valid.
@@ -166,7 +171,7 @@ namespace Instill
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessAgentPublicServiceExportResponseContent(
+                ProcessAgentPublicServiceExportTableResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -191,7 +196,7 @@ namespace Instill
                 }
 
                 return
-                    global::Instill.ExportResponse.FromJson(__content, JsonSerializerContext) ??
+                    global::Instill.ExportTableResponse.FromJson(__content, JsonSerializerContext) ??
                     throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
@@ -217,9 +222,39 @@ namespace Instill
                 using var __content = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
 
                 return
-                    await global::Instill.ExportResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    await global::Instill.ExportTableResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                     throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
+        }
+
+        /// <summary>
+        /// Export table<br/>
+        /// Exports table data.
+        /// </summary>
+        /// <param name="namespaceId"></param>
+        /// <param name="tableUid"></param>
+        /// <param name="format">
+        /// The format to export the data in.
+        /// </param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
+        public async global::System.Threading.Tasks.Task<global::Instill.ExportTableResponse> AgentPublicServiceExportTableAsync(
+            string namespaceId,
+            string tableUid,
+            global::Instill.ExportFormat format,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __request = new global::Instill.ExportTableBody
+            {
+                Format = format,
+            };
+
+            return await AgentPublicServiceExportTableAsync(
+                namespaceId: namespaceId,
+                tableUid: tableUid,
+                request: __request,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

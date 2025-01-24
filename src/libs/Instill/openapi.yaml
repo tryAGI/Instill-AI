@@ -17,10 +17,10 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/chats':
     get:
       tags:
-        - 🍎 App
+        - 🍎 Agent
       summary: List chats
       description: Returns a list of chats.
-      operationId: AppPublicService_ListChats
+      operationId: AgentPublicService_ListChats
       parameters:
         - name: namespaceId
           in: path
@@ -70,10 +70,10 @@ paths:
       x-stage: alpha
     post:
       tags:
-        - 🍎 App
+        - 🍎 Agent
       summary: Create a chat
       description: Creates a chat.
-      operationId: AppPublicService_CreateChat
+      operationId: AgentPublicService_CreateChat
       parameters:
         - name: namespaceId
           in: path
@@ -110,10 +110,10 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/chats/{chatUid}':
     put:
       tags:
-        - 🍎 App
+        - 🍎 Agent
       summary: Update a chat
       description: Updates a chat.
-      operationId: AppPublicService_UpdateChat
+      operationId: AgentPublicService_UpdateChat
       parameters:
         - name: namespaceId
           in: path
@@ -155,10 +155,10 @@ paths:
       x-stage: alpha
     delete:
       tags:
-        - 🍎 App
+        - 🍎 Agent
       summary: Delete a chat
       description: Deletes a chat.
-      operationId: AppPublicService_DeleteChat
+      operationId: AgentPublicService_DeleteChat
       parameters:
         - name: namespaceId
           in: path
@@ -194,10 +194,10 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/chats/{chatUid}/messages':
     get:
       tags:
-        - 🍎 App
+        - 🍎 Agent
       summary: List messages
       description: Returns a paginated list of messages.
-      operationId: AppPublicService_ListMessages
+      operationId: AgentPublicService_ListMessages
       parameters:
         - name: namespaceId
           in: path
@@ -248,10 +248,10 @@ paths:
       x-stage: alpha
     post:
       tags:
-        - 🍎 App
+        - 🍎 Agent
       summary: Create a message
       description: Creates a message.
-      operationId: AppPublicService_CreateMessage
+      operationId: AgentPublicService_CreateMessage
       parameters:
         - name: namespaceId
           in: path
@@ -261,7 +261,7 @@ paths:
             type: string
         - name: chatUid
           in: path
-          description: app id
+          description: chag uid
           required: true
           schema:
             type: string
@@ -294,10 +294,10 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/chats/{chatUid}/messages/{messageUid}':
     put:
       tags:
-        - 🍎 App
+        - 🍎 Agent
       summary: Update a message
       description: Updates a message.
-      operationId: AppPublicService_UpdateMessage
+      operationId: AgentPublicService_UpdateMessage
       parameters:
         - name: namespaceId
           in: path
@@ -345,10 +345,10 @@ paths:
       x-stage: alpha
     delete:
       tags:
-        - 🍎 App
+        - 🍎 Agent
       summary: Delete a message
       description: Deletes a message.
-      operationId: AppPublicService_DeleteMessage
+      operationId: AgentPublicService_DeleteMessage
       parameters:
         - name: namespaceId
           in: path
@@ -390,10 +390,10 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/chats/{chatUid}/chat':
     post:
       tags:
-        - 🍎 App
+        - 🍎 Agent
       summary: Chat
       description: "Chat sends a message asynchronously and streams back the response.\nThis method is intended for real-time conversation with a chatbot\nand the response needs to be processed incrementally."
-      operationId: AppPublicService_Chat
+      operationId: AgentPublicService_Chat
       parameters:
         - name: namespaceId
           in: path
@@ -411,7 +411,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AppPublicService.ChatBody'
+              $ref: '#/components/schemas/AgentPublicService.ChatBody'
         required: true
         x-bodyName: body
       responses:
@@ -439,7 +439,7 @@ paths:
         - Table
       summary: List tables
       description: Returns a paginated list of tables.
-      operationId: AppPublicService_ListTables
+      operationId: AgentPublicService_ListTables
       parameters:
         - name: namespaceId
           in: path
@@ -482,7 +482,7 @@ paths:
         - Table
       summary: Create a table
       description: Creates a table.
-      operationId: AppPublicService_CreateTable
+      operationId: AgentPublicService_CreateTable
       parameters:
         - name: namespaceId
           in: path
@@ -523,7 +523,7 @@ paths:
         - Table
       summary: Get table
       description: Gets a table.
-      operationId: AppPublicService_GetTable
+      operationId: AgentPublicService_GetTable
       parameters:
         - name: namespaceId
           in: path
@@ -561,7 +561,7 @@ paths:
         - Table
       summary: Delete table
       description: Deletes a table.
-      operationId: AppPublicService_DeleteTable
+      operationId: AgentPublicService_DeleteTable
       parameters:
         - name: namespaceId
           in: path
@@ -599,7 +599,7 @@ paths:
         - Table
       summary: Update table
       description: Updates a table.
-      operationId: AppPublicService_UpdateTable
+      operationId: AgentPublicService_UpdateTable
       parameters:
         - name: namespaceId
           in: path
@@ -646,7 +646,7 @@ paths:
         - Table
       summary: Get column definitions
       description: Gets column definitions for a table.
-      operationId: AppPublicService_GetColumnDefinitions
+      operationId: AgentPublicService_GetColumnDefinitions
       parameters:
         - name: namespaceId
           in: path
@@ -684,7 +684,7 @@ paths:
         - Table
       summary: Update column definitions
       description: Updates column definitions for a table.
-      operationId: AppPublicService_UpdateColumnDefinitions
+      operationId: AgentPublicService_UpdateColumnDefinitions
       parameters:
         - name: namespaceId
           in: path
@@ -733,7 +733,7 @@ paths:
         - Table
       summary: List rows
       description: Returns list of rows.
-      operationId: AppPublicService_ListRows
+      operationId: AgentPublicService_ListRows
       parameters:
         - name: namespaceId
           in: path
@@ -782,7 +782,7 @@ paths:
         - Table
       summary: Insert row
       description: Inserts a row into a table.
-      operationId: AppPublicService_InsertRow
+      operationId: AgentPublicService_InsertRow
       parameters:
         - name: namespaceId
           in: path
@@ -827,7 +827,7 @@ paths:
         - Table
       summary: Delete rows
       description: Deletes multiple rows from a table.
-      operationId: AppPublicService_DeleteRows
+      operationId: AgentPublicService_DeleteRows
       parameters:
         - name: namespaceId
           in: path
@@ -874,7 +874,7 @@ paths:
         - Table
       summary: Update rows
       description: Updates multiple rows in a table.
-      operationId: AppPublicService_UpdateRows
+      operationId: AgentPublicService_UpdateRows
       parameters:
         - name: namespaceId
           in: path
@@ -920,7 +920,7 @@ paths:
         - Table
       summary: Delete row
       description: Deletes a row from a table.
-      operationId: AppPublicService_DeleteRow
+      operationId: AgentPublicService_DeleteRow
       parameters:
         - name: namespaceId
           in: path
@@ -964,7 +964,7 @@ paths:
         - Table
       summary: Update row
       description: Updates a row in a table.
-      operationId: AppPublicService_UpdateRow
+      operationId: AgentPublicService_UpdateRow
       parameters:
         - name: namespaceId
           in: path
@@ -1016,7 +1016,7 @@ paths:
         - Table
       summary: Move row
       description: Moves a row to a new position in a table.
-      operationId: AppPublicService_MoveRows
+      operationId: AgentPublicService_MoveRows
       parameters:
         - name: namespaceId
           in: path
@@ -1062,7 +1062,7 @@ paths:
         - Table
       summary: Get table events
       description: Returns a list of events for a table.
-      operationId: AppPublicService_GetTableEvents
+      operationId: AgentPublicService_GetTableEvents
       parameters:
         - name: namespaceId
           in: path
@@ -1107,7 +1107,7 @@ paths:
         - Table
       summary: Export table
       description: Exports table data.
-      operationId: AppPublicService_Export
+      operationId: AgentPublicService_Export
       parameters:
         - name: namespaceId
           in: path
@@ -6275,6 +6275,15 @@ components:
             type: string
           description: connection key(used connection id in recipe) and value(connection uid from namespace).
       description: AgentConfig represents the config for the chat agent.
+    AgentPublicService.ChatBody:
+      required:
+        - message
+      type: object
+      properties:
+        message:
+          title: User message
+          type: string
+      description: "ChatRequest represents a request to send a message\nto a chatbot synchronously and streams back the results."
     Any:
       type: object
       properties:
@@ -6340,15 +6349,6 @@ components:
         - STATE_EXPIRED
       type: string
       description: "State describes the state of an API token.\n\n - STATE_INACTIVE: Inactive.\n - STATE_ACTIVE: Active.\n - STATE_EXPIRED: Expired."
-    AppPublicService.ChatBody:
-      required:
-        - message
-      type: object
-      properties:
-        message:
-          title: User message
-          type: string
-      description: "ChatRequest represents a request to send a message\nto a chatbot synchronously and streams back the results."
     AudioCell:
       required:
         - url
@@ -7217,7 +7217,7 @@ components:
         message:
           title: message
           allOf:
-            - $ref: '#/components/schemas/app.v1alpha.Message'
+            - $ref: '#/components/schemas/agent.v1alpha.Message'
     CreateNamespaceConnectionResponse:
       type: object
       properties:
@@ -8283,7 +8283,7 @@ components:
           title: messages
           type: array
           items:
-            $ref: '#/components/schemas/app.v1alpha.Message'
+            $ref: '#/components/schemas/agent.v1alpha.Message'
           readOnly: true
         nextPageToken:
           title: next page token
@@ -10846,7 +10846,7 @@ components:
         message:
           title: message
           allOf:
-            - $ref: '#/components/schemas/app.v1alpha.Message'
+            - $ref: '#/components/schemas/agent.v1alpha.Message'
           readOnly: true
     UpdateNamespaceConnectionResponse:
       type: object
@@ -11126,7 +11126,7 @@ components:
           description: Description.
           readOnly: true
       description: WebhookEndpoint describe a webhook endpoint.
-    app.v1alpha.Message:
+    agent.v1alpha.Message:
       title: Message represents a single message in a conversation
       required:
         - content
@@ -11389,8 +11389,8 @@ tags:
     description: AI Model resources for MLOps/LLMOps.
   - name: 💾 Artifact
     description: Data orchestration for unified unstructured data representation.
-  - name: 🍎 App
-    description: Ready-to-use AI applications.
+  - name: 🍎 Agent
+    description: Ready-to-use AI agents.
   - name: Table
     description: Table resources for agents.
   - name: 📊 Metrics

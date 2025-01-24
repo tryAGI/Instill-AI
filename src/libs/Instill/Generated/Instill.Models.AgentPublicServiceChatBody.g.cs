@@ -4,15 +4,17 @@
 namespace Instill
 {
     /// <summary>
-    /// 
+    /// ChatRequest represents a request to send a message<br/>
+    /// to a chatbot synchronously and streams back the results.
     /// </summary>
-    public sealed partial class UpdateMessageResponse
+    public sealed partial class AgentPublicServiceChatBody
     {
         /// <summary>
-        /// Included only in responses
+        /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("message")]
-        public global::Instill.AgentV1alphaMessage? Message { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Message { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -21,22 +23,20 @@ namespace Instill
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateMessageResponse" /> class.
+        /// Initializes a new instance of the <see cref="AgentPublicServiceChatBody" /> class.
         /// </summary>
-        /// <param name="message">
-        /// Included only in responses
-        /// </param>
+        /// <param name="message"></param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
-        public UpdateMessageResponse(
-            global::Instill.AgentV1alphaMessage? message)
+        public AgentPublicServiceChatBody(
+            string message)
         {
-            this.Message = message;
+            this.Message = message ?? throw new global::System.ArgumentNullException(nameof(message));
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateMessageResponse" /> class.
+        /// Initializes a new instance of the <see cref="AgentPublicServiceChatBody" /> class.
         /// </summary>
-        public UpdateMessageResponse()
+        public AgentPublicServiceChatBody()
         {
         }
     }

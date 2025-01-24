@@ -18,7 +18,7 @@ namespace Instill
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("message")]
-        public global::Instill.AppV1alphaMessage? Message { get; set; }
+        public global::Instill.AgentV1alphaMessage? Message { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -34,7 +34,7 @@ namespace Instill
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public CreateMessageResponse(
             string? chatUid,
-            global::Instill.AppV1alphaMessage? message)
+            global::Instill.AgentV1alphaMessage? message)
         {
             this.ChatUid = chatUid;
             this.Message = message;

@@ -3,51 +3,55 @@
 
 namespace Instill
 {
-    public partial class SubscriptionClient
+    public partial class PipelineClient
     {
-        partial void PrepareGetRemainingCreditArguments(
+        partial void PreparePipelinePublicServiceCreateNamespaceConnectionArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string namespaceId);
-        partial void PrepareGetRemainingCreditRequest(
+            ref string namespaceId,
+            global::Instill.Connection request);
+        partial void PreparePipelinePublicServiceCreateNamespaceConnectionRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string namespaceId);
-        partial void ProcessGetRemainingCreditResponse(
+            string namespaceId,
+            global::Instill.Connection request);
+        partial void ProcessPipelinePublicServiceCreateNamespaceConnectionResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessGetRemainingCreditResponseContent(
+        partial void ProcessPipelinePublicServiceCreateNamespaceConnectionResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Get the remaining Instill Credit<br/>
-        /// This endpoint returns the remaining [Instill Credit](https://www.instill.tech/docs/cloud/credit) of a given user or<br/>
-        /// organization. The requested credit owner must be either the authenticated<br/>
-        /// user or an organization they belong to.<br/>
-        /// On Instill Core, this endpoint will return a 404 Not Found status.
+        /// Create a connection<br/>
+        /// Creates a connection under the ownership of a namespace.
         /// </summary>
         /// <param name="namespaceId"></param>
+        /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
-        public async global::System.Threading.Tasks.Task<global::Instill.GetRemainingCreditResponse> GetRemainingCreditAsync(
+        public async global::System.Threading.Tasks.Task<global::Instill.CreateNamespaceConnectionResponse> PipelinePublicServiceCreateNamespaceConnectionAsync(
             string namespaceId,
+            global::Instill.Connection request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
+
             PrepareArguments(
                 client: HttpClient);
-            PrepareGetRemainingCreditArguments(
+            PreparePipelinePublicServiceCreateNamespaceConnectionArguments(
                 httpClient: HttpClient,
-                namespaceId: ref namespaceId);
+                namespaceId: ref namespaceId,
+                request: request);
 
             var __pathBuilder = new PathBuilder(
-                path: $"/v1beta/namespaces/{namespaceId}/credit",
+                path: $"/v1beta/namespaces/{namespaceId}/connections",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                method: global::System.Net.Http.HttpMethod.Get,
+                method: global::System.Net.Http.HttpMethod.Post,
                 requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
             __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -69,14 +73,21 @@ namespace Instill
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 }
             }
+            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
+            var __httpRequestContent = new global::System.Net.Http.StringContent(
+                content: __httpRequestContentBody,
+                encoding: global::System.Text.Encoding.UTF8,
+                mediaType: "application/json");
+            __httpRequest.Content = __httpRequestContent;
 
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareGetRemainingCreditRequest(
+            PreparePipelinePublicServiceCreateNamespaceConnectionRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                namespaceId: namespaceId);
+                namespaceId: namespaceId,
+                request: request);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
@@ -86,7 +97,7 @@ namespace Instill
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessGetRemainingCreditResponse(
+            ProcessPipelinePublicServiceCreateNamespaceConnectionResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
             // Returned when the client credentials are not valid.
@@ -154,7 +165,7 @@ namespace Instill
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessGetRemainingCreditResponseContent(
+                ProcessPipelinePublicServiceCreateNamespaceConnectionResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -179,7 +190,7 @@ namespace Instill
                 }
 
                 return
-                    global::Instill.GetRemainingCreditResponse.FromJson(__content, JsonSerializerContext) ??
+                    global::Instill.CreateNamespaceConnectionResponse.FromJson(__content, JsonSerializerContext) ??
                     throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
@@ -205,9 +216,76 @@ namespace Instill
                 using var __content = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
 
                 return
-                    await global::Instill.GetRemainingCreditResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    await global::Instill.CreateNamespaceConnectionResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                     throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
+        }
+
+        /// <summary>
+        /// Create a connection<br/>
+        /// Creates a connection under the ownership of a namespace.
+        /// </summary>
+        /// <param name="namespaceId"></param>
+        /// <param name="id">
+        /// ID.
+        /// </param>
+        /// <param name="integrationId">
+        /// Integration ID. It determines for which type of components can reference<br/>
+        /// this connection.
+        /// </param>
+        /// <param name="method">
+        /// Connection method. It references the setup schema provided by the<br/>
+        /// integration.
+        /// </param>
+        /// <param name="setup">
+        /// Connection details. This field is required on creation, optional on view.<br/>
+        /// When viewing the connection details, the setup values will be redacted.
+        /// </param>
+        /// <param name="scopes">
+        /// A list of scopes that identify the resources that the connection will be<br/>
+        /// able to access on the user's behalf. This is typically passed on creation<br/>
+        /// when the setup has been generated through an OAuth flow with a limited set<br/>
+        /// of scopes.
+        /// </param>
+        /// <param name="identity">
+        /// When the connection method is METHOD_OAUTH, this field will hold the<br/>
+        /// identity (e.g., email, username) with which the access token has been<br/>
+        /// generated.
+        /// </param>
+        /// <param name="oAuthAccessDetails">
+        /// When the connection method is METHOD_OAUTH, the access token might come<br/>
+        /// with some extra information that might vary across vendors. This<br/>
+        /// information is passed as connection metadata.
+        /// </param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
+        public async global::System.Threading.Tasks.Task<global::Instill.CreateNamespaceConnectionResponse> PipelinePublicServiceCreateNamespaceConnectionAsync(
+            string namespaceId,
+            string id,
+            string integrationId,
+            global::Instill.Method method,
+            object setup,
+            global::System.Collections.Generic.IList<string>? scopes = default,
+            string? identity = default,
+            object? oAuthAccessDetails = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __request = new global::Instill.Connection
+            {
+                Id = id,
+                IntegrationId = integrationId,
+                Method = method,
+                Setup = setup,
+                Scopes = scopes,
+                Identity = identity,
+                OAuthAccessDetails = oAuthAccessDetails,
+            };
+
+            return await PipelinePublicServiceCreateNamespaceConnectionAsync(
+                namespaceId: namespaceId,
+                request: __request,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

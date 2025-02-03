@@ -2963,7 +2963,7 @@ paths:
       tags:
         - 🤝 Subscription
       summary: Get the remaining Instill Credit
-      description: "This endpoint returns the remaining [Instill Credit](https://www.instill.tech/docs/vdp/credit) of a given user or\norganization. The requested credit owner must be either the authenticated\nuser or an organization they belong to.\n\nOn Instill Core, this endpoint will return a 404 Not Found status."
+      description: "This endpoint returns the remaining [Instill Credit](https://www.instill.tech/docs/cloud/credit) of a given user or\norganization. The requested credit owner must be either the authenticated\nuser or an organization they belong to.\n\nOn Instill Core, this endpoint will return a 404 Not Found status."
       operationId: GetRemainingCredit
       parameters:
         - name: namespaceId
@@ -4322,7 +4322,7 @@ paths:
   /v1beta/pipelines:
     get:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: List accessible pipelines
       description: Returns a paginated list of pipelines that are visible to the requester.
       operationId: PipelinePublicService_ListPipelines
@@ -4392,7 +4392,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines':
     get:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: List namespace pipelines
       description: Returns a paginated list of pipelines of a namespace
       operationId: PipelinePublicService_ListNamespacePipelines
@@ -4467,7 +4467,7 @@ paths:
       x-stage: beta
     post:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: Create a new pipeline
       description: Creates a new pipeline under a namespace.
       operationId: PipelinePublicService_CreateNamespacePipeline
@@ -4508,7 +4508,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}':
     get:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: Get a pipeline
       description: Returns the details of a pipeline.
       operationId: PipelinePublicService_GetNamespacePipeline
@@ -4555,7 +4555,7 @@ paths:
       x-stage: beta
     delete:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: Delete a pipeline
       description: "Deletes a pipeline, accesing it by its resource name, which is defined by\nthe parent namespace and the ID of the pipeline. The authenticated namespace must be\nthe parent of the pipeline in order to delete it."
       operationId: PipelinePublicService_DeleteNamespacePipeline
@@ -4593,7 +4593,7 @@ paths:
       x-stage: beta
     patch:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: Update a pipeline
       description: "Udpates a pipeline, accessing it by its resource name, which is defined by\nthe parent namespace and the ID of the pipeline. The authenticated namespace must be\nthe parent of the pipeline in order to modify it.\n\nIn REST requests, only the supplied pipeline fields will be taken into\naccount when updating the resource."
       operationId: PipelinePublicService_UpdateNamespacePipeline
@@ -4640,7 +4640,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/validate':
     post:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: Validate a pipeline
       description: "Validates a pipeline by its resource name, which is defined by the parent\nnamespace and the ID of the pipeline.\n\nValidation checks the recipe of the pipeline and the status of its components."
       operationId: PipelinePublicService_ValidateNamespacePipeline
@@ -4686,7 +4686,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/rename':
     post:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: Rename a pipeline
       description: "Updates the ID of a pipeline. Since this is an output-only field, a custom\nmethod is required to modify it.\n\nThe pipeline name will be updated accordingly, as it is  composed by the\nparent namespace and ID of the pipeline (e.g.\n`namespaces/luigi/pipelines/pizza-recipe-generator`).\n\nThe authenticated namespace must be the parent of the pipeline in order to\nperform this action."
       operationId: PipelinePublicService_RenameNamespacePipeline
@@ -4732,7 +4732,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/clone':
     post:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: Clone a pipeline
       description: "Clones a pipeline owned by a namespace. The new pipeline may have a different\nparent, and this can be either a namespace or an organization."
       operationId: PipelinePublicService_CloneNamespacePipeline
@@ -4778,9 +4778,9 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/trigger':
     post:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: Trigger a pipeline
-      description: "Triggers the execution of a pipeline synchronously, i.e., the result is\nsent back to the namespace right after the data is processed. This method is\nintended for real-time inference when low latency is of concern.\n\nThe pipeline is identified by its resource name, formed by the parent namespace\nand ID of the pipeline.\n\nFor more information, see [Run NamespacePipeline](https://www.instill.tech/docs/vdp/run)."
+      description: "Triggers the execution of a pipeline synchronously, i.e., the result is\nsent back to the namespace right after the data is processed. This method is\nintended for real-time inference when low latency is of concern.\n\nThe pipeline is identified by its resource name, formed by the parent namespace\nand ID of the pipeline.\n\nFor more information, see [Run NamespacePipeline](https://www.instill.tech/docs/pipeline/run-pipeline)."
       operationId: PipelinePublicService_TriggerNamespacePipeline
       parameters:
         - name: namespaceId
@@ -4829,7 +4829,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/trigger-stream':
     post:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: Trigger a pipeline via streaming
       description: "Triggers the execution of a pipeline asynchronously and streams back the response.\nThis method is intended for real-time inference when low latency is of concern\nand the response needs to be processed incrementally.\n\nThe pipeline is identified by its resource name, formed by the parent namespace\nand ID of the pipeline."
       operationId: PipelinePublicService_TriggerNamespacePipelineWithStream
@@ -4886,9 +4886,9 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/trigger-async':
     post:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: Trigger a pipeline asynchronously
-      description: "Triggers the execution of a pipeline asynchronously, i.e., the result\ncontains the necessary information to access the result and status of the\noperation. This method is intended for cases that require long-running\nworkloads.\n\nThe pipeline is identified by its resource name, formed by the parent namespace\nand ID of the pipeline.\n\nFor more information, see [Run NamespacePipeline](https://www.instill.tech/docs/vdp/run)."
+      description: "Triggers the execution of a pipeline asynchronously, i.e., the result\ncontains the necessary information to access the result and status of the\noperation. This method is intended for cases that require long-running\nworkloads.\n\nThe pipeline is identified by its resource name, formed by the parent namespace\nand ID of the pipeline.\n\nFor more information, see [Run NamespacePipeline](https://www.instill.tech/docs/pipeline/run-pipeline)."
       operationId: PipelinePublicService_TriggerAsyncNamespacePipeline
       parameters:
         - name: namespaceId
@@ -4937,7 +4937,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/releases':
     get:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: List the releases in a pipeline
       description: "Lists the commited versions of a pipeline, identified by its resource\nname, which is formed by the parent namespace and ID of the pipeline."
       operationId: PipelinePublicService_ListNamespacePipelineReleases
@@ -5005,7 +5005,7 @@ paths:
       x-stage: beta
     post:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: Create a pipeline release
       description: "Commits the version of a pipeline, identified by its resource name, which\nis formed by the parent namespace and ID of the pipeline.\n\nThe authenticated namespace must be the parent of the pipeline in order to\nperform this action."
       operationId: PipelinePublicService_CreateNamespacePipelineRelease
@@ -5052,7 +5052,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/releases/{releaseId}':
     get:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: Get a pipeline release
       description: "Gets the details of a pipeline release, where the pipeline is identified\nby its resource name, formed by its parent namespace and ID."
       operationId: PipelinePublicService_GetNamespacePipelineRelease
@@ -5105,7 +5105,7 @@ paths:
       x-stage: beta
     delete:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: Delete a pipeline release
       description: "Deletes a pipeline release, where the pipeline is identified by its\nresource name, formed by its parent namespace and ID.\n\nThe authenticated namespace must be the parent of the pipeline in order to\nperform this action."
       operationId: PipelinePublicService_DeleteNamespacePipelineRelease
@@ -5149,7 +5149,7 @@ paths:
       x-stage: beta
     patch:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: Update a pipeline release
       description: "Updates the details of a pipeline release, where the pipeline is\nidentified by its resource name, formed by its parent namespace and ID.\n\nThe authenticated namespace must be the parent of the pipeline in order to\nperform this action."
       operationId: PipelinePublicService_UpdateNamespacePipelineRelease
@@ -5202,7 +5202,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/releases/{releaseId}/clone':
     post:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: Clone a pipeline release
       description: "Clones a pipeline release owned by a namespace. The new pipeline may have a different\nparent, and this can be either a namespace or an organization."
       operationId: PipelinePublicService_CloneNamespacePipelineRelease
@@ -5254,7 +5254,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/releases/{releaseId}/trigger':
     post:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: Trigger a pipeline release
       description: "Triggers the synchronous execution of of a pipeline. While the trigger\nendpoint (where the release version isn't specified) triggers the pipeline\nat its latest release, this method allows the client to specified any\ncommitted release.\n\nThe pipeline is identified by its resource name, formed by its parent namespace\nand ID."
       operationId: PipelinePublicService_TriggerNamespacePipelineRelease
@@ -5311,7 +5311,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/releases/{releaseId}/trigger-async':
     post:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: Trigger a pipeline release asynchronously
       description: "Triggers the asynchronous execution of of a pipeline. While the trigger\nendpoint (where the release version isn't specified) triggers the pipeline\nat its latest release, this method allows the client to specified any\ncommitted release.\n\nThe pipeline is identified by its resource name, formed by its parent namespace\nand ID."
       operationId: PipelinePublicService_TriggerAsyncNamespacePipelineRelease
@@ -5368,7 +5368,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/secrets':
     get:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: List secrets
       description: "Returns a paginated list of secrets that belong to the specified\nnamespace."
       operationId: PipelinePublicService_ListNamespaceSecrets
@@ -5411,7 +5411,7 @@ paths:
       x-stage: beta
     post:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: Create a secret
       description: Creates a new secret under the parenthood of an namespace.
       operationId: PipelinePublicService_CreateNamespaceSecret
@@ -5452,7 +5452,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/secrets/{secretId}':
     get:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: Get a secret
       description: "Returns the details of an namespace-owned secret by its resource name,\nwhich is defined by the parent namespace and the ID of the secret."
       operationId: PipelinePublicService_GetNamespaceSecret
@@ -5490,7 +5490,7 @@ paths:
       x-stage: beta
     delete:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: Delete a secret
       description: "Deletes a secret, accesing it by its resource name, which is defined by\nthe parent namespace and the ID of the secret."
       operationId: PipelinePublicService_DeleteNamespaceSecret
@@ -5528,7 +5528,7 @@ paths:
       x-stage: beta
     patch:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: Update a secret
       description: "Udpates a secret, accessing it by its resource name, which is defined by\n\nIn REST requests, only the supplied secret fields will be taken into\naccount when updating the resource."
       operationId: PipelinePublicService_UpdateNamespaceSecret
@@ -5575,9 +5575,9 @@ paths:
   /v1beta/component-definitions:
     get:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: List component definitions
-      description: "Returns a paginated list of component definitions, regardless their type.\nThis offers a single source of truth, with pagination and filter\ncapabilities, for the components that might be used in a VDP pipeline."
+      description: "Returns a paginated list of component definitions, regardless their type.\nThis offers a single source of truth, with pagination and filter\ncapabilities, for the components that might be used in a pipeline."
       operationId: PipelinePublicService_ListComponentDefinitions
       parameters:
         - name: pageSize
@@ -5627,7 +5627,7 @@ paths:
   '/v1beta/operations/{operationId}':
     get:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: Get the details of a long-running operation
       description: "This method allows requesters to request the status and outcome of\nlong-running operations such as asynchronous pipeline triggers."
       operationId: PipelinePublicService_GetOperation
@@ -5665,7 +5665,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/runs':
     get:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: List Pipeline Runs
       description: "Returns a paginated list of runs for a given pipeline. When the requester\nis the owner of the pipeline, they will be able to all the pipeline runs,\nregardless who requested the trigger (the view will be partial to hide\nsensitive data like e.g. the trigger input and output). Other requesters\nwill only be able to see the runs requested by themselves."
       operationId: PipelinePublicService_ListPipelineRuns
@@ -5731,7 +5731,7 @@ paths:
   '/v1beta/pipeline-runs/{pipelineRunId}/component-runs':
     get:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: List Component Runs
       description: Returns the information of each component execution within a pipeline run.
       operationId: PipelinePublicService_ListComponentRuns
@@ -5800,7 +5800,7 @@ paths:
   /v1beta/dashboard/pipelines/runs:
     get:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: List Pipeline Runs By Requester
       description: "Returns a paginated list of runs for requested by a namespace. The\nresponse may contain runs from several pipelines."
       operationId: PipelinePublicService_ListPipelineRunsByRequester
@@ -5867,7 +5867,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/connections':
     get:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: List namespace connections
       description: Returns a paginated list of connections created by a namespace.
       operationId: PipelinePublicService_ListNamespaceConnections
@@ -5915,7 +5915,7 @@ paths:
       x-stage: beta
     post:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: Create a connection
       description: Creates a connection under the ownership of a namespace.
       operationId: PipelinePublicService_CreateNamespaceConnection
@@ -5956,7 +5956,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/connections/{connectionId}':
     get:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: Get a namespace connection
       description: Returns the details of a connection.
       operationId: PipelinePublicService_GetNamespaceConnection
@@ -6002,7 +6002,7 @@ paths:
       x-stage: beta
     delete:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: Delete a connection
       description: Deletes a connection.
       operationId: PipelinePublicService_DeleteNamespaceConnection
@@ -6040,7 +6040,7 @@ paths:
       x-stage: beta
     patch:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: Update a connection
       description: Updates a connection with the supplied connection fields.
       operationId: PipelinePublicService_UpdateNamespaceConnection
@@ -6087,7 +6087,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/connections/{connectionId}/test':
     post:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: Test a connection
       description: "Makes a request to the 3rd party app that the connection is configured to\ncommunicate with, and checks the result of the call. If the test fails,\nthe response status and error message will provide more information about\nthe failure.\n\nNote that this action might affect the quota or billing of the integrated\naccount in the 3rd party app."
       operationId: PipelinePublicService_TestNamespaceConnection
@@ -6126,7 +6126,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/connections/{connectionId}/referenced-pipelines':
     get:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: List pipelines that reference a connection
       description: "Returns a paginated list with the IDs of the pipelines that reference a\ngiven connection. All the pipelines will belong to the same namespace as\nthe connection."
       operationId: PipelinePublicService_ListPipelineIDsByConnectionID
@@ -6181,7 +6181,7 @@ paths:
   /v1beta/integrations:
     get:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: List integrations
       description: Returns a paginated list of available integrations.
       operationId: PipelinePublicService_ListIntegrations
@@ -6224,7 +6224,7 @@ paths:
   '/v1beta/integrations/{integrationId}':
     get:
       tags:
-        - 💧 VDP
+        - 💧 Pipeline
       summary: Get an integration
       description: Returns the details of an integration.
       operationId: PipelinePublicService_GetIntegration
@@ -9662,7 +9662,7 @@ components:
             - $ref: '#/components/schemas/Endpoints'
           description: Pipeline endpoints.
           readOnly: true
-      description: "A Pipeline is an end-to-end workflow that automates a sequence of components\nto process data.\n\nFor more information, see [Pipeline](https://www.instill.tech/docs/vdp/introduction) in\nthe official documentation."
+      description: "A Pipeline is an end-to-end workflow that automates a sequence of components\nto process data.\n\nFor more information, see [Pipeline](https://www.instill.tech/docs/pipeline/introduction) in\nthe official documentation."
     Pipeline.Stats:
       title: Statistic data
       type: object
@@ -10152,7 +10152,7 @@ components:
           allOf:
             - $ref: '#/components/schemas/ShareCode'
           description: Defines the configuration to share a resource via link.
-      description: "Sharing contains the information to share a resource with other users.\n\nFor more information, see [Share Pipelines](https://www.instill.tech/docs/vdp/share)."
+      description: "Sharing contains the information to share a resource with other users.\n\nFor more information, see [Share Pipelines](https://www.instill.tech/docs/pipeline/share-pipeline)."
     Sharing.User:
       type: object
       properties:
@@ -11400,8 +11400,8 @@ security:
 tags:
   - name: 🪆 Namespace
     description: 'Namespaces (e.g. User, Organization) that structure the resource hierarchy.'
-  - name: 💧 VDP
-    description: Pipeline orchestration in VDP (Versatile Data Pipeline).
+  - name: 💧 Pipeline
+    description: Pipeline orchestration in Instill Core.
   - name: ⚗️ Model
     description: AI Model resources for MLOps/LLMOps.
   - name: 💾 Artifact

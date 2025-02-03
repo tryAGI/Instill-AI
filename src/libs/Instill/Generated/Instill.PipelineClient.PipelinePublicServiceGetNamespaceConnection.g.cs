@@ -3,48 +3,58 @@
 
 namespace Instill
 {
-    public partial class SubscriptionClient
+    public partial class PipelineClient
     {
-        partial void PrepareGetRemainingCreditArguments(
+        partial void PreparePipelinePublicServiceGetNamespaceConnectionArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string namespaceId);
-        partial void PrepareGetRemainingCreditRequest(
+            ref string namespaceId,
+            ref string connectionId,
+            ref global::Instill.PipelinePublicServiceGetNamespaceConnectionView? view);
+        partial void PreparePipelinePublicServiceGetNamespaceConnectionRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string namespaceId);
-        partial void ProcessGetRemainingCreditResponse(
+            string namespaceId,
+            string connectionId,
+            global::Instill.PipelinePublicServiceGetNamespaceConnectionView? view);
+        partial void ProcessPipelinePublicServiceGetNamespaceConnectionResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessGetRemainingCreditResponseContent(
+        partial void ProcessPipelinePublicServiceGetNamespaceConnectionResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Get the remaining Instill Credit<br/>
-        /// This endpoint returns the remaining [Instill Credit](https://www.instill.tech/docs/cloud/credit) of a given user or<br/>
-        /// organization. The requested credit owner must be either the authenticated<br/>
-        /// user or an organization they belong to.<br/>
-        /// On Instill Core, this endpoint will return a 404 Not Found status.
+        /// Get a namespace connection<br/>
+        /// Returns the details of a connection.
         /// </summary>
         /// <param name="namespaceId"></param>
+        /// <param name="connectionId"></param>
+        /// <param name="view"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
-        public async global::System.Threading.Tasks.Task<global::Instill.GetRemainingCreditResponse> GetRemainingCreditAsync(
+        public async global::System.Threading.Tasks.Task<global::Instill.GetNamespaceConnectionResponse> PipelinePublicServiceGetNamespaceConnectionAsync(
             string namespaceId,
+            string connectionId,
+            global::Instill.PipelinePublicServiceGetNamespaceConnectionView? view = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareGetRemainingCreditArguments(
+            PreparePipelinePublicServiceGetNamespaceConnectionArguments(
                 httpClient: HttpClient,
-                namespaceId: ref namespaceId);
+                namespaceId: ref namespaceId,
+                connectionId: ref connectionId,
+                view: ref view);
 
             var __pathBuilder = new PathBuilder(
-                path: $"/v1beta/namespaces/{namespaceId}/credit",
+                path: $"/v1beta/namespaces/{namespaceId}/connections/{connectionId}",
                 baseUri: HttpClient.BaseAddress); 
+            __pathBuilder 
+                .AddOptionalParameter("view", view?.ToValueString()) 
+                ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -73,10 +83,12 @@ namespace Instill
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareGetRemainingCreditRequest(
+            PreparePipelinePublicServiceGetNamespaceConnectionRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                namespaceId: namespaceId);
+                namespaceId: namespaceId,
+                connectionId: connectionId,
+                view: view);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
@@ -86,7 +98,7 @@ namespace Instill
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessGetRemainingCreditResponse(
+            ProcessPipelinePublicServiceGetNamespaceConnectionResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
             // Returned when the client credentials are not valid.
@@ -154,7 +166,7 @@ namespace Instill
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessGetRemainingCreditResponseContent(
+                ProcessPipelinePublicServiceGetNamespaceConnectionResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -179,7 +191,7 @@ namespace Instill
                 }
 
                 return
-                    global::Instill.GetRemainingCreditResponse.FromJson(__content, JsonSerializerContext) ??
+                    global::Instill.GetNamespaceConnectionResponse.FromJson(__content, JsonSerializerContext) ??
                     throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
@@ -205,7 +217,7 @@ namespace Instill
                 using var __content = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
 
                 return
-                    await global::Instill.GetRemainingCreditResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    await global::Instill.GetNamespaceConnectionResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                     throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }

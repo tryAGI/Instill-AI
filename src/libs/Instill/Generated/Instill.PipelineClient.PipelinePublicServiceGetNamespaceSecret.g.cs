@@ -3,47 +3,50 @@
 
 namespace Instill
 {
-    public partial class SubscriptionClient
+    public partial class PipelineClient
     {
-        partial void PrepareGetRemainingCreditArguments(
+        partial void PreparePipelinePublicServiceGetNamespaceSecretArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string namespaceId);
-        partial void PrepareGetRemainingCreditRequest(
+            ref string namespaceId,
+            ref string secretId);
+        partial void PreparePipelinePublicServiceGetNamespaceSecretRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string namespaceId);
-        partial void ProcessGetRemainingCreditResponse(
+            string namespaceId,
+            string secretId);
+        partial void ProcessPipelinePublicServiceGetNamespaceSecretResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessGetRemainingCreditResponseContent(
+        partial void ProcessPipelinePublicServiceGetNamespaceSecretResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Get the remaining Instill Credit<br/>
-        /// This endpoint returns the remaining [Instill Credit](https://www.instill.tech/docs/cloud/credit) of a given user or<br/>
-        /// organization. The requested credit owner must be either the authenticated<br/>
-        /// user or an organization they belong to.<br/>
-        /// On Instill Core, this endpoint will return a 404 Not Found status.
+        /// Get a secret<br/>
+        /// Returns the details of an namespace-owned secret by its resource name,<br/>
+        /// which is defined by the parent namespace and the ID of the secret.
         /// </summary>
         /// <param name="namespaceId"></param>
+        /// <param name="secretId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
-        public async global::System.Threading.Tasks.Task<global::Instill.GetRemainingCreditResponse> GetRemainingCreditAsync(
+        public async global::System.Threading.Tasks.Task<global::Instill.GetNamespaceSecretResponse> PipelinePublicServiceGetNamespaceSecretAsync(
             string namespaceId,
+            string secretId,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareGetRemainingCreditArguments(
+            PreparePipelinePublicServiceGetNamespaceSecretArguments(
                 httpClient: HttpClient,
-                namespaceId: ref namespaceId);
+                namespaceId: ref namespaceId,
+                secretId: ref secretId);
 
             var __pathBuilder = new PathBuilder(
-                path: $"/v1beta/namespaces/{namespaceId}/credit",
+                path: $"/v1beta/namespaces/{namespaceId}/secrets/{secretId}",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -73,10 +76,11 @@ namespace Instill
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareGetRemainingCreditRequest(
+            PreparePipelinePublicServiceGetNamespaceSecretRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                namespaceId: namespaceId);
+                namespaceId: namespaceId,
+                secretId: secretId);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
@@ -86,7 +90,7 @@ namespace Instill
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessGetRemainingCreditResponse(
+            ProcessPipelinePublicServiceGetNamespaceSecretResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
             // Returned when the client credentials are not valid.
@@ -154,7 +158,7 @@ namespace Instill
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessGetRemainingCreditResponseContent(
+                ProcessPipelinePublicServiceGetNamespaceSecretResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -179,7 +183,7 @@ namespace Instill
                 }
 
                 return
-                    global::Instill.GetRemainingCreditResponse.FromJson(__content, JsonSerializerContext) ??
+                    global::Instill.GetNamespaceSecretResponse.FromJson(__content, JsonSerializerContext) ??
                     throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
@@ -205,7 +209,7 @@ namespace Instill
                 using var __content = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
 
                 return
-                    await global::Instill.GetRemainingCreditResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    await global::Instill.GetNamespaceSecretResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                     throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }

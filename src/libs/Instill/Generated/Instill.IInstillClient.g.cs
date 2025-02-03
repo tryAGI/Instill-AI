@@ -43,9 +43,9 @@ namespace Instill
         public NamespaceClient Namespace { get; }
 
         /// <summary>
-        /// Pipeline orchestration in VDP (Versatile Data Pipeline).
+        /// Pipeline orchestration in Instill Core.
         /// </summary>
-        public VDPClient VDP { get; }
+        public PipelineClient Pipeline { get; }
 
         /// <summary>
         /// AI Model resources for MLOps/LLMOps.

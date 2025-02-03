@@ -3,48 +3,82 @@
 
 namespace Instill
 {
-    public partial class SubscriptionClient
+    public partial class PipelineClient
     {
-        partial void PrepareGetRemainingCreditArguments(
+        partial void PreparePipelinePublicServiceListComponentRunsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string namespaceId);
-        partial void PrepareGetRemainingCreditRequest(
+            ref string pipelineRunId,
+            ref int? page,
+            ref int? pageSize,
+            ref string? filter,
+            ref string? orderBy,
+            ref global::Instill.PipelinePublicServiceListComponentRunsView? view,
+            ref string? instillRequesterUid);
+        partial void PreparePipelinePublicServiceListComponentRunsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string namespaceId);
-        partial void ProcessGetRemainingCreditResponse(
+            string pipelineRunId,
+            int? page,
+            int? pageSize,
+            string? filter,
+            string? orderBy,
+            global::Instill.PipelinePublicServiceListComponentRunsView? view,
+            string? instillRequesterUid);
+        partial void ProcessPipelinePublicServiceListComponentRunsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessGetRemainingCreditResponseContent(
+        partial void ProcessPipelinePublicServiceListComponentRunsResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Get the remaining Instill Credit<br/>
-        /// This endpoint returns the remaining [Instill Credit](https://www.instill.tech/docs/cloud/credit) of a given user or<br/>
-        /// organization. The requested credit owner must be either the authenticated<br/>
-        /// user or an organization they belong to.<br/>
-        /// On Instill Core, this endpoint will return a 404 Not Found status.
+        /// List Component Runs<br/>
+        /// Returns the information of each component execution within a pipeline run.
         /// </summary>
-        /// <param name="namespaceId"></param>
+        /// <param name="pipelineRunId"></param>
+        /// <param name="page"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="filter"></param>
+        /// <param name="orderBy"></param>
+        /// <param name="view"></param>
+        /// <param name="instillRequesterUid"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
-        public async global::System.Threading.Tasks.Task<global::Instill.GetRemainingCreditResponse> GetRemainingCreditAsync(
-            string namespaceId,
+        public async global::System.Threading.Tasks.Task<global::Instill.ListComponentRunsResponse> PipelinePublicServiceListComponentRunsAsync(
+            string pipelineRunId,
+            int? page = default,
+            int? pageSize = default,
+            string? filter = default,
+            string? orderBy = default,
+            global::Instill.PipelinePublicServiceListComponentRunsView? view = default,
+            string? instillRequesterUid = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareGetRemainingCreditArguments(
+            PreparePipelinePublicServiceListComponentRunsArguments(
                 httpClient: HttpClient,
-                namespaceId: ref namespaceId);
+                pipelineRunId: ref pipelineRunId,
+                page: ref page,
+                pageSize: ref pageSize,
+                filter: ref filter,
+                orderBy: ref orderBy,
+                view: ref view,
+                instillRequesterUid: ref instillRequesterUid);
 
             var __pathBuilder = new PathBuilder(
-                path: $"/v1beta/namespaces/{namespaceId}/credit",
+                path: $"/v1beta/pipeline-runs/{pipelineRunId}/component-runs",
                 baseUri: HttpClient.BaseAddress); 
+            __pathBuilder 
+                .AddOptionalParameter("page", page?.ToString()) 
+                .AddOptionalParameter("pageSize", pageSize?.ToString()) 
+                .AddOptionalParameter("filter", filter) 
+                .AddOptionalParameter("orderBy", orderBy) 
+                .AddOptionalParameter("view", view?.ToValueString()) 
+                ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -70,13 +104,25 @@ namespace Instill
                 }
             }
 
+            if (instillRequesterUid != default)
+            {
+                __httpRequest.Headers.TryAddWithoutValidation("Instill-Requester-Uid", instillRequesterUid.ToString());
+            }
+
+
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareGetRemainingCreditRequest(
+            PreparePipelinePublicServiceListComponentRunsRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                namespaceId: namespaceId);
+                pipelineRunId: pipelineRunId,
+                page: page,
+                pageSize: pageSize,
+                filter: filter,
+                orderBy: orderBy,
+                view: view,
+                instillRequesterUid: instillRequesterUid);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
@@ -86,7 +132,7 @@ namespace Instill
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessGetRemainingCreditResponse(
+            ProcessPipelinePublicServiceListComponentRunsResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
             // Returned when the client credentials are not valid.
@@ -154,7 +200,7 @@ namespace Instill
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessGetRemainingCreditResponseContent(
+                ProcessPipelinePublicServiceListComponentRunsResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -179,7 +225,7 @@ namespace Instill
                 }
 
                 return
-                    global::Instill.GetRemainingCreditResponse.FromJson(__content, JsonSerializerContext) ??
+                    global::Instill.ListComponentRunsResponse.FromJson(__content, JsonSerializerContext) ??
                     throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
@@ -205,7 +251,7 @@ namespace Instill
                 using var __content = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
 
                 return
-                    await global::Instill.GetRemainingCreditResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    await global::Instill.ListComponentRunsResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                     throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }

@@ -6,7 +6,7 @@ namespace Instill
     /// <summary>
     /// A Pipeline is an end-to-end workflow that automates a sequence of components<br/>
     /// to process data.<br/>
-    /// For more information, see [Pipeline](https://www.instill.tech/docs/vdp/introduction) in<br/>
+    /// For more information, see [Pipeline](https://www.instill.tech/docs/pipeline/introduction) in<br/>
     /// the official documentation.
     /// </summary>
     public sealed partial class Pipeline

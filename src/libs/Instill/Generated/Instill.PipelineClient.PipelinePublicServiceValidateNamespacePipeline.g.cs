@@ -3,51 +3,62 @@
 
 namespace Instill
 {
-    public partial class SubscriptionClient
+    public partial class PipelineClient
     {
-        partial void PrepareGetRemainingCreditArguments(
+        partial void PreparePipelinePublicServiceValidateNamespacePipelineArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string namespaceId);
-        partial void PrepareGetRemainingCreditRequest(
+            ref string namespaceId,
+            ref string pipelineId,
+            object request);
+        partial void PreparePipelinePublicServiceValidateNamespacePipelineRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string namespaceId);
-        partial void ProcessGetRemainingCreditResponse(
+            string namespaceId,
+            string pipelineId,
+            object request);
+        partial void ProcessPipelinePublicServiceValidateNamespacePipelineResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessGetRemainingCreditResponseContent(
+        partial void ProcessPipelinePublicServiceValidateNamespacePipelineResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Get the remaining Instill Credit<br/>
-        /// This endpoint returns the remaining [Instill Credit](https://www.instill.tech/docs/cloud/credit) of a given user or<br/>
-        /// organization. The requested credit owner must be either the authenticated<br/>
-        /// user or an organization they belong to.<br/>
-        /// On Instill Core, this endpoint will return a 404 Not Found status.
+        /// Validate a pipeline<br/>
+        /// Validates a pipeline by its resource name, which is defined by the parent<br/>
+        /// namespace and the ID of the pipeline.<br/>
+        /// Validation checks the recipe of the pipeline and the status of its components.
         /// </summary>
         /// <param name="namespaceId"></param>
+        /// <param name="pipelineId"></param>
+        /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
-        public async global::System.Threading.Tasks.Task<global::Instill.GetRemainingCreditResponse> GetRemainingCreditAsync(
+        public async global::System.Threading.Tasks.Task<global::Instill.ValidateNamespacePipelineResponse> PipelinePublicServiceValidateNamespacePipelineAsync(
             string namespaceId,
+            string pipelineId,
+            object request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
+
             PrepareArguments(
                 client: HttpClient);
-            PrepareGetRemainingCreditArguments(
+            PreparePipelinePublicServiceValidateNamespacePipelineArguments(
                 httpClient: HttpClient,
-                namespaceId: ref namespaceId);
+                namespaceId: ref namespaceId,
+                pipelineId: ref pipelineId,
+                request: request);
 
             var __pathBuilder = new PathBuilder(
-                path: $"/v1beta/namespaces/{namespaceId}/credit",
+                path: $"/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/validate",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                method: global::System.Net.Http.HttpMethod.Get,
+                method: global::System.Net.Http.HttpMethod.Post,
                 requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
             __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -69,14 +80,22 @@ namespace Instill
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 }
             }
+            var __httpRequestContentBody = global::System.Text.Json.JsonSerializer.Serialize(request, request.GetType(), JsonSerializerContext);
+            var __httpRequestContent = new global::System.Net.Http.StringContent(
+                content: __httpRequestContentBody,
+                encoding: global::System.Text.Encoding.UTF8,
+                mediaType: "application/json");
+            __httpRequest.Content = __httpRequestContent;
 
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareGetRemainingCreditRequest(
+            PreparePipelinePublicServiceValidateNamespacePipelineRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                namespaceId: namespaceId);
+                namespaceId: namespaceId,
+                pipelineId: pipelineId,
+                request: request);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
@@ -86,7 +105,7 @@ namespace Instill
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessGetRemainingCreditResponse(
+            ProcessPipelinePublicServiceValidateNamespacePipelineResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
             // Returned when the client credentials are not valid.
@@ -154,7 +173,7 @@ namespace Instill
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessGetRemainingCreditResponseContent(
+                ProcessPipelinePublicServiceValidateNamespacePipelineResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -179,7 +198,7 @@ namespace Instill
                 }
 
                 return
-                    global::Instill.GetRemainingCreditResponse.FromJson(__content, JsonSerializerContext) ??
+                    global::Instill.ValidateNamespacePipelineResponse.FromJson(__content, JsonSerializerContext) ??
                     throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
@@ -205,9 +224,36 @@ namespace Instill
                 using var __content = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
 
                 return
-                    await global::Instill.GetRemainingCreditResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    await global::Instill.ValidateNamespacePipelineResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                     throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
+        }
+
+        /// <summary>
+        /// Validate a pipeline<br/>
+        /// Validates a pipeline by its resource name, which is defined by the parent<br/>
+        /// namespace and the ID of the pipeline.<br/>
+        /// Validation checks the recipe of the pipeline and the status of its components.
+        /// </summary>
+        /// <param name="namespaceId"></param>
+        /// <param name="pipelineId"></param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
+        public async global::System.Threading.Tasks.Task<global::Instill.ValidateNamespacePipelineResponse> PipelinePublicServiceValidateNamespacePipelineAsync(
+            string namespaceId,
+            string pipelineId,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __request = new object
+            {
+            };
+
+            return await PipelinePublicServiceValidateNamespacePipelineAsync(
+                namespaceId: namespaceId,
+                pipelineId: pipelineId,
+                request: __request,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

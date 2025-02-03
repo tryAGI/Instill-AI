@@ -3,48 +3,89 @@
 
 namespace Instill
 {
-    public partial class SubscriptionClient
+    public partial class PipelineClient
     {
-        partial void PrepareGetRemainingCreditArguments(
+        partial void PreparePipelinePublicServiceListNamespacePipelinesArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string namespaceId);
-        partial void PrepareGetRemainingCreditRequest(
+            ref string namespaceId,
+            ref int? pageSize,
+            ref string? pageToken,
+            ref global::Instill.PipelinePublicServiceListNamespacePipelinesView? view,
+            ref string? filter,
+            ref bool? showDeleted,
+            ref global::Instill.PipelinePublicServiceListNamespacePipelinesVisibility? visibility,
+            ref string? orderBy);
+        partial void PreparePipelinePublicServiceListNamespacePipelinesRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string namespaceId);
-        partial void ProcessGetRemainingCreditResponse(
+            string namespaceId,
+            int? pageSize,
+            string? pageToken,
+            global::Instill.PipelinePublicServiceListNamespacePipelinesView? view,
+            string? filter,
+            bool? showDeleted,
+            global::Instill.PipelinePublicServiceListNamespacePipelinesVisibility? visibility,
+            string? orderBy);
+        partial void ProcessPipelinePublicServiceListNamespacePipelinesResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessGetRemainingCreditResponseContent(
+        partial void ProcessPipelinePublicServiceListNamespacePipelinesResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Get the remaining Instill Credit<br/>
-        /// This endpoint returns the remaining [Instill Credit](https://www.instill.tech/docs/cloud/credit) of a given user or<br/>
-        /// organization. The requested credit owner must be either the authenticated<br/>
-        /// user or an organization they belong to.<br/>
-        /// On Instill Core, this endpoint will return a 404 Not Found status.
+        /// List namespace pipelines<br/>
+        /// Returns a paginated list of pipelines of a namespace
         /// </summary>
         /// <param name="namespaceId"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="pageToken"></param>
+        /// <param name="view"></param>
+        /// <param name="filter"></param>
+        /// <param name="showDeleted"></param>
+        /// <param name="visibility"></param>
+        /// <param name="orderBy"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
-        public async global::System.Threading.Tasks.Task<global::Instill.GetRemainingCreditResponse> GetRemainingCreditAsync(
+        public async global::System.Threading.Tasks.Task<global::Instill.ListNamespacePipelinesResponse> PipelinePublicServiceListNamespacePipelinesAsync(
             string namespaceId,
+            int? pageSize = default,
+            string? pageToken = default,
+            global::Instill.PipelinePublicServiceListNamespacePipelinesView? view = default,
+            string? filter = default,
+            bool? showDeleted = default,
+            global::Instill.PipelinePublicServiceListNamespacePipelinesVisibility? visibility = default,
+            string? orderBy = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareGetRemainingCreditArguments(
+            PreparePipelinePublicServiceListNamespacePipelinesArguments(
                 httpClient: HttpClient,
-                namespaceId: ref namespaceId);
+                namespaceId: ref namespaceId,
+                pageSize: ref pageSize,
+                pageToken: ref pageToken,
+                view: ref view,
+                filter: ref filter,
+                showDeleted: ref showDeleted,
+                visibility: ref visibility,
+                orderBy: ref orderBy);
 
             var __pathBuilder = new PathBuilder(
-                path: $"/v1beta/namespaces/{namespaceId}/credit",
+                path: $"/v1beta/namespaces/{namespaceId}/pipelines",
                 baseUri: HttpClient.BaseAddress); 
+            __pathBuilder 
+                .AddOptionalParameter("pageSize", pageSize?.ToString()) 
+                .AddOptionalParameter("pageToken", pageToken) 
+                .AddOptionalParameter("view", view?.ToValueString()) 
+                .AddOptionalParameter("filter", filter) 
+                .AddOptionalParameter("showDeleted", showDeleted?.ToString()) 
+                .AddOptionalParameter("visibility", visibility?.ToValueString()) 
+                .AddOptionalParameter("orderBy", orderBy) 
+                ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -73,10 +114,17 @@ namespace Instill
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareGetRemainingCreditRequest(
+            PreparePipelinePublicServiceListNamespacePipelinesRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                namespaceId: namespaceId);
+                namespaceId: namespaceId,
+                pageSize: pageSize,
+                pageToken: pageToken,
+                view: view,
+                filter: filter,
+                showDeleted: showDeleted,
+                visibility: visibility,
+                orderBy: orderBy);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
@@ -86,7 +134,7 @@ namespace Instill
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessGetRemainingCreditResponse(
+            ProcessPipelinePublicServiceListNamespacePipelinesResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
             // Returned when the client credentials are not valid.
@@ -154,7 +202,7 @@ namespace Instill
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessGetRemainingCreditResponseContent(
+                ProcessPipelinePublicServiceListNamespacePipelinesResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -179,7 +227,7 @@ namespace Instill
                 }
 
                 return
-                    global::Instill.GetRemainingCreditResponse.FromJson(__content, JsonSerializerContext) ??
+                    global::Instill.ListNamespacePipelinesResponse.FromJson(__content, JsonSerializerContext) ??
                     throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
@@ -205,7 +253,7 @@ namespace Instill
                 using var __content = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
 
                 return
-                    await global::Instill.GetRemainingCreditResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    await global::Instill.ListNamespacePipelinesResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                     throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }

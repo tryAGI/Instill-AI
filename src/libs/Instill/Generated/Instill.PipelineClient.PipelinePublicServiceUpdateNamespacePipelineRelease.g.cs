@@ -3,51 +3,68 @@
 
 namespace Instill
 {
-    public partial class SubscriptionClient
+    public partial class PipelineClient
     {
-        partial void PrepareGetRemainingCreditArguments(
+        partial void PreparePipelinePublicServiceUpdateNamespacePipelineReleaseArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string namespaceId);
-        partial void PrepareGetRemainingCreditRequest(
+            ref string namespaceId,
+            ref string pipelineId,
+            ref string releaseId,
+            global::Instill.PipelineRelease request);
+        partial void PreparePipelinePublicServiceUpdateNamespacePipelineReleaseRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string namespaceId);
-        partial void ProcessGetRemainingCreditResponse(
+            string namespaceId,
+            string pipelineId,
+            string releaseId,
+            global::Instill.PipelineRelease request);
+        partial void ProcessPipelinePublicServiceUpdateNamespacePipelineReleaseResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessGetRemainingCreditResponseContent(
+        partial void ProcessPipelinePublicServiceUpdateNamespacePipelineReleaseResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Get the remaining Instill Credit<br/>
-        /// This endpoint returns the remaining [Instill Credit](https://www.instill.tech/docs/cloud/credit) of a given user or<br/>
-        /// organization. The requested credit owner must be either the authenticated<br/>
-        /// user or an organization they belong to.<br/>
-        /// On Instill Core, this endpoint will return a 404 Not Found status.
+        /// Update a pipeline release<br/>
+        /// Updates the details of a pipeline release, where the pipeline is<br/>
+        /// identified by its resource name, formed by its parent namespace and ID.<br/>
+        /// The authenticated namespace must be the parent of the pipeline in order to<br/>
+        /// perform this action.
         /// </summary>
         /// <param name="namespaceId"></param>
+        /// <param name="pipelineId"></param>
+        /// <param name="releaseId"></param>
+        /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
-        public async global::System.Threading.Tasks.Task<global::Instill.GetRemainingCreditResponse> GetRemainingCreditAsync(
+        public async global::System.Threading.Tasks.Task<global::Instill.UpdateNamespacePipelineReleaseResponse> PipelinePublicServiceUpdateNamespacePipelineReleaseAsync(
             string namespaceId,
+            string pipelineId,
+            string releaseId,
+            global::Instill.PipelineRelease request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
+
             PrepareArguments(
                 client: HttpClient);
-            PrepareGetRemainingCreditArguments(
+            PreparePipelinePublicServiceUpdateNamespacePipelineReleaseArguments(
                 httpClient: HttpClient,
-                namespaceId: ref namespaceId);
+                namespaceId: ref namespaceId,
+                pipelineId: ref pipelineId,
+                releaseId: ref releaseId,
+                request: request);
 
             var __pathBuilder = new PathBuilder(
-                path: $"/v1beta/namespaces/{namespaceId}/credit",
+                path: $"/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/releases/{releaseId}",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                method: global::System.Net.Http.HttpMethod.Get,
+                method: new global::System.Net.Http.HttpMethod("PATCH"),
                 requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
             __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -69,14 +86,23 @@ namespace Instill
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 }
             }
+            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
+            var __httpRequestContent = new global::System.Net.Http.StringContent(
+                content: __httpRequestContentBody,
+                encoding: global::System.Text.Encoding.UTF8,
+                mediaType: "application/json");
+            __httpRequest.Content = __httpRequestContent;
 
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareGetRemainingCreditRequest(
+            PreparePipelinePublicServiceUpdateNamespacePipelineReleaseRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                namespaceId: namespaceId);
+                namespaceId: namespaceId,
+                pipelineId: pipelineId,
+                releaseId: releaseId,
+                request: request);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
@@ -86,7 +112,7 @@ namespace Instill
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessGetRemainingCreditResponse(
+            ProcessPipelinePublicServiceUpdateNamespacePipelineReleaseResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
             // Returned when the client credentials are not valid.
@@ -154,7 +180,7 @@ namespace Instill
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessGetRemainingCreditResponseContent(
+                ProcessPipelinePublicServiceUpdateNamespacePipelineReleaseResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -179,7 +205,7 @@ namespace Instill
                 }
 
                 return
-                    global::Instill.GetRemainingCreditResponse.FromJson(__content, JsonSerializerContext) ??
+                    global::Instill.UpdateNamespacePipelineReleaseResponse.FromJson(__content, JsonSerializerContext) ??
                     throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
@@ -205,9 +231,68 @@ namespace Instill
                 using var __content = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
 
                 return
-                    await global::Instill.GetRemainingCreditResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    await global::Instill.UpdateNamespacePipelineReleaseResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                     throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
+        }
+
+        /// <summary>
+        /// Update a pipeline release<br/>
+        /// Updates the details of a pipeline release, where the pipeline is<br/>
+        /// identified by its resource name, formed by its parent namespace and ID.<br/>
+        /// The authenticated namespace must be the parent of the pipeline in order to<br/>
+        /// perform this action.
+        /// </summary>
+        /// <param name="namespaceId"></param>
+        /// <param name="pipelineId"></param>
+        /// <param name="releaseId"></param>
+        /// <param name="id">
+        /// Release resource ID (used in `name` as the last segment). It must be a<br/>
+        /// sematic version vX.Y.Z.
+        /// </param>
+        /// <param name="description">
+        /// Release description.
+        /// </param>
+        /// <param name="metadata">
+        /// Key-value object with console-related data such as the pipeline builder<br/>
+        /// layout.
+        /// </param>
+        /// <param name="readme">
+        /// README.
+        /// </param>
+        /// <param name="rawRecipe">
+        /// Recipe in YAML format describes the components of a pipeline and how they<br/>
+        /// are connected.
+        /// </param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
+        public async global::System.Threading.Tasks.Task<global::Instill.UpdateNamespacePipelineReleaseResponse> PipelinePublicServiceUpdateNamespacePipelineReleaseAsync(
+            string namespaceId,
+            string pipelineId,
+            string releaseId,
+            string? id = default,
+            string? description = default,
+            object? metadata = default,
+            string? readme = default,
+            string? rawRecipe = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __request = new global::Instill.PipelineRelease
+            {
+                Id = id,
+                Description = description,
+                Metadata = metadata,
+                Readme = readme,
+                RawRecipe = rawRecipe,
+            };
+
+            return await PipelinePublicServiceUpdateNamespacePipelineReleaseAsync(
+                namespaceId: namespaceId,
+                pipelineId: pipelineId,
+                releaseId: releaseId,
+                request: __request,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

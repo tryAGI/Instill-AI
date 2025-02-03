@@ -3,51 +3,55 @@
 
 namespace Instill
 {
-    public partial class SubscriptionClient
+    public partial class PipelineClient
     {
-        partial void PrepareGetRemainingCreditArguments(
+        partial void PreparePipelinePublicServiceCreateNamespacePipelineArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string namespaceId);
-        partial void PrepareGetRemainingCreditRequest(
+            ref string namespaceId,
+            global::Instill.Pipeline request);
+        partial void PreparePipelinePublicServiceCreateNamespacePipelineRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string namespaceId);
-        partial void ProcessGetRemainingCreditResponse(
+            string namespaceId,
+            global::Instill.Pipeline request);
+        partial void ProcessPipelinePublicServiceCreateNamespacePipelineResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessGetRemainingCreditResponseContent(
+        partial void ProcessPipelinePublicServiceCreateNamespacePipelineResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Get the remaining Instill Credit<br/>
-        /// This endpoint returns the remaining [Instill Credit](https://www.instill.tech/docs/cloud/credit) of a given user or<br/>
-        /// organization. The requested credit owner must be either the authenticated<br/>
-        /// user or an organization they belong to.<br/>
-        /// On Instill Core, this endpoint will return a 404 Not Found status.
+        /// Create a new pipeline<br/>
+        /// Creates a new pipeline under a namespace.
         /// </summary>
         /// <param name="namespaceId"></param>
+        /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
-        public async global::System.Threading.Tasks.Task<global::Instill.GetRemainingCreditResponse> GetRemainingCreditAsync(
+        public async global::System.Threading.Tasks.Task<global::Instill.CreateNamespacePipelineResponse> PipelinePublicServiceCreateNamespacePipelineAsync(
             string namespaceId,
+            global::Instill.Pipeline request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
+
             PrepareArguments(
                 client: HttpClient);
-            PrepareGetRemainingCreditArguments(
+            PreparePipelinePublicServiceCreateNamespacePipelineArguments(
                 httpClient: HttpClient,
-                namespaceId: ref namespaceId);
+                namespaceId: ref namespaceId,
+                request: request);
 
             var __pathBuilder = new PathBuilder(
-                path: $"/v1beta/namespaces/{namespaceId}/credit",
+                path: $"/v1beta/namespaces/{namespaceId}/pipelines",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                method: global::System.Net.Http.HttpMethod.Get,
+                method: global::System.Net.Http.HttpMethod.Post,
                 requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
             __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -69,14 +73,21 @@ namespace Instill
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 }
             }
+            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
+            var __httpRequestContent = new global::System.Net.Http.StringContent(
+                content: __httpRequestContentBody,
+                encoding: global::System.Text.Encoding.UTF8,
+                mediaType: "application/json");
+            __httpRequest.Content = __httpRequestContent;
 
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareGetRemainingCreditRequest(
+            PreparePipelinePublicServiceCreateNamespacePipelineRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                namespaceId: namespaceId);
+                namespaceId: namespaceId,
+                request: request);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
@@ -86,7 +97,7 @@ namespace Instill
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessGetRemainingCreditResponse(
+            ProcessPipelinePublicServiceCreateNamespacePipelineResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
             // Returned when the client credentials are not valid.
@@ -154,7 +165,7 @@ namespace Instill
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessGetRemainingCreditResponseContent(
+                ProcessPipelinePublicServiceCreateNamespacePipelineResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -179,7 +190,7 @@ namespace Instill
                 }
 
                 return
-                    global::Instill.GetRemainingCreditResponse.FromJson(__content, JsonSerializerContext) ??
+                    global::Instill.CreateNamespacePipelineResponse.FromJson(__content, JsonSerializerContext) ??
                     throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
@@ -205,9 +216,95 @@ namespace Instill
                 using var __content = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
 
                 return
-                    await global::Instill.GetRemainingCreditResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    await global::Instill.CreateNamespacePipelineResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                     throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
+        }
+
+        /// <summary>
+        /// Create a new pipeline<br/>
+        /// Creates a new pipeline under a namespace.
+        /// </summary>
+        /// <param name="namespaceId"></param>
+        /// <param name="id">
+        /// Pipeline resource ID (used in `name` as the last segment). This conforms<br/>
+        /// to RFC-1034, which restricts to letters, numbers, and hyphen, with the<br/>
+        /// first character a letter, the last a letter or a number, and a 63<br/>
+        /// character maximum.
+        /// </param>
+        /// <param name="description">
+        /// Pipeline description.
+        /// </param>
+        /// <param name="recipe">
+        /// Recipe describes the components of a Pipeline and how they are connected.
+        /// </param>
+        /// <param name="sharing">
+        /// Pipeline sharing information.
+        /// </param>
+        /// <param name="metadata">
+        /// Metadata holds console-related data such as the pipeline builder layout.
+        /// </param>
+        /// <param name="readme">
+        /// README holds the pipeline documentation.
+        /// </param>
+        /// <param name="tags">
+        /// Tags.
+        /// </param>
+        /// <param name="rawRecipe">
+        /// Recipe in YAML format describes the components of a pipeline and how they<br/>
+        /// are connected.
+        /// </param>
+        /// <param name="sourceUrl">
+        /// A link to the source code of the pipeline (e.g. to a GitHub repository).
+        /// </param>
+        /// <param name="documentationUrl">
+        /// A link to any extra information.
+        /// </param>
+        /// <param name="license">
+        /// License under which the pipeline is distributed.
+        /// </param>
+        /// <param name="profileImage">
+        /// Pipeline profile image in base64 format.
+        /// </param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
+        public async global::System.Threading.Tasks.Task<global::Instill.CreateNamespacePipelineResponse> PipelinePublicServiceCreateNamespacePipelineAsync(
+            string namespaceId,
+            object recipe,
+            string? id = default,
+            string? description = default,
+            global::Instill.Sharing? sharing = default,
+            object? metadata = default,
+            string? readme = default,
+            global::System.Collections.Generic.IList<string>? tags = default,
+            string? rawRecipe = default,
+            string? sourceUrl = default,
+            string? documentationUrl = default,
+            string? license = default,
+            string? profileImage = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __request = new global::Instill.Pipeline
+            {
+                Id = id,
+                Description = description,
+                Recipe = recipe,
+                Sharing = sharing,
+                Metadata = metadata,
+                Readme = readme,
+                Tags = tags,
+                RawRecipe = rawRecipe,
+                SourceUrl = sourceUrl,
+                DocumentationUrl = documentationUrl,
+                License = license,
+                ProfileImage = profileImage,
+            };
+
+            return await PipelinePublicServiceCreateNamespacePipelineAsync(
+                namespaceId: namespaceId,
+                request: __request,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

@@ -28,7 +28,9 @@ namespace Instill
         /// The requested organization membership.<br/>
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public GetOrganizationMembershipResponse(
             global::Instill.OrganizationMembership? membership)
         {

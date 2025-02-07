@@ -28,7 +28,9 @@ namespace Instill
         /// The organization resource.<br/>
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public CreateOrganizationResponse(
             global::Instill.Organization? organization)
         {

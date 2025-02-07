@@ -35,7 +35,9 @@ namespace Instill
         /// <param name="tags">
         /// The catalog tags.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UpdateCatalogBody(
             string? description,
             global::System.Collections.Generic.IList<string>? tags)

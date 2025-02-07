@@ -61,7 +61,9 @@ namespace Instill
         /// <param name="filter">
         /// The filter.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ListCatalogFilesResponse(
             global::System.Collections.Generic.IList<global::Instill.File> files,
             int? totalSize,

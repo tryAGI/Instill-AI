@@ -28,7 +28,9 @@ namespace Instill
         /// <param name="format">
         /// The format to export the data in.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ExportTableBody(
             global::Instill.ExportFormat format)
         {

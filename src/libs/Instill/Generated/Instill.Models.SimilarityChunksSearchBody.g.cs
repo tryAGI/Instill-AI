@@ -31,7 +31,9 @@ namespace Instill
         /// </summary>
         /// <param name="textPrompt"></param>
         /// <param name="topK"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public SimilarityChunksSearchBody(
             string? textPrompt,
             long? topK)

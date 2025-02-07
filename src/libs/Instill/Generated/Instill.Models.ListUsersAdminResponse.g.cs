@@ -42,7 +42,9 @@ namespace Instill
         /// <param name="totalSize">
         /// Total number of users.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ListUsersAdminResponse(
             global::System.Collections.Generic.IList<global::Instill.User>? users,
             string? nextPageToken,

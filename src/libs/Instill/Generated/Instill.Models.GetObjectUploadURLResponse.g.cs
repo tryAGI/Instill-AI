@@ -38,7 +38,9 @@ namespace Instill
         /// <param name="uploadUrl"></param>
         /// <param name="urlExpireAt"></param>
         /// <param name="object"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public GetObjectUploadURLResponse(
             string? uploadUrl,
             global::System.DateTime? urlExpireAt,

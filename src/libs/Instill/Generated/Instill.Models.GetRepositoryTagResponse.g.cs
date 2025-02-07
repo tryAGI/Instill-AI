@@ -26,7 +26,9 @@ namespace Instill
         /// <param name="tag">
         /// The created tag.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public GetRepositoryTagResponse(
             global::Instill.RepositoryTag? tag)
         {

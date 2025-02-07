@@ -30,7 +30,9 @@ namespace Instill
         /// Note: Only the row metadata is returned, not the cell data.<br/>
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public RowUpdatedEvent(
             global::Instill.Row? row)
         {

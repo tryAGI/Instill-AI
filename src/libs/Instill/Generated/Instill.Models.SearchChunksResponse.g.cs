@@ -24,7 +24,9 @@ namespace Instill
         /// Initializes a new instance of the <see cref="SearchChunksResponse" /> class.
         /// </summary>
         /// <param name="chunks"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public SearchChunksResponse(
             global::System.Collections.Generic.IList<global::Instill.Chunk>? chunks)
         {

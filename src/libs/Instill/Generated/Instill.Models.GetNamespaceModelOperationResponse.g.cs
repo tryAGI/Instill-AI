@@ -27,7 +27,9 @@ namespace Instill
         /// <param name="operation">
         /// The long-running operation.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public GetNamespaceModelOperationResponse(
             global::Instill.LongrunningOperation? operation)
         {

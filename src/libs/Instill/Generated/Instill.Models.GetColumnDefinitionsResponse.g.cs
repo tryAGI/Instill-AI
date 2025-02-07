@@ -28,7 +28,9 @@ namespace Instill
         /// Map of column names to their definitions.<br/>
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public GetColumnDefinitionsResponse(
             global::System.Collections.Generic.Dictionary<string, global::Instill.ColumnDefinition>? columnDefinitions)
         {

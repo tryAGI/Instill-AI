@@ -76,7 +76,9 @@ namespace Instill
         /// contain connection **values**), the reference syntax shouldn't be used<br/>
         /// here.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public TriggerData(
             object? variable,
             global::System.Collections.Generic.Dictionary<string, string>? secret,

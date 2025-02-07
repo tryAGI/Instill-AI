@@ -31,7 +31,9 @@ namespace Instill
         /// </summary>
         /// <param name="chatUid"></param>
         /// <param name="message"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public CreateMessageResponse(
             string? chatUid,
             global::Instill.AgentV1alphaMessage? message)

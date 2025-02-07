@@ -36,7 +36,9 @@ namespace Instill
         /// <param name="beforeRowUid">
         /// The unique identifier of the row to move before.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public MoveRowsBody(
             global::System.Collections.Generic.IList<string> rowUids,
             string? beforeRowUid)

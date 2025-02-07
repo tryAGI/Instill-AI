@@ -42,7 +42,9 @@ namespace Instill
         /// <param name="totalSize">
         /// Total number of organizations.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ListOrganizationsAdminResponse(
             global::System.Collections.Generic.IList<global::Instill.Organization>? organizations,
             string? nextPageToken,

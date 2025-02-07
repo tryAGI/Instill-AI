@@ -27,7 +27,9 @@ namespace Instill
         /// <param name="url">
         /// The URL of the document resource.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public DocumentCell(
             string url)
         {

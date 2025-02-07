@@ -44,7 +44,9 @@ namespace Instill
         /// <param name="shareCode">
         /// Defines the configuration to share a resource via link.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public Sharing(
             global::System.Collections.Generic.Dictionary<string, global::Instill.SharingUser>? users,
             global::Instill.ShareCode? shareCode)

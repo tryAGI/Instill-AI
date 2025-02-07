@@ -63,7 +63,9 @@ namespace Instill
         /// The order of the column in the table, starting at 1. This determines the column's position<br/>
         /// when displaying or processing table data.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ColumnDefinition(
             string type,
             int order,

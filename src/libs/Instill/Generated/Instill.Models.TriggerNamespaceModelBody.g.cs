@@ -27,7 +27,9 @@ namespace Instill
         /// <param name="taskInputs">
         /// Model inference inputs.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public TriggerNamespaceModelBody(
             global::System.Collections.Generic.IList<object> taskInputs)
         {

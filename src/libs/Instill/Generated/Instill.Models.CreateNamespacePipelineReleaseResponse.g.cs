@@ -28,7 +28,9 @@ namespace Instill
         /// The created pipeline release object.<br/>
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public CreateNamespacePipelineReleaseResponse(
             global::Instill.PipelineRelease? release)
         {

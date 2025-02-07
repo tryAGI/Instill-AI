@@ -81,7 +81,9 @@ namespace Instill
         /// <param name="embedding"></param>
         /// <param name="createTime"></param>
         /// <param name="retrievable"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public GetFileCatalogResponseChunk(
             string? uid,
             global::Instill.ChunkType? type,

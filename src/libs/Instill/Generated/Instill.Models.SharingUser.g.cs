@@ -36,7 +36,9 @@ namespace Instill
         /// <param name="role">
         /// Defines the role the user will have over the resource.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public SharingUser(
             bool? enabled,
             global::Instill.Role? role)

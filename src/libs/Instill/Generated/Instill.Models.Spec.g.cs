@@ -56,7 +56,9 @@ namespace Instill
         /// The key represents the event, and the value is the corresponding event_specification.<br/>
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public Spec(
             object? componentSpecification,
             global::System.Collections.Generic.Dictionary<string, global::Instill.DataSpecification>? dataSpecifications,

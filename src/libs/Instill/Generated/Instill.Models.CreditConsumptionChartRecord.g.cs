@@ -62,7 +62,9 @@ namespace Instill
         /// Credit consumption source (e.g. "pipeline", "model").<br/>
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public CreditConsumptionChartRecord(
             string namespaceId,
             global::System.Collections.Generic.IList<global::System.DateTime>? timeBuckets,

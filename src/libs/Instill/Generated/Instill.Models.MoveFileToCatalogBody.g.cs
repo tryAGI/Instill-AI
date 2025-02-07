@@ -37,7 +37,9 @@ namespace Instill
         /// <param name="toCatalogId">
         /// The target catalog id.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public MoveFileToCatalogBody(
             string fileUid,
             string toCatalogId)

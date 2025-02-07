@@ -24,7 +24,9 @@ namespace Instill
         /// Initializes a new instance of the <see cref="SearchSourceFilesResponse" /> class.
         /// </summary>
         /// <param name="sourceFiles"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public SearchSourceFilesResponse(
             global::System.Collections.Generic.IList<global::Instill.SourceFile>? sourceFiles)
         {

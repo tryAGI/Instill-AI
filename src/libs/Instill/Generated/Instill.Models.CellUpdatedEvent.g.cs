@@ -43,7 +43,9 @@ namespace Instill
         /// only the changes made to the cell value rather than the full value.<br/>
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public CellUpdatedEvent(
             global::Instill.Cell? cell,
             bool? deltaMode)

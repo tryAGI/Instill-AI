@@ -91,7 +91,9 @@ namespace Instill
         /// is `TakeSnapshot()`, the inferred response type is<br/>
         /// `TakeSnapshotResponse`.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public LongrunningOperation(
             string? name,
             global::Instill.Any? metadata,

@@ -44,7 +44,9 @@ namespace Instill
         /// <param name="totalSize">
         /// Total number of API token resources.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ListTokensResponse(
             global::System.Collections.Generic.IList<global::Instill.ApiToken>? tokens,
             string? nextPageToken,

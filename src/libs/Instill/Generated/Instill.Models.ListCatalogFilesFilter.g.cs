@@ -26,7 +26,9 @@ namespace Instill
         /// <param name="fileUids">
         /// The file uids.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ListCatalogFilesFilter(
             global::System.Collections.Generic.IList<string>? fileUids)
         {

@@ -39,7 +39,9 @@ namespace Instill
         /// The unique identifier of the row that was moved before.<br/>
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public RowsMovedEvent(
             global::System.Collections.Generic.IList<string>? rowUids,
             string? beforeRowUid)

@@ -59,7 +59,9 @@ namespace Instill
         /// A list of messages that carry the error details.  There is a common set of<br/>
         /// message types for APIs to use.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public RpcStatus(
             int? code,
             string? message,

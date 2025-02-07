@@ -50,7 +50,9 @@ namespace Instill
         /// Total number of users.<br/>
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ListUsersResponse(
             global::System.Collections.Generic.IList<global::Instill.User>? users,
             string? nextPageToken,

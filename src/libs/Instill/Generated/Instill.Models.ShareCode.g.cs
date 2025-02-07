@@ -58,7 +58,9 @@ namespace Instill
         /// <param name="role">
         /// Defines the role users will have over the resource.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ShareCode(
             string? user,
             string? code,

@@ -35,7 +35,9 @@ namespace Instill
         /// <param name="beforeRowUid">
         /// The unique identifier of the row to insert before.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public InsertRowBody(
             global::Instill.Row? row,
             string? beforeRowUid)

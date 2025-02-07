@@ -40,7 +40,9 @@ namespace Instill
         /// Traces of the pipeline inference.<br/>
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public TriggerNamespacePipelineReleaseResponse(
             global::System.Collections.Generic.IList<object>? outputs,
             global::Instill.TriggerMetadata? metadata)

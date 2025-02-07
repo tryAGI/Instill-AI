@@ -151,7 +151,9 @@ namespace Instill
         /// <param name="usedStorage">
         /// The current used storage in catalog.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public Catalog(
             string catalogId,
             string? catalogUid,

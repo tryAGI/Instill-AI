@@ -26,7 +26,9 @@ namespace Instill
         /// <param name="secret">
         /// The secret resource.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public GetNamespaceSecretResponse(
             global::Instill.Secret? secret)
         {

@@ -48,7 +48,9 @@ namespace Instill
         /// Total number of organizations.<br/>
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ListOrganizationsResponse(
             global::System.Collections.Generic.IList<global::Instill.Organization>? organizations,
             string? nextPageToken,

@@ -29,7 +29,9 @@ namespace Instill
         /// The long-running operation.<br/>
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public GetModelOperationResponse(
             global::Instill.LongrunningOperation? operation)
         {

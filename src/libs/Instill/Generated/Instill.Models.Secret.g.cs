@@ -94,7 +94,9 @@ namespace Instill
         /// The value of the secret, which is input-only and will never be returned in API responses.
         /// </param>
         /// <param name="description"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public Secret(
             string? name,
             string? uid,

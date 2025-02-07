@@ -31,7 +31,9 @@ namespace Instill
         /// </summary>
         /// <param name="chatDisplayName"></param>
         /// <param name="agentConfig"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UpdateChatBody(
             string? chatDisplayName,
             global::Instill.AgentConfig? agentConfig)

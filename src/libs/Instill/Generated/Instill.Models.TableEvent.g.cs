@@ -115,7 +115,9 @@ namespace Instill
         /// <param name="cellUpdatedEvent">
         /// The cell that was updated.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public TableEvent(
             string? @event,
             string? id,

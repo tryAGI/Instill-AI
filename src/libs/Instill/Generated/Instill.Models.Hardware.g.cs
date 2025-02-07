@@ -31,7 +31,9 @@ namespace Instill
         /// </summary>
         /// <param name="title"></param>
         /// <param name="value"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public Hardware(
             string? title,
             string? value)

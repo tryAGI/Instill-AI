@@ -57,7 +57,9 @@ namespace Instill
         /// <param name="url">
         /// URL of the file (e.g., S3 URL).
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public FileReference(
             string name,
             string type,

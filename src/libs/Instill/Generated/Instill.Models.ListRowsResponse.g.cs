@@ -50,7 +50,9 @@ namespace Instill
         /// The total number of rows that match the request.<br/>
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ListRowsResponse(
             global::System.Collections.Generic.IList<global::Instill.Row>? rows,
             string? nextPageToken,

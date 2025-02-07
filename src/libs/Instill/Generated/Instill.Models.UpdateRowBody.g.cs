@@ -26,7 +26,9 @@ namespace Instill
         /// <param name="row">
         /// The new row data.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UpdateRowBody(
             global::Instill.Row? row)
         {

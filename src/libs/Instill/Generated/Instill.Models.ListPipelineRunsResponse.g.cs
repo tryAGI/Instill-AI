@@ -61,7 +61,9 @@ namespace Instill
         /// The number of items per page.<br/>
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ListPipelineRunsResponse(
             global::System.Collections.Generic.IList<global::Instill.PipelineRun>? pipelineRuns,
             int? totalSize,

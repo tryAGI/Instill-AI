@@ -55,7 +55,9 @@ namespace Instill
         /// <param name="organization">
         /// Organization.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public CheckNamespaceAdminResponse(
             global::Instill.CheckNamespaceAdminResponseNamespace? type,
             string? uid,

@@ -53,7 +53,9 @@ namespace Instill
         /// <param name="page">
         /// The requested page offset.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ListComponentDefinitionsResponse(
             global::System.Collections.Generic.IList<global::Instill.ComponentDefinition>? componentDefinitions,
             int? totalSize,

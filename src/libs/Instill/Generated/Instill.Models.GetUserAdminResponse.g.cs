@@ -24,7 +24,9 @@ namespace Instill
         /// Initializes a new instance of the <see cref="GetUserAdminResponse" /> class.
         /// </summary>
         /// <param name="user"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public GetUserAdminResponse(
             global::Instill.User? user)
         {

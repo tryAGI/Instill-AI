@@ -50,7 +50,9 @@ namespace Instill
         /// The total number of tables.<br/>
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ListTablesResponse(
             global::System.Collections.Generic.IList<global::Instill.Table>? tables,
             string? nextPageToken,

@@ -79,7 +79,9 @@ namespace Instill
         /// Version update time, i.e. timestamp of the last push.<br/>
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ModelVersion(
             string? name,
             string? version,

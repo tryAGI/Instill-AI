@@ -52,7 +52,9 @@ namespace Instill
         /// <param name="createTime"></param>
         /// <param name="updateTime"></param>
         /// <param name="originalFileName"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public SourceFile(
             string? originalFileUid,
             string? content,

@@ -52,7 +52,9 @@ namespace Instill
         /// <param name="transformedContentChunkNum"></param>
         /// <param name="transformedContentTokenNum"></param>
         /// <param name="transformedContentUpdateTime"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public Text(
             global::System.Collections.Generic.IList<string>? pipelineIds,
             string? transformedContent,

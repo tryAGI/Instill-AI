@@ -51,7 +51,9 @@ namespace Instill
         /// Number of used seats within the organization subscription.<br/>
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public OrganizationSubscription(
             global::Instill.OrganizationSubscriptionPlan? plan,
             global::Instill.StripeSubscriptionDetail? detail,

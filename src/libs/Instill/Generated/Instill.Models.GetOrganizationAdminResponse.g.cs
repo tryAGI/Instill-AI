@@ -24,7 +24,9 @@ namespace Instill
         /// Initializes a new instance of the <see cref="GetOrganizationAdminResponse" /> class.
         /// </summary>
         /// <param name="organization"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public GetOrganizationAdminResponse(
             global::Instill.Organization? organization)
         {

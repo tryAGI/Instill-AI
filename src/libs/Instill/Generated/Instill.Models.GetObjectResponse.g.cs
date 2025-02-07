@@ -24,7 +24,9 @@ namespace Instill
         /// Initializes a new instance of the <see cref="GetObjectResponse" /> class.
         /// </summary>
         /// <param name="object"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public GetObjectResponse(
             global::Instill.AIObject? @object)
         {

@@ -24,7 +24,9 @@ namespace Instill
         /// Initializes a new instance of the <see cref="GetObjectURLResponse" /> class.
         /// </summary>
         /// <param name="objectUrl"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public GetObjectURLResponse(
             global::Instill.ObjectURL? objectUrl)
         {

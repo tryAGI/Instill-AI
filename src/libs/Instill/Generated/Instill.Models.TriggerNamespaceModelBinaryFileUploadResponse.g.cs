@@ -39,7 +39,9 @@ namespace Instill
         /// Model inference outputs.<br/>
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public TriggerNamespaceModelBinaryFileUploadResponse(
             global::Instill.AITask task,
             global::System.Collections.Generic.IList<object>? taskOutputs)

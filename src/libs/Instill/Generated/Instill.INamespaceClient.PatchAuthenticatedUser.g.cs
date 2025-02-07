@@ -13,7 +13,9 @@ namespace Instill
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
+#if NET8_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
+#endif
         global::System.Threading.Tasks.Task<global::Instill.PatchAuthenticatedUserResponse> PatchAuthenticatedUserAsync(
             global::Instill.AuthenticatedUser request,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -60,7 +62,9 @@ namespace Instill
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
+#if NET8_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
+#endif
         global::System.Threading.Tasks.Task<global::Instill.PatchAuthenticatedUserResponse> PatchAuthenticatedUserAsync(
             string id,
             string email,

@@ -33,7 +33,9 @@ namespace Instill
         /// <param name="connections">
         /// connection key(used connection id in recipe) and value(connection uid from namespace).
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public AgentConfig(
             string? instructions,
             global::System.Collections.Generic.Dictionary<string, string>? connections)

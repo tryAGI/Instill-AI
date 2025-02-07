@@ -26,7 +26,9 @@ namespace Instill
         /// <param name="message">
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UpdateMessageResponse(
             global::Instill.AgentV1alphaMessage? message)
         {

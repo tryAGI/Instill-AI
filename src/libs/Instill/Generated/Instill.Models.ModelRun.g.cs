@@ -197,7 +197,9 @@ namespace Instill
         /// ID of the namespace that owns the model.<br/>
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ModelRun(
             string? uid,
             global::Instill.RunStatus? status,

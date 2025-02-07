@@ -27,7 +27,9 @@ namespace Instill
         /// <param name="value">
         /// The value of the cell as a boolean.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public BooleanCell(
             bool value)
         {

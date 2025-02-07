@@ -111,7 +111,9 @@ namespace Instill
         /// <param name="permission">
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public Organization(
             global::Instill.OrganizationProfile profile,
             string? name,

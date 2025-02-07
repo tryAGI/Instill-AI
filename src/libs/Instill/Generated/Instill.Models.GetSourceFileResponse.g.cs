@@ -24,7 +24,9 @@ namespace Instill
         /// Initializes a new instance of the <see cref="GetSourceFileResponse" /> class.
         /// </summary>
         /// <param name="sourceFile"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public GetSourceFileResponse(
             global::Instill.SourceFile? sourceFile)
         {

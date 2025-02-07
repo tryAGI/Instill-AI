@@ -27,7 +27,9 @@ namespace Instill
         /// <param name="creditConsumptionChartRecords">
         /// Credit consumption timelines, aggregated by source.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ListCreditConsumptionChartRecordsResponse(
             global::System.Collections.Generic.IList<global::Instill.CreditConsumptionChartRecord>? creditConsumptionChartRecords)
         {

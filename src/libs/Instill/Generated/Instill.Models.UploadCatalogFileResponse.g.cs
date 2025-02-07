@@ -25,7 +25,9 @@ namespace Instill
         /// Initializes a new instance of the <see cref="UploadCatalogFileResponse" /> class.
         /// </summary>
         /// <param name="file"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UploadCatalogFileResponse(
             global::Instill.File file)
         {

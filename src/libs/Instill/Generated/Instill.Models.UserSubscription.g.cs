@@ -40,7 +40,9 @@ namespace Instill
         /// Details of the associated Stripe subscription.<br/>
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UserSubscription(
             global::Instill.UserSubscriptionPlan? plan,
             global::Instill.StripeSubscriptionDetail? detail)

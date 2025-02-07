@@ -180,7 +180,9 @@ namespace Instill
         /// then no need the base64 encoding for the file content.<br/>
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public File(
             string name,
             global::Instill.FileType type,

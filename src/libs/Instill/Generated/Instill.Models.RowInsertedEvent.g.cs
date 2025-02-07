@@ -41,7 +41,9 @@ namespace Instill
         /// The unique identifier of the row that was inserted before.<br/>
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public RowInsertedEvent(
             global::Instill.Row? row,
             string? beforeRowUid)

@@ -28,7 +28,9 @@ namespace Instill
         /// The unique identifier of the row that was deleted.<br/>
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public RowDeletedEvent(
             string? rowUid)
         {

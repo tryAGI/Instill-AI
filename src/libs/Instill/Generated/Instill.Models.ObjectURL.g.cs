@@ -87,7 +87,9 @@ namespace Instill
         /// <param name="createTime"></param>
         /// <param name="updateTime"></param>
         /// <param name="deleteTime"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ObjectURL(
             string? uid,
             string? namespaceUid,

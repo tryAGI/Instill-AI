@@ -52,7 +52,9 @@ namespace Instill
         /// <param name="textContent"></param>
         /// <param name="sourceFile"></param>
         /// <param name="chunkMetadata"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public SimilarityChunk(
             string? chunkUid,
             float? similarityScore,

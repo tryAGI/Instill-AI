@@ -28,7 +28,9 @@ namespace Instill
         /// The user memberships, i.e., the organizations the user belongs to.<br/>
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ListUserMembershipsResponse(
             global::System.Collections.Generic.IList<global::Instill.UserMembership>? memberships)
         {

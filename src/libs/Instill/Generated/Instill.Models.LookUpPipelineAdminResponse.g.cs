@@ -26,7 +26,9 @@ namespace Instill
         /// <param name="pipeline">
         /// The requested pipeline.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public LookUpPipelineAdminResponse(
             global::Instill.Pipeline? pipeline)
         {

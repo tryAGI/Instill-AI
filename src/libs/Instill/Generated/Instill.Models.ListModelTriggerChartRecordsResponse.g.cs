@@ -33,7 +33,9 @@ namespace Instill
         /// timeline of trigger counts for a given requester, regardless the model<br/>
         /// ID, trigger mode, final status or other fields.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ListModelTriggerChartRecordsResponse(
             global::System.Collections.Generic.IList<global::Instill.ModelTriggerChartRecord>? modelTriggerChartRecords)
         {

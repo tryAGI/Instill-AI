@@ -44,7 +44,9 @@ namespace Instill
         /// <param name="totalSize">
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ListChatsResponse(
             global::System.Collections.Generic.IList<global::Instill.Chat>? chats,
             string? nextPageToken,

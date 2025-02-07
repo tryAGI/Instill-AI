@@ -73,7 +73,9 @@ namespace Instill
         /// The timestamp when the row was last updated.<br/>
         /// Included only in responses
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public Row(
             global::System.Collections.Generic.Dictionary<string, global::Instill.Cell> cells,
             string? uid,

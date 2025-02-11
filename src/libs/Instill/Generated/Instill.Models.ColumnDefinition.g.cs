@@ -39,6 +39,19 @@ namespace Instill
         public required int Order { get; set; }
 
         /// <summary>
+        /// The configuration for the agent.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("agentConfig")]
+        public global::Instill.ColumnDefinitionAgentConfig? AgentConfig { get; set; }
+
+        /// <summary>
+        /// The sort of the column.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sort")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.SortJsonConverter))]
+        public global::Instill.Sort? Sort { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -63,6 +76,12 @@ namespace Instill
         /// The order of the column in the table, starting at 1. This determines the column's position<br/>
         /// when displaying or processing table data.
         /// </param>
+        /// <param name="agentConfig">
+        /// The configuration for the agent.
+        /// </param>
+        /// <param name="sort">
+        /// The sort of the column.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -70,12 +89,16 @@ namespace Instill
             string type,
             int order,
             string? columnUid,
-            string? name)
+            string? name,
+            global::Instill.ColumnDefinitionAgentConfig? agentConfig,
+            global::Instill.Sort? sort)
         {
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.Order = order;
             this.ColumnUid = columnUid;
             this.Name = name;
+            this.AgentConfig = agentConfig;
+            this.Sort = sort;
         }
 
         /// <summary>

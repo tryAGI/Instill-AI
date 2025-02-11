@@ -5,55 +5,53 @@ namespace Instill
 {
     public partial class TableClient
     {
-        partial void PrepareAgentPublicServiceCreateTableArguments(
+        partial void PrepareAgentPublicServiceListChatTablesArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
-            global::Instill.Table request);
-        partial void PrepareAgentPublicServiceCreateTableRequest(
+            ref string chatUid);
+        partial void PrepareAgentPublicServiceListChatTablesRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
-            global::Instill.Table request);
-        partial void ProcessAgentPublicServiceCreateTableResponse(
+            string chatUid);
+        partial void ProcessAgentPublicServiceListChatTablesResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessAgentPublicServiceCreateTableResponseContent(
+        partial void ProcessAgentPublicServiceListChatTablesResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Create a table<br/>
-        /// Creates a table.
+        /// List chat tables<br/>
+        /// Returns a list of tables bound to a chat.
         /// </summary>
         /// <param name="namespaceId"></param>
-        /// <param name="request"></param>
+        /// <param name="chatUid"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
 #if NET8_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
 #endif
-        public async global::System.Threading.Tasks.Task<global::Instill.CreateTableResponse> AgentPublicServiceCreateTableAsync(
+        public async global::System.Threading.Tasks.Task<global::Instill.ListChatTablesResponse> AgentPublicServiceListChatTablesAsync(
             string namespaceId,
-            global::Instill.Table request,
+            string chatUid,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
-
             PrepareArguments(
                 client: HttpClient);
-            PrepareAgentPublicServiceCreateTableArguments(
+            PrepareAgentPublicServiceListChatTablesArguments(
                 httpClient: HttpClient,
                 namespaceId: ref namespaceId,
-                request: request);
+                chatUid: ref chatUid);
 
             var __pathBuilder = new PathBuilder(
-                path: $"/v1alpha/namespaces/{namespaceId}/tables",
+                path: $"/v1alpha/namespaces/{namespaceId}/chats/{chatUid}/tables",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                method: global::System.Net.Http.HttpMethod.Post,
+                method: global::System.Net.Http.HttpMethod.Get,
                 requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
             __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -75,21 +73,15 @@ namespace Instill
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 }
             }
-            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
-            var __httpRequestContent = new global::System.Net.Http.StringContent(
-                content: __httpRequestContentBody,
-                encoding: global::System.Text.Encoding.UTF8,
-                mediaType: "application/json");
-            __httpRequest.Content = __httpRequestContent;
 
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareAgentPublicServiceCreateTableRequest(
+            PrepareAgentPublicServiceListChatTablesRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
                 namespaceId: namespaceId,
-                request: request);
+                chatUid: chatUid);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
@@ -99,7 +91,7 @@ namespace Instill
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessAgentPublicServiceCreateTableResponse(
+            ProcessAgentPublicServiceListChatTablesResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
             // Returned when the client credentials are not valid.
@@ -171,7 +163,7 @@ namespace Instill
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessAgentPublicServiceCreateTableResponseContent(
+                ProcessAgentPublicServiceListChatTablesResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -196,7 +188,7 @@ namespace Instill
                 }
 
                 return
-                    global::Instill.CreateTableResponse.FromJson(__content, JsonSerializerContext) ??
+                    global::Instill.ListChatTablesResponse.FromJson(__content, JsonSerializerContext) ??
                     throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
@@ -226,58 +218,9 @@ namespace Instill
                 ).ConfigureAwait(false);
 
                 return
-                    await global::Instill.CreateTableResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    await global::Instill.ListChatTablesResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                     throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
-        }
-
-        /// <summary>
-        /// Create a table<br/>
-        /// Creates a table.
-        /// </summary>
-        /// <param name="namespaceId"></param>
-        /// <param name="id">
-        /// The ID of the table.
-        /// </param>
-        /// <param name="title">
-        /// The title of the table.
-        /// </param>
-        /// <param name="description">
-        /// A description of the table.
-        /// </param>
-        /// <param name="metadata">
-        /// Additional metadata associated with the table.
-        /// </param>
-        /// <param name="agentConfig">
-        /// The configuration for the agent.
-        /// </param>
-        /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
-#endif
-        public async global::System.Threading.Tasks.Task<global::Instill.CreateTableResponse> AgentPublicServiceCreateTableAsync(
-            string namespaceId,
-            string id,
-            string title,
-            string? description = default,
-            object? metadata = default,
-            global::Instill.TableAgentConfig? agentConfig = default,
-            global::System.Threading.CancellationToken cancellationToken = default)
-        {
-            var __request = new global::Instill.Table
-            {
-                Id = id,
-                Title = title,
-                Description = description,
-                Metadata = metadata,
-                AgentConfig = agentConfig,
-            };
-
-            return await AgentPublicServiceCreateTableAsync(
-                namespaceId: namespaceId,
-                request: __request,
-                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

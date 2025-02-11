@@ -5,51 +5,56 @@ namespace Instill
 {
     public partial class TableClient
     {
-        partial void PrepareAgentPublicServiceCreateTableArguments(
+        partial void PrepareAgentPublicServiceBindChatTableArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
-            global::Instill.Table request);
-        partial void PrepareAgentPublicServiceCreateTableRequest(
+            ref string chatUid,
+            global::Instill.BindChatTableBody request);
+        partial void PrepareAgentPublicServiceBindChatTableRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
-            global::Instill.Table request);
-        partial void ProcessAgentPublicServiceCreateTableResponse(
+            string chatUid,
+            global::Instill.BindChatTableBody request);
+        partial void ProcessAgentPublicServiceBindChatTableResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessAgentPublicServiceCreateTableResponseContent(
+        partial void ProcessAgentPublicServiceBindChatTableResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Create a table<br/>
-        /// Creates a table.
+        /// Bind table to chat<br/>
+        /// Binds a table to a chat.
         /// </summary>
         /// <param name="namespaceId"></param>
+        /// <param name="chatUid"></param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
 #if NET8_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
 #endif
-        public async global::System.Threading.Tasks.Task<global::Instill.CreateTableResponse> AgentPublicServiceCreateTableAsync(
+        public async global::System.Threading.Tasks.Task<string> AgentPublicServiceBindChatTableAsync(
             string namespaceId,
-            global::Instill.Table request,
+            string chatUid,
+            global::Instill.BindChatTableBody request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
 
             PrepareArguments(
                 client: HttpClient);
-            PrepareAgentPublicServiceCreateTableArguments(
+            PrepareAgentPublicServiceBindChatTableArguments(
                 httpClient: HttpClient,
                 namespaceId: ref namespaceId,
+                chatUid: ref chatUid,
                 request: request);
 
             var __pathBuilder = new PathBuilder(
-                path: $"/v1alpha/namespaces/{namespaceId}/tables",
+                path: $"/v1alpha/namespaces/{namespaceId}/chats/{chatUid}/bind-table",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -85,10 +90,11 @@ namespace Instill
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareAgentPublicServiceCreateTableRequest(
+            PrepareAgentPublicServiceBindChatTableRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
                 namespaceId: namespaceId,
+                chatUid: chatUid,
                 request: request);
 
             using var __response = await HttpClient.SendAsync(
@@ -99,7 +105,7 @@ namespace Instill
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessAgentPublicServiceCreateTableResponse(
+            ProcessAgentPublicServiceBindChatTableResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
             // Returned when the client credentials are not valid.
@@ -171,7 +177,7 @@ namespace Instill
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessAgentPublicServiceCreateTableResponseContent(
+                ProcessAgentPublicServiceBindChatTableResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -195,9 +201,7 @@ namespace Instill
                     };
                 }
 
-                return
-                    global::Instill.CreateTableResponse.FromJson(__content, JsonSerializerContext) ??
-                    throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                return __content;
             }
             else
             {
@@ -219,63 +223,44 @@ namespace Instill
                     };
                 }
 
-                using var __content = await __response.Content.ReadAsStreamAsync(
+                var __content = await __response.Content.ReadAsStringAsync(
 #if NET5_0_OR_GREATER
                     cancellationToken
 #endif
                 ).ConfigureAwait(false);
 
-                return
-                    await global::Instill.CreateTableResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
-                    throw new global::System.InvalidOperationException("Response deserialization failed.");
+                return __content;
             }
         }
 
         /// <summary>
-        /// Create a table<br/>
-        /// Creates a table.
+        /// Bind table to chat<br/>
+        /// Binds a table to a chat.
         /// </summary>
         /// <param name="namespaceId"></param>
-        /// <param name="id">
-        /// The ID of the table.
-        /// </param>
-        /// <param name="title">
-        /// The title of the table.
-        /// </param>
-        /// <param name="description">
-        /// A description of the table.
-        /// </param>
-        /// <param name="metadata">
-        /// Additional metadata associated with the table.
-        /// </param>
-        /// <param name="agentConfig">
-        /// The configuration for the agent.
+        /// <param name="chatUid"></param>
+        /// <param name="tableUid">
+        /// The UID of the table to bind to the chat.
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
 #if NET8_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
 #endif
-        public async global::System.Threading.Tasks.Task<global::Instill.CreateTableResponse> AgentPublicServiceCreateTableAsync(
+        public async global::System.Threading.Tasks.Task<string> AgentPublicServiceBindChatTableAsync(
             string namespaceId,
-            string id,
-            string title,
-            string? description = default,
-            object? metadata = default,
-            global::Instill.TableAgentConfig? agentConfig = default,
+            string chatUid,
+            string tableUid,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Instill.Table
+            var __request = new global::Instill.BindChatTableBody
             {
-                Id = id,
-                Title = title,
-                Description = description,
-                Metadata = metadata,
-                AgentConfig = agentConfig,
+                TableUid = tableUid,
             };
 
-            return await AgentPublicServiceCreateTableAsync(
+            return await AgentPublicServiceBindChatTableAsync(
                 namespaceId: namespaceId,
+                chatUid: chatUid,
                 request: __request,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
         }

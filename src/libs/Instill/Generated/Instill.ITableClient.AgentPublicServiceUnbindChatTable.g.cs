@@ -5,53 +5,41 @@ namespace Instill
     public partial interface ITableClient
     {
         /// <summary>
-        /// Create a table<br/>
-        /// Creates a table.
+        /// Unbind table from chat<br/>
+        /// Unbinds a table from a chat.
         /// </summary>
         /// <param name="namespaceId"></param>
+        /// <param name="chatUid"></param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
 #if NET8_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
 #endif
-        global::System.Threading.Tasks.Task<global::Instill.CreateTableResponse> AgentPublicServiceCreateTableAsync(
+        global::System.Threading.Tasks.Task<string> AgentPublicServiceUnbindChatTableAsync(
             string namespaceId,
-            global::Instill.Table request,
+            string chatUid,
+            global::Instill.UnbindChatTableBody request,
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Create a table<br/>
-        /// Creates a table.
+        /// Unbind table from chat<br/>
+        /// Unbinds a table from a chat.
         /// </summary>
         /// <param name="namespaceId"></param>
-        /// <param name="id">
-        /// The ID of the table.
-        /// </param>
-        /// <param name="title">
-        /// The title of the table.
-        /// </param>
-        /// <param name="description">
-        /// A description of the table.
-        /// </param>
-        /// <param name="metadata">
-        /// Additional metadata associated with the table.
-        /// </param>
-        /// <param name="agentConfig">
-        /// The configuration for the agent.
+        /// <param name="chatUid"></param>
+        /// <param name="tableUid">
+        /// The UID of the table to unbind from the chat.
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
 #if NET8_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
 #endif
-        global::System.Threading.Tasks.Task<global::Instill.CreateTableResponse> AgentPublicServiceCreateTableAsync(
+        global::System.Threading.Tasks.Task<string> AgentPublicServiceUnbindChatTableAsync(
             string namespaceId,
-            string id,
-            string title,
-            string? description = default,
-            object? metadata = default,
-            global::Instill.TableAgentConfig? agentConfig = default,
+            string chatUid,
+            string tableUid,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

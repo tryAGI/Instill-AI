@@ -112,6 +112,13 @@ namespace Instill
         public global::Instill.CellStatus? Status { get; set; }
 
         /// <summary>
+        /// The faithfulness checking result for the cell.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("faithfulnessCheckingResult")]
+        public global::Instill.FaithfulnessCheckingResult? FaithfulnessCheckingResult { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -174,6 +181,10 @@ namespace Instill
         /// The status of the cell.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="faithfulnessCheckingResult">
+        /// The faithfulness checking result for the cell.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -193,7 +204,8 @@ namespace Instill
             global::Instill.AudioCell? audioValue,
             object? nullValue,
             object? metadata,
-            global::Instill.CellStatus? status)
+            global::Instill.CellStatus? status,
+            global::Instill.FaithfulnessCheckingResult? faithfulnessCheckingResult)
         {
             this.Uid = uid;
             this.ColumnUid = columnUid;
@@ -211,6 +223,7 @@ namespace Instill
             this.NullValue = nullValue;
             this.Metadata = metadata;
             this.Status = status;
+            this.FaithfulnessCheckingResult = faithfulnessCheckingResult;
         }
 
         /// <summary>

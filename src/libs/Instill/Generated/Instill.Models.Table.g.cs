@@ -56,6 +56,12 @@ namespace Instill
         public global::System.DateTime? UpdateTime { get; set; }
 
         /// <summary>
+        /// The configuration for the agent.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("agentConfig")]
+        public global::Instill.TableAgentConfig? AgentConfig { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -88,6 +94,9 @@ namespace Instill
         /// The timestamp when the table was last updated.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="agentConfig">
+        /// The configuration for the agent.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -98,7 +107,8 @@ namespace Instill
             string? description,
             object? metadata,
             global::System.DateTime? createTime,
-            global::System.DateTime? updateTime)
+            global::System.DateTime? updateTime,
+            global::Instill.TableAgentConfig? agentConfig)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Title = title ?? throw new global::System.ArgumentNullException(nameof(title));
@@ -107,6 +117,7 @@ namespace Instill
             this.Metadata = metadata;
             this.CreateTime = createTime;
             this.UpdateTime = updateTime;
+            this.AgentConfig = agentConfig;
         }
 
         /// <summary>

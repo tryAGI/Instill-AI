@@ -39,6 +39,8 @@ namespace Instill
             typeof(global::Instill.JsonConverters.CitationTypeNullableJsonConverter),
             typeof(global::Instill.JsonConverters.RoleJsonConverter),
             typeof(global::Instill.JsonConverters.RoleNullableJsonConverter),
+            typeof(global::Instill.JsonConverters.SortJsonConverter),
+            typeof(global::Instill.JsonConverters.SortNullableJsonConverter),
             typeof(global::Instill.JsonConverters.ComponentTypeJsonConverter),
             typeof(global::Instill.JsonConverters.ComponentTypeNullableJsonConverter),
             typeof(global::Instill.JsonConverters.ComponentDefinitionReleaseStageJsonConverter),

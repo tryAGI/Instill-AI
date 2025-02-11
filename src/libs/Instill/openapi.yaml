@@ -433,6 +433,137 @@ paths:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
       x-stage: alpha
+  '/v1alpha/namespaces/{namespaceId}/chats/{chatUid}/bind-table':
+    post:
+      tags:
+        - Table
+      summary: Bind table to chat
+      description: Binds a table to a chat.
+      operationId: AgentPublicService_BindChatTable
+      parameters:
+        - name: namespaceId
+          in: path
+          description: The ID of the namespace that owns the table.
+          required: true
+          schema:
+            type: string
+        - name: chatUid
+          in: path
+          description: The UID of the chat to bind the table to.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BindChatTableBody'
+        required: true
+        x-bodyName: body
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BindChatTableResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
+  '/v1alpha/namespaces/{namespaceId}/chats/{chatUid}/unbind-table':
+    post:
+      tags:
+        - Table
+      summary: Unbind table from chat
+      description: Unbinds a table from a chat.
+      operationId: AgentPublicService_UnbindChatTable
+      parameters:
+        - name: namespaceId
+          in: path
+          description: The ID of the namespace that owns the table.
+          required: true
+          schema:
+            type: string
+        - name: chatUid
+          in: path
+          description: The UID of the chat to unbind the table from.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UnbindChatTableBody'
+        required: true
+        x-bodyName: body
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnbindChatTableResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
+  '/v1alpha/namespaces/{namespaceId}/chats/{chatUid}/tables':
+    get:
+      tags:
+        - Table
+      summary: List chat tables
+      description: Returns a list of tables bound to a chat.
+      operationId: AgentPublicService_ListChatTables
+      parameters:
+        - name: namespaceId
+          in: path
+          description: The ID of the namespace that owns the table.
+          required: true
+          schema:
+            type: string
+        - name: chatUid
+          in: path
+          description: The UID of the chat to list tables for.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListChatTablesResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
   '/v1alpha/namespaces/{namespaceId}/tables':
     get:
       tags:
@@ -6264,18 +6395,6 @@ paths:
       x-stage: beta
 components:
   schemas:
-    AgentConfig:
-      type: object
-      properties:
-        instructions:
-          title: instructions
-          type: string
-        connections:
-          type: object
-          additionalProperties:
-            type: string
-          description: connection key(used connection id in recipe) and value(connection uid from namespace).
-      description: AgentConfig represents the config for the chat agent.
     AgentPublicService.ChatBody:
       required:
         - message
@@ -6412,6 +6531,18 @@ components:
           description: Profile.
           readOnly: true
       description: "AuthenticatedUser contains the information of an authenticated user, i.e.,\nthe public user information plus some fields that should only be accessed by\nthe user themselves."
+    BindChatTableBody:
+      required:
+        - tableUid
+      type: object
+      properties:
+        tableUid:
+          type: string
+          description: The UID of the table to bind to the chat.
+      description: BindChatTableRequest represents a request to bind a table to a chat.
+    BindChatTableResponse:
+      type: object
+      description: BindChatTableResponse is an empty response for binding a table to a chat.
     BooleanCell:
       required:
         - value
@@ -6639,6 +6770,11 @@ components:
             - $ref: '#/components/schemas/CellStatus'
           description: The status of the cell.
           readOnly: true
+        faithfulnessCheckingResult:
+          allOf:
+            - $ref: '#/components/schemas/FaithfulnessCheckingResult'
+          description: The faithfulness checking result for the cell.
+          readOnly: true
       description: Cell represents a cell in a table.
     CellStatus:
       enum:
@@ -6857,7 +6993,25 @@ components:
           type: integer
           description: "The order of the column in the table, starting at 1. This determines the column's position\nwhen displaying or processing table data."
           format: int32
+        agentConfig:
+          allOf:
+            - $ref: '#/components/schemas/ColumnDefinition.AgentConfig'
+          description: The configuration for the agent.
+        sort:
+          allOf:
+            - $ref: '#/components/schemas/Sort'
+          description: The sort of the column.
       description: ColumnDefinition represents a column definition in a table.
+    ColumnDefinition.AgentConfig:
+      type: object
+      properties:
+        instructions:
+          type: string
+          description: The instructions for the agent.
+        enableWebSearch:
+          type: boolean
+          description: Whether to enable web search for the agent.
+      description: The configuration for the agent.
     ColumnDefinitionsUpdatedEvent:
       type: object
       properties:
@@ -7180,7 +7334,7 @@ components:
         agentConfig:
           title: agent config
           allOf:
-            - $ref: '#/components/schemas/AgentConfig'
+            - $ref: '#/components/schemas/.AgentConfig'
     CreateChatResponse:
       title: CreateChatResponse returns the created chat
       type: object
@@ -7490,6 +7644,19 @@ components:
           format: byte
           readOnly: true
       description: ExportTableResponse is an empty response for exporting table data.
+    FaithfulnessCheckingResult:
+      type: object
+      properties:
+        result:
+          type: string
+          description: The text of the faithfulness checking result.
+          readOnly: true
+        confidenceScore:
+          type: number
+          description: The confidence score for the faithfulness checking result.
+          format: double
+          readOnly: true
+      description: The faithfulness checking result for the cell.
     File:
       title: file
       required:
@@ -8190,6 +8357,16 @@ components:
             $ref: '#/components/schemas/Catalog'
           description: The catalogs container.
       description: GetCatalogsResponse represents a response for getting all catalogs from users.
+    ListChatTablesResponse:
+      type: object
+      properties:
+        tables:
+          type: array
+          items:
+            $ref: '#/components/schemas/Table'
+          description: The tables bound to the chat.
+          readOnly: true
+      description: ListChatTablesResponse contains the list of tables bound to a chat.
     ListChatsResponse:
       title: ListChatsResponse returns a list of chats
       type: object
@@ -10205,6 +10382,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SimilarityChunk'
+    Sort:
+      enum:
+        - SORT_ASCENDING
+        - SORT_DESCENDING
+      type: string
+      description: "The sort of the column.\n\n - SORT_ASCENDING: The sort is ascending.\n - SORT_DESCENDING: The sort is descending."
     SourceFile:
       type: object
       properties:
@@ -10347,7 +10530,18 @@ components:
           description: The timestamp when the table was last updated.
           format: date-time
           readOnly: true
+        agentConfig:
+          allOf:
+            - $ref: '#/components/schemas/Table.AgentConfig'
+          description: The configuration for the agent.
       description: Table represents a table resource.
+    Table.AgentConfig:
+      type: object
+      properties:
+        enableFaithfulnessChecking:
+          type: boolean
+          description: Whether to enable faithfulness checking for the table.
+      description: The configuration for the agent.
     TableDeletedEvent:
       type: object
       description: TableDeletedEvent represents an event for a table being deleted.
@@ -10773,6 +10967,18 @@ components:
           description: Traces of the pipeline inference.
           readOnly: true
       description: "TriggerNamespacePipelineWithStreamResponse contains the pipeline execution results, i.e.,\nthe multiple model inference outputs."
+    UnbindChatTableBody:
+      required:
+        - tableUid
+      type: object
+      properties:
+        tableUid:
+          type: string
+          description: The UID of the table to unbind from the chat.
+      description: UnbindChatTableRequest represents a request to unbind a table from a chat.
+    UnbindChatTableResponse:
+      type: object
+      description: UnbindChatTableResponse is an empty response for unbinding a table from a chat.
     UndeployNamespaceModelAdminResponse:
       title: UndeployNamespaceModelAdminResponse represents a response for a undeployed model
       type: object
@@ -10812,7 +11018,7 @@ components:
         agentConfig:
           title: ai agent settings
           allOf:
-            - $ref: '#/components/schemas/AgentConfig'
+            - $ref: '#/components/schemas/.AgentConfig'
     UpdateChatResponse:
       title: UpdateChatResponse returns the updated chat
       type: object
@@ -11260,6 +11466,18 @@ components:
             $ref: '#/components/schemas/Any'
           description: "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."
       description: "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). Each `Status` message contains\nthree pieces of data: error code, error message, and error details.\n\nYou can find out more about this error model and how to work with it in the\n[API Design Guide](https://cloud.google.com/apis/design/errors)."
+    .AgentConfig:
+      type: object
+      properties:
+        instructions:
+          title: instructions
+          type: string
+        connections:
+          type: object
+          additionalProperties:
+            type: string
+          description: connection key(used connection id in recipe) and value(connection uid from namespace).
+      description: AgentConfig represents the config for the chat agent.
     .Chat:
       title: Chat represents a chat
       required:
@@ -11278,7 +11496,7 @@ components:
           description: conversation display name.
         agentConfig:
           allOf:
-            - $ref: '#/components/schemas/AgentConfig'
+            - $ref: '#/components/schemas/.AgentConfig'
           description: agent config.
           readOnly: true
         createTime:

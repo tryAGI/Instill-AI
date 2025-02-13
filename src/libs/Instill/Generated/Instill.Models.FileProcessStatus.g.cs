@@ -10,7 +10,8 @@ namespace Instill
     ///  - FILE_PROCESS_STATUS_CHUNKING: file is chunking<br/>
     ///  - FILE_PROCESS_STATUS_EMBEDDING: file is embedding<br/>
     ///  - FILE_PROCESS_STATUS_COMPLETED: completed<br/>
-    ///  - FILE_PROCESS_STATUS_FAILED: failed
+    ///  - FILE_PROCESS_STATUS_FAILED: failed<br/>
+    ///  - FILE_PROCESS_STATUS_SUMMARIZING: file is summarizing
     /// </summary>
     public enum FileProcessStatus
     {
@@ -42,6 +43,10 @@ namespace Instill
         /// failed
         /// </summary>
         FAILED,
+        /// <summary>
+        /// file is summarizing
+        /// </summary>
+        SUMMARIZING,
     }
 
     /// <summary>
@@ -63,6 +68,7 @@ namespace Instill
                 FileProcessStatus.EMBEDDING => "FILE_PROCESS_STATUS_EMBEDDING",
                 FileProcessStatus.COMPLETED => "FILE_PROCESS_STATUS_COMPLETED",
                 FileProcessStatus.FAILED => "FILE_PROCESS_STATUS_FAILED",
+                FileProcessStatus.SUMMARIZING => "FILE_PROCESS_STATUS_SUMMARIZING",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -80,6 +86,7 @@ namespace Instill
                 "FILE_PROCESS_STATUS_EMBEDDING" => FileProcessStatus.EMBEDDING,
                 "FILE_PROCESS_STATUS_COMPLETED" => FileProcessStatus.COMPLETED,
                 "FILE_PROCESS_STATUS_FAILED" => FileProcessStatus.FAILED,
+                "FILE_PROCESS_STATUS_SUMMARIZING" => FileProcessStatus.SUMMARIZING,
                 _ => null,
             };
         }

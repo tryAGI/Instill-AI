@@ -7760,8 +7760,9 @@ components:
         - FILE_PROCESS_STATUS_EMBEDDING
         - FILE_PROCESS_STATUS_COMPLETED
         - FILE_PROCESS_STATUS_FAILED
+        - FILE_PROCESS_STATUS_SUMMARIZING
       type: string
-      description: "- FILE_PROCESS_STATUS_NOTSTARTED: NOTSTARTED\n - FILE_PROCESS_STATUS_WAITING: file is waiting for embedding process\n - FILE_PROCESS_STATUS_CONVERTING: file is converting\n - FILE_PROCESS_STATUS_CHUNKING: file is chunking\n - FILE_PROCESS_STATUS_EMBEDDING: file is embedding\n - FILE_PROCESS_STATUS_COMPLETED: completed\n - FILE_PROCESS_STATUS_FAILED: failed"
+      description: "- FILE_PROCESS_STATUS_NOTSTARTED: NOTSTARTED\n - FILE_PROCESS_STATUS_WAITING: file is waiting for embedding process\n - FILE_PROCESS_STATUS_CONVERTING: file is converting\n - FILE_PROCESS_STATUS_CHUNKING: file is chunking\n - FILE_PROCESS_STATUS_EMBEDDING: file is embedding\n - FILE_PROCESS_STATUS_COMPLETED: completed\n - FILE_PROCESS_STATUS_FAILED: failed\n - FILE_PROCESS_STATUS_SUMMARIZING: file is summarizing"
     FileReference:
       required:
         - name

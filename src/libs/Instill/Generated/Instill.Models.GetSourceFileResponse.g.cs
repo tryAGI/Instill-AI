@@ -9,7 +9,7 @@ namespace Instill
     public sealed partial class GetSourceFileResponse
     {
         /// <summary>
-        /// 
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sourceFile")]
         public global::Instill.SourceFile? SourceFile { get; set; }
@@ -23,7 +23,9 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="GetSourceFileResponse" /> class.
         /// </summary>
-        /// <param name="sourceFile"></param>
+        /// <param name="sourceFile">
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

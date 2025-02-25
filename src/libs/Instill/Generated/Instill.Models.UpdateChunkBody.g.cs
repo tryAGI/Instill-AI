@@ -12,7 +12,8 @@ namespace Instill
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("retrievable")]
-        public bool? Retrievable { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool Retrievable { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -28,7 +29,7 @@ namespace Instill
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UpdateChunkBody(
-            bool? retrievable)
+            bool retrievable)
         {
             this.Retrievable = retrievable;
         }

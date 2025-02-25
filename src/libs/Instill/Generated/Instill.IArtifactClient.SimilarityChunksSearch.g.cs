@@ -33,6 +33,9 @@ namespace Instill
         /// <param name="instillRequesterUid"></param>
         /// <param name="textPrompt"></param>
         /// <param name="topK"></param>
+        /// <param name="fileName"></param>
+        /// <param name="contentType"></param>
+        /// <param name="fileMediaType"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
 #if NET8_0_OR_GREATER
@@ -41,9 +44,12 @@ namespace Instill
         global::System.Threading.Tasks.Task<global::Instill.SimilarityChunksSearchResponse> SimilarityChunksSearchAsync(
             string namespaceId,
             string catalogId,
+            string textPrompt,
             string? instillRequesterUid = default,
-            string? textPrompt = default,
             long? topK = default,
+            string? fileName = default,
+            global::Instill.ContentType? contentType = default,
+            global::Instill.FileMediaType? fileMediaType = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

@@ -9,7 +9,7 @@ namespace Instill
     public sealed partial class SimilarityChunksSearchResponse
     {
         /// <summary>
-        /// 
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("similarChunks")]
         public global::System.Collections.Generic.IList<global::Instill.SimilarityChunk>? SimilarChunks { get; set; }
@@ -23,7 +23,9 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="SimilarityChunksSearchResponse" /> class.
         /// </summary>
-        /// <param name="similarChunks"></param>
+        /// <param name="similarChunks">
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

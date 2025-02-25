@@ -9,13 +9,13 @@ namespace Instill
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
             ref string catalogId,
-            ref string? fileUid);
+            ref string fileUid);
         partial void PrepareListChunksRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
             string catalogId,
-            string? fileUid);
+            string fileUid);
         partial void ProcessListChunksResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -40,7 +40,7 @@ namespace Instill
         public async global::System.Threading.Tasks.Task<global::Instill.ListChunksResponse> ListChunksAsync(
             string namespaceId,
             string catalogId,
-            string? fileUid = default,
+            string fileUid,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
@@ -55,7 +55,7 @@ namespace Instill
                 path: $"/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/chunks",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 
-                .AddOptionalParameter("fileUid", fileUid) 
+                .AddRequiredParameter("fileUid", fileUid) 
                 ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(

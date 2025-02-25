@@ -100,6 +100,12 @@ namespace Instill
         public string? UsedStorage { get; set; }
 
         /// <summary>
+        /// The catalog summarizing pipelines.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("summarizingPipelines")]
+        public global::System.Collections.Generic.IList<string>? SummarizingPipelines { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -151,6 +157,9 @@ namespace Instill
         /// <param name="usedStorage">
         /// The current used storage in catalog.
         /// </param>
+        /// <param name="summarizingPipelines">
+        /// The catalog summarizing pipelines.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -169,7 +178,8 @@ namespace Instill
             global::System.Collections.Generic.IList<string>? downstreamApps,
             long? totalFiles,
             long? totalTokens,
-            string? usedStorage)
+            string? usedStorage,
+            global::System.Collections.Generic.IList<string>? summarizingPipelines)
         {
             this.CatalogId = catalogId ?? throw new global::System.ArgumentNullException(nameof(catalogId));
             this.CatalogUid = catalogUid;
@@ -186,6 +196,7 @@ namespace Instill
             this.TotalFiles = totalFiles;
             this.TotalTokens = totalTokens;
             this.UsedStorage = usedStorage;
+            this.SummarizingPipelines = summarizingPipelines;
         }
 
         /// <summary>

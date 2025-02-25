@@ -19,7 +19,7 @@ namespace Instill
         global::System.Threading.Tasks.Task<global::Instill.ListChunksResponse> ListChunksAsync(
             string namespaceId,
             string catalogId,
-            string? fileUid = default,
+            string fileUid,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

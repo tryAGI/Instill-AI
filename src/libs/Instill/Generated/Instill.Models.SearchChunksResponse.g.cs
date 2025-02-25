@@ -9,7 +9,7 @@ namespace Instill
     public sealed partial class SearchChunksResponse
     {
         /// <summary>
-        /// 
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chunks")]
         public global::System.Collections.Generic.IList<global::Instill.Chunk>? Chunks { get; set; }
@@ -23,7 +23,9 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="SearchChunksResponse" /> class.
         /// </summary>
-        /// <param name="chunks"></param>
+        /// <param name="chunks">
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

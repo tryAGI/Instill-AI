@@ -9,31 +9,31 @@ namespace Instill
     public sealed partial class SimilarityChunk
     {
         /// <summary>
-        /// 
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chunkUid")]
         public string? ChunkUid { get; set; }
 
         /// <summary>
-        /// 
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("similarityScore")]
         public float? SimilarityScore { get; set; }
 
         /// <summary>
-        /// 
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("textContent")]
         public string? TextContent { get; set; }
 
         /// <summary>
-        /// 
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sourceFile")]
         public string? SourceFile { get; set; }
 
         /// <summary>
-        /// 
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chunkMetadata")]
         public global::Instill.Chunk? ChunkMetadata { get; set; }
@@ -47,11 +47,21 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="SimilarityChunk" /> class.
         /// </summary>
-        /// <param name="chunkUid"></param>
-        /// <param name="similarityScore"></param>
-        /// <param name="textContent"></param>
-        /// <param name="sourceFile"></param>
-        /// <param name="chunkMetadata"></param>
+        /// <param name="chunkUid">
+        /// Included only in responses
+        /// </param>
+        /// <param name="similarityScore">
+        /// Included only in responses
+        /// </param>
+        /// <param name="textContent">
+        /// Included only in responses
+        /// </param>
+        /// <param name="sourceFile">
+        /// Included only in responses
+        /// </param>
+        /// <param name="chunkMetadata">
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

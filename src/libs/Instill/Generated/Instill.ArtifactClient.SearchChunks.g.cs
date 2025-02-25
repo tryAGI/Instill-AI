@@ -8,12 +8,12 @@ namespace Instill
         partial void PrepareSearchChunksArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
-            global::System.Collections.Generic.IList<string>? chunkUids);
+            global::System.Collections.Generic.IList<string> chunkUids);
         partial void PrepareSearchChunksRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
-            global::System.Collections.Generic.IList<string>? chunkUids);
+            global::System.Collections.Generic.IList<string> chunkUids);
         partial void ProcessSearchChunksResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -36,7 +36,7 @@ namespace Instill
 #endif
         public async global::System.Threading.Tasks.Task<global::Instill.SearchChunksResponse> SearchChunksAsync(
             string namespaceId,
-            global::System.Collections.Generic.IList<string>? chunkUids = default,
+            global::System.Collections.Generic.IList<string> chunkUids,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
@@ -50,7 +50,7 @@ namespace Instill
                 path: $"/v1alpha/namespaces/{namespaceId}/chunks",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 
-                .AddOptionalParameter("chunkUids", chunkUids, delimiter: ",", explode: true) 
+                .AddRequiredParameter("chunkUids", chunkUids, delimiter: ",", explode: true) 
                 ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(

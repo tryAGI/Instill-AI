@@ -8,12 +8,12 @@ namespace Instill
         partial void PrepareSearchSourceFilesArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
-            global::System.Collections.Generic.IList<string>? fileUids);
+            global::System.Collections.Generic.IList<string> fileUids);
         partial void PrepareSearchSourceFilesRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
-            global::System.Collections.Generic.IList<string>? fileUids);
+            global::System.Collections.Generic.IList<string> fileUids);
         partial void ProcessSearchSourceFilesResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -36,7 +36,7 @@ namespace Instill
 #endif
         public async global::System.Threading.Tasks.Task<global::Instill.SearchSourceFilesResponse> SearchSourceFilesAsync(
             string namespaceId,
-            global::System.Collections.Generic.IList<string>? fileUids = default,
+            global::System.Collections.Generic.IList<string> fileUids,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
@@ -50,7 +50,7 @@ namespace Instill
                 path: $"/v1alpha/namespaces/{namespaceId}/source-files",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 
-                .AddOptionalParameter("fileUids", fileUids, delimiter: ",", explode: true) 
+                .AddRequiredParameter("fileUids", fileUids, delimiter: ",", explode: true) 
                 ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(

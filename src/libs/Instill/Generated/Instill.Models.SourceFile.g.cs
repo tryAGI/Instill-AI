@@ -9,31 +9,31 @@ namespace Instill
     public sealed partial class SourceFile
     {
         /// <summary>
-        /// 
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("originalFileUid")]
         public string? OriginalFileUid { get; set; }
 
         /// <summary>
-        /// 
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("content")]
         public string? Content { get; set; }
 
         /// <summary>
-        /// 
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
         public global::System.DateTime? CreateTime { get; set; }
 
         /// <summary>
-        /// 
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
         public global::System.DateTime? UpdateTime { get; set; }
 
         /// <summary>
-        /// 
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("originalFileName")]
         public string? OriginalFileName { get; set; }
@@ -47,11 +47,21 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="SourceFile" /> class.
         /// </summary>
-        /// <param name="originalFileUid"></param>
-        /// <param name="content"></param>
-        /// <param name="createTime"></param>
-        /// <param name="updateTime"></param>
-        /// <param name="originalFileName"></param>
+        /// <param name="originalFileUid">
+        /// Included only in responses
+        /// </param>
+        /// <param name="content">
+        /// Included only in responses
+        /// </param>
+        /// <param name="createTime">
+        /// Included only in responses
+        /// </param>
+        /// <param name="updateTime">
+        /// Included only in responses
+        /// </param>
+        /// <param name="originalFileName">
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

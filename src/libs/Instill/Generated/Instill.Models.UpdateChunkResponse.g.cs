@@ -9,7 +9,7 @@ namespace Instill
     public sealed partial class UpdateChunkResponse
     {
         /// <summary>
-        /// 
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chunk")]
         public global::Instill.Chunk? Chunk { get; set; }
@@ -23,7 +23,9 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateChunkResponse" /> class.
         /// </summary>
-        /// <param name="chunk"></param>
+        /// <param name="chunk">
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

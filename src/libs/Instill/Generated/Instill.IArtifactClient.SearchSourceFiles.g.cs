@@ -17,7 +17,7 @@ namespace Instill
 #endif
         global::System.Threading.Tasks.Task<global::Instill.SearchSourceFilesResponse> SearchSourceFilesAsync(
             string namespaceId,
-            global::System.Collections.Generic.IList<string>? fileUids = default,
+            global::System.Collections.Generic.IList<string> fileUids,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

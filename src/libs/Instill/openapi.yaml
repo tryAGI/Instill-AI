@@ -1681,6 +1681,7 @@ paths:
         - name: fileUid
           in: query
           description: unique identifier of the file
+          required: true
           schema:
             type: string
       responses:
@@ -1719,6 +1720,7 @@ paths:
         - name: chunkUids
           in: query
           description: chunk uids
+          required: true
           style: form
           schema:
             type: array
@@ -1805,6 +1807,7 @@ paths:
         - name: fileUids
           in: query
           description: search file uid
+          required: true
           style: form
           schema:
             type: array
@@ -6615,6 +6618,11 @@ components:
           type: string
           description: The current used storage in catalog.
           format: uint64
+        summarizingPipelines:
+          type: array
+          items:
+            type: string
+          description: The catalog summarizing pipelines.
       description: Catalog represents a catalog.
     CatalogRun:
       type: object
@@ -7295,6 +7303,13 @@ components:
           format: date-time
           readOnly: true
       description: "Connection contains the parameters to communicate with a 3rd party app. A\ncomponent may reference a connection in their setup. One connection may be\nused by several components and pipelines."
+    ContentType:
+      enum:
+        - CONTENT_TYPE_CHUNK
+        - CONTENT_TYPE_SUMMARY
+        - CONTENT_TYPE_AUGMENTED
+      type: string
+      description: "ContentType describes the type of a chunk content.\n\n - CONTENT_TYPE_CHUNK: Chunk.\n - CONTENT_TYPE_SUMMARY: Summary.\n - CONTENT_TYPE_AUGMENTED: Augmented."
     CreateCatalogBody:
       type: object
       properties:
@@ -7660,8 +7675,6 @@ components:
     File:
       title: file
       required:
-        - name
-        - type
         - fileUid
       type: object
       properties:
@@ -7740,7 +7753,6 @@ components:
         objectUid:
           type: string
           description: "objectUid in blob storage. user can upload to blob storage directly, then put objectUid here.\nthen no need the base64 encoding for the file content."
-          readOnly: true
     FileCell:
       required:
         - url
@@ -7750,6 +7762,14 @@ components:
           type: string
           description: The URL of the file resource.
       description: FileCell represents a cell with a url of a file resource.
+    FileMediaType:
+      enum:
+        - FILE_MEDIA_TYPE_DOCUMENT
+        - FILE_MEDIA_TYPE_IMAGE
+        - FILE_MEDIA_TYPE_AUDIO
+        - FILE_MEDIA_TYPE_VIDEO
+      type: string
+      description: "FileMediaType describes the type of a catalog file.\n\n - FILE_MEDIA_TYPE_DOCUMENT: Document.\n - FILE_MEDIA_TYPE_IMAGE: Image.\n - FILE_MEDIA_TYPE_AUDIO: Audio.\n - FILE_MEDIA_TYPE_VIDEO: Video."
     FileProcessStatus:
       title: file embedding process status
       enum:
@@ -8120,6 +8140,7 @@ components:
           title: source file(either original file or converted file)
           allOf:
             - $ref: '#/components/schemas/SourceFile'
+          readOnly: true
     GetTableEventsResponse:
       type: object
       properties:
@@ -8395,6 +8416,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/.Chunk'
+          readOnly: true
       description: The ListChunksResponse message represents a response containing a list of chunks in the artifact system.
     ListComponentDefinitionsResponse:
       type: object
@@ -10261,6 +10283,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/.Chunk'
+          readOnly: true
     SearchSourceFilesResponse:
       title: search source file response
       type: object
@@ -10270,6 +10293,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SourceFile'
+          readOnly: true
     Secret:
       type: object
       properties:
@@ -10349,22 +10373,29 @@ components:
         chunkUid:
           title: chunk uid
           type: string
+          readOnly: true
         similarityScore:
           title: similarity score
           type: number
           format: float
+          readOnly: true
         textContent:
           title: content
           type: string
+          readOnly: true
         sourceFile:
           title: source file's name
           type: string
+          readOnly: true
         chunkMetadata:
           title: chunk
           allOf:
             - $ref: '#/components/schemas/.Chunk'
+          readOnly: true
     SimilarityChunksSearchBody:
       title: Similar chunk search request
+      required:
+        - textPrompt
       type: object
       properties:
         textPrompt:
@@ -10374,6 +10405,17 @@ components:
           title: top k
           type: integer
           format: int64
+        fileName:
+          title: file name
+          type: string
+        contentType:
+          title: content type
+          allOf:
+            - $ref: '#/components/schemas/ContentType'
+        fileMediaType:
+          title: file type
+          allOf:
+            - $ref: '#/components/schemas/FileMediaType'
     SimilarityChunksSearchResponse:
       title: Similar chunk search response
       type: object
@@ -10383,6 +10425,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SimilarityChunk'
+          readOnly: true
     Sort:
       enum:
         - SORT_ASCENDING
@@ -10395,20 +10438,25 @@ components:
         originalFileUid:
           title: original file unique identifier
           type: string
+          readOnly: true
         content:
           title: content
           type: string
+          readOnly: true
         createTime:
           title: creation time of the source file
           type: string
           format: date-time
+          readOnly: true
         updateTime:
           title: update time of the source file
           type: string
           format: date-time
+          readOnly: true
         originalFileName:
           title: original file name
           type: string
+          readOnly: true
       description: The SourceFile message represents a source file in the artifact system.
     Spec:
       type: object
@@ -11031,6 +11079,8 @@ components:
           readOnly: true
     UpdateChunkBody:
       title: Create chunk response
+      required:
+        - retrievable
       type: object
       properties:
         retrievable:
@@ -11044,6 +11094,7 @@ components:
           title: chunk
           allOf:
             - $ref: '#/components/schemas/.Chunk'
+          readOnly: true
     UpdateColumnDefinitionsResponse:
       type: object
       properties:
@@ -11521,28 +11572,40 @@ components:
         chunkUid:
           title: unique identifier of the chunk
           type: string
+          readOnly: true
         retrievable:
           title: whether the chunk is retrievable
           type: boolean
+          readOnly: true
         startPos:
           title: start position of the chunk in the source file
           type: integer
           format: int64
+          readOnly: true
         endPos:
           title: end position of the chunk in the source file
           type: integer
           format: int64
+          readOnly: true
         tokens:
           title: tokens of the chunk
           type: integer
           format: int64
+          readOnly: true
         createTime:
           title: creation time of the chunk
           type: string
           format: date-time
+          readOnly: true
         originalFileUid:
           title: original file unique identifier
           type: string
+          readOnly: true
+        contentType:
+          title: content type
+          allOf:
+            - $ref: '#/components/schemas/ContentType'
+          readOnly: true
       description: The Chunk message represents a chunk of data in the artifact system.
     .Permission:
       type: object

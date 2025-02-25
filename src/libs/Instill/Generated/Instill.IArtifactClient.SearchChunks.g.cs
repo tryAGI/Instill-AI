@@ -17,7 +17,7 @@ namespace Instill
 #endif
         global::System.Threading.Tasks.Task<global::Instill.SearchChunksResponse> SearchChunksAsync(
             string namespaceId,
-            global::System.Collections.Generic.IList<string>? chunkUids = default,
+            global::System.Collections.Generic.IList<string> chunkUids,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

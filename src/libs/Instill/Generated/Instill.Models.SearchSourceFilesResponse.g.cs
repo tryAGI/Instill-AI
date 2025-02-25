@@ -9,7 +9,7 @@ namespace Instill
     public sealed partial class SearchSourceFilesResponse
     {
         /// <summary>
-        /// 
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sourceFiles")]
         public global::System.Collections.Generic.IList<global::Instill.SourceFile>? SourceFiles { get; set; }
@@ -23,7 +23,9 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="SearchSourceFilesResponse" /> class.
         /// </summary>
-        /// <param name="sourceFiles"></param>
+        /// <param name="sourceFiles">
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

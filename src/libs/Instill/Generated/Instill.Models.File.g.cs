@@ -19,16 +19,14 @@ namespace Instill
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.FileTypeJsonConverter))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Instill.FileType Type { get; set; }
+        public global::Instill.FileType? Type { get; set; }
 
         /// <summary>
         /// Included only in responses
@@ -117,8 +115,7 @@ namespace Instill
 
         /// <summary>
         /// objectUid in blob storage. user can upload to blob storage directly, then put objectUid here.<br/>
-        /// then no need the base64 encoding for the file content.<br/>
-        /// Included only in responses
+        /// then no need the base64 encoding for the file content.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("objectUid")]
         public string? ObjectUid { get; set; }
@@ -177,15 +174,14 @@ namespace Instill
         /// <param name="externalMetadata"></param>
         /// <param name="objectUid">
         /// objectUid in blob storage. user can upload to blob storage directly, then put objectUid here.<br/>
-        /// then no need the base64 encoding for the file content.<br/>
-        /// Included only in responses
+        /// then no need the base64 encoding for the file content.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public File(
-            string name,
-            global::Instill.FileType type,
+            string? name,
+            global::Instill.FileType? type,
             global::Instill.FileProcessStatus? processStatus,
             string? processOutcome,
             bool? retrievable,
@@ -203,9 +199,9 @@ namespace Instill
             string? objectUid,
             string fileUid = default!)
         {
-            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
-            this.Type = type;
             this.FileUid = fileUid;
+            this.Name = name;
+            this.Type = type;
             this.ProcessStatus = processStatus;
             this.ProcessOutcome = processOutcome;
             this.Retrievable = retrievable;

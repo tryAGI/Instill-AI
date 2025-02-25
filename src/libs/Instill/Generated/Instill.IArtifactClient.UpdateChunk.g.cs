@@ -33,7 +33,7 @@ namespace Instill
 #endif
         global::System.Threading.Tasks.Task<global::Instill.UpdateChunkResponse> UpdateChunkAsync(
             string chunkUid,
-            bool? retrievable = default,
+            bool retrievable,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

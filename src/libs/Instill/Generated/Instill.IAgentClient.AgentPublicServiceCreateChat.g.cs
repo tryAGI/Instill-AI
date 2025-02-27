@@ -27,6 +27,7 @@ namespace Instill
         /// <param name="namespaceId"></param>
         /// <param name="chatDisplayName"></param>
         /// <param name="agentConfig"></param>
+        /// <param name="catalogId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
 #if NET8_0_OR_GREATER
@@ -36,6 +37,7 @@ namespace Instill
             string namespaceId,
             string? chatDisplayName = default,
             global::Instill.AgentConfig? agentConfig = default,
+            string? catalogId = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

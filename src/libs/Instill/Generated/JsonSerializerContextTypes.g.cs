@@ -58,75 +58,75 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.AudioCell? Type8 { get; set; }
+        public global::Instill.AuthenticatedUser? Type8 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.AuthenticatedUser? Type9 { get; set; }
+        public bool? Type9 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public bool? Type10 { get; set; }
+        public global::Instill.OnboardingStatus? Type10 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.OnboardingStatus? Type11 { get; set; }
+        public global::Instill.UserProfile? Type11 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UserProfile? Type12 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, string>? Type12 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, string>? Type13 { get; set; }
+        public global::Instill.BindChatTableBody? Type13 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.BindChatTableBody? Type14 { get; set; }
+        public global::Instill.BooleanCell? Type14 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.BooleanCell? Type15 { get; set; }
+        public global::Instill.Catalog? Type15 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Catalog? Type16 { get; set; }
+        public global::System.Collections.Generic.IList<string>? Type16 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<string>? Type17 { get; set; }
+        public long? Type17 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public long? Type18 { get; set; }
+        public global::Instill.CatalogRun? Type18 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.CatalogRun? Type19 { get; set; }
+        public global::Instill.CatalogRunAction? Type19 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.CatalogRunAction? Type20 { get; set; }
+        public global::Instill.RunStatus? Type20 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.RunStatus? Type21 { get; set; }
+        public global::Instill.RunSource? Type21 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.RunSource? Type22 { get; set; }
+        public float? Type22 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public float? Type23 { get; set; }
+        public global::Instill.CatalogType? Type23 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.CatalogType? Type24 { get; set; }
+        public global::Instill.Cell? Type24 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Cell? Type25 { get; set; }
+        public global::Instill.Type? Type25 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -146,23 +146,23 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.DocumentCell? Type30 { get; set; }
+        public global::Instill.CellStatus? Type30 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ImageCell? Type31 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.CellCitation>? Type31 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.VideoCell? Type32 { get; set; }
+        public global::Instill.CellCitation? Type32 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.CellStatus? Type33 { get; set; }
+        public global::Instill.CitationType? Type33 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.FaithfulnessCheckingResult? Type34 { get; set; }
+        public global::Instill.Transparency? Type34 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -226,183 +226,183 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Citation? Type50 { get; set; }
+        public global::Instill.CitationType2? Type50 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.CitationType? Type51 { get; set; }
+        public global::Instill.CloneNamespacePipelineBody? Type51 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.CloneNamespacePipelineBody? Type52 { get; set; }
+        public global::Instill.Sharing? Type52 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Sharing? Type53 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::Instill.SharingUser>? Type53 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::Instill.SharingUser>? Type54 { get; set; }
+        public global::Instill.SharingUser? Type54 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.SharingUser? Type55 { get; set; }
+        public global::Instill.Role? Type55 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Role? Type56 { get; set; }
+        public global::Instill.ShareCode? Type56 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ShareCode? Type57 { get; set; }
+        public global::Instill.CloneNamespacePipelineReleaseBody? Type57 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.CloneNamespacePipelineReleaseBody? Type58 { get; set; }
+        public global::Instill.ColumnDefinition? Type58 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ColumnDefinition? Type59 { get; set; }
+        public global::Instill.ColumnDefinitionAgentConfig? Type59 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ColumnDefinitionAgentConfig? Type60 { get; set; }
+        public global::Instill.Sort? Type60 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Sort? Type61 { get; set; }
+        public global::Instill.ColumnDefinitionsUpdatedEvent? Type61 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ColumnDefinitionsUpdatedEvent? Type62 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::Instill.ColumnDefinition>? Type62 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::Instill.ColumnDefinition>? Type63 { get; set; }
+        public global::Instill.ComponentDefinition? Type63 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ComponentDefinition? Type64 { get; set; }
+        public global::Instill.Spec? Type64 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Spec? Type65 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::Instill.DataSpecification>? Type65 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::Instill.DataSpecification>? Type66 { get; set; }
+        public global::Instill.DataSpecification? Type66 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.DataSpecification? Type67 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::Instill.EventSpecification>? Type67 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::Instill.EventSpecification>? Type68 { get; set; }
+        public global::Instill.EventSpecification? Type68 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.EventSpecification? Type69 { get; set; }
+        public global::Instill.ComponentType? Type69 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ComponentType? Type70 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.ComponentTask>? Type70 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.ComponentTask>? Type71 { get; set; }
+        public global::Instill.ComponentTask? Type71 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ComponentTask? Type72 { get; set; }
+        public global::Instill.ComponentDefinitionReleaseStage? Type72 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ComponentDefinitionReleaseStage? Type73 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.ComponentEvent>? Type73 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.ComponentEvent>? Type74 { get; set; }
+        public global::Instill.ComponentEvent? Type74 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ComponentEvent? Type75 { get; set; }
+        public global::Instill.ComponentDefinitionView? Type75 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ComponentDefinitionView? Type76 { get; set; }
+        public global::Instill.ComponentRun? Type76 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ComponentRun? Type77 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.FileReference>? Type77 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.FileReference>? Type78 { get; set; }
+        public global::Instill.FileReference? Type78 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.FileReference? Type79 { get; set; }
+        public global::Instill.Connection? Type79 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Connection? Type80 { get; set; }
+        public global::Instill.Method? Type80 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Method? Type81 { get; set; }
+        public global::Instill.PipelineV1betaView? Type81 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelineV1betaView? Type82 { get; set; }
+        public global::Instill.ContentType? Type82 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ContentType? Type83 { get; set; }
+        public global::Instill.CreateCatalogBody? Type83 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.CreateCatalogBody? Type84 { get; set; }
+        public global::Instill.CreateCatalogResponse? Type84 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.CreateCatalogResponse? Type85 { get; set; }
+        public global::Instill.CreateChatBody? Type85 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.CreateChatBody? Type86 { get; set; }
+        public global::Instill.AgentConfig? Type86 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.AgentConfig? Type87 { get; set; }
+        public global::Instill.CreateChatResponse? Type87 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.CreateChatResponse? Type88 { get; set; }
+        public global::Instill.Chat? Type88 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Chat? Type89 { get; set; }
+        public global::Instill.CreateMessageBody? Type89 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.CreateMessageBody? Type90 { get; set; }
+        public global::Instill.MessageType? Type90 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.MessageType? Type91 { get; set; }
+        public global::Instill.CreateMessageResponse? Type91 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.CreateMessageResponse? Type92 { get; set; }
+        public global::Instill.AgentV1alphaMessage? Type92 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.AgentV1alphaMessage? Type93 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.Citation>? Type93 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.Citation>? Type94 { get; set; }
+        public global::Instill.Citation? Type94 { get; set; }
         /// <summary>
         /// 
         /// </summary>

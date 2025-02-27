@@ -4,40 +4,38 @@
 namespace Instill
 {
     /// <summary>
-    /// 
+    /// The citations for the cell.
     /// </summary>
-    public sealed partial class Citation
+    public sealed partial class CellCitation
     {
         /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.CitationType2JsonConverter))]
-        public global::Instill.CitationType2? Type { get; set; }
-
-        /// <summary>
+        /// The type of the citation.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string? Name { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.CitationTypeJsonConverter))]
+        public global::Instill.CitationType? Type { get; set; }
 
         /// <summary>
+        /// The url of the citation.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("url")]
         public string? Url { get; set; }
 
         /// <summary>
+        /// The title of the citation.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("chunkUid")]
-        public string? ChunkUid { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
 
         /// <summary>
+        /// The summary of the citation.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("fileUid")]
-        public string? FileUid { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("summary")]
+        public string? Summary { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -46,42 +44,43 @@ namespace Instill
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Citation" /> class.
+        /// Initializes a new instance of the <see cref="CellCitation" /> class.
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="name">
+        /// <param name="type">
+        /// The type of the citation.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="url">
+        /// The url of the citation.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="chunkUid">
+        /// <param name="title">
+        /// The title of the citation.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="fileUid">
+        /// <param name="summary">
+        /// The summary of the citation.<br/>
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public Citation(
-            global::Instill.CitationType2? type,
-            string? name,
+        public CellCitation(
+            global::Instill.CitationType? type,
             string? url,
-            string? chunkUid,
-            string? fileUid)
+            string? title,
+            string? summary)
         {
             this.Type = type;
-            this.Name = name;
             this.Url = url;
-            this.ChunkUid = chunkUid;
-            this.FileUid = fileUid;
+            this.Title = title;
+            this.Summary = summary;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Citation" /> class.
+        /// Initializes a new instance of the <see cref="CellCitation" /> class.
         /// </summary>
-        public Citation()
+        public CellCitation()
         {
         }
     }

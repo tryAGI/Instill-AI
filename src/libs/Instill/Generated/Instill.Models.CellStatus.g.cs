@@ -6,6 +6,7 @@ namespace Instill
     /// <summary>
     /// CellStatus represents the status of a cell.<br/>
     ///  - CELL_STATUS_IDLE: The cell is idle.<br/>
+    ///  - CELL_STATUS_UPLOADING: The cell is uploading (only for file cells).<br/>
     ///  - CELL_STATUS_PENDING: The cell is pending.<br/>
     ///  - CELL_STATUS_PROCESSING: The cell is processing.<br/>
     ///  - CELL_STATUS_FAILED: The cell is failed.<br/>
@@ -17,6 +18,10 @@ namespace Instill
         /// The cell is idle.
         /// </summary>
         IDLE,
+        /// <summary>
+        /// The cell is uploading (only for file cells).
+        /// </summary>
+        UPLOADING,
         /// <summary>
         /// The cell is pending.
         /// </summary>
@@ -48,6 +53,7 @@ namespace Instill
             return value switch
             {
                 CellStatus.IDLE => "CELL_STATUS_IDLE",
+                CellStatus.UPLOADING => "CELL_STATUS_UPLOADING",
                 CellStatus.PENDING => "CELL_STATUS_PENDING",
                 CellStatus.PROCESSING => "CELL_STATUS_PROCESSING",
                 CellStatus.FAILED => "CELL_STATUS_FAILED",
@@ -63,6 +69,7 @@ namespace Instill
             return value switch
             {
                 "CELL_STATUS_IDLE" => CellStatus.IDLE,
+                "CELL_STATUS_UPLOADING" => CellStatus.UPLOADING,
                 "CELL_STATUS_PENDING" => CellStatus.PENDING,
                 "CELL_STATUS_PROCESSING" => CellStatus.PROCESSING,
                 "CELL_STATUS_FAILED" => CellStatus.FAILED,

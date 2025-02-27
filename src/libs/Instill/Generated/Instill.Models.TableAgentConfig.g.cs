@@ -9,10 +9,10 @@ namespace Instill
     public sealed partial class TableAgentConfig
     {
         /// <summary>
-        /// Whether to enable faithfulness checking for the table.
+        /// Whether to enable transparency for the table.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("enableFaithfulnessChecking")]
-        public bool? EnableFaithfulnessChecking { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("enableTransparency")]
+        public bool? EnableTransparency { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -23,16 +23,16 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="TableAgentConfig" /> class.
         /// </summary>
-        /// <param name="enableFaithfulnessChecking">
-        /// Whether to enable faithfulness checking for the table.
+        /// <param name="enableTransparency">
+        /// Whether to enable transparency for the table.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TableAgentConfig(
-            bool? enableFaithfulnessChecking)
+            bool? enableTransparency)
         {
-            this.EnableFaithfulnessChecking = enableFaithfulnessChecking;
+            this.EnableTransparency = enableTransparency;
         }
 
         /// <summary>

@@ -27,8 +27,9 @@ namespace Instill
         /// The type of the column.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.TypeJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Type { get; set; }
+        public required global::Instill.Type Type { get; set; }
 
         /// <summary>
         /// The order of the column in the table, starting at 1. This determines the column's position<br/>
@@ -86,14 +87,14 @@ namespace Instill
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ColumnDefinition(
-            string type,
+            global::Instill.Type type,
             int order,
             string? columnUid,
             string? name,
             global::Instill.ColumnDefinitionAgentConfig? agentConfig,
             global::Instill.Sort? sort)
         {
-            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.Type = type;
             this.Order = order;
             this.ColumnUid = columnUid;
             this.Name = name;

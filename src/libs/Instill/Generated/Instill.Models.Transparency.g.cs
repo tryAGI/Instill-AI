@@ -4,16 +4,16 @@
 namespace Instill
 {
     /// <summary>
-    /// ImageCell represents a cell with a url of an image resource.
+    /// The transparency of the cell.
     /// </summary>
-    public sealed partial class ImageCell
+    public sealed partial class Transparency
     {
         /// <summary>
-        /// The URL of the image resource.
+        /// The text of the transparency.<br/>
+        /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("url")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Url { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
+        public string? Text { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -22,24 +22,25 @@ namespace Instill
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ImageCell" /> class.
+        /// Initializes a new instance of the <see cref="Transparency" /> class.
         /// </summary>
-        /// <param name="url">
-        /// The URL of the image resource.
+        /// <param name="text">
+        /// The text of the transparency.<br/>
+        /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public ImageCell(
-            string url)
+        public Transparency(
+            string? text)
         {
-            this.Url = url ?? throw new global::System.ArgumentNullException(nameof(url));
+            this.Text = text;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ImageCell" /> class.
+        /// Initializes a new instance of the <see cref="Transparency" /> class.
         /// </summary>
-        public ImageCell()
+        public Transparency()
         {
         }
     }

@@ -41,7 +41,8 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        public string? Type { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.TypeJsonConverter))]
+        public global::Instill.Type? Type { get; set; }
 
         /// <summary>
         /// The value of the cell as a string.
@@ -68,36 +69,6 @@ namespace Instill
         public global::Instill.FileCell? FileValue { get; set; }
 
         /// <summary>
-        /// The value of the cell as a url of a document resource.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("documentValue")]
-        public global::Instill.DocumentCell? DocumentValue { get; set; }
-
-        /// <summary>
-        /// The value of the cell as a url of an image resource.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("imageValue")]
-        public global::Instill.ImageCell? ImageValue { get; set; }
-
-        /// <summary>
-        /// The value of the cell as a url of a video resource.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("videoValue")]
-        public global::Instill.VideoCell? VideoValue { get; set; }
-
-        /// <summary>
-        /// The value of the cell as a url of an audio resource.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("audioValue")]
-        public global::Instill.AudioCell? AudioValue { get; set; }
-
-        /// <summary>
-        /// The value of the cell as a null cell.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("nullValue")]
-        public object? NullValue { get; set; }
-
-        /// <summary>
         /// Additional metadata for the cell.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
@@ -112,11 +83,18 @@ namespace Instill
         public global::Instill.CellStatus? Status { get; set; }
 
         /// <summary>
-        /// The faithfulness checking result for the cell.<br/>
+        /// The citations for the cell.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("faithfulnessCheckingResult")]
-        public global::Instill.FaithfulnessCheckingResult? FaithfulnessCheckingResult { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("citations")]
+        public global::System.Collections.Generic.IList<global::Instill.CellCitation>? Citations { get; set; }
+
+        /// <summary>
+        /// The transparency of the cell.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("transparency")]
+        public global::Instill.Transparency? Transparency { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -159,21 +137,6 @@ namespace Instill
         /// <param name="fileValue">
         /// The value of the cell as a url of a file resource.
         /// </param>
-        /// <param name="documentValue">
-        /// The value of the cell as a url of a document resource.
-        /// </param>
-        /// <param name="imageValue">
-        /// The value of the cell as a url of an image resource.
-        /// </param>
-        /// <param name="videoValue">
-        /// The value of the cell as a url of a video resource.
-        /// </param>
-        /// <param name="audioValue">
-        /// The value of the cell as a url of an audio resource.
-        /// </param>
-        /// <param name="nullValue">
-        /// The value of the cell as a null cell.
-        /// </param>
         /// <param name="metadata">
         /// Additional metadata for the cell.
         /// </param>
@@ -181,8 +144,12 @@ namespace Instill
         /// The status of the cell.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="faithfulnessCheckingResult">
-        /// The faithfulness checking result for the cell.<br/>
+        /// <param name="citations">
+        /// The citations for the cell.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="transparency">
+        /// The transparency of the cell.<br/>
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
@@ -193,19 +160,15 @@ namespace Instill
             string? columnUid,
             string? rowUid,
             global::System.DateTime? updateTime,
-            string? type,
+            global::Instill.Type? type,
             global::Instill.StringCell? stringValue,
             global::Instill.NumberCell? numberValue,
             global::Instill.BooleanCell? booleanValue,
             global::Instill.FileCell? fileValue,
-            global::Instill.DocumentCell? documentValue,
-            global::Instill.ImageCell? imageValue,
-            global::Instill.VideoCell? videoValue,
-            global::Instill.AudioCell? audioValue,
-            object? nullValue,
             object? metadata,
             global::Instill.CellStatus? status,
-            global::Instill.FaithfulnessCheckingResult? faithfulnessCheckingResult)
+            global::System.Collections.Generic.IList<global::Instill.CellCitation>? citations,
+            global::Instill.Transparency? transparency)
         {
             this.Uid = uid;
             this.ColumnUid = columnUid;
@@ -216,14 +179,10 @@ namespace Instill
             this.NumberValue = numberValue;
             this.BooleanValue = booleanValue;
             this.FileValue = fileValue;
-            this.DocumentValue = documentValue;
-            this.ImageValue = imageValue;
-            this.VideoValue = videoValue;
-            this.AudioValue = audioValue;
-            this.NullValue = nullValue;
             this.Metadata = metadata;
             this.Status = status;
-            this.FaithfulnessCheckingResult = faithfulnessCheckingResult;
+            this.Citations = citations;
+            this.Transparency = transparency;
         }
 
         /// <summary>

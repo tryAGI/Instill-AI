@@ -4,19 +4,25 @@
 namespace Instill
 {
     /// <summary>
-    /// - CITATION_TYPE_CHUNK: Chunk-based citation<br/>
-    ///  - CITATION_TYPE_URL: URL-based citation
+    /// The type of the citation.<br/>
+    ///  - TYPE_WEB: The type is a url of a web page.<br/>
+    ///  - TYPE_FILE: The type is a url of a file resource.<br/>
+    ///  - TYPE_TABLE: The type is a url of a table resource.
     /// </summary>
     public enum CitationType
     {
         /// <summary>
-        /// Chunk-based citation
+        /// The type is a url of a web page.
         /// </summary>
-        CHUNK,
+        TYPEWEB,
         /// <summary>
-        /// URL-based citation
+        /// The type is a url of a file resource.
         /// </summary>
-        URL,
+        TYPEFILE,
+        /// <summary>
+        /// The type is a url of a table resource.
+        /// </summary>
+        TYPETABLE,
     }
 
     /// <summary>
@@ -31,8 +37,9 @@ namespace Instill
         {
             return value switch
             {
-                CitationType.CHUNK => "CITATION_TYPE_CHUNK",
-                CitationType.URL => "CITATION_TYPE_URL",
+                CitationType.TYPEWEB => "TYPE_WEB",
+                CitationType.TYPEFILE => "TYPE_FILE",
+                CitationType.TYPETABLE => "TYPE_TABLE",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -43,8 +50,9 @@ namespace Instill
         {
             return value switch
             {
-                "CITATION_TYPE_CHUNK" => CitationType.CHUNK,
-                "CITATION_TYPE_URL" => CitationType.URL,
+                "TYPE_WEB" => CitationType.TYPEWEB,
+                "TYPE_FILE" => CitationType.TYPEFILE,
+                "TYPE_TABLE" => CitationType.TYPETABLE,
                 _ => null,
             };
         }

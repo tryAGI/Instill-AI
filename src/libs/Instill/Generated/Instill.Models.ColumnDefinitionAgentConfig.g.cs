@@ -15,12 +15,6 @@ namespace Instill
         public string? Instructions { get; set; }
 
         /// <summary>
-        /// Whether to enable web search for the agent.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("enableWebSearch")]
-        public bool? EnableWebSearch { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -32,18 +26,13 @@ namespace Instill
         /// <param name="instructions">
         /// The instructions for the agent.
         /// </param>
-        /// <param name="enableWebSearch">
-        /// Whether to enable web search for the agent.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ColumnDefinitionAgentConfig(
-            string? instructions,
-            bool? enableWebSearch)
+            string? instructions)
         {
             this.Instructions = instructions;
-            this.EnableWebSearch = enableWebSearch;
         }
 
         /// <summary>

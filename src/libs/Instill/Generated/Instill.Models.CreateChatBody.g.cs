@@ -21,6 +21,12 @@ namespace Instill
         public global::Instill.AgentConfig? AgentConfig { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("catalogId")]
+        public string? CatalogId { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -31,15 +37,18 @@ namespace Instill
         /// </summary>
         /// <param name="chatDisplayName"></param>
         /// <param name="agentConfig"></param>
+        /// <param name="catalogId"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateChatBody(
             string? chatDisplayName,
-            global::Instill.AgentConfig? agentConfig)
+            global::Instill.AgentConfig? agentConfig,
+            string? catalogId)
         {
             this.ChatDisplayName = chatDisplayName;
             this.AgentConfig = agentConfig;
+            this.CatalogId = catalogId;
         }
 
         /// <summary>

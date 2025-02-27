@@ -108,6 +108,44 @@ paths:
                 $ref: '#/components/schemas/rpc.Status'
       x-stage: alpha
   '/v1alpha/namespaces/{namespaceId}/chats/{chatUid}':
+    get:
+      tags:
+        - 🍎 Agent
+      summary: Get a chat
+      description: Gets a chat.
+      operationId: AgentPublicService_GetChat
+      parameters:
+        - name: namespaceId
+          in: path
+          description: namespace id
+          required: true
+          schema:
+            type: string
+        - name: chatUid
+          in: path
+          description: chat uid
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetChatResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
     put:
       tags:
         - 🍎 Agent
@@ -7331,6 +7369,9 @@ components:
           title: agent config
           allOf:
             - $ref: '#/components/schemas/.AgentConfig'
+        catalogId:
+          title: catalog id
+          type: string
     CreateChatResponse:
       title: CreateChatResponse returns the created chat
       type: object
@@ -7809,6 +7850,15 @@ components:
           description: The subscription resource.
           readOnly: true
       description: GetAuthenticatedUserSubscriptionResponse contains the requested subscription.
+    GetChatResponse:
+      title: GetChatResponse returns the chat
+      type: object
+      properties:
+        chat:
+          title: chat
+          allOf:
+            - $ref: '#/components/schemas/.Chat'
+          readOnly: true
     GetColumnDefinitionsResponse:
       type: object
       properties:
@@ -11519,6 +11569,10 @@ components:
           type: string
           description: chat delete time.
           format: date-time
+          readOnly: true
+        catalogId:
+          title: catalog id
+          type: string
           readOnly: true
     .Chunk:
       type: object

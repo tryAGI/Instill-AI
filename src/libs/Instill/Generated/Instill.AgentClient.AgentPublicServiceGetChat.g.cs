@@ -5,55 +5,53 @@ namespace Instill
 {
     public partial class AgentClient
     {
-        partial void PrepareAgentPublicServiceCreateChatArguments(
+        partial void PrepareAgentPublicServiceGetChatArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
-            global::Instill.CreateChatBody request);
-        partial void PrepareAgentPublicServiceCreateChatRequest(
+            ref string chatUid);
+        partial void PrepareAgentPublicServiceGetChatRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
-            global::Instill.CreateChatBody request);
-        partial void ProcessAgentPublicServiceCreateChatResponse(
+            string chatUid);
+        partial void ProcessAgentPublicServiceGetChatResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessAgentPublicServiceCreateChatResponseContent(
+        partial void ProcessAgentPublicServiceGetChatResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Create a chat<br/>
-        /// Creates a chat.
+        /// Get a chat<br/>
+        /// Gets a chat.
         /// </summary>
         /// <param name="namespaceId"></param>
-        /// <param name="request"></param>
+        /// <param name="chatUid"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
 #if NET8_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
 #endif
-        public async global::System.Threading.Tasks.Task<global::Instill.CreateChatResponse> AgentPublicServiceCreateChatAsync(
+        public async global::System.Threading.Tasks.Task<global::Instill.GetChatResponse> AgentPublicServiceGetChatAsync(
             string namespaceId,
-            global::Instill.CreateChatBody request,
+            string chatUid,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
-
             PrepareArguments(
                 client: HttpClient);
-            PrepareAgentPublicServiceCreateChatArguments(
+            PrepareAgentPublicServiceGetChatArguments(
                 httpClient: HttpClient,
                 namespaceId: ref namespaceId,
-                request: request);
+                chatUid: ref chatUid);
 
             var __pathBuilder = new PathBuilder(
-                path: $"/v1alpha/namespaces/{namespaceId}/chats",
+                path: $"/v1alpha/namespaces/{namespaceId}/chats/{chatUid}",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                method: global::System.Net.Http.HttpMethod.Post,
+                method: global::System.Net.Http.HttpMethod.Get,
                 requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
             __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -75,21 +73,15 @@ namespace Instill
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 }
             }
-            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
-            var __httpRequestContent = new global::System.Net.Http.StringContent(
-                content: __httpRequestContentBody,
-                encoding: global::System.Text.Encoding.UTF8,
-                mediaType: "application/json");
-            __httpRequest.Content = __httpRequestContent;
 
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareAgentPublicServiceCreateChatRequest(
+            PrepareAgentPublicServiceGetChatRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
                 namespaceId: namespaceId,
-                request: request);
+                chatUid: chatUid);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
@@ -99,7 +91,7 @@ namespace Instill
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessAgentPublicServiceCreateChatResponse(
+            ProcessAgentPublicServiceGetChatResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
             // Returned when the client credentials are not valid.
@@ -171,7 +163,7 @@ namespace Instill
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessAgentPublicServiceCreateChatResponseContent(
+                ProcessAgentPublicServiceGetChatResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -196,7 +188,7 @@ namespace Instill
                 }
 
                 return
-                    global::Instill.CreateChatResponse.FromJson(__content, JsonSerializerContext) ??
+                    global::Instill.GetChatResponse.FromJson(__content, JsonSerializerContext) ??
                     throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
@@ -226,42 +218,9 @@ namespace Instill
                 ).ConfigureAwait(false);
 
                 return
-                    await global::Instill.CreateChatResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    await global::Instill.GetChatResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                     throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
-        }
-
-        /// <summary>
-        /// Create a chat<br/>
-        /// Creates a chat.
-        /// </summary>
-        /// <param name="namespaceId"></param>
-        /// <param name="chatDisplayName"></param>
-        /// <param name="agentConfig"></param>
-        /// <param name="catalogId"></param>
-        /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
-#endif
-        public async global::System.Threading.Tasks.Task<global::Instill.CreateChatResponse> AgentPublicServiceCreateChatAsync(
-            string namespaceId,
-            string? chatDisplayName = default,
-            global::Instill.AgentConfig? agentConfig = default,
-            string? catalogId = default,
-            global::System.Threading.CancellationToken cancellationToken = default)
-        {
-            var __request = new global::Instill.CreateChatBody
-            {
-                ChatDisplayName = chatDisplayName,
-                AgentConfig = agentConfig,
-                CatalogId = catalogId,
-            };
-
-            return await AgentPublicServiceCreateChatAsync(
-                namespaceId: namespaceId,
-                request: __request,
-                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

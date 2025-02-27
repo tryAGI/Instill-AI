@@ -57,6 +57,12 @@ namespace Instill
         public global::System.DateTime? DeleteTime { get; set; }
 
         /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("catalogId")]
+        public string? CatalogId { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -91,6 +97,9 @@ namespace Instill
         /// chat delete time.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="catalogId">
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -101,7 +110,8 @@ namespace Instill
             global::Instill.AgentConfig? agentConfig,
             global::System.DateTime? createTime,
             global::System.DateTime? updateTime,
-            global::System.DateTime? deleteTime)
+            global::System.DateTime? deleteTime,
+            string? catalogId)
         {
             this.NamespaceId = namespaceId ?? throw new global::System.ArgumentNullException(nameof(namespaceId));
             this.Uid = uid;
@@ -110,6 +120,7 @@ namespace Instill
             this.CreateTime = createTime;
             this.UpdateTime = updateTime;
             this.DeleteTime = deleteTime;
+            this.CatalogId = catalogId;
         }
 
         /// <summary>

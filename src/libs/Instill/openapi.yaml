@@ -1828,6 +1828,51 @@ paths:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
       x-stage: alpha
+  '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/files/{fileUid}/summary':
+    get:
+      tags:
+        - 💾 Artifact
+      summary: Get summary from a catalog file
+      description: Gets summary from a catalog file
+      operationId: GetFileSummary
+      parameters:
+        - name: namespaceId
+          in: path
+          description: owner/namespace id
+          required: true
+          schema:
+            type: string
+        - name: catalogId
+          in: path
+          description: catalog id
+          required: true
+          schema:
+            type: string
+        - name: fileUid
+          in: path
+          description: unique identifier of the original uploaded file
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFileSummaryResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
   '/v1alpha/namespaces/{namespaceId}/source-files':
     get:
       tags:
@@ -7928,6 +7973,14 @@ components:
         retrievable:
           title: chunk retrievable
           type: boolean
+    GetFileSummaryResponse:
+      title: get file summary response
+      type: object
+      properties:
+        summary:
+          title: summary of the file
+          type: string
+          readOnly: true
     GetIntegrationResponse:
       type: object
       properties:

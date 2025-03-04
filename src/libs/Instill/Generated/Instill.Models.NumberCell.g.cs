@@ -13,7 +13,7 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("value")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required double Value { get; set; }
+        public required float Value { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -31,7 +31,7 @@ namespace Instill
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public NumberCell(
-            double value)
+            float value)
         {
             this.Value = value;
         }

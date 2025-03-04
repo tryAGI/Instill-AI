@@ -9565,7 +9565,7 @@ components:
         value:
           type: number
           description: The value of the cell as a number.
-          format: double
+          format: float
       description: NumberCell represents a cell with a number value.
     OAuthConfig:
       type: object

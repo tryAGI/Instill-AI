@@ -4,19 +4,24 @@
 namespace Instill
 {
     /// <summary>
-    /// - CITATION_TYPE_CHUNK: Chunk-based citation<br/>
-    ///  - CITATION_TYPE_URL: URL-based citation
+    /// - CITATION_TYPE_FILE: file citation<br/>
+    ///  - CITATION_TYPE_URL: URL-based citation<br/>
+    ///  - CITATION_TYPE_CELL: cell-based citation
     /// </summary>
     public enum CitationType2
     {
         /// <summary>
-        /// Chunk-based citation
+        /// file citation
         /// </summary>
-        CITATIONTYPECHUNK,
+        CITATIONTYPEFILE,
         /// <summary>
         /// URL-based citation
         /// </summary>
         CITATIONTYPEURL,
+        /// <summary>
+        /// cell-based citation
+        /// </summary>
+        CITATIONTYPECELL,
     }
 
     /// <summary>
@@ -31,8 +36,9 @@ namespace Instill
         {
             return value switch
             {
-                CitationType2.CITATIONTYPECHUNK => "CITATION_TYPE_CHUNK",
+                CitationType2.CITATIONTYPEFILE => "CITATION_TYPE_FILE",
                 CitationType2.CITATIONTYPEURL => "CITATION_TYPE_URL",
+                CitationType2.CITATIONTYPECELL => "CITATION_TYPE_CELL",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -43,8 +49,9 @@ namespace Instill
         {
             return value switch
             {
-                "CITATION_TYPE_CHUNK" => CitationType2.CITATIONTYPECHUNK,
+                "CITATION_TYPE_FILE" => CitationType2.CITATIONTYPEFILE,
                 "CITATION_TYPE_URL" => CitationType2.CITATIONTYPEURL,
+                "CITATION_TYPE_CELL" => CitationType2.CITATIONTYPECELL,
                 _ => null,
             };
         }

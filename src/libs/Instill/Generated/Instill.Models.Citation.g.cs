@@ -31,13 +31,31 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chunkUid")]
-        public string? ChunkUid { get; set; }
+        public global::System.Collections.Generic.IList<string>? ChunkUid { get; set; }
 
         /// <summary>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("fileUid")]
         public string? FileUid { get; set; }
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("objectUid")]
+        public string? ObjectUid { get; set; }
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("summary")]
+        public string? Summary { get; set; }
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("number")]
+        public int? Number { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -61,6 +79,15 @@ namespace Instill
         /// <param name="fileUid">
         /// Included only in responses
         /// </param>
+        /// <param name="objectUid">
+        /// Included only in responses
+        /// </param>
+        /// <param name="summary">
+        /// Included only in responses
+        /// </param>
+        /// <param name="number">
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -68,14 +95,20 @@ namespace Instill
             global::Instill.CitationType2? type,
             string? name,
             string? url,
-            string? chunkUid,
-            string? fileUid)
+            global::System.Collections.Generic.IList<string>? chunkUid,
+            string? fileUid,
+            string? objectUid,
+            string? summary,
+            int? number)
         {
             this.Type = type;
             this.Name = name;
             this.Url = url;
             this.ChunkUid = chunkUid;
             this.FileUid = fileUid;
+            this.ObjectUid = objectUid;
+            this.Summary = summary;
+            this.Number = number;
         }
 
         /// <summary>

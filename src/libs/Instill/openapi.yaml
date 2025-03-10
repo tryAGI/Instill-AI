@@ -6489,6 +6489,11 @@ components:
         message:
           title: User message
           type: string
+        fileUids:
+          title: file UIDs
+          type: array
+          items:
+            type: string
       description: "ChatRequest represents a request to send a message\nto a chatbot synchronously and streams back the results."
     Any:
       type: object

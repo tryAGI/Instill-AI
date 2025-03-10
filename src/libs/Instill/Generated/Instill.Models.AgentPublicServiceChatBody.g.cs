@@ -17,6 +17,12 @@ namespace Instill
         public required string Message { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("fileUids")]
+        public global::System.Collections.Generic.IList<string>? FileUids { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -26,13 +32,16 @@ namespace Instill
         /// Initializes a new instance of the <see cref="AgentPublicServiceChatBody" /> class.
         /// </summary>
         /// <param name="message"></param>
+        /// <param name="fileUids"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AgentPublicServiceChatBody(
-            string message)
+            string message,
+            global::System.Collections.Generic.IList<string>? fileUids)
         {
             this.Message = message ?? throw new global::System.ArgumentNullException(nameof(message));
+            this.FileUids = fileUids;
         }
 
         /// <summary>

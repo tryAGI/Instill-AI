@@ -34,63 +34,63 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Any? Type2 { get; set; }
+        public global::System.Collections.Generic.IList<string>? Type2 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public object? Type3 { get; set; }
+        public global::Instill.Any? Type3 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ApiToken? Type4 { get; set; }
+        public object? Type4 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.DateTime? Type5 { get; set; }
+        public global::Instill.ApiToken? Type5 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ApiTokenState? Type6 { get; set; }
+        public global::System.DateTime? Type6 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public int? Type7 { get; set; }
+        public global::Instill.ApiTokenState? Type7 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.AuthenticatedUser? Type8 { get; set; }
+        public int? Type8 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public bool? Type9 { get; set; }
+        public global::Instill.AuthenticatedUser? Type9 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.OnboardingStatus? Type10 { get; set; }
+        public bool? Type10 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UserProfile? Type11 { get; set; }
+        public global::Instill.OnboardingStatus? Type11 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, string>? Type12 { get; set; }
+        public global::Instill.UserProfile? Type12 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.BindChatTableBody? Type13 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, string>? Type13 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.BooleanCell? Type14 { get; set; }
+        public global::Instill.BindChatTableBody? Type14 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Catalog? Type15 { get; set; }
+        public global::Instill.BooleanCell? Type15 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<string>? Type16 { get; set; }
+        public global::Instill.Catalog? Type16 { get; set; }
         /// <summary>
         /// 
         /// </summary>

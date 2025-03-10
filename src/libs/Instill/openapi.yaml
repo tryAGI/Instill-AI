@@ -6998,10 +6998,10 @@ components:
       title: type of the citations message
       enum:
         - CITATION_TYPE_FILE
-        - CITATION_TYPE_URL
+        - CITATION_TYPE_WEB
         - CITATION_TYPE_CELL
       type: string
-      description: "- CITATION_TYPE_FILE: file citation\n - CITATION_TYPE_URL: URL-based citation\n - CITATION_TYPE_CELL: cell-based citation"
+      description: "- CITATION_TYPE_FILE: file-based citation\n - CITATION_TYPE_WEB: web-based citation\n - CITATION_TYPE_CELL: cell-based citation"
     CloneNamespacePipelineBody:
       required:
         - targetNamespaceId
@@ -11682,31 +11682,17 @@ components:
           type: string
           readOnly: true
         url:
-          title: URL of the citation (only applicable for URL and cell type citations)
-          type: string
-          readOnly: true
-        chunkUid:
-          title: Chunk UID (only applicable for file type citations)
-          type: array
-          items:
-            type: string
-          readOnly: true
-        fileUid:
-          title: File UID (only applicable for file type citations)
-          type: string
-          readOnly: true
-        objectUid:
-          title: Object UID for download (only applicable for file type citations)
-          type: string
-          readOnly: true
-        summary:
-          title: File summary (only applicable for file type citations)
+          title: 'URL of the citation, can be web url, cell url or object-uid'
           type: string
           readOnly: true
         number:
           title: Citation number
           type: integer
-          format: int32
+          format: int64
+          readOnly: true
+        summary:
+          title: File summary (only applicable for file type citations)
+          type: string
           readOnly: true
     .Permission:
       type: object

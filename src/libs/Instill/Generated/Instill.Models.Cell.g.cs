@@ -87,7 +87,7 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("citations")]
-        public global::System.Collections.Generic.IList<global::Instill.CellCitation>? Citations { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.Citation>? Citations { get; set; }
 
         /// <summary>
         /// The transparency of the cell.<br/>
@@ -167,7 +167,7 @@ namespace Instill
             global::Instill.FileCell? fileValue,
             object? metadata,
             global::Instill.CellStatus? status,
-            global::System.Collections.Generic.IList<global::Instill.CellCitation>? citations,
+            global::System.Collections.Generic.IList<global::Instill.Citation>? citations,
             global::Instill.Transparency? transparency)
         {
             this.Uid = uid;

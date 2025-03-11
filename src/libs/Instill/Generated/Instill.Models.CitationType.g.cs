@@ -4,25 +4,24 @@
 namespace Instill
 {
     /// <summary>
-    /// The type of the citation.<br/>
-    ///  - TYPE_WEB: The type is a url of a web page.<br/>
-    ///  - TYPE_FILE: The type is a url of a file resource.<br/>
-    ///  - TYPE_TABLE: The type is a url of a table resource.
+    /// - CITATION_TYPE_FILE: file-based citation<br/>
+    ///  - CITATION_TYPE_WEB: web-based citation<br/>
+    ///  - CITATION_TYPE_CELL: cell-based citation
     /// </summary>
     public enum CitationType
     {
         /// <summary>
-        /// The type is a url of a web page.
+        /// file-based citation
         /// </summary>
-        TYPEWEB,
+        FILE,
         /// <summary>
-        /// The type is a url of a file resource.
+        /// web-based citation
         /// </summary>
-        TYPEFILE,
+        WEB,
         /// <summary>
-        /// The type is a url of a table resource.
+        /// cell-based citation
         /// </summary>
-        TYPETABLE,
+        CELL,
     }
 
     /// <summary>
@@ -37,9 +36,9 @@ namespace Instill
         {
             return value switch
             {
-                CitationType.TYPEWEB => "TYPE_WEB",
-                CitationType.TYPEFILE => "TYPE_FILE",
-                CitationType.TYPETABLE => "TYPE_TABLE",
+                CitationType.FILE => "CITATION_TYPE_FILE",
+                CitationType.WEB => "CITATION_TYPE_WEB",
+                CitationType.CELL => "CITATION_TYPE_CELL",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -50,9 +49,9 @@ namespace Instill
         {
             return value switch
             {
-                "TYPE_WEB" => CitationType.TYPEWEB,
-                "TYPE_FILE" => CitationType.TYPEFILE,
-                "TYPE_TABLE" => CitationType.TYPETABLE,
+                "CITATION_TYPE_FILE" => CitationType.FILE,
+                "CITATION_TYPE_WEB" => CitationType.WEB,
+                "CITATION_TYPE_CELL" => CitationType.CELL,
                 _ => null,
             };
         }

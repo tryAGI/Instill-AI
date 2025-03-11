@@ -6841,7 +6841,7 @@ components:
         citations:
           type: array
           items:
-            $ref: '#/components/schemas/Cell.Citation'
+            $ref: '#/components/schemas/Citation'
           description: The citations for the cell.
           readOnly: true
         transparency:
@@ -6850,27 +6850,6 @@ components:
           description: The transparency of the cell.
           readOnly: true
       description: Cell represents a cell in a table.
-    Cell.Citation:
-      type: object
-      properties:
-        type:
-          allOf:
-            - $ref: '#/components/schemas/Citation.Type'
-          description: The type of the citation.
-          readOnly: true
-        url:
-          type: string
-          description: The url of the citation.
-          readOnly: true
-        title:
-          type: string
-          description: The title of the citation.
-          readOnly: true
-        summary:
-          type: string
-          description: The summary of the citation.
-          readOnly: true
-      description: The citations for the cell.
     CellStatus:
       enum:
         - CELL_STATUS_IDLE
@@ -6992,13 +6971,31 @@ components:
         - CHUNK_TYPE_VIDEO
       type: string
       description: "- CHUNK_TYPE_TEXT: text\n - CHUNK_TYPE_IMAGE: image\n - CHUNK_TYPE_AUDIO: audio\n - CHUNK_TYPE_VIDEO: video"
-    Citation.Type:
-      enum:
-        - TYPE_WEB
-        - TYPE_FILE
-        - TYPE_TABLE
-      type: string
-      description: "The type of the citation.\n\n - TYPE_WEB: The type is a url of a web page.\n - TYPE_FILE: The type is a url of a file resource.\n - TYPE_TABLE: The type is a url of a table resource."
+    Citation:
+      title: Citation message
+      type: object
+      properties:
+        type:
+          title: Type of citation
+          allOf:
+            - $ref: '#/components/schemas/CitationType'
+        name:
+          title: Name of the citation
+          type: string
+          readOnly: true
+        url:
+          title: 'URL of the citation, can be web url, cell url or object-uid'
+          type: string
+          readOnly: true
+        number:
+          title: Citation number
+          type: integer
+          format: int64
+          readOnly: true
+        summary:
+          title: File summary (only applicable for file type citations)
+          type: string
+          readOnly: true
     CitationType:
       title: type of the citations message
       enum:
@@ -11508,7 +11505,7 @@ components:
           title: citations(only for agent messages)
           type: array
           items:
-            $ref: '#/components/schemas/.Citation'
+            $ref: '#/components/schemas/Citation'
           readOnly: true
     longrunning.Operation:
       type: object
@@ -11674,31 +11671,6 @@ components:
             - $ref: '#/components/schemas/ContentType'
           readOnly: true
       description: The Chunk message represents a chunk of data in the artifact system.
-    .Citation:
-      title: Citation message
-      type: object
-      properties:
-        type:
-          title: Type of citation
-          allOf:
-            - $ref: '#/components/schemas/CitationType'
-        name:
-          title: Name of the citation
-          type: string
-          readOnly: true
-        url:
-          title: 'URL of the citation, can be web url, cell url or object-uid'
-          type: string
-          readOnly: true
-        number:
-          title: Citation number
-          type: integer
-          format: int64
-          readOnly: true
-        summary:
-          title: File summary (only applicable for file type citations)
-          type: string
-          readOnly: true
     .Permission:
       type: object
       properties:

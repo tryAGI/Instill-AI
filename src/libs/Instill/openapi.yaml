@@ -7803,14 +7803,14 @@ components:
           description: "objectUid in blob storage. user can upload to blob storage directly, then put objectUid here.\nthen no need the base64 encoding for the file content."
     FileCell:
       required:
-        - url
+        - fileUid
         - name
         - mimeType
       type: object
       properties:
-        url:
+        fileUid:
           type: string
-          description: The URL of the file resource.
+          description: The UID of the file resource.
         name:
           title: File Name
           type: string

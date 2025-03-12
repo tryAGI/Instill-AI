@@ -9,11 +9,11 @@ namespace Instill
     public sealed partial class FileCell
     {
         /// <summary>
-        /// The URL of the file resource.
+        /// The UID of the file resource.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("url")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("fileUid")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Url { get; set; }
+        public required string FileUid { get; set; }
 
         /// <summary>
         /// 
@@ -38,8 +38,8 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="FileCell" /> class.
         /// </summary>
-        /// <param name="url">
-        /// The URL of the file resource.
+        /// <param name="fileUid">
+        /// The UID of the file resource.
         /// </param>
         /// <param name="name"></param>
         /// <param name="mimeType">
@@ -49,11 +49,11 @@ namespace Instill
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FileCell(
-            string url,
+            string fileUid,
             string name,
             string mimeType)
         {
-            this.Url = url ?? throw new global::System.ArgumentNullException(nameof(url));
+            this.FileUid = fileUid ?? throw new global::System.ArgumentNullException(nameof(fileUid));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.MimeType = mimeType ?? throw new global::System.ArgumentNullException(nameof(mimeType));
         }

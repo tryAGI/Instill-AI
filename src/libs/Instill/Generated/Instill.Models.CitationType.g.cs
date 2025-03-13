@@ -6,7 +6,7 @@ namespace Instill
     /// <summary>
     /// - CITATION_TYPE_FILE: file-based citation<br/>
     ///  - CITATION_TYPE_WEB: web-based citation<br/>
-    ///  - CITATION_TYPE_CELL: cell-based citation
+    ///  - CITATION_TYPE_TABLE: table-based citation
     /// </summary>
     public enum CitationType
     {
@@ -19,9 +19,9 @@ namespace Instill
         /// </summary>
         WEB,
         /// <summary>
-        /// cell-based citation
+        /// table-based citation
         /// </summary>
-        CELL,
+        TABLE,
     }
 
     /// <summary>
@@ -38,7 +38,7 @@ namespace Instill
             {
                 CitationType.FILE => "CITATION_TYPE_FILE",
                 CitationType.WEB => "CITATION_TYPE_WEB",
-                CitationType.CELL => "CITATION_TYPE_CELL",
+                CitationType.TABLE => "CITATION_TYPE_TABLE",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -51,7 +51,7 @@ namespace Instill
             {
                 "CITATION_TYPE_FILE" => CitationType.FILE,
                 "CITATION_TYPE_WEB" => CitationType.WEB,
-                "CITATION_TYPE_CELL" => CitationType.CELL,
+                "CITATION_TYPE_TABLE" => CitationType.TABLE,
                 _ => null,
             };
         }

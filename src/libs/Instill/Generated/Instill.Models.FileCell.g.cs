@@ -9,6 +9,13 @@ namespace Instill
     public sealed partial class FileCell
     {
         /// <summary>
+        /// The namespace of the file resource.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("namespace")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Namespace { get; set; }
+
+        /// <summary>
         /// The UID of the file resource.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("fileUid")]
@@ -38,6 +45,9 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="FileCell" /> class.
         /// </summary>
+        /// <param name="namespace">
+        /// The namespace of the file resource.
+        /// </param>
         /// <param name="fileUid">
         /// The UID of the file resource.
         /// </param>
@@ -49,10 +59,12 @@ namespace Instill
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FileCell(
+            string @namespace,
             string fileUid,
             string name,
             string mimeType)
         {
+            this.Namespace = @namespace ?? throw new global::System.ArgumentNullException(nameof(@namespace));
             this.FileUid = fileUid ?? throw new global::System.ArgumentNullException(nameof(fileUid));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.MimeType = mimeType ?? throw new global::System.ArgumentNullException(nameof(mimeType));

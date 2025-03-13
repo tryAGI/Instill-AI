@@ -7001,9 +7001,9 @@ components:
       enum:
         - CITATION_TYPE_FILE
         - CITATION_TYPE_WEB
-        - CITATION_TYPE_CELL
+        - CITATION_TYPE_TABLE
       type: string
-      description: "- CITATION_TYPE_FILE: file-based citation\n - CITATION_TYPE_WEB: web-based citation\n - CITATION_TYPE_CELL: cell-based citation"
+      description: "- CITATION_TYPE_FILE: file-based citation\n - CITATION_TYPE_WEB: web-based citation\n - CITATION_TYPE_TABLE: table-based citation"
     CloneNamespacePipelineBody:
       required:
         - targetNamespaceId
@@ -7803,16 +7803,20 @@ components:
           description: "objectUid in blob storage. user can upload to blob storage directly, then put objectUid here.\nthen no need the base64 encoding for the file content."
     FileCell:
       required:
+        - namespace
         - fileUid
         - name
         - mimeType
       type: object
       properties:
+        namespace:
+          type: string
+          description: The namespace of the file resource.
         fileUid:
           type: string
           description: The UID of the file resource.
         name:
-          title: File Name
+          title: File name
           type: string
         mimeType:
           type: string

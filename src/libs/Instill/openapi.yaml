@@ -7805,6 +7805,7 @@ components:
       required:
         - namespace
         - fileUid
+        - objectUid
         - name
         - mimeType
       type: object
@@ -7815,6 +7816,9 @@ components:
         fileUid:
           type: string
           description: The UID of the file resource.
+        objectUid:
+          type: string
+          description: The UID of the raw object that the file resource belongs to.
         name:
           title: File name
           type: string

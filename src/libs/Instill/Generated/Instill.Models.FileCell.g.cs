@@ -23,6 +23,13 @@ namespace Instill
         public required string FileUid { get; set; }
 
         /// <summary>
+        /// The UID of the raw object that the file resource belongs to.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("objectUid")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string ObjectUid { get; set; }
+
+        /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
@@ -51,6 +58,9 @@ namespace Instill
         /// <param name="fileUid">
         /// The UID of the file resource.
         /// </param>
+        /// <param name="objectUid">
+        /// The UID of the raw object that the file resource belongs to.
+        /// </param>
         /// <param name="name"></param>
         /// <param name="mimeType">
         /// MIME type of the file.
@@ -61,11 +71,13 @@ namespace Instill
         public FileCell(
             string @namespace,
             string fileUid,
+            string objectUid,
             string name,
             string mimeType)
         {
             this.Namespace = @namespace ?? throw new global::System.ArgumentNullException(nameof(@namespace));
             this.FileUid = fileUid ?? throw new global::System.ArgumentNullException(nameof(fileUid));
+            this.ObjectUid = objectUid ?? throw new global::System.ArgumentNullException(nameof(objectUid));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.MimeType = mimeType ?? throw new global::System.ArgumentNullException(nameof(mimeType));
         }

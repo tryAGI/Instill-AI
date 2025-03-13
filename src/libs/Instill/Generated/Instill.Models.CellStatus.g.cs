@@ -4,40 +4,51 @@
 namespace Instill
 {
     /// <summary>
-    /// CellStatus represents the status of a cell.<br/>
-    ///  - CELL_STATUS_IDLE: The cell is idle.<br/>
-    ///  - CELL_STATUS_UPLOADING: The cell is uploading (only for file cells).<br/>
-    ///  - CELL_STATUS_PENDING: The cell is pending.<br/>
-    ///  - CELL_STATUS_PROCESSING: The cell is processing.<br/>
-    ///  - CELL_STATUS_FAILED: The cell is failed.<br/>
-    ///  - CELL_STATUS_COMPLETED: The cell is completed.
+    /// CellStatus represents the processing state of a cell.<br/>
+    ///  - CELL_STATUS_IDLE: The cell is in a stable, ready state with no active processing.<br/>
+    ///  - CELL_STATUS_DATA_UPLOADING: The cell's file data is currently being uploaded to the server.<br/>
+    /// This status only applies to cells with file type values.<br/>
+    ///  - CELL_STATUS_DATA_PENDING: The cell's data is queued for processing but has not started yet.<br/>
+    ///  - CELL_STATUS_DATA_PROCESSING: The cell's data is actively being processed.<br/>
+    ///  - CELL_STATUS_DATA_FAILED: The cell's data processing encountered an error and failed to complete.<br/>
+    ///  - CELL_STATUS_TRANSPARENCY_PENDING: The cell's transparency information is queued for generation but has not started yet.<br/>
+    ///  - CELL_STATUS_TRANSPARENCY_PROCESSING: The cell's transparency information is actively being generated.<br/>
+    ///  - CELL_STATUS_TRANSPARENCY_FAILED: The cell's transparency generation encountered an error and failed to complete.
     /// </summary>
     public enum CellStatus
     {
         /// <summary>
-        /// The cell is idle.
+        /// The cell is in a stable, ready state with no active processing.
         /// </summary>
         IDLE,
         /// <summary>
-        /// The cell is uploading (only for file cells).
+        /// The cell's file data is currently being uploaded to the server.
         /// </summary>
-        UPLOADING,
+        DATAUPLOADING,
         /// <summary>
-        /// The cell is pending.
+        /// The cell's data is queued for processing but has not started yet.
         /// </summary>
-        PENDING,
+        DATAPENDING,
         /// <summary>
-        /// The cell is processing.
+        /// The cell's data is actively being processed.
         /// </summary>
-        PROCESSING,
+        DATAPROCESSING,
         /// <summary>
-        /// The cell is failed.
+        /// The cell's data processing encountered an error and failed to complete.
         /// </summary>
-        FAILED,
+        DATAFAILED,
         /// <summary>
-        /// The cell is completed.
+        /// The cell's transparency information is queued for generation but has not started yet.
         /// </summary>
-        COMPLETED,
+        TRANSPARENCYPENDING,
+        /// <summary>
+        /// The cell's transparency information is actively being generated.
+        /// </summary>
+        TRANSPARENCYPROCESSING,
+        /// <summary>
+        /// The cell's transparency generation encountered an error and failed to complete.
+        /// </summary>
+        TRANSPARENCYFAILED,
     }
 
     /// <summary>
@@ -53,11 +64,13 @@ namespace Instill
             return value switch
             {
                 CellStatus.IDLE => "CELL_STATUS_IDLE",
-                CellStatus.UPLOADING => "CELL_STATUS_UPLOADING",
-                CellStatus.PENDING => "CELL_STATUS_PENDING",
-                CellStatus.PROCESSING => "CELL_STATUS_PROCESSING",
-                CellStatus.FAILED => "CELL_STATUS_FAILED",
-                CellStatus.COMPLETED => "CELL_STATUS_COMPLETED",
+                CellStatus.DATAUPLOADING => "CELL_STATUS_DATA_UPLOADING",
+                CellStatus.DATAPENDING => "CELL_STATUS_DATA_PENDING",
+                CellStatus.DATAPROCESSING => "CELL_STATUS_DATA_PROCESSING",
+                CellStatus.DATAFAILED => "CELL_STATUS_DATA_FAILED",
+                CellStatus.TRANSPARENCYPENDING => "CELL_STATUS_TRANSPARENCY_PENDING",
+                CellStatus.TRANSPARENCYPROCESSING => "CELL_STATUS_TRANSPARENCY_PROCESSING",
+                CellStatus.TRANSPARENCYFAILED => "CELL_STATUS_TRANSPARENCY_FAILED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -69,11 +82,13 @@ namespace Instill
             return value switch
             {
                 "CELL_STATUS_IDLE" => CellStatus.IDLE,
-                "CELL_STATUS_UPLOADING" => CellStatus.UPLOADING,
-                "CELL_STATUS_PENDING" => CellStatus.PENDING,
-                "CELL_STATUS_PROCESSING" => CellStatus.PROCESSING,
-                "CELL_STATUS_FAILED" => CellStatus.FAILED,
-                "CELL_STATUS_COMPLETED" => CellStatus.COMPLETED,
+                "CELL_STATUS_DATA_UPLOADING" => CellStatus.DATAUPLOADING,
+                "CELL_STATUS_DATA_PENDING" => CellStatus.DATAPENDING,
+                "CELL_STATUS_DATA_PROCESSING" => CellStatus.DATAPROCESSING,
+                "CELL_STATUS_DATA_FAILED" => CellStatus.DATAFAILED,
+                "CELL_STATUS_TRANSPARENCY_PENDING" => CellStatus.TRANSPARENCYPENDING,
+                "CELL_STATUS_TRANSPARENCY_PROCESSING" => CellStatus.TRANSPARENCYPROCESSING,
+                "CELL_STATUS_TRANSPARENCY_FAILED" => CellStatus.TRANSPARENCYFAILED,
                 _ => null,
             };
         }

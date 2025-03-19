@@ -40,6 +40,13 @@ namespace Instill
         public string? Summary { get; set; }
 
         /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("extractMethod")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.CitationExtractMethodTypeJsonConverter))]
+        public global::Instill.CitationExtractMethodType? ExtractMethod { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -61,6 +68,9 @@ namespace Instill
         /// <param name="summary">
         /// Included only in responses
         /// </param>
+        /// <param name="extractMethod">
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -69,13 +79,15 @@ namespace Instill
             string? name,
             string? url,
             long? number,
-            string? summary)
+            string? summary,
+            global::Instill.CitationExtractMethodType? extractMethod)
         {
             this.Type = type;
             this.Name = name;
             this.Url = url;
             this.Number = number;
             this.Summary = summary;
+            this.ExtractMethod = extractMethod;
         }
 
         /// <summary>

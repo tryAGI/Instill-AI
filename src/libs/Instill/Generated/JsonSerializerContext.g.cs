@@ -31,6 +31,8 @@ namespace Instill
             typeof(global::Instill.JsonConverters.CellStatusNullableJsonConverter),
             typeof(global::Instill.JsonConverters.CitationTypeJsonConverter),
             typeof(global::Instill.JsonConverters.CitationTypeNullableJsonConverter),
+            typeof(global::Instill.JsonConverters.CitationExtractMethodTypeJsonConverter),
+            typeof(global::Instill.JsonConverters.CitationExtractMethodTypeNullableJsonConverter),
             typeof(global::Instill.JsonConverters.CheckNamespaceAdminResponseNamespaceJsonConverter),
             typeof(global::Instill.JsonConverters.CheckNamespaceAdminResponseNamespaceNullableJsonConverter),
             typeof(global::Instill.JsonConverters.CheckNamespaceByUIDAdminResponseNamespaceJsonConverter),

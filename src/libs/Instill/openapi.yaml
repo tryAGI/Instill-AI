@@ -6998,6 +6998,20 @@ components:
           title: File summary (only applicable for file type citations)
           type: string
           readOnly: true
+        extractMethod:
+          title: Citation extract method type
+          allOf:
+            - $ref: '#/components/schemas/CitationExtractMethodType'
+          readOnly: true
+    CitationExtractMethodType:
+      title: type of the citations message extract method
+      enum:
+        - CITATION_EXTRACT_METHOD_TYPE_SELF
+        - CITATION_EXTRACT_METHOD_TYPE_WEB
+        - CITATION_EXTRACT_METHOD_TYPE_RAG
+        - CITATION_EXTRACT_METHOD_TYPE_DEEP_ANALYSIS
+      type: string
+      description: "- CITATION_EXTRACT_METHOD_TYPE_SELF: self generated\n - CITATION_EXTRACT_METHOD_TYPE_WEB: extract from web search tool\n - CITATION_EXTRACT_METHOD_TYPE_RAG: extract from RAG tool\n - CITATION_EXTRACT_METHOD_TYPE_DEEP_ANALYSIS: extract from deep analysis tool"
     CitationType:
       title: type of the citations message
       enum:

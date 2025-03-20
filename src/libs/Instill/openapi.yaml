@@ -7922,6 +7922,14 @@ components:
           description: The subscription resource.
           readOnly: true
       description: GetAuthenticatedUserSubscriptionResponse contains the requested subscription.
+    GetChatFileResponse:
+      title: GetChatFileResponse
+      type: object
+      properties:
+        markdown:
+          title: converted markdown content
+          type: string
+          format: byte
     GetChatResponse:
       title: GetChatResponse returns the chat
       type: object

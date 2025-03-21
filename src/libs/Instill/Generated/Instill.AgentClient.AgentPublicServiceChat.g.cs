@@ -249,6 +249,9 @@ namespace Instill
         /// <param name="chatUid"></param>
         /// <param name="message"></param>
         /// <param name="fileUids"></param>
+        /// <param name="enableWebSearch">
+        /// Whether to enable web search for the chat.
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
 #if NET8_0_OR_GREATER
@@ -259,12 +262,14 @@ namespace Instill
             string chatUid,
             string message,
             global::System.Collections.Generic.IList<string>? fileUids = default,
+            bool? enableWebSearch = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Instill.AgentPublicServiceChatBody
             {
                 Message = message,
                 FileUids = fileUids,
+                EnableWebSearch = enableWebSearch,
             };
 
             return await AgentPublicServiceChatAsync(

@@ -23,6 +23,12 @@ namespace Instill
         public global::System.Collections.Generic.IList<string>? FileUids { get; set; }
 
         /// <summary>
+        /// Whether to enable web search for the chat.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enableWebSearch")]
+        public bool? EnableWebSearch { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -33,15 +39,20 @@ namespace Instill
         /// </summary>
         /// <param name="message"></param>
         /// <param name="fileUids"></param>
+        /// <param name="enableWebSearch">
+        /// Whether to enable web search for the chat.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AgentPublicServiceChatBody(
             string message,
-            global::System.Collections.Generic.IList<string>? fileUids)
+            global::System.Collections.Generic.IList<string>? fileUids,
+            bool? enableWebSearch)
         {
             this.Message = message ?? throw new global::System.ArgumentNullException(nameof(message));
             this.FileUids = fileUids;
+            this.EnableWebSearch = enableWebSearch;
         }
 
         /// <summary>

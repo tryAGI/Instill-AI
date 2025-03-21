@@ -38,35 +38,35 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Any? Type3 { get; set; }
+        public bool? Type3 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public object? Type4 { get; set; }
+        public global::Instill.Any? Type4 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ApiToken? Type5 { get; set; }
+        public object? Type5 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.DateTime? Type6 { get; set; }
+        public global::Instill.ApiToken? Type6 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ApiTokenState? Type7 { get; set; }
+        public global::System.DateTime? Type7 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public int? Type8 { get; set; }
+        public global::Instill.ApiTokenState? Type8 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.AuthenticatedUser? Type9 { get; set; }
+        public int? Type9 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public bool? Type10 { get; set; }
+        public global::Instill.AuthenticatedUser? Type10 { get; set; }
         /// <summary>
         /// 
         /// </summary>

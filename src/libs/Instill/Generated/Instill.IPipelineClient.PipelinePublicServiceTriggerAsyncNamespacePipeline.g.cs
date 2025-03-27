@@ -12,7 +12,7 @@ namespace Instill
         /// workloads.<br/>
         /// The pipeline is identified by its resource name, formed by the parent namespace<br/>
         /// and ID of the pipeline.<br/>
-        /// For more information, see [Run NamespacePipeline](https://www.instill.tech/docs/pipeline/run-pipeline).
+        /// For more information, see [Run NamespacePipeline](https://instill-ai.dev/docs/pipeline/run-pipeline).
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="pipelineId"></param>
@@ -38,7 +38,7 @@ namespace Instill
         /// workloads.<br/>
         /// The pipeline is identified by its resource name, formed by the parent namespace<br/>
         /// and ID of the pipeline.<br/>
-        /// For more information, see [Run NamespacePipeline](https://www.instill.tech/docs/pipeline/run-pipeline).
+        /// For more information, see [Run NamespacePipeline](https://instill-ai.dev/docs/pipeline/run-pipeline).
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="pipelineId"></param>

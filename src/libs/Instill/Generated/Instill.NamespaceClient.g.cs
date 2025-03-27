@@ -13,7 +13,7 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public const string DefaultBaseUrl = "https://api.instill.tech";
+        public const string DefaultBaseUrl = "https://api.instill-ai.com";
 
         private bool _disposeHttpClient = true;
 

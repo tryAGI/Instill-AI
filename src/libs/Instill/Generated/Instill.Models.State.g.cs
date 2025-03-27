@@ -5,7 +5,7 @@ namespace Instill
 {
     /// <summary>
     /// State describes the state of a model. See [Deploy<br/>
-    /// Models](https://www.instill.tech/docs/latest/model/deploy) for more<br/>
+    /// Models](https://instill-ai.dev/docs/latest/model/deploy) for more<br/>
     /// information.<br/>
     ///  - STATE_OFFLINE: Offline is the state when the model instance number is 0.<br/>
     ///  - STATE_ACTIVE: Active is the state when a model is processing requests.<br/>

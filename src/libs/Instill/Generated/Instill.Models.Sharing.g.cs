@@ -5,7 +5,7 @@ namespace Instill
 {
     /// <summary>
     /// Sharing contains the information to share a resource with other users.<br/>
-    /// For more information, see [Share Pipelines](https://www.instill.tech/docs/pipeline/share-pipeline).
+    /// For more information, see [Share Pipelines](https://instill-ai.dev/docs/pipeline/share-pipeline).
     /// </summary>
     public sealed partial class Sharing
     {

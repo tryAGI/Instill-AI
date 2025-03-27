@@ -11,8 +11,8 @@ info:
     url: https://github.com/instill-ai/protobufs/blob/main/LICENSE
   version: v0.49.0-beta
 servers:
-  - url: https://api.instill.tech
-  - url: http://api.instill.tech
+  - url: https://api.instill-ai.com
+  - url: http://api.instill-ai.com
 paths:
   '/v1alpha/namespaces/{namespaceId}/chats':
     get:
@@ -3180,7 +3180,7 @@ paths:
       tags:
         - 🤝 Subscription
       summary: Get the remaining Instill Credit
-      description: "This endpoint returns the remaining [Instill Credit](https://www.instill.tech/docs/cloud/credit) of a given user or\norganization. The requested credit owner must be either the authenticated\nuser or an organization they belong to.\n\nOn Instill Core, this endpoint will return a 404 Not Found status."
+      description: "This endpoint returns the remaining [Instill Credit](https://instill-ai.dev/docs/cloud/credit) of a given user or\norganization. The requested credit owner must be either the authenticated\nuser or an organization they belong to.\n\nOn Instill Core, this endpoint will return a 404 Not Found status."
       operationId: GetRemainingCredit
       parameters:
         - name: namespaceId
@@ -4997,7 +4997,7 @@ paths:
       tags:
         - 💧 Pipeline
       summary: Trigger a pipeline
-      description: "Triggers the execution of a pipeline synchronously, i.e., the result is\nsent back to the namespace right after the data is processed. This method is\nintended for real-time inference when low latency is of concern.\n\nThe pipeline is identified by its resource name, formed by the parent namespace\nand ID of the pipeline.\n\nFor more information, see [Run NamespacePipeline](https://www.instill.tech/docs/pipeline/run-pipeline)."
+      description: "Triggers the execution of a pipeline synchronously, i.e., the result is\nsent back to the namespace right after the data is processed. This method is\nintended for real-time inference when low latency is of concern.\n\nThe pipeline is identified by its resource name, formed by the parent namespace\nand ID of the pipeline.\n\nFor more information, see [Run NamespacePipeline](https://instill-ai.dev/docs/pipeline/run-pipeline)."
       operationId: PipelinePublicService_TriggerNamespacePipeline
       parameters:
         - name: namespaceId
@@ -5105,7 +5105,7 @@ paths:
       tags:
         - 💧 Pipeline
       summary: Trigger a pipeline asynchronously
-      description: "Triggers the execution of a pipeline asynchronously, i.e., the result\ncontains the necessary information to access the result and status of the\noperation. This method is intended for cases that require long-running\nworkloads.\n\nThe pipeline is identified by its resource name, formed by the parent namespace\nand ID of the pipeline.\n\nFor more information, see [Run NamespacePipeline](https://www.instill.tech/docs/pipeline/run-pipeline)."
+      description: "Triggers the execution of a pipeline asynchronously, i.e., the result\ncontains the necessary information to access the result and status of the\noperation. This method is intended for cases that require long-running\nworkloads.\n\nThe pipeline is identified by its resource name, formed by the parent namespace\nand ID of the pipeline.\n\nFor more information, see [Run NamespacePipeline](https://instill-ai.dev/docs/pipeline/run-pipeline)."
       operationId: PipelinePublicService_TriggerAsyncNamespacePipeline
       parameters:
         - name: namespaceId
@@ -9961,7 +9961,7 @@ components:
             - $ref: '#/components/schemas/Endpoints'
           description: Pipeline endpoints.
           readOnly: true
-      description: "A Pipeline is an end-to-end workflow that automates a sequence of components\nto process data.\n\nFor more information, see [Pipeline](https://www.instill.tech/docs/pipeline/introduction) in\nthe official documentation."
+      description: "A Pipeline is an end-to-end workflow that automates a sequence of components\nto process data.\n\nFor more information, see [Pipeline](https://instill-ai.dev/docs/pipeline/introduction) in\nthe official documentation."
     Pipeline.Stats:
       title: Statistic data
       type: object
@@ -10453,7 +10453,7 @@ components:
           allOf:
             - $ref: '#/components/schemas/ShareCode'
           description: Defines the configuration to share a resource via link.
-      description: "Sharing contains the information to share a resource with other users.\n\nFor more information, see [Share Pipelines](https://www.instill.tech/docs/pipeline/share-pipeline)."
+      description: "Sharing contains the information to share a resource with other users.\n\nFor more information, see [Share Pipelines](https://instill-ai.dev/docs/pipeline/share-pipeline)."
     Sharing.User:
       type: object
       properties:
@@ -11737,7 +11737,7 @@ components:
         - STATE_SCALING_UP
         - STATE_SCALING_DOWN
       type: string
-      description: "State describes the state of a model. See [Deploy\nModels](https://www.instill.tech/docs/latest/model/deploy) for more\ninformation.\n\n - STATE_OFFLINE: Offline is the state when the model instance number is 0.\n - STATE_ACTIVE: Active is the state when a model is processing requests.\n - STATE_IDLE: Idle is the state when a model is alive but not processing requests.\n - STATE_ERROR: Error is the state when the model is undeployable.\n - STATE_STARTING: Starting is the state when the system is provisioning the necessary\nresources for the model\n - STATE_SCALING_UP: Scaling Up is the transition state when the system is provisioning compute resource for this model instance.\n - STATE_SCALING_DOWN: Scaling is the transition state when the system is releasing compute resource for this model instance."
+      description: "State describes the state of a model. See [Deploy\nModels](https://instill-ai.dev/docs/latest/model/deploy) for more\ninformation.\n\n - STATE_OFFLINE: Offline is the state when the model instance number is 0.\n - STATE_ACTIVE: Active is the state when a model is processing requests.\n - STATE_IDLE: Idle is the state when a model is alive but not processing requests.\n - STATE_ERROR: Error is the state when the model is undeployable.\n - STATE_STARTING: Starting is the state when the system is provisioning the necessary\nresources for the model\n - STATE_SCALING_UP: Scaling Up is the transition state when the system is provisioning compute resource for this model instance.\n - STATE_SCALING_DOWN: Scaling is the transition state when the system is releasing compute resource for this model instance."
     .Type:
       enum:
         - TYPE_STRING
@@ -11808,4 +11808,4 @@ tags:
     description: Pricing plans on Instill Cloud.
 externalDocs:
   description: More about Instill AI
-  url: https://www.instill.tech/docs
+  url: https://instill-ai.dev/docs

@@ -121,6 +121,18 @@ namespace Instill
         public string? ObjectUid { get; set; }
 
         /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("summary")]
+        public string? Summary { get; set; }
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("downloadUrl")]
+        public string? DownloadUrl { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -176,6 +188,12 @@ namespace Instill
         /// objectUid in blob storage. user can upload to blob storage directly, then put objectUid here.<br/>
         /// then no need the base64 encoding for the file content.
         /// </param>
+        /// <param name="summary">
+        /// Included only in responses
+        /// </param>
+        /// <param name="downloadUrl">
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -197,6 +215,8 @@ namespace Instill
             int? totalTokens,
             object? externalMetadata,
             string? objectUid,
+            string? summary,
+            string? downloadUrl,
             string fileUid = default!)
         {
             this.FileUid = fileUid;
@@ -217,6 +237,8 @@ namespace Instill
             this.TotalTokens = totalTokens;
             this.ExternalMetadata = externalMetadata;
             this.ObjectUid = objectUid;
+            this.Summary = summary;
+            this.DownloadUrl = downloadUrl;
         }
 
         /// <summary>

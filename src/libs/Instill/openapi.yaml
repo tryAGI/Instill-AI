@@ -1696,6 +1696,51 @@ paths:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
       x-stage: alpha
+  '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/files/{fileUid}':
+    get:
+      tags:
+        - 💾 Artifact
+      summary: Get catalog file
+      description: Gets the file of a catalog.
+      operationId: GetCatalogFile
+      parameters:
+        - name: namespaceId
+          in: path
+          description: The namespace id.
+          required: true
+          schema:
+            type: string
+        - name: catalogId
+          in: path
+          description: The catalog id.
+          required: true
+          schema:
+            type: string
+        - name: fileUid
+          in: path
+          description: The file uid.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCatalogFileResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
   '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/chunks':
     get:
       tags:
@@ -7823,6 +7868,14 @@ components:
         objectUid:
           type: string
           description: "objectUid in blob storage. user can upload to blob storage directly, then put objectUid here.\nthen no need the base64 encoding for the file content."
+        summary:
+          title: summary of the file
+          type: string
+          readOnly: true
+        downloadUrl:
+          title: download url of the file
+          type: string
+          readOnly: true
     FileCell:
       required:
         - namespace
@@ -7928,6 +7981,14 @@ components:
           description: The subscription resource.
           readOnly: true
       description: GetAuthenticatedUserSubscriptionResponse contains the requested subscription.
+    GetCatalogFileResponse:
+      type: object
+      properties:
+        file:
+          allOf:
+            - $ref: '#/components/schemas/File'
+          description: The file.
+      description: GetCatalogFileResponse represents a response for getting a catalog file.
     GetChatFileResponse:
       title: GetChatFileResponse
       type: object

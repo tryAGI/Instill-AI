@@ -4,8 +4,8 @@
 namespace Instill
 {
     /// <summary>
-    /// GetNamespaceModelOperationResponse represents a response to query a long-running<br/>
-    /// operation.
+    /// GetNamespaceModelOperationResponse represents a response to query a<br/>
+    /// long-running operation.
     /// </summary>
     public sealed partial class GetNamespaceModelOperationResponse
     {

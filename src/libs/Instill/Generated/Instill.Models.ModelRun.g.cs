@@ -46,14 +46,16 @@ namespace Instill
         public global::System.DateTime? EndTime { get; set; }
 
         /// <summary>
-        /// Runner ID. If current viewing requester does not have enough permission, it will return null.<br/>
+        /// Runner ID. If current viewing requester does not have enough permission, it<br/>
+        /// will return null.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("runnerId")]
         public string? RunnerId { get; set; }
 
         /// <summary>
-        /// The amount of Instill Credit consumed by the run. This field will only be present on Instill Cloud.<br/>
+        /// The amount of Instill Credit consumed by the run. This field will only be<br/>
+        /// present on Instill Cloud.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("creditAmount")]
@@ -153,11 +155,13 @@ namespace Instill
         /// Included only in responses
         /// </param>
         /// <param name="runnerId">
-        /// Runner ID. If current viewing requester does not have enough permission, it will return null.<br/>
+        /// Runner ID. If current viewing requester does not have enough permission, it<br/>
+        /// will return null.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="creditAmount">
-        /// The amount of Instill Credit consumed by the run. This field will only be present on Instill Cloud.<br/>
+        /// The amount of Instill Credit consumed by the run. This field will only be<br/>
+        /// present on Instill Cloud.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="error">

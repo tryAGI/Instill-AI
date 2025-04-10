@@ -4,8 +4,8 @@
 namespace Instill
 {
     /// <summary>
-    /// TriggerAsyncNamespaceLatestModelRequest represents a request to trigger a model inference<br/>
-    /// asynchronously with the latest uploaded version.
+    /// TriggerAsyncNamespaceLatestModelRequest represents a request to trigger a<br/>
+    /// model inference asynchronously with the latest uploaded version.
     /// </summary>
     public sealed partial class TriggerAsyncNamespaceLatestModelBody
     {

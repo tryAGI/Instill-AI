@@ -4,7 +4,8 @@
 namespace Instill
 {
     /// <summary>
-    /// ListModelRunsByRequesterResponse is the request message for ListModelRunsByRequester.
+    /// ListModelRunsByRequesterResponse is the request message for<br/>
+    /// ListModelRunsByRequester.
     /// </summary>
     public sealed partial class ListModelRunsByRequesterResponse
     {

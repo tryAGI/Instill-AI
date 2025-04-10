@@ -3597,7 +3597,7 @@ paths:
             type: string
         - name: orderBy
           in: query
-          description: "Order by field, with options for ordering by `id`, `create_time` or `update_time`.\nFormat: `order_by=id` or `order_by=create_time desc`, default is `asc`."
+          description: "Order by field, with options for ordering by `id`, `create_time` or\n`update_time`. Format: `order_by=id` or `order_by=create_time desc`,\ndefault is `asc`."
           schema:
             type: string
       responses:
@@ -3672,7 +3672,7 @@ paths:
             type: string
         - name: orderBy
           in: query
-          description: "Order by field, with options for ordering by `id`, `create_time` or `update_time`.\nFormat: `order_by=id` or `order_by=create_time desc`, default is `asc`."
+          description: "Order by field, with options for ordering by `id`, `create_time` or\n`update_time`. Format: `order_by=id` or `order_by=create_time desc`,\ndefault is `asc`."
           schema:
             type: string
       responses:
@@ -4335,7 +4335,7 @@ paths:
             type: string
         - name: view
           in: query
-          description: "View allows clients to specify the desired operation result in the response.\n\n - VIEW_BASIC: Default view, only includes basic information (omits `model_spec`).\n - VIEW_FULL: Full representation."
+          description: "View allows clients to specify the desired operation result in the\nresponse.\n\n - VIEW_BASIC: Default view, only includes basic information (omits `model_spec`).\n - VIEW_FULL: Full representation."
           schema:
             enum:
               - VIEW_BASIC
@@ -4382,7 +4382,7 @@ paths:
             type: string
         - name: view
           in: query
-          description: "View allows clients to specify the desired operation result in the response.\n\n - VIEW_BASIC: Default view, only includes basic information (omits `model_spec`).\n - VIEW_FULL: Full representation."
+          description: "View allows clients to specify the desired operation result in the\nresponse.\n\n - VIEW_BASIC: Default view, only includes basic information (omits `model_spec`).\n - VIEW_FULL: Full representation."
           schema:
             enum:
               - VIEW_BASIC
@@ -6682,6 +6682,15 @@ components:
           type: boolean
           description: The value of the cell as a boolean.
       description: BooleanCell represents a cell with a boolean value.
+    CallResponse:
+      title: CallResponse represents a response for model inference
+      type: object
+      properties:
+        taskOutputs:
+          type: array
+          items:
+            type: object
+          description: Model inference outputs.
     Catalog:
       required:
         - catalogId
@@ -7711,7 +7720,7 @@ components:
       title: DeployNamespaceModelAdminResponse represents a response for a deployed model
       type: object
     DeployOrganizationModelAdminResponse:
-      title: DeployOrganizationModelAdminResponse represents a response for a deployed model
+      title: "DeployOrganizationModelAdminResponse represents a response for a deployed\nmodel"
       type: object
     DeployUserModelAdminResponse:
       title: DeployUserModelAdminResponse represents a response for a deployed model
@@ -8127,7 +8136,7 @@ components:
             - $ref: '#/components/schemas/longrunning.Operation'
           description: The long-running operation.
           readOnly: true
-      description: "GetNamespaceLatestModelOperationResponse represents a response to query a long-running\noperation."
+      description: "GetNamespaceLatestModelOperationResponse represents a response to query a\nlong-running operation."
     GetNamespaceModelOperationResponse:
       type: object
       properties:
@@ -8135,7 +8144,7 @@ components:
           allOf:
             - $ref: '#/components/schemas/longrunning.Operation'
           description: The long-running operation.
-      description: "GetNamespaceModelOperationResponse represents a response to query a long-running\noperation."
+      description: "GetNamespaceModelOperationResponse represents a response to query a\nlong-running operation."
     GetNamespaceModelResponse:
       type: object
       properties:
@@ -8384,6 +8393,11 @@ components:
           title: Hardware name value
           type: string
       description: Hardware describes the hardware title and string value that backend consumes.
+    HealthzResponse:
+      type: object
+      properties:
+        message:
+          type: string
     InsertRowBody:
       type: object
       properties:
@@ -8463,6 +8477,13 @@ components:
           description: URL contains the reference the link will redirect to.
           readOnly: true
       description: Link contains the information to display an reference to an external URL.
+    ListApplicationsResponse:
+      type: object
+      properties:
+        applicationNames:
+          type: array
+          items:
+            type: string
     ListAvailableRegionsResponse:
       type: object
       properties:
@@ -8720,7 +8741,7 @@ components:
           description: The requested page offset.
           format: int32
           readOnly: true
-      description: ListModelRunsByRequesterResponse is the request message for ListModelRunsByRequester.
+      description: "ListModelRunsByRequesterResponse is the request message for\nListModelRunsByRequester."
     ListModelRunsResponse:
       type: object
       properties:
@@ -9520,11 +9541,11 @@ components:
           readOnly: true
         runnerId:
           type: string
-          description: 'Runner ID. If current viewing requester does not have enough permission, it will return null.'
+          description: "Runner ID. If current viewing requester does not have enough permission, it\nwill return null."
           readOnly: true
         creditAmount:
           type: number
-          description: The amount of Instill Credit consumed by the run. This field will only be present on Instill Cloud.
+          description: "The amount of Instill Credit consumed by the run. This field will only be\npresent on Instill Cloud."
           format: float
           readOnly: true
         error:
@@ -10907,7 +10928,7 @@ components:
           items:
             type: object
           description: Model inference inputs.
-      description: "TriggerAsyncNamespaceLatestModelRequest represents a request to trigger a model inference\nasynchronously with the latest uploaded version."
+      description: "TriggerAsyncNamespaceLatestModelRequest represents a request to trigger a\nmodel inference asynchronously with the latest uploaded version."
     TriggerAsyncNamespaceLatestModelResponse:
       type: object
       properties:
@@ -10916,7 +10937,7 @@ components:
             - $ref: '#/components/schemas/longrunning.Operation'
           description: Long-running operation information.
           readOnly: true
-      description: "TriggerAsyncNamespaceLatestModelResponse contains the information to access the\nstatus of an asynchronous model inference."
+      description: "TriggerAsyncNamespaceLatestModelResponse contains the information to access\nthe status of an asynchronous model inference."
     TriggerAsyncNamespaceModelBody:
       required:
         - taskInputs
@@ -10927,7 +10948,7 @@ components:
           items:
             type: object
           description: Model inference inputs.
-      description: "TriggerAsyncNamespaceModelRequest represents a request to trigger a model inference\nasynchronously."
+      description: "TriggerAsyncNamespaceModelRequest represents a request to trigger a model\ninference asynchronously."
     TriggerAsyncNamespaceModelResponse:
       type: object
       properties:
@@ -11025,7 +11046,7 @@ components:
             type: object
           description: "Deleteted field.\nModel inference outputs."
           readOnly: true
-      description: TriggerNamespaceLatestModelBinaryFileUploadResponse contains the model inference results.
+      description: "TriggerNamespaceLatestModelBinaryFileUploadResponse contains the model\ninference results."
     TriggerNamespaceLatestModelBody:
       required:
         - taskInputs
@@ -11036,7 +11057,7 @@ components:
           items:
             type: object
           description: Model inference inputs.
-      description: "TriggerNamespaceLatestModelRequest represents a request to trigger a model inference\nwith the latest uploaded version."
+      description: "TriggerNamespaceLatestModelRequest represents a request to trigger a model\ninference with the latest uploaded version."
     TriggerNamespaceLatestModelResponse:
       type: object
       properties:
@@ -11067,7 +11088,7 @@ components:
             type: object
           description: Model inference outputs.
           readOnly: true
-      description: TriggerNamespaceModelBinaryFileUploadResponse contains the model inference results.
+      description: "TriggerNamespaceModelBinaryFileUploadResponse contains the model inference\nresults."
     TriggerNamespaceModelBody:
       required:
         - taskInputs
@@ -11078,7 +11099,7 @@ components:
           items:
             type: object
           description: Model inference inputs.
-      description: TriggerNamespaceModelRequest represents a request to trigger a model inference.
+      description: "TriggerNamespaceModelRequest represents a request to trigger a model\ninference."
     TriggerNamespaceModelResponse:
       type: object
       properties:
@@ -11197,10 +11218,10 @@ components:
       type: object
       description: UnbindChatTableResponse is an empty response for unbinding a table from a chat.
     UndeployNamespaceModelAdminResponse:
-      title: UndeployNamespaceModelAdminResponse represents a response for a undeployed model
+      title: "UndeployNamespaceModelAdminResponse represents a response for a undeployed\nmodel"
       type: object
     UndeployOrganizationModelAdminResponse:
-      title: UndeployOrganizationModelAdminResponse represents a response for a undeployed model
+      title: "UndeployOrganizationModelAdminResponse represents a response for a undeployed\nmodel"
       type: object
     UndeployUserModelAdminResponse:
       title: UndeployUserModelAdminResponse represents a response for a undeployed model
@@ -11534,7 +11555,7 @@ components:
           title: Detail description of the state
           type: string
           readOnly: true
-      description: WatchNamespaceLatestModelResponse contains the state of the latest model version.
+      description: "WatchNamespaceLatestModelResponse contains the state of the latest model\nversion."
     WatchNamespaceModelResponse:
       type: object
       properties:
@@ -11798,7 +11819,7 @@ components:
         - STATE_SCALING_UP
         - STATE_SCALING_DOWN
       type: string
-      description: "State describes the state of a model. See [Deploy\nModels](https://instill-ai.dev/docs/latest/model/deploy) for more\ninformation.\n\n - STATE_OFFLINE: Offline is the state when the model instance number is 0.\n - STATE_ACTIVE: Active is the state when a model is processing requests.\n - STATE_IDLE: Idle is the state when a model is alive but not processing requests.\n - STATE_ERROR: Error is the state when the model is undeployable.\n - STATE_STARTING: Starting is the state when the system is provisioning the necessary\nresources for the model\n - STATE_SCALING_UP: Scaling Up is the transition state when the system is provisioning compute resource for this model instance.\n - STATE_SCALING_DOWN: Scaling is the transition state when the system is releasing compute resource for this model instance."
+      description: "State describes the state of a model. See [Deploy\nModels](https://instill-ai.dev/docs/latest/model/deploy) for more\ninformation.\n\n - STATE_OFFLINE: Offline is the state when the model instance number is 0.\n - STATE_ACTIVE: Active is the state when a model is processing requests.\n - STATE_IDLE: Idle is the state when a model is alive but not processing requests.\n - STATE_ERROR: Error is the state when the model is undeployable.\n - STATE_STARTING: Starting is the state when the system is provisioning the necessary\nresources for the model\n - STATE_SCALING_UP: Scaling Up is the transition state when the system is provisioning compute\nresource for this model instance.\n - STATE_SCALING_DOWN: Scaling is the transition state when the system is releasing compute\nresource for this model instance."
     .Type:
       enum:
         - TYPE_STRING

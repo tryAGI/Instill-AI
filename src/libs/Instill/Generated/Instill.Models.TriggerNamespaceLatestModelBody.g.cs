@@ -4,8 +4,8 @@
 namespace Instill
 {
     /// <summary>
-    /// TriggerNamespaceLatestModelRequest represents a request to trigger a model inference<br/>
-    /// with the latest uploaded version.
+    /// TriggerNamespaceLatestModelRequest represents a request to trigger a model<br/>
+    /// inference with the latest uploaded version.
     /// </summary>
     public sealed partial class TriggerNamespaceLatestModelBody
     {

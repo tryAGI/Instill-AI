@@ -4,7 +4,8 @@
 namespace Instill
 {
     /// <summary>
-    /// TriggerNamespaceLatestModelBinaryFileUploadResponse contains the model inference results.
+    /// TriggerNamespaceLatestModelBinaryFileUploadResponse contains the model<br/>
+    /// inference results.
     /// </summary>
     public sealed partial class TriggerNamespaceLatestModelBinaryFileUploadResponse
     {

@@ -4,8 +4,8 @@
 namespace Instill
 {
     /// <summary>
-    /// TriggerAsyncNamespaceLatestModelResponse contains the information to access the<br/>
-    /// status of an asynchronous model inference.
+    /// TriggerAsyncNamespaceLatestModelResponse contains the information to access<br/>
+    /// the status of an asynchronous model inference.
     /// </summary>
     public sealed partial class TriggerAsyncNamespaceLatestModelResponse
     {

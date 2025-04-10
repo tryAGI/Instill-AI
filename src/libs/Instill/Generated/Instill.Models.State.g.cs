@@ -13,8 +13,10 @@ namespace Instill
     ///  - STATE_ERROR: Error is the state when the model is undeployable.<br/>
     ///  - STATE_STARTING: Starting is the state when the system is provisioning the necessary<br/>
     /// resources for the model<br/>
-    ///  - STATE_SCALING_UP: Scaling Up is the transition state when the system is provisioning compute resource for this model instance.<br/>
-    ///  - STATE_SCALING_DOWN: Scaling is the transition state when the system is releasing compute resource for this model instance.
+    ///  - STATE_SCALING_UP: Scaling Up is the transition state when the system is provisioning compute<br/>
+    /// resource for this model instance.<br/>
+    ///  - STATE_SCALING_DOWN: Scaling is the transition state when the system is releasing compute<br/>
+    /// resource for this model instance.
     /// </summary>
     public enum State
     {
@@ -39,11 +41,11 @@ namespace Instill
         /// </summary>
         STARTING,
         /// <summary>
-        /// Scaling Up is the transition state when the system is provisioning compute resource for this model instance.
+        /// Scaling Up is the transition state when the system is provisioning compute
         /// </summary>
         SCALINGUP,
         /// <summary>
-        /// Scaling is the transition state when the system is releasing compute resource for this model instance.
+        /// Scaling is the transition state when the system is releasing compute
         /// </summary>
         SCALINGDOWN,
     }

@@ -4,8 +4,8 @@
 namespace Instill
 {
     /// <summary>
-    /// TriggerAsyncNamespaceModelRequest represents a request to trigger a model inference<br/>
-    /// asynchronously.
+    /// TriggerAsyncNamespaceModelRequest represents a request to trigger a model<br/>
+    /// inference asynchronously.
     /// </summary>
     public sealed partial class TriggerAsyncNamespaceModelBody
     {

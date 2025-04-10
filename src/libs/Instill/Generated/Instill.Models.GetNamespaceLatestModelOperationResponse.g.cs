@@ -4,8 +4,8 @@
 namespace Instill
 {
     /// <summary>
-    /// GetNamespaceLatestModelOperationResponse represents a response to query a long-running<br/>
-    /// operation.
+    /// GetNamespaceLatestModelOperationResponse represents a response to query a<br/>
+    /// long-running operation.
     /// </summary>
     public sealed partial class GetNamespaceLatestModelOperationResponse
     {

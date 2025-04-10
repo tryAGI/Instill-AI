@@ -4,7 +4,8 @@
 namespace Instill
 {
     /// <summary>
-    /// WatchNamespaceLatestModelResponse contains the state of the latest model version.
+    /// WatchNamespaceLatestModelResponse contains the state of the latest model<br/>
+    /// version.
     /// </summary>
     public sealed partial class WatchNamespaceLatestModelResponse
     {

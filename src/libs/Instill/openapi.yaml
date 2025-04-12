@@ -7972,6 +7972,12 @@ components:
         - FILE_TYPE_CSV
       type: string
       description: "- FILE_TYPE_TEXT: text\n - FILE_TYPE_PDF: PDF\n - FILE_TYPE_MARKDOWN: MARKDOWN\n - FILE_TYPE_PNG: PNG(not supported yet)\n - FILE_TYPE_JPEG: JPEG(not supported yet)\n - FILE_TYPE_JPG: JPG(not supported yet)\n - FILE_TYPE_HTML: HTML\n - FILE_TYPE_DOCX: DOCX\n - FILE_TYPE_DOC: DOC\n - FILE_TYPE_PPT: PPT\n - FILE_TYPE_PPTX: PPTX\n - FILE_TYPE_XLS: XLS\n - FILE_TYPE_XLSX: XLSX\n - FILE_TYPE_CSV: CSV"
+    FruitCosts:
+      type: object
+      properties:
+        costs:
+          type: number
+          format: float
     GetAuthenticatedUserResponse:
       type: object
       properties:
@@ -9512,6 +9518,12 @@ components:
           format: date-time
           readOnly: true
       description: ModelDefinition defines how to configure and import a model.
+    ModelOutput:
+      type: object
+      properties:
+        output:
+          type: number
+          format: float
     ModelRun:
       type: object
       properties:
@@ -11446,6 +11458,19 @@ components:
           title: file
           allOf:
             - $ref: '#/components/schemas/File'
+    UserDefinedResponse:
+      type: object
+      properties:
+        greeting:
+          type: string
+        numX2:
+          type: string
+          format: int64
+    UserDefinedResponse2:
+      type: object
+      properties:
+        greeting:
+          type: string
     UserMembership:
       required:
         - state
@@ -11890,4 +11915,4 @@ tags:
     description: Pricing plans on Instill Cloud.
 externalDocs:
   description: More about Instill AI
-  url: https://instill-ai.dev/docs
+  url: https://www.instill-ai.dev/docs

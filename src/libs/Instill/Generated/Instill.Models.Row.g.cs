@@ -16,7 +16,7 @@ namespace Instill
         public string? Uid { get; set; }
 
         /// <summary>
-        /// Map of column names to their cell values.
+        /// Map of column UID to their cell values.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cells")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -58,7 +58,7 @@ namespace Instill
         /// Included only in responses
         /// </param>
         /// <param name="cells">
-        /// Map of column names to their cell values.
+        /// Map of column UID to their cell values.
         /// </param>
         /// <param name="order">
         /// The order of the row in the table, starting at 1. This determines the row's position<br/>

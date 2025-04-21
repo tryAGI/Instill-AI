@@ -6,7 +6,10 @@ namespace Instill
     {
         /// <summary>
         /// Update column definitions<br/>
-        /// Updates column definitions for a table.
+        /// Updates column definitions for a table. When updating the column<br/>
+        /// definitions, if the column's agent instructions are updated, the existing<br/>
+        /// cells in that column will be cleared and recomputed. This ensures that all<br/>
+        /// data reflects the latest instructions.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="tableUid"></param>
@@ -24,7 +27,10 @@ namespace Instill
 
         /// <summary>
         /// Update column definitions<br/>
-        /// Updates column definitions for a table.
+        /// Updates column definitions for a table. When updating the column<br/>
+        /// definitions, if the column's agent instructions are updated, the existing<br/>
+        /// cells in that column will be cleared and recomputed. This ensures that all<br/>
+        /// data reflects the latest instructions.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="tableUid"></param>

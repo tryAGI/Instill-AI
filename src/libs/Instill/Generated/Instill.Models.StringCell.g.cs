@@ -16,6 +16,18 @@ namespace Instill
         public required string Value { get; set; }
 
         /// <summary>
+        /// The value of the cell that directly set by the user.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("userInput")]
+        public string? UserInput { get; set; }
+
+        /// <summary>
+        /// The value of the cell that was computed by the automatic computation.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("computedValue")]
+        public string? ComputedValue { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -27,13 +39,23 @@ namespace Instill
         /// <param name="value">
         /// The value of the cell as a string.
         /// </param>
+        /// <param name="userInput">
+        /// The value of the cell that directly set by the user.
+        /// </param>
+        /// <param name="computedValue">
+        /// The value of the cell that was computed by the automatic computation.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public StringCell(
-            string value)
+            string value,
+            string? userInput,
+            string? computedValue)
         {
             this.Value = value ?? throw new global::System.ArgumentNullException(nameof(value));
+            this.UserInput = userInput;
+            this.ComputedValue = computedValue;
         }
 
         /// <summary>

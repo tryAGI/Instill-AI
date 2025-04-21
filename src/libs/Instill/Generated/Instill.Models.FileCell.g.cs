@@ -4,7 +4,7 @@
 namespace Instill
 {
     /// <summary>
-    /// FileCell represents a cell with a url of a file resource.
+    /// FileCell represents a cell with a file resource.
     /// </summary>
     public sealed partial class FileCell
     {
@@ -16,7 +16,7 @@ namespace Instill
         public required string Namespace { get; set; }
 
         /// <summary>
-        /// The UID of the file resource.
+        /// The File UID of the file resource.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("fileUid")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -56,7 +56,7 @@ namespace Instill
         /// The namespace of the file resource.
         /// </param>
         /// <param name="fileUid">
-        /// The UID of the file resource.
+        /// The File UID of the file resource.
         /// </param>
         /// <param name="objectUid">
         /// The UID of the raw object that the file resource belongs to.

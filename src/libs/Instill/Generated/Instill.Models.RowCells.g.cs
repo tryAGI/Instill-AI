@@ -4,7 +4,7 @@
 namespace Instill
 {
     /// <summary>
-    /// Map of column names to their cell values.
+    /// Map of column UID to their cell values.
     /// </summary>
     public sealed partial class RowCells
     {

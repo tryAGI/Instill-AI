@@ -16,6 +16,19 @@ namespace Instill
         public required float Value { get; set; }
 
         /// <summary>
+        /// The value of the cell that directly set by the user.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("userInput")]
+        public float? UserInput { get; set; }
+
+        /// <summary>
+        /// The value of the cell that was computed by the automatic computation.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("computedValue")]
+        public float? ComputedValue { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -27,13 +40,24 @@ namespace Instill
         /// <param name="value">
         /// The value of the cell as a number.
         /// </param>
+        /// <param name="userInput">
+        /// The value of the cell that directly set by the user.
+        /// </param>
+        /// <param name="computedValue">
+        /// The value of the cell that was computed by the automatic computation.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public NumberCell(
-            float value)
+            float value,
+            float? userInput,
+            float? computedValue)
         {
             this.Value = value;
+            this.UserInput = userInput;
+            this.ComputedValue = computedValue;
         }
 
         /// <summary>

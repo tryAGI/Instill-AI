@@ -12,13 +12,27 @@ namespace Instill
         /// The instructions for the agent.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("instructions")]
-        public string? Instructions { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Instructions { get; set; }
 
         /// <summary>
         /// Whether to enable web search for the column.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("enableWebSearch")]
-        public bool? EnableWebSearch { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool EnableWebSearch { get; set; }
+
+        /// <summary>
+        /// Whether to enable automatic computation for the column.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enableAutomaticComputation")]
+        public bool? EnableAutomaticComputation { get; set; }
+
+        /// <summary>
+        /// The context for the agent. This setting is only used if enable_automatic_computation is true.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("context")]
+        public global::Instill.Context? Context { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -35,15 +49,25 @@ namespace Instill
         /// <param name="enableWebSearch">
         /// Whether to enable web search for the column.
         /// </param>
+        /// <param name="enableAutomaticComputation">
+        /// Whether to enable automatic computation for the column.
+        /// </param>
+        /// <param name="context">
+        /// The context for the agent. This setting is only used if enable_automatic_computation is true.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ColumnDefinitionAgentConfig(
-            string? instructions,
-            bool? enableWebSearch)
+            string instructions,
+            bool enableWebSearch,
+            bool? enableAutomaticComputation,
+            global::Instill.Context? context)
         {
-            this.Instructions = instructions;
+            this.Instructions = instructions ?? throw new global::System.ArgumentNullException(nameof(instructions));
             this.EnableWebSearch = enableWebSearch;
+            this.EnableAutomaticComputation = enableAutomaticComputation;
+            this.Context = context;
         }
 
         /// <summary>

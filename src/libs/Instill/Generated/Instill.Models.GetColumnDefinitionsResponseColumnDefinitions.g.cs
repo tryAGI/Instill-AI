@@ -4,7 +4,7 @@
 namespace Instill
 {
     /// <summary>
-    /// Map of column names to their definitions.<br/>
+    /// Map of column UID to their definitions.<br/>
     /// Included only in responses
     /// </summary>
     public sealed partial class GetColumnDefinitionsResponseColumnDefinitions

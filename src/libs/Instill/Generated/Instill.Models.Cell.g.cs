@@ -63,10 +63,19 @@ namespace Instill
         public global::Instill.BooleanCell? BooleanValue { get; set; }
 
         /// <summary>
-        /// The value of the cell as a url of a file resource.
+        /// The value of the cell as a file resource. This can represent various file types<br/>
+        /// such as images, documents, audio, or other binary data.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("fileValue")]
         public global::Instill.FileCell? FileValue { get; set; }
+
+        /// <summary>
+        /// The value of the cell as a document resource. The document resource is a<br/>
+        /// file resource that is specifically designed for document types, such as<br/>
+        /// TXT, Markdown, PDF, DOC, and PPT.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("documentValue")]
+        public global::Instill.DocumentCell? DocumentValue { get; set; }
 
         /// <summary>
         /// Additional metadata for the cell.
@@ -95,6 +104,14 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("transparency")]
         public global::Instill.Transparency? Transparency { get; set; }
+
+        /// <summary>
+        /// The lock state of the cell.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("lockState")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.LockStateJsonConverter))]
+        public global::Instill.LockState? LockState { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -135,7 +152,13 @@ namespace Instill
         /// The value of the cell as a boolean.
         /// </param>
         /// <param name="fileValue">
-        /// The value of the cell as a url of a file resource.
+        /// The value of the cell as a file resource. This can represent various file types<br/>
+        /// such as images, documents, audio, or other binary data.
+        /// </param>
+        /// <param name="documentValue">
+        /// The value of the cell as a document resource. The document resource is a<br/>
+        /// file resource that is specifically designed for document types, such as<br/>
+        /// TXT, Markdown, PDF, DOC, and PPT.
         /// </param>
         /// <param name="metadata">
         /// Additional metadata for the cell.
@@ -152,6 +175,10 @@ namespace Instill
         /// The transparency of the cell.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="lockState">
+        /// The lock state of the cell.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -165,10 +192,12 @@ namespace Instill
             global::Instill.NumberCell? numberValue,
             global::Instill.BooleanCell? booleanValue,
             global::Instill.FileCell? fileValue,
+            global::Instill.DocumentCell? documentValue,
             object? metadata,
             global::Instill.CellStatus? status,
             global::System.Collections.Generic.IList<global::Instill.Citation>? citations,
-            global::Instill.Transparency? transparency)
+            global::Instill.Transparency? transparency,
+            global::Instill.LockState? lockState)
         {
             this.Uid = uid;
             this.ColumnUid = columnUid;
@@ -179,10 +208,12 @@ namespace Instill
             this.NumberValue = numberValue;
             this.BooleanValue = booleanValue;
             this.FileValue = fileValue;
+            this.DocumentValue = documentValue;
             this.Metadata = metadata;
             this.Status = status;
             this.Citations = citations;
             this.Transparency = transparency;
+            this.LockState = lockState;
         }
 
         /// <summary>

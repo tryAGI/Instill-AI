@@ -9,7 +9,7 @@ namespace Instill
     public sealed partial class GetColumnDefinitionsResponse
     {
         /// <summary>
-        /// Map of column names to their definitions.<br/>
+        /// Map of column UID to their definitions.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("columnDefinitions")]
@@ -25,7 +25,7 @@ namespace Instill
         /// Initializes a new instance of the <see cref="GetColumnDefinitionsResponse" /> class.
         /// </summary>
         /// <param name="columnDefinitions">
-        /// Map of column names to their definitions.<br/>
+        /// Map of column UID to their definitions.<br/>
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER

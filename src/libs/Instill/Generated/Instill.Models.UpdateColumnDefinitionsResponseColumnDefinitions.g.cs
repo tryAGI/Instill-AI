@@ -4,7 +4,7 @@
 namespace Instill
 {
     /// <summary>
-    /// The updated column definitions.<br/>
+    /// Map of column UID to the updated definitions.<br/>
     /// Included only in responses
     /// </summary>
     public sealed partial class UpdateColumnDefinitionsResponseColumnDefinitions

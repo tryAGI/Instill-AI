@@ -8,7 +8,8 @@ namespace Instill
     ///  - TYPE_STRING: The type is a string.<br/>
     ///  - TYPE_NUMBER: The type is a number.<br/>
     ///  - TYPE_BOOLEAN: The type is a boolean.<br/>
-    ///  - TYPE_FILE: The type is a url of a file resource.
+    ///  - TYPE_FILE: The type is a file resource.<br/>
+    ///  - TYPE_DOCUMENT: The type is a document resource.
     /// </summary>
     public enum Type
     {
@@ -25,9 +26,13 @@ namespace Instill
         /// </summary>
         BOOLEAN,
         /// <summary>
-        /// The type is a url of a file resource.
+        /// The type is a file resource.
         /// </summary>
         FILE,
+        /// <summary>
+        /// The type is a document resource.
+        /// </summary>
+        DOCUMENT,
     }
 
     /// <summary>
@@ -46,6 +51,7 @@ namespace Instill
                 Type.NUMBER => "TYPE_NUMBER",
                 Type.BOOLEAN => "TYPE_BOOLEAN",
                 Type.FILE => "TYPE_FILE",
+                Type.DOCUMENT => "TYPE_DOCUMENT",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -60,6 +66,7 @@ namespace Instill
                 "TYPE_NUMBER" => Type.NUMBER,
                 "TYPE_BOOLEAN" => Type.BOOLEAN,
                 "TYPE_FILE" => Type.FILE,
+                "TYPE_DOCUMENT" => Type.DOCUMENT,
                 _ => null,
             };
         }

@@ -7961,11 +7961,11 @@ components:
     Context:
       type: object
       properties:
-        columns:
+        columnUids:
           type: array
           items:
             type: string
-          description: The column names to include in the context.
+          description: The column uids to include in the context.
       description: The context for the agent.
     CreateCatalogBody:
       type: object

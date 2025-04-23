@@ -7016,6 +7016,11 @@ components:
         enableWebSearch:
           type: boolean
           description: Whether to enable web search for the chat.
+        objectUids:
+          title: object UIDs
+          type: array
+          items:
+            type: string
       description: "ChatRequest represents a request to send a message\nto a chatbot synchronously and streams back the results."
     Any:
       type: object

@@ -37,6 +37,7 @@ namespace Instill
         /// <param name="enableWebSearch">
         /// Whether to enable web search for the chat.
         /// </param>
+        /// <param name="objectUids"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
 #if NET8_0_OR_GREATER
@@ -48,6 +49,7 @@ namespace Instill
             string message,
             global::System.Collections.Generic.IList<string>? fileUids = default,
             bool? enableWebSearch = default,
+            global::System.Collections.Generic.IList<string>? objectUids = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

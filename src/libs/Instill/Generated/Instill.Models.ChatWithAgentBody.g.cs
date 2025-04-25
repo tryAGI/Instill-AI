@@ -35,6 +35,12 @@ namespace Instill
         public global::System.Collections.Generic.IList<string>? ObjectUids { get; set; }
 
         /// <summary>
+        /// The context for the agent.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("context")]
+        public global::Instill.ChatWithAgentRequestContext? Context { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -49,6 +55,9 @@ namespace Instill
         /// Whether to enable web search for the chat.
         /// </param>
         /// <param name="objectUids"></param>
+        /// <param name="context">
+        /// The context for the agent.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -56,12 +65,14 @@ namespace Instill
             string message,
             global::System.Collections.Generic.IList<string>? fileUids,
             bool? enableWebSearch,
-            global::System.Collections.Generic.IList<string>? objectUids)
+            global::System.Collections.Generic.IList<string>? objectUids,
+            global::Instill.ChatWithAgentRequestContext? context)
         {
             this.Message = message ?? throw new global::System.ArgumentNullException(nameof(message));
             this.FileUids = fileUids;
             this.EnableWebSearch = enableWebSearch;
             this.ObjectUids = objectUids;
+            this.Context = context;
         }
 
         /// <summary>

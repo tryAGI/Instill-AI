@@ -6972,6 +6972,15 @@ paths:
       x-stage: beta
 components:
   schemas:
+    AgentConfig.Context:
+      type: object
+      properties:
+        columnUids:
+          type: array
+          items:
+            type: string
+          description: The column uids to include in the context.
+      description: The context for the agent.
     Any:
       type: object
       properties:
@@ -7623,7 +7632,20 @@ components:
           type: array
           items:
             type: string
+        context:
+          allOf:
+            - $ref: '#/components/schemas/ChatWithAgentRequest.Context'
+          description: The context for the agent.
       description: "ChatWithAgentRequest represents a request to send a message\nto a chatbot synchronously and streams back the results."
+    ChatWithAgentRequest.Context:
+      type: object
+      properties:
+        tableUids:
+          type: array
+          items:
+            type: string
+          description: The table uids to include in the context.
+      description: The context for the chat.
     ChatWithAgentResponse:
       type: object
       properties:
@@ -7880,7 +7902,7 @@ components:
           description: Whether to enable automatic computation for the column.
         context:
           allOf:
-            - $ref: '#/components/schemas/Context'
+            - $ref: '#/components/schemas/AgentConfig.Context'
           description: The context for the agent. This setting is only used if enable_automatic_computation is true.
       description: The configuration for the agent.
     ColumnDefinitionsUpdatedEvent:
@@ -8173,15 +8195,6 @@ components:
         - CONTENT_TYPE_AUGMENTED
       type: string
       description: "ContentType describes the type of a chunk content.\n\n - CONTENT_TYPE_CHUNK: Chunk.\n - CONTENT_TYPE_SUMMARY: Summary.\n - CONTENT_TYPE_AUGMENTED: Augmented."
-    Context:
-      type: object
-      properties:
-        columnUids:
-          type: array
-          items:
-            type: string
-          description: The column uids to include in the context.
-      description: The context for the agent.
     CreateCatalogBody:
       type: object
       properties:

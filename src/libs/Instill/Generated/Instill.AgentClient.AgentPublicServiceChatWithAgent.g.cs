@@ -249,6 +249,9 @@ namespace Instill
         /// Whether to enable web search for the chat.
         /// </param>
         /// <param name="objectUids"></param>
+        /// <param name="context">
+        /// The context for the agent.
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
 #if NET8_0_OR_GREATER
@@ -261,6 +264,7 @@ namespace Instill
             global::System.Collections.Generic.IList<string>? fileUids = default,
             bool? enableWebSearch = default,
             global::System.Collections.Generic.IList<string>? objectUids = default,
+            global::Instill.ChatWithAgentRequestContext? context = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Instill.ChatWithAgentBody
@@ -269,6 +273,7 @@ namespace Instill
                 FileUids = fileUids,
                 EnableWebSearch = enableWebSearch,
                 ObjectUids = objectUids,
+                Context = context,
             };
 
             return await AgentPublicServiceChatWithAgentAsync(

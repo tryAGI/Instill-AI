@@ -12,7 +12,8 @@ namespace Instill
         /// Whether to enable transparency for the table.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("enableTransparency")]
-        public bool? EnableTransparency { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool EnableTransparency { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -30,7 +31,7 @@ namespace Instill
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TableAgentConfig(
-            bool? enableTransparency)
+            bool enableTransparency)
         {
             this.EnableTransparency = enableTransparency;
         }

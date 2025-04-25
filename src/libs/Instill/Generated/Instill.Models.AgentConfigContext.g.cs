@@ -6,7 +6,7 @@ namespace Instill
     /// <summary>
     /// The context for the agent.
     /// </summary>
-    public sealed partial class Context
+    public sealed partial class AgentConfigContext
     {
         /// <summary>
         /// The column uids to include in the context.
@@ -21,7 +21,7 @@ namespace Instill
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Context" /> class.
+        /// Initializes a new instance of the <see cref="AgentConfigContext" /> class.
         /// </summary>
         /// <param name="columnUids">
         /// The column uids to include in the context.
@@ -29,16 +29,16 @@ namespace Instill
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public Context(
+        public AgentConfigContext(
             global::System.Collections.Generic.IList<string>? columnUids)
         {
             this.ColumnUids = columnUids;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Context" /> class.
+        /// Initializes a new instance of the <see cref="AgentConfigContext" /> class.
         /// </summary>
-        public Context()
+        public AgentConfigContext()
         {
         }
     }

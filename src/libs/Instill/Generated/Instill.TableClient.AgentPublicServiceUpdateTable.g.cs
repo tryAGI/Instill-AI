@@ -258,6 +258,9 @@ namespace Instill
         /// <param name="agentConfig">
         /// The configuration for the agent.
         /// </param>
+        /// <param name="draftMode">
+        /// Whether to enable draft mode for the table.
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
 #if NET8_0_OR_GREATER
@@ -268,9 +271,10 @@ namespace Instill
             string tableUid,
             string id,
             string title,
+            global::Instill.TableAgentConfig agentConfig,
+            bool draftMode,
             string? description = default,
             object? metadata = default,
-            global::Instill.TableAgentConfig? agentConfig = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Instill.Table
@@ -280,6 +284,7 @@ namespace Instill
                 Description = description,
                 Metadata = metadata,
                 AgentConfig = agentConfig,
+                DraftMode = draftMode,
             };
 
             return await AgentPublicServiceUpdateTableAsync(

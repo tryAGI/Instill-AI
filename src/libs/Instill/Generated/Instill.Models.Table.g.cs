@@ -59,7 +59,15 @@ namespace Instill
         /// The configuration for the agent.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("agentConfig")]
-        public global::Instill.TableAgentConfig? AgentConfig { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Instill.TableAgentConfig AgentConfig { get; set; }
+
+        /// <summary>
+        /// Whether to enable draft mode for the table.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("draftMode")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool DraftMode { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -97,27 +105,32 @@ namespace Instill
         /// <param name="agentConfig">
         /// The configuration for the agent.
         /// </param>
+        /// <param name="draftMode">
+        /// Whether to enable draft mode for the table.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Table(
             string id,
             string title,
+            global::Instill.TableAgentConfig agentConfig,
+            bool draftMode,
             string? uid,
             string? description,
             object? metadata,
             global::System.DateTime? createTime,
-            global::System.DateTime? updateTime,
-            global::Instill.TableAgentConfig? agentConfig)
+            global::System.DateTime? updateTime)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Title = title ?? throw new global::System.ArgumentNullException(nameof(title));
+            this.AgentConfig = agentConfig ?? throw new global::System.ArgumentNullException(nameof(agentConfig));
+            this.DraftMode = draftMode;
             this.Uid = uid;
             this.Description = description;
             this.Metadata = metadata;
             this.CreateTime = createTime;
             this.UpdateTime = updateTime;
-            this.AgentConfig = agentConfig;
         }
 
         /// <summary>

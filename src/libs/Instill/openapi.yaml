@@ -11591,6 +11591,8 @@ components:
       required:
         - id
         - title
+        - agentConfig
+        - draftMode
       type: object
       properties:
         uid:
@@ -11623,8 +11625,13 @@ components:
           allOf:
             - $ref: '#/components/schemas/Table.AgentConfig'
           description: The configuration for the agent.
+        draftMode:
+          type: boolean
+          description: Whether to enable draft mode for the table.
       description: Table represents a table resource.
     Table.AgentConfig:
+      required:
+        - enableTransparency
       type: object
       properties:
         enableTransparency:

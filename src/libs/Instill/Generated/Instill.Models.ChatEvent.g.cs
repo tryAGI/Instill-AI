@@ -85,6 +85,18 @@ namespace Instill
         public global::Instill.ChatEndedEvent? ChatEndedEvent { get; set; }
 
         /// <summary>
+        /// The chat attachments were updated.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("chatAttachmentsUpdatedEvent")]
+        public global::Instill.ChatAttachmentsUpdatedEvent? ChatAttachmentsUpdatedEvent { get; set; }
+
+        /// <summary>
+        /// The chat context was updated.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("chatContextUpdatedEvent")]
+        public global::Instill.ChatContextUpdatedEvent? ChatContextUpdatedEvent { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -133,6 +145,12 @@ namespace Instill
         /// <param name="chatEndedEvent">
         /// The chat ended.
         /// </param>
+        /// <param name="chatAttachmentsUpdatedEvent">
+        /// The chat attachments were updated.
+        /// </param>
+        /// <param name="chatContextUpdatedEvent">
+        /// The chat context was updated.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -148,7 +166,9 @@ namespace Instill
             global::Instill.ChatTableCreatedEvent? chatTableCreatedEvent,
             global::Instill.ChatErrorUpdatedEvent? chatErrorUpdatedEvent,
             global::Instill.ChatDebugOutputUpdatedEvent? chatDebugOutputUpdatedEvent,
-            global::Instill.ChatEndedEvent? chatEndedEvent)
+            global::Instill.ChatEndedEvent? chatEndedEvent,
+            global::Instill.ChatAttachmentsUpdatedEvent? chatAttachmentsUpdatedEvent,
+            global::Instill.ChatContextUpdatedEvent? chatContextUpdatedEvent)
         {
             this.Event = @event;
             this.Id = id;
@@ -162,6 +182,8 @@ namespace Instill
             this.ChatErrorUpdatedEvent = chatErrorUpdatedEvent;
             this.ChatDebugOutputUpdatedEvent = chatDebugOutputUpdatedEvent;
             this.ChatEndedEvent = chatEndedEvent;
+            this.ChatAttachmentsUpdatedEvent = chatAttachmentsUpdatedEvent;
+            this.ChatContextUpdatedEvent = chatContextUpdatedEvent;
         }
 
         /// <summary>

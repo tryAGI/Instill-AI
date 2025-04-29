@@ -6972,15 +6972,6 @@ paths:
       x-stage: beta
 components:
   schemas:
-    AgentConfig.Context:
-      type: object
-      properties:
-        columnUids:
-          type: array
-          items:
-            type: string
-          description: The column uids to include in the context.
-      description: The context for the agent.
     Any:
       type: object
       properties:
@@ -7426,6 +7417,16 @@ components:
           title: catalog id
           type: string
           readOnly: true
+    ChatAttachments:
+      title: ChatAttachments represents the attachment for the message
+      type: object
+      properties:
+        fileUrls:
+          title: file urls (only for user messages)
+          type: array
+          items:
+            type: string
+          readOnly: true
     ChatCitationListUpdatedEvent:
       title: ChatCitationListUpdatedEvent represents an event for a citation list output
       required:
@@ -7443,6 +7444,15 @@ components:
           items:
             $ref: '#/components/schemas/Citation'
           readOnly: true
+    ChatContext:
+      type: object
+      properties:
+        tableUids:
+          type: array
+          items:
+            type: string
+          description: The table uids to include in the context.
+      description: The context for the message.
     ChatDebugOutputUpdatedEvent:
       title: ChatDebugOutputUpdatedEvent represents an event for debug log
       type: object
@@ -7634,18 +7644,9 @@ components:
             type: string
         context:
           allOf:
-            - $ref: '#/components/schemas/ChatWithAgentRequest.Context'
-          description: The context for the agent.
+            - $ref: '#/components/schemas/ChatContext'
+          description: The context for the chat.
       description: "ChatWithAgentRequest represents a request to send a message\nto a chatbot synchronously and streams back the results."
-    ChatWithAgentRequest.Context:
-      type: object
-      properties:
-        tableUids:
-          type: array
-          items:
-            type: string
-          description: The table uids to include in the context.
-      description: The context for the chat.
     ChatWithAgentResponse:
       type: object
       properties:
@@ -7902,7 +7903,7 @@ components:
           description: Whether to enable automatic computation for the column.
         context:
           allOf:
-            - $ref: '#/components/schemas/AgentConfig.Context'
+            - $ref: '#/components/schemas/Context'
           description: The context for the agent. This setting is only used if enable_automatic_computation is true.
       description: The configuration for the agent.
     ColumnDefinitionsUpdatedEvent:
@@ -8195,6 +8196,15 @@ components:
         - CONTENT_TYPE_AUGMENTED
       type: string
       description: "ContentType describes the type of a chunk content.\n\n - CONTENT_TYPE_CHUNK: Chunk.\n - CONTENT_TYPE_SUMMARY: Summary.\n - CONTENT_TYPE_AUGMENTED: Augmented."
+    Context:
+      type: object
+      properties:
+        columnUids:
+          type: array
+          items:
+            type: string
+          description: The column uids to include in the context.
+      description: The context for the agent.
     CreateCatalogBody:
       type: object
       properties:
@@ -12512,10 +12522,24 @@ components:
           type: string
           readOnly: true
         citations:
-          title: citations(only for agent messages)
+          title: citations (only for agent messages)
           type: array
           items:
             $ref: '#/components/schemas/Citation'
+          readOnly: true
+        context:
+          title: context for the message
+          allOf:
+            - $ref: '#/components/schemas/ChatContext'
+          readOnly: true
+        attachments:
+          title: attachments for the message
+          allOf:
+            - $ref: '#/components/schemas/ChatAttachments'
+          readOnly: true
+        enableWebSearch:
+          title: enable web search (only for user messages)
+          type: boolean
           readOnly: true
     longrunning.Operation:
       type: object

@@ -66,6 +66,24 @@ namespace Instill
         public global::System.Collections.Generic.IList<global::Instill.Citation>? Citations { get; set; }
 
         /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("context")]
+        public global::Instill.ChatContext? Context { get; set; }
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("attachments")]
+        public global::Instill.ChatAttachments? Attachments { get; set; }
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enableWebSearch")]
+        public bool? EnableWebSearch { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -95,6 +113,15 @@ namespace Instill
         /// <param name="citations">
         /// Included only in responses
         /// </param>
+        /// <param name="context">
+        /// Included only in responses
+        /// </param>
+        /// <param name="attachments">
+        /// Included only in responses
+        /// </param>
+        /// <param name="enableWebSearch">
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -107,7 +134,10 @@ namespace Instill
             global::System.DateTime? createTime,
             global::System.DateTime? updateTime,
             string? msgSenderUid,
-            global::System.Collections.Generic.IList<global::Instill.Citation>? citations)
+            global::System.Collections.Generic.IList<global::Instill.Citation>? citations,
+            global::Instill.ChatContext? context,
+            global::Instill.ChatAttachments? attachments,
+            bool? enableWebSearch)
         {
             this.Content = content ?? throw new global::System.ArgumentNullException(nameof(content));
             this.Role = role ?? throw new global::System.ArgumentNullException(nameof(role));
@@ -118,6 +148,9 @@ namespace Instill
             this.UpdateTime = updateTime;
             this.MsgSenderUid = msgSenderUid;
             this.Citations = citations;
+            this.Context = context;
+            this.Attachments = attachments;
+            this.EnableWebSearch = enableWebSearch;
         }
 
         /// <summary>

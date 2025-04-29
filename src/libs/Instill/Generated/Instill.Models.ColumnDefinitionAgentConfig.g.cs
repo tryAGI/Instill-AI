@@ -32,7 +32,7 @@ namespace Instill
         /// The context for the agent. This setting is only used if enable_automatic_computation is true.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("context")]
-        public global::Instill.AgentConfigContext? Context { get; set; }
+        public global::Instill.Context? Context { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -62,7 +62,7 @@ namespace Instill
             string instructions,
             bool enableWebSearch,
             bool? enableAutomaticComputation,
-            global::Instill.AgentConfigContext? context)
+            global::Instill.Context? context)
         {
             this.Instructions = instructions ?? throw new global::System.ArgumentNullException(nameof(instructions));
             this.EnableWebSearch = enableWebSearch;

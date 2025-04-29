@@ -4,9 +4,9 @@
 namespace Instill
 {
     /// <summary>
-    /// The context for the chat.
+    /// The context for the message.
     /// </summary>
-    public sealed partial class ChatWithAgentRequestContext
+    public sealed partial class ChatContext
     {
         /// <summary>
         /// The table uids to include in the context.
@@ -21,7 +21,7 @@ namespace Instill
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChatWithAgentRequestContext" /> class.
+        /// Initializes a new instance of the <see cref="ChatContext" /> class.
         /// </summary>
         /// <param name="tableUids">
         /// The table uids to include in the context.
@@ -29,16 +29,16 @@ namespace Instill
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public ChatWithAgentRequestContext(
+        public ChatContext(
             global::System.Collections.Generic.IList<string>? tableUids)
         {
             this.TableUids = tableUids;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChatWithAgentRequestContext" /> class.
+        /// Initializes a new instance of the <see cref="ChatContext" /> class.
         /// </summary>
-        public ChatWithAgentRequestContext()
+        public ChatContext()
         {
         }
     }

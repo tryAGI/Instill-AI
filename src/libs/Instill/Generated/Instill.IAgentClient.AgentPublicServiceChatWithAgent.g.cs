@@ -35,7 +35,7 @@ namespace Instill
         /// </param>
         /// <param name="objectUids"></param>
         /// <param name="context">
-        /// The context for the agent.
+        /// The context for the chat.
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -49,7 +49,7 @@ namespace Instill
             global::System.Collections.Generic.IList<string>? fileUids = default,
             bool? enableWebSearch = default,
             global::System.Collections.Generic.IList<string>? objectUids = default,
-            global::Instill.ChatWithAgentRequestContext? context = default,
+            global::Instill.ChatContext? context = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

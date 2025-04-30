@@ -7579,6 +7579,10 @@ components:
           allOf:
             - $ref: '#/components/schemas/ChatContextUpdatedEvent'
           description: The chat context was updated.
+        chatTableUpdatedEvent:
+          allOf:
+            - $ref: '#/components/schemas/ChatTableUpdatedEvent'
+          description: The table was updated.
       description: ChatEvent represents an event for a chat.
     ChatNameUpdatedEvent:
       title: ChatNameUpdatedEvent represents an event for chat name change
@@ -7656,6 +7660,41 @@ components:
         tableUid:
           title: The created table uid
           type: string
+          readOnly: true
+        table:
+          title: The created table
+          allOf:
+            - $ref: '#/components/schemas/Table'
+          readOnly: true
+        columnDefinitions:
+          title: The created column definitions
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/ColumnDefinition'
+          readOnly: true
+    ChatTableUpdatedEvent:
+      title: ChatTableUpdatedEvent represents an event for a table update
+      type: object
+      properties:
+        createTime:
+          title: The time when table updated
+          type: string
+          format: date-time
+          readOnly: true
+        tableUid:
+          title: The updated table uid
+          type: string
+          readOnly: true
+        table:
+          title: The updated table
+          allOf:
+            - $ref: '#/components/schemas/Table'
+          readOnly: true
+        columnDefinitions:
+          title: The updated column definitions
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/ColumnDefinition'
           readOnly: true
     ChatWithAgentBody:
       required:
@@ -7921,6 +7960,9 @@ components:
           allOf:
             - $ref: '#/components/schemas/Sort'
           description: The sort of the column.
+        description:
+          type: string
+          description: The description for the column.
       description: ColumnDefinition represents a column definition in a table.
     ColumnDefinition.AgentConfig:
       required:

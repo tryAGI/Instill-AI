@@ -97,6 +97,12 @@ namespace Instill
         public global::Instill.ChatContextUpdatedEvent? ChatContextUpdatedEvent { get; set; }
 
         /// <summary>
+        /// The table was updated.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("chatTableUpdatedEvent")]
+        public global::Instill.ChatTableUpdatedEvent? ChatTableUpdatedEvent { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -151,6 +157,9 @@ namespace Instill
         /// <param name="chatContextUpdatedEvent">
         /// The chat context was updated.
         /// </param>
+        /// <param name="chatTableUpdatedEvent">
+        /// The table was updated.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -168,7 +177,8 @@ namespace Instill
             global::Instill.ChatDebugOutputUpdatedEvent? chatDebugOutputUpdatedEvent,
             global::Instill.ChatEndedEvent? chatEndedEvent,
             global::Instill.ChatAttachmentsUpdatedEvent? chatAttachmentsUpdatedEvent,
-            global::Instill.ChatContextUpdatedEvent? chatContextUpdatedEvent)
+            global::Instill.ChatContextUpdatedEvent? chatContextUpdatedEvent,
+            global::Instill.ChatTableUpdatedEvent? chatTableUpdatedEvent)
         {
             this.Event = @event;
             this.Id = id;
@@ -184,6 +194,7 @@ namespace Instill
             this.ChatEndedEvent = chatEndedEvent;
             this.ChatAttachmentsUpdatedEvent = chatAttachmentsUpdatedEvent;
             this.ChatContextUpdatedEvent = chatContextUpdatedEvent;
+            this.ChatTableUpdatedEvent = chatTableUpdatedEvent;
         }
 
         /// <summary>

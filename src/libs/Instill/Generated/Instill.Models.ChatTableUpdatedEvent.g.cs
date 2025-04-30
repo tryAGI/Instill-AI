@@ -6,7 +6,7 @@ namespace Instill
     /// <summary>
     /// 
     /// </summary>
-    public sealed partial class ChatTableCreatedEvent
+    public sealed partial class ChatTableUpdatedEvent
     {
         /// <summary>
         /// Included only in responses
@@ -39,7 +39,7 @@ namespace Instill
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChatTableCreatedEvent" /> class.
+        /// Initializes a new instance of the <see cref="ChatTableUpdatedEvent" /> class.
         /// </summary>
         /// <param name="createTime">
         /// Included only in responses
@@ -56,7 +56,7 @@ namespace Instill
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public ChatTableCreatedEvent(
+        public ChatTableUpdatedEvent(
             global::System.DateTime? createTime,
             string? tableUid,
             global::Instill.Table? table,
@@ -69,9 +69,9 @@ namespace Instill
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChatTableCreatedEvent" /> class.
+        /// Initializes a new instance of the <see cref="ChatTableUpdatedEvent" /> class.
         /// </summary>
-        public ChatTableCreatedEvent()
+        public ChatTableUpdatedEvent()
         {
         }
     }

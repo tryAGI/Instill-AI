@@ -53,6 +53,12 @@ namespace Instill
         public global::Instill.Sort? Sort { get; set; }
 
         /// <summary>
+        /// The description for the column.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -83,6 +89,9 @@ namespace Instill
         /// <param name="sort">
         /// The sort of the column.
         /// </param>
+        /// <param name="description">
+        /// The description for the column.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -92,7 +101,8 @@ namespace Instill
             string? columnUid,
             string? name,
             global::Instill.ColumnDefinitionAgentConfig? agentConfig,
-            global::Instill.Sort? sort)
+            global::Instill.Sort? sort,
+            string? description)
         {
             this.Type = type;
             this.Order = order;
@@ -100,6 +110,7 @@ namespace Instill
             this.Name = name;
             this.AgentConfig = agentConfig;
             this.Sort = sort;
+            this.Description = description;
         }
 
         /// <summary>

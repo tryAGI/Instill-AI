@@ -243,9 +243,6 @@ namespace Instill
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="tableUid"></param>
-        /// <param name="id">
-        /// The ID of the table.
-        /// </param>
         /// <param name="title">
         /// The title of the table.
         /// </param>
@@ -269,7 +266,6 @@ namespace Instill
         public async global::System.Threading.Tasks.Task<global::Instill.UpdateTableResponse> AgentPublicServiceUpdateTableAsync(
             string namespaceId,
             string tableUid,
-            string id,
             string title,
             global::Instill.TableAgentConfig agentConfig,
             bool draftMode,
@@ -279,7 +275,6 @@ namespace Instill
         {
             var __request = new global::Instill.Table
             {
-                Id = id,
                 Title = title,
                 Description = description,
                 Metadata = metadata,

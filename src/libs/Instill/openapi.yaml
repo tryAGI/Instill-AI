@@ -11677,7 +11677,6 @@ components:
       description: "SubtractCreditResponse contains the remaining credit of an account after the\nsubtraction."
     Table:
       required:
-        - id
         - title
         - agentConfig
         - draftMode
@@ -11687,9 +11686,6 @@ components:
           type: string
           description: The unique identifier of the table.
           readOnly: true
-        id:
-          type: string
-          description: The ID of the table.
         title:
           type: string
           description: The title of the table.

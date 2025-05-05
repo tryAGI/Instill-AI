@@ -16,13 +16,6 @@ namespace Instill
         public string? Uid { get; set; }
 
         /// <summary>
-        /// The ID of the table.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Id { get; set; }
-
-        /// <summary>
         /// The title of the table.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("title")]
@@ -82,9 +75,6 @@ namespace Instill
         /// The unique identifier of the table.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="id">
-        /// The ID of the table.
-        /// </param>
         /// <param name="title">
         /// The title of the table.
         /// </param>
@@ -112,7 +102,6 @@ namespace Instill
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Table(
-            string id,
             string title,
             global::Instill.TableAgentConfig agentConfig,
             bool draftMode,
@@ -122,7 +111,6 @@ namespace Instill
             global::System.DateTime? createTime,
             global::System.DateTime? updateTime)
         {
-            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Title = title ?? throw new global::System.ArgumentNullException(nameof(title));
             this.AgentConfig = agentConfig ?? throw new global::System.ArgumentNullException(nameof(agentConfig));
             this.DraftMode = draftMode;

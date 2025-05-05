@@ -25,9 +25,6 @@ namespace Instill
         /// Creates a table.
         /// </summary>
         /// <param name="namespaceId"></param>
-        /// <param name="id">
-        /// The ID of the table.
-        /// </param>
         /// <param name="title">
         /// The title of the table.
         /// </param>
@@ -50,7 +47,6 @@ namespace Instill
 #endif
         global::System.Threading.Tasks.Task<global::Instill.CreateTableResponse> AgentPublicServiceCreateTableAsync(
             string namespaceId,
-            string id,
             string title,
             global::Instill.TableAgentConfig agentConfig,
             bool draftMode,

@@ -41,7 +41,7 @@ namespace Instill
         public global::Instill.RpcStatus? Error { get; set; }
 
         /// <summary>
-        /// The normal response of the operation in case of success.  If the original<br/>
+        /// The normal, successful response of the operation.  If the original<br/>
         /// method returns no data on success, such as `Delete`, the response is<br/>
         /// `google.protobuf.Empty`.  If the original method is standard<br/>
         /// `Get`/`Create`/`Update`, the response should be the resource.  For other<br/>
@@ -82,7 +82,7 @@ namespace Instill
         /// The error result of the operation in case of failure or cancellation.
         /// </param>
         /// <param name="response">
-        /// The normal response of the operation in case of success.  If the original<br/>
+        /// The normal, successful response of the operation.  If the original<br/>
         /// method returns no data on success, such as `Delete`, the response is<br/>
         /// `google.protobuf.Empty`.  If the original method is standard<br/>
         /// `Get`/`Create`/`Update`, the response should be the resource.  For other<br/>

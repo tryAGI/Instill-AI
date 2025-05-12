@@ -65,6 +65,12 @@ namespace Instill
         public global::Instill.NumberFormat? NumberFormat { get; set; }
 
         /// <summary>
+        /// The selection settings of the column.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("selection")]
+        public global::Instill.Selection? Selection { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -101,6 +107,9 @@ namespace Instill
         /// <param name="numberFormat">
         /// Format for number type columns.
         /// </param>
+        /// <param name="selection">
+        /// The selection settings of the column.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -112,7 +121,8 @@ namespace Instill
             global::Instill.ColumnDefinitionAgentConfig? agentConfig,
             global::Instill.Sort? sort,
             string? description,
-            global::Instill.NumberFormat? numberFormat)
+            global::Instill.NumberFormat? numberFormat,
+            global::Instill.Selection? selection)
         {
             this.Type = type;
             this.Order = order;
@@ -122,6 +132,7 @@ namespace Instill
             this.Sort = sort;
             this.Description = description;
             this.NumberFormat = numberFormat;
+            this.Selection = selection;
         }
 
         /// <summary>

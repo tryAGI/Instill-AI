@@ -7967,6 +7967,10 @@ components:
           allOf:
             - $ref: '#/components/schemas/NumberFormat'
           description: Format for number type columns.
+        selection:
+          allOf:
+            - $ref: '#/components/schemas/Selection'
+          description: The selection settings of the column.
       description: ColumnDefinition represents a column definition in a table.
     ColumnDefinition.AgentConfig:
       required:
@@ -10740,6 +10744,20 @@ components:
         - ONBOARDING_STATUS_COMPLETED
       type: string
       description: "OnboardingStatus describes the status of the user onboarding process.\n\n - ONBOARDING_STATUS_IN_PROGRESS: In progress, i.e., the user has initiated the onboarding process\nbut has not yet completed it.\n - ONBOARDING_STATUS_COMPLETED: Completed."
+    Option:
+      type: object
+      properties:
+        stringValue:
+          type: string
+          description: The value of the cell as a string.
+        numberValue:
+          type: number
+          description: The value of the cell as a number.
+          format: float
+        color:
+          type: string
+          description: Display color of the option.
+      description: An option for the selection.
     Organization:
       required:
         - profile
@@ -11476,6 +11494,27 @@ components:
           title: Description
           type: string
       description: API secrets allow users to make requests to the Instill AI API.
+    Selection:
+      required:
+        - type
+      type: object
+      properties:
+        type:
+          allOf:
+            - $ref: '#/components/schemas/SelectionType'
+          description: The selection of the column.
+        options:
+          type: array
+          items:
+            $ref: '#/components/schemas/Option'
+          description: The options for the selection.
+      description: The selection settings of the column.
+    SelectionType:
+      enum:
+        - SELECTION_TYPE_NONE
+        - SELECTION_TYPE_SINGLE
+      type: string
+      description: "The type of the selection.\n\n - SELECTION_TYPE_NONE: No selection.\n - SELECTION_TYPE_SINGLE: The selection is a single value."
     ShareCode:
       type: object
       properties:

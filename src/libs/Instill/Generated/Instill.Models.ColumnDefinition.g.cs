@@ -59,6 +59,12 @@ namespace Instill
         public string? Description { get; set; }
 
         /// <summary>
+        /// Format for number type columns.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("numberFormat")]
+        public global::Instill.NumberFormat? NumberFormat { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -92,6 +98,9 @@ namespace Instill
         /// <param name="description">
         /// The description for the column.
         /// </param>
+        /// <param name="numberFormat">
+        /// Format for number type columns.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -102,7 +111,8 @@ namespace Instill
             string? name,
             global::Instill.ColumnDefinitionAgentConfig? agentConfig,
             global::Instill.Sort? sort,
-            string? description)
+            string? description,
+            global::Instill.NumberFormat? numberFormat)
         {
             this.Type = type;
             this.Order = order;
@@ -111,6 +121,7 @@ namespace Instill
             this.AgentConfig = agentConfig;
             this.Sort = sort;
             this.Description = description;
+            this.NumberFormat = numberFormat;
         }
 
         /// <summary>

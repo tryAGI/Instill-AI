@@ -7963,6 +7963,10 @@ components:
         description:
           type: string
           description: The description for the column.
+        numberFormat:
+          allOf:
+            - $ref: '#/components/schemas/NumberFormat'
+          description: Format for number type columns.
       description: ColumnDefinition represents a column definition in a table.
     ColumnDefinition.AgentConfig:
       required:
@@ -8795,6 +8799,14 @@ components:
         - FILE_TYPE_CSV
       type: string
       description: "- FILE_TYPE_TEXT: text\n - FILE_TYPE_PDF: PDF\n - FILE_TYPE_MARKDOWN: MARKDOWN\n - FILE_TYPE_PNG: PNG(not supported yet)\n - FILE_TYPE_JPEG: JPEG(not supported yet)\n - FILE_TYPE_JPG: JPG(not supported yet)\n - FILE_TYPE_HTML: HTML\n - FILE_TYPE_DOCX: DOCX\n - FILE_TYPE_DOC: DOC\n - FILE_TYPE_PPT: PPT\n - FILE_TYPE_PPTX: PPTX\n - FILE_TYPE_XLS: XLS\n - FILE_TYPE_XLSX: XLSX\n - FILE_TYPE_CSV: CSV"
+    Format:
+      enum:
+        - FORMAT_PLAIN
+        - FORMAT_COMMAS
+        - FORMAT_CURRENCY
+        - FORMAT_PERCENTAGE
+      type: string
+      description: "Format specifies the visual representation of numbers in the column.\n\n - FORMAT_PLAIN: Plain number format without any separators or special formatting.\n - FORMAT_COMMAS: Number format with commas as thousand separators (e.g., 1,234,567).\n - FORMAT_CURRENCY: Currency format that displays values with a currency symbol.\n - FORMAT_PERCENTAGE: Percentage format that displays values with a percent symbol."
     FruitCosts:
       type: object
       properties:
@@ -10604,6 +10616,23 @@ components:
           format: float
           readOnly: true
       description: NumberCell represents a cell with a number value.
+    NumberFormat:
+      required:
+        - format
+      type: object
+      properties:
+        format:
+          allOf:
+            - $ref: '#/components/schemas/Format'
+          description: The specific format to apply to numbers in this column.
+        decimalPlaces:
+          type: integer
+          description: "Number of decimal places to display (e.g., 2 would show 1.23).\nIf not specified, a default appropriate to the format will be used."
+          format: int32
+        currencyCode:
+          type: string
+          description: "ISO 4217 currency code (e.g., \"USD\", \"EUR\", \"JPY\") for currency format.\nRequired when format is FORMAT_CURRENCY, ignored for other formats."
+      description: NumberFormat defines the display format for number type columns.
     OAuthConfig:
       type: object
       properties:
@@ -12635,7 +12664,7 @@ components:
         response:
           allOf:
             - $ref: '#/components/schemas/Any'
-          description: "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."
+          description: "The normal, successful response of the operation.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."
       description: "This resource represents a long-running operation that is the result of a\nnetwork API call."
     mgmt.v1beta.Permission:
       type: object

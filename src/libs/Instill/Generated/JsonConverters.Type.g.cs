@@ -28,6 +28,10 @@ namespace Instill.JsonConverters
                     var numValue = reader.GetInt32();
                     return (global::Instill.Type)numValue;
                 }
+                case global::System.Text.Json.JsonTokenType.Null:
+                {
+                    return default(global::Instill.Type);
+                }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
             }

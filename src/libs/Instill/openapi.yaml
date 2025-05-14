@@ -8718,28 +8718,36 @@ components:
           readOnly: true
     FileCell:
       required:
-        - namespace
-        - fileUid
         - objectUid
-        - name
-        - mimeType
       type: object
       properties:
         namespace:
           type: string
           description: The namespace of the file resource.
+          readOnly: true
         fileUid:
           type: string
           description: The File UID of the file resource.
+          readOnly: true
         objectUid:
           type: string
           description: The UID of the raw object that the file resource belongs to.
         name:
           title: File name
           type: string
+          readOnly: true
         mimeType:
           type: string
           description: MIME type of the file.
+          readOnly: true
+        catalogId:
+          type: string
+          description: The catalog ID of the file resource.
+          readOnly: true
+        fileUrl:
+          type: string
+          description: The URL of the file resource.
+          readOnly: true
       description: FileCell represents a cell with a file resource.
     FileMediaType:
       enum:

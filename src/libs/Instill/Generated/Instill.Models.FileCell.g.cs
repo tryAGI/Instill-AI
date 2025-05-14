@@ -9,18 +9,18 @@ namespace Instill
     public sealed partial class FileCell
     {
         /// <summary>
-        /// The namespace of the file resource.
+        /// The namespace of the file resource.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("namespace")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Namespace { get; set; }
+        public string? Namespace { get; set; }
 
         /// <summary>
-        /// The File UID of the file resource.
+        /// The File UID of the file resource.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("fileUid")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string FileUid { get; set; }
+        public string? FileUid { get; set; }
 
         /// <summary>
         /// The UID of the raw object that the file resource belongs to.
@@ -30,18 +30,31 @@ namespace Instill
         public required string ObjectUid { get; set; }
 
         /// <summary>
-        /// 
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
-        /// MIME type of the file.
+        /// MIME type of the file.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string MimeType { get; set; }
+        public string? MimeType { get; set; }
+
+        /// <summary>
+        /// The catalog ID of the file resource.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("catalogId")]
+        public string? CatalogId { get; set; }
+
+        /// <summary>
+        /// The URL of the file resource.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("fileUrl")]
+        public string? FileUrl { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -53,33 +66,50 @@ namespace Instill
         /// Initializes a new instance of the <see cref="FileCell" /> class.
         /// </summary>
         /// <param name="namespace">
-        /// The namespace of the file resource.
+        /// The namespace of the file resource.<br/>
+        /// Included only in responses
         /// </param>
         /// <param name="fileUid">
-        /// The File UID of the file resource.
+        /// The File UID of the file resource.<br/>
+        /// Included only in responses
         /// </param>
         /// <param name="objectUid">
         /// The UID of the raw object that the file resource belongs to.
         /// </param>
-        /// <param name="name"></param>
+        /// <param name="name">
+        /// Included only in responses
+        /// </param>
         /// <param name="mimeType">
-        /// MIME type of the file.
+        /// MIME type of the file.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="catalogId">
+        /// The catalog ID of the file resource.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="fileUrl">
+        /// The URL of the file resource.<br/>
+        /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FileCell(
-            string @namespace,
-            string fileUid,
             string objectUid,
-            string name,
-            string mimeType)
+            string? @namespace,
+            string? fileUid,
+            string? name,
+            string? mimeType,
+            string? catalogId,
+            string? fileUrl)
         {
-            this.Namespace = @namespace ?? throw new global::System.ArgumentNullException(nameof(@namespace));
-            this.FileUid = fileUid ?? throw new global::System.ArgumentNullException(nameof(fileUid));
             this.ObjectUid = objectUid ?? throw new global::System.ArgumentNullException(nameof(objectUid));
-            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
-            this.MimeType = mimeType ?? throw new global::System.ArgumentNullException(nameof(mimeType));
+            this.Namespace = @namespace;
+            this.FileUid = fileUid;
+            this.Name = name;
+            this.MimeType = mimeType;
+            this.CatalogId = catalogId;
+            this.FileUrl = fileUrl;
         }
 
         /// <summary>

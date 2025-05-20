@@ -26,7 +26,9 @@ namespace Instill
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="title">
-        /// The title of the table.
+        /// The title of the table.<br/>
+        /// If the table is in draft mode, the title is optional.<br/>
+        /// If the table is not in draft mode, the title is required.
         /// </param>
         /// <param name="description">
         /// A description of the table.
@@ -47,9 +49,9 @@ namespace Instill
 #endif
         global::System.Threading.Tasks.Task<global::Instill.CreateTableResponse> AgentPublicServiceCreateTableAsync(
             string namespaceId,
-            string title,
             global::Instill.TableAgentConfig agentConfig,
             bool draftMode,
+            string? title = default,
             string? description = default,
             object? metadata = default,
             global::System.Threading.CancellationToken cancellationToken = default);

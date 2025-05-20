@@ -16,11 +16,12 @@ namespace Instill
         public string? Uid { get; set; }
 
         /// <summary>
-        /// The title of the table.
+        /// The title of the table.<br/>
+        /// If the table is in draft mode, the title is optional.<br/>
+        /// If the table is not in draft mode, the title is required.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("title")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Title { get; set; }
+        public string? Title { get; set; }
 
         /// <summary>
         /// A description of the table.
@@ -76,7 +77,9 @@ namespace Instill
         /// Included only in responses
         /// </param>
         /// <param name="title">
-        /// The title of the table.
+        /// The title of the table.<br/>
+        /// If the table is in draft mode, the title is optional.<br/>
+        /// If the table is not in draft mode, the title is required.
         /// </param>
         /// <param name="description">
         /// A description of the table.
@@ -102,19 +105,19 @@ namespace Instill
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Table(
-            string title,
             global::Instill.TableAgentConfig agentConfig,
             bool draftMode,
             string? uid,
+            string? title,
             string? description,
             object? metadata,
             global::System.DateTime? createTime,
             global::System.DateTime? updateTime)
         {
-            this.Title = title ?? throw new global::System.ArgumentNullException(nameof(title));
             this.AgentConfig = agentConfig ?? throw new global::System.ArgumentNullException(nameof(agentConfig));
             this.DraftMode = draftMode;
             this.Uid = uid;
+            this.Title = title;
             this.Description = description;
             this.Metadata = metadata;
             this.CreateTime = createTime;

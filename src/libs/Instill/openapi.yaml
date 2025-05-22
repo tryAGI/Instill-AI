@@ -467,6 +467,77 @@ paths:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
       x-stage: alpha
+  /v1alpha/table-templates:
+    get:
+      tags:
+        - Table
+      summary: List table templates
+      description: Returns a paginated list of table templates.
+      operationId: AgentPublicService_ListTableTemplates
+      parameters:
+        - name: pageToken
+          in: query
+          description: The page token for pagination.
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          description: The maximum number of table templates to return.
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTableTemplatesResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
+  '/v1alpha/table-templates/{tableTemplateUid}':
+    get:
+      tags:
+        - Table
+      summary: Get table template
+      description: Returns a table template.
+      operationId: AgentPublicService_GetTableTemplate
+      parameters:
+        - name: tableTemplateUid
+          in: path
+          description: The UID of the table template to get.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTableTemplateResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
   '/v1alpha/namespaces/{namespaceId}/tables':
     get:
       tags:
@@ -539,6 +610,46 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateTableResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
+  '/v1alpha/namespaces/{namespaceId}/tables/from-template':
+    post:
+      tags:
+        - Table
+      summary: Create a table from a table template
+      description: Creates a table from a table template.
+      operationId: AgentPublicService_CreateTableFromTemplate
+      parameters:
+        - name: namespaceId
+          in: path
+          description: The ID of the namespace that owns the table.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTableFromTemplateBody'
+        required: true
+        x-bodyName: body
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateTableFromTemplateResponse'
         '401':
           description: Returned when the client credentials are not valid.
           content:
@@ -8405,6 +8516,28 @@ components:
             - $ref: '#/components/schemas/RepositoryTag'
           description: The created tag.
       description: CreateRepositoryTagResponse contains the created tag.
+    CreateTableFromTemplateBody:
+      required:
+        - tableTemplateUid
+        - title
+      type: object
+      properties:
+        tableTemplateUid:
+          type: string
+          description: The UID of the table template to create the table from.
+        title:
+          type: string
+          description: The title of the table.
+      description: CreateTableFromTemplateRequest represents a request to create a table from a table template.
+    CreateTableFromTemplateResponse:
+      type: object
+      properties:
+        table:
+          allOf:
+            - $ref: '#/components/schemas/Table'
+          description: The created table.
+          readOnly: true
+      description: CreateTableFromTemplateResponse contains the created table.
     CreateTableResponse:
       type: object
       properties:
@@ -9220,6 +9353,15 @@ components:
           description: The table resource.
           readOnly: true
       description: GetTableResponse contains the requested table.
+    GetTableTemplateResponse:
+      type: object
+      properties:
+        tableTemplate:
+          allOf:
+            - $ref: '#/components/schemas/Table'
+          description: The table template.
+          readOnly: true
+      description: "TableTemplate represents a table template.\nGetTableTemplateResponse contains the requested table template."
     GetTokenResponse:
       type: object
       properties:
@@ -10050,6 +10192,16 @@ components:
           items:
             $ref: '#/components/schemas/MessageSenderProfile'
           readOnly: true
+    ListTableTemplatesResponse:
+      type: object
+      properties:
+        tableTemplates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Table'
+          description: The list of table templates.
+          readOnly: true
+      description: ListTableTemplatesResponse contains the list of table templates.
     ListTablesResponse:
       type: object
       properties:

@@ -64,6 +64,13 @@ namespace Instill
         public required bool DraftMode { get; set; }
 
         /// <summary>
+        /// Permission defines how a table can be used.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("permission")]
+        public global::Instill.TablePermission? Permission { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -101,6 +108,10 @@ namespace Instill
         /// <param name="draftMode">
         /// Whether to enable draft mode for the table.
         /// </param>
+        /// <param name="permission">
+        /// Permission defines how a table can be used.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -112,7 +123,8 @@ namespace Instill
             string? description,
             object? metadata,
             global::System.DateTime? createTime,
-            global::System.DateTime? updateTime)
+            global::System.DateTime? updateTime,
+            global::Instill.TablePermission? permission)
         {
             this.AgentConfig = agentConfig ?? throw new global::System.ArgumentNullException(nameof(agentConfig));
             this.DraftMode = draftMode;
@@ -122,6 +134,7 @@ namespace Instill
             this.Metadata = metadata;
             this.CreateTime = createTime;
             this.UpdateTime = updateTime;
+            this.Permission = permission;
         }
 
         /// <summary>

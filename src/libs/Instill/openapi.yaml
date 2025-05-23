@@ -467,77 +467,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
       x-stage: alpha
-  /v1alpha/table-templates:
-    get:
-      tags:
-        - Table
-      summary: List table templates
-      description: Returns a paginated list of table templates.
-      operationId: AgentPublicService_ListTableTemplates
-      parameters:
-        - name: pageToken
-          in: query
-          description: The page token for pagination.
-          schema:
-            type: string
-        - name: pageSize
-          in: query
-          description: The maximum number of table templates to return.
-          schema:
-            type: integer
-            format: int32
-      responses:
-        '200':
-          description: A successful response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListTableTemplatesResponse'
-        '401':
-          description: Returned when the client credentials are not valid.
-          content:
-            application/json:
-              schema: { }
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpc.Status'
-      x-stage: alpha
-  '/v1alpha/table-templates/{tableTemplateUid}':
-    get:
-      tags:
-        - Table
-      summary: Get table template
-      description: Returns a table template.
-      operationId: AgentPublicService_GetTableTemplate
-      parameters:
-        - name: tableTemplateUid
-          in: path
-          description: The UID of the table template to get.
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: A successful response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetTableTemplateResponse'
-        '401':
-          description: Returned when the client credentials are not valid.
-          content:
-            application/json:
-              schema: { }
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpc.Status'
-      x-stage: alpha
   '/v1alpha/namespaces/{namespaceId}/tables':
     get:
       tags:
@@ -8518,16 +8447,21 @@ components:
       description: CreateRepositoryTagResponse contains the created tag.
     CreateTableFromTemplateBody:
       required:
-        - tableTemplateUid
-        - title
+        - table
+        - templateNamespaceId
+        - templateTableUid
       type: object
       properties:
-        tableTemplateUid:
+        table:
+          allOf:
+            - $ref: '#/components/schemas/Table'
+          description: The table resource to create.
+        templateNamespaceId:
           type: string
-          description: The UID of the table template to create the table from.
-        title:
+          description: The ID of the table namespace to create the table from.
+        templateTableUid:
           type: string
-          description: The title of the table.
+          description: The ID of the table to create the table from.
       description: CreateTableFromTemplateRequest represents a request to create a table from a table template.
     CreateTableFromTemplateResponse:
       type: object
@@ -9353,15 +9287,6 @@ components:
           description: The table resource.
           readOnly: true
       description: GetTableResponse contains the requested table.
-    GetTableTemplateResponse:
-      type: object
-      properties:
-        tableTemplate:
-          allOf:
-            - $ref: '#/components/schemas/Table'
-          description: The table template.
-          readOnly: true
-      description: "TableTemplate represents a table template.\nGetTableTemplateResponse contains the requested table template."
     GetTokenResponse:
       type: object
       properties:
@@ -10192,16 +10117,6 @@ components:
           items:
             $ref: '#/components/schemas/MessageSenderProfile'
           readOnly: true
-    ListTableTemplatesResponse:
-      type: object
-      properties:
-        tableTemplates:
-          type: array
-          items:
-            $ref: '#/components/schemas/Table'
-          description: The list of table templates.
-          readOnly: true
-      description: ListTableTemplatesResponse contains the list of table templates.
     ListTablesResponse:
       type: object
       properties:
@@ -11939,6 +11854,11 @@ components:
         draftMode:
           type: boolean
           description: Whether to enable draft mode for the table.
+        permission:
+          allOf:
+            - $ref: '#/components/schemas/Table.Permission'
+          description: Permission defines how a table can be used.
+          readOnly: true
       description: Table represents a table resource.
     Table.AgentConfig:
       required:
@@ -11949,6 +11869,13 @@ components:
           type: boolean
           description: Whether to enable transparency for the table.
       description: The configuration for the agent.
+    Table.Permission:
+      type: object
+      properties:
+        canEdit:
+          type: boolean
+          description: Defines whether the table can be modified.
+      description: Permission defines how a table can be used.
     TableDeletedEvent:
       type: object
       description: TableDeletedEvent represents an event for a table being deleted.

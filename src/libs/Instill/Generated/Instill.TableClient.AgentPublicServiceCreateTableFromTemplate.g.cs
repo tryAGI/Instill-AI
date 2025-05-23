@@ -236,11 +236,14 @@ namespace Instill
         /// Creates a table from a table template.
         /// </summary>
         /// <param name="namespaceId"></param>
-        /// <param name="tableTemplateUid">
-        /// The UID of the table template to create the table from.
+        /// <param name="table">
+        /// The table resource to create.
         /// </param>
-        /// <param name="title">
-        /// The title of the table.
+        /// <param name="templateNamespaceId">
+        /// The ID of the table namespace to create the table from.
+        /// </param>
+        /// <param name="templateTableUid">
+        /// The ID of the table to create the table from.
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -249,14 +252,16 @@ namespace Instill
 #endif
         public async global::System.Threading.Tasks.Task<global::Instill.CreateTableFromTemplateResponse> AgentPublicServiceCreateTableFromTemplateAsync(
             string namespaceId,
-            string tableTemplateUid,
-            string title,
+            global::Instill.Table table,
+            string templateNamespaceId,
+            string templateTableUid,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Instill.CreateTableFromTemplateBody
             {
-                TableTemplateUid = tableTemplateUid,
-                Title = title,
+                Table = table,
+                TemplateNamespaceId = templateNamespaceId,
+                TemplateTableUid = templateTableUid,
             };
 
             return await AgentPublicServiceCreateTableFromTemplateAsync(

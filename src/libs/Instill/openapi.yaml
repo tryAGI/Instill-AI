@@ -10684,15 +10684,15 @@ components:
         value:
           type: number
           description: The value of the cell as a number.
-          format: float
+          format: double
         userInput:
           type: number
           description: The value of the cell that directly set by the user.
-          format: float
+          format: double
         computedValue:
           type: number
           description: The value of the cell that was computed by the automatic computation.
-          format: float
+          format: double
           readOnly: true
       description: NumberCell represents a cell with a number value.
     NumberFormat:
@@ -10828,7 +10828,7 @@ components:
         numberValue:
           type: number
           description: The value of the cell as a number.
-          format: float
+          format: double
         color:
           type: string
           description: Display color of the option.

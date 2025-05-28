@@ -18,7 +18,7 @@ namespace Instill
         /// The value of the cell as a number.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("numberValue")]
-        public float? NumberValue { get; set; }
+        public double? NumberValue { get; set; }
 
         /// <summary>
         /// Display color of the option.
@@ -49,7 +49,7 @@ namespace Instill
 #endif
         public Option(
             string? stringValue,
-            float? numberValue,
+            double? numberValue,
             string? color)
         {
             this.StringValue = stringValue;

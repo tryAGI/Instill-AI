@@ -13,20 +13,20 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("value")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required float Value { get; set; }
+        public required double Value { get; set; }
 
         /// <summary>
         /// The value of the cell that directly set by the user.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("userInput")]
-        public float? UserInput { get; set; }
+        public double? UserInput { get; set; }
 
         /// <summary>
         /// The value of the cell that was computed by the automatic computation.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("computedValue")]
-        public float? ComputedValue { get; set; }
+        public double? ComputedValue { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -51,9 +51,9 @@ namespace Instill
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public NumberCell(
-            float value,
-            float? userInput,
-            float? computedValue)
+            double value,
+            double? userInput,
+            double? computedValue)
         {
             this.Value = value;
             this.UserInput = userInput;

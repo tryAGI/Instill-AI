@@ -68,6 +68,11 @@ namespace Instill
         public TableClient Table { get; }
 
         /// <summary>
+        /// Folder resources for agents.
+        /// </summary>
+        public FolderClient Folder { get; }
+
+        /// <summary>
         /// Resource usage metrics.
         /// </summary>
         public MetricsClient Metrics { get; }

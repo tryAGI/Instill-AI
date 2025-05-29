@@ -71,6 +71,13 @@ namespace Instill
         public global::Instill.TablePermission? Permission { get; set; }
 
         /// <summary>
+        /// The ID of the catalog that this table is bound to.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("catalogId")]
+        public string? CatalogId { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -112,6 +119,10 @@ namespace Instill
         /// Permission defines how a table can be used.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="catalogId">
+        /// The ID of the catalog that this table is bound to.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -124,7 +135,8 @@ namespace Instill
             object? metadata,
             global::System.DateTime? createTime,
             global::System.DateTime? updateTime,
-            global::Instill.TablePermission? permission)
+            global::Instill.TablePermission? permission,
+            string? catalogId)
         {
             this.AgentConfig = agentConfig ?? throw new global::System.ArgumentNullException(nameof(agentConfig));
             this.DraftMode = draftMode;
@@ -135,6 +147,7 @@ namespace Instill
             this.CreateTime = createTime;
             this.UpdateTime = updateTime;
             this.Permission = permission;
+            this.CatalogId = catalogId;
         }
 
         /// <summary>

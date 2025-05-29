@@ -71,6 +71,12 @@ namespace Instill
         public global::Instill.Selection? Selection { get; set; }
 
         /// <summary>
+        /// The metadata of the column.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
+        public object? Metadata { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -110,6 +116,9 @@ namespace Instill
         /// <param name="selection">
         /// The selection settings of the column.
         /// </param>
+        /// <param name="metadata">
+        /// The metadata of the column.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -122,7 +131,8 @@ namespace Instill
             global::Instill.Sort? sort,
             string? description,
             global::Instill.NumberFormat? numberFormat,
-            global::Instill.Selection? selection)
+            global::Instill.Selection? selection,
+            object? metadata)
         {
             this.Type = type;
             this.Order = order;
@@ -133,6 +143,7 @@ namespace Instill
             this.Description = description;
             this.NumberFormat = numberFormat;
             this.Selection = selection;
+            this.Metadata = metadata;
         }
 
         /// <summary>

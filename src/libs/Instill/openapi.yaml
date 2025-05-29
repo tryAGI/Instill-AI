@@ -1802,6 +1802,211 @@ paths:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
       x-stage: alpha
+  '/v1alpha/namespaces/{namespaceId}/folders':
+    get:
+      tags:
+        - Folder
+      summary: List folders
+      description: Returns a list of folders.
+      operationId: AgentPublicService_ListFolders
+      parameters:
+        - name: namespaceId
+          in: path
+          description: The ID of the namespace that owns the folders.
+          required: true
+          schema:
+            type: string
+        - name: pageToken
+          in: query
+          description: The page token for pagination.
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          description: The maximum number of folders to return.
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListFoldersResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
+    post:
+      tags:
+        - Folder
+      summary: Create folder
+      description: Creates a folder.
+      operationId: AgentPublicService_CreateFolder
+      parameters:
+        - name: namespaceId
+          in: path
+          description: The ID of the namespace where the folder will be created.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateFolderBody'
+        required: true
+        x-bodyName: body
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateFolderResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
+  '/v1alpha/namespaces/{namespaceId}/folders/{folderUid}':
+    get:
+      tags:
+        - Folder
+      summary: Get folder
+      description: Gets a folder.
+      operationId: AgentPublicService_GetFolder
+      parameters:
+        - name: namespaceId
+          in: path
+          description: The ID of the namespace that owns the folder.
+          required: true
+          schema:
+            type: string
+        - name: folderUid
+          in: path
+          description: The UID of the folder to fetch.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFolderResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
+    delete:
+      tags:
+        - Folder
+      summary: Delete folder
+      description: Deletes a folder.
+      operationId: AgentPublicService_DeleteFolder
+      parameters:
+        - name: namespaceId
+          in: path
+          description: The ID of the namespace that owns the folder.
+          required: true
+          schema:
+            type: string
+        - name: folderUid
+          in: path
+          description: The UID of the folder to delete.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteFolderResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
+    patch:
+      tags:
+        - Folder
+      summary: Update folder
+      description: Updates a folder.
+      operationId: AgentPublicService_UpdateFolder
+      parameters:
+        - name: namespaceId
+          in: path
+          description: The ID of the namespace that owns the folder.
+          required: true
+          schema:
+            type: string
+        - name: folderUid
+          in: path
+          description: The UID of the folder to update.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateFolderBody'
+        required: true
+        x-bodyName: body
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateFolderResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
   '/v1alpha/namespaces/{namespaceId}/catalogs':
     get:
       tags:
@@ -8011,6 +8216,9 @@ components:
           allOf:
             - $ref: '#/components/schemas/Selection'
           description: The selection settings of the column.
+        metadata:
+          type: object
+          description: The metadata of the column.
       description: ColumnDefinition represents a column definition in a table.
     ColumnDefinition.AgentConfig:
       required:
@@ -8383,6 +8591,25 @@ components:
           allOf:
             - $ref: '#/components/schemas/Chat'
           readOnly: true
+    CreateFolderBody:
+      required:
+        - folder
+      type: object
+      properties:
+        folder:
+          allOf:
+            - $ref: '#/components/schemas/Folder'
+          description: The folder resource to create.
+      description: CreateFolderRequest represents a request to create a folder.
+    CreateFolderResponse:
+      type: object
+      properties:
+        folder:
+          allOf:
+            - $ref: '#/components/schemas/Folder'
+          description: The created folder resource.
+          readOnly: true
+      description: CreateFolderResponse contains the created folder.
     CreateNamespaceConnectionResponse:
       type: object
       properties:
@@ -8547,6 +8774,9 @@ components:
     DeleteChatResponse:
       title: DeleteChatResponse is empty as no content needs to be returned
       type: object
+    DeleteFolderResponse:
+      type: object
+      description: DeleteFolderResponse is an empty response for deleting a folder.
     DeleteNamespaceConnectionResponse:
       type: object
       description: DeleteNamespaceConnectionResponse is an empty response.
@@ -8878,6 +9108,51 @@ components:
         - FILE_TYPE_CSV
       type: string
       description: "- FILE_TYPE_TEXT: text\n - FILE_TYPE_PDF: PDF\n - FILE_TYPE_MARKDOWN: MARKDOWN\n - FILE_TYPE_PNG: PNG(not supported yet)\n - FILE_TYPE_JPEG: JPEG(not supported yet)\n - FILE_TYPE_JPG: JPG(not supported yet)\n - FILE_TYPE_HTML: HTML\n - FILE_TYPE_DOCX: DOCX\n - FILE_TYPE_DOC: DOC\n - FILE_TYPE_PPT: PPT\n - FILE_TYPE_PPTX: PPTX\n - FILE_TYPE_XLS: XLS\n - FILE_TYPE_XLSX: XLSX\n - FILE_TYPE_CSV: CSV"
+    Folder:
+      required:
+        - name
+      type: object
+      properties:
+        uid:
+          type: string
+          description: The unique identifier of the folder.
+          readOnly: true
+        name:
+          type: string
+          description: The name of the folder.
+        description:
+          type: string
+          description: A description of the folder.
+        metadata:
+          type: object
+          description: Additional metadata associated with the folder.
+        createTime:
+          type: string
+          description: The timestamp when the folder was created.
+          format: date-time
+          readOnly: true
+        updateTime:
+          type: string
+          description: The timestamp when the folder was last updated.
+          format: date-time
+          readOnly: true
+        catalogId:
+          type: string
+          description: The ID of the catalog that this folder is bound to.
+          readOnly: true
+        permission:
+          allOf:
+            - $ref: '#/components/schemas/Folder.Permission'
+          description: Permission defines how a folder can be used.
+          readOnly: true
+      description: Folder represents a folder resource.
+    Folder.Permission:
+      type: object
+      properties:
+        canEdit:
+          type: boolean
+          description: Defines whether the folder can be modified.
+      description: Permission defines how a folder can be used.
     Format:
       enum:
         - FORMAT_PLAIN
@@ -9030,6 +9305,15 @@ components:
           title: summary of the file
           type: string
           readOnly: true
+    GetFolderResponse:
+      type: object
+      properties:
+        folder:
+          allOf:
+            - $ref: '#/components/schemas/Folder'
+          description: The folder resource.
+          readOnly: true
+      description: GetFolderResponse contains the requested folder.
     GetIntegrationResponse:
       type: object
       properties:
@@ -9604,6 +9888,25 @@ components:
             $ref: '#/components/schemas/CreditConsumptionChartRecord'
           description: 'Credit consumption timelines, aggregated by source.'
       description: "ListCreditConsumptionChartRecordsResponse contains a list of credit consumption\nchart records."
+    ListFoldersResponse:
+      type: object
+      properties:
+        folders:
+          type: array
+          items:
+            $ref: '#/components/schemas/Folder'
+          description: The list of folders.
+          readOnly: true
+        nextPageToken:
+          type: string
+          description: The token for the next page of results.
+          readOnly: true
+        totalSize:
+          type: integer
+          description: The total number of tables.
+          format: int32
+          readOnly: true
+      description: ListFoldersResponse contains the list of folders.
     ListIntegrationsResponse:
       type: object
       properties:
@@ -11859,6 +12162,10 @@ components:
             - $ref: '#/components/schemas/Table.Permission'
           description: Permission defines how a table can be used.
           readOnly: true
+        catalogId:
+          type: string
+          description: The ID of the catalog that this table is bound to.
+          readOnly: true
       description: Table represents a table resource.
     Table.AgentConfig:
       required:
@@ -12427,6 +12734,28 @@ components:
           description: Map of column UID to the updated definitions.
           readOnly: true
       description: UpdateColumnDefinitionsResponse contains the updated column definitions.
+    UpdateFolderBody:
+      required:
+        - updateMask
+      type: object
+      properties:
+        folder:
+          allOf:
+            - $ref: '#/components/schemas/Folder'
+          description: The folder fields that will replace the existing ones.
+        updateMask:
+          type: string
+          description: The update mask specifies the subset of fields that should be modified.
+      description: UpdateFolderRequest represents a request to update a folder.
+    UpdateFolderResponse:
+      type: object
+      properties:
+        folder:
+          allOf:
+            - $ref: '#/components/schemas/Folder'
+          description: The updated folder resource.
+          readOnly: true
+      description: UpdateFolderResponse contains the updated folder.
     UpdateNamespaceConnectionResponse:
       type: object
       properties:
@@ -12987,6 +13316,8 @@ tags:
     description: Ready-to-use AI agents.
   - name: Table
     description: Table resources for agents.
+  - name: Folder
+    description: Folder resources for agents.
   - name: 📊 Metrics
     description: Resource usage metrics.
   - name: 🤝 Subscription

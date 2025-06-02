@@ -12124,7 +12124,6 @@ components:
     Table:
       required:
         - agentConfig
-        - draftMode
       type: object
       properties:
         uid:

@@ -60,8 +60,7 @@ namespace Instill
         /// Whether to enable draft mode for the table.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("draftMode")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required bool DraftMode { get; set; }
+        public bool? DraftMode { get; set; }
 
         /// <summary>
         /// Permission defines how a table can be used.<br/>
@@ -128,24 +127,24 @@ namespace Instill
 #endif
         public Table(
             global::Instill.TableAgentConfig agentConfig,
-            bool draftMode,
             string? uid,
             string? title,
             string? description,
             object? metadata,
             global::System.DateTime? createTime,
             global::System.DateTime? updateTime,
+            bool? draftMode,
             global::Instill.TablePermission? permission,
             string? catalogId)
         {
             this.AgentConfig = agentConfig ?? throw new global::System.ArgumentNullException(nameof(agentConfig));
-            this.DraftMode = draftMode;
             this.Uid = uid;
             this.Title = title;
             this.Description = description;
             this.Metadata = metadata;
             this.CreateTime = createTime;
             this.UpdateTime = updateTime;
+            this.DraftMode = draftMode;
             this.Permission = permission;
             this.CatalogId = catalogId;
         }

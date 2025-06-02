@@ -50,10 +50,10 @@ namespace Instill
         global::System.Threading.Tasks.Task<global::Instill.CreateTableResponse> AgentPublicServiceCreateTableAsync(
             string namespaceId,
             global::Instill.TableAgentConfig agentConfig,
-            bool draftMode,
             string? title = default,
             string? description = default,
             object? metadata = default,
+            bool? draftMode = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

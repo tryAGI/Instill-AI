@@ -54,10 +54,10 @@ namespace Instill
             string namespaceId,
             string tableUid,
             global::Instill.TableAgentConfig agentConfig,
-            bool draftMode,
             string? title = default,
             string? description = default,
             object? metadata = default,
+            bool? draftMode = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

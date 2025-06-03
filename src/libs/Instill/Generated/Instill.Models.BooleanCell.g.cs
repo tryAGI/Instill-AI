@@ -9,13 +9,6 @@ namespace Instill
     public sealed partial class BooleanCell
     {
         /// <summary>
-        /// The value of the cell as a boolean.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required bool Value { get; set; }
-
-        /// <summary>
         /// The value of the cell that directly set by the user.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("userInput")]
@@ -37,9 +30,6 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="BooleanCell" /> class.
         /// </summary>
-        /// <param name="value">
-        /// The value of the cell as a boolean.
-        /// </param>
         /// <param name="userInput">
         /// The value of the cell that directly set by the user.
         /// </param>
@@ -51,11 +41,9 @@ namespace Instill
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public BooleanCell(
-            bool value,
             bool? userInput,
             bool? computedValue)
         {
-            this.Value = value;
             this.UserInput = userInput;
             this.ComputedValue = computedValue;
         }

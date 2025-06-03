@@ -9,13 +9,6 @@ namespace Instill
     public sealed partial class NumberCell
     {
         /// <summary>
-        /// The value of the cell as a number.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required double Value { get; set; }
-
-        /// <summary>
         /// The value of the cell that directly set by the user.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("userInput")]
@@ -37,9 +30,6 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="NumberCell" /> class.
         /// </summary>
-        /// <param name="value">
-        /// The value of the cell as a number.
-        /// </param>
         /// <param name="userInput">
         /// The value of the cell that directly set by the user.
         /// </param>
@@ -51,11 +41,9 @@ namespace Instill
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public NumberCell(
-            double value,
             double? userInput,
             double? computedValue)
         {
-            this.Value = value;
             this.UserInput = userInput;
             this.ComputedValue = computedValue;
         }

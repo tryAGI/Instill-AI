@@ -9,13 +9,6 @@ namespace Instill
     public sealed partial class StringCell
     {
         /// <summary>
-        /// The value of the cell as a string.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Value { get; set; }
-
-        /// <summary>
         /// The value of the cell that directly set by the user.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("userInput")]
@@ -36,9 +29,6 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="StringCell" /> class.
         /// </summary>
-        /// <param name="value">
-        /// The value of the cell as a string.
-        /// </param>
         /// <param name="userInput">
         /// The value of the cell that directly set by the user.
         /// </param>
@@ -49,11 +39,9 @@ namespace Instill
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public StringCell(
-            string value,
             string? userInput,
             string? computedValue)
         {
-            this.Value = value ?? throw new global::System.ArgumentNullException(nameof(value));
             this.UserInput = userInput;
             this.ComputedValue = computedValue;
         }

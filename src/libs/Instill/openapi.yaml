@@ -12955,9 +12955,9 @@ components:
     UserSubscription.Plan:
       enum:
         - PLAN_FREE
-        - PLAN_PRO
+        - PLAN_STARTER
       type: string
-      description: "Enumerates the plan types for the user subscription.\n\n - PLAN_FREE: Free plan.\n - PLAN_PRO: Pro plan."
+      description: "Enumerates the plan types for the user subscription.\n\n - PLAN_FREE: Free plan.\n - PLAN_STARTER: Starter plan."
     ValidateNamespacePipelineBody:
       type: object
       description: "ValidateNamespacePipelineRequest represents a request to validate a pipeline\nowned by a user."

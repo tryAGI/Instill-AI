@@ -6,7 +6,7 @@ namespace Instill
     /// <summary>
     /// Enumerates the plan types for the user subscription.<br/>
     ///  - PLAN_FREE: Free plan.<br/>
-    ///  - PLAN_PRO: Pro plan.
+    ///  - PLAN_STARTER: Starter plan.
     /// </summary>
     public enum UserSubscriptionPlan
     {
@@ -15,9 +15,9 @@ namespace Instill
         /// </summary>
         PLANFREE,
         /// <summary>
-        /// Pro plan.
+        /// Starter plan.
         /// </summary>
-        PLANPRO,
+        PLANSTARTER,
     }
 
     /// <summary>
@@ -33,7 +33,7 @@ namespace Instill
             return value switch
             {
                 UserSubscriptionPlan.PLANFREE => "PLAN_FREE",
-                UserSubscriptionPlan.PLANPRO => "PLAN_PRO",
+                UserSubscriptionPlan.PLANSTARTER => "PLAN_STARTER",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -45,7 +45,7 @@ namespace Instill
             return value switch
             {
                 "PLAN_FREE" => UserSubscriptionPlan.PLANFREE,
-                "PLAN_PRO" => UserSubscriptionPlan.PLANPRO,
+                "PLAN_STARTER" => UserSubscriptionPlan.PLANSTARTER,
                 _ => null,
             };
         }

@@ -55,7 +55,7 @@ namespace Instill
                 pipelineId: ref pipelineId,
                 request: request);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/validate",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

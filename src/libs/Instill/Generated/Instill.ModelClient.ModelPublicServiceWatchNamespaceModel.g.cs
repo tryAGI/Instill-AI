@@ -53,7 +53,7 @@ namespace Instill
                 modelId: ref modelId,
                 version: ref version);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/models/{modelId}/versions/{version}/watch",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

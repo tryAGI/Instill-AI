@@ -64,7 +64,7 @@ namespace Instill
                 instillRequesterUid: ref instillRequesterUid,
                 request: request);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/models/{modelId}/versions/{version}/trigger",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

@@ -51,7 +51,7 @@ namespace Instill
                 namespaceId: ref namespaceId,
                 connectionId: ref connectionId);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1beta/namespaces/{namespaceId}/connections/{connectionId}/test",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

@@ -51,7 +51,7 @@ namespace Instill
                 pageToken: ref pageToken,
                 view: ref view);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: "/v1alpha/model-definitions",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 

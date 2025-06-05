@@ -51,7 +51,7 @@ namespace Instill
                 objectUid: ref objectUid,
                 urlExpireDays: ref urlExpireDays);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/object-download-url",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 

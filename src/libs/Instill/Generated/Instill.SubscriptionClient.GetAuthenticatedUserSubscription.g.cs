@@ -36,7 +36,7 @@ namespace Instill
             PrepareGetAuthenticatedUserSubscriptionArguments(
                 httpClient: HttpClient);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: "/v1beta/user/subscription",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

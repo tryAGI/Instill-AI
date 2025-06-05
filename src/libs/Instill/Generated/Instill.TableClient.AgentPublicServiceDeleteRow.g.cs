@@ -51,7 +51,7 @@ namespace Instill
                 tableUid: ref tableUid,
                 rowUid: ref rowUid);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/tables/{tableUid}/rows/{rowUid}",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

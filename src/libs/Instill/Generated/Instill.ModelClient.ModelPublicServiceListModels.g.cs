@@ -71,7 +71,7 @@ namespace Instill
                 visibility: ref visibility,
                 orderBy: ref orderBy);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: "/v1alpha/models",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 

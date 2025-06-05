@@ -41,7 +41,7 @@ namespace Instill
                 httpClient: HttpClient,
                 tokenId: ref tokenId);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1beta/tokens/{tokenId}",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

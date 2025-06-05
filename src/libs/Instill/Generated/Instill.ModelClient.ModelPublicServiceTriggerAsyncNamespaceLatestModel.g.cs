@@ -59,7 +59,7 @@ namespace Instill
                 instillRequesterUid: ref instillRequesterUid,
                 request: request);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/models/{modelId}/trigger-async",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

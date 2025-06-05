@@ -41,7 +41,7 @@ namespace Instill
                 httpClient: HttpClient,
                 fileUid: ref fileUid);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: "/v1alpha/catalogs/files",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 

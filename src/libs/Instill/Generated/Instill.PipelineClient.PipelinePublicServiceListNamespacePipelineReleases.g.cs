@@ -72,7 +72,7 @@ namespace Instill
                 filter: ref filter,
                 showDeleted: ref showDeleted);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/releases",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 

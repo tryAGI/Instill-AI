@@ -72,7 +72,7 @@ namespace Instill
                 stop: ref stop,
                 requesterId: ref requesterId);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: "/v1beta/dashboard/pipelines/runs",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 

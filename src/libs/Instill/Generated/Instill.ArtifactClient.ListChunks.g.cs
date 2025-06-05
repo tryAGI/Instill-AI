@@ -51,7 +51,7 @@ namespace Instill
                 catalogId: ref catalogId,
                 fileUid: ref fileUid);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/chunks",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 

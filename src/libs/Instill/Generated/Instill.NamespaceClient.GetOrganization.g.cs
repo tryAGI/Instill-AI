@@ -46,7 +46,7 @@ namespace Instill
                 organizationId: ref organizationId,
                 view: ref view);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1beta/organizations/{organizationId}",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 

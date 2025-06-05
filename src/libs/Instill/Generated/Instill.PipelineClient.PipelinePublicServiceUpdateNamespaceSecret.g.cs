@@ -55,7 +55,7 @@ namespace Instill
                 secretId: ref secretId,
                 request: request);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1beta/namespaces/{namespaceId}/secrets/{secretId}",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

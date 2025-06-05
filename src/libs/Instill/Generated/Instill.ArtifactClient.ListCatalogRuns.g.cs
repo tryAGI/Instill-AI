@@ -66,7 +66,7 @@ namespace Instill
                 filter: ref filter,
                 orderBy: ref orderBy);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/runs",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 

@@ -75,7 +75,7 @@ namespace Instill
                 orderBy: ref orderBy,
                 instillRequesterUid: ref instillRequesterUid);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/runs",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 

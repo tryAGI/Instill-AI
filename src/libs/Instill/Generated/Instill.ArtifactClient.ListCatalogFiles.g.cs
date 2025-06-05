@@ -61,7 +61,7 @@ namespace Instill
                 pageToken: ref pageToken,
                 filterFileUids: filterFileUids);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/files",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 

@@ -61,7 +61,7 @@ namespace Instill
                 releaseId: ref releaseId,
                 request: request);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/releases/{releaseId}",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

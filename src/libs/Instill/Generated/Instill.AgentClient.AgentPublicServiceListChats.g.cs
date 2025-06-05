@@ -61,7 +61,7 @@ namespace Instill
                 ifAll: ref ifAll,
                 chatUid: ref chatUid);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/chats",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 

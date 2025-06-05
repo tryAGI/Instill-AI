@@ -51,7 +51,7 @@ namespace Instill
                 pageToken: ref pageToken,
                 filter: ref filter);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: "/v1beta/integrations",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 

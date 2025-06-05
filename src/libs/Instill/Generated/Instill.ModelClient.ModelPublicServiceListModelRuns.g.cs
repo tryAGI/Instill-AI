@@ -75,7 +75,7 @@ namespace Instill
                 filter: ref filter,
                 instillRequesterUid: ref instillRequesterUid);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/models/{modelId}/runs",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 

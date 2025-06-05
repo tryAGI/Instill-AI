@@ -46,7 +46,7 @@ namespace Instill
                 modelDefinitionId: ref modelDefinitionId,
                 view: ref view);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/model-definitions/{modelDefinitionId}",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 

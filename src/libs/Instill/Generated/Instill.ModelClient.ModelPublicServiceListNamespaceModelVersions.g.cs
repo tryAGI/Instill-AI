@@ -57,7 +57,7 @@ namespace Instill
                 pageSize: ref pageSize,
                 page: ref page);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/models/{modelId}/versions",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 

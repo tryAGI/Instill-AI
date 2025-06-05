@@ -60,7 +60,7 @@ namespace Instill
                 start: ref start,
                 stop: ref stop);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: "/v1beta/credit/query-charts",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 

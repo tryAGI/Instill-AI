@@ -61,7 +61,7 @@ namespace Instill
                 lastModifiedTime: ref lastModifiedTime,
                 objectExpireDays: ref objectExpireDays);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/object-upload-url",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 

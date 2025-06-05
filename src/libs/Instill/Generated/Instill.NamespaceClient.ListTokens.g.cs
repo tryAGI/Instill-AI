@@ -46,7 +46,7 @@ namespace Instill
                 pageSize: ref pageSize,
                 pageToken: ref pageToken);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: "/v1beta/tokens",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 

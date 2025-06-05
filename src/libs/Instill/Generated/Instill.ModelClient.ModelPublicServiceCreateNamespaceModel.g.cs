@@ -52,7 +52,7 @@ namespace Instill
                 namespaceId: ref namespaceId,
                 request: request);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/models",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

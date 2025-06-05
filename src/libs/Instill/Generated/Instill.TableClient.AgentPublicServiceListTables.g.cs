@@ -51,7 +51,7 @@ namespace Instill
                 pageToken: ref pageToken,
                 pageSize: ref pageSize);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/tables",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 

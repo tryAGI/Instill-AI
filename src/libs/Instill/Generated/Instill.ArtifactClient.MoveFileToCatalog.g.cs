@@ -53,7 +53,7 @@ namespace Instill
                 catalogId: ref catalogId,
                 request: request);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/files:move",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

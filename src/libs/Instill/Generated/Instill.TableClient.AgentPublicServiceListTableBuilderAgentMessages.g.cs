@@ -11,7 +11,8 @@ namespace Instill
             ref string tableUid,
             ref int? pageSize,
             ref string? pageToken,
-            ref bool? ifAll);
+            ref bool? ifAll,
+            ref bool? returnRawMessages);
         partial void PrepareAgentPublicServiceListTableBuilderAgentMessagesRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
@@ -19,7 +20,8 @@ namespace Instill
             string tableUid,
             int? pageSize,
             string? pageToken,
-            bool? ifAll);
+            bool? ifAll,
+            bool? returnRawMessages);
         partial void ProcessAgentPublicServiceListTableBuilderAgentMessagesResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -38,6 +40,7 @@ namespace Instill
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
         /// <param name="ifAll"></param>
+        /// <param name="returnRawMessages"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
 #if NET8_0_OR_GREATER
@@ -49,6 +52,7 @@ namespace Instill
             int? pageSize = default,
             string? pageToken = default,
             bool? ifAll = default,
+            bool? returnRawMessages = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
@@ -59,7 +63,8 @@ namespace Instill
                 tableUid: ref tableUid,
                 pageSize: ref pageSize,
                 pageToken: ref pageToken,
-                ifAll: ref ifAll);
+                ifAll: ref ifAll,
+                returnRawMessages: ref returnRawMessages);
 
             var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/tables/{tableUid}/builder/messages",
@@ -68,6 +73,7 @@ namespace Instill
                 .AddOptionalParameter("pageSize", pageSize?.ToString()) 
                 .AddOptionalParameter("pageToken", pageToken) 
                 .AddOptionalParameter("ifAll", ifAll?.ToString()) 
+                .AddOptionalParameter("returnRawMessages", returnRawMessages?.ToString()) 
                 ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -104,7 +110,8 @@ namespace Instill
                 tableUid: tableUid,
                 pageSize: pageSize,
                 pageToken: pageToken,
-                ifAll: ifAll);
+                ifAll: ifAll,
+                returnRawMessages: returnRawMessages);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,

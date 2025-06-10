@@ -265,6 +265,11 @@ paths:
           description: 'If true, all messages will be returned. This has higher priority over page_size and page_token.'
           schema:
             type: boolean
+        - name: returnRawMessages
+          in: query
+          description: 'If true, the raw messages will be returned.'
+          schema:
+            type: boolean
       responses:
         '200':
           description: A successful response.
@@ -800,6 +805,11 @@ paths:
         - name: ifAll
           in: query
           description: 'If true, all messages will be returned. This has higher priority over page_size and page_token.'
+          schema:
+            type: boolean
+        - name: returnRawMessages
+          in: query
+          description: 'If true, the raw messages will be returned.'
           schema:
             type: boolean
       responses:
@@ -1583,6 +1593,78 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RecomputeCellResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
+  '/v1alpha/namespaces/{namespaceId}/tables/{tableUid}/rows/{rowUid}/cells/{cellUid}/autofill-agent/messages':
+    get:
+      tags:
+        - Table
+      summary: List cell messages
+      description: Lists the internal LLM messages that used to generate the cell value.
+      operationId: AgentPublicService_ListCellAutofillAgentMessages
+      parameters:
+        - name: namespaceId
+          in: path
+          description: The ID of the namespace that owns the table.
+          required: true
+          schema:
+            type: string
+        - name: tableUid
+          in: path
+          description: The UID of the table containing the cell.
+          required: true
+          schema:
+            type: string
+        - name: rowUid
+          in: path
+          description: The unique identifier of the row containing the cell.
+          required: true
+          schema:
+            type: string
+        - name: cellUid
+          in: path
+          description: The unique identifier of the cell to reset.
+          required: true
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          description: page size
+          schema:
+            type: integer
+            format: int32
+        - name: pageToken
+          in: query
+          description: page token
+          schema:
+            type: string
+        - name: ifAll
+          in: query
+          description: 'If true, all messages will be returned. This has higher priority over page_size and page_token.'
+          schema:
+            type: boolean
+        - name: returnRawMessages
+          in: query
+          description: 'If true, the raw messages will be returned.'
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCellAutofillAgentMessagesResponse'
         '401':
           description: Returned when the client credentials are not valid.
           content:
@@ -9789,6 +9871,25 @@ components:
             $ref: '#/components/schemas/Catalog'
           description: The catalogs container.
       description: GetCatalogsResponse represents a response for getting all catalogs from users.
+    ListCellAutofillAgentMessagesResponse:
+      type: object
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/agent.v1alpha.Message'
+          description: The messages in the cell.
+          readOnly: true
+        nextPageToken:
+          type: string
+          description: The token for the next page of results.
+          readOnly: true
+        totalSize:
+          type: integer
+          description: The total number of messages.
+          format: int32
+          readOnly: true
+      description: ListCellAutofillAgentMessagesResponse is a response to a request to list messages in a cell.
     ListChatTablesResponse:
       type: object
       properties:
@@ -13080,6 +13181,14 @@ components:
         enableWebSearch:
           title: enable web search (only for user messages)
           type: boolean
+          readOnly: true
+        internal:
+          type: boolean
+          description: 'internal flag for the message, if true, the message is the intermediate message happened in the LLM flow.'
+          readOnly: true
+        rawMessage:
+          title: raw message for the message
+          type: object
           readOnly: true
     longrunning.Operation:
       type: object

@@ -3,40 +3,46 @@
 
 namespace Instill
 {
-    public partial class AgentClient
+    public partial class TableClient
     {
-        partial void PrepareAgentPublicServiceListMessagesArguments(
+        partial void PrepareAgentPublicServiceListCellAutofillAgentMessagesArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
-            ref string chatUid,
+            ref string tableUid,
+            ref string rowUid,
+            ref string cellUid,
             ref int? pageSize,
             ref string? pageToken,
             ref bool? ifAll,
             ref bool? returnRawMessages);
-        partial void PrepareAgentPublicServiceListMessagesRequest(
+        partial void PrepareAgentPublicServiceListCellAutofillAgentMessagesRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
-            string chatUid,
+            string tableUid,
+            string rowUid,
+            string cellUid,
             int? pageSize,
             string? pageToken,
             bool? ifAll,
             bool? returnRawMessages);
-        partial void ProcessAgentPublicServiceListMessagesResponse(
+        partial void ProcessAgentPublicServiceListCellAutofillAgentMessagesResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessAgentPublicServiceListMessagesResponseContent(
+        partial void ProcessAgentPublicServiceListCellAutofillAgentMessagesResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// List messages<br/>
-        /// Returns a paginated list of messages.
+        /// List cell messages<br/>
+        /// Lists the internal LLM messages that used to generate the cell value.
         /// </summary>
         /// <param name="namespaceId"></param>
-        /// <param name="chatUid"></param>
+        /// <param name="tableUid"></param>
+        /// <param name="rowUid"></param>
+        /// <param name="cellUid"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
         /// <param name="ifAll"></param>
@@ -46,9 +52,11 @@ namespace Instill
 #if NET8_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
 #endif
-        public async global::System.Threading.Tasks.Task<global::Instill.ListMessagesResponse> AgentPublicServiceListMessagesAsync(
+        public async global::System.Threading.Tasks.Task<global::Instill.ListCellAutofillAgentMessagesResponse> AgentPublicServiceListCellAutofillAgentMessagesAsync(
             string namespaceId,
-            string chatUid,
+            string tableUid,
+            string rowUid,
+            string cellUid,
             int? pageSize = default,
             string? pageToken = default,
             bool? ifAll = default,
@@ -57,17 +65,19 @@ namespace Instill
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareAgentPublicServiceListMessagesArguments(
+            PrepareAgentPublicServiceListCellAutofillAgentMessagesArguments(
                 httpClient: HttpClient,
                 namespaceId: ref namespaceId,
-                chatUid: ref chatUid,
+                tableUid: ref tableUid,
+                rowUid: ref rowUid,
+                cellUid: ref cellUid,
                 pageSize: ref pageSize,
                 pageToken: ref pageToken,
                 ifAll: ref ifAll,
                 returnRawMessages: ref returnRawMessages);
 
             var __pathBuilder = new global::Instill.PathBuilder(
-                path: $"/v1alpha/namespaces/{namespaceId}/chats/{chatUid}/messages",
+                path: $"/v1alpha/namespaces/{namespaceId}/tables/{tableUid}/rows/{rowUid}/cells/{cellUid}/autofill-agent/messages",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 
                 .AddOptionalParameter("pageSize", pageSize?.ToString()) 
@@ -103,11 +113,13 @@ namespace Instill
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareAgentPublicServiceListMessagesRequest(
+            PrepareAgentPublicServiceListCellAutofillAgentMessagesRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
                 namespaceId: namespaceId,
-                chatUid: chatUid,
+                tableUid: tableUid,
+                rowUid: rowUid,
+                cellUid: cellUid,
                 pageSize: pageSize,
                 pageToken: pageToken,
                 ifAll: ifAll,
@@ -121,7 +133,7 @@ namespace Instill
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessAgentPublicServiceListMessagesResponse(
+            ProcessAgentPublicServiceListCellAutofillAgentMessagesResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
             // Returned when the client credentials are not valid.
@@ -193,7 +205,7 @@ namespace Instill
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessAgentPublicServiceListMessagesResponseContent(
+                ProcessAgentPublicServiceListCellAutofillAgentMessagesResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -218,7 +230,7 @@ namespace Instill
                 }
 
                 return
-                    global::Instill.ListMessagesResponse.FromJson(__content, JsonSerializerContext) ??
+                    global::Instill.ListCellAutofillAgentMessagesResponse.FromJson(__content, JsonSerializerContext) ??
                     throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
@@ -248,7 +260,7 @@ namespace Instill
                 ).ConfigureAwait(false);
 
                 return
-                    await global::Instill.ListMessagesResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    await global::Instill.ListCellAutofillAgentMessagesResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                     throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }

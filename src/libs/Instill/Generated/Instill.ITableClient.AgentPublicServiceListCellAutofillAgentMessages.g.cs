@@ -2,14 +2,16 @@
 
 namespace Instill
 {
-    public partial interface IAgentClient
+    public partial interface ITableClient
     {
         /// <summary>
-        /// List messages<br/>
-        /// Returns a paginated list of messages.
+        /// List cell messages<br/>
+        /// Lists the internal LLM messages that used to generate the cell value.
         /// </summary>
         /// <param name="namespaceId"></param>
-        /// <param name="chatUid"></param>
+        /// <param name="tableUid"></param>
+        /// <param name="rowUid"></param>
+        /// <param name="cellUid"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
         /// <param name="ifAll"></param>
@@ -19,9 +21,11 @@ namespace Instill
 #if NET8_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
 #endif
-        global::System.Threading.Tasks.Task<global::Instill.ListMessagesResponse> AgentPublicServiceListMessagesAsync(
+        global::System.Threading.Tasks.Task<global::Instill.ListCellAutofillAgentMessagesResponse> AgentPublicServiceListCellAutofillAgentMessagesAsync(
             string namespaceId,
-            string chatUid,
+            string tableUid,
+            string rowUid,
+            string cellUid,
             int? pageSize = default,
             string? pageToken = default,
             bool? ifAll = default,

@@ -84,6 +84,19 @@ namespace Instill
         public bool? EnableWebSearch { get; set; }
 
         /// <summary>
+        /// internal flag for the message, if true, the message is the intermediate message happened in the LLM flow.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("internal")]
+        public bool? Internal { get; set; }
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("rawMessage")]
+        public object? RawMessage { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -122,6 +135,13 @@ namespace Instill
         /// <param name="enableWebSearch">
         /// Included only in responses
         /// </param>
+        /// <param name="internal">
+        /// internal flag for the message, if true, the message is the intermediate message happened in the LLM flow.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="rawMessage">
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -137,7 +157,9 @@ namespace Instill
             global::System.Collections.Generic.IList<global::Instill.Citation>? citations,
             global::Instill.ChatContext? context,
             global::Instill.ChatAttachments? attachments,
-            bool? enableWebSearch)
+            bool? enableWebSearch,
+            bool? @internal,
+            object? rawMessage)
         {
             this.Content = content ?? throw new global::System.ArgumentNullException(nameof(content));
             this.Role = role ?? throw new global::System.ArgumentNullException(nameof(role));
@@ -151,6 +173,8 @@ namespace Instill
             this.Context = context;
             this.Attachments = attachments;
             this.EnableWebSearch = enableWebSearch;
+            this.Internal = @internal;
+            this.RawMessage = rawMessage;
         }
 
         /// <summary>

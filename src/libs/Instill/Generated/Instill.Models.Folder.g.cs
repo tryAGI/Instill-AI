@@ -63,6 +63,13 @@ namespace Instill
         public global::Instill.FolderPermission? Permission { get; set; }
 
         /// <summary>
+        /// The information about the catalog.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("catalogInfo")]
+        public global::Instill.CatalogInfo? CatalogInfo { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -100,6 +107,10 @@ namespace Instill
         /// Permission defines how a folder can be used.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="catalogInfo">
+        /// The information about the catalog.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -111,7 +122,8 @@ namespace Instill
             global::System.DateTime? createTime,
             global::System.DateTime? updateTime,
             string? catalogId,
-            global::Instill.FolderPermission? permission)
+            global::Instill.FolderPermission? permission,
+            global::Instill.CatalogInfo? catalogInfo)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Uid = uid;
@@ -121,6 +133,7 @@ namespace Instill
             this.UpdateTime = updateTime;
             this.CatalogId = catalogId;
             this.Permission = permission;
+            this.CatalogInfo = catalogInfo;
         }
 
         /// <summary>

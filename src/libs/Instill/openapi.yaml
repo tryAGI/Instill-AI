@@ -7518,6 +7518,20 @@ components:
             type: string
           description: The catalog summarizing pipelines.
       description: Catalog represents a catalog.
+    CatalogInfo:
+      type: object
+      properties:
+        fileCount:
+          type: integer
+          description: The number of files in the catalog.
+          format: int32
+          readOnly: true
+        totalSizeBytes:
+          type: string
+          description: The total size of all files in the catalog in bytes.
+          format: int64
+          readOnly: true
+      description: CatalogInfo contains the information about the catalog.
     CatalogRun:
       type: object
       properties:
@@ -9221,6 +9235,11 @@ components:
           allOf:
             - $ref: '#/components/schemas/Folder.Permission'
           description: Permission defines how a folder can be used.
+          readOnly: true
+        catalogInfo:
+          allOf:
+            - $ref: '#/components/schemas/CatalogInfo'
+          description: The information about the catalog.
           readOnly: true
       description: Folder represents a folder resource.
     Folder.Permission:

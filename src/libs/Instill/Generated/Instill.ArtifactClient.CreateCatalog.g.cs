@@ -246,6 +246,32 @@ namespace Instill
         /// The catalog tags.
         /// </param>
         /// <param name="type"></param>
+        /// <param name="convertingPipelines">
+        /// Pipelines used for converting documents (i.e., files with pdf, doc[x] or<br/>
+        /// ppt[x] extension) to Markdown. The strings in the list identify the<br/>
+        /// pipelines and MUST have the format `{namespaceID}/{pipelineID}@{version}`.<br/>
+        /// The pipeline recipes MUST have the following variable and output fields:<br/>
+        /// ```yaml variable<br/>
+        /// variable:<br/>
+        ///   document_input:<br/>
+        ///     title: document-input<br/>
+        ///     description: Upload a document (PDF/DOCX/DOC/PPTX/PPT)<br/>
+        ///     type: file<br/>
+        /// ```<br/>
+        /// ```yaml output<br/>
+        /// output:<br/>
+        ///  convert_result:<br/>
+        ///    title: convert-result<br/>
+        ///    value: ${merge-markdown-refinement.output.results[0]}<br/>
+        /// ```<br/>
+        /// Other variable and output fields will be ignored.<br/>
+        /// The pipelines will be executed in order until one produces a successful,<br/>
+        /// non-empty result.<br/>
+        /// If no pipelines are provided, a default pipeline will be used. For<br/>
+        /// non-document catalog files, the conversion pipeline is deterministic (such<br/>
+        /// files are typically trivial to convert and don't require a dedicated<br/>
+        /// pipeline to improve the conversion performance).
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
 #if NET8_0_OR_GREATER
@@ -257,6 +283,7 @@ namespace Instill
             string? description = default,
             global::System.Collections.Generic.IList<string>? tags = default,
             global::Instill.CatalogType? type = default,
+            global::System.Collections.Generic.IList<string>? convertingPipelines = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Instill.CreateCatalogBody
@@ -265,6 +292,7 @@ namespace Instill
                 Description = description,
                 Tags = tags,
                 Type = type,
+                ConvertingPipelines = convertingPipelines,
             };
 
             return await CreateCatalogAsync(

@@ -7757,11 +7757,11 @@ components:
       title: ChatAttachments represents the attachment for the message
       type: object
       properties:
-        fileUrls:
+        fileAttachments:
           title: file urls (only for user messages)
           type: array
           items:
-            type: string
+            $ref: '#/components/schemas/FileAttachment'
           readOnly: true
     ChatAttachmentsUpdatedEvent:
       title: ChatAttachmentsUpdatedEvent represents an event for a attachment list output
@@ -9109,6 +9109,31 @@ components:
           title: download url of the file
           type: string
           readOnly: true
+    FileAttachment:
+      type: object
+      properties:
+        fileName:
+          title: file name
+          type: string
+          readOnly: true
+        fileSize:
+          title: file size
+          type: string
+          format: uint64
+          readOnly: true
+        contentType:
+          title: file type
+          type: string
+          readOnly: true
+        fileExtension:
+          title: file extension
+          type: string
+          readOnly: true
+        downloadUrl:
+          title: file download url
+          type: string
+          readOnly: true
+      description: FileAttachment represents the file attachment for the message.
     FileCell:
       required:
         - objectUid

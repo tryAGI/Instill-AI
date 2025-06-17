@@ -11,8 +11,8 @@ namespace Instill
         /// <summary>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("fileUrls")]
-        public global::System.Collections.Generic.IList<string>? FileUrls { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("fileAttachments")]
+        public global::System.Collections.Generic.IList<global::Instill.FileAttachment>? FileAttachments { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -23,16 +23,16 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="ChatAttachments" /> class.
         /// </summary>
-        /// <param name="fileUrls">
+        /// <param name="fileAttachments">
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ChatAttachments(
-            global::System.Collections.Generic.IList<string>? fileUrls)
+            global::System.Collections.Generic.IList<global::Instill.FileAttachment>? fileAttachments)
         {
-            this.FileUrls = fileUrls;
+            this.FileAttachments = fileAttachments;
         }
 
         /// <summary>

@@ -15,6 +15,12 @@ namespace Instill
         public global::System.Collections.Generic.IList<string>? TableUids { get; set; }
 
         /// <summary>
+        /// The folders and files to include in the context.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("folderFiles")]
+        public global::System.Collections.Generic.IList<global::Instill.FolderFiles>? FolderFiles { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -26,13 +32,18 @@ namespace Instill
         /// <param name="tableUids">
         /// The table uids to include in the context.
         /// </param>
+        /// <param name="folderFiles">
+        /// The folders and files to include in the context.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ChatContext(
-            global::System.Collections.Generic.IList<string>? tableUids)
+            global::System.Collections.Generic.IList<string>? tableUids,
+            global::System.Collections.Generic.IList<global::Instill.FolderFiles>? folderFiles)
         {
             this.TableUids = tableUids;
+            this.FolderFiles = folderFiles;
         }
 
         /// <summary>

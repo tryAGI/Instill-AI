@@ -114,20 +114,29 @@ namespace Instill
             if ((int)__response.StatusCode == 401)
             {
                 string? __content_401 = null;
+                global::System.Exception? __exception_401 = null;
                 string? __value_401 = null;
-                if (ReadResponseAsString)
+                try
                 {
-                    __content_401 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                    __value_401 = global::System.Text.Json.JsonSerializer.Deserialize(__content_401, typeof(string), JsonSerializerContext) as string;
+                    if (ReadResponseAsString)
+                    {
+                        __content_401 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                        __value_401 = global::System.Text.Json.JsonSerializer.Deserialize(__content_401, typeof(string), JsonSerializerContext) as string;
+                    }
+                    else
+                    {
+                        var __contentStream_401 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                        __value_401 = await global::System.Text.Json.JsonSerializer.DeserializeAsync(__contentStream_401, typeof(string), JsonSerializerContext).ConfigureAwait(false) as string;
+                    }
                 }
-                else
+                catch (global::System.Exception __ex)
                 {
-                    var __contentStream_401 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                    __value_401 = await global::System.Text.Json.JsonSerializer.DeserializeAsync(__contentStream_401, typeof(string), JsonSerializerContext).ConfigureAwait(false) as string;
+                    __exception_401 = __ex;
                 }
 
                 throw new global::Instill.ApiException<string>(
                     message: __content_401 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_401,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_401,
@@ -142,20 +151,29 @@ namespace Instill
             if (!__response.IsSuccessStatusCode)
             {
                 string? __content_default = null;
+                global::System.Exception? __exception_default = null;
                 global::Instill.RpcStatus? __value_default = null;
-                if (ReadResponseAsString)
+                try
                 {
-                    __content_default = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                    __value_default = global::Instill.RpcStatus.FromJson(__content_default, JsonSerializerContext);
+                    if (ReadResponseAsString)
+                    {
+                        __content_default = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                        __value_default = global::Instill.RpcStatus.FromJson(__content_default, JsonSerializerContext);
+                    }
+                    else
+                    {
+                        var __contentStream_default = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                        __value_default = await global::Instill.RpcStatus.FromJsonStreamAsync(__contentStream_default, JsonSerializerContext).ConfigureAwait(false);
+                    }
                 }
-                else
+                catch (global::System.Exception __ex)
                 {
-                    var __contentStream_default = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                    __value_default = await global::Instill.RpcStatus.FromJsonStreamAsync(__contentStream_default, JsonSerializerContext).ConfigureAwait(false);
+                    __exception_default = __ex;
                 }
 
                 throw new global::Instill.ApiException<global::Instill.RpcStatus>(
                     message: __content_default ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_default,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_default,
@@ -187,8 +205,12 @@ namespace Instill
                 try
                 {
                     __response.EnsureSuccessStatusCode();
+
+                    return
+                        global::Instill.ValidateNamespacePipelineResponse.FromJson(__content, JsonSerializerContext) ??
+                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
-                catch (global::System.Net.Http.HttpRequestException __ex)
+                catch (global::System.Exception __ex)
                 {
                     throw new global::Instill.ApiException(
                         message: __content ?? __response.ReasonPhrase ?? string.Empty,
@@ -202,18 +224,24 @@ namespace Instill
                             h => h.Value),
                     };
                 }
-
-                return
-                    global::Instill.ValidateNamespacePipelineResponse.FromJson(__content, JsonSerializerContext) ??
-                    throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
             {
                 try
                 {
                     __response.EnsureSuccessStatusCode();
+
+                    using var __content = await __response.Content.ReadAsStreamAsync(
+#if NET5_0_OR_GREATER
+                        cancellationToken
+#endif
+                    ).ConfigureAwait(false);
+
+                    return
+                        await global::Instill.ValidateNamespacePipelineResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
-                catch (global::System.Net.Http.HttpRequestException __ex)
+                catch (global::System.Exception __ex)
                 {
                     throw new global::Instill.ApiException(
                         message: __response.ReasonPhrase ?? string.Empty,
@@ -226,16 +254,6 @@ namespace Instill
                             h => h.Value),
                     };
                 }
-
-                using var __content = await __response.Content.ReadAsStreamAsync(
-#if NET5_0_OR_GREATER
-                    cancellationToken
-#endif
-                ).ConfigureAwait(false);
-
-                return
-                    await global::Instill.ValidateNamespacePipelineResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
-                    throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }
 

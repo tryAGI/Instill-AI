@@ -7802,6 +7802,11 @@ components:
           items:
             type: string
           description: The table uids to include in the context.
+        folderFiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/FolderFiles'
+          description: The folders and files to include in the context.
       description: The context for the message.
     ChatContextUpdatedEvent:
       title: ChatContextUpdatedEvent represents an event for a context updated
@@ -9279,6 +9284,20 @@ components:
           type: boolean
           description: Defines whether the folder can be modified.
       description: Permission defines how a folder can be used.
+    FolderFiles:
+      required:
+        - folderUid
+      type: object
+      properties:
+        folderUid:
+          title: The folder containing the files
+          type: string
+        fileUids:
+          title: 'Specific file UIDs within the folder, leave empty to include all files in the folder'
+          type: array
+          items:
+            type: string
+      description: Represents specific files within a folder.
     Format:
       enum:
         - FORMAT_PLAIN

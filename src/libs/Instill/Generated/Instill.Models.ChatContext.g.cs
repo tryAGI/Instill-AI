@@ -15,10 +15,16 @@ namespace Instill
         public global::System.Collections.Generic.IList<string>? TableUids { get; set; }
 
         /// <summary>
-        /// The folders and files to include in the context.
+        /// The folders to include in the context.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("folderFiles")]
-        public global::System.Collections.Generic.IList<global::Instill.FolderFiles>? FolderFiles { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("folders")]
+        public global::System.Collections.Generic.IList<global::Instill.ChatContextFolder>? Folders { get; set; }
+
+        /// <summary>
+        /// The catalogs to include in the context.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("catalogs")]
+        public global::System.Collections.Generic.IList<global::Instill.ChatContextCatalog>? Catalogs { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -32,18 +38,23 @@ namespace Instill
         /// <param name="tableUids">
         /// The table uids to include in the context.
         /// </param>
-        /// <param name="folderFiles">
-        /// The folders and files to include in the context.
+        /// <param name="folders">
+        /// The folders to include in the context.
+        /// </param>
+        /// <param name="catalogs">
+        /// The catalogs to include in the context.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ChatContext(
             global::System.Collections.Generic.IList<string>? tableUids,
-            global::System.Collections.Generic.IList<global::Instill.FolderFiles>? folderFiles)
+            global::System.Collections.Generic.IList<global::Instill.ChatContextFolder>? folders,
+            global::System.Collections.Generic.IList<global::Instill.ChatContextCatalog>? catalogs)
         {
             this.TableUids = tableUids;
-            this.FolderFiles = folderFiles;
+            this.Folders = folders;
+            this.Catalogs = catalogs;
         }
 
         /// <summary>

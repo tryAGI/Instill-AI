@@ -4,9 +4,9 @@
 namespace Instill
 {
     /// <summary>
-    /// Represents specific files within a folder.
+    /// Represents a folder.
     /// </summary>
-    public sealed partial class FolderFiles
+    public sealed partial class ChatContextFolder
     {
         /// <summary>
         /// 
@@ -28,14 +28,14 @@ namespace Instill
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FolderFiles" /> class.
+        /// Initializes a new instance of the <see cref="ChatContextFolder" /> class.
         /// </summary>
         /// <param name="folderUid"></param>
         /// <param name="fileUids"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public FolderFiles(
+        public ChatContextFolder(
             string folderUid,
             global::System.Collections.Generic.IList<string>? fileUids)
         {
@@ -44,9 +44,9 @@ namespace Instill
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FolderFiles" /> class.
+        /// Initializes a new instance of the <see cref="ChatContextFolder" /> class.
         /// </summary>
-        public FolderFiles()
+        public ChatContextFolder()
         {
         }
     }

@@ -34,7 +34,7 @@ openApiDocument.Components.SecuritySchemes["Bearer"].Type = SecuritySchemeType.H
 openApiDocument.Components.SecuritySchemes["Bearer"].Scheme = "bearer";
 
 openApiDocument.Components.Schemas["CreateCatalogResponse"]!.Required.Add("catalog");
-openApiDocument.Components.Schemas["Catalog"]!.Required.Add("catalogId");
+//openApiDocument.Components.Schemas["Catalog"]!.Required.Add("catalogId");
 
 openApiDocument.Components.Schemas["UploadCatalogFileResponse"]!.Required.Add("file");
 openApiDocument.Components.Schemas["File"]!.Required.Add("fileUid");

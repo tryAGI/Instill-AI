@@ -7449,75 +7449,6 @@ components:
           items:
             type: object
           description: Model inference outputs.
-    Catalog:
-      required:
-        - catalogId
-      type: object
-      properties:
-        catalogUid:
-          type: string
-          description: The catalog uid.
-        catalogId:
-          type: string
-          description: The catalog id.
-        name:
-          type: string
-          description: The catalog name.
-        description:
-          type: string
-          description: The catalog description.
-        createTime:
-          type: string
-          description: The creation time of the catalog.
-        updateTime:
-          type: string
-          description: The last update time of the catalog.
-        ownerName:
-          type: string
-          description: The owner/namespace of the catalog.
-        tags:
-          type: array
-          items:
-            type: string
-          description: The catalog tags.
-        convertingPipelines:
-          type: array
-          items:
-            type: string
-          description: The catalog converting pipelines.
-        splittingPipelines:
-          type: array
-          items:
-            type: string
-          description: The catalog splitting pipelines.
-        embeddingPipelines:
-          type: array
-          items:
-            type: string
-          description: The catalog embedding pipelines.
-        downstreamApps:
-          title: The downstream apps
-          type: array
-          items:
-            type: string
-        totalFiles:
-          type: integer
-          description: The total files in catalog.
-          format: int64
-        totalTokens:
-          type: integer
-          description: The total tokens in catalog.
-          format: int64
-        usedStorage:
-          type: string
-          description: The current used storage in catalog.
-          format: uint64
-        summarizingPipelines:
-          type: array
-          items:
-            type: string
-          description: The catalog summarizing pipelines.
-      description: Catalog represents a catalog.
     CatalogInfo:
       type: object
       properties:
@@ -7802,12 +7733,45 @@ components:
           items:
             type: string
           description: The table uids to include in the context.
-        folderFiles:
+        folders:
           type: array
           items:
-            $ref: '#/components/schemas/FolderFiles'
-          description: The folders and files to include in the context.
+            $ref: '#/components/schemas/ChatContext.Folder'
+          description: The folders to include in the context.
+        catalogs:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatContext.Catalog'
+          description: The catalogs to include in the context.
       description: The context for the message.
+    ChatContext.Catalog:
+      required:
+        - catalogId
+      type: object
+      properties:
+        catalogId:
+          title: The catalog containing the files
+          type: string
+        fileUids:
+          title: 'Specific file UIDs within the catalog, leave empty to include all files in the catalog'
+          type: array
+          items:
+            type: string
+      description: Represents a catalog.
+    ChatContext.Folder:
+      required:
+        - folderUid
+      type: object
+      properties:
+        folderUid:
+          title: The folder containing the files
+          type: string
+        fileUids:
+          title: 'Specific file UIDs within the folder, leave empty to include all files in the folder'
+          type: array
+          items:
+            type: string
+      description: Represents a folder.
     ChatContextUpdatedEvent:
       title: ChatContextUpdatedEvent represents an event for a context updated
       type: object
@@ -8666,7 +8630,7 @@ components:
       properties:
         catalog:
           allOf:
-            - $ref: '#/components/schemas/Catalog'
+            - $ref: '#/components/schemas/.Catalog'
           description: The created catalog.
       description: CreateCatalogResponse represents a response for creating a catalog.
     CreateChatBody:
@@ -8699,7 +8663,7 @@ components:
       properties:
         folder:
           allOf:
-            - $ref: '#/components/schemas/Folder'
+            - $ref: '#/components/schemas/.Folder'
           description: The folder resource to create.
       description: CreateFolderRequest represents a request to create a folder.
     CreateFolderResponse:
@@ -8707,7 +8671,7 @@ components:
       properties:
         folder:
           allOf:
-            - $ref: '#/components/schemas/Folder'
+            - $ref: '#/components/schemas/.Folder'
           description: The created folder resource.
           readOnly: true
       description: CreateFolderResponse contains the created folder.
@@ -8869,7 +8833,7 @@ components:
       properties:
         catalog:
           allOf:
-            - $ref: '#/components/schemas/Catalog'
+            - $ref: '#/components/schemas/.Catalog'
           description: The catalog identifier.
       description: DeleteCatalogResponse represents a response for deleting a catalog.
     DeleteChatResponse:
@@ -9234,49 +9198,6 @@ components:
         - FILE_TYPE_CSV
       type: string
       description: "- FILE_TYPE_TEXT: text\n - FILE_TYPE_PDF: PDF\n - FILE_TYPE_MARKDOWN: MARKDOWN\n - FILE_TYPE_PNG: PNG(not supported yet)\n - FILE_TYPE_JPEG: JPEG(not supported yet)\n - FILE_TYPE_JPG: JPG(not supported yet)\n - FILE_TYPE_HTML: HTML\n - FILE_TYPE_DOCX: DOCX\n - FILE_TYPE_DOC: DOC\n - FILE_TYPE_PPT: PPT\n - FILE_TYPE_PPTX: PPTX\n - FILE_TYPE_XLS: XLS\n - FILE_TYPE_XLSX: XLSX\n - FILE_TYPE_CSV: CSV"
-    Folder:
-      required:
-        - name
-      type: object
-      properties:
-        uid:
-          type: string
-          description: The unique identifier of the folder.
-          readOnly: true
-        name:
-          type: string
-          description: The name of the folder.
-        description:
-          type: string
-          description: A description of the folder.
-        metadata:
-          type: object
-          description: Additional metadata associated with the folder.
-        createTime:
-          type: string
-          description: The timestamp when the folder was created.
-          format: date-time
-          readOnly: true
-        updateTime:
-          type: string
-          description: The timestamp when the folder was last updated.
-          format: date-time
-          readOnly: true
-        catalogId:
-          type: string
-          description: The ID of the catalog that this folder is bound to.
-          readOnly: true
-        permission:
-          allOf:
-            - $ref: '#/components/schemas/Folder.Permission'
-          description: Permission defines how a folder can be used.
-          readOnly: true
-        catalogInfo:
-          allOf:
-            - $ref: '#/components/schemas/CatalogInfo'
-          description: The information about the catalog.
-          readOnly: true
-      description: Folder represents a folder resource.
     Folder.Permission:
       type: object
       properties:
@@ -9284,20 +9205,6 @@ components:
           type: boolean
           description: Defines whether the folder can be modified.
       description: Permission defines how a folder can be used.
-    FolderFiles:
-      required:
-        - folderUid
-      type: object
-      properties:
-        folderUid:
-          title: The folder containing the files
-          type: string
-        fileUids:
-          title: 'Specific file UIDs within the folder, leave empty to include all files in the folder'
-          type: array
-          items:
-            type: string
-      description: Represents specific files within a folder.
     Format:
       enum:
         - FORMAT_PLAIN
@@ -9455,7 +9362,7 @@ components:
       properties:
         folder:
           allOf:
-            - $ref: '#/components/schemas/Folder'
+            - $ref: '#/components/schemas/.Folder'
           description: The folder resource.
           readOnly: true
       description: GetFolderResponse contains the requested folder.
@@ -9936,7 +9843,7 @@ components:
         catalogs:
           type: array
           items:
-            $ref: '#/components/schemas/Catalog'
+            $ref: '#/components/schemas/.Catalog'
           description: The catalogs container.
       description: GetCatalogsResponse represents a response for getting all catalogs from users.
     ListCellAutofillAgentMessagesResponse:
@@ -10058,7 +9965,7 @@ components:
         folders:
           type: array
           items:
-            $ref: '#/components/schemas/Folder'
+            $ref: '#/components/schemas/.Folder'
           description: The list of folders.
           readOnly: true
         nextPageToken:
@@ -12818,7 +12725,7 @@ components:
       properties:
         catalog:
           allOf:
-            - $ref: '#/components/schemas/Catalog'
+            - $ref: '#/components/schemas/.Catalog'
           description: The updated catalog.
       description: UpdateCatalogResponse represents a response for updating a catalog.
     UpdateCellBody:
@@ -12893,7 +12800,7 @@ components:
       properties:
         folder:
           allOf:
-            - $ref: '#/components/schemas/Folder'
+            - $ref: '#/components/schemas/.Folder'
           description: The folder fields that will replace the existing ones.
         updateMask:
           type: string
@@ -12904,7 +12811,7 @@ components:
       properties:
         folder:
           allOf:
-            - $ref: '#/components/schemas/Folder'
+            - $ref: '#/components/schemas/.Folder'
           description: The updated folder resource.
           readOnly: true
       description: UpdateFolderResponse contains the updated folder.
@@ -13341,6 +13248,73 @@ components:
             type: string
           description: connection key(used connection id in recipe) and value(connection uid from namespace).
       description: AgentConfig represents the config for the chat agent.
+    .Catalog:
+      type: object
+      properties:
+        catalogUid:
+          type: string
+          description: The catalog uid.
+        catalogId:
+          type: string
+          description: The catalog id.
+        name:
+          type: string
+          description: The catalog name.
+        description:
+          type: string
+          description: The catalog description.
+        createTime:
+          type: string
+          description: The creation time of the catalog.
+        updateTime:
+          type: string
+          description: The last update time of the catalog.
+        ownerName:
+          type: string
+          description: The owner/namespace of the catalog.
+        tags:
+          type: array
+          items:
+            type: string
+          description: The catalog tags.
+        convertingPipelines:
+          type: array
+          items:
+            type: string
+          description: The catalog converting pipelines.
+        splittingPipelines:
+          type: array
+          items:
+            type: string
+          description: The catalog splitting pipelines.
+        embeddingPipelines:
+          type: array
+          items:
+            type: string
+          description: The catalog embedding pipelines.
+        downstreamApps:
+          title: The downstream apps
+          type: array
+          items:
+            type: string
+        totalFiles:
+          type: integer
+          description: The total files in catalog.
+          format: int64
+        totalTokens:
+          type: integer
+          description: The total tokens in catalog.
+          format: int64
+        usedStorage:
+          type: string
+          description: The current used storage in catalog.
+          format: uint64
+        summarizingPipelines:
+          type: array
+          items:
+            type: string
+          description: The catalog summarizing pipelines.
+      description: Catalog represents a catalog.
     .Chunk:
       type: object
       properties:
@@ -13382,6 +13356,49 @@ components:
             - $ref: '#/components/schemas/ContentType'
           readOnly: true
       description: The Chunk message represents a chunk of data in the artifact system.
+    .Folder:
+      required:
+        - name
+      type: object
+      properties:
+        uid:
+          type: string
+          description: The unique identifier of the folder.
+          readOnly: true
+        name:
+          type: string
+          description: The name of the folder.
+        description:
+          type: string
+          description: A description of the folder.
+        metadata:
+          type: object
+          description: Additional metadata associated with the folder.
+        createTime:
+          type: string
+          description: The timestamp when the folder was created.
+          format: date-time
+          readOnly: true
+        updateTime:
+          type: string
+          description: The timestamp when the folder was last updated.
+          format: date-time
+          readOnly: true
+        catalogId:
+          type: string
+          description: The ID of the catalog that this folder is bound to.
+          readOnly: true
+        permission:
+          allOf:
+            - $ref: '#/components/schemas/Folder.Permission'
+          description: Permission defines how a folder can be used.
+          readOnly: true
+        catalogInfo:
+          allOf:
+            - $ref: '#/components/schemas/CatalogInfo'
+          description: The information about the catalog.
+          readOnly: true
+      description: Folder represents a folder resource.
     .Permission:
       type: object
       properties:

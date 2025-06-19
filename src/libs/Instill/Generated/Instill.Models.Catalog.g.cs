@@ -18,8 +18,7 @@ namespace Instill
         /// The catalog id.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("catalogId")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string CatalogId { get; set; }
+        public string? CatalogId { get; set; }
 
         /// <summary>
         /// The catalog name.
@@ -164,8 +163,8 @@ namespace Instill
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Catalog(
-            string catalogId,
             string? catalogUid,
+            string? catalogId,
             string? name,
             string? description,
             string? createTime,
@@ -181,8 +180,8 @@ namespace Instill
             string? usedStorage,
             global::System.Collections.Generic.IList<string>? summarizingPipelines)
         {
-            this.CatalogId = catalogId ?? throw new global::System.ArgumentNullException(nameof(catalogId));
             this.CatalogUid = catalogUid;
+            this.CatalogId = catalogId;
             this.Name = name;
             this.Description = description;
             this.CreateTime = createTime;

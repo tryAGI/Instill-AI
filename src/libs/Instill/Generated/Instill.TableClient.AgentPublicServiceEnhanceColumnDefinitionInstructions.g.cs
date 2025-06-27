@@ -5,29 +5,29 @@ namespace Instill
 {
     public partial class TableClient
     {
-        partial void PrepareAgentPublicServiceSuggestColumnDefinitionArguments(
+        partial void PrepareAgentPublicServiceEnhanceColumnDefinitionInstructionsArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
             ref string tableUid,
-            global::Instill.SuggestColumnDefinitionBody request);
-        partial void PrepareAgentPublicServiceSuggestColumnDefinitionRequest(
+            global::Instill.EnhanceColumnDefinitionInstructionsBody request);
+        partial void PrepareAgentPublicServiceEnhanceColumnDefinitionInstructionsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
             string tableUid,
-            global::Instill.SuggestColumnDefinitionBody request);
-        partial void ProcessAgentPublicServiceSuggestColumnDefinitionResponse(
+            global::Instill.EnhanceColumnDefinitionInstructionsBody request);
+        partial void ProcessAgentPublicServiceEnhanceColumnDefinitionInstructionsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessAgentPublicServiceSuggestColumnDefinitionResponseContent(
+        partial void ProcessAgentPublicServiceEnhanceColumnDefinitionInstructionsResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Suggest column definition<br/>
-        /// Suggests a column definition based on existing table columns and user input.
+        /// Enhance column definition instructions<br/>
+        /// Enhances the instructions of a column definition.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="tableUid"></param>
@@ -37,24 +37,24 @@ namespace Instill
 #if NET8_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
 #endif
-        public async global::System.Threading.Tasks.Task<global::Instill.SuggestColumnDefinitionResponse> AgentPublicServiceSuggestColumnDefinitionAsync(
+        public async global::System.Threading.Tasks.Task<global::Instill.EnhanceColumnDefinitionInstructionsResponse> AgentPublicServiceEnhanceColumnDefinitionInstructionsAsync(
             string namespaceId,
             string tableUid,
-            global::Instill.SuggestColumnDefinitionBody request,
+            global::Instill.EnhanceColumnDefinitionInstructionsBody request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
 
             PrepareArguments(
                 client: HttpClient);
-            PrepareAgentPublicServiceSuggestColumnDefinitionArguments(
+            PrepareAgentPublicServiceEnhanceColumnDefinitionInstructionsArguments(
                 httpClient: HttpClient,
                 namespaceId: ref namespaceId,
                 tableUid: ref tableUid,
                 request: request);
 
             var __pathBuilder = new global::Instill.PathBuilder(
-                path: $"/v1alpha/namespaces/{namespaceId}/tables/{tableUid}/column-definitions-helper/suggest",
+                path: $"/v1alpha/namespaces/{namespaceId}/tables/{tableUid}/column-definitions-helper/enhance-instructions",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -90,7 +90,7 @@ namespace Instill
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareAgentPublicServiceSuggestColumnDefinitionRequest(
+            PrepareAgentPublicServiceEnhanceColumnDefinitionInstructionsRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
                 namespaceId: namespaceId,
@@ -105,7 +105,7 @@ namespace Instill
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessAgentPublicServiceSuggestColumnDefinitionResponse(
+            ProcessAgentPublicServiceEnhanceColumnDefinitionInstructionsResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
             // Returned when the client credentials are not valid.
@@ -195,7 +195,7 @@ namespace Instill
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessAgentPublicServiceSuggestColumnDefinitionResponseContent(
+                ProcessAgentPublicServiceEnhanceColumnDefinitionInstructionsResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -205,7 +205,7 @@ namespace Instill
                     __response.EnsureSuccessStatusCode();
 
                     return
-                        global::Instill.SuggestColumnDefinitionResponse.FromJson(__content, JsonSerializerContext) ??
+                        global::Instill.EnhanceColumnDefinitionInstructionsResponse.FromJson(__content, JsonSerializerContext) ??
                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
                 catch (global::System.Exception __ex)
@@ -236,7 +236,7 @@ namespace Instill
                     ).ConfigureAwait(false);
 
                     return
-                        await global::Instill.SuggestColumnDefinitionResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        await global::Instill.EnhanceColumnDefinitionInstructionsResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
                 catch (global::System.Exception __ex)
@@ -256,52 +256,38 @@ namespace Instill
         }
 
         /// <summary>
-        /// Suggest column definition<br/>
-        /// Suggests a column definition based on existing table columns and user input.
+        /// Enhance column definition instructions<br/>
+        /// Enhances the instructions of a column definition.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="tableUid"></param>
-        /// <param name="name">
-        /// The name of the column.
+        /// <param name="columnUid">
+        /// The UID of the column to be enhanced.<br/>
+        /// Please provide this field if you want to enhance the instruction of an existing column definition.<br/>
+        /// Ignore it if you want to enhance the instruction of a non-created column in the new column creation flow.
         /// </param>
-        /// <param name="type">
-        /// The type of the column.<br/>
-        /// If not provided, the agent will suggest the type.<br/>
-        /// If provided, the agent will use this value as the type setting.
-        /// </param>
-        /// <param name="selection">
-        /// The selection settings of the column.<br/>
-        /// If not provided, the agent will suggest the selection.<br/>
-        /// If provided, the agent will use this value as the selection setting.
-        /// </param>
-        /// <param name="enableAutomaticComputation">
-        /// Whether to enable automatic computation for the column.<br/>
-        /// If not provided, the agent will suggest whether to enable it or not.<br/>
-        /// If provided, the agent will use this value as the enable_automatic_computation setting.
+        /// <param name="columnDefinition">
+        /// The column definition to be enhanced.
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
 #if NET8_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
 #endif
-        public async global::System.Threading.Tasks.Task<global::Instill.SuggestColumnDefinitionResponse> AgentPublicServiceSuggestColumnDefinitionAsync(
+        public async global::System.Threading.Tasks.Task<global::Instill.EnhanceColumnDefinitionInstructionsResponse> AgentPublicServiceEnhanceColumnDefinitionInstructionsAsync(
             string namespaceId,
             string tableUid,
-            string name,
-            global::Instill.Type? type = default,
-            global::Instill.Selection? selection = default,
-            bool? enableAutomaticComputation = default,
+            global::Instill.ColumnDefinition columnDefinition,
+            string? columnUid = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Instill.SuggestColumnDefinitionBody
+            var __request = new global::Instill.EnhanceColumnDefinitionInstructionsBody
             {
-                Name = name,
-                Type = type,
-                Selection = selection,
-                EnableAutomaticComputation = enableAutomaticComputation,
+                ColumnUid = columnUid,
+                ColumnDefinition = columnDefinition,
             };
 
-            return await AgentPublicServiceSuggestColumnDefinitionAsync(
+            return await AgentPublicServiceEnhanceColumnDefinitionInstructionsAsync(
                 namespaceId: namespaceId,
                 tableUid: tableUid,
                 request: __request,

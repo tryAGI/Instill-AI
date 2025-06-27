@@ -964,6 +964,52 @@ paths:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
       x-stage: alpha
+  '/v1alpha/namespaces/{namespaceId}/tables/{tableUid}/column-definitions-helper/enhance-instructions':
+    post:
+      tags:
+        - Table
+      summary: Enhance column definition instructions
+      description: Enhances the instructions of a column definition.
+      operationId: AgentPublicService_EnhanceColumnDefinitionInstructions
+      parameters:
+        - name: namespaceId
+          in: path
+          description: The ID of the namespace that owns the table.
+          required: true
+          schema:
+            type: string
+        - name: tableUid
+          in: path
+          description: The UID of the table to enhance a column definition for.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnhanceColumnDefinitionInstructionsBody'
+        required: true
+        x-bodyName: body
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnhanceColumnDefinitionInstructionsResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
   '/v1alpha/namespaces/{namespaceId}/tables/{tableUid}/column-definitions/{columnUid}':
     get:
       tags:
@@ -8978,6 +9024,35 @@ components:
           description: Webhook endpoints.
           readOnly: true
       description: Endpoints describe the endpoints of a pipeline.
+    EnhanceColumnDefinitionInstructionsBody:
+      required:
+        - columnDefinition
+      type: object
+      properties:
+        columnUid:
+          type: string
+          description: "The UID of the column to be enhanced.\nPlease provide this field if you want to enhance the instruction of an existing column definition.\nIgnore it if you want to enhance the instruction of a non-created column in the new column creation flow."
+        columnDefinition:
+          allOf:
+            - $ref: '#/components/schemas/ColumnDefinition'
+          description: The column definition to be enhanced.
+      description: EnhanceColumnDefinitionInstructionsRequest represents a request to enhance the instruction of a column definition.
+    EnhanceColumnDefinitionInstructionsResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the enhancement is successful.
+          readOnly: true
+        instructions:
+          type: string
+          description: The enhanced instructions.
+          readOnly: true
+        errorMessage:
+          type: string
+          description: The error message of the enhancement.
+          readOnly: true
+      description: EnhanceColumnDefinitionInstructionsResponse represents a response to a request to enhance the instruction of a column definition.
     ErrPipelineValidation:
       type: object
       properties:
@@ -12243,6 +12318,10 @@ components:
           allOf:
             - $ref: '#/components/schemas/.Type'
           description: "The type of the column.\nIf not provided, the agent will suggest the type.\nIf provided, the agent will use this value as the type setting."
+        selection:
+          allOf:
+            - $ref: '#/components/schemas/Selection'
+          description: "The selection settings of the column.\nIf not provided, the agent will suggest the selection.\nIf provided, the agent will use this value as the selection setting."
         enableAutomaticComputation:
           type: boolean
           description: "Whether to enable automatic computation for the column.\nIf not provided, the agent will suggest whether to enable it or not.\nIf provided, the agent will use this value as the enable_automatic_computation setting."
@@ -12250,10 +12329,18 @@ components:
     SuggestColumnDefinitionResponse:
       type: object
       properties:
+        success:
+          type: boolean
+          description: Whether the suggestion is successful.
+          readOnly: true
         columnDefinition:
           allOf:
             - $ref: '#/components/schemas/ColumnDefinition'
           description: The suggested column definition.
+          readOnly: true
+        errorMessage:
+          type: string
+          description: The error message of the suggestion.
           readOnly: true
       description: SuggestColumnDefinitionResponse represents a response to a request to suggest a column definition.
     Table:

@@ -25,6 +25,14 @@ namespace Instill
         public global::Instill.Type? Type { get; set; }
 
         /// <summary>
+        /// The selection settings of the column.<br/>
+        /// If not provided, the agent will suggest the selection.<br/>
+        /// If provided, the agent will use this value as the selection setting.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("selection")]
+        public global::Instill.Selection? Selection { get; set; }
+
+        /// <summary>
         /// Whether to enable automatic computation for the column.<br/>
         /// If not provided, the agent will suggest whether to enable it or not.<br/>
         /// If provided, the agent will use this value as the enable_automatic_computation setting.
@@ -49,6 +57,11 @@ namespace Instill
         /// If not provided, the agent will suggest the type.<br/>
         /// If provided, the agent will use this value as the type setting.
         /// </param>
+        /// <param name="selection">
+        /// The selection settings of the column.<br/>
+        /// If not provided, the agent will suggest the selection.<br/>
+        /// If provided, the agent will use this value as the selection setting.
+        /// </param>
         /// <param name="enableAutomaticComputation">
         /// Whether to enable automatic computation for the column.<br/>
         /// If not provided, the agent will suggest whether to enable it or not.<br/>
@@ -60,10 +73,12 @@ namespace Instill
         public SuggestColumnDefinitionBody(
             string name,
             global::Instill.Type? type,
+            global::Instill.Selection? selection,
             bool? enableAutomaticComputation)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Type = type;
+            this.Selection = selection;
             this.EnableAutomaticComputation = enableAutomaticComputation;
         }
 

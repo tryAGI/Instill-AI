@@ -36,6 +36,11 @@ namespace Instill
         /// If not provided, the agent will suggest the type.<br/>
         /// If provided, the agent will use this value as the type setting.
         /// </param>
+        /// <param name="selection">
+        /// The selection settings of the column.<br/>
+        /// If not provided, the agent will suggest the selection.<br/>
+        /// If provided, the agent will use this value as the selection setting.
+        /// </param>
         /// <param name="enableAutomaticComputation">
         /// Whether to enable automatic computation for the column.<br/>
         /// If not provided, the agent will suggest whether to enable it or not.<br/>
@@ -51,6 +56,7 @@ namespace Instill
             string tableUid,
             string name,
             global::Instill.Type? type = default,
+            global::Instill.Selection? selection = default,
             bool? enableAutomaticComputation = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

@@ -114,6 +114,13 @@ namespace Instill
         public global::Instill.LockState? LockState { get; set; }
 
         /// <summary>
+        /// The error message of the cell.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("errorMessage")]
+        public string? ErrorMessage { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -179,6 +186,10 @@ namespace Instill
         /// The lock state of the cell.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="errorMessage">
+        /// The error message of the cell.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -197,7 +208,8 @@ namespace Instill
             global::Instill.CellStatus? status,
             global::System.Collections.Generic.IList<global::Instill.Citation>? citations,
             global::Instill.Transparency? transparency,
-            global::Instill.LockState? lockState)
+            global::Instill.LockState? lockState,
+            string? errorMessage)
         {
             this.Uid = uid;
             this.ColumnUid = columnUid;
@@ -214,6 +226,7 @@ namespace Instill
             this.Citations = citations;
             this.Transparency = transparency;
             this.LockState = lockState;
+            this.ErrorMessage = errorMessage;
         }
 
         /// <summary>

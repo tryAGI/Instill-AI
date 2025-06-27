@@ -7664,6 +7664,10 @@ components:
             - $ref: '#/components/schemas/LockState'
           description: The lock state of the cell.
           readOnly: true
+        errorMessage:
+          type: string
+          description: The error message of the cell.
+          readOnly: true
       description: Cell represents a cell in a table.
     CellStatus:
       enum:

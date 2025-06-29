@@ -8332,6 +8332,21 @@ components:
     CloneNamespacePipelineResponse:
       type: object
       description: CloneNamespacePipelineResponse contains a cloned pipeline.
+    Color:
+      enum:
+        - COLOR_DEFAULT
+        - COLOR_LIGHT_NEUTRAL
+        - COLOR_DARK_NEUTRAL
+        - COLOR_LIGHT_BLUE
+        - COLOR_DARK_BLUE
+        - COLOR_LIGHT_GREEN
+        - COLOR_DARK_GREEN
+        - COLOR_LIGHT_PURPLE
+        - COLOR_DARK_PURPLE
+        - COLOR_LIGHT_YELLOW
+        - COLOR_LIGHT_RED
+      type: string
+      description: "Color represents a color.\n\n - COLOR_DEFAULT: Default - #F8F9FC\n - COLOR_LIGHT_NEUTRAL: Light neutral - #F1F3F9\n - COLOR_DARK_NEUTRAL: Dark neutral - #3F444D\n - COLOR_LIGHT_BLUE: Light blue - #F0F5FF\n - COLOR_DARK_BLUE: Dark blue - #316FED\n - COLOR_LIGHT_GREEN: Light green - #EAFBF5\n - COLOR_DARK_GREEN: Dark green - #23956F\n - COLOR_LIGHT_PURPLE: Light purple - #F8F5FF\n - COLOR_DARK_PURPLE: Dark purple - #8B55F7\n - COLOR_LIGHT_YELLOW: Light yellow - #FFF8EB\n - COLOR_LIGHT_RED: Light red - #FEF1F2"
     ColumnDefinition:
       required:
         - type
@@ -11323,7 +11338,8 @@ components:
           description: The value of the cell as a number.
           format: double
         color:
-          type: string
+          allOf:
+            - $ref: '#/components/schemas/Color'
           description: Display color of the option.
       description: An option for the selection.
     Organization:

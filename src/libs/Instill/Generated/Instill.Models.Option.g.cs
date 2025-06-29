@@ -24,7 +24,8 @@ namespace Instill
         /// Display color of the option.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("color")]
-        public string? Color { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.ColorJsonConverter))]
+        public global::Instill.Color? Color { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -50,7 +51,7 @@ namespace Instill
         public Option(
             string? stringValue,
             double? numberValue,
-            string? color)
+            global::Instill.Color? color)
         {
             this.StringValue = stringValue;
             this.NumberValue = numberValue;

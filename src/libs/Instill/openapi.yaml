@@ -341,6 +341,39 @@ paths:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
       x-stage: alpha
+  '/v1alpha/namespaces/{namespaceId}/context-options':
+    get:
+      tags:
+        - 🍎 Agent
+      summary: List context options
+      description: This is a helper endpoint to list context options for chat.
+      operationId: AgentPublicService_ListContextOptions
+      parameters:
+        - name: namespaceId
+          in: path
+          description: The namespace ID.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListContextOptionsResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
   '/v1alpha/namespaces/{namespaceId}/chats/{chatUid}/bind-table':
     post:
       tags:
@@ -7555,6 +7588,28 @@ components:
           format: int64
           readOnly: true
       description: CatalogInfo contains the information about the catalog.
+    CatalogOption:
+      type: object
+      properties:
+        catalogUid:
+          type: string
+          description: The UID of the catalog.
+          readOnly: true
+        catalogId:
+          type: string
+          description: The ID of the catalog.
+          readOnly: true
+        description:
+          type: string
+          description: The catalog description.
+          readOnly: true
+        fileOptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileOption'
+          description: The UIDs of the files in the catalog.
+          readOnly: true
+      description: CatalogOption represents a catalog option.
     CatalogRun:
       type: object
       properties:
@@ -9284,6 +9339,26 @@ components:
         - FILE_MEDIA_TYPE_VIDEO
       type: string
       description: "FileMediaType describes the type of a catalog file.\n\n - FILE_MEDIA_TYPE_DOCUMENT: Document.\n - FILE_MEDIA_TYPE_IMAGE: Image.\n - FILE_MEDIA_TYPE_AUDIO: Audio.\n - FILE_MEDIA_TYPE_VIDEO: Video."
+    FileOption:
+      type: object
+      properties:
+        fileUid:
+          type: string
+          description: The UID of the file.
+          readOnly: true
+        name:
+          type: string
+          description: The name of the file.
+          readOnly: true
+        type:
+          type: string
+          description: The file content type.
+          readOnly: true
+        summary:
+          type: string
+          description: The file summary.
+          readOnly: true
+      description: FileOption represents a file option.
     FileProcessStatus:
       title: file embedding process status
       enum:
@@ -9345,6 +9420,28 @@ components:
           type: boolean
           description: Defines whether the folder can be modified.
       description: Permission defines how a folder can be used.
+    FolderOption:
+      type: object
+      properties:
+        folderUid:
+          type: string
+          description: The UID of the folder.
+          readOnly: true
+        name:
+          type: string
+          description: The name of the folder.
+          readOnly: true
+        description:
+          type: string
+          description: The folder description.
+          readOnly: true
+        fileOptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileOption'
+          description: The UIDs of the files in the folder.
+          readOnly: true
+      description: FolderOption represents a folder option.
     Format:
       enum:
         - FORMAT_PLAIN
@@ -10090,6 +10187,28 @@ components:
           format: int32
           readOnly: true
       description: ListComponentRunsResponse is the response message for ListComponentRuns.
+    ListContextOptionsResponse:
+      type: object
+      properties:
+        folderOptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/FolderOption'
+          description: The folder options.
+          readOnly: true
+        tableOptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/TableOption'
+          description: The table options.
+          readOnly: true
+        catalogOptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/CatalogOption'
+          description: The catalog options.
+          readOnly: true
+      description: ListContextOptionsResponse represents a response to a request to list context options.
     ListCreditConsumptionChartRecordsResponse:
       type: object
       properties:
@@ -12467,6 +12586,28 @@ components:
             - $ref: '#/components/schemas/CellUpdatedEvent'
           description: The cell that was updated.
       description: TableEvent represents an event for a table.
+    TableOption:
+      type: object
+      properties:
+        tableUid:
+          type: string
+          description: The UID of the table.
+          readOnly: true
+        title:
+          type: string
+          description: The table title.
+          readOnly: true
+        description:
+          type: string
+          description: The table description.
+          readOnly: true
+        fileOptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileOption'
+          description: The UIDs of the files in the table.
+          readOnly: true
+      description: TableOption represents a table option.
     TableUpdatedEvent:
       type: object
       properties:

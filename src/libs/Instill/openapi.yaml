@@ -13038,6 +13038,11 @@ components:
           items:
             type: string
           description: The catalog tags.
+        convertingPipelines:
+          type: array
+          items:
+            type: string
+          description: "Pipelines used for converting documents (i.e., files with pdf, doc[x] or\nppt[x] extension) to Markdown. The strings in the list identify the\npipelines and MUST have the format `{namespaceID}/{pipelineID}@{version}`.\nThe pipeline recipes MUST have the following variable and output fields:\n```yaml variable\nvariable:\n  document_input:\n    title: document-input\n    description: Upload a document (PDF/DOCX/DOC/PPTX/PPT)\n    type: file\n```\n```yaml output\noutput:\n convert_result:\n   title: convert-result\n   value: ${merge-markdown-refinement.output.results[0]}\n```\nOther variable and output fields will be ignored.\n\nThe pipelines will be executed in order until one produces a successful,\nnon-empty result.\n\nIf no pipelines are provided, a default pipeline will be used. For\nnon-document catalog files, the conversion pipeline is deterministic (such\nfiles are typically trivial to convert and don't require a dedicated\npipeline to improve the conversion performance)."
       description: UpdateCatalogRequest represents a request to update a catalog.
     UpdateCatalogResponse:
       type: object

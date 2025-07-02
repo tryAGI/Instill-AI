@@ -33,9 +33,10 @@ namespace Instill
         /// contains the necessary information to access the result and status of the<br/>
         /// operation. This method is intended for cases that require long-running<br/>
         /// workloads.<br/>
-        /// The pipeline is identified by its resource name, formed by the parent namespace<br/>
-        /// and ID of the pipeline.<br/>
-        /// For more information, see [Run NamespacePipeline](https://instill-ai.dev/docs/pipeline/run-pipeline).
+        /// The pipeline is identified by its resource name, formed by the parent<br/>
+        /// namespace and ID of the pipeline.<br/>
+        /// For more information, see [Run<br/>
+        /// NamespacePipeline](https://instill-ai.dev/docs/pipeline/run-pipeline).
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="pipelineId"></param>
@@ -279,9 +280,10 @@ namespace Instill
         /// contains the necessary information to access the result and status of the<br/>
         /// operation. This method is intended for cases that require long-running<br/>
         /// workloads.<br/>
-        /// The pipeline is identified by its resource name, formed by the parent namespace<br/>
-        /// and ID of the pipeline.<br/>
-        /// For more information, see [Run NamespacePipeline](https://instill-ai.dev/docs/pipeline/run-pipeline).
+        /// The pipeline is identified by its resource name, formed by the parent<br/>
+        /// namespace and ID of the pipeline.<br/>
+        /// For more information, see [Run<br/>
+        /// NamespacePipeline](https://instill-ai.dev/docs/pipeline/run-pipeline).
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="pipelineId"></param>

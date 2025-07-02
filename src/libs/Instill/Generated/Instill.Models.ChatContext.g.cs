@@ -27,6 +27,12 @@ namespace Instill
         public global::System.Collections.Generic.IList<global::Instill.ChatContextCatalog>? Catalogs { get; set; }
 
         /// <summary>
+        /// The tables to include in the context.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("tables")]
+        public global::System.Collections.Generic.IList<global::Instill.ChatContextTable>? Tables { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -44,17 +50,22 @@ namespace Instill
         /// <param name="catalogs">
         /// The catalogs to include in the context.
         /// </param>
+        /// <param name="tables">
+        /// The tables to include in the context.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ChatContext(
             global::System.Collections.Generic.IList<string>? tableUids,
             global::System.Collections.Generic.IList<global::Instill.ChatContextFolder>? folders,
-            global::System.Collections.Generic.IList<global::Instill.ChatContextCatalog>? catalogs)
+            global::System.Collections.Generic.IList<global::Instill.ChatContextCatalog>? catalogs,
+            global::System.Collections.Generic.IList<global::Instill.ChatContextTable>? tables)
         {
             this.TableUids = tableUids;
             this.Folders = folders;
             this.Catalogs = catalogs;
+            this.Tables = tables;
         }
 
         /// <summary>

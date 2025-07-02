@@ -29,7 +29,8 @@ namespace Instill
         /// Validate a pipeline<br/>
         /// Validates a pipeline by its resource name, which is defined by the parent<br/>
         /// namespace and the ID of the pipeline.<br/>
-        /// Validation checks the recipe of the pipeline and the status of its components.
+        /// Validation checks the recipe of the pipeline and the status of its<br/>
+        /// components.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="pipelineId"></param>
@@ -261,7 +262,8 @@ namespace Instill
         /// Validate a pipeline<br/>
         /// Validates a pipeline by its resource name, which is defined by the parent<br/>
         /// namespace and the ID of the pipeline.<br/>
-        /// Validation checks the recipe of the pipeline and the status of its components.
+        /// Validation checks the recipe of the pipeline and the status of its<br/>
+        /// components.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="pipelineId"></param>

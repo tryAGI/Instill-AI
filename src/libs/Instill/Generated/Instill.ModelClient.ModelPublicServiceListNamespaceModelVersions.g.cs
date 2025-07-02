@@ -29,8 +29,8 @@ namespace Instill
 
         /// <summary>
         /// List namespace model versions<br/>
-        /// Returns a paginated list of version of a model namespace that belong to the specified namespace.<br/>
-        /// Contains model version and digest.
+        /// Returns a paginated list of version of a model namespace that belong to the<br/>
+        /// specified namespace. Contains model version and digest.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="modelId"></param>

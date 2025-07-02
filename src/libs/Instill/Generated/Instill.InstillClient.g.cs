@@ -4,7 +4,7 @@
 namespace Instill
 {
     /// <summary>
-    /// Interact with Instill AI through its public API<br/>
+    /// Interact with Instill Core through its public API<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
@@ -56,18 +56,18 @@ namespace Instill
         };
 
         /// <summary>
-        /// AI Model resources for MLOps/LLMOps.
+        /// Data orchestration for unified unstructured data representation.
         /// </summary>
-        public ModelClient Model => new ModelClient(HttpClient, authorizations: Authorizations)
+        public ArtifactClient Artifact => new ArtifactClient(HttpClient, authorizations: Authorizations)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
         };
 
         /// <summary>
-        /// Data orchestration for unified unstructured data representation.
+        /// AI Model resources for MLOps/LLMOps.
         /// </summary>
-        public ArtifactClient Artifact => new ArtifactClient(HttpClient, authorizations: Authorizations)
+        public ModelClient Model => new ModelClient(HttpClient, authorizations: Authorizations)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,

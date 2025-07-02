@@ -7902,10 +7902,10 @@ components:
       description: The context for the message.
     ChatContext.Catalog:
       required:
-        - catalogId
+        - catalogUid
       type: object
       properties:
-        catalogId:
+        catalogUid:
           title: The catalog containing the files
           type: string
         fileUids:

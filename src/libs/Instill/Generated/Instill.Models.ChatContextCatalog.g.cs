@@ -11,9 +11,9 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("catalogId")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("catalogUid")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string CatalogId { get; set; }
+        public required string CatalogUid { get; set; }
 
         /// <summary>
         /// 
@@ -30,16 +30,16 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="ChatContextCatalog" /> class.
         /// </summary>
-        /// <param name="catalogId"></param>
+        /// <param name="catalogUid"></param>
         /// <param name="fileUids"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ChatContextCatalog(
-            string catalogId,
+            string catalogUid,
             global::System.Collections.Generic.IList<string>? fileUids)
         {
-            this.CatalogId = catalogId ?? throw new global::System.ArgumentNullException(nameof(catalogId));
+            this.CatalogUid = catalogUid ?? throw new global::System.ArgumentNullException(nameof(catalogUid));
             this.FileUids = fileUids;
         }
 

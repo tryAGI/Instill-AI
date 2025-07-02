@@ -6,11 +6,11 @@ namespace Instill
     {
         /// <summary>
         /// Trigger a pipeline via streaming<br/>
-        /// Triggers the execution of a pipeline asynchronously and streams back the response.<br/>
-        /// This method is intended for real-time inference when low latency is of concern<br/>
-        /// and the response needs to be processed incrementally.<br/>
-        /// The pipeline is identified by its resource name, formed by the parent namespace<br/>
-        /// and ID of the pipeline.
+        /// Triggers the execution of a pipeline asynchronously and streams back the<br/>
+        /// response. This method is intended for real-time inference when low latency<br/>
+        /// is of concern and the response needs to be processed incrementally.<br/>
+        /// The pipeline is identified by its resource name, formed by the parent<br/>
+        /// namespace and ID of the pipeline.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="pipelineId"></param>
@@ -30,11 +30,11 @@ namespace Instill
 
         /// <summary>
         /// Trigger a pipeline via streaming<br/>
-        /// Triggers the execution of a pipeline asynchronously and streams back the response.<br/>
-        /// This method is intended for real-time inference when low latency is of concern<br/>
-        /// and the response needs to be processed incrementally.<br/>
-        /// The pipeline is identified by its resource name, formed by the parent namespace<br/>
-        /// and ID of the pipeline.
+        /// Triggers the execution of a pipeline asynchronously and streams back the<br/>
+        /// response. This method is intended for real-time inference when low latency<br/>
+        /// is of concern and the response needs to be processed incrementally.<br/>
+        /// The pipeline is identified by its resource name, formed by the parent<br/>
+        /// namespace and ID of the pipeline.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="pipelineId"></param>

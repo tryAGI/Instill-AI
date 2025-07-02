@@ -6,8 +6,8 @@ namespace Instill
     {
         /// <summary>
         /// Trigger model inference asynchronously<br/>
-        /// Triggers the latest deployed model version to infer the result of a set of task or<br/>
-        /// questions.
+        /// Triggers the latest deployed model version to infer the result of a set of<br/>
+        /// task or questions.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="modelId"></param>
@@ -27,8 +27,8 @@ namespace Instill
 
         /// <summary>
         /// Trigger model inference asynchronously<br/>
-        /// Triggers the latest deployed model version to infer the result of a set of task or<br/>
-        /// questions.
+        /// Triggers the latest deployed model version to infer the result of a set of<br/>
+        /// task or questions.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="modelId"></param>

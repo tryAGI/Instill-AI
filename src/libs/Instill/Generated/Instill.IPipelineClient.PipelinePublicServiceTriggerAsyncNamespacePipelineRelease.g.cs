@@ -10,8 +10,8 @@ namespace Instill
         /// endpoint (where the release version isn't specified) triggers the pipeline<br/>
         /// at its latest release, this method allows the client to specified any<br/>
         /// committed release.<br/>
-        /// The pipeline is identified by its resource name, formed by its parent namespace<br/>
-        /// and ID.
+        /// The pipeline is identified by its resource name, formed by its parent<br/>
+        /// namespace and ID.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="pipelineId"></param>
@@ -37,8 +37,8 @@ namespace Instill
         /// endpoint (where the release version isn't specified) triggers the pipeline<br/>
         /// at its latest release, this method allows the client to specified any<br/>
         /// committed release.<br/>
-        /// The pipeline is identified by its resource name, formed by its parent namespace<br/>
-        /// and ID.
+        /// The pipeline is identified by its resource name, formed by its parent<br/>
+        /// namespace and ID.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="pipelineId"></param>

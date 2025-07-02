@@ -26,8 +26,8 @@ namespace Instill
         /// <summary>
         /// Delete a pipeline<br/>
         /// Deletes a pipeline, accesing it by its resource name, which is defined by<br/>
-        /// the parent namespace and the ID of the pipeline. The authenticated namespace must be<br/>
-        /// the parent of the pipeline in order to delete it.
+        /// the parent namespace and the ID of the pipeline. The authenticated<br/>
+        /// namespace must be the parent of the pipeline in order to delete it.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="pipelineId"></param>

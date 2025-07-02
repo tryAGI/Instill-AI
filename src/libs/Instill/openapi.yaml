@@ -1,7 +1,7 @@
 openapi: 3.0.4
 info:
-  title: 🔮 Instill AI API
-  description: Interact with Instill AI through its public API
+  title: Instill Core API
+  description: Interact with Instill Core through its public API
   contact:
     name: Instill AI
     url: https://github.com/instill-ai
@@ -9,7 +9,7 @@ info:
   license:
     name: Elastic License 2.0 (ELv2)
     url: https://github.com/instill-ai/protobufs/blob/main/LICENSE
-  version: v0.51.0
+  version: v0.52.0
 servers:
   - url: https://api.instill-ai.com
   - url: http://api.instill-ai.com
@@ -17,7 +17,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/chats':
     get:
       tags:
-        - 🍎 Agent
+        - Agent
       summary: List chats
       description: Returns a list of chats.
       operationId: AgentPublicService_ListChats
@@ -70,7 +70,7 @@ paths:
       x-stage: alpha
     post:
       tags:
-        - 🍎 Agent
+        - Agent
       summary: Create a chat
       description: Creates a chat.
       operationId: AgentPublicService_CreateChat
@@ -110,7 +110,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/chats/{chatUid}':
     get:
       tags:
-        - 🍎 Agent
+        - Agent
       summary: Get a chat
       description: Gets a chat.
       operationId: AgentPublicService_GetChat
@@ -148,7 +148,7 @@ paths:
       x-stage: alpha
     put:
       tags:
-        - 🍎 Agent
+        - Agent
       summary: Update a chat
       description: Updates a chat.
       operationId: AgentPublicService_UpdateChat
@@ -193,7 +193,7 @@ paths:
       x-stage: alpha
     delete:
       tags:
-        - 🍎 Agent
+        - Agent
       summary: Delete a chat
       description: Deletes a chat.
       operationId: AgentPublicService_DeleteChat
@@ -232,7 +232,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/chats/{chatUid}/messages':
     get:
       tags:
-        - 🍎 Agent
+        - Agent
       summary: List messages
       description: Returns a paginated list of messages.
       operationId: AgentPublicService_ListMessages
@@ -292,7 +292,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/chats/{chatUid}/chat-with-agent':
     post:
       tags:
-        - 🍎 Agent
+        - Agent
       summary: Chat with agent
       description: Chat with the agent.
       operationId: AgentPublicService_ChatWithAgent
@@ -344,7 +344,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/context-options':
     get:
       tags:
-        - 🍎 Agent
+        - Agent
       summary: List context options
       description: This is a helper endpoint to list context options for chat.
       operationId: AgentPublicService_ListContextOptions
@@ -567,7 +567,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Table'
+              $ref: '#/components/schemas/.Table'
         required: true
         x-bodyName: table
       responses:
@@ -730,7 +730,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Table'
+              $ref: '#/components/schemas/.Table'
         required: true
         x-bodyName: table
       responses:
@@ -2217,7 +2217,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/catalogs':
     get:
       tags:
-        - 💾 Artifact
+        - Artifact
       summary: Get all catalogs info
       description: Returns a paginated list of catalogs.
       operationId: ListCatalogs
@@ -2249,7 +2249,7 @@ paths:
       x-stage: alpha
     post:
       tags:
-        - 💾 Artifact
+        - Artifact
       summary: Create a catalog
       description: Creates a catalog.
       operationId: CreateCatalog
@@ -2289,7 +2289,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}':
     get:
       tags:
-        - 💾 Artifact
+        - Artifact
       summary: Get file catalog
       description: Get the catalog file.
       operationId: GetFileCatalog
@@ -2337,7 +2337,7 @@ paths:
       x-stage: alpha
     put:
       tags:
-        - 💾 Artifact
+        - Artifact
       summary: Update a catalog info
       description: Updates the information of a catalog.
       operationId: UpdateCatalog
@@ -2382,7 +2382,7 @@ paths:
       x-stage: alpha
     delete:
       tags:
-        - 💾 Artifact
+        - Artifact
       summary: Delete a catalog
       description: Deletes a catalog.
       operationId: DeleteCatalog
@@ -2421,7 +2421,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/files':
     get:
       tags:
-        - 💾 Artifact
+        - Artifact
       summary: List catalog files
       description: Returns a paginated list of catalog files.
       operationId: ListCatalogFiles
@@ -2478,7 +2478,7 @@ paths:
       x-stage: alpha
     post:
       tags:
-        - 💾 Artifact
+        - Artifact
       summary: Create a file
       description: Creates a file.
       operationId: UploadCatalogFile
@@ -2525,7 +2525,7 @@ paths:
   /v1alpha/catalogs/files:
     delete:
       tags:
-        - 💾 Artifact
+        - Artifact
       summary: Delete a file
       description: Deletes a file.
       operationId: DeleteCatalogFile
@@ -2558,7 +2558,7 @@ paths:
   /v1alpha/catalogs/files/processAsync:
     post:
       tags:
-        - 💾 Artifact
+        - Artifact
       summary: Process catalog files
       description: Processes catalog files.
       operationId: ProcessCatalogFiles
@@ -2597,7 +2597,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/files/{fileUid}':
     get:
       tags:
-        - 💾 Artifact
+        - Artifact
       summary: Get catalog file
       description: Gets the file of a catalog.
       operationId: GetCatalogFile
@@ -2642,7 +2642,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/chunks':
     get:
       tags:
-        - 💾 Artifact
+        - Artifact
       summary: List catalog chunks
       description: Returns a paginated list of catalog chunks.
       operationId: ListChunks
@@ -2687,7 +2687,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/chunks':
     get:
       tags:
-        - 💾 Artifact
+        - Artifact
       summary: Search catalog chunks
       description: Returns a paginated list of catalog chunks based on search criteria.
       operationId: SearchChunks
@@ -2729,7 +2729,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/files/{fileUid}/source':
     get:
       tags:
-        - 💾 Artifact
+        - Artifact
       summary: Get catalog single-source-of-truth file
       description: Gets the single-source-of-truth file of a catalog.
       operationId: GetSourceFile
@@ -2774,7 +2774,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/files/{fileUid}/summary':
     get:
       tags:
-        - 💾 Artifact
+        - Artifact
       summary: Get summary from a catalog file
       description: Gets summary from a catalog file
       operationId: GetFileSummary
@@ -2819,7 +2819,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/source-files':
     get:
       tags:
-        - 💾 Artifact
+        - Artifact
       summary: Search single-source-of-truth files
       description: Searches the single-source-of-truth files of a catalog.
       operationId: SearchSourceFiles
@@ -2861,7 +2861,7 @@ paths:
   '/v1alpha/chunks/{chunkUid}':
     post:
       tags:
-        - 💾 Artifact
+        - Artifact
       summary: Update catalog chunk
       description: Updates a catalog chunk.
       operationId: UpdateChunk
@@ -2901,7 +2901,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/chunks/retrieve':
     post:
       tags:
-        - 💾 Artifact
+        - Artifact
       summary: Retrieve similar chunks
       description: Returns the similar chunks.
       operationId: SimilarityChunksSearch
@@ -2952,7 +2952,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/ask':
     post:
       tags:
-        - 💾 Artifact
+        - Artifact
       summary: Ask a question
       description: Asks a question.
       operationId: QuestionAnswering
@@ -3003,7 +3003,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/runs':
     get:
       tags:
-        - 💾 Artifact
+        - Artifact
       summary: List Catalog Runs
       description: Returns a paginated list of catalog runs.
       operationId: ListCatalogRuns
@@ -3064,7 +3064,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/object-upload-url':
     get:
       tags:
-        - 💾 Artifact
+        - Artifact
       summary: Get Object Upload URL
       description: Returns the upload URL of an object.
       operationId: GetObjectUploadURL
@@ -3121,7 +3121,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/object-download-url':
     get:
       tags:
-        - 💾 Artifact
+        - Artifact
       summary: Get Object Download URL
       description: Returns the download URL of an object.
       operationId: GetObjectDownloadURL
@@ -3166,7 +3166,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/files:move':
     post:
       tags:
-        - 💾 Artifact
+        - Artifact
       summary: Move file to another catalog
       description: Moves a file to another catalog.
       operationId: MoveFileToCatalog
@@ -3212,7 +3212,7 @@ paths:
   /v1beta/user:
     get:
       tags:
-        - 🪆 Namespace
+        - Namespace
       summary: Get the authenticated user
       description: Returns the details of the authenticated user.
       operationId: GetAuthenticatedUser
@@ -3237,7 +3237,7 @@ paths:
       x-stage: beta
     patch:
       tags:
-        - 🪆 Namespace
+        - Namespace
       summary: Update the authenticated user
       description: "Updates the information of the authenticated user.\n\nIn REST requests, only the supplied user fields will be taken into account\nwhen updating the resource."
       operationId: PatchAuthenticatedUser
@@ -3271,7 +3271,7 @@ paths:
   /v1beta/users:
     get:
       tags:
-        - 🪆 Namespace
+        - Namespace
       summary: List users
       description: Returns a paginated list of users.
       operationId: ListUsers
@@ -3322,7 +3322,7 @@ paths:
   '/v1beta/users/{userId}':
     get:
       tags:
-        - 🪆 Namespace
+        - Namespace
       summary: Get a user
       description: Returns the details of a user by their ID.
       operationId: GetUser
@@ -3363,7 +3363,7 @@ paths:
   /v1beta/organizations:
     get:
       tags:
-        - 🪆 Namespace
+        - Namespace
       summary: List organizations
       description: Returns a paginated list of organizations.
       operationId: ListOrganizations
@@ -3413,7 +3413,7 @@ paths:
       x-stage: beta
     post:
       tags:
-        - 🪆 Namespace
+        - Namespace
       summary: Create an organization
       description: Creates an organization.
       operationId: CreateOrganization
@@ -3447,7 +3447,7 @@ paths:
   '/v1beta/organizations/{organizationId}':
     get:
       tags:
-        - 🪆 Namespace
+        - Namespace
       summary: Get an organization
       description: Returns the organization details by its ID.
       operationId: GetOrganization
@@ -3487,7 +3487,7 @@ paths:
       x-stage: beta
     delete:
       tags:
-        - 🪆 Namespace
+        - Namespace
       summary: Delete an organization
       description: Accesses and deletes an organization by ID.
       operationId: DeleteOrganization
@@ -3519,7 +3519,7 @@ paths:
       x-stage: beta
     patch:
       tags:
-        - 🪆 Namespace
+        - Namespace
       summary: Update an organization
       description: "Accesses and updates an organization by ID.\n\nIn REST requests, only the supplied organization fields will be taken into\naccount when updating the resource."
       operationId: UpdateOrganization
@@ -3560,7 +3560,7 @@ paths:
   '/v1beta/users/{userId}/memberships':
     get:
       tags:
-        - 🪆 Namespace
+        - Namespace
       summary: List user memberships
       description: Returns the memberships of a user.
       operationId: ListUserMemberships
@@ -3593,7 +3593,7 @@ paths:
   '/v1beta/users/{userId}/memberships/{organizationId}':
     get:
       tags:
-        - 🪆 Namespace
+        - Namespace
       summary: Get a user membership
       description: "Returns the details of the relationship between a user and an\norganization. The authenticated must match the membership parent."
       operationId: GetUserMembership
@@ -3639,7 +3639,7 @@ paths:
       x-stage: beta
     put:
       tags:
-        - 🪆 Namespace
+        - Namespace
       summary: Update a user membership
       description: Accesses and updates a user membership by parent and membership IDs.
       operationId: UpdateUserMembership
@@ -3691,7 +3691,7 @@ paths:
       x-stage: beta
     delete:
       tags:
-        - 🪆 Namespace
+        - Namespace
       summary: Delete a user membership
       description: Accesses and deletes a user membership by parent and membership IDs.
       operationId: DeleteUserMembership
@@ -3730,7 +3730,7 @@ paths:
   '/v1beta/organizations/{organizationId}/memberships':
     get:
       tags:
-        - 🪆 Namespace
+        - Namespace
       summary: List organization memberships
       description: Returns a paginated list of the user memberships in an organization.
       operationId: ListOrganizationMemberships
@@ -3763,7 +3763,7 @@ paths:
   '/v1beta/organizations/{organizationId}/memberships/{userId}':
     get:
       tags:
-        - 🪆 Namespace
+        - Namespace
       summary: Get a an organization membership
       description: Returns the details of a user membership within an organization.
       operationId: GetOrganizationMembership
@@ -3809,7 +3809,7 @@ paths:
       x-stage: beta
     put:
       tags:
-        - 🪆 Namespace
+        - Namespace
       summary: Uppdate an organization membership
       description: Updates a user membership within an organization.
       operationId: UpdateOrganizationMembership
@@ -3861,7 +3861,7 @@ paths:
       x-stage: beta
     delete:
       tags:
-        - 🪆 Namespace
+        - Namespace
       summary: Delete an organization membership
       description: Deletes a user membership within an organization.
       operationId: DeleteOrganizationMembership
@@ -3900,7 +3900,7 @@ paths:
   /v1beta/user/subscription:
     get:
       tags:
-        - 🤝 Subscription
+        - Subscription
       summary: Get the subscription of the authenticated user
       description: Returns the subscription details of the authenticated user.
       operationId: GetAuthenticatedUserSubscription
@@ -3926,7 +3926,7 @@ paths:
   '/v1beta/organizations/{organizationId}/subscription':
     get:
       tags:
-        - 🤝 Subscription
+        - Subscription
       summary: Get the subscription of an organization
       description: Returns the subscription details of an organization.
       operationId: GetOrganizationSubscription
@@ -3959,7 +3959,7 @@ paths:
   /v1beta/tokens:
     get:
       tags:
-        - 🪆 Namespace
+        - Namespace
       summary: List API tokens
       description: Returns a paginated list of the API tokens of the authenticated user.
       operationId: ListTokens
@@ -3996,7 +3996,7 @@ paths:
       x-stage: beta
     post:
       tags:
-        - 🪆 Namespace
+        - Namespace
       summary: Create an API token
       description: Creates an API token for the authenticated user.
       operationId: CreateToken
@@ -4030,7 +4030,7 @@ paths:
   '/v1beta/tokens/{tokenId}':
     get:
       tags:
-        - 🪆 Namespace
+        - Namespace
       summary: Get an API token
       description: Returns the details of an API token.
       operationId: GetToken
@@ -4062,7 +4062,7 @@ paths:
       x-stage: beta
     delete:
       tags:
-        - 🪆 Namespace
+        - Namespace
       summary: Delete an API token
       description: Deletes an API token.
       operationId: DeleteToken
@@ -4095,7 +4095,7 @@ paths:
   /v1beta/validate_token:
     post:
       tags:
-        - 🪆 Namespace
+        - Namespace
       summary: Validate an API token
       description: Validates an API token.
       operationId: ValidateToken
@@ -4121,9 +4121,9 @@ paths:
   '/v1beta/namespaces/{namespaceId}/credit':
     get:
       tags:
-        - 🤝 Subscription
+        - Subscription
       summary: Get the remaining Instill Credit
-      description: "This endpoint returns the remaining [Instill Credit](https://instill-ai.dev/docs/cloud/credit) of a given user or\norganization. The requested credit owner must be either the authenticated\nuser or an organization they belong to.\n\nOn Instill Core, this endpoint will return a 404 Not Found status."
+      description: "This endpoint returns the remaining [Instill\nCredit](https://instill-ai.dev/docs/cloud/credit) of a given user or\norganization. The requested credit owner must be either the authenticated\nuser or an organization they belong to.\n\nOn Instill Core, this endpoint will return a 404 Not Found status."
       operationId: GetRemainingCredit
       parameters:
         - name: namespaceId
@@ -4154,7 +4154,7 @@ paths:
   /v1beta/check-namespace:
     post:
       tags:
-        - 🪆 Namespace
+        - Namespace
       summary: Check if a namespace is in use
       description: "Returns the availability of a namespace or, alternatively, the type of\nresource that is using it."
       operationId: CheckNamespace
@@ -4188,7 +4188,7 @@ paths:
   /v1beta/pipeline-runs/query-charts:
     get:
       tags:
-        - 📊 Metrics
+        - Metrics
       summary: List pipeline trigger time charts
       description: "Returns a timeline of pipline trigger counts for a given requester. The\nresponse will contain one set of records (datapoints), representing the\namount of triggers in a time bucket."
       operationId: ListPipelineTriggerChartRecords
@@ -4238,7 +4238,7 @@ paths:
   /v1beta/model-runs/query-charts:
     get:
       tags:
-        - 📊 Metrics
+        - Metrics
       summary: List model trigger time charts
       description: "Returns a timeline of model trigger counts for a given requester. The\nresponse will contain one set of records (datapoints), representing the\namount of triggers in a time bucket."
       operationId: ListModelTriggerChartRecords
@@ -4288,7 +4288,7 @@ paths:
   /v1beta/credit/query-charts:
     get:
       tags:
-        - 📊 Metrics
+        - Metrics
       summary: List Instill Credit consumption time charts
       description: "Returns a timeline of Instill Credit consumption for a given owner. The\nresponse will contain one set of records (datapoints) per consumption\nsource (e.g. \"pipeline\", \"model\"). Each datapoint represents the amount\nconsumed in a time bucket.\n\nThis endpoint is only exposed on Instill Cloud."
       operationId: ListCreditConsumptionChartRecords
@@ -4338,7 +4338,7 @@ paths:
   /v1alpha/model-definitions:
     get:
       tags:
-        - ⚗️ Model
+        - Model
       summary: List model definitions
       description: Returns a paginated list of model definitions.
       operationId: ModelPublicService_ListModelDefinitions
@@ -4384,7 +4384,7 @@ paths:
   /v1alpha/available-regions:
     get:
       tags:
-        - ⚗️ Model
+        - Model
       summary: List available regions
       description: Returns a paginated list of available regions.
       operationId: ModelPublicService_ListAvailableRegions
@@ -4410,7 +4410,7 @@ paths:
   '/v1alpha/model-definitions/{modelDefinitionId}':
     get:
       tags:
-        - ⚗️ Model
+        - Model
       summary: Get a model definition
       description: Returns the details of a model definition.
       operationId: ModelPublicService_GetModelDefinition
@@ -4451,7 +4451,7 @@ paths:
   /v1alpha/models:
     get:
       tags:
-        - ⚗️ Model
+        - Model
       summary: List models
       description: Returns a paginated list of models.
       operationId: ModelPublicService_ListModels
@@ -4520,7 +4520,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/models':
     get:
       tags:
-        - ⚗️ Model
+        - Model
       summary: List namespace models
       description: Returns a paginated list of models.
       operationId: ModelPublicService_ListNamespaceModels
@@ -4594,7 +4594,7 @@ paths:
       x-stage: alpha
     post:
       tags:
-        - ⚗️ Model
+        - Model
       summary: Create a new model
       description: "Creates a new model under the parenthood of a namespace. This is an\nasynchronous endpoint, i.e., the server will not wait for the model to be\ncreated in order to respond. Instead, it will return a response with the\nnecessary information to access the result and status of the creation\noperation."
       operationId: ModelPublicService_CreateNamespaceModel
@@ -4635,9 +4635,9 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}':
     get:
       tags:
-        - ⚗️ Model
+        - Model
       summary: Get a model
-      description: 'Returns the detail of a model, accessing it by the model ID and its parent namespace.'
+      description: "Returns the detail of a model, accessing it by the model ID and its parent\nnamespace."
       operationId: ModelPublicService_GetNamespaceModel
       parameters:
         - name: namespaceId
@@ -4681,7 +4681,7 @@ paths:
       x-stage: alpha
     delete:
       tags:
-        - ⚗️ Model
+        - Model
       summary: Delete a model
       description: "Deletes a model, accesing it by its resource name, which is defined by the\nparent namespace and the ID of the model."
       operationId: ModelPublicService_DeleteNamespaceModel
@@ -4719,7 +4719,7 @@ paths:
       x-stage: alpha
     patch:
       tags:
-        - ⚗️ Model
+        - Model
       summary: Update a model
       description: "Updates a model, accessing it by its resource name, which is defined by\nthe parent namespace and the ID of the model.\n\nIn REST requests, only the supplied model fields will be taken into\naccount when updating the resource."
       operationId: ModelPublicService_UpdateNamespaceModel
@@ -4766,7 +4766,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}/rename':
     post:
       tags:
-        - ⚗️ Model
+        - Model
       summary: Rename a model
       description: "Renames a model, accesing it by its resource name, which is defined by the\nparent namespace and the ID of the model."
       operationId: ModelPublicService_RenameNamespaceModel
@@ -4812,9 +4812,9 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}/versions/{version}/watch':
     get:
       tags:
-        - ⚗️ Model
+        - Model
       summary: Watch the state of a model version
-      description: "Returns the state of a model. The model resource allocation and scaling actions take some\ntime, during which a model will be in various state. This endpoint\nallows clients to track the state."
+      description: "Returns the state of a model. The model resource allocation and scaling\nactions take some time, during which a model will be in various state. This\nendpoint allows clients to track the state."
       operationId: ModelPublicService_WatchNamespaceModel
       parameters:
         - name: namespaceId
@@ -4857,9 +4857,9 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}/watch':
     get:
       tags:
-        - ⚗️ Model
+        - Model
       summary: Watch the state of the latest model version
-      description: "Returns the state of the latest model version. The model resource allocation and scaling actions\ntake some time, during which a model will be in various state. This endpoint\nallows clients to track the state."
+      description: "Returns the state of the latest model version. The model resource\nallocation and scaling actions take some time, during which a model will be\nin various state. This endpoint allows clients to track the state."
       operationId: ModelPublicService_WatchNamespaceLatestModel
       parameters:
         - name: namespaceId
@@ -4896,9 +4896,9 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}/versions':
     get:
       tags:
-        - ⚗️ Model
+        - Model
       summary: List namespace model versions
-      description: "Returns a paginated list of version of a model namespace that belong to the specified namespace.\nContains model version and digest."
+      description: "Returns a paginated list of version of a model namespace that belong to the\nspecified namespace. Contains model version and digest."
       operationId: ModelPublicService_ListNamespaceModelVersions
       parameters:
         - name: namespaceId
@@ -4947,9 +4947,9 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}/versions/{version}':
     delete:
       tags:
-        - ⚗️ Model
+        - Model
       summary: Delete a model version
-      description: "Deletes a model version, accesing it by its resource name, which is defined by the\nparent namespace and the ID of the model, and version."
+      description: "Deletes a model version, accesing it by its resource name, which is defined\nby the parent namespace and the ID of the model, and version."
       operationId: ModelPublicService_DeleteNamespaceModelVersion
       parameters:
         - name: namespaceId
@@ -4992,7 +4992,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}/versions/{version}/trigger':
     post:
       tags:
-        - ⚗️ Model
+        - Model
       summary: Trigger model inference
       description: "Triggers a deployed model to infer the result of a set of task or\nquestions."
       operationId: ModelPublicService_TriggerNamespaceModel
@@ -5049,7 +5049,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}/versions/{version}/trigger-async':
     post:
       tags:
-        - ⚗️ Model
+        - Model
       summary: Trigger model inference asynchronously
       description: "Triggers a deployed model to infer the result of a set of task or\nquestions."
       operationId: ModelPublicService_TriggerAsyncNamespaceModel
@@ -5106,9 +5106,9 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}/trigger':
     post:
       tags:
-        - ⚗️ Model
+        - Model
       summary: Trigger model inference
-      description: "Triggers the latest deployed model version to infer the result of a set of task or\nquestions."
+      description: "Triggers the latest deployed model version to infer the result of a set of\ntask or questions."
       operationId: ModelPublicService_TriggerNamespaceLatestModel
       parameters:
         - name: namespaceId
@@ -5157,9 +5157,9 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}/trigger-async':
     post:
       tags:
-        - ⚗️ Model
+        - Model
       summary: Trigger model inference asynchronously
-      description: "Triggers the latest deployed model version to infer the result of a set of task or\nquestions."
+      description: "Triggers the latest deployed model version to infer the result of a set of\ntask or questions."
       operationId: ModelPublicService_TriggerAsyncNamespaceLatestModel
       parameters:
         - name: namespaceId
@@ -5208,7 +5208,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}/versions/{version}/operation':
     get:
       tags:
-        - ⚗️ Model
+        - Model
       summary: "Get the details of the long-running operation from a namespace model\nwith a particular version"
       description: "This method allows requesters to request the status and outcome of\nlong-running operations in a model, such as trigger."
       operationId: ModelPublicService_GetNamespaceModelOperation
@@ -5261,7 +5261,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}/operation':
     get:
       tags:
-        - ⚗️ Model
+        - Model
       summary: Get the details of the latest long-running operation from a namespace model
       description: "This method allows requesters to request the status and outcome of\nlong-running operations in a model, such as trigger."
       operationId: ModelPublicService_GetNamespaceLatestModelOperation
@@ -5308,7 +5308,7 @@ paths:
   '/v1alpha/operations/{operationId}':
     get:
       tags:
-        - ⚗️ Model
+        - Model
       summary: Get the details of a long-running operation
       description: "This method allows requesters to request the status and outcome of\nlong-running operations in a model, such as trigger."
       operationId: ModelPublicService_GetModelOperation
@@ -5349,7 +5349,7 @@ paths:
   '/v1alpha/namespaces/{namespaceId}/models/{modelId}/runs':
     get:
       tags:
-        - ⚗️ Model
+        - Model
       summary: List Model Runs
       description: "Returns a paginated list of runs for a given model. When the requester is\nthe owner of the model, they will be able to all the model runs,\nregardless who requested the trigger (the view will be partial to hide\nsensitive data like e.g. the trigger input and output). Other requesters\nwill only be able to see the runs requested by themselves."
       operationId: ModelPublicService_ListModelRuns
@@ -5415,7 +5415,7 @@ paths:
   /v1alpha/dashboard/models/runs:
     get:
       tags:
-        - ⚗️ Model
+        - Model
       summary: List Model Runs By Requester
       description: "Returns a paginated list of runs requested by a namespace. The response\nmay contain runs from several models."
       operationId: ModelPublicService_ListModelRunsByRequester
@@ -5482,7 +5482,7 @@ paths:
   /v1beta/pipelines:
     get:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: List accessible pipelines
       description: Returns a paginated list of pipelines that are visible to the requester.
       operationId: PipelinePublicService_ListPipelines
@@ -5552,7 +5552,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines':
     get:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: List namespace pipelines
       description: Returns a paginated list of pipelines of a namespace
       operationId: PipelinePublicService_ListNamespacePipelines
@@ -5627,7 +5627,7 @@ paths:
       x-stage: beta
     post:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: Create a new pipeline
       description: Creates a new pipeline under a namespace.
       operationId: PipelinePublicService_CreateNamespacePipeline
@@ -5668,7 +5668,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}':
     get:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: Get a pipeline
       description: Returns the details of a pipeline.
       operationId: PipelinePublicService_GetNamespacePipeline
@@ -5715,9 +5715,9 @@ paths:
       x-stage: beta
     delete:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: Delete a pipeline
-      description: "Deletes a pipeline, accesing it by its resource name, which is defined by\nthe parent namespace and the ID of the pipeline. The authenticated namespace must be\nthe parent of the pipeline in order to delete it."
+      description: "Deletes a pipeline, accesing it by its resource name, which is defined by\nthe parent namespace and the ID of the pipeline. The authenticated\nnamespace must be the parent of the pipeline in order to delete it."
       operationId: PipelinePublicService_DeleteNamespacePipeline
       parameters:
         - name: namespaceId
@@ -5753,9 +5753,9 @@ paths:
       x-stage: beta
     patch:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: Update a pipeline
-      description: "Udpates a pipeline, accessing it by its resource name, which is defined by\nthe parent namespace and the ID of the pipeline. The authenticated namespace must be\nthe parent of the pipeline in order to modify it.\n\nIn REST requests, only the supplied pipeline fields will be taken into\naccount when updating the resource."
+      description: "Udpates a pipeline, accessing it by its resource name, which is defined by\nthe parent namespace and the ID of the pipeline. The authenticated\nnamespace must be the parent of the pipeline in order to modify it.\n\nIn REST requests, only the supplied pipeline fields will be taken into\naccount when updating the resource."
       operationId: PipelinePublicService_UpdateNamespacePipeline
       parameters:
         - name: namespaceId
@@ -5800,9 +5800,9 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/validate':
     post:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: Validate a pipeline
-      description: "Validates a pipeline by its resource name, which is defined by the parent\nnamespace and the ID of the pipeline.\n\nValidation checks the recipe of the pipeline and the status of its components."
+      description: "Validates a pipeline by its resource name, which is defined by the parent\nnamespace and the ID of the pipeline.\n\nValidation checks the recipe of the pipeline and the status of its\ncomponents."
       operationId: PipelinePublicService_ValidateNamespacePipeline
       parameters:
         - name: namespaceId
@@ -5846,7 +5846,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/rename':
     post:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: Rename a pipeline
       description: "Updates the ID of a pipeline. Since this is an output-only field, a custom\nmethod is required to modify it.\n\nThe pipeline name will be updated accordingly, as it is  composed by the\nparent namespace and ID of the pipeline (e.g.\n`namespaces/luigi/pipelines/pizza-recipe-generator`).\n\nThe authenticated namespace must be the parent of the pipeline in order to\nperform this action."
       operationId: PipelinePublicService_RenameNamespacePipeline
@@ -5892,9 +5892,9 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/clone':
     post:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: Clone a pipeline
-      description: "Clones a pipeline owned by a namespace. The new pipeline may have a different\nparent, and this can be either a namespace or an organization."
+      description: "Clones a pipeline owned by a namespace. The new pipeline may have a\ndifferent parent, and this can be either a namespace or an organization."
       operationId: PipelinePublicService_CloneNamespacePipeline
       parameters:
         - name: namespaceId
@@ -5938,9 +5938,9 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/trigger':
     post:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: Trigger a pipeline
-      description: "Triggers the execution of a pipeline synchronously, i.e., the result is\nsent back to the namespace right after the data is processed. This method is\nintended for real-time inference when low latency is of concern.\n\nThe pipeline is identified by its resource name, formed by the parent namespace\nand ID of the pipeline.\n\nFor more information, see [Run NamespacePipeline](https://instill-ai.dev/docs/pipeline/run-pipeline)."
+      description: "Triggers the execution of a pipeline synchronously, i.e., the result is\nsent back to the namespace right after the data is processed. This method\nis intended for real-time inference when low latency is of concern.\n\nThe pipeline is identified by its resource name, formed by the parent\nnamespace and ID of the pipeline.\n\nFor more information, see [Run\nNamespacePipeline](https://instill-ai.dev/docs/pipeline/run-pipeline)."
       operationId: PipelinePublicService_TriggerNamespacePipeline
       parameters:
         - name: namespaceId
@@ -5989,9 +5989,9 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/trigger-stream':
     post:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: Trigger a pipeline via streaming
-      description: "Triggers the execution of a pipeline asynchronously and streams back the response.\nThis method is intended for real-time inference when low latency is of concern\nand the response needs to be processed incrementally.\n\nThe pipeline is identified by its resource name, formed by the parent namespace\nand ID of the pipeline."
+      description: "Triggers the execution of a pipeline asynchronously and streams back the\nresponse. This method is intended for real-time inference when low latency\nis of concern and the response needs to be processed incrementally.\n\nThe pipeline is identified by its resource name, formed by the parent\nnamespace and ID of the pipeline."
       operationId: PipelinePublicService_TriggerNamespacePipelineWithStream
       parameters:
         - name: namespaceId
@@ -6046,9 +6046,9 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/trigger-async':
     post:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: Trigger a pipeline asynchronously
-      description: "Triggers the execution of a pipeline asynchronously, i.e., the result\ncontains the necessary information to access the result and status of the\noperation. This method is intended for cases that require long-running\nworkloads.\n\nThe pipeline is identified by its resource name, formed by the parent namespace\nand ID of the pipeline.\n\nFor more information, see [Run NamespacePipeline](https://instill-ai.dev/docs/pipeline/run-pipeline)."
+      description: "Triggers the execution of a pipeline asynchronously, i.e., the result\ncontains the necessary information to access the result and status of the\noperation. This method is intended for cases that require long-running\nworkloads.\n\nThe pipeline is identified by its resource name, formed by the parent\nnamespace and ID of the pipeline.\n\nFor more information, see [Run\nNamespacePipeline](https://instill-ai.dev/docs/pipeline/run-pipeline)."
       operationId: PipelinePublicService_TriggerAsyncNamespacePipeline
       parameters:
         - name: namespaceId
@@ -6097,7 +6097,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/releases':
     get:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: List the releases in a pipeline
       description: "Lists the commited versions of a pipeline, identified by its resource\nname, which is formed by the parent namespace and ID of the pipeline."
       operationId: PipelinePublicService_ListNamespacePipelineReleases
@@ -6165,7 +6165,7 @@ paths:
       x-stage: beta
     post:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: Create a pipeline release
       description: "Commits the version of a pipeline, identified by its resource name, which\nis formed by the parent namespace and ID of the pipeline.\n\nThe authenticated namespace must be the parent of the pipeline in order to\nperform this action."
       operationId: PipelinePublicService_CreateNamespacePipelineRelease
@@ -6212,7 +6212,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/releases/{releaseId}':
     get:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: Get a pipeline release
       description: "Gets the details of a pipeline release, where the pipeline is identified\nby its resource name, formed by its parent namespace and ID."
       operationId: PipelinePublicService_GetNamespacePipelineRelease
@@ -6265,7 +6265,7 @@ paths:
       x-stage: beta
     delete:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: Delete a pipeline release
       description: "Deletes a pipeline release, where the pipeline is identified by its\nresource name, formed by its parent namespace and ID.\n\nThe authenticated namespace must be the parent of the pipeline in order to\nperform this action."
       operationId: PipelinePublicService_DeleteNamespacePipelineRelease
@@ -6309,7 +6309,7 @@ paths:
       x-stage: beta
     patch:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: Update a pipeline release
       description: "Updates the details of a pipeline release, where the pipeline is\nidentified by its resource name, formed by its parent namespace and ID.\n\nThe authenticated namespace must be the parent of the pipeline in order to\nperform this action."
       operationId: PipelinePublicService_UpdateNamespacePipelineRelease
@@ -6362,9 +6362,9 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/releases/{releaseId}/clone':
     post:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: Clone a pipeline release
-      description: "Clones a pipeline release owned by a namespace. The new pipeline may have a different\nparent, and this can be either a namespace or an organization."
+      description: "Clones a pipeline release owned by a namespace. The new pipeline may have a\ndifferent parent, and this can be either a namespace or an organization."
       operationId: PipelinePublicService_CloneNamespacePipelineRelease
       parameters:
         - name: namespaceId
@@ -6414,9 +6414,9 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/releases/{releaseId}/trigger':
     post:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: Trigger a pipeline release
-      description: "Triggers the synchronous execution of of a pipeline. While the trigger\nendpoint (where the release version isn't specified) triggers the pipeline\nat its latest release, this method allows the client to specified any\ncommitted release.\n\nThe pipeline is identified by its resource name, formed by its parent namespace\nand ID."
+      description: "Triggers the synchronous execution of of a pipeline. While the trigger\nendpoint (where the release version isn't specified) triggers the pipeline\nat its latest release, this method allows the client to specified any\ncommitted release.\n\nThe pipeline is identified by its resource name, formed by its parent\nnamespace and ID."
       operationId: PipelinePublicService_TriggerNamespacePipelineRelease
       parameters:
         - name: namespaceId
@@ -6471,9 +6471,9 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/releases/{releaseId}/trigger-async':
     post:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: Trigger a pipeline release asynchronously
-      description: "Triggers the asynchronous execution of of a pipeline. While the trigger\nendpoint (where the release version isn't specified) triggers the pipeline\nat its latest release, this method allows the client to specified any\ncommitted release.\n\nThe pipeline is identified by its resource name, formed by its parent namespace\nand ID."
+      description: "Triggers the asynchronous execution of of a pipeline. While the trigger\nendpoint (where the release version isn't specified) triggers the pipeline\nat its latest release, this method allows the client to specified any\ncommitted release.\n\nThe pipeline is identified by its resource name, formed by its parent\nnamespace and ID."
       operationId: PipelinePublicService_TriggerAsyncNamespacePipelineRelease
       parameters:
         - name: namespaceId
@@ -6528,7 +6528,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/secrets':
     get:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: List secrets
       description: "Returns a paginated list of secrets that belong to the specified\nnamespace."
       operationId: PipelinePublicService_ListNamespaceSecrets
@@ -6571,7 +6571,7 @@ paths:
       x-stage: beta
     post:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: Create a secret
       description: Creates a new secret under the parenthood of an namespace.
       operationId: PipelinePublicService_CreateNamespaceSecret
@@ -6612,7 +6612,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/secrets/{secretId}':
     get:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: Get a secret
       description: "Returns the details of an namespace-owned secret by its resource name,\nwhich is defined by the parent namespace and the ID of the secret."
       operationId: PipelinePublicService_GetNamespaceSecret
@@ -6650,7 +6650,7 @@ paths:
       x-stage: beta
     delete:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: Delete a secret
       description: "Deletes a secret, accesing it by its resource name, which is defined by\nthe parent namespace and the ID of the secret."
       operationId: PipelinePublicService_DeleteNamespaceSecret
@@ -6688,7 +6688,7 @@ paths:
       x-stage: beta
     patch:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: Update a secret
       description: "Udpates a secret, accessing it by its resource name, which is defined by\n\nIn REST requests, only the supplied secret fields will be taken into\naccount when updating the resource."
       operationId: PipelinePublicService_UpdateNamespaceSecret
@@ -6735,7 +6735,7 @@ paths:
   /v1beta/component-definitions:
     get:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: List component definitions
       description: "Returns a paginated list of component definitions, regardless their type.\nThis offers a single source of truth, with pagination and filter\ncapabilities, for the components that might be used in a pipeline."
       operationId: PipelinePublicService_ListComponentDefinitions
@@ -6787,7 +6787,7 @@ paths:
   '/v1beta/operations/{operationId}':
     get:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: Get the details of a long-running operation
       description: "This method allows requesters to request the status and outcome of\nlong-running operations such as asynchronous pipeline triggers."
       operationId: PipelinePublicService_GetOperation
@@ -6825,7 +6825,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/runs':
     get:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: List Pipeline Runs
       description: "Returns a paginated list of runs for a given pipeline. When the requester\nis the owner of the pipeline, they will be able to all the pipeline runs,\nregardless who requested the trigger (the view will be partial to hide\nsensitive data like e.g. the trigger input and output). Other requesters\nwill only be able to see the runs requested by themselves."
       operationId: PipelinePublicService_ListPipelineRuns
@@ -6891,7 +6891,7 @@ paths:
   '/v1beta/pipeline-runs/{pipelineRunId}/component-runs':
     get:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: List Component Runs
       description: Returns the information of each component execution within a pipeline run.
       operationId: PipelinePublicService_ListComponentRuns
@@ -6960,7 +6960,7 @@ paths:
   /v1beta/dashboard/pipelines/runs:
     get:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: List Pipeline Runs By Requester
       description: "Returns a paginated list of runs for requested by a namespace. The\nresponse may contain runs from several pipelines."
       operationId: PipelinePublicService_ListPipelineRunsByRequester
@@ -7027,7 +7027,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/connections':
     get:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: List namespace connections
       description: Returns a paginated list of connections created by a namespace.
       operationId: PipelinePublicService_ListNamespaceConnections
@@ -7075,7 +7075,7 @@ paths:
       x-stage: beta
     post:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: Create a connection
       description: Creates a connection under the ownership of a namespace.
       operationId: PipelinePublicService_CreateNamespaceConnection
@@ -7116,7 +7116,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/connections/{connectionId}':
     get:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: Get a namespace connection
       description: Returns the details of a connection.
       operationId: PipelinePublicService_GetNamespaceConnection
@@ -7162,7 +7162,7 @@ paths:
       x-stage: beta
     delete:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: Delete a connection
       description: Deletes a connection.
       operationId: PipelinePublicService_DeleteNamespaceConnection
@@ -7200,7 +7200,7 @@ paths:
       x-stage: beta
     patch:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: Update a connection
       description: Updates a connection with the supplied connection fields.
       operationId: PipelinePublicService_UpdateNamespaceConnection
@@ -7247,7 +7247,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/connections/{connectionId}/test':
     post:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: Test a connection
       description: "Makes a request to the 3rd party app that the connection is configured to\ncommunicate with, and checks the result of the call. If the test fails,\nthe response status and error message will provide more information about\nthe failure.\n\nNote that this action might affect the quota or billing of the integrated\naccount in the 3rd party app."
       operationId: PipelinePublicService_TestNamespaceConnection
@@ -7286,7 +7286,7 @@ paths:
   '/v1beta/namespaces/{namespaceId}/connections/{connectionId}/referenced-pipelines':
     get:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: List pipelines that reference a connection
       description: "Returns a paginated list with the IDs of the pipelines that reference a\ngiven connection. All the pipelines will belong to the same namespace as\nthe connection."
       operationId: PipelinePublicService_ListPipelineIDsByConnectionID
@@ -7341,7 +7341,7 @@ paths:
   /v1beta/integrations:
     get:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: List integrations
       description: Returns a paginated list of available integrations.
       operationId: PipelinePublicService_ListIntegrations
@@ -7384,7 +7384,7 @@ paths:
   '/v1beta/integrations/{integrationId}':
     get:
       tags:
-        - 💧 Pipeline
+        - Pipeline
       summary: Get an integration
       description: Returns the details of an integration.
       operationId: PipelinePublicService_GetIntegration
@@ -7894,6 +7894,11 @@ components:
           items:
             $ref: '#/components/schemas/ChatContext.Catalog'
           description: The catalogs to include in the context.
+        tables:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatContext.Table'
+          description: The tables to include in the context.
       description: The context for the message.
     ChatContext.Catalog:
       required:
@@ -7923,6 +7928,20 @@ components:
           items:
             type: string
       description: Represents a folder.
+    ChatContext.Table:
+      required:
+        - tableUid
+      type: object
+      properties:
+        tableUid:
+          title: The table containing the files
+          type: string
+        fileUids:
+          title: 'Specific file UIDs within the table, leave empty to include all files in the table'
+          type: array
+          items:
+            type: string
+      description: Represents a table.
     ChatContextUpdatedEvent:
       title: ChatContextUpdatedEvent represents an event for a context updated
       type: object
@@ -8120,7 +8139,7 @@ components:
         table:
           title: The created table
           allOf:
-            - $ref: '#/components/schemas/Table'
+            - $ref: '#/components/schemas/.Table'
           readOnly: true
         columnDefinitions:
           title: The created column definitions
@@ -8144,7 +8163,7 @@ components:
         table:
           title: The updated table
           allOf:
-            - $ref: '#/components/schemas/Table'
+            - $ref: '#/components/schemas/.Table'
           readOnly: true
         columnDefinitions:
           title: The updated column definitions
@@ -8912,7 +8931,7 @@ components:
       properties:
         table:
           allOf:
-            - $ref: '#/components/schemas/Table'
+            - $ref: '#/components/schemas/.Table'
           description: The table resource to create.
         templateNamespaceId:
           type: string
@@ -8926,7 +8945,7 @@ components:
       properties:
         table:
           allOf:
-            - $ref: '#/components/schemas/Table'
+            - $ref: '#/components/schemas/.Table'
           description: The created table.
           readOnly: true
       description: CreateTableFromTemplateResponse contains the created table.
@@ -8935,7 +8954,7 @@ components:
       properties:
         table:
           allOf:
-            - $ref: '#/components/schemas/Table'
+            - $ref: '#/components/schemas/.Table'
           description: The created table resource.
           readOnly: true
       description: CreateTableResponse contains the created table.
@@ -9856,7 +9875,7 @@ components:
       properties:
         table:
           allOf:
-            - $ref: '#/components/schemas/Table'
+            - $ref: '#/components/schemas/.Table'
           description: The table resource.
           readOnly: true
       description: GetTableResponse contains the requested table.
@@ -10108,7 +10127,7 @@ components:
         tables:
           type: array
           items:
-            $ref: '#/components/schemas/Table'
+            $ref: '#/components/schemas/.Table'
           description: The tables bound to the chat.
           readOnly: true
       description: ListChatTablesResponse contains the list of tables bound to a chat.
@@ -10756,7 +10775,7 @@ components:
         tables:
           type: array
           items:
-            $ref: '#/components/schemas/Table'
+            $ref: '#/components/schemas/.Table'
           description: The list of tables.
           readOnly: true
         nextPageToken:
@@ -12478,51 +12497,6 @@ components:
           description: The error message of the suggestion.
           readOnly: true
       description: SuggestColumnDefinitionResponse represents a response to a request to suggest a column definition.
-    Table:
-      required:
-        - agentConfig
-      type: object
-      properties:
-        uid:
-          type: string
-          description: The unique identifier of the table.
-          readOnly: true
-        title:
-          type: string
-          description: "The title of the table.\nIf the table is in draft mode, the title is optional.\nIf the table is not in draft mode, the title is required."
-        description:
-          type: string
-          description: A description of the table.
-        metadata:
-          type: object
-          description: Additional metadata associated with the table.
-        createTime:
-          type: string
-          description: The timestamp when the table was created.
-          format: date-time
-          readOnly: true
-        updateTime:
-          type: string
-          description: The timestamp when the table was last updated.
-          format: date-time
-          readOnly: true
-        agentConfig:
-          allOf:
-            - $ref: '#/components/schemas/Table.AgentConfig'
-          description: The configuration for the agent.
-        draftMode:
-          type: boolean
-          description: Whether to enable draft mode for the table.
-        permission:
-          allOf:
-            - $ref: '#/components/schemas/Table.Permission'
-          description: Permission defines how a table can be used.
-          readOnly: true
-        catalogId:
-          type: string
-          description: The ID of the catalog that this table is bound to.
-          readOnly: true
-      description: Table represents a table resource.
     Table.AgentConfig:
       required:
         - enableTransparency
@@ -12613,7 +12587,7 @@ components:
       properties:
         table:
           allOf:
-            - $ref: '#/components/schemas/Table'
+            - $ref: '#/components/schemas/.Table'
           description: The table that was updated.
           readOnly: true
       description: TableUpdatedEvent represents an event for a table being updated.
@@ -13250,7 +13224,7 @@ components:
       properties:
         table:
           allOf:
-            - $ref: '#/components/schemas/Table'
+            - $ref: '#/components/schemas/.Table'
           description: The updated table resource.
           readOnly: true
       description: UpdateTableResponse contains the updated table.
@@ -13752,6 +13726,51 @@ components:
         - STATE_SCALING_DOWN
       type: string
       description: "State describes the state of a model. See [Deploy\nModels](https://instill-ai.dev/docs/latest/model/deploy) for more\ninformation.\n\n - STATE_OFFLINE: Offline is the state when the model instance number is 0.\n - STATE_ACTIVE: Active is the state when a model is processing requests.\n - STATE_IDLE: Idle is the state when a model is alive but not processing requests.\n - STATE_ERROR: Error is the state when the model is undeployable.\n - STATE_STARTING: Starting is the state when the system is provisioning the necessary\nresources for the model\n - STATE_SCALING_UP: Scaling Up is the transition state when the system is provisioning compute\nresource for this model instance.\n - STATE_SCALING_DOWN: Scaling is the transition state when the system is releasing compute\nresource for this model instance."
+    .Table:
+      required:
+        - agentConfig
+      type: object
+      properties:
+        uid:
+          type: string
+          description: The unique identifier of the table.
+          readOnly: true
+        title:
+          type: string
+          description: "The title of the table.\nIf the table is in draft mode, the title is optional.\nIf the table is not in draft mode, the title is required."
+        description:
+          type: string
+          description: A description of the table.
+        metadata:
+          type: object
+          description: Additional metadata associated with the table.
+        createTime:
+          type: string
+          description: The timestamp when the table was created.
+          format: date-time
+          readOnly: true
+        updateTime:
+          type: string
+          description: The timestamp when the table was last updated.
+          format: date-time
+          readOnly: true
+        agentConfig:
+          allOf:
+            - $ref: '#/components/schemas/Table.AgentConfig'
+          description: The configuration for the agent.
+        draftMode:
+          type: boolean
+          description: Whether to enable draft mode for the table.
+        permission:
+          allOf:
+            - $ref: '#/components/schemas/Table.Permission'
+          description: Permission defines how a table can be used.
+          readOnly: true
+        catalogId:
+          type: string
+          description: The ID of the catalog that this table is bound to.
+          readOnly: true
+      description: Table represents a table resource.
     .Type:
       enum:
         - TYPE_STRING
@@ -13805,24 +13824,24 @@ components:
 security:
   - Bearer: [ ]
 tags:
-  - name: 🪆 Namespace
+  - name: Namespace
     description: 'Namespaces (e.g. User, Organization) that structure the resource hierarchy.'
-  - name: 💧 Pipeline
+  - name: Pipeline
     description: Pipeline orchestration in Instill Core.
-  - name: ⚗️ Model
-    description: AI Model resources for MLOps/LLMOps.
-  - name: 💾 Artifact
+  - name: Artifact
     description: Data orchestration for unified unstructured data representation.
-  - name: 🍎 Agent
+  - name: Model
+    description: AI Model resources for MLOps/LLMOps.
+  - name: Agent
     description: Ready-to-use AI agents.
   - name: Table
     description: Table resources for agents.
   - name: Folder
     description: Folder resources for agents.
-  - name: 📊 Metrics
+  - name: Metrics
     description: Resource usage metrics.
-  - name: 🤝 Subscription
+  - name: Subscription
     description: Pricing plans on Instill Cloud.
 externalDocs:
   description: More about Instill AI
-  url: https://www.instill-ai.dev/docs
+  url: https://docs.instill-ai.com

@@ -30,11 +30,12 @@ namespace Instill
         /// <summary>
         /// Trigger a pipeline<br/>
         /// Triggers the execution of a pipeline synchronously, i.e., the result is<br/>
-        /// sent back to the namespace right after the data is processed. This method is<br/>
-        /// intended for real-time inference when low latency is of concern.<br/>
-        /// The pipeline is identified by its resource name, formed by the parent namespace<br/>
-        /// and ID of the pipeline.<br/>
-        /// For more information, see [Run NamespacePipeline](https://instill-ai.dev/docs/pipeline/run-pipeline).
+        /// sent back to the namespace right after the data is processed. This method<br/>
+        /// is intended for real-time inference when low latency is of concern.<br/>
+        /// The pipeline is identified by its resource name, formed by the parent<br/>
+        /// namespace and ID of the pipeline.<br/>
+        /// For more information, see [Run<br/>
+        /// NamespacePipeline](https://instill-ai.dev/docs/pipeline/run-pipeline).
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="pipelineId"></param>
@@ -275,11 +276,12 @@ namespace Instill
         /// <summary>
         /// Trigger a pipeline<br/>
         /// Triggers the execution of a pipeline synchronously, i.e., the result is<br/>
-        /// sent back to the namespace right after the data is processed. This method is<br/>
-        /// intended for real-time inference when low latency is of concern.<br/>
-        /// The pipeline is identified by its resource name, formed by the parent namespace<br/>
-        /// and ID of the pipeline.<br/>
-        /// For more information, see [Run NamespacePipeline](https://instill-ai.dev/docs/pipeline/run-pipeline).
+        /// sent back to the namespace right after the data is processed. This method<br/>
+        /// is intended for real-time inference when low latency is of concern.<br/>
+        /// The pipeline is identified by its resource name, formed by the parent<br/>
+        /// namespace and ID of the pipeline.<br/>
+        /// For more information, see [Run<br/>
+        /// NamespacePipeline](https://instill-ai.dev/docs/pipeline/run-pipeline).
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="pipelineId"></param>

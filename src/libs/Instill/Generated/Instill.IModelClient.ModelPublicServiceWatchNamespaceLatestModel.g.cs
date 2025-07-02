@@ -6,9 +6,9 @@ namespace Instill
     {
         /// <summary>
         /// Watch the state of the latest model version<br/>
-        /// Returns the state of the latest model version. The model resource allocation and scaling actions<br/>
-        /// take some time, during which a model will be in various state. This endpoint<br/>
-        /// allows clients to track the state.
+        /// Returns the state of the latest model version. The model resource<br/>
+        /// allocation and scaling actions take some time, during which a model will be<br/>
+        /// in various state. This endpoint allows clients to track the state.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="modelId"></param>

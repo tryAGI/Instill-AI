@@ -23,7 +23,8 @@ namespace Instill
 
         /// <summary>
         /// Get the remaining Instill Credit<br/>
-        /// This endpoint returns the remaining [Instill Credit](https://instill-ai.dev/docs/cloud/credit) of a given user or<br/>
+        /// This endpoint returns the remaining [Instill<br/>
+        /// Credit](https://instill-ai.dev/docs/cloud/credit) of a given user or<br/>
         /// organization. The requested credit owner must be either the authenticated<br/>
         /// user or an organization they belong to.<br/>
         /// On Instill Core, this endpoint will return a 404 Not Found status.

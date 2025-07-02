@@ -6,7 +6,8 @@ namespace Instill
     {
         /// <summary>
         /// Get a model<br/>
-        /// Returns the detail of a model, accessing it by the model ID and its parent namespace.
+        /// Returns the detail of a model, accessing it by the model ID and its parent<br/>
+        /// namespace.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="modelId"></param>

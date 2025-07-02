@@ -28,8 +28,8 @@ namespace Instill
         /// <summary>
         /// Update a pipeline<br/>
         /// Udpates a pipeline, accessing it by its resource name, which is defined by<br/>
-        /// the parent namespace and the ID of the pipeline. The authenticated namespace must be<br/>
-        /// the parent of the pipeline in order to modify it.<br/>
+        /// the parent namespace and the ID of the pipeline. The authenticated<br/>
+        /// namespace must be the parent of the pipeline in order to modify it.<br/>
         /// In REST requests, only the supplied pipeline fields will be taken into<br/>
         /// account when updating the resource.
         /// </summary>
@@ -262,8 +262,8 @@ namespace Instill
         /// <summary>
         /// Update a pipeline<br/>
         /// Udpates a pipeline, accessing it by its resource name, which is defined by<br/>
-        /// the parent namespace and the ID of the pipeline. The authenticated namespace must be<br/>
-        /// the parent of the pipeline in order to modify it.<br/>
+        /// the parent namespace and the ID of the pipeline. The authenticated<br/>
+        /// namespace must be the parent of the pipeline in order to modify it.<br/>
         /// In REST requests, only the supplied pipeline fields will be taken into<br/>
         /// account when updating the resource.
         /// </summary>

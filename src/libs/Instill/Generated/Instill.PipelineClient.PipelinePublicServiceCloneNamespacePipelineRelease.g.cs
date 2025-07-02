@@ -29,8 +29,8 @@ namespace Instill
 
         /// <summary>
         /// Clone a pipeline release<br/>
-        /// Clones a pipeline release owned by a namespace. The new pipeline may have a different<br/>
-        /// parent, and this can be either a namespace or an organization.
+        /// Clones a pipeline release owned by a namespace. The new pipeline may have a<br/>
+        /// different parent, and this can be either a namespace or an organization.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="pipelineId"></param>
@@ -260,8 +260,8 @@ namespace Instill
 
         /// <summary>
         /// Clone a pipeline release<br/>
-        /// Clones a pipeline release owned by a namespace. The new pipeline may have a different<br/>
-        /// parent, and this can be either a namespace or an organization.
+        /// Clones a pipeline release owned by a namespace. The new pipeline may have a<br/>
+        /// different parent, and this can be either a namespace or an organization.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="pipelineId"></param>

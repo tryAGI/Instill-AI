@@ -4,27 +4,28 @@
 namespace Instill
 {
     /// <summary>
-    /// - CHUNK_TYPE_TEXT: text<br/>
-    ///  - CHUNK_TYPE_IMAGE: image<br/>
-    ///  - CHUNK_TYPE_AUDIO: audio<br/>
-    ///  - CHUNK_TYPE_VIDEO: video
+    /// ChunkType contains the different types of a chunk.<br/>
+    ///  - CHUNK_TYPE_TEXT: Text.<br/>
+    ///  - CHUNK_TYPE_IMAGE: Image.<br/>
+    ///  - CHUNK_TYPE_AUDIO: Audio.<br/>
+    ///  - CHUNK_TYPE_VIDEO: Video.
     /// </summary>
     public enum ChunkType
     {
         /// <summary>
-        /// text
+        /// Text.
         /// </summary>
         TEXT,
         /// <summary>
-        /// image
+        /// Image.
         /// </summary>
         IMAGE,
         /// <summary>
-        /// audio
+        /// Audio.
         /// </summary>
         AUDIO,
         /// <summary>
-        /// video
+        /// Video.
         /// </summary>
         VIDEO,
     }

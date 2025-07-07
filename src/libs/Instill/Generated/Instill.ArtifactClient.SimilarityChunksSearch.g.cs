@@ -29,7 +29,7 @@ namespace Instill
 
         /// <summary>
         /// Retrieve similar chunks<br/>
-        /// Returns the similar chunks.
+        /// Returns the top-K most similar chunks to a text prompt.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>
@@ -269,16 +269,30 @@ namespace Instill
 
         /// <summary>
         /// Retrieve similar chunks<br/>
-        /// Returns the similar chunks.
+        /// Returns the top-K most similar chunks to a text prompt.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>
         /// <param name="instillRequesterUid"></param>
-        /// <param name="textPrompt"></param>
-        /// <param name="topK"></param>
-        /// <param name="fileName"></param>
-        /// <param name="contentType"></param>
-        /// <param name="fileMediaType"></param>
+        /// <param name="textPrompt">
+        /// Text prompt to look for similarities.
+        /// </param>
+        /// <param name="topK">
+        /// Top K. Default value: 5.
+        /// </param>
+        /// <param name="fileName">
+        /// File name. This field is deprecated as the file ID isn't a unique<br/>
+        /// identifier within a catalog. The file UID should be used, instead.
+        /// </param>
+        /// <param name="contentType">
+        /// Content type.
+        /// </param>
+        /// <param name="fileMediaType">
+        /// File type.
+        /// </param>
+        /// <param name="fileUid">
+        /// File UID.
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
 #if NET8_0_OR_GREATER
@@ -293,6 +307,7 @@ namespace Instill
             string? fileName = default,
             global::Instill.ContentType? contentType = default,
             global::Instill.FileMediaType? fileMediaType = default,
+            string? fileUid = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Instill.SimilarityChunksSearchBody
@@ -302,6 +317,7 @@ namespace Instill
                 FileName = fileName,
                 ContentType = contentType,
                 FileMediaType = fileMediaType,
+                FileUid = fileUid,
             };
 
             return await SimilarityChunksSearchAsync(

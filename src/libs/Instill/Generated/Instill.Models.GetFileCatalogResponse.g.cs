@@ -4,30 +4,35 @@
 namespace Instill
 {
     /// <summary>
-    /// 
+    /// GetFileCatalogResponse contains the processing outputs of a file in a<br/>
+    /// catalog.
     /// </summary>
     public sealed partial class GetFileCatalogResponse
     {
         /// <summary>
-        /// 
+        /// Base-64 representation of the original file contents.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("originalData")]
         public string? OriginalData { get; set; }
 
         /// <summary>
-        /// 
+        /// File metadata.<br/>
+        /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
-        public global::Instill.Metadata? Metadata { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("fileMetadata")]
+        public global::Instill.FileMetadata? FileMetadata { get; set; }
 
         /// <summary>
-        /// 
+        /// Converted text.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
         public global::Instill.Text? Text { get; set; }
 
         /// <summary>
-        /// 
+        /// Chunks.<br/>
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chunks")]
         public global::System.Collections.Generic.IList<global::Instill.GetFileCatalogResponseChunk>? Chunks { get; set; }
@@ -41,21 +46,33 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="GetFileCatalogResponse" /> class.
         /// </summary>
-        /// <param name="originalData"></param>
-        /// <param name="metadata"></param>
-        /// <param name="text"></param>
-        /// <param name="chunks"></param>
+        /// <param name="originalData">
+        /// Base-64 representation of the original file contents.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="fileMetadata">
+        /// File metadata.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="text">
+        /// Converted text.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="chunks">
+        /// Chunks.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GetFileCatalogResponse(
             string? originalData,
-            global::Instill.Metadata? metadata,
+            global::Instill.FileMetadata? fileMetadata,
             global::Instill.Text? text,
             global::System.Collections.Generic.IList<global::Instill.GetFileCatalogResponseChunk>? chunks)
         {
             this.OriginalData = originalData;
-            this.Metadata = metadata;
+            this.FileMetadata = fileMetadata;
             this.Text = text;
             this.Chunks = chunks;
         }

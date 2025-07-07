@@ -2290,30 +2290,26 @@ paths:
     get:
       tags:
         - Artifact
-      summary: Get file catalog
-      description: Get the catalog file.
+      summary: Get the catalog file.
+      description: "Returns a view of the file within the catalog, with the text and chunks it\ngenerated after being processed."
       operationId: GetFileCatalog
       parameters:
         - name: namespaceId
           in: path
-          description: id of the namespace
+          description: Namespace ID.
           required: true
           schema:
             type: string
         - name: catalogId
           in: path
-          description: id of the catalog
+          description: Catalog ID.
           required: true
-          schema:
-            type: string
-        - name: fileId
-          in: query
-          description: id of the file(i.e. file name)
           schema:
             type: string
         - name: fileUid
           in: query
-          description: Uid of the file
+          description: File UID.
+          required: true
           schema:
             type: string
       responses:
@@ -2903,18 +2899,18 @@ paths:
       tags:
         - Artifact
       summary: Retrieve similar chunks
-      description: Returns the similar chunks.
+      description: Returns the top-K most similar chunks to a text prompt.
       operationId: SimilarityChunksSearch
       parameters:
         - name: namespaceId
           in: path
-          description: owner/namespace id
+          description: ID of the namespace owning the catalog.
           required: true
           schema:
             type: string
         - name: catalogId
           in: path
-          description: catalog id
+          description: ID of the catalog.
           required: true
           schema:
             type: string
@@ -8305,14 +8301,13 @@ components:
       type: string
       description: "Namespace contains information about the availability of a namespace.\n\n - NAMESPACE_AVAILABLE: Available.\n - NAMESPACE_USER: Namespace belongs to a user.\n - NAMESPACE_ORGANIZATION: Namespace belongs to an organization.\n - NAMESPACE_RESERVED: Reserved."
     ChunkType:
-      title: chunk type
       enum:
         - CHUNK_TYPE_TEXT
         - CHUNK_TYPE_IMAGE
         - CHUNK_TYPE_AUDIO
         - CHUNK_TYPE_VIDEO
       type: string
-      description: "- CHUNK_TYPE_TEXT: text\n - CHUNK_TYPE_IMAGE: image\n - CHUNK_TYPE_AUDIO: audio\n - CHUNK_TYPE_VIDEO: video"
+      description: "ChunkType contains the different types of a chunk.\n\n - CHUNK_TYPE_TEXT: Text.\n - CHUNK_TYPE_IMAGE: Image.\n - CHUNK_TYPE_AUDIO: Audio.\n - CHUNK_TYPE_VIDEO: Video."
     Citation:
       title: Citation message
       type: object
@@ -9358,6 +9353,38 @@ components:
         - FILE_MEDIA_TYPE_VIDEO
       type: string
       description: "FileMediaType describes the type of a catalog file.\n\n - FILE_MEDIA_TYPE_DOCUMENT: Document.\n - FILE_MEDIA_TYPE_IMAGE: Image.\n - FILE_MEDIA_TYPE_AUDIO: Audio.\n - FILE_MEDIA_TYPE_VIDEO: Video."
+    FileMetadata:
+      type: object
+      properties:
+        uid:
+          type: string
+          description: File UID.
+          readOnly: true
+        filename:
+          title: Filename
+          type: string
+          readOnly: true
+        fileType:
+          allOf:
+            - $ref: '#/components/schemas/FileType'
+          description: File Type.
+          readOnly: true
+        size:
+          type: string
+          description: Size.
+          format: int64
+          readOnly: true
+        createTime:
+          title: Creation timestamp
+          type: string
+          format: date-time
+          readOnly: true
+        processStatus:
+          allOf:
+            - $ref: '#/components/schemas/FileProcessStatus'
+          description: Processing status of the file.
+          readOnly: true
+      description: FileMetadata contains information about the file.
     FileOption:
       type: object
       properties:
@@ -9511,13 +9538,13 @@ components:
           readOnly: true
       description: GetCellResponse contains the requested cell.
     GetChatFileResponse:
-      title: GetChatFileResponse
       type: object
       properties:
         markdown:
           title: converted markdown content
           type: string
           format: byte
+      description: GetChatFileResponse ...
     GetChatResponse:
       title: GetChatResponse returns the chat
       type: object
@@ -9546,65 +9573,86 @@ components:
           description: Map of column UID to their definitions.
           readOnly: true
       description: GetColumnDefinitionsResponse contains the column definitions.
+    GetFileAsMarkdownResponse:
+      type: object
+      properties:
+        markdown:
+          type: string
+          description: The Markdown representation of a file.
+          readOnly: true
+      description: "GetFileAsMarkdownResponse contains a blob with the Markdown representation\nof a file."
     GetFileCatalogResponse:
-      title: GetFileCatalogResponse
       type: object
       properties:
         originalData:
-          title: original data is encoded in base64
           type: string
-        metadata:
-          title: file catalog
+          description: Base-64 representation of the original file contents.
+          readOnly: true
+        fileMetadata:
           allOf:
-            - $ref: '#/components/schemas/Metadata'
+            - $ref: '#/components/schemas/FileMetadata'
+          description: File metadata.
+          readOnly: true
         text:
-          title: text
           allOf:
             - $ref: '#/components/schemas/Text'
+          description: Converted text.
+          readOnly: true
         chunks:
-          title: chunks
           type: array
           items:
             $ref: '#/components/schemas/GetFileCatalogResponse.Chunk'
+          description: Chunks.
+          readOnly: true
+      description: "GetFileCatalogResponse contains the processing outputs of a file in a\ncatalog."
     GetFileCatalogResponse.Chunk:
-      title: chunk message
       type: object
       properties:
         uid:
-          title: chunk uid
           type: string
+          description: Chunk UID.
+          readOnly: true
         type:
-          title: 'chunk type. i.e. text, image, audio, and video'
           allOf:
             - $ref: '#/components/schemas/ChunkType'
-        startPos:
-          title: chunk start position
+          description: 'Chunk type. I.e: text, image, audio, video.'
+          readOnly: true
+        startPosition:
           type: integer
+          description: Start position in the text.
           format: int32
-        endPos:
-          title: chunk end position
+          readOnly: true
+        endPosition:
           type: integer
+          description: End position in the text.
           format: int32
+          readOnly: true
         content:
-          title: chunk content
           type: string
-        tokensNum:
-          title: chunk tokens num
+          description: Content.
+          readOnly: true
+        tokenCount:
           type: integer
+          description: Token count in the chunk.
           format: int32
+          readOnly: true
         embedding:
-          title: embedding. float32 array
           type: array
           items:
             type: number
             format: float
+          description: Chunk embedding.
+          readOnly: true
         createTime:
-          title: chunk create time
           type: string
+          description: Creation time of the chunk.
           format: date-time
+          readOnly: true
         retrievable:
-          title: chunk retrievable
           type: boolean
+          description: Retrievability of the chunk.
+          readOnly: true
+      description: Chunk is a delimited part of the converted text.
     GetFileSummaryResponse:
       title: get file summary response
       type: object
@@ -10940,32 +10988,6 @@ components:
         - MESSAGE_TYPE_TEXT
       type: string
       description: '- MESSAGE_TYPE_TEXT: text'
-    Metadata:
-      title: metadata
-      type: object
-      properties:
-        fileUid:
-          title: file uid
-          type: string
-        fileId:
-          title: file id
-          type: string
-        fileType:
-          title: file type
-          allOf:
-            - $ref: '#/components/schemas/FileType'
-        fileSize:
-          title: file size in bytes
-          type: string
-          format: int64
-        fileUploadTime:
-          title: upload time
-          type: string
-          format: date-time
-        fileProcessStatus:
-          title: file process status
-          allOf:
-            - $ref: '#/components/schemas/FileProcessStatus'
     Method:
       enum:
         - METHOD_DICTIONARY
@@ -12311,23 +12333,26 @@ components:
       type: object
       properties:
         textPrompt:
-          title: text prompt
           type: string
+          description: Text prompt to look for similarities.
         topK:
-          title: top k
           type: integer
+          description: 'Top K. Default value: 5.'
           format: int64
         fileName:
-          title: file name
           type: string
+          description: "File name. This field is deprecated as the file ID isn't a unique\nidentifier within a catalog. The file UID should be used, instead."
         contentType:
-          title: content type
           allOf:
             - $ref: '#/components/schemas/ContentType'
+          description: Content type.
         fileMediaType:
-          title: file type
           allOf:
             - $ref: '#/components/schemas/FileMediaType'
+          description: File type.
+        fileUid:
+          type: string
+          description: File UID.
     SimilarityChunksSearchResponse:
       title: Similar chunk search response
       type: object
@@ -12612,29 +12637,34 @@ components:
       type: object
       description: TestNamespaceConnectionResponse is an empty response.
     Text:
-      title: text message
       type: object
       properties:
-        pipelineIds:
-          title: pipelines
+        pipelines:
           type: array
           items:
             type: string
-        transformedContent:
-          title: transformed content
+          description: Pipelines used to process the file.
+          readOnly: true
+        content:
           type: string
-        transformedContentChunkNum:
-          title: transformed content chunk number
+          description: Text representation of the file.
+          readOnly: true
+        chunkCount:
+          type: integer
+          description: Chunk count in the text.
+          format: int32
+          readOnly: true
+        tokenCount:
+          title: Token count in the text
           type: integer
           format: int32
-        transformedContentTokenNum:
-          title: transformed content token number
-          type: integer
-          format: int32
-        transformedContentUpdateTime:
-          title: transformed content update time
+          readOnly: true
+        updateTime:
           type: string
+          description: Last update timestamp for the text.
           format: date-time
+          readOnly: true
+      description: Text contains the text representation of the file.
     Trace:
       type: object
       properties:

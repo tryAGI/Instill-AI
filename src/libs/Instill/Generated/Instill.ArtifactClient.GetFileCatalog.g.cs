@@ -9,15 +9,13 @@ namespace Instill
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
             ref string catalogId,
-            ref string? fileId,
-            ref string? fileUid);
+            ref string fileUid);
         partial void PrepareGetFileCatalogRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
             string catalogId,
-            string? fileId,
-            string? fileUid);
+            string fileUid);
         partial void ProcessGetFileCatalogResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -28,12 +26,12 @@ namespace Instill
             ref string content);
 
         /// <summary>
-        /// Get file catalog<br/>
-        /// Get the catalog file.
+        /// Get the catalog file.<br/>
+        /// Returns a view of the file within the catalog, with the text and chunks it<br/>
+        /// generated after being processed.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>
-        /// <param name="fileId"></param>
         /// <param name="fileUid"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
@@ -43,8 +41,7 @@ namespace Instill
         public async global::System.Threading.Tasks.Task<global::Instill.GetFileCatalogResponse> GetFileCatalogAsync(
             string namespaceId,
             string catalogId,
-            string? fileId = default,
-            string? fileUid = default,
+            string fileUid,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
@@ -53,15 +50,13 @@ namespace Instill
                 httpClient: HttpClient,
                 namespaceId: ref namespaceId,
                 catalogId: ref catalogId,
-                fileId: ref fileId,
                 fileUid: ref fileUid);
 
             var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 
-                .AddOptionalParameter("fileId", fileId) 
-                .AddOptionalParameter("fileUid", fileUid) 
+                .AddRequiredParameter("fileUid", fileUid) 
                 ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -96,7 +91,6 @@ namespace Instill
                 httpRequestMessage: __httpRequest,
                 namespaceId: namespaceId,
                 catalogId: catalogId,
-                fileId: fileId,
                 fileUid: fileUid);
 
             using var __response = await HttpClient.SendAsync(

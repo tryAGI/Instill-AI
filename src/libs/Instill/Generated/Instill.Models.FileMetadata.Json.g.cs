@@ -2,7 +2,7 @@
 
 namespace Instill
 {
-    public sealed partial class Metadata
+    public sealed partial class FileMetadata
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -34,14 +34,14 @@ namespace Instill
         /// <summary>
         /// Deserializes a JSON string using the provided JsonSerializerContext.
         /// </summary>
-        public static global::Instill.Metadata? FromJson(
+        public static global::Instill.FileMetadata? FromJson(
             string json,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
-                typeof(global::Instill.Metadata),
-                jsonSerializerContext) as global::Instill.Metadata;
+                typeof(global::Instill.FileMetadata),
+                jsonSerializerContext) as global::Instill.FileMetadata;
         }
 
         /// <summary>
@@ -51,11 +51,11 @@ namespace Instill
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::Instill.Metadata? FromJson(
+        public static global::Instill.FileMetadata? FromJson(
             string json,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Instill.Metadata>(
+            return global::System.Text.Json.JsonSerializer.Deserialize<global::Instill.FileMetadata>(
                 json,
                 jsonSerializerOptions);
         }
@@ -63,14 +63,14 @@ namespace Instill
         /// <summary>
         /// Deserializes a JSON stream using the provided JsonSerializerContext.
         /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Instill.Metadata?> FromJsonStreamAsync(
+        public static async global::System.Threading.Tasks.ValueTask<global::Instill.FileMetadata?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
-                typeof(global::Instill.Metadata),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Instill.Metadata;
+                typeof(global::Instill.FileMetadata),
+                jsonSerializerContext).ConfigureAwait(false)) as global::Instill.FileMetadata;
         }
 
         /// <summary>
@@ -80,11 +80,11 @@ namespace Instill
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::System.Threading.Tasks.ValueTask<global::Instill.Metadata?> FromJsonStreamAsync(
+        public static global::System.Threading.Tasks.ValueTask<global::Instill.FileMetadata?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Instill.Metadata?>(
+            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Instill.FileMetadata?>(
                 jsonStream,
                 jsonSerializerOptions);
         }

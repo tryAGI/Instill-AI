@@ -4,7 +4,8 @@
 namespace Instill
 {
     /// <summary>
-    /// OrganizationSubscription details describe the plan (i.e., features) an organization has access to.
+    /// OrganizationSubscription details describe the plan of an organization (i.e.<br/>
+    /// the features and purchased seats it has access to).
     /// </summary>
     public sealed partial class OrganizationSubscription
     {

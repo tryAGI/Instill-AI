@@ -6,7 +6,10 @@ namespace Instill
     {
         /// <summary>
         /// Get the subscription of an organization<br/>
-        /// Returns the subscription details of an organization.
+        /// Returns the subscription details for an organization's team plan. If<br/>
+        /// several subscriptions exist (e.g. if the organization has upgraded to and<br/>
+        /// downgraded from a plan several times), the most recent subscription is<br/>
+        /// returned.
         /// </summary>
         /// <param name="organizationId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

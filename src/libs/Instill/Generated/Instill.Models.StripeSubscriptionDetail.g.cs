@@ -4,7 +4,7 @@
 namespace Instill
 {
     /// <summary>
-    /// StripeSubscriptionDetail describes the details of a subscription in Stripe.
+    /// StripeSubscriptionDetail ontains the details of a subscription in Stripe.
     /// </summary>
     public sealed partial class StripeSubscriptionDetail
     {

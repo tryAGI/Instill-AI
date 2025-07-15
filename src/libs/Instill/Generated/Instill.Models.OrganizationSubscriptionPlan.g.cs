@@ -5,22 +5,20 @@ namespace Instill
 {
     /// <summary>
     /// Enumerates the plan types for the organization subscription.<br/>
-    ///  - PLAN_FREE: Free plan.<br/>
-    ///  - PLAN_TEAM: Team plan.<br/>
-    ///  - PLAN_ENTERPRISE: Enterprise plan.
+    ///  - PLAN_TEAM: The team plan is a subscription that offers collaboration features for<br/>
+    /// small teams.<br/>
+    ///  - PLAN_ENTERPRISE: The enterprise plan is a subscription for large teams and/or high-volume<br/>
+    /// deployments. This kind of subscription doesn't contain Stripe<br/>
+    /// subscription details.
     /// </summary>
     public enum OrganizationSubscriptionPlan
     {
         /// <summary>
-        /// Free plan.
-        /// </summary>
-        PLANFREE,
-        /// <summary>
-        /// Team plan.
+        /// The team plan is a subscription that offers collaboration features for
         /// </summary>
         PLANTEAM,
         /// <summary>
-        /// Enterprise plan.
+        /// The enterprise plan is a subscription for large teams and/or high-volume
         /// </summary>
         PLANENTERPRISE,
     }
@@ -37,7 +35,6 @@ namespace Instill
         {
             return value switch
             {
-                OrganizationSubscriptionPlan.PLANFREE => "PLAN_FREE",
                 OrganizationSubscriptionPlan.PLANTEAM => "PLAN_TEAM",
                 OrganizationSubscriptionPlan.PLANENTERPRISE => "PLAN_ENTERPRISE",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -50,7 +47,6 @@ namespace Instill
         {
             return value switch
             {
-                "PLAN_FREE" => OrganizationSubscriptionPlan.PLANFREE,
                 "PLAN_TEAM" => OrganizationSubscriptionPlan.PLANTEAM,
                 "PLAN_ENTERPRISE" => OrganizationSubscriptionPlan.PLANENTERPRISE,
                 _ => null,

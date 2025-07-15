@@ -4,7 +4,8 @@
 namespace Instill
 {
     /// <summary>
-    /// GetAuthenticatedUserSubscriptionResponse contains the requested subscription.
+    /// GetAuthenticatedUserSubscriptionResponse contains the requested<br/>
+    /// subscription.
     /// </summary>
     public sealed partial class GetAuthenticatedUserSubscriptionResponse
     {

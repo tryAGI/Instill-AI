@@ -5,17 +5,15 @@ namespace Instill
 {
     /// <summary>
     /// Enumerates the plan types for the user subscription.<br/>
-    ///  - PLAN_FREE: Free plan.<br/>
-    ///  - PLAN_STARTER: Starter plan.
+    ///  - PLAN_STARTER: The starter plan is an individual plan for developers and early-stage<br/>
+    /// projects. This plan offers a free trial period that deoesn't require the<br/>
+    /// customer to have a default payment method. After the free trial period<br/>
+    /// is over, the subscription state will transition from trialing to paused.
     /// </summary>
     public enum UserSubscriptionPlan
     {
         /// <summary>
-        /// Free plan.
-        /// </summary>
-        PLANFREE,
-        /// <summary>
-        /// Starter plan.
+        /// The starter plan is an individual plan for developers and early-stage
         /// </summary>
         PLANSTARTER,
     }
@@ -32,7 +30,6 @@ namespace Instill
         {
             return value switch
             {
-                UserSubscriptionPlan.PLANFREE => "PLAN_FREE",
                 UserSubscriptionPlan.PLANSTARTER => "PLAN_STARTER",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -44,7 +41,6 @@ namespace Instill
         {
             return value switch
             {
-                "PLAN_FREE" => UserSubscriptionPlan.PLANFREE,
                 "PLAN_STARTER" => UserSubscriptionPlan.PLANSTARTER,
                 _ => null,
             };

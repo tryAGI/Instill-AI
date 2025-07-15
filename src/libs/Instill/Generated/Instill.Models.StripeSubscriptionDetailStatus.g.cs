@@ -4,48 +4,56 @@
 namespace Instill
 {
     /// <summary>
-    /// Enumerates the status types for the user's subscription.<br/>
-    ///  - STATUS_INCOMPLETE: Incomplete.<br/>
-    ///  - STATUS_INCOMPLETE_EXPIRED: Incomplete Expired.<br/>
-    ///  - STATUS_TRIALING: Trialing.<br/>
-    ///  - STATUS_ACTIVE: Active.<br/>
-    ///  - STATUS_PAST_DUE: Past due.<br/>
-    ///  - STATUS_CANCELED: Canceled.<br/>
-    ///  - STATUS_UNPAID: Unpaid.<br/>
-    ///  - STATUS_PAUSED: Paused.
+    /// Enumerates the status types for the user's subscription. Please refer to<br/>
+    /// the [Stripe<br/>
+    /// documentation](https://docs.stripe.com/billing/subscriptions/overview#subscription-statuses)<br/>
+    /// for more details.<br/>
+    ///  - STATUS_INCOMPLETE: The customer must do a payment-related action to activate the<br/>
+    /// subscription.<br/>
+    ///  - STATUS_INCOMPLETE_EXPIRED: The subscription failed to activate because no successful payments were<br/>
+    /// registered in time.<br/>
+    ///  - STATUS_TRIALING: The subscription is currently in a trial period.<br/>
+    ///  - STATUS_ACTIVE: The subscription is in good standing.<br/>
+    ///  - STATUS_PAST_DUE: Payment on the latest finalised invoice either failed or wasn’t<br/>
+    /// attempted.<br/>
+    ///  - STATUS_CANCELED: The subscription was cancelled by either the user or the admins.<br/>
+    ///  - STATUS_UNPAID: The latest invoice hasn’t been paid but the subscription remains in<br/>
+    /// place.<br/>
+    ///  - STATUS_PAUSED: The subscription has ended its trial period without a default payment<br/>
+    /// method.
     /// </summary>
     public enum StripeSubscriptionDetailStatus
     {
         /// <summary>
-        /// Incomplete.
+        /// The customer must do a payment-related action to activate the
         /// </summary>
         STATUSINCOMPLETE,
         /// <summary>
-        /// Incomplete Expired.
+        /// The subscription failed to activate because no successful payments were
         /// </summary>
         STATUSINCOMPLETEEXPIRED,
         /// <summary>
-        /// Trialing.
+        /// The subscription is currently in a trial period.
         /// </summary>
         STATUSTRIALING,
         /// <summary>
-        /// Active.
+        /// The subscription is in good standing.
         /// </summary>
         STATUSACTIVE,
         /// <summary>
-        /// Past due.
+        /// Payment on the latest finalised invoice either failed or wasn’t
         /// </summary>
         STATUSPASTDUE,
         /// <summary>
-        /// Canceled.
+        /// The subscription was cancelled by either the user or the admins.
         /// </summary>
         STATUSCANCELED,
         /// <summary>
-        /// Unpaid.
+        /// The latest invoice hasn’t been paid but the subscription remains in
         /// </summary>
         STATUSUNPAID,
         /// <summary>
-        /// Paused.
+        /// The subscription has ended its trial period without a default payment
         /// </summary>
         STATUSPAUSED,
     }

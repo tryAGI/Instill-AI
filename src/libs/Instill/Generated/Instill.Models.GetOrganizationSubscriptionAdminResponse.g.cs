@@ -4,12 +4,13 @@
 namespace Instill
 {
     /// <summary>
-    /// 
+    /// GetOrganizationSubscriptionAdminResponse contains the requested<br/>
+    /// subscription.
     /// </summary>
     public sealed partial class GetOrganizationSubscriptionAdminResponse
     {
         /// <summary>
-        /// 
+        /// The subscription resource.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("subscription")]
         public global::Instill.OrganizationSubscription? Subscription { get; set; }
@@ -23,7 +24,9 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="GetOrganizationSubscriptionAdminResponse" /> class.
         /// </summary>
-        /// <param name="subscription"></param>
+        /// <param name="subscription">
+        /// The subscription resource.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

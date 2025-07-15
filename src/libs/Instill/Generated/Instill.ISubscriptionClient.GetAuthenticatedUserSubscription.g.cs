@@ -6,7 +6,10 @@ namespace Instill
     {
         /// <summary>
         /// Get the subscription of the authenticated user<br/>
-        /// Returns the subscription details of the authenticated user.
+        /// Returns the subscription details for the authenticated user's individual<br/>
+        /// plan. If several subscriptions exist (e.g. if the user upgraded to and<br/>
+        /// downgraded from a plan several times), the most recent subscription is<br/>
+        /// returned.
         /// </summary>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>

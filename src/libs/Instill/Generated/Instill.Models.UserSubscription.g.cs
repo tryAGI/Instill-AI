@@ -4,7 +4,8 @@
 namespace Instill
 {
     /// <summary>
-    /// UserSubscription details describe the plan (i.e., features) a user has access to.
+    /// UserSubscription details describe the plan of an individual user (i.e., the<br/>
+    /// features they have access to).
     /// </summary>
     public sealed partial class UserSubscription
     {

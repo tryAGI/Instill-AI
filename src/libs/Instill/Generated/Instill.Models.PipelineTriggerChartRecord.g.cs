@@ -6,13 +6,12 @@ namespace Instill
     /// <summary>
     /// PipelineTriggerChartRecord represents a timeline of pipeline triggers. It<br/>
     /// contains a collection of (timestamp, count) pairs that represent the total<br/>
-    /// pipeline triggers in a given time bucket.<br/>
-    /// pipeline ID and time frame.
+    /// pipeline triggers in a given time bucket.
     /// </summary>
     public sealed partial class PipelineTriggerChartRecord
     {
         /// <summary>
-        /// This field will be present present when the information is grouped by pipeline.<br/>
+        /// This field will be present when the information is grouped by pipeline.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("pipelineId")]
@@ -49,7 +48,7 @@ namespace Instill
         /// Initializes a new instance of the <see cref="PipelineTriggerChartRecord" /> class.
         /// </summary>
         /// <param name="pipelineId">
-        /// This field will be present present when the information is grouped by pipeline.<br/>
+        /// This field will be present when the information is grouped by pipeline.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="timeBuckets">

@@ -11,7 +11,7 @@ namespace Instill
     public sealed partial class ModelTriggerChartRecord
     {
         /// <summary>
-        /// This field will be present present when the information is grouped by model.<br/>
+        /// This field will be present when the information is grouped by model.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("modelId")]
@@ -48,7 +48,7 @@ namespace Instill
         /// Initializes a new instance of the <see cref="ModelTriggerChartRecord" /> class.
         /// </summary>
         /// <param name="modelId">
-        /// This field will be present present when the information is grouped by model.<br/>
+        /// This field will be present when the information is grouped by model.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="timeBuckets">

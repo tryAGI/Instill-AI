@@ -26,7 +26,7 @@ namespace Instill
             ref string content);
 
         /// <summary>
-        /// Get a an organization membership<br/>
+        /// Get an organization membership<br/>
         /// Returns the details of a user membership within an organization.
         /// </summary>
         /// <param name="organizationId"></param>

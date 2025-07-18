@@ -4,7 +4,7 @@
 namespace Instill
 {
     /// <summary>
-    /// StripeSubscriptionDetail ontains the details of a subscription in Stripe.
+    /// StripeSubscriptionDetail contains the details of a subscription in Stripe.
     /// </summary>
     public sealed partial class StripeSubscriptionDetail
     {
@@ -66,6 +66,13 @@ namespace Instill
         public string? Description { get; set; }
 
         /// <summary>
+        /// Timestamp indicating when the end of the current subscription period.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("currentPeriodEnd")]
+        public int? CurrentPeriodEnd { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -106,6 +113,10 @@ namespace Instill
         /// Description of the subscription.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="currentPeriodEnd">
+        /// Timestamp indicating when the end of the current subscription period.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -117,7 +128,8 @@ namespace Instill
             int? canceledAt,
             int? trialEnd,
             global::Instill.StripeSubscriptionDetailStatus? status,
-            string? description)
+            string? description,
+            int? currentPeriodEnd)
         {
             this.ProductName = productName;
             this.Id = id;
@@ -127,6 +139,7 @@ namespace Instill
             this.TrialEnd = trialEnd;
             this.Status = status;
             this.Description = description;
+            this.CurrentPeriodEnd = currentPeriodEnd;
         }
 
         /// <summary>

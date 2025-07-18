@@ -3,70 +3,47 @@
 
 namespace Instill
 {
-    public partial class NamespaceClient
+    public partial class SubscriptionClient
     {
-        partial void PrepareUpdateOrganizationMembershipArguments(
+        partial void PrepareListSubscriptionFreeTrialsArguments(
+            global::System.Net.Http.HttpClient httpClient);
+        partial void PrepareListSubscriptionFreeTrialsRequest(
             global::System.Net.Http.HttpClient httpClient,
-            ref string organizationId,
-            ref string userId,
-            ref string updateMask,
-            global::Instill.OrganizationMembership request);
-        partial void PrepareUpdateOrganizationMembershipRequest(
-            global::System.Net.Http.HttpClient httpClient,
-            global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string organizationId,
-            string userId,
-            string updateMask,
-            global::Instill.OrganizationMembership request);
-        partial void ProcessUpdateOrganizationMembershipResponse(
+            global::System.Net.Http.HttpRequestMessage httpRequestMessage);
+        partial void ProcessListSubscriptionFreeTrialsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessUpdateOrganizationMembershipResponseContent(
+        partial void ProcessListSubscriptionFreeTrialsResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Update an organization membership<br/>
-        /// Updates a user membership within an organization.
+        /// List subscription free trials<br/>
+        /// Returns a list of the free trials of the authenticated user. The trials<br/>
+        /// might apply to different plans, including organization plans purchased by<br/>
+        /// the user.
         /// </summary>
-        /// <param name="organizationId"></param>
-        /// <param name="userId"></param>
-        /// <param name="updateMask"></param>
-        /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
 #if NET8_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
 #endif
-        public async global::System.Threading.Tasks.Task<global::Instill.UpdateOrganizationMembershipResponse> UpdateOrganizationMembershipAsync(
-            string organizationId,
-            string userId,
-            string updateMask,
-            global::Instill.OrganizationMembership request,
+        public async global::System.Threading.Tasks.Task<global::Instill.ListSubscriptionFreeTrialsResponse> ListSubscriptionFreeTrialsAsync(
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
-
             PrepareArguments(
                 client: HttpClient);
-            PrepareUpdateOrganizationMembershipArguments(
-                httpClient: HttpClient,
-                organizationId: ref organizationId,
-                userId: ref userId,
-                updateMask: ref updateMask,
-                request: request);
+            PrepareListSubscriptionFreeTrialsArguments(
+                httpClient: HttpClient);
 
             var __pathBuilder = new global::Instill.PathBuilder(
-                path: $"/v1beta/organizations/{organizationId}/memberships/{userId}",
+                path: "/v1beta/user/subscription-free-trials",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
-                .AddRequiredParameter("updateMask", updateMask) 
-                ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                method: global::System.Net.Http.HttpMethod.Put,
+                method: global::System.Net.Http.HttpMethod.Get,
                 requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
             __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -88,23 +65,13 @@ namespace Instill
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 }
             }
-            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
-            var __httpRequestContent = new global::System.Net.Http.StringContent(
-                content: __httpRequestContentBody,
-                encoding: global::System.Text.Encoding.UTF8,
-                mediaType: "application/json");
-            __httpRequest.Content = __httpRequestContent;
 
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareUpdateOrganizationMembershipRequest(
+            PrepareListSubscriptionFreeTrialsRequest(
                 httpClient: HttpClient,
-                httpRequestMessage: __httpRequest,
-                organizationId: organizationId,
-                userId: userId,
-                updateMask: updateMask,
-                request: request);
+                httpRequestMessage: __httpRequest);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
@@ -114,7 +81,7 @@ namespace Instill
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessUpdateOrganizationMembershipResponse(
+            ProcessListSubscriptionFreeTrialsResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
             // Returned when the client credentials are not valid.
@@ -204,7 +171,7 @@ namespace Instill
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessUpdateOrganizationMembershipResponseContent(
+                ProcessListSubscriptionFreeTrialsResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -214,7 +181,7 @@ namespace Instill
                     __response.EnsureSuccessStatusCode();
 
                     return
-                        global::Instill.UpdateOrganizationMembershipResponse.FromJson(__content, JsonSerializerContext) ??
+                        global::Instill.ListSubscriptionFreeTrialsResponse.FromJson(__content, JsonSerializerContext) ??
                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
                 catch (global::System.Exception __ex)
@@ -245,7 +212,7 @@ namespace Instill
                     ).ConfigureAwait(false);
 
                     return
-                        await global::Instill.UpdateOrganizationMembershipResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        await global::Instill.ListSubscriptionFreeTrialsResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
                 catch (global::System.Exception __ex)
@@ -262,41 +229,6 @@ namespace Instill
                     };
                 }
             }
-        }
-
-        /// <summary>
-        /// Update an organization membership<br/>
-        /// Updates a user membership within an organization.
-        /// </summary>
-        /// <param name="organizationId"></param>
-        /// <param name="userId"></param>
-        /// <param name="updateMask"></param>
-        /// <param name="role">
-        /// Role of the user in the organization.
-        /// </param>
-        /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
-#endif
-        public async global::System.Threading.Tasks.Task<global::Instill.UpdateOrganizationMembershipResponse> UpdateOrganizationMembershipAsync(
-            string organizationId,
-            string userId,
-            string updateMask,
-            string role,
-            global::System.Threading.CancellationToken cancellationToken = default)
-        {
-            var __request = new global::Instill.OrganizationMembership
-            {
-                Role = role,
-            };
-
-            return await UpdateOrganizationMembershipAsync(
-                organizationId: organizationId,
-                userId: userId,
-                updateMask: updateMask,
-                request: __request,
-                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

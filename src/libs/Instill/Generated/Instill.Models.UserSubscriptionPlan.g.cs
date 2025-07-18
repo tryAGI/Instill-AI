@@ -6,7 +6,7 @@ namespace Instill
     /// <summary>
     /// Enumerates the plan types for the user subscription.<br/>
     ///  - PLAN_STARTER: The starter plan is an individual plan for developers and early-stage<br/>
-    /// projects. This plan offers a free trial period that deoesn't require the<br/>
+    /// projects. This plan offers a free trial period that doesn't require the<br/>
     /// customer to have a default payment method. After the free trial period<br/>
     /// is over, the subscription state will transition from trialing to paused.
     /// </summary>

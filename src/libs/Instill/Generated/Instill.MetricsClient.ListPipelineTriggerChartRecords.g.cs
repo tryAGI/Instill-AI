@@ -29,7 +29,7 @@ namespace Instill
 
         /// <summary>
         /// List pipeline trigger time charts<br/>
-        /// Returns a timeline of pipline trigger counts for a given requester. The<br/>
+        /// Returns a timeline of pipeline trigger counts for a given requester. The<br/>
         /// response will contain one set of records (datapoints), representing the<br/>
         /// amount of triggers in a time bucket.
         /// </summary>

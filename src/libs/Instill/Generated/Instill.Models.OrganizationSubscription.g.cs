@@ -32,6 +32,13 @@ namespace Instill
         public int? UsedSeats { get; set; }
 
         /// <summary>
+        /// Number of available seats within the organization subscription.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("availableSeats")]
+        public int? AvailableSeats { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -52,17 +59,23 @@ namespace Instill
         /// Number of used seats within the organization subscription.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="availableSeats">
+        /// Number of available seats within the organization subscription.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public OrganizationSubscription(
             global::Instill.OrganizationSubscriptionPlan? plan,
             global::Instill.StripeSubscriptionDetail? detail,
-            int? usedSeats)
+            int? usedSeats,
+            int? availableSeats)
         {
             this.Plan = plan;
             this.Detail = detail;
             this.UsedSeats = usedSeats;
+            this.AvailableSeats = availableSeats;
         }
 
         /// <summary>

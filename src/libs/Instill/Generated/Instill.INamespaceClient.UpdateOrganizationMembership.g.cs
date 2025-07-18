@@ -5,7 +5,7 @@ namespace Instill
     public partial interface INamespaceClient
     {
         /// <summary>
-        /// Uppdate an organization membership<br/>
+        /// Update an organization membership<br/>
         /// Updates a user membership within an organization.
         /// </summary>
         /// <param name="organizationId"></param>
@@ -25,7 +25,7 @@ namespace Instill
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Uppdate an organization membership<br/>
+        /// Update an organization membership<br/>
         /// Updates a user membership within an organization.
         /// </summary>
         /// <param name="organizationId"></param>

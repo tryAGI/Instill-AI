@@ -3760,7 +3760,7 @@ paths:
     get:
       tags:
         - Namespace
-      summary: Get a an organization membership
+      summary: Get an organization membership
       description: Returns the details of a user membership within an organization.
       operationId: GetOrganizationMembership
       parameters:
@@ -3806,7 +3806,7 @@ paths:
     put:
       tags:
         - Namespace
-      summary: Uppdate an organization membership
+      summary: Update an organization membership
       description: Updates a user membership within an organization.
       operationId: UpdateOrganizationMembership
       parameters:
@@ -3929,7 +3929,7 @@ paths:
       parameters:
         - name: organizationId
           in: path
-          description: Oragnization ID
+          description: Organization ID
           required: true
           schema:
             type: string
@@ -3940,6 +3940,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetOrganizationSubscriptionResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: beta
+  /v1beta/user/subscription-free-trials:
+    get:
+      tags:
+        - Subscription
+      summary: List subscription free trials
+      description: "Returns a list of the free trials of the authenticated user. The trials\nmight apply to different plans, including organization plans purchased by\nthe user."
+      operationId: ListSubscriptionFreeTrials
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListSubscriptionFreeTrialsResponse'
         '401':
           description: Returned when the client credentials are not valid.
           content:
@@ -4186,7 +4212,7 @@ paths:
       tags:
         - Metrics
       summary: List pipeline trigger time charts
-      description: "Returns a timeline of pipline trigger counts for a given requester. The\nresponse will contain one set of records (datapoints), representing the\namount of triggers in a time bucket."
+      description: "Returns a timeline of pipeline trigger counts for a given requester. The\nresponse will contain one set of records (datapoints), representing the\namount of triggers in a time bucket."
       operationId: ListPipelineTriggerChartRecords
       parameters:
         - name: requesterId
@@ -9815,11 +9841,11 @@ components:
           readOnly: true
       description: GetOperationResponse contains the long-running operation details.
     GetOrganizationAdminResponse:
-      title: GetOrganizationAdminResponse represents a response for a organization resource
+      title: GetOrganizationAdminResponse represents a response for an organization resource
       type: object
       properties:
         organization:
-          title: A organization resource
+          title: An organization resource
           allOf:
             - $ref: '#/components/schemas/Organization'
     GetOrganizationMembershipResponse:
@@ -10793,6 +10819,16 @@ components:
           format: int32
           readOnly: true
       description: ListRowsResponse contains the requested rows.
+    ListSubscriptionFreeTrialsResponse:
+      type: object
+      properties:
+        freeTrials:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubscriptionFreeTrial'
+          description: A list of subscription free trials.
+          readOnly: true
+      description: ListSubscriptionFreeTrialsResponse contains the requested free trials.
     ListTableBuilderAgentMessagesResponse:
       title: ListTableBuilderAgentMessagesResponse returns a list of messages
       type: object
@@ -10934,11 +10970,11 @@ components:
           allOf:
             - $ref: '#/components/schemas/Model'
     LookUpOrganizationAdminResponse:
-      title: LookUpOrganizationAdminResponse represents a response for a organization resource by admin
+      title: LookUpOrganizationAdminResponse represents a response for an organization resource by admin
       type: object
       properties:
         organization:
-          title: A organization resource
+          title: An organization resource
           allOf:
             - $ref: '#/components/schemas/Organization'
     LookUpPipelineAdminResponse:
@@ -11267,7 +11303,7 @@ components:
       properties:
         modelId:
           type: string
-          description: This field will be present present when the information is grouped by model.
+          description: This field will be present when the information is grouped by model.
           readOnly: true
         timeBuckets:
           type: array
@@ -11611,6 +11647,11 @@ components:
           description: Number of used seats within the organization subscription.
           format: int32
           readOnly: true
+        availableSeats:
+          type: integer
+          description: Number of available seats within the organization subscription.
+          format: int32
+          readOnly: true
       description: "OrganizationSubscription details describe the plan of an organization (i.e.\nthe features and purchased seats it has access to)."
     OrganizationSubscription.Plan:
       enum:
@@ -11934,7 +11975,7 @@ components:
       properties:
         pipelineId:
           type: string
-          description: This field will be present present when the information is grouped by pipeline.
+          description: This field will be present when the information is grouped by pipeline.
           readOnly: true
         timeBuckets:
           type: array
@@ -11954,7 +11995,7 @@ components:
           type: string
           description: The ID of the namespace that requested the pipeline triggers.
           readOnly: true
-      description: "PipelineTriggerChartRecord represents a timeline of pipeline triggers. It\ncontains a collection of (timestamp, count) pairs that represent the total\npipeline triggers in a given time bucket.\npipeline ID and time frame."
+      description: "PipelineTriggerChartRecord represents a timeline of pipeline triggers. It\ncontains a collection of (timestamp, count) pairs that represent the total\npipeline triggers in a given time bucket."
     ProcessCatalogFilesRequest:
       title: Process Catalog File Request
       required:
@@ -12464,7 +12505,12 @@ components:
           type: string
           description: Description of the subscription.
           readOnly: true
-      description: StripeSubscriptionDetail ontains the details of a subscription in Stripe.
+        currentPeriodEnd:
+          type: integer
+          description: Timestamp indicating when the end of the current subscription period.
+          format: int32
+          readOnly: true
+      description: StripeSubscriptionDetail contains the details of a subscription in Stripe.
     StripeSubscriptionDetail.Status:
       enum:
         - STATUS_INCOMPLETE
@@ -12477,6 +12523,31 @@ components:
         - STATUS_PAUSED
       type: string
       description: "Enumerates the status types for the user's subscription. Please refer to\nthe [Stripe\ndocumentation](https://docs.stripe.com/billing/subscriptions/overview#subscription-statuses)\nfor more details.\n\n - STATUS_INCOMPLETE: The customer must do a payment-related action to activate the\nsubscription.\n - STATUS_INCOMPLETE_EXPIRED: The subscription failed to activate because no successful payments were\nregistered in time.\n - STATUS_TRIALING: The subscription is currently in a trial period.\n - STATUS_ACTIVE: The subscription is in good standing.\n - STATUS_PAST_DUE: Payment on the latest finalised invoice either failed or wasn’t\nattempted.\n - STATUS_CANCELED: The subscription was cancelled by either the user or the admins.\n - STATUS_UNPAID: The latest invoice hasn’t been paid but the subscription remains in\nplace.\n - STATUS_PAUSED: The subscription has ended its trial period without a default payment\nmethod."
+    SubscriptionFreeTrial:
+      title: "SubscriptionFreeTrial represents a free trial for either a user or\norganization subscription"
+      type: object
+      properties:
+        userPlan:
+          title: User subscription details
+          allOf:
+            - $ref: '#/components/schemas/UserSubscription.Plan'
+        organizationPlan:
+          title: Organization subscription details
+          allOf:
+            - $ref: '#/components/schemas/OrganizationSubscription.Plan'
+        ownerUid:
+          type: string
+          description: "The owner's unique identifier. This is the user (customer) that ordered\nthe subscription."
+          readOnly: true
+        organizationUid:
+          type: string
+          description: "If the subscription is a team plan, the value of this field will be set to\nthe organization UID that the subscription is linked to."
+          readOnly: true
+        trialEnd:
+          type: string
+          description: When the trial ends.
+          format: date-time
+          readOnly: true
     SubtractCreditAdminResponse:
       type: object
       properties:
@@ -13360,7 +13431,7 @@ components:
       enum:
         - PLAN_STARTER
       type: string
-      description: "Enumerates the plan types for the user subscription.\n\n - PLAN_STARTER: The starter plan is an individual plan for developers and early-stage\nprojects. This plan offers a free trial period that deoesn't require the\ncustomer to have a default payment method. After the free trial period\nis over, the subscription state will transition from trialing to paused."
+      description: "Enumerates the plan types for the user subscription.\n\n - PLAN_STARTER: The starter plan is an individual plan for developers and early-stage\nprojects. This plan offers a free trial period that doesn't require the\ncustomer to have a default payment method. After the free trial period\nis over, the subscription state will transition from trialing to paused."
     ValidateNamespacePipelineBody:
       type: object
       description: "ValidateNamespacePipelineRequest represents a request to validate a pipeline\nowned by a user."

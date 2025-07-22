@@ -11579,7 +11579,20 @@ components:
           allOf:
             - $ref: '#/components/schemas/mgmt.v1beta.Permission'
           readOnly: true
+        stats:
+          allOf:
+            - $ref: '#/components/schemas/Organization.Stats'
+          description: The organization stats.
+          readOnly: true
       description: "Organizations group several users. As entities, they can own resources such\nas pipelines or releases."
+    Organization.Stats:
+      type: object
+      properties:
+        userCount:
+          type: integer
+          description: The number of users in the organization.
+          format: int32
+      description: The Organization stats.
     OrganizationMembership:
       required:
         - role

@@ -69,6 +69,13 @@ namespace Instill
         public global::Instill.MgmtV1betaPermission? Permission { get; set; }
 
         /// <summary>
+        /// The organization stats.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("stats")]
+        public global::Instill.OrganizationStats? Stats { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -111,6 +118,10 @@ namespace Instill
         /// <param name="permission">
         /// Included only in responses
         /// </param>
+        /// <param name="stats">
+        /// The organization stats.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -122,7 +133,8 @@ namespace Instill
             global::System.DateTime? createTime,
             global::System.DateTime? updateTime,
             global::Instill.User? owner,
-            global::Instill.MgmtV1betaPermission? permission)
+            global::Instill.MgmtV1betaPermission? permission,
+            global::Instill.OrganizationStats? stats)
         {
             this.Profile = profile ?? throw new global::System.ArgumentNullException(nameof(profile));
             this.Name = name;
@@ -132,6 +144,7 @@ namespace Instill
             this.UpdateTime = updateTime;
             this.Owner = owner;
             this.Permission = permission;
+            this.Stats = stats;
         }
 
         /// <summary>

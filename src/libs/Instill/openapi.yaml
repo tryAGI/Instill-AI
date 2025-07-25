@@ -13981,6 +13981,10 @@ components:
           allOf:
             - $ref: '#/components/schemas/UserProfile'
           description: Profile.
+        email:
+          type: string
+          description: Email.
+          readOnly: true
       description: "User describes an individual that interacts with Instill AI. It doesn't\ncontain any private information about the user."
   securitySchemes:
     Bearer:

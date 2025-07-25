@@ -56,6 +56,13 @@ namespace Instill
         public global::Instill.UserProfile? Profile { get; set; }
 
         /// <summary>
+        /// Email.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("email")]
+        public string? Email { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -92,6 +99,10 @@ namespace Instill
         /// <param name="profile">
         /// Profile.
         /// </param>
+        /// <param name="email">
+        /// Email.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -101,7 +112,8 @@ namespace Instill
             string? id,
             global::System.DateTime? createTime,
             global::System.DateTime? updateTime,
-            global::Instill.UserProfile? profile)
+            global::Instill.UserProfile? profile,
+            string? email)
         {
             this.Name = name;
             this.Uid = uid;
@@ -109,6 +121,7 @@ namespace Instill
             this.CreateTime = createTime;
             this.UpdateTime = updateTime;
             this.Profile = profile;
+            this.Email = email;
         }
 
         /// <summary>

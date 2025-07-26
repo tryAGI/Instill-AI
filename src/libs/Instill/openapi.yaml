@@ -2214,6 +2214,199 @@ paths:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
       x-stage: alpha
+  '/v1alpha/namespaces/{namespaceId}/folders/{folderUid}/files':
+    get:
+      tags:
+        - Artifact
+      summary: List folder files
+      description: Returns a paginated list of folder files.
+      operationId: AgentPublicService_ListFolderFiles
+      parameters:
+        - name: namespaceId
+          in: path
+          description: The owner/namespace uid id.
+          required: true
+          schema:
+            type: string
+        - name: folderUid
+          in: path
+          description: The folder uid.
+          required: true
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          description: The page size (default:10; max 100).
+          schema:
+            type: integer
+            format: int32
+        - name: pageToken
+          in: query
+          description: The next page token(default from first file's token).
+          schema:
+            type: string
+        - name: filter.fileUids
+          in: query
+          description: The file uids.
+          style: form
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListFolderFilesResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
+    post:
+      tags:
+        - Artifact
+      summary: Create a file
+      description: Creates a file.
+      operationId: AgentPublicService_CreateFolderFile
+      parameters:
+        - name: namespaceId
+          in: path
+          description: owner/namespace uid
+          required: true
+          schema:
+            type: string
+        - name: folderUid
+          in: path
+          description: folder uid
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: file
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/File'
+        required: true
+        x-bodyName: file
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateFolderFileResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
+  '/v1alpha/namespaces/{namespaceId}/folders/{folderUid}/files/{fileUid}':
+    get:
+      tags:
+        - Artifact
+      summary: Get catalog file
+      description: Gets the file of a catalog.
+      operationId: AgentPublicService_GetFolderFile
+      parameters:
+        - name: namespaceId
+          in: path
+          description: The namespace id.
+          required: true
+          schema:
+            type: string
+        - name: folderUid
+          in: path
+          description: The folder uid.
+          required: true
+          schema:
+            type: string
+        - name: fileUid
+          in: path
+          description: The file uid.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFolderFileResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
+    delete:
+      tags:
+        - Artifact
+      summary: Delete a file
+      description: Deletes a file.
+      operationId: AgentPublicService_DeleteFolderFile
+      parameters:
+        - name: namespaceId
+          in: path
+          description: The namespace id.
+          required: true
+          schema:
+            type: string
+        - name: folderUid
+          in: path
+          description: The folder uid.
+          required: true
+          schema:
+            type: string
+        - name: fileUid
+          in: path
+          description: The file uid.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteFolderFileResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
   '/v1alpha/namespaces/{namespaceId}/catalogs':
     get:
       tags:
@@ -8913,6 +9106,14 @@ components:
             - $ref: '#/components/schemas/.Folder'
           description: The folder resource to create.
       description: CreateFolderRequest represents a request to create a folder.
+    CreateFolderFileResponse:
+      title: create folder file response
+      type: object
+      properties:
+        file:
+          title: file
+          allOf:
+            - $ref: '#/components/schemas/File'
     CreateFolderResponse:
       type: object
       properties:
@@ -9086,6 +9287,13 @@ components:
     DeleteChatResponse:
       title: DeleteChatResponse is empty as no content needs to be returned
       type: object
+    DeleteFolderFileResponse:
+      title: delete folder file response
+      type: object
+      properties:
+        fileUid:
+          type: string
+          description: The file uid.
     DeleteFolderResponse:
       type: object
       description: DeleteFolderResponse is an empty response for deleting a folder.
@@ -9728,6 +9936,14 @@ components:
           title: summary of the file
           type: string
           readOnly: true
+    GetFolderFileResponse:
+      type: object
+      properties:
+        file:
+          allOf:
+            - $ref: '#/components/schemas/File'
+          description: The file.
+      description: GetFolderFileResponse represents a response for getting a folder file.
     GetFolderResponse:
       type: object
       properties:
@@ -10366,6 +10582,30 @@ components:
             $ref: '#/components/schemas/CreditConsumptionChartRecord'
           description: 'Credit consumption timelines, aggregated by source.'
       description: "ListCreditConsumptionChartRecordsResponse contains a list of credit consumption\nchart records."
+    ListFolderFilesResponse:
+      title: list folder files response
+      type: object
+      properties:
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/File'
+          description: The list of files.
+        totalSize:
+          type: integer
+          description: The total number of files.
+          format: int32
+        pageSize:
+          type: integer
+          description: The requested page size.
+          format: int32
+        nextPageToken:
+          title: next page token
+          type: string
+        filter:
+          allOf:
+            - $ref: '#/components/schemas/ListCatalogFilesFilter'
+          description: The filter.
     ListFoldersResponse:
       type: object
       properties:

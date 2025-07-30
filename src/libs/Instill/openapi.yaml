@@ -7855,6 +7855,10 @@ components:
             - $ref: '#/components/schemas/UserProfile'
           description: Profile.
           readOnly: true
+        isEligibleForOrganizationTrial:
+          type: boolean
+          description: Is eligible for organization trial.
+          readOnly: true
       description: "AuthenticatedUser contains the information of an authenticated user, i.e.,\nthe public user information plus some fields that should only be accessed by\nthe user themselves."
     BindChatTableBody:
       required:

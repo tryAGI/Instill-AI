@@ -106,6 +106,13 @@ namespace Instill
         public global::Instill.UserProfile? Profile { get; set; }
 
         /// <summary>
+        /// Is eligible for organization trial.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("isEligibleForOrganizationTrial")]
+        public bool? IsEligibleForOrganizationTrial { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -169,6 +176,10 @@ namespace Instill
         /// Profile.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="isEligibleForOrganizationTrial">
+        /// Is eligible for organization trial.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -184,7 +195,8 @@ namespace Instill
             string? role,
             string? cookieToken,
             global::Instill.OnboardingStatus? onboardingStatus,
-            global::Instill.UserProfile? profile)
+            global::Instill.UserProfile? profile,
+            bool? isEligibleForOrganizationTrial)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Email = email ?? throw new global::System.ArgumentNullException(nameof(email));
@@ -198,6 +210,7 @@ namespace Instill
             this.CookieToken = cookieToken;
             this.OnboardingStatus = onboardingStatus;
             this.Profile = profile;
+            this.IsEligibleForOrganizationTrial = isEligibleForOrganizationTrial;
         }
 
         /// <summary>

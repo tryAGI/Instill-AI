@@ -23,7 +23,9 @@ namespace Instill
 
         /// <summary>
         /// File name. This field is deprecated as the file ID isn't a unique<br/>
-        /// identifier within a catalog. The file UID should be used, instead.
+        /// identifier within a catalog. The file UID should be used, instead.<br/>
+        /// When this file is provided, the service will search a file by UID and<br/>
+        /// it'll use the UID in the first match.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("fileName")]
         public string? FileName { get; set; }
@@ -43,10 +45,17 @@ namespace Instill
         public global::Instill.FileMediaType? FileMediaType { get; set; }
 
         /// <summary>
-        /// File UID.
+        /// File UID. This field is deprecated, the file_uids should be used instead.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("fileUid")]
         public string? FileUid { get; set; }
+
+        /// <summary>
+        /// File UIDs. When this field is provided, the response will return only<br/>
+        /// chunks that belong to the specified file UIDs.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("fileUids")]
+        public global::System.Collections.Generic.IList<string>? FileUids { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -65,7 +74,9 @@ namespace Instill
         /// </param>
         /// <param name="fileName">
         /// File name. This field is deprecated as the file ID isn't a unique<br/>
-        /// identifier within a catalog. The file UID should be used, instead.
+        /// identifier within a catalog. The file UID should be used, instead.<br/>
+        /// When this file is provided, the service will search a file by UID and<br/>
+        /// it'll use the UID in the first match.
         /// </param>
         /// <param name="contentType">
         /// Content type.
@@ -74,7 +85,11 @@ namespace Instill
         /// File type.
         /// </param>
         /// <param name="fileUid">
-        /// File UID.
+        /// File UID. This field is deprecated, the file_uids should be used instead.
+        /// </param>
+        /// <param name="fileUids">
+        /// File UIDs. When this field is provided, the response will return only<br/>
+        /// chunks that belong to the specified file UIDs.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -85,7 +100,8 @@ namespace Instill
             string? fileName,
             global::Instill.ContentType? contentType,
             global::Instill.FileMediaType? fileMediaType,
-            string? fileUid)
+            string? fileUid,
+            global::System.Collections.Generic.IList<string>? fileUids)
         {
             this.TextPrompt = textPrompt ?? throw new global::System.ArgumentNullException(nameof(textPrompt));
             this.TopK = topK;
@@ -93,6 +109,7 @@ namespace Instill
             this.ContentType = contentType;
             this.FileMediaType = fileMediaType;
             this.FileUid = fileUid;
+            this.FileUids = fileUids;
         }
 
         /// <summary>

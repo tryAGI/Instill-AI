@@ -9,12 +9,14 @@ namespace Instill
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
             ref string catalogId,
+            global::System.Collections.Generic.IList<string>? convertingPipelines,
             global::Instill.File request);
         partial void PrepareUploadCatalogFileRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
             string catalogId,
+            global::System.Collections.Generic.IList<string>? convertingPipelines,
             global::Instill.File request);
         partial void ProcessUploadCatalogFileResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -31,6 +33,7 @@ namespace Instill
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>
+        /// <param name="convertingPipelines"></param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
@@ -41,6 +44,7 @@ namespace Instill
             string namespaceId,
             string catalogId,
             global::Instill.File request,
+            global::System.Collections.Generic.IList<string>? convertingPipelines = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -51,11 +55,15 @@ namespace Instill
                 httpClient: HttpClient,
                 namespaceId: ref namespaceId,
                 catalogId: ref catalogId,
+                convertingPipelines: convertingPipelines,
                 request: request);
 
             var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/files",
                 baseUri: HttpClient.BaseAddress); 
+            __pathBuilder 
+                .AddOptionalParameter("convertingPipelines", convertingPipelines, delimiter: ",", explode: true) 
+                ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -95,6 +103,7 @@ namespace Instill
                 httpRequestMessage: __httpRequest,
                 namespaceId: namespaceId,
                 catalogId: catalogId,
+                convertingPipelines: convertingPipelines,
                 request: request);
 
             using var __response = await HttpClient.SendAsync(
@@ -261,6 +270,7 @@ namespace Instill
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>
+        /// <param name="convertingPipelines"></param>
         /// <param name="name"></param>
         /// <param name="type"></param>
         /// <param name="content"></param>
@@ -277,6 +287,7 @@ namespace Instill
         public async global::System.Threading.Tasks.Task<global::Instill.UploadCatalogFileResponse> UploadCatalogFileAsync(
             string namespaceId,
             string catalogId,
+            global::System.Collections.Generic.IList<string>? convertingPipelines = default,
             string? name = default,
             global::Instill.FileType? type = default,
             string? content = default,
@@ -296,6 +307,7 @@ namespace Instill
             return await UploadCatalogFileAsync(
                 namespaceId: namespaceId,
                 catalogId: catalogId,
+                convertingPipelines: convertingPipelines,
                 request: __request,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
         }

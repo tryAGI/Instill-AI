@@ -39,7 +39,9 @@ namespace Instill
         /// </param>
         /// <param name="fileName">
         /// File name. This field is deprecated as the file ID isn't a unique<br/>
-        /// identifier within a catalog. The file UID should be used, instead.
+        /// identifier within a catalog. The file UID should be used, instead.<br/>
+        /// When this file is provided, the service will search a file by UID and<br/>
+        /// it'll use the UID in the first match.
         /// </param>
         /// <param name="contentType">
         /// Content type.
@@ -48,7 +50,11 @@ namespace Instill
         /// File type.
         /// </param>
         /// <param name="fileUid">
-        /// File UID.
+        /// File UID. This field is deprecated, the file_uids should be used instead.
+        /// </param>
+        /// <param name="fileUids">
+        /// File UIDs. When this field is provided, the response will return only<br/>
+        /// chunks that belong to the specified file UIDs.
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -65,6 +71,7 @@ namespace Instill
             global::Instill.ContentType? contentType = default,
             global::Instill.FileMediaType? fileMediaType = default,
             string? fileUid = default,
+            global::System.Collections.Generic.IList<string>? fileUids = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

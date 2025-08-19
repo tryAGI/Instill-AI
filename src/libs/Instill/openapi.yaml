@@ -2684,6 +2684,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: convertingPipelines
+          in: query
+          description: "Pipelines used for converting the document file (i.e., files with pdf,\ndoc[x] or ppt[x] extension) to Markdown. The strings in the list identify\nthe pipelines and MUST have the format\n`{namespaceID}/{pipelineID}@{version}`.\nThe pipeline recipes MUST have the following variable and output fields:\n```yaml variable\nvariable:\n  document_input:\n    title: document-input\n    description: Upload a document (PDF/DOCX/DOC/PPTX/PPT)\n    type: file\n```\n```yaml output\noutput:\n convert_result:\n   title: convert-result\n   value: ${merge-markdown-refinement.output.results[0]}\n```\nOther variable and output fields will be ignored.\n\nThe pipelines will be executed in order until one produces a successful,\nnon-empty result.\n\nIf no pipelines are provided, the catalog's conversion pipelines will be\nused (see the catalog creation request).\n\nFor non-document catalog files, the conversion pipeline is deterministic\n(such files are typically trivial to convert and don't require a dedicated\npipeline to improve the conversion performance)."
+          style: form
+          schema:
+            type: array
+            items:
+              type: string
       requestBody:
         description: file
         content:
@@ -3142,19 +3150,19 @@ paths:
     post:
       tags:
         - Artifact
-      summary: Ask a question
-      description: Asks a question.
+      summary: Answer a question
+      description: "Provides the response to the prompted question, returning contextual\ninformation like the chunks used to build the answer."
       operationId: QuestionAnswering
       parameters:
         - name: namespaceId
           in: path
-          description: id of the namespace
+          description: ID of the namespace owning the catalog.
           required: true
           schema:
             type: string
         - name: catalogId
           in: path
-          description: id of the catalog
+          description: ID of the catalog.
           required: true
           schema:
             type: string
@@ -12393,12 +12401,17 @@ components:
       type: object
       properties:
         question:
-          title: question to be answered
           type: string
+          description: Text prompt with the question.
         topK:
-          title: top k default to 5
           type: integer
+          description: 'Top K. Default value: 5.'
           format: int32
+        fileUids:
+          type: array
+          items:
+            type: string
+          description: "File UIDs. When this field is provided, the response will only use the\nspecified files to build the answer. The UIDs must be UUID-formatted\nstrings."
     QuestionAnsweringResponse:
       title: QuestionAnsweringResponse
       type: object
@@ -12752,7 +12765,7 @@ components:
           format: int64
         fileName:
           type: string
-          description: "File name. This field is deprecated as the file ID isn't a unique\nidentifier within a catalog. The file UID should be used, instead."
+          description: "File name. This field is deprecated as the file ID isn't a unique\nidentifier within a catalog. The file UID should be used, instead.\nWhen this file is provided, the service will search a file by UID and\nit'll use the UID in the first match."
         contentType:
           allOf:
             - $ref: '#/components/schemas/ContentType'
@@ -12763,7 +12776,12 @@ components:
           description: File type.
         fileUid:
           type: string
-          description: File UID.
+          description: 'File UID. This field is deprecated, the file_uids should be used instead.'
+        fileUids:
+          type: array
+          items:
+            type: string
+          description: "File UIDs. When this field is provided, the response will return only\nchunks that belong to the specified file UIDs."
     SimilarityChunksSearchResponse:
       title: Similar chunk search response
       type: object

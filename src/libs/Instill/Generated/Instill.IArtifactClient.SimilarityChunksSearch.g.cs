@@ -37,20 +37,11 @@ namespace Instill
         /// <param name="topK">
         /// Top K. Default value: 5.
         /// </param>
-        /// <param name="fileName">
-        /// File name. This field is deprecated as the file ID isn't a unique<br/>
-        /// identifier within a catalog. The file UID should be used, instead.<br/>
-        /// When this file is provided, the service will search a file by UID and<br/>
-        /// it'll use the UID in the first match.
-        /// </param>
         /// <param name="contentType">
         /// Content type.
         /// </param>
         /// <param name="fileMediaType">
         /// File type.
-        /// </param>
-        /// <param name="fileUid">
-        /// File UID. This field is deprecated, the file_uids should be used instead.
         /// </param>
         /// <param name="fileUids">
         /// File UIDs. When this field is provided, the response will return only<br/>
@@ -67,10 +58,8 @@ namespace Instill
             string textPrompt,
             string? instillRequesterUid = default,
             long? topK = default,
-            string? fileName = default,
             global::Instill.ContentType? contentType = default,
             global::Instill.FileMediaType? fileMediaType = default,
-            string? fileUid = default,
             global::System.Collections.Generic.IList<string>? fileUids = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

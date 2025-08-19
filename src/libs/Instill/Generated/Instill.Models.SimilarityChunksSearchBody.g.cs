@@ -22,15 +22,6 @@ namespace Instill
         public long? TopK { get; set; }
 
         /// <summary>
-        /// File name. This field is deprecated as the file ID isn't a unique<br/>
-        /// identifier within a catalog. The file UID should be used, instead.<br/>
-        /// When this file is provided, the service will search a file by UID and<br/>
-        /// it'll use the UID in the first match.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("fileName")]
-        public string? FileName { get; set; }
-
-        /// <summary>
         /// Content type.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("contentType")]
@@ -43,12 +34,6 @@ namespace Instill
         [global::System.Text.Json.Serialization.JsonPropertyName("fileMediaType")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.FileMediaTypeJsonConverter))]
         public global::Instill.FileMediaType? FileMediaType { get; set; }
-
-        /// <summary>
-        /// File UID. This field is deprecated, the file_uids should be used instead.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("fileUid")]
-        public string? FileUid { get; set; }
 
         /// <summary>
         /// File UIDs. When this field is provided, the response will return only<br/>
@@ -72,20 +57,11 @@ namespace Instill
         /// <param name="topK">
         /// Top K. Default value: 5.
         /// </param>
-        /// <param name="fileName">
-        /// File name. This field is deprecated as the file ID isn't a unique<br/>
-        /// identifier within a catalog. The file UID should be used, instead.<br/>
-        /// When this file is provided, the service will search a file by UID and<br/>
-        /// it'll use the UID in the first match.
-        /// </param>
         /// <param name="contentType">
         /// Content type.
         /// </param>
         /// <param name="fileMediaType">
         /// File type.
-        /// </param>
-        /// <param name="fileUid">
-        /// File UID. This field is deprecated, the file_uids should be used instead.
         /// </param>
         /// <param name="fileUids">
         /// File UIDs. When this field is provided, the response will return only<br/>
@@ -97,18 +73,14 @@ namespace Instill
         public SimilarityChunksSearchBody(
             string textPrompt,
             long? topK,
-            string? fileName,
             global::Instill.ContentType? contentType,
             global::Instill.FileMediaType? fileMediaType,
-            string? fileUid,
             global::System.Collections.Generic.IList<string>? fileUids)
         {
             this.TextPrompt = textPrompt ?? throw new global::System.ArgumentNullException(nameof(textPrompt));
             this.TopK = topK;
-            this.FileName = fileName;
             this.ContentType = contentType;
             this.FileMediaType = fileMediaType;
-            this.FileUid = fileUid;
             this.FileUids = fileUids;
         }
 

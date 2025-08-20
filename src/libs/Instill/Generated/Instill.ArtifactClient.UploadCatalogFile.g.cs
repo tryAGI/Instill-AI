@@ -9,14 +9,12 @@ namespace Instill
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
             ref string catalogId,
-            ref string? convertingPipeline,
             global::Instill.File request);
         partial void PrepareUploadCatalogFileRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
             string catalogId,
-            string? convertingPipeline,
             global::Instill.File request);
         partial void ProcessUploadCatalogFileResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -33,7 +31,6 @@ namespace Instill
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>
-        /// <param name="convertingPipeline"></param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
@@ -44,7 +41,6 @@ namespace Instill
             string namespaceId,
             string catalogId,
             global::Instill.File request,
-            string? convertingPipeline = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -55,15 +51,11 @@ namespace Instill
                 httpClient: HttpClient,
                 namespaceId: ref namespaceId,
                 catalogId: ref catalogId,
-                convertingPipeline: ref convertingPipeline,
                 request: request);
 
             var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/files",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
-                .AddOptionalParameter("convertingPipeline", convertingPipeline) 
-                ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -103,7 +95,6 @@ namespace Instill
                 httpRequestMessage: __httpRequest,
                 namespaceId: namespaceId,
                 catalogId: catalogId,
-                convertingPipeline: convertingPipeline,
                 request: request);
 
             using var __response = await HttpClient.SendAsync(
@@ -270,7 +261,6 @@ namespace Instill
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>
-        /// <param name="convertingPipeline"></param>
         /// <param name="name"></param>
         /// <param name="type"></param>
         /// <param name="content"></param>
@@ -278,6 +268,33 @@ namespace Instill
         /// <param name="objectUid">
         /// objectUid in blob storage. user can upload to blob storage directly, then put objectUid here.<br/>
         /// then no need the base64 encoding for the file content.
+        /// </param>
+        /// <param name="convertingPipeline">
+        /// Pipeline used for converting the file to Markdown if the file is a<br/>
+        /// document (i.e., a file with pdf, doc[x] or ppt[x] extension). The value<br/>
+        /// identifies the pipeline release and and MUST have the format<br/>
+        /// `{namespaceID}/{pipelineID}@{version}`.<br/>
+        /// The pipeline recipe MUST have the following variable and output fields:<br/>
+        /// ```yaml variable<br/>
+        /// variable:<br/>
+        ///   document_input:<br/>
+        ///     title: document-input<br/>
+        ///     description: Upload a document (PDF/DOCX/DOC/PPTX/PPT)<br/>
+        ///     type: file<br/>
+        /// ```<br/>
+        /// ```yaml output<br/>
+        /// output:<br/>
+        ///  convert_result:<br/>
+        ///    title: convert-result<br/>
+        ///    value: ${merge-markdown-refinement.output.results[0]}<br/>
+        /// ```<br/>
+        /// Other variable and output fields will be ignored.<br/>
+        /// The pipeline will be executed first, falling back to the catalog's<br/>
+        /// conversion pipelines if the conversion doesn't yield a non-empty result<br/>
+        /// (see the catalog creation endpoint documentation).<br/>
+        /// For non-document catalog files, the conversion pipeline is deterministic<br/>
+        /// (such files are typically trivial to convert and don't require a dedicated<br/>
+        /// pipeline to improve the conversion performance).
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -287,12 +304,12 @@ namespace Instill
         public async global::System.Threading.Tasks.Task<global::Instill.UploadCatalogFileResponse> UploadCatalogFileAsync(
             string namespaceId,
             string catalogId,
-            string? convertingPipeline = default,
             string? name = default,
             global::Instill.FileType? type = default,
             string? content = default,
             object? externalMetadata = default,
             string? objectUid = default,
+            string? convertingPipeline = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Instill.File
@@ -302,12 +319,12 @@ namespace Instill
                 Content = content,
                 ExternalMetadata = externalMetadata,
                 ObjectUid = objectUid,
+                ConvertingPipeline = convertingPipeline,
             };
 
             return await UploadCatalogFileAsync(
                 namespaceId: namespaceId,
                 catalogId: catalogId,
-                convertingPipeline: convertingPipeline,
                 request: __request,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
         }

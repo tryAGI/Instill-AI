@@ -133,6 +133,36 @@ namespace Instill
         public string? DownloadUrl { get; set; }
 
         /// <summary>
+        /// Pipeline used for converting the file to Markdown if the file is a<br/>
+        /// document (i.e., a file with pdf, doc[x] or ppt[x] extension). The value<br/>
+        /// identifies the pipeline release and and MUST have the format<br/>
+        /// `{namespaceID}/{pipelineID}@{version}`.<br/>
+        /// The pipeline recipe MUST have the following variable and output fields:<br/>
+        /// ```yaml variable<br/>
+        /// variable:<br/>
+        ///   document_input:<br/>
+        ///     title: document-input<br/>
+        ///     description: Upload a document (PDF/DOCX/DOC/PPTX/PPT)<br/>
+        ///     type: file<br/>
+        /// ```<br/>
+        /// ```yaml output<br/>
+        /// output:<br/>
+        ///  convert_result:<br/>
+        ///    title: convert-result<br/>
+        ///    value: ${merge-markdown-refinement.output.results[0]}<br/>
+        /// ```<br/>
+        /// Other variable and output fields will be ignored.<br/>
+        /// The pipeline will be executed first, falling back to the catalog's<br/>
+        /// conversion pipelines if the conversion doesn't yield a non-empty result<br/>
+        /// (see the catalog creation endpoint documentation).<br/>
+        /// For non-document catalog files, the conversion pipeline is deterministic<br/>
+        /// (such files are typically trivial to convert and don't require a dedicated<br/>
+        /// pipeline to improve the conversion performance).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("convertingPipeline")]
+        public string? ConvertingPipeline { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -194,6 +224,33 @@ namespace Instill
         /// <param name="downloadUrl">
         /// Included only in responses
         /// </param>
+        /// <param name="convertingPipeline">
+        /// Pipeline used for converting the file to Markdown if the file is a<br/>
+        /// document (i.e., a file with pdf, doc[x] or ppt[x] extension). The value<br/>
+        /// identifies the pipeline release and and MUST have the format<br/>
+        /// `{namespaceID}/{pipelineID}@{version}`.<br/>
+        /// The pipeline recipe MUST have the following variable and output fields:<br/>
+        /// ```yaml variable<br/>
+        /// variable:<br/>
+        ///   document_input:<br/>
+        ///     title: document-input<br/>
+        ///     description: Upload a document (PDF/DOCX/DOC/PPTX/PPT)<br/>
+        ///     type: file<br/>
+        /// ```<br/>
+        /// ```yaml output<br/>
+        /// output:<br/>
+        ///  convert_result:<br/>
+        ///    title: convert-result<br/>
+        ///    value: ${merge-markdown-refinement.output.results[0]}<br/>
+        /// ```<br/>
+        /// Other variable and output fields will be ignored.<br/>
+        /// The pipeline will be executed first, falling back to the catalog's<br/>
+        /// conversion pipelines if the conversion doesn't yield a non-empty result<br/>
+        /// (see the catalog creation endpoint documentation).<br/>
+        /// For non-document catalog files, the conversion pipeline is deterministic<br/>
+        /// (such files are typically trivial to convert and don't require a dedicated<br/>
+        /// pipeline to improve the conversion performance).
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -217,6 +274,7 @@ namespace Instill
             string? objectUid,
             string? summary,
             string? downloadUrl,
+            string? convertingPipeline,
             string fileUid = default!)
         {
             this.FileUid = fileUid;
@@ -239,6 +297,7 @@ namespace Instill
             this.ObjectUid = objectUid;
             this.Summary = summary;
             this.DownloadUrl = downloadUrl;
+            this.ConvertingPipeline = convertingPipeline;
         }
 
         /// <summary>

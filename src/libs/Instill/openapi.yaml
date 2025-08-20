@@ -2684,11 +2684,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: convertingPipeline
-          in: query
-          description: "Pipeline used for converting the file to Markdown if the file is a\ndocument (i.e., a file with pdf, doc[x] or ppt[x] extension). The value\nidentifies the pipeline release and and MUST have the format\n`{namespaceID}/{pipelineID}@{version}`.\nThe pipeline recipe MUST have the following variable and output fields:\n```yaml variable\nvariable:\n  document_input:\n    title: document-input\n    description: Upload a document (PDF/DOCX/DOC/PPTX/PPT)\n    type: file\n```\n```yaml output\noutput:\n convert_result:\n   title: convert-result\n   value: ${merge-markdown-refinement.output.results[0]}\n```\nOther variable and output fields will be ignored.\n\nThe pipeline will be executed first, falling back to the catalog's\nconversion pipelines if the conversion doesn't yield a non-empty result\n(see the catalog creation endpoint documentation).\n\nFor non-document catalog files, the conversion pipeline is deterministic\n(such files are typically trivial to convert and don't require a dedicated\npipeline to improve the conversion performance)."
-          schema:
-            type: string
       requestBody:
         description: file
         content:
@@ -9630,6 +9625,9 @@ components:
           title: download url of the file
           type: string
           readOnly: true
+        convertingPipeline:
+          type: string
+          description: "Pipeline used for converting the file to Markdown if the file is a\ndocument (i.e., a file with pdf, doc[x] or ppt[x] extension). The value\nidentifies the pipeline release and and MUST have the format\n`{namespaceID}/{pipelineID}@{version}`.\nThe pipeline recipe MUST have the following variable and output fields:\n```yaml variable\nvariable:\n  document_input:\n    title: document-input\n    description: Upload a document (PDF/DOCX/DOC/PPTX/PPT)\n    type: file\n```\n```yaml output\noutput:\n convert_result:\n   title: convert-result\n   value: ${merge-markdown-refinement.output.results[0]}\n```\nOther variable and output fields will be ignored.\n\nThe pipeline will be executed first, falling back to the catalog's\nconversion pipelines if the conversion doesn't yield a non-empty result\n(see the catalog creation endpoint documentation).\n\nFor non-document catalog files, the conversion pipeline is deterministic\n(such files are typically trivial to convert and don't require a dedicated\npipeline to improve the conversion performance)."
     FileAttachment:
       type: object
       properties:

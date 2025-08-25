@@ -15,6 +15,24 @@ namespace Instill
         public global::System.Collections.Generic.IList<string>? TableUids { get; set; }
 
         /// <summary>
+        /// The folder uids to include in the context.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("folderUids")]
+        public global::System.Collections.Generic.IList<string>? FolderUids { get; set; }
+
+        /// <summary>
+        /// The catalog uids to include in the context.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("catalogUids")]
+        public global::System.Collections.Generic.IList<string>? CatalogUids { get; set; }
+
+        /// <summary>
+        /// The file uids to include in the context.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("fileUids")]
+        public global::System.Collections.Generic.IList<string>? FileUids { get; set; }
+
+        /// <summary>
         /// The folders to include in the context.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("folders")]
@@ -44,6 +62,15 @@ namespace Instill
         /// <param name="tableUids">
         /// The table uids to include in the context.
         /// </param>
+        /// <param name="folderUids">
+        /// The folder uids to include in the context.
+        /// </param>
+        /// <param name="catalogUids">
+        /// The catalog uids to include in the context.
+        /// </param>
+        /// <param name="fileUids">
+        /// The file uids to include in the context.
+        /// </param>
         /// <param name="folders">
         /// The folders to include in the context.
         /// </param>
@@ -58,11 +85,17 @@ namespace Instill
 #endif
         public ChatContext(
             global::System.Collections.Generic.IList<string>? tableUids,
+            global::System.Collections.Generic.IList<string>? folderUids,
+            global::System.Collections.Generic.IList<string>? catalogUids,
+            global::System.Collections.Generic.IList<string>? fileUids,
             global::System.Collections.Generic.IList<global::Instill.ChatContextFolder>? folders,
             global::System.Collections.Generic.IList<global::Instill.ChatContextCatalog>? catalogs,
             global::System.Collections.Generic.IList<global::Instill.ChatContextTable>? tables)
         {
             this.TableUids = tableUids;
+            this.FolderUids = folderUids;
+            this.CatalogUids = catalogUids;
+            this.FileUids = fileUids;
             this.Folders = folders;
             this.Catalogs = catalogs;
             this.Tables = tables;

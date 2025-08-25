@@ -8203,6 +8203,21 @@ components:
           items:
             type: string
           description: The table uids to include in the context.
+        folderUids:
+          type: array
+          items:
+            type: string
+          description: The folder uids to include in the context.
+        catalogUids:
+          type: array
+          items:
+            type: string
+          description: The catalog uids to include in the context.
+        fileUids:
+          type: array
+          items:
+            type: string
+          description: The file uids to include in the context.
         folders:
           type: array
           items:

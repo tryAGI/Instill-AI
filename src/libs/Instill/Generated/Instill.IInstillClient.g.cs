@@ -4,7 +4,7 @@
 namespace Instill
 {
     /// <summary>
-    /// Interact with Instill Core through its public API<br/>
+    /// Interact with Instill Core through API<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
@@ -43,7 +43,7 @@ namespace Instill
         public NamespaceClient Namespace { get; }
 
         /// <summary>
-        /// Pipeline orchestration in Instill Core.
+        /// Pipeline orchestration.
         /// </summary>
         public PipelineClient Pipeline { get; }
 
@@ -53,24 +53,9 @@ namespace Instill
         public ArtifactClient Artifact { get; }
 
         /// <summary>
-        /// AI Model resources for MLOps/LLMOps.
+        /// AI Model orchestration
         /// </summary>
         public ModelClient Model { get; }
-
-        /// <summary>
-        /// Ready-to-use AI agents.
-        /// </summary>
-        public AgentClient Agent { get; }
-
-        /// <summary>
-        /// Table resources for agents.
-        /// </summary>
-        public TableClient Table { get; }
-
-        /// <summary>
-        /// Folder resources for agents.
-        /// </summary>
-        public FolderClient Folder { get; }
 
         /// <summary>
         /// Resource usage metrics.

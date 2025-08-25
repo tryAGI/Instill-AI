@@ -4,7 +4,7 @@
 namespace Instill
 {
     /// <summary>
-    /// Interact with Instill Core through its public API<br/>
+    /// Interact with Instill Core through API<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
@@ -47,7 +47,7 @@ namespace Instill
         };
 
         /// <summary>
-        /// Pipeline orchestration in Instill Core.
+        /// Pipeline orchestration.
         /// </summary>
         public PipelineClient Pipeline => new PipelineClient(HttpClient, authorizations: Authorizations)
         {
@@ -65,36 +65,9 @@ namespace Instill
         };
 
         /// <summary>
-        /// AI Model resources for MLOps/LLMOps.
+        /// AI Model orchestration
         /// </summary>
         public ModelClient Model => new ModelClient(HttpClient, authorizations: Authorizations)
-        {
-            ReadResponseAsString = ReadResponseAsString,
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
-        /// Ready-to-use AI agents.
-        /// </summary>
-        public AgentClient Agent => new AgentClient(HttpClient, authorizations: Authorizations)
-        {
-            ReadResponseAsString = ReadResponseAsString,
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
-        /// Table resources for agents.
-        /// </summary>
-        public TableClient Table => new TableClient(HttpClient, authorizations: Authorizations)
-        {
-            ReadResponseAsString = ReadResponseAsString,
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
-        /// Folder resources for agents.
-        /// </summary>
-        public FolderClient Folder => new FolderClient(HttpClient, authorizations: Authorizations)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,

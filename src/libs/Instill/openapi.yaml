@@ -9,7 +9,7 @@ info:
   license:
     name: MIT
     url: https://github.com/instill-ai/protobufs/blob/main/LICENSE
-  version: v0.54.1
+  version: v0.55.0
 servers:
   - url: https://api.instill-ai.com
   - url: http://api.instill-ai.com

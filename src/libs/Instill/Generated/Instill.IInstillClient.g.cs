@@ -62,10 +62,5 @@ namespace Instill
         /// </summary>
         public MetricsClient Metrics { get; }
 
-        /// <summary>
-        /// Pricing plans on Instill Cloud.
-        /// </summary>
-        public SubscriptionClient Subscription { get; }
-
     }
 }

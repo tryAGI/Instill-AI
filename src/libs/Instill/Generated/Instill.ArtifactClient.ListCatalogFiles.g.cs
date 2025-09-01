@@ -11,7 +11,8 @@ namespace Instill
             ref string catalogId,
             ref int? pageSize,
             ref string? pageToken,
-            global::System.Collections.Generic.IList<string>? filterFileUids);
+            global::System.Collections.Generic.IList<string>? filterFileUids,
+            ref global::Instill.ListCatalogFilesFilterProcessStatus? filterProcessStatus);
         partial void PrepareListCatalogFilesRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
@@ -19,7 +20,8 @@ namespace Instill
             string catalogId,
             int? pageSize,
             string? pageToken,
-            global::System.Collections.Generic.IList<string>? filterFileUids);
+            global::System.Collections.Generic.IList<string>? filterFileUids,
+            global::Instill.ListCatalogFilesFilterProcessStatus? filterProcessStatus);
         partial void ProcessListCatalogFilesResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -38,6 +40,7 @@ namespace Instill
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
         /// <param name="filterFileUids"></param>
+        /// <param name="filterProcessStatus"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
 #if NET8_0_OR_GREATER
@@ -49,6 +52,7 @@ namespace Instill
             int? pageSize = default,
             string? pageToken = default,
             global::System.Collections.Generic.IList<string>? filterFileUids = default,
+            global::Instill.ListCatalogFilesFilterProcessStatus? filterProcessStatus = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
@@ -59,7 +63,8 @@ namespace Instill
                 catalogId: ref catalogId,
                 pageSize: ref pageSize,
                 pageToken: ref pageToken,
-                filterFileUids: filterFileUids);
+                filterFileUids: filterFileUids,
+                filterProcessStatus: ref filterProcessStatus);
 
             var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/files",
@@ -68,6 +73,7 @@ namespace Instill
                 .AddOptionalParameter("pageSize", pageSize?.ToString()) 
                 .AddOptionalParameter("pageToken", pageToken) 
                 .AddOptionalParameter("filter.fileUids", filterFileUids, delimiter: ",", explode: true) 
+                .AddOptionalParameter("filter.processStatus", filterProcessStatus?.ToValueString()) 
                 ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -104,7 +110,8 @@ namespace Instill
                 catalogId: catalogId,
                 pageSize: pageSize,
                 pageToken: pageToken,
-                filterFileUids: filterFileUids);
+                filterFileUids: filterFileUids,
+                filterProcessStatus: filterProcessStatus);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,

@@ -247,12 +247,26 @@ paths:
             type: string
         - name: filter.fileUids
           in: query
-          description: The file uids.
+          description: File UIDs.
           style: form
           schema:
             type: array
             items:
               type: string
+        - name: filter.processStatus
+          in: query
+          description: "Processing status of the files.\n\n - FILE_PROCESS_STATUS_NOTSTARTED: NOTSTARTED\n - FILE_PROCESS_STATUS_WAITING: file is waiting for embedding process\n - FILE_PROCESS_STATUS_CONVERTING: file is converting\n - FILE_PROCESS_STATUS_CHUNKING: file is chunking\n - FILE_PROCESS_STATUS_EMBEDDING: file is embedding\n - FILE_PROCESS_STATUS_COMPLETED: completed\n - FILE_PROCESS_STATUS_FAILED: failed\n - FILE_PROCESS_STATUS_SUMMARIZING: file is summarizing"
+          schema:
+            enum:
+              - FILE_PROCESS_STATUS_NOTSTARTED
+              - FILE_PROCESS_STATUS_WAITING
+              - FILE_PROCESS_STATUS_CONVERTING
+              - FILE_PROCESS_STATUS_CHUNKING
+              - FILE_PROCESS_STATUS_EMBEDDING
+              - FILE_PROCESS_STATUS_COMPLETED
+              - FILE_PROCESS_STATUS_FAILED
+              - FILE_PROCESS_STATUS_SUMMARIZING
+            type: string
       responses:
         '200':
           description: A successful response.
@@ -6667,14 +6681,18 @@ components:
           readOnly: true
       description: "ListAvailableRegionsResponse contains a list of available\nregions and hardware types a model can be deployed on."
     ListCatalogFilesFilter:
-      title: "list file filter\ntodo: support more parameters"
       type: object
       properties:
         fileUids:
           type: array
           items:
             type: string
-          description: The file uids.
+          description: File UIDs.
+        processStatus:
+          allOf:
+            - $ref: '#/components/schemas/FileProcessStatus'
+          description: Processing status of the files.
+      description: "ListCatalogFilesFilter contains a set of properties to filter a catalog file\nlist by."
     ListCatalogFilesResponse:
       title: list files response
       required:

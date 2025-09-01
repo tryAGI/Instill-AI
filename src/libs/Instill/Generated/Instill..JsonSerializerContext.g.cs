@@ -73,6 +73,8 @@ namespace Instill
             typeof(global::Instill.JsonConverters.MgmtV1betaViewNullableJsonConverter),
             typeof(global::Instill.JsonConverters.ViewJsonConverter),
             typeof(global::Instill.JsonConverters.ViewNullableJsonConverter),
+            typeof(global::Instill.JsonConverters.ListCatalogFilesFilterProcessStatusJsonConverter),
+            typeof(global::Instill.JsonConverters.ListCatalogFilesFilterProcessStatusNullableJsonConverter),
             typeof(global::Instill.JsonConverters.ListUsersViewJsonConverter),
             typeof(global::Instill.JsonConverters.ListUsersViewNullableJsonConverter),
             typeof(global::Instill.JsonConverters.GetUserViewJsonConverter),

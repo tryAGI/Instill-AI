@@ -9,7 +9,7 @@ info:
   license:
     name: MIT
     url: https://github.com/instill-ai/protobufs/blob/main/LICENSE
-  version: v0.55.0
+  version: v0.56.0
 servers:
   - url: https://api.instill-ai.com
   - url: http://api.instill-ai.com
@@ -6141,6 +6141,11 @@ components:
         convertingPipeline:
           type: string
           description: "Pipeline used for converting the file to Markdown if the file is a\ndocument (i.e., a file with pdf, doc[x] or ppt[x] extension). The value\nidentifies the pipeline release and and MUST have the format\n`{namespaceID}/{pipelineID}@{version}`.\nThe pipeline recipe MUST have the following variable and output fields:\n```yaml variable\nvariable:\n  document_input:\n    title: document-input\n    description: Upload a document (PDF/DOCX/DOC/PPTX/PPT)\n    type: file\n```\n```yaml output\noutput:\n convert_result:\n   title: convert-result\n   value: ${merge-markdown-refinement.output.results[0]}\n```\nOther variable and output fields will be ignored.\n\nThe pipeline will be executed first, falling back to the catalog's\nconversion pipelines if the conversion doesn't yield a non-empty result\n(see the catalog creation endpoint documentation).\n\nFor non-document catalog files, the conversion pipeline is deterministic\n(such files are typically trivial to convert and don't require a dedicated\npipeline to improve the conversion performance)."
+        length:
+          allOf:
+            - $ref: '#/components/schemas/FilePosition'
+          description: "Length of the file in the specified unit type. It is defined as a\nFilePosition, so it reflects the number of positions (the unit will depend\non the file type) that can be accessed in the file."
+          readOnly: true
     FileMediaType:
       enum:
         - FILE_MEDIA_TYPE_DOCUMENT
@@ -6181,6 +6186,22 @@ components:
           description: Processing status of the file.
           readOnly: true
       description: FileMetadata contains information about the file.
+    FilePosition:
+      title: "FilePosition represents a position within a file using a specific unit.\nThe position can be multi-dimensional based on the unit type:\n- 1 element for 1D positions (characters, pages, time)\n- 2 elements for 2D positions (pixels: [x, y])\n- N elements for N-dimensional positions"
+      type: object
+      properties:
+        unit:
+          title: Unit of measurement for the position
+          allOf:
+            - $ref: '#/components/schemas/Unit'
+          readOnly: true
+        coordinates:
+          type: array
+          items:
+            type: integer
+            format: int64
+          description: "Position coordinates as an array\nFor 1D: [position]\nFor 2D: [x, y]\nFor 3D: [x, y, z], etc."
+          readOnly: true
     FileProcessStatus:
       title: file embedding process status
       enum:
@@ -8303,6 +8324,20 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SimilarityChunk'
+    Reference:
+      type: object
+      properties:
+        start:
+          allOf:
+            - $ref: '#/components/schemas/FilePosition'
+          description: Start position of the chunk within the file.
+          readOnly: true
+        end:
+          allOf:
+            - $ref: '#/components/schemas/FilePosition'
+          description: End position of the chunk within the file.
+          readOnly: true
+      description: Reference represents the position of a chunk within its source file.
     Region:
       type: object
       properties:
@@ -8972,6 +9007,14 @@ components:
     UndeployUserModelAdminResponse:
       title: UndeployUserModelAdminResponse represents a response for a undeployed model
       type: object
+    Unit:
+      enum:
+        - UNIT_CHARACTER
+        - UNIT_PAGE
+        - UNIT_TIME_MS
+        - UNIT_PIXEL
+      type: string
+      description: "Unit describes the unit of measurement for a position within a file.\n\n - UNIT_CHARACTER: Character positions (for Markdown and other text files).\n - UNIT_PAGE: Page positions (for documents).\n - UNIT_TIME_MS: Time positions in milliseconds (for audio/video files).\n - UNIT_PIXEL: Pixel positions (for images and other 2D content)."
     UpdateCatalogBody:
       type: object
       properties:
@@ -9314,16 +9357,6 @@ components:
           title: whether the chunk is retrievable
           type: boolean
           readOnly: true
-        startPos:
-          title: start position of the chunk in the source file
-          type: integer
-          format: int64
-          readOnly: true
-        endPos:
-          title: end position of the chunk in the source file
-          type: integer
-          format: int64
-          readOnly: true
         tokens:
           title: tokens of the chunk
           type: integer
@@ -9342,6 +9375,26 @@ components:
           title: content type
           allOf:
             - $ref: '#/components/schemas/ContentType'
+          readOnly: true
+        reference:
+          allOf:
+            - $ref: '#/components/schemas/Reference'
+          description: Reference to the position of the chunk within the original file.
+          readOnly: true
+        markdownReference:
+          allOf:
+            - $ref: '#/components/schemas/Reference'
+          description: Reference to the position of the chunk within the Markdown (source) file.
+          readOnly: true
+        startPos:
+          title: "start position of the chunk in the source file\nDeprecated: use markdown_reference instead"
+          type: integer
+          format: int64
+          readOnly: true
+        endPos:
+          title: "end position of the chunk in the source file\nDeprecated: use markdown_reference instead"
+          type: integer
+          format: int64
           readOnly: true
       description: The Chunk message represents a chunk of data in the artifact system.
     .Permission:

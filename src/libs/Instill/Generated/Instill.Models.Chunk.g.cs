@@ -23,18 +23,6 @@ namespace Instill
         /// <summary>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("startPos")]
-        public long? StartPos { get; set; }
-
-        /// <summary>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("endPos")]
-        public long? EndPos { get; set; }
-
-        /// <summary>
-        /// Included only in responses
-        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tokens")]
         public long? Tokens { get; set; }
 
@@ -58,6 +46,32 @@ namespace Instill
         public global::Instill.ContentType? ContentType { get; set; }
 
         /// <summary>
+        /// Reference to the position of the chunk within the original file.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reference")]
+        public global::Instill.Reference? Reference { get; set; }
+
+        /// <summary>
+        /// Reference to the position of the chunk within the Markdown (source) file.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("markdownReference")]
+        public global::Instill.Reference? MarkdownReference { get; set; }
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("startPos")]
+        public long? StartPos { get; set; }
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("endPos")]
+        public long? EndPos { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -72,12 +86,6 @@ namespace Instill
         /// <param name="retrievable">
         /// Included only in responses
         /// </param>
-        /// <param name="startPos">
-        /// Included only in responses
-        /// </param>
-        /// <param name="endPos">
-        /// Included only in responses
-        /// </param>
         /// <param name="tokens">
         /// Included only in responses
         /// </param>
@@ -90,27 +98,45 @@ namespace Instill
         /// <param name="contentType">
         /// Included only in responses
         /// </param>
+        /// <param name="reference">
+        /// Reference to the position of the chunk within the original file.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="markdownReference">
+        /// Reference to the position of the chunk within the Markdown (source) file.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="startPos">
+        /// Included only in responses
+        /// </param>
+        /// <param name="endPos">
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Chunk(
             string? chunkUid,
             bool? retrievable,
-            long? startPos,
-            long? endPos,
             long? tokens,
             global::System.DateTime? createTime,
             string? originalFileUid,
-            global::Instill.ContentType? contentType)
+            global::Instill.ContentType? contentType,
+            global::Instill.Reference? reference,
+            global::Instill.Reference? markdownReference,
+            long? startPos,
+            long? endPos)
         {
             this.ChunkUid = chunkUid;
             this.Retrievable = retrievable;
-            this.StartPos = startPos;
-            this.EndPos = endPos;
             this.Tokens = tokens;
             this.CreateTime = createTime;
             this.OriginalFileUid = originalFileUid;
             this.ContentType = contentType;
+            this.Reference = reference;
+            this.MarkdownReference = markdownReference;
+            this.StartPos = startPos;
+            this.EndPos = endPos;
         }
 
         /// <summary>

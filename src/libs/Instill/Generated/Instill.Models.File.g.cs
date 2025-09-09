@@ -163,6 +163,15 @@ namespace Instill
         public string? ConvertingPipeline { get; set; }
 
         /// <summary>
+        /// Length of the file in the specified unit type. It is defined as a<br/>
+        /// FilePosition, so it reflects the number of positions (the unit will depend<br/>
+        /// on the file type) that can be accessed in the file.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("length")]
+        public global::Instill.FilePosition? Length { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -251,6 +260,12 @@ namespace Instill
         /// (such files are typically trivial to convert and don't require a dedicated<br/>
         /// pipeline to improve the conversion performance).
         /// </param>
+        /// <param name="length">
+        /// Length of the file in the specified unit type. It is defined as a<br/>
+        /// FilePosition, so it reflects the number of positions (the unit will depend<br/>
+        /// on the file type) that can be accessed in the file.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -275,6 +290,7 @@ namespace Instill
             string? summary,
             string? downloadUrl,
             string? convertingPipeline,
+            global::Instill.FilePosition? length,
             string fileUid = default!)
         {
             this.FileUid = fileUid;
@@ -298,6 +314,7 @@ namespace Instill
             this.Summary = summary;
             this.DownloadUrl = downloadUrl;
             this.ConvertingPipeline = convertingPipeline;
+            this.Length = length;
         }
 
         /// <summary>

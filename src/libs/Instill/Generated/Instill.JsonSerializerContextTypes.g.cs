@@ -410,926 +410,942 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.FileMediaType? Type96 { get; set; }
+        public global::Instill.FilePosition? Type96 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.FileMetadata? Type97 { get; set; }
+        public global::Instill.Unit? Type97 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.FruitCosts? Type98 { get; set; }
+        public global::System.Collections.Generic.IList<long>? Type98 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetAuthenticatedUserResponse? Type99 { get; set; }
+        public global::Instill.FileMediaType? Type99 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetCatalogFileResponse? Type100 { get; set; }
+        public global::Instill.FileMetadata? Type100 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetChatFileResponse? Type101 { get; set; }
+        public global::Instill.FruitCosts? Type101 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public byte[]? Type102 { get; set; }
+        public global::Instill.GetAuthenticatedUserResponse? Type102 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetFileAsMarkdownResponse? Type103 { get; set; }
+        public global::Instill.GetCatalogFileResponse? Type103 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetFileCatalogResponse? Type104 { get; set; }
+        public global::Instill.GetChatFileResponse? Type104 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Text? Type105 { get; set; }
+        public byte[]? Type105 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.GetFileCatalogResponseChunk>? Type106 { get; set; }
+        public global::Instill.GetFileAsMarkdownResponse? Type106 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetFileCatalogResponseChunk? Type107 { get; set; }
+        public global::Instill.GetFileCatalogResponse? Type107 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<float>? Type108 { get; set; }
+        public global::Instill.Text? Type108 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetFileSummaryResponse? Type109 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.GetFileCatalogResponseChunk>? Type109 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetIntegrationResponse? Type110 { get; set; }
+        public global::Instill.GetFileCatalogResponseChunk? Type110 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Integration? Type111 { get; set; }
+        public global::System.Collections.Generic.IList<float>? Type111 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Link? Type112 { get; set; }
+        public global::Instill.GetFileSummaryResponse? Type112 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.OAuthConfig? Type113 { get; set; }
+        public global::Instill.GetIntegrationResponse? Type113 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetModelDefinitionResponse? Type114 { get; set; }
+        public global::Instill.Integration? Type114 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ModelDefinition? Type115 { get; set; }
+        public global::Instill.Link? Type115 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ReleaseStage? Type116 { get; set; }
+        public global::Instill.OAuthConfig? Type116 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetModelOperationResponse? Type117 { get; set; }
+        public global::Instill.GetModelDefinitionResponse? Type117 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.LongrunningOperation? Type118 { get; set; }
+        public global::Instill.ModelDefinition? Type118 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.RpcStatus? Type119 { get; set; }
+        public global::Instill.ReleaseStage? Type119 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.Any>? Type120 { get; set; }
+        public global::Instill.GetModelOperationResponse? Type120 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetNamespaceConnectionResponse? Type121 { get; set; }
+        public global::Instill.LongrunningOperation? Type121 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetNamespaceLatestModelOperationResponse? Type122 { get; set; }
+        public global::Instill.RpcStatus? Type122 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetNamespaceModelOperationResponse? Type123 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.Any>? Type123 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetNamespaceModelResponse? Type124 { get; set; }
+        public global::Instill.GetNamespaceConnectionResponse? Type124 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetNamespacePipelineReleaseResponse? Type125 { get; set; }
+        public global::Instill.GetNamespaceLatestModelOperationResponse? Type125 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetNamespacePipelineResponse? Type126 { get; set; }
+        public global::Instill.GetNamespaceModelOperationResponse? Type126 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetNamespaceSecretResponse? Type127 { get; set; }
+        public global::Instill.GetNamespaceModelResponse? Type127 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetObjectDownloadURLResponse? Type128 { get; set; }
+        public global::Instill.GetNamespacePipelineReleaseResponse? Type128 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.AIObject? Type129 { get; set; }
+        public global::Instill.GetNamespacePipelineResponse? Type129 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetObjectResponse? Type130 { get; set; }
+        public global::Instill.GetNamespaceSecretResponse? Type130 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetObjectURLResponse? Type131 { get; set; }
+        public global::Instill.GetObjectDownloadURLResponse? Type131 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ObjectURL? Type132 { get; set; }
+        public global::Instill.AIObject? Type132 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetObjectUploadURLResponse? Type133 { get; set; }
+        public global::Instill.GetObjectResponse? Type133 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetOperationResponse? Type134 { get; set; }
+        public global::Instill.GetObjectURLResponse? Type134 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetOrganizationAdminResponse? Type135 { get; set; }
+        public global::Instill.ObjectURL? Type135 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetOrganizationMembershipResponse? Type136 { get; set; }
+        public global::Instill.GetObjectUploadURLResponse? Type136 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.OrganizationMembership? Type137 { get; set; }
+        public global::Instill.GetOperationResponse? Type137 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.MembershipState? Type138 { get; set; }
+        public global::Instill.GetOrganizationAdminResponse? Type138 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetOrganizationResponse? Type139 { get; set; }
+        public global::Instill.GetOrganizationMembershipResponse? Type139 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetRepositoryTagResponse? Type140 { get; set; }
+        public global::Instill.OrganizationMembership? Type140 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetSourceFileResponse? Type141 { get; set; }
+        public global::Instill.MembershipState? Type141 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.SourceFile? Type142 { get; set; }
+        public global::Instill.GetOrganizationResponse? Type142 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetTokenResponse? Type143 { get; set; }
+        public global::Instill.GetRepositoryTagResponse? Type143 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetUserAdminResponse? Type144 { get; set; }
+        public global::Instill.GetSourceFileResponse? Type144 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetUserMembershipResponse? Type145 { get; set; }
+        public global::Instill.SourceFile? Type145 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UserMembership? Type146 { get; set; }
+        public global::Instill.GetTokenResponse? Type146 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetUserResponse? Type147 { get; set; }
+        public global::Instill.GetUserAdminResponse? Type147 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Hardware? Type148 { get; set; }
+        public global::Instill.GetUserMembershipResponse? Type148 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.HealthzResponse? Type149 { get; set; }
+        public global::Instill.UserMembership? Type149 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.InviteOrganizationMembersBody? Type150 { get; set; }
+        public global::Instill.GetUserResponse? Type150 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListApplicationsResponse? Type151 { get; set; }
+        public global::Instill.Hardware? Type151 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListAvailableRegionsResponse? Type152 { get; set; }
+        public global::Instill.HealthzResponse? Type152 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.Region>? Type153 { get; set; }
+        public global::Instill.InviteOrganizationMembersBody? Type153 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Region? Type154 { get; set; }
+        public global::Instill.ListApplicationsResponse? Type154 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.Hardware>? Type155 { get; set; }
+        public global::Instill.ListAvailableRegionsResponse? Type155 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListCatalogFilesFilter? Type156 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.Region>? Type156 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListCatalogFilesResponse? Type157 { get; set; }
+        public global::Instill.Region? Type157 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.File>? Type158 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.Hardware>? Type158 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListCatalogRunsResponse? Type159 { get; set; }
+        public global::Instill.ListCatalogFilesFilter? Type159 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.CatalogRun>? Type160 { get; set; }
+        public global::Instill.ListCatalogFilesResponse? Type160 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListCatalogsResponse? Type161 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.File>? Type161 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.Catalog>? Type162 { get; set; }
+        public global::Instill.ListCatalogRunsResponse? Type162 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListChunksResponse? Type163 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.CatalogRun>? Type163 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.Chunk>? Type164 { get; set; }
+        public global::Instill.ListCatalogsResponse? Type164 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Chunk? Type165 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.Catalog>? Type165 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListComponentDefinitionsResponse? Type166 { get; set; }
+        public global::Instill.ListChunksResponse? Type166 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.ComponentDefinition>? Type167 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.Chunk>? Type167 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListComponentRunsResponse? Type168 { get; set; }
+        public global::Instill.Chunk? Type168 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.ComponentRun>? Type169 { get; set; }
+        public global::Instill.Reference? Type169 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListIntegrationsResponse? Type170 { get; set; }
+        public global::Instill.ListComponentDefinitionsResponse? Type170 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.Integration>? Type171 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.ComponentDefinition>? Type171 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListModelDefinitionsResponse? Type172 { get; set; }
+        public global::Instill.ListComponentRunsResponse? Type172 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.ModelDefinition>? Type173 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.ComponentRun>? Type173 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListModelRunsByRequesterResponse? Type174 { get; set; }
+        public global::Instill.ListIntegrationsResponse? Type174 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.ModelRun>? Type175 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.Integration>? Type175 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ModelRun? Type176 { get; set; }
+        public global::Instill.ListModelDefinitionsResponse? Type176 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListModelRunsResponse? Type177 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.ModelDefinition>? Type177 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListModelTriggerChartRecordsResponse? Type178 { get; set; }
+        public global::Instill.ListModelRunsByRequesterResponse? Type178 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.ModelTriggerChartRecord>? Type179 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.ModelRun>? Type179 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ModelTriggerChartRecord? Type180 { get; set; }
+        public global::Instill.ModelRun? Type180 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::System.DateTime>? Type181 { get; set; }
+        public global::Instill.ListModelRunsResponse? Type181 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<int>? Type182 { get; set; }
+        public global::Instill.ListModelTriggerChartRecordsResponse? Type182 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListModelsAdminResponse? Type183 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.ModelTriggerChartRecord>? Type183 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.Model>? Type184 { get; set; }
+        public global::Instill.ModelTriggerChartRecord? Type184 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListModelsResponse? Type185 { get; set; }
+        public global::System.Collections.Generic.IList<global::System.DateTime>? Type185 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListNamespaceConnectionsResponse? Type186 { get; set; }
+        public global::System.Collections.Generic.IList<int>? Type186 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.Connection>? Type187 { get; set; }
+        public global::Instill.ListModelsAdminResponse? Type187 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListNamespaceModelVersionsResponse? Type188 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.Model>? Type188 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.ModelVersion>? Type189 { get; set; }
+        public global::Instill.ListModelsResponse? Type189 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ModelVersion? Type190 { get; set; }
+        public global::Instill.ListNamespaceConnectionsResponse? Type190 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.State? Type191 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.Connection>? Type191 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListNamespaceModelsResponse? Type192 { get; set; }
+        public global::Instill.ListNamespaceModelVersionsResponse? Type192 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListNamespacePipelineReleasesResponse? Type193 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.ModelVersion>? Type193 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListNamespacePipelinesResponse? Type194 { get; set; }
+        public global::Instill.ModelVersion? Type194 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.Pipeline>? Type195 { get; set; }
+        public global::Instill.State? Type195 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListNamespaceSecretsResponse? Type196 { get; set; }
+        public global::Instill.ListNamespaceModelsResponse? Type196 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.Secret>? Type197 { get; set; }
+        public global::Instill.ListNamespacePipelineReleasesResponse? Type197 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListOrganizationMembershipsResponse? Type198 { get; set; }
+        public global::Instill.ListNamespacePipelinesResponse? Type198 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.OrganizationMembership>? Type199 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.Pipeline>? Type199 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListOrganizationsAdminResponse? Type200 { get; set; }
+        public global::Instill.ListNamespaceSecretsResponse? Type200 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.Organization>? Type201 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.Secret>? Type201 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListOrganizationsResponse? Type202 { get; set; }
+        public global::Instill.ListOrganizationMembershipsResponse? Type202 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListPipelineIDsByConnectionIDResponse? Type203 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.OrganizationMembership>? Type203 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListPipelineReleasesAdminResponse? Type204 { get; set; }
+        public global::Instill.ListOrganizationsAdminResponse? Type204 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListPipelineRunsByRequesterResponse? Type205 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.Organization>? Type205 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.PipelineRun>? Type206 { get; set; }
+        public global::Instill.ListOrganizationsResponse? Type206 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelineRun? Type207 { get; set; }
+        public global::Instill.ListPipelineIDsByConnectionIDResponse? Type207 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListPipelineRunsResponse? Type208 { get; set; }
+        public global::Instill.ListPipelineReleasesAdminResponse? Type208 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListPipelineTriggerChartRecordsResponse? Type209 { get; set; }
+        public global::Instill.ListPipelineRunsByRequesterResponse? Type209 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.PipelineTriggerChartRecord>? Type210 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.PipelineRun>? Type210 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelineTriggerChartRecord? Type211 { get; set; }
+        public global::Instill.PipelineRun? Type211 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListPipelinesAdminResponse? Type212 { get; set; }
+        public global::Instill.ListPipelineRunsResponse? Type212 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListPipelinesResponse? Type213 { get; set; }
+        public global::Instill.ListPipelineTriggerChartRecordsResponse? Type213 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListRepositoryTagsResponse? Type214 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.PipelineTriggerChartRecord>? Type214 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.RepositoryTag>? Type215 { get; set; }
+        public global::Instill.PipelineTriggerChartRecord? Type215 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListTokensResponse? Type216 { get; set; }
+        public global::Instill.ListPipelinesAdminResponse? Type216 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.ApiToken>? Type217 { get; set; }
+        public global::Instill.ListPipelinesResponse? Type217 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListUserMembershipsResponse? Type218 { get; set; }
+        public global::Instill.ListRepositoryTagsResponse? Type218 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.UserMembership>? Type219 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.RepositoryTag>? Type219 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListUsersAdminResponse? Type220 { get; set; }
+        public global::Instill.ListTokensResponse? Type220 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.User>? Type221 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.ApiToken>? Type221 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListUsersResponse? Type222 { get; set; }
+        public global::Instill.ListUserMembershipsResponse? Type222 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.LookUpConnectionAdminResponse? Type223 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.UserMembership>? Type223 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.LookUpModelAdminResponse? Type224 { get; set; }
+        public global::Instill.ListUsersAdminResponse? Type224 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.LookUpOrganizationAdminResponse? Type225 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.User>? Type225 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.LookUpPipelineAdminResponse? Type226 { get; set; }
+        public global::Instill.ListUsersResponse? Type226 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.LookUpUserAdminResponse? Type227 { get; set; }
+        public global::Instill.LookUpConnectionAdminResponse? Type227 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ModelOutput? Type228 { get; set; }
+        public global::Instill.LookUpModelAdminResponse? Type228 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.MoveFileToCatalogBody? Type229 { get; set; }
+        public global::Instill.LookUpOrganizationAdminResponse? Type229 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.MoveFileToCatalogResponse? Type230 { get; set; }
+        public global::Instill.LookUpPipelineAdminResponse? Type230 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PatchAuthenticatedUserResponse? Type231 { get; set; }
+        public global::Instill.LookUpUserAdminResponse? Type231 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelineView? Type232 { get; set; }
+        public global::Instill.ModelOutput? Type232 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ProcessCatalogFilesRequest? Type233 { get; set; }
+        public global::Instill.MoveFileToCatalogBody? Type233 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ProcessCatalogFilesResponse? Type234 { get; set; }
+        public global::Instill.MoveFileToCatalogResponse? Type234 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.QuestionAnsweringBody? Type235 { get; set; }
+        public global::Instill.PatchAuthenticatedUserResponse? Type235 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.QuestionAnsweringResponse? Type236 { get; set; }
+        public global::Instill.PipelineView? Type236 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.SimilarityChunk>? Type237 { get; set; }
+        public global::Instill.ProcessCatalogFilesRequest? Type237 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.SimilarityChunk? Type238 { get; set; }
+        public global::Instill.ProcessCatalogFilesResponse? Type238 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.RenameNamespaceModelBody? Type239 { get; set; }
+        public global::Instill.QuestionAnsweringBody? Type239 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.RenameNamespaceModelResponse? Type240 { get; set; }
+        public global::Instill.QuestionAnsweringResponse? Type240 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.RenameNamespacePipelineBody? Type241 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.SimilarityChunk>? Type241 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.RenameNamespacePipelineResponse? Type242 { get; set; }
+        public global::Instill.SimilarityChunk? Type242 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.SearchChunksResponse? Type243 { get; set; }
+        public global::Instill.RenameNamespaceModelBody? Type243 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.SearchSourceFilesResponse? Type244 { get; set; }
+        public global::Instill.RenameNamespaceModelResponse? Type244 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.SourceFile>? Type245 { get; set; }
+        public global::Instill.RenameNamespacePipelineBody? Type245 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.SimilarityChunksSearchBody? Type246 { get; set; }
+        public global::Instill.RenameNamespacePipelineResponse? Type246 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.SimilarityChunksSearchResponse? Type247 { get; set; }
+        public global::Instill.SearchChunksResponse? Type247 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Trace? Type248 { get; set; }
+        public global::Instill.SearchSourceFilesResponse? Type248 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.TraceStatus>? Type249 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.SourceFile>? Type249 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.TraceStatus? Type250 { get; set; }
+        public global::Instill.SimilarityChunksSearchBody? Type250 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.TriggerAsyncNamespaceLatestModelBody? Type251 { get; set; }
+        public global::Instill.SimilarityChunksSearchResponse? Type251 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.TriggerAsyncNamespaceLatestModelResponse? Type252 { get; set; }
+        public global::Instill.Trace? Type252 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.TriggerAsyncNamespaceModelBody? Type253 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.TraceStatus>? Type253 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.TriggerAsyncNamespaceModelResponse? Type254 { get; set; }
+        public global::Instill.TraceStatus? Type254 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.TriggerAsyncNamespacePipelineBody? Type255 { get; set; }
+        public global::Instill.TriggerAsyncNamespaceLatestModelBody? Type255 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.TriggerData>? Type256 { get; set; }
+        public global::Instill.TriggerAsyncNamespaceLatestModelResponse? Type256 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.TriggerData? Type257 { get; set; }
+        public global::Instill.TriggerAsyncNamespaceModelBody? Type257 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.TriggerAsyncNamespacePipelineReleaseBody? Type258 { get; set; }
+        public global::Instill.TriggerAsyncNamespaceModelResponse? Type258 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.TriggerAsyncNamespacePipelineReleaseResponse? Type259 { get; set; }
+        public global::Instill.TriggerAsyncNamespacePipelineBody? Type259 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.TriggerAsyncNamespacePipelineResponse? Type260 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.TriggerData>? Type260 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.TriggerMetadata? Type261 { get; set; }
+        public global::Instill.TriggerData? Type261 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::Instill.Trace>? Type262 { get; set; }
+        public global::Instill.TriggerAsyncNamespacePipelineReleaseBody? Type262 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.TriggerNamespaceLatestModelBinaryFileUploadResponse? Type263 { get; set; }
+        public global::Instill.TriggerAsyncNamespacePipelineReleaseResponse? Type263 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.TriggerNamespaceLatestModelBody? Type264 { get; set; }
+        public global::Instill.TriggerAsyncNamespacePipelineResponse? Type264 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.TriggerNamespaceLatestModelResponse? Type265 { get; set; }
+        public global::Instill.TriggerMetadata? Type265 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.TriggerNamespaceModelBinaryFileUploadResponse? Type266 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::Instill.Trace>? Type266 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.TriggerNamespaceModelBody? Type267 { get; set; }
+        public global::Instill.TriggerNamespaceLatestModelBinaryFileUploadResponse? Type267 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.TriggerNamespaceModelResponse? Type268 { get; set; }
+        public global::Instill.TriggerNamespaceLatestModelBody? Type268 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.TriggerNamespacePipelineBody? Type269 { get; set; }
+        public global::Instill.TriggerNamespaceLatestModelResponse? Type269 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.TriggerNamespacePipelineReleaseBody? Type270 { get; set; }
+        public global::Instill.TriggerNamespaceModelBinaryFileUploadResponse? Type270 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.TriggerNamespacePipelineReleaseResponse? Type271 { get; set; }
+        public global::Instill.TriggerNamespaceModelBody? Type271 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.TriggerNamespacePipelineResponse? Type272 { get; set; }
+        public global::Instill.TriggerNamespaceModelResponse? Type272 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.TriggerNamespacePipelineWithStreamBody? Type273 { get; set; }
+        public global::Instill.TriggerNamespacePipelineBody? Type273 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.TriggerNamespacePipelineWithStreamResponse? Type274 { get; set; }
+        public global::Instill.TriggerNamespacePipelineReleaseBody? Type274 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UpdateCatalogBody? Type275 { get; set; }
+        public global::Instill.TriggerNamespacePipelineReleaseResponse? Type275 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UpdateCatalogResponse? Type276 { get; set; }
+        public global::Instill.TriggerNamespacePipelineResponse? Type276 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UpdateChunkBody? Type277 { get; set; }
+        public global::Instill.TriggerNamespacePipelineWithStreamBody? Type277 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UpdateChunkResponse? Type278 { get; set; }
+        public global::Instill.TriggerNamespacePipelineWithStreamResponse? Type278 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UpdateNamespaceConnectionResponse? Type279 { get; set; }
+        public global::Instill.UpdateCatalogBody? Type279 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UpdateNamespaceModelResponse? Type280 { get; set; }
+        public global::Instill.UpdateCatalogResponse? Type280 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UpdateNamespacePipelineReleaseResponse? Type281 { get; set; }
+        public global::Instill.UpdateChunkBody? Type281 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UpdateNamespacePipelineResponse? Type282 { get; set; }
+        public global::Instill.UpdateChunkResponse? Type282 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UpdateNamespaceSecretResponse? Type283 { get; set; }
+        public global::Instill.UpdateNamespaceConnectionResponse? Type283 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UpdateObjectResponse? Type284 { get; set; }
+        public global::Instill.UpdateNamespaceModelResponse? Type284 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UpdateOrganizationMembershipResponse? Type285 { get; set; }
+        public global::Instill.UpdateNamespacePipelineReleaseResponse? Type285 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UpdateOrganizationResponse? Type286 { get; set; }
+        public global::Instill.UpdateNamespacePipelineResponse? Type286 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UpdateUserMembershipResponse? Type287 { get; set; }
+        public global::Instill.UpdateNamespaceSecretResponse? Type287 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UploadCatalogFileResponse? Type288 { get; set; }
+        public global::Instill.UpdateObjectResponse? Type288 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UserDefinedResponse? Type289 { get; set; }
+        public global::Instill.UpdateOrganizationMembershipResponse? Type289 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.UserDefinedResponse2? Type290 { get; set; }
+        public global::Instill.UpdateOrganizationResponse? Type290 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ValidateNamespacePipelineResponse? Type291 { get; set; }
+        public global::Instill.UpdateUserMembershipResponse? Type291 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.ErrPipelineValidation>? Type292 { get; set; }
+        public global::Instill.UploadCatalogFileResponse? Type292 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ValidateTokenResponse? Type293 { get; set; }
+        public global::Instill.UserDefinedResponse? Type293 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.WatchNamespaceLatestModelResponse? Type294 { get; set; }
+        public global::Instill.UserDefinedResponse2? Type294 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.WatchNamespaceModelResponse? Type295 { get; set; }
+        public global::Instill.ValidateNamespacePipelineResponse? Type295 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.MgmtV1betaView? Type296 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.ErrPipelineValidation>? Type296 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.View? Type297 { get; set; }
+        public global::Instill.ValidateTokenResponse? Type297 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListCatalogFilesFilterProcessStatus? Type298 { get; set; }
+        public global::Instill.WatchNamespaceLatestModelResponse? Type298 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListUsersView? Type299 { get; set; }
+        public global::Instill.WatchNamespaceModelResponse? Type299 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetUserView? Type300 { get; set; }
+        public global::Instill.MgmtV1betaView? Type300 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ListOrganizationsView? Type301 { get; set; }
+        public global::Instill.View? Type301 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetOrganizationView? Type302 { get; set; }
+        public global::Instill.ListCatalogFilesFilterProcessStatus? Type302 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetUserMembershipView? Type303 { get; set; }
+        public global::Instill.ListUsersView? Type303 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetOrganizationMembershipView? Type304 { get; set; }
+        public global::Instill.GetUserView? Type304 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ModelPublicServiceListModelDefinitionsView? Type305 { get; set; }
+        public global::Instill.ListOrganizationsView? Type305 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ModelPublicServiceGetModelDefinitionView? Type306 { get; set; }
+        public global::Instill.GetOrganizationView? Type306 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ModelPublicServiceListModelsView? Type307 { get; set; }
+        public global::Instill.GetUserMembershipView? Type307 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ModelPublicServiceListModelsVisibility? Type308 { get; set; }
+        public global::Instill.GetOrganizationMembershipView? Type308 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ModelPublicServiceListNamespaceModelsView? Type309 { get; set; }
+        public global::Instill.ModelPublicServiceListModelDefinitionsView? Type309 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ModelPublicServiceListNamespaceModelsVisibility? Type310 { get; set; }
+        public global::Instill.ModelPublicServiceGetModelDefinitionView? Type310 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ModelPublicServiceGetNamespaceModelView? Type311 { get; set; }
+        public global::Instill.ModelPublicServiceListModelsView? Type311 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ModelPublicServiceGetNamespaceModelOperationView? Type312 { get; set; }
+        public global::Instill.ModelPublicServiceListModelsVisibility? Type312 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ModelPublicServiceGetNamespaceLatestModelOperationView? Type313 { get; set; }
+        public global::Instill.ModelPublicServiceListNamespaceModelsView? Type313 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ModelPublicServiceGetModelOperationView? Type314 { get; set; }
+        public global::Instill.ModelPublicServiceListNamespaceModelsVisibility? Type314 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelinePublicServiceListPipelinesView? Type315 { get; set; }
+        public global::Instill.ModelPublicServiceGetNamespaceModelView? Type315 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelinePublicServiceListPipelinesVisibility? Type316 { get; set; }
+        public global::Instill.ModelPublicServiceGetNamespaceModelOperationView? Type316 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelinePublicServiceListNamespacePipelinesView? Type317 { get; set; }
+        public global::Instill.ModelPublicServiceGetNamespaceLatestModelOperationView? Type317 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelinePublicServiceListNamespacePipelinesVisibility? Type318 { get; set; }
+        public global::Instill.ModelPublicServiceGetModelOperationView? Type318 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelinePublicServiceGetNamespacePipelineView? Type319 { get; set; }
+        public global::Instill.PipelinePublicServiceListPipelinesView? Type319 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelinePublicServiceListNamespacePipelineReleasesView? Type320 { get; set; }
+        public global::Instill.PipelinePublicServiceListPipelinesVisibility? Type320 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelinePublicServiceGetNamespacePipelineReleaseView? Type321 { get; set; }
+        public global::Instill.PipelinePublicServiceListNamespacePipelinesView? Type321 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelinePublicServiceListComponentDefinitionsView? Type322 { get; set; }
+        public global::Instill.PipelinePublicServiceListNamespacePipelinesVisibility? Type322 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelinePublicServiceListComponentRunsView? Type323 { get; set; }
+        public global::Instill.PipelinePublicServiceGetNamespacePipelineView? Type323 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelinePublicServiceGetNamespaceConnectionView? Type324 { get; set; }
+        public global::Instill.PipelinePublicServiceListNamespacePipelineReleasesView? Type324 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelinePublicServiceGetIntegrationView? Type325 { get; set; }
+        public global::Instill.PipelinePublicServiceGetNamespacePipelineReleaseView? Type325 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelinePublicServiceTriggerNamespacePipelineWithStreamResponse? Type326 { get; set; }
+        public global::Instill.PipelinePublicServiceListComponentDefinitionsView? Type326 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Instill.PipelinePublicServiceListComponentRunsView? Type327 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Instill.PipelinePublicServiceGetNamespaceConnectionView? Type328 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Instill.PipelinePublicServiceGetIntegrationView? Type329 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Instill.PipelinePublicServiceTriggerNamespacePipelineWithStreamResponse? Type330 { get; set; }
     }
 }

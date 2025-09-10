@@ -163,13 +163,13 @@ namespace Instill
         public string? ConvertingPipeline { get; set; }
 
         /// <summary>
-        /// Length of the file in the specified unit type. It is defined as a<br/>
-        /// FilePosition, so it reflects the number of positions (the unit will depend<br/>
-        /// on the file type) that can be accessed in the file.<br/>
+        /// Length of the file in the specified unit type. It is defined as the number<br/>
+        /// of positions (the unit will depend on the file type) that can be accessed<br/>
+        /// in the file.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("length")]
-        public global::Instill.FilePosition? Length { get; set; }
+        public global::Instill.Position? Length { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -261,9 +261,9 @@ namespace Instill
         /// pipeline to improve the conversion performance).
         /// </param>
         /// <param name="length">
-        /// Length of the file in the specified unit type. It is defined as a<br/>
-        /// FilePosition, so it reflects the number of positions (the unit will depend<br/>
-        /// on the file type) that can be accessed in the file.<br/>
+        /// Length of the file in the specified unit type. It is defined as the number<br/>
+        /// of positions (the unit will depend on the file type) that can be accessed<br/>
+        /// in the file.<br/>
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
@@ -290,7 +290,7 @@ namespace Instill
             string? summary,
             string? downloadUrl,
             string? convertingPipeline,
-            global::Instill.FilePosition? length,
+            global::Instill.Position? length,
             string fileUid = default!)
         {
             this.FileUid = fileUid;

@@ -4,7 +4,7 @@
 namespace Instill
 {
     /// <summary>
-    /// Unit describes the unit of measurement for a position within a file.<br/>
+    /// Unit of measurement for a position within a file.<br/>
     ///  - UNIT_CHARACTER: Character positions (for Markdown and other text files).<br/>
     ///  - UNIT_PAGE: Page positions (for documents).<br/>
     ///  - UNIT_TIME_MS: Time positions in milliseconds (for audio/video files).<br/>

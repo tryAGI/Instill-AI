@@ -6143,8 +6143,8 @@ components:
           description: "Pipeline used for converting the file to Markdown if the file is a\ndocument (i.e., a file with pdf, doc[x] or ppt[x] extension). The value\nidentifies the pipeline release and and MUST have the format\n`{namespaceID}/{pipelineID}@{version}`.\nThe pipeline recipe MUST have the following variable and output fields:\n```yaml variable\nvariable:\n  document_input:\n    title: document-input\n    description: Upload a document (PDF/DOCX/DOC/PPTX/PPT)\n    type: file\n```\n```yaml output\noutput:\n convert_result:\n   title: convert-result\n   value: ${merge-markdown-refinement.output.results[0]}\n```\nOther variable and output fields will be ignored.\n\nThe pipeline will be executed first, falling back to the catalog's\nconversion pipelines if the conversion doesn't yield a non-empty result\n(see the catalog creation endpoint documentation).\n\nFor non-document catalog files, the conversion pipeline is deterministic\n(such files are typically trivial to convert and don't require a dedicated\npipeline to improve the conversion performance)."
         length:
           allOf:
-            - $ref: '#/components/schemas/FilePosition'
-          description: "Length of the file in the specified unit type. It is defined as a\nFilePosition, so it reflects the number of positions (the unit will depend\non the file type) that can be accessed in the file."
+            - $ref: '#/components/schemas/Position'
+          description: "Length of the file in the specified unit type. It is defined as the number\nof positions (the unit will depend on the file type) that can be accessed\nin the file."
           readOnly: true
     FileMediaType:
       enum:
@@ -6186,22 +6186,6 @@ components:
           description: Processing status of the file.
           readOnly: true
       description: FileMetadata contains information about the file.
-    FilePosition:
-      title: "FilePosition represents a position within a file using a specific unit.\nThe position can be multi-dimensional based on the unit type:\n- 1 element for 1D positions (characters, pages, time)\n- 2 elements for 2D positions (pixels: [x, y])\n- N elements for N-dimensional positions"
-      type: object
-      properties:
-        unit:
-          title: Unit of measurement for the position
-          allOf:
-            - $ref: '#/components/schemas/Unit'
-          readOnly: true
-        coordinates:
-          type: array
-          items:
-            type: integer
-            format: int64
-          description: "Position coordinates as an array\nFor 1D: [position]\nFor 2D: [x, y]\nFor 3D: [x, y, z], etc."
-          readOnly: true
     FileProcessStatus:
       title: file embedding process status
       enum:
@@ -8274,6 +8258,22 @@ components:
           description: The ID of the namespace that requested the pipeline triggers.
           readOnly: true
       description: "PipelineTriggerChartRecord represents a timeline of pipeline triggers. It\ncontains a collection of (timestamp, count) pairs that represent the total\npipeline triggers in a given time bucket."
+    Position:
+      type: object
+      properties:
+        unit:
+          allOf:
+            - $ref: '#/components/schemas/Unit'
+          description: Unit of measurement for the position.
+          readOnly: true
+        coordinates:
+          type: array
+          items:
+            type: integer
+            format: int64
+          description: Position value.
+          readOnly: true
+      description: "Position represents a position within a file using a specific unit. The\nnumber of dimensions of the position value depends on the unit type."
     ProcessCatalogFilesRequest:
       title: Process Catalog File Request
       required:
@@ -8329,15 +8329,15 @@ components:
       properties:
         start:
           allOf:
-            - $ref: '#/components/schemas/FilePosition'
+            - $ref: '#/components/schemas/Position'
           description: Start position of the chunk within the file.
           readOnly: true
         end:
           allOf:
-            - $ref: '#/components/schemas/FilePosition'
+            - $ref: '#/components/schemas/Position'
           description: End position of the chunk within the file.
           readOnly: true
-      description: Reference represents the position of a chunk within its source file.
+      description: Reference represents the position of a chunk within a file.
     Region:
       type: object
       properties:
@@ -9014,7 +9014,7 @@ components:
         - UNIT_TIME_MS
         - UNIT_PIXEL
       type: string
-      description: "Unit describes the unit of measurement for a position within a file.\n\n - UNIT_CHARACTER: Character positions (for Markdown and other text files).\n - UNIT_PAGE: Page positions (for documents).\n - UNIT_TIME_MS: Time positions in milliseconds (for audio/video files).\n - UNIT_PIXEL: Pixel positions (for images and other 2D content)."
+      description: "Unit of measurement for a position within a file.\n\n - UNIT_CHARACTER: Character positions (for Markdown and other text files).\n - UNIT_PAGE: Page positions (for documents).\n - UNIT_TIME_MS: Time positions in milliseconds (for audio/video files).\n - UNIT_PIXEL: Pixel positions (for images and other 2D content)."
     UpdateCatalogBody:
       type: object
       properties:

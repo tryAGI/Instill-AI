@@ -4,11 +4,13 @@
 namespace Instill
 {
     /// <summary>
-    /// 
+    /// Position represents a position within a file using a specific unit. The<br/>
+    /// number of dimensions of the position value depends on the unit type.
     /// </summary>
-    public sealed partial class FilePosition
+    public sealed partial class Position
     {
         /// <summary>
+        /// Unit of measurement for the position.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("unit")]
@@ -16,10 +18,7 @@ namespace Instill
         public global::Instill.Unit? Unit { get; set; }
 
         /// <summary>
-        /// Position coordinates as an array<br/>
-        /// For 1D: [position]<br/>
-        /// For 2D: [x, y]<br/>
-        /// For 3D: [x, y, z], etc.<br/>
+        /// Position value.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("coordinates")]
@@ -32,22 +31,20 @@ namespace Instill
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FilePosition" /> class.
+        /// Initializes a new instance of the <see cref="Position" /> class.
         /// </summary>
         /// <param name="unit">
+        /// Unit of measurement for the position.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="coordinates">
-        /// Position coordinates as an array<br/>
-        /// For 1D: [position]<br/>
-        /// For 2D: [x, y]<br/>
-        /// For 3D: [x, y, z], etc.<br/>
+        /// Position value.<br/>
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public FilePosition(
+        public Position(
             global::Instill.Unit? unit,
             global::System.Collections.Generic.IList<long>? coordinates)
         {
@@ -56,9 +53,9 @@ namespace Instill
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FilePosition" /> class.
+        /// Initializes a new instance of the <see cref="Position" /> class.
         /// </summary>
-        public FilePosition()
+        public Position()
         {
         }
     }

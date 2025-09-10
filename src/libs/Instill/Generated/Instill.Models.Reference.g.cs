@@ -4,7 +4,7 @@
 namespace Instill
 {
     /// <summary>
-    /// Reference represents the position of a chunk within its source file.
+    /// Reference represents the position of a chunk within a file.
     /// </summary>
     public sealed partial class Reference
     {
@@ -13,14 +13,14 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("start")]
-        public global::Instill.FilePosition? Start { get; set; }
+        public global::Instill.Position? Start { get; set; }
 
         /// <summary>
         /// End position of the chunk within the file.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("end")]
-        public global::Instill.FilePosition? End { get; set; }
+        public global::Instill.Position? End { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -43,8 +43,8 @@ namespace Instill
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Reference(
-            global::Instill.FilePosition? start,
-            global::Instill.FilePosition? end)
+            global::Instill.Position? start,
+            global::Instill.Position? end)
         {
             this.Start = start;
             this.End = end;

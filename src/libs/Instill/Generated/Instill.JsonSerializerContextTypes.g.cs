@@ -410,7 +410,7 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.FilePosition? Type96 { get; set; }
+        public global::Instill.Position? Type96 { get; set; }
         /// <summary>
         /// 
         /// </summary>

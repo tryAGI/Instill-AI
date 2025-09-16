@@ -6,7 +6,8 @@ namespace Instill
     /// <summary>
     /// Unit of measurement for a position within a file.<br/>
     ///  - UNIT_CHARACTER: Character positions (for Markdown and other text files).<br/>
-    ///  - UNIT_PAGE: Page positions (for documents).<br/>
+    ///  - UNIT_PAGE: Page positions (for documents). For pages, positions are 1-indexed<br/>
+    /// (e.g., page 4 of 4) to align with document visualization standards.<br/>
     ///  - UNIT_TIME_MS: Time positions in milliseconds (for audio/video files).<br/>
     ///  - UNIT_PIXEL: Pixel positions (for images and other 2D content).
     /// </summary>
@@ -17,7 +18,7 @@ namespace Instill
         /// </summary>
         CHARACTER,
         /// <summary>
-        /// Page positions (for documents).
+        /// Page positions (for documents). For pages, positions are 1-indexed
         /// </summary>
         PAGE,
         /// <summary>

@@ -34,10 +34,11 @@ namespace Instill
         public global::Instill.CatalogType? Type { get; set; }
 
         /// <summary>
-        /// Pipelines used for converting documents (i.e., files with pdf, doc[x] or<br/>
-        /// ppt[x] extension) to Markdown. The strings in the list identify the<br/>
-        /// pipelines and MUST have the format `{namespaceID}/{pipelineID}@{version}`.<br/>
-        /// The pipeline recipes MUST have the following variable and output fields:<br/>
+        /// Pipelines used for converting page-based documents (i.e., files with pdf,<br/>
+        /// doc[x] or ppt[x] extension) to Markdown. The strings in the list identify<br/>
+        /// the pipelines and MUST have the format<br/>
+        /// `{namespaceID}/{pipelineID}@{version}`. The pipeline recipes MUST have the<br/>
+        /// following variable and output fields:<br/>
         /// ```yaml variable<br/>
         /// variable:<br/>
         ///   document_input:<br/>
@@ -45,6 +46,7 @@ namespace Instill
         ///     description: Upload a document (PDF/DOCX/DOC/PPTX/PPT)<br/>
         ///     type: file<br/>
         /// ```<br/>
+        /// The `convert_result` output should be a list of strings, one per page.<br/>
         /// ```yaml output<br/>
         /// output:<br/>
         ///  convert_result:<br/>
@@ -82,10 +84,11 @@ namespace Instill
         /// </param>
         /// <param name="type"></param>
         /// <param name="convertingPipelines">
-        /// Pipelines used for converting documents (i.e., files with pdf, doc[x] or<br/>
-        /// ppt[x] extension) to Markdown. The strings in the list identify the<br/>
-        /// pipelines and MUST have the format `{namespaceID}/{pipelineID}@{version}`.<br/>
-        /// The pipeline recipes MUST have the following variable and output fields:<br/>
+        /// Pipelines used for converting page-based documents (i.e., files with pdf,<br/>
+        /// doc[x] or ppt[x] extension) to Markdown. The strings in the list identify<br/>
+        /// the pipelines and MUST have the format<br/>
+        /// `{namespaceID}/{pipelineID}@{version}`. The pipeline recipes MUST have the<br/>
+        /// following variable and output fields:<br/>
         /// ```yaml variable<br/>
         /// variable:<br/>
         ///   document_input:<br/>
@@ -93,6 +96,7 @@ namespace Instill
         ///     description: Upload a document (PDF/DOCX/DOC/PPTX/PPT)<br/>
         ///     type: file<br/>
         /// ```<br/>
+        /// The `convert_result` output should be a list of strings, one per page.<br/>
         /// ```yaml output<br/>
         /// output:<br/>
         ///  convert_result:<br/>

@@ -145,6 +145,7 @@ namespace Instill
         ///     description: Upload a document (PDF/DOCX/DOC/PPTX/PPT)<br/>
         ///     type: file<br/>
         /// ```<br/>
+        /// The `convert_result` output should be a list of strings, one per page.<br/>
         /// ```yaml output<br/>
         /// output:<br/>
         ///  convert_result:<br/>
@@ -246,6 +247,7 @@ namespace Instill
         ///     description: Upload a document (PDF/DOCX/DOC/PPTX/PPT)<br/>
         ///     type: file<br/>
         /// ```<br/>
+        /// The `convert_result` output should be a list of strings, one per page.<br/>
         /// ```yaml output<br/>
         /// output:<br/>
         ///  convert_result:<br/>

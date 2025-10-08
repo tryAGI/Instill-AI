@@ -5,60 +5,65 @@ namespace Instill
 {
     public partial class ArtifactClient
     {
-        partial void PrepareUploadCatalogFileArguments(
+        partial void PrepareUpdateCatalogFileTagsArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string namespaceId,
             ref string catalogId,
-            global::Instill.File request);
-        partial void PrepareUploadCatalogFileRequest(
+            ref string fileUid,
+            global::Instill.UpdateCatalogFileTagsBody request);
+        partial void PrepareUpdateCatalogFileTagsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string namespaceId,
             string catalogId,
-            global::Instill.File request);
-        partial void ProcessUploadCatalogFileResponse(
+            string fileUid,
+            global::Instill.UpdateCatalogFileTagsBody request);
+        partial void ProcessUpdateCatalogFileTagsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessUploadCatalogFileResponseContent(
+        partial void ProcessUpdateCatalogFileTagsResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Create a file<br/>
-        /// Creates a file.
+        /// Update catalog file tags<br/>
+        /// Updates the tags associated with a catalog file.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>
+        /// <param name="fileUid"></param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
 #if NET8_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
 #endif
-        public async global::System.Threading.Tasks.Task<global::Instill.UploadCatalogFileResponse> UploadCatalogFileAsync(
+        public async global::System.Threading.Tasks.Task<global::Instill.UpdateCatalogFileTagsResponse> UpdateCatalogFileTagsAsync(
             string namespaceId,
             string catalogId,
-            global::Instill.File request,
+            string fileUid,
+            global::Instill.UpdateCatalogFileTagsBody request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
 
             PrepareArguments(
                 client: HttpClient);
-            PrepareUploadCatalogFileArguments(
+            PrepareUpdateCatalogFileTagsArguments(
                 httpClient: HttpClient,
                 namespaceId: ref namespaceId,
                 catalogId: ref catalogId,
+                fileUid: ref fileUid,
                 request: request);
 
             var __pathBuilder = new global::Instill.PathBuilder(
-                path: $"/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/files",
+                path: $"/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/files/{fileUid}/tags",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                method: global::System.Net.Http.HttpMethod.Post,
+                method: global::System.Net.Http.HttpMethod.Put,
                 requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
             __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -90,11 +95,12 @@ namespace Instill
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareUploadCatalogFileRequest(
+            PrepareUpdateCatalogFileTagsRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
                 namespaceId: namespaceId,
                 catalogId: catalogId,
+                fileUid: fileUid,
                 request: request);
 
             using var __response = await HttpClient.SendAsync(
@@ -105,7 +111,7 @@ namespace Instill
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessUploadCatalogFileResponse(
+            ProcessUpdateCatalogFileTagsResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
             // Returned when the client credentials are not valid.
@@ -195,7 +201,7 @@ namespace Instill
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessUploadCatalogFileResponseContent(
+                ProcessUpdateCatalogFileTagsResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -205,7 +211,7 @@ namespace Instill
                     __response.EnsureSuccessStatusCode();
 
                     return
-                        global::Instill.UploadCatalogFileResponse.FromJson(__content, JsonSerializerContext) ??
+                        global::Instill.UpdateCatalogFileTagsResponse.FromJson(__content, JsonSerializerContext) ??
                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
                 catch (global::System.Exception __ex)
@@ -236,7 +242,7 @@ namespace Instill
                     ).ConfigureAwait(false);
 
                     return
-                        await global::Instill.UploadCatalogFileResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        await global::Instill.UpdateCatalogFileTagsResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
                 catch (global::System.Exception __ex)
@@ -256,79 +262,36 @@ namespace Instill
         }
 
         /// <summary>
-        /// Create a file<br/>
-        /// Creates a file.
+        /// Update catalog file tags<br/>
+        /// Updates the tags associated with a catalog file.
         /// </summary>
         /// <param name="namespaceId"></param>
         /// <param name="catalogId"></param>
-        /// <param name="name"></param>
-        /// <param name="type"></param>
-        /// <param name="content"></param>
-        /// <param name="externalMetadata"></param>
-        /// <param name="objectUid">
-        /// objectUid in blob storage. user can upload to blob storage directly, then put objectUid here.<br/>
-        /// then no need the base64 encoding for the file content.
+        /// <param name="fileUid"></param>
+        /// <param name="tags">
+        /// Array of tags to associate with the file.
         /// </param>
-        /// <param name="convertingPipeline">
-        /// Pipeline used for converting the file to Markdown if the file is a<br/>
-        /// document (i.e., a file with pdf, doc[x] or ppt[x] extension). The value<br/>
-        /// identifies the pipeline release and and MUST have the format<br/>
-        /// `{namespaceID}/{pipelineID}@{version}`.<br/>
-        /// The pipeline recipe MUST have the following variable and output fields:<br/>
-        /// ```yaml variable<br/>
-        /// variable:<br/>
-        ///   document_input:<br/>
-        ///     title: document-input<br/>
-        ///     description: Upload a document (PDF/DOCX/DOC/PPTX/PPT)<br/>
-        ///     type: file<br/>
-        /// ```<br/>
-        /// The `convert_result` output should be a list of strings, one per page.<br/>
-        /// ```yaml output<br/>
-        /// output:<br/>
-        ///  convert_result:<br/>
-        ///    title: convert-result<br/>
-        ///    value: ${merge-markdown-refinement.output.results[0]}<br/>
-        /// ```<br/>
-        /// Other variable and output fields will be ignored.<br/>
-        /// The pipeline will be executed first, falling back to the catalog's<br/>
-        /// conversion pipelines if the conversion doesn't yield a non-empty result<br/>
-        /// (see the catalog creation endpoint documentation).<br/>
-        /// For non-document catalog files, the conversion pipeline is deterministic<br/>
-        /// (such files are typically trivial to convert and don't require a dedicated<br/>
-        /// pipeline to improve the conversion performance).
-        /// </param>
-        /// <param name="tags"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
 #if NET8_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
 #endif
-        public async global::System.Threading.Tasks.Task<global::Instill.UploadCatalogFileResponse> UploadCatalogFileAsync(
+        public async global::System.Threading.Tasks.Task<global::Instill.UpdateCatalogFileTagsResponse> UpdateCatalogFileTagsAsync(
             string namespaceId,
             string catalogId,
-            string? name = default,
-            global::Instill.FileType? type = default,
-            string? content = default,
-            object? externalMetadata = default,
-            string? objectUid = default,
-            string? convertingPipeline = default,
-            global::System.Collections.Generic.IList<string>? tags = default,
+            string fileUid,
+            global::System.Collections.Generic.IList<string> tags,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Instill.File
+            var __request = new global::Instill.UpdateCatalogFileTagsBody
             {
-                Name = name,
-                Type = type,
-                Content = content,
-                ExternalMetadata = externalMetadata,
-                ObjectUid = objectUid,
-                ConvertingPipeline = convertingPipeline,
                 Tags = tags,
             };
 
-            return await UploadCatalogFileAsync(
+            return await UpdateCatalogFileTagsAsync(
                 namespaceId: namespaceId,
                 catalogId: catalogId,
+                fileUid: fileUid,
                 request: __request,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
         }

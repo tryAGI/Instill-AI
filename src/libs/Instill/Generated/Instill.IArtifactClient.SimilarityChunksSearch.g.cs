@@ -47,6 +47,10 @@ namespace Instill
         /// File UIDs. When this field is provided, the response will return only<br/>
         /// chunks that belong to the specified file UIDs.
         /// </param>
+        /// <param name="tags">
+        /// Tags to filter by. When multiple tags are provided, OR logic is applied.<br/>
+        /// Note: File UID filter takes precedence over tags, as tags apply to files.
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
 #if NET8_0_OR_GREATER
@@ -61,6 +65,7 @@ namespace Instill
             global::Instill.ContentType? contentType = default,
             global::Instill.FileMediaType? fileMediaType = default,
             global::System.Collections.Generic.IList<string>? fileUids = default,
+            global::System.Collections.Generic.IList<string>? tags = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

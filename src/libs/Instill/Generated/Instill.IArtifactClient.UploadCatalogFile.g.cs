@@ -64,6 +64,7 @@ namespace Instill
         /// (such files are typically trivial to convert and don't require a dedicated<br/>
         /// pipeline to improve the conversion performance).
         /// </param>
+        /// <param name="tags"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
 #if NET8_0_OR_GREATER
@@ -78,6 +79,7 @@ namespace Instill
             object? externalMetadata = default,
             string? objectUid = default,
             string? convertingPipeline = default,
+            global::System.Collections.Generic.IList<string>? tags = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

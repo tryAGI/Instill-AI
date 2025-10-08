@@ -1019,6 +1019,58 @@ paths:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
       x-stage: alpha
+  '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/files/{fileUid}/tags':
+    put:
+      tags:
+        - Artifact
+      summary: Update catalog file tags
+      description: Updates the tags associated with a catalog file.
+      operationId: UpdateCatalogFileTags
+      parameters:
+        - name: namespaceId
+          in: path
+          description: ID of the namespace owning the catalog.
+          required: true
+          schema:
+            type: string
+        - name: catalogId
+          in: path
+          description: ID of the catalog.
+          required: true
+          schema:
+            type: string
+        - name: fileUid
+          in: path
+          description: Unique identifier of the file.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCatalogFileTagsBody'
+        required: true
+        x-bodyName: body
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateCatalogFileTagsResponse'
+        '401':
+          description: Returned when the client credentials are not valid.
+          content:
+            application/json:
+              schema: { }
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpc.Status'
+      x-stage: alpha
   /v1beta/user:
     get:
       tags:
@@ -6146,6 +6198,11 @@ components:
             - $ref: '#/components/schemas/Position'
           description: "Length of the file in the specified unit type. It is defined as the number\nof positions (the unit will depend on the file type) that can be accessed\nin the file."
           readOnly: true
+        tags:
+          title: Array of tags associated with the file
+          type: array
+          items:
+            type: string
     FileMediaType:
       enum:
         - FILE_MEDIA_TYPE_DOCUMENT
@@ -8568,6 +8625,11 @@ components:
           items:
             type: string
           description: "File UIDs. When this field is provided, the response will return only\nchunks that belong to the specified file UIDs."
+        tags:
+          type: array
+          items:
+            type: string
+          description: "Tags to filter by. When multiple tags are provided, OR logic is applied.\nNote: File UID filter takes precedence over tags, as tags apply to files."
     SimilarityChunksSearchResponse:
       title: Similar chunk search response
       type: object
@@ -9032,6 +9094,26 @@ components:
             type: string
           description: "Pipelines used for converting page-based documents (i.e., files with pdf,\ndoc[x] or ppt[x] extension) to Markdown. The strings in the list identify\nthe pipelines and MUST have the format\n`{namespaceID}/{pipelineID}@{version}`. The pipeline recipes MUST have the\nfollowing variable and output fields:\n```yaml variable\nvariable:\n  document_input:\n    title: document-input\n    description: Upload a document (PDF/DOCX/DOC/PPTX/PPT)\n    type: file\n```\nThe `convert_result` output should be a list of strings, one per page.\n```yaml output\noutput:\n convert_result:\n   title: convert-result\n   value: ${merge-markdown-refinement.output.results[0]}\n```\nOther variable and output fields will be ignored.\n\nThe pipelines will be executed in order until one produces a successful,\nnon-empty result.\n\nIf no pipelines are provided, a default pipeline will be used. For\nnon-document catalog files, the conversion pipeline is deterministic (such\nfiles are typically trivial to convert and don't require a dedicated\npipeline to improve the conversion performance)."
       description: UpdateCatalogRequest represents a request to update a catalog.
+    UpdateCatalogFileTagsBody:
+      title: Update catalog file tags request
+      required:
+        - tags
+      type: object
+      properties:
+        tags:
+          type: array
+          items:
+            type: string
+          description: Array of tags to associate with the file.
+    UpdateCatalogFileTagsResponse:
+      title: Update catalog file tags response
+      type: object
+      properties:
+        file:
+          allOf:
+            - $ref: '#/components/schemas/File'
+          description: Updated file with tags.
+          readOnly: true
     UpdateCatalogResponse:
       type: object
       properties:

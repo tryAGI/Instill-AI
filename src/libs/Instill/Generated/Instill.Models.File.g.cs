@@ -173,6 +173,12 @@ namespace Instill
         public global::Instill.Position? Length { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("tags")]
+        public global::System.Collections.Generic.IList<string>? Tags { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -268,6 +274,7 @@ namespace Instill
         /// in the file.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="tags"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -293,6 +300,7 @@ namespace Instill
             string? downloadUrl,
             string? convertingPipeline,
             global::Instill.Position? length,
+            global::System.Collections.Generic.IList<string>? tags,
             string fileUid = default!)
         {
             this.FileUid = fileUid;
@@ -317,6 +325,7 @@ namespace Instill
             this.DownloadUrl = downloadUrl;
             this.ConvertingPipeline = convertingPipeline;
             this.Length = length;
+            this.Tags = tags;
         }
 
         /// <summary>

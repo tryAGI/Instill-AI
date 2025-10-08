@@ -43,6 +43,13 @@ namespace Instill
         public global::System.Collections.Generic.IList<string>? FileUids { get; set; }
 
         /// <summary>
+        /// Tags to filter by. When multiple tags are provided, OR logic is applied.<br/>
+        /// Note: File UID filter takes precedence over tags, as tags apply to files.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("tags")]
+        public global::System.Collections.Generic.IList<string>? Tags { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -67,6 +74,10 @@ namespace Instill
         /// File UIDs. When this field is provided, the response will return only<br/>
         /// chunks that belong to the specified file UIDs.
         /// </param>
+        /// <param name="tags">
+        /// Tags to filter by. When multiple tags are provided, OR logic is applied.<br/>
+        /// Note: File UID filter takes precedence over tags, as tags apply to files.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -75,13 +86,15 @@ namespace Instill
             long? topK,
             global::Instill.ContentType? contentType,
             global::Instill.FileMediaType? fileMediaType,
-            global::System.Collections.Generic.IList<string>? fileUids)
+            global::System.Collections.Generic.IList<string>? fileUids,
+            global::System.Collections.Generic.IList<string>? tags)
         {
             this.TextPrompt = textPrompt ?? throw new global::System.ArgumentNullException(nameof(textPrompt));
             this.TopK = topK;
             this.ContentType = contentType;
             this.FileMediaType = fileMediaType;
             this.FileUids = fileUids;
+            this.Tags = tags;
         }
 
         /// <summary>

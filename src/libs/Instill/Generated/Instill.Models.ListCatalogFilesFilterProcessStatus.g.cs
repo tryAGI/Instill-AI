@@ -13,11 +13,11 @@ namespace Instill
         /// </summary>
         FILEPROCESSSTATUSNOTSTARTED,
         /// <summary>
-        /// file is waiting for embedding process
+        /// file is waiting for embedding process (deprecated - sequential architecture)
         /// </summary>
         FILEPROCESSSTATUSWAITING,
         /// <summary>
-        /// file is converting
+        /// file is converting (deprecated - sequential architecture)
         /// </summary>
         FILEPROCESSSTATUSCONVERTING,
         /// <summary>
@@ -37,9 +37,13 @@ namespace Instill
         /// </summary>
         FILEPROCESSSTATUSFAILED,
         /// <summary>
-        /// file is summarizing
+        /// file is summarizing (deprecated - sequential architecture)
         /// </summary>
         FILEPROCESSSTATUSSUMMARIZING,
+        /// <summary>
+        /// file is being processed (parallel architecture: conversion + summarization)
+        /// </summary>
+        FILEPROCESSSTATUSPROCESSING,
     }
 
     /// <summary>
@@ -62,6 +66,7 @@ namespace Instill
                 ListCatalogFilesFilterProcessStatus.FILEPROCESSSTATUSCOMPLETED => "FILE_PROCESS_STATUS_COMPLETED",
                 ListCatalogFilesFilterProcessStatus.FILEPROCESSSTATUSFAILED => "FILE_PROCESS_STATUS_FAILED",
                 ListCatalogFilesFilterProcessStatus.FILEPROCESSSTATUSSUMMARIZING => "FILE_PROCESS_STATUS_SUMMARIZING",
+                ListCatalogFilesFilterProcessStatus.FILEPROCESSSTATUSPROCESSING => "FILE_PROCESS_STATUS_PROCESSING",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -80,6 +85,7 @@ namespace Instill
                 "FILE_PROCESS_STATUS_COMPLETED" => ListCatalogFilesFilterProcessStatus.FILEPROCESSSTATUSCOMPLETED,
                 "FILE_PROCESS_STATUS_FAILED" => ListCatalogFilesFilterProcessStatus.FILEPROCESSSTATUSFAILED,
                 "FILE_PROCESS_STATUS_SUMMARIZING" => ListCatalogFilesFilterProcessStatus.FILEPROCESSSTATUSSUMMARIZING,
+                "FILE_PROCESS_STATUS_PROCESSING" => ListCatalogFilesFilterProcessStatus.FILEPROCESSSTATUSPROCESSING,
                 _ => null,
             };
         }

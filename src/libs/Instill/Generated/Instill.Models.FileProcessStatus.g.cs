@@ -5,13 +5,14 @@ namespace Instill
 {
     /// <summary>
     /// - FILE_PROCESS_STATUS_NOTSTARTED: NOTSTARTED<br/>
-    ///  - FILE_PROCESS_STATUS_WAITING: file is waiting for embedding process<br/>
-    ///  - FILE_PROCESS_STATUS_CONVERTING: file is converting<br/>
+    ///  - FILE_PROCESS_STATUS_WAITING: file is waiting for embedding process (deprecated - sequential architecture)<br/>
+    ///  - FILE_PROCESS_STATUS_CONVERTING: file is converting (deprecated - sequential architecture)<br/>
     ///  - FILE_PROCESS_STATUS_CHUNKING: file is chunking<br/>
     ///  - FILE_PROCESS_STATUS_EMBEDDING: file is embedding<br/>
     ///  - FILE_PROCESS_STATUS_COMPLETED: completed<br/>
     ///  - FILE_PROCESS_STATUS_FAILED: failed<br/>
-    ///  - FILE_PROCESS_STATUS_SUMMARIZING: file is summarizing
+    ///  - FILE_PROCESS_STATUS_SUMMARIZING: file is summarizing (deprecated - sequential architecture)<br/>
+    ///  - FILE_PROCESS_STATUS_PROCESSING: file is being processed (parallel architecture: conversion + summarization)
     /// </summary>
     public enum FileProcessStatus
     {
@@ -20,11 +21,11 @@ namespace Instill
         /// </summary>
         NOTSTARTED,
         /// <summary>
-        /// file is waiting for embedding process
+        /// file is waiting for embedding process (deprecated - sequential architecture)
         /// </summary>
         WAITING,
         /// <summary>
-        /// file is converting
+        /// file is converting (deprecated - sequential architecture)
         /// </summary>
         CONVERTING,
         /// <summary>
@@ -44,9 +45,13 @@ namespace Instill
         /// </summary>
         FAILED,
         /// <summary>
-        /// file is summarizing
+        /// file is summarizing (deprecated - sequential architecture)
         /// </summary>
         SUMMARIZING,
+        /// <summary>
+        /// file is being processed (parallel architecture: conversion + summarization)
+        /// </summary>
+        PROCESSING,
     }
 
     /// <summary>
@@ -69,6 +74,7 @@ namespace Instill
                 FileProcessStatus.COMPLETED => "FILE_PROCESS_STATUS_COMPLETED",
                 FileProcessStatus.FAILED => "FILE_PROCESS_STATUS_FAILED",
                 FileProcessStatus.SUMMARIZING => "FILE_PROCESS_STATUS_SUMMARIZING",
+                FileProcessStatus.PROCESSING => "FILE_PROCESS_STATUS_PROCESSING",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -87,6 +93,7 @@ namespace Instill
                 "FILE_PROCESS_STATUS_COMPLETED" => FileProcessStatus.COMPLETED,
                 "FILE_PROCESS_STATUS_FAILED" => FileProcessStatus.FAILED,
                 "FILE_PROCESS_STATUS_SUMMARIZING" => FileProcessStatus.SUMMARIZING,
+                "FILE_PROCESS_STATUS_PROCESSING" => FileProcessStatus.PROCESSING,
                 _ => null,
             };
         }

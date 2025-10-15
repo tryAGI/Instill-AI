@@ -57,19 +57,22 @@ namespace Instill
         public global::System.Collections.Generic.IList<string>? Tags { get; set; }
 
         /// <summary>
-        /// The catalog converting pipelines.
+        /// The catalog converting pipelines.<br/>
+        /// Deprecated: Conversion is now handled by AI providers.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("convertingPipelines")]
         public global::System.Collections.Generic.IList<string>? ConvertingPipelines { get; set; }
 
         /// <summary>
-        /// The catalog splitting pipelines.
+        /// The catalog splitting pipelines.<br/>
+        /// Deprecated: Chunking is now handled internally.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("splittingPipelines")]
         public global::System.Collections.Generic.IList<string>? SplittingPipelines { get; set; }
 
         /// <summary>
-        /// The catalog embedding pipelines.
+        /// The catalog embedding pipelines.<br/>
+        /// Deprecated: Use embedding_config instead.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("embeddingPipelines")]
         public global::System.Collections.Generic.IList<string>? EmbeddingPipelines { get; set; }
@@ -99,10 +102,17 @@ namespace Instill
         public string? UsedStorage { get; set; }
 
         /// <summary>
-        /// The catalog summarizing pipelines.
+        /// The catalog summarizing pipelines.<br/>
+        /// Deprecated: Summarization is now handled by AI providers.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("summarizingPipelines")]
         public global::System.Collections.Generic.IList<string>? SummarizingPipelines { get; set; }
+
+        /// <summary>
+        /// The embedding configuration for the catalog.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("embeddingConfig")]
+        public global::Instill.EmbeddingConfig? EmbeddingConfig { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -138,13 +148,16 @@ namespace Instill
         /// The catalog tags.
         /// </param>
         /// <param name="convertingPipelines">
-        /// The catalog converting pipelines.
+        /// The catalog converting pipelines.<br/>
+        /// Deprecated: Conversion is now handled by AI providers.
         /// </param>
         /// <param name="splittingPipelines">
-        /// The catalog splitting pipelines.
+        /// The catalog splitting pipelines.<br/>
+        /// Deprecated: Chunking is now handled internally.
         /// </param>
         /// <param name="embeddingPipelines">
-        /// The catalog embedding pipelines.
+        /// The catalog embedding pipelines.<br/>
+        /// Deprecated: Use embedding_config instead.
         /// </param>
         /// <param name="downstreamApps"></param>
         /// <param name="totalFiles">
@@ -157,7 +170,11 @@ namespace Instill
         /// The current used storage in catalog.
         /// </param>
         /// <param name="summarizingPipelines">
-        /// The catalog summarizing pipelines.
+        /// The catalog summarizing pipelines.<br/>
+        /// Deprecated: Summarization is now handled by AI providers.
+        /// </param>
+        /// <param name="embeddingConfig">
+        /// The embedding configuration for the catalog.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -178,7 +195,8 @@ namespace Instill
             long? totalFiles,
             long? totalTokens,
             string? usedStorage,
-            global::System.Collections.Generic.IList<string>? summarizingPipelines)
+            global::System.Collections.Generic.IList<string>? summarizingPipelines,
+            global::Instill.EmbeddingConfig? embeddingConfig)
         {
             this.CatalogUid = catalogUid;
             this.CatalogId = catalogId;
@@ -196,6 +214,7 @@ namespace Instill
             this.TotalTokens = totalTokens;
             this.UsedStorage = usedStorage;
             this.SummarizingPipelines = summarizingPipelines;
+            this.EmbeddingConfig = embeddingConfig;
         }
 
         /// <summary>

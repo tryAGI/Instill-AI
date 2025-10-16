@@ -495,48 +495,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/rpc.Status'
       x-stage: alpha
-  '/v1alpha/namespaces/{namespaceId}/chunks':
-    get:
-      tags:
-        - Artifact
-      summary: Search catalog chunks
-      description: Returns a paginated list of catalog chunks based on search criteria.
-      operationId: SearchChunks
-      parameters:
-        - name: namespaceId
-          in: path
-          description: owner/namespace id (not uid)
-          required: true
-          schema:
-            type: string
-        - name: chunkUids
-          in: query
-          description: chunk uids
-          required: true
-          style: form
-          schema:
-            type: array
-            items:
-              type: string
-      responses:
-        '200':
-          description: A successful response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SearchChunksResponse'
-        '401':
-          description: Returned when the client credentials are not valid.
-          content:
-            application/json:
-              schema: { }
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpc.Status'
-      x-stage: beta
   '/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/files/{fileUid}/source':
     get:
       tags:
@@ -8521,16 +8479,6 @@ components:
         - RUN_STATUS_QUEUED
       type: string
       description: "RunStatus defines the status of a pipeline or model run.\n\n - RUN_STATUS_PROCESSING: Run in progress.\n - RUN_STATUS_COMPLETED: Run succeeded.\n - RUN_STATUS_FAILED: Run failed.\n - RUN_STATUS_QUEUED: Run is waiting to be executed."
-    SearchChunksResponse:
-      title: Search chunks response
-      type: object
-      properties:
-        chunks:
-          title: repeated chunks
-          type: array
-          items:
-            $ref: '#/components/schemas/.Chunk'
-          readOnly: true
     SearchSourceFilesResponse:
       title: search source file response
       type: object

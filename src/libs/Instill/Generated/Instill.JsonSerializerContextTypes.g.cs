@@ -174,111 +174,111 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.CloneNamespacePipelineBody? Type37 { get; set; }
+        public global::Instill.ChunkType2? Type37 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Sharing? Type38 { get; set; }
+        public global::Instill.CloneNamespacePipelineBody? Type38 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::Instill.SharingUser>? Type39 { get; set; }
+        public global::Instill.Sharing? Type39 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.SharingUser? Type40 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::Instill.SharingUser>? Type40 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Role? Type41 { get; set; }
+        public global::Instill.SharingUser? Type41 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ShareCode? Type42 { get; set; }
+        public global::Instill.Role? Type42 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.CloneNamespacePipelineReleaseBody? Type43 { get; set; }
+        public global::Instill.ShareCode? Type43 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ComponentDefinition? Type44 { get; set; }
+        public global::Instill.CloneNamespacePipelineReleaseBody? Type44 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Spec? Type45 { get; set; }
+        public global::Instill.ComponentDefinition? Type45 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::Instill.DataSpecification>? Type46 { get; set; }
+        public global::Instill.Spec? Type46 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.DataSpecification? Type47 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::Instill.DataSpecification>? Type47 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::Instill.EventSpecification>? Type48 { get; set; }
+        public global::Instill.DataSpecification? Type48 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.EventSpecification? Type49 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::Instill.EventSpecification>? Type49 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ComponentType? Type50 { get; set; }
+        public global::Instill.EventSpecification? Type50 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.ComponentTask>? Type51 { get; set; }
+        public global::Instill.ComponentType? Type51 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ComponentTask? Type52 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.ComponentTask>? Type52 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ComponentDefinitionReleaseStage? Type53 { get; set; }
+        public global::Instill.ComponentTask? Type53 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.ComponentEvent>? Type54 { get; set; }
+        public global::Instill.ComponentDefinitionReleaseStage? Type54 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ComponentEvent? Type55 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.ComponentEvent>? Type55 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ComponentDefinitionView? Type56 { get; set; }
+        public global::Instill.ComponentEvent? Type56 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ComponentRun? Type57 { get; set; }
+        public global::Instill.ComponentDefinitionView? Type57 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Instill.FileReference>? Type58 { get; set; }
+        public global::Instill.ComponentRun? Type58 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.FileReference? Type59 { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.FileReference>? Type59 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Connection? Type60 { get; set; }
+        public global::Instill.FileReference? Type60 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Method? Type61 { get; set; }
+        public global::Instill.Connection? Type61 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelineV1betaView? Type62 { get; set; }
+        public global::Instill.Method? Type62 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ContentType? Type63 { get; set; }
+        public global::Instill.PipelineV1betaView? Type63 { get; set; }
         /// <summary>
         /// 
         /// </summary>

@@ -4,30 +4,25 @@
 namespace Instill
 {
     /// <summary>
-    /// ChunkType contains the different types of a chunk.<br/>
-    ///  - CHUNK_TYPE_TEXT: Text.<br/>
-    ///  - CHUNK_TYPE_IMAGE: Image.<br/>
-    ///  - CHUNK_TYPE_AUDIO: Audio.<br/>
-    ///  - CHUNK_TYPE_VIDEO: Video.
+    /// Type describes the type of a chunk content.<br/>
+    ///  - TYPE_CONTENT: Content.<br/>
+    ///  - TYPE_SUMMARY: Summary.<br/>
+    ///  - TYPE_AUGMENTED: Augmented.
     /// </summary>
     public enum ChunkType
     {
         /// <summary>
-        /// Text.
+        /// Content.
         /// </summary>
-        TEXT,
+        TYPECONTENT,
         /// <summary>
-        /// Image.
+        /// Summary.
         /// </summary>
-        IMAGE,
+        TYPESUMMARY,
         /// <summary>
-        /// Audio.
+        /// Augmented.
         /// </summary>
-        AUDIO,
-        /// <summary>
-        /// Video.
-        /// </summary>
-        VIDEO,
+        TYPEAUGMENTED,
     }
 
     /// <summary>
@@ -42,10 +37,9 @@ namespace Instill
         {
             return value switch
             {
-                ChunkType.TEXT => "CHUNK_TYPE_TEXT",
-                ChunkType.IMAGE => "CHUNK_TYPE_IMAGE",
-                ChunkType.AUDIO => "CHUNK_TYPE_AUDIO",
-                ChunkType.VIDEO => "CHUNK_TYPE_VIDEO",
+                ChunkType.TYPECONTENT => "TYPE_CONTENT",
+                ChunkType.TYPESUMMARY => "TYPE_SUMMARY",
+                ChunkType.TYPEAUGMENTED => "TYPE_AUGMENTED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -56,10 +50,9 @@ namespace Instill
         {
             return value switch
             {
-                "CHUNK_TYPE_TEXT" => ChunkType.TEXT,
-                "CHUNK_TYPE_IMAGE" => ChunkType.IMAGE,
-                "CHUNK_TYPE_AUDIO" => ChunkType.AUDIO,
-                "CHUNK_TYPE_VIDEO" => ChunkType.VIDEO,
+                "TYPE_CONTENT" => ChunkType.TYPECONTENT,
+                "TYPE_SUMMARY" => ChunkType.TYPESUMMARY,
+                "TYPE_AUGMENTED" => ChunkType.TYPEAUGMENTED,
                 _ => null,
             };
         }

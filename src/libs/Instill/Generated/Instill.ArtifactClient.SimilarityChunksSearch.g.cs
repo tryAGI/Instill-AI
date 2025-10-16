@@ -280,8 +280,8 @@ namespace Instill
         /// <param name="topK">
         /// Top K. Default value: 5.
         /// </param>
-        /// <param name="contentType">
-        /// Content type.
+        /// <param name="type">
+        /// Chunk type.
         /// </param>
         /// <param name="fileMediaType">
         /// File type.
@@ -305,7 +305,7 @@ namespace Instill
             string textPrompt,
             string? instillRequesterUid = default,
             long? topK = default,
-            global::Instill.ContentType? contentType = default,
+            global::Instill.ChunkType? type = default,
             global::Instill.FileMediaType? fileMediaType = default,
             global::System.Collections.Generic.IList<string>? fileUids = default,
             global::System.Collections.Generic.IList<string>? tags = default,
@@ -315,7 +315,7 @@ namespace Instill
             {
                 TextPrompt = textPrompt,
                 TopK = topK,
-                ContentType = contentType,
+                Type = type,
                 FileMediaType = fileMediaType,
                 FileUids = fileUids,
                 Tags = tags,

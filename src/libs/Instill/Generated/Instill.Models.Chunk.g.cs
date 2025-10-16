@@ -41,9 +41,9 @@ namespace Instill
         /// <summary>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("contentType")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.ContentTypeJsonConverter))]
-        public global::Instill.ContentType? ContentType { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.ChunkTypeJsonConverter))]
+        public global::Instill.ChunkType? Type { get; set; }
 
         /// <summary>
         /// Reference to the position of the chunk within the original file.<br/>
@@ -95,7 +95,7 @@ namespace Instill
         /// <param name="originalFileUid">
         /// Included only in responses
         /// </param>
-        /// <param name="contentType">
+        /// <param name="type">
         /// Included only in responses
         /// </param>
         /// <param name="reference">
@@ -121,7 +121,7 @@ namespace Instill
             long? tokens,
             global::System.DateTime? createTime,
             string? originalFileUid,
-            global::Instill.ContentType? contentType,
+            global::Instill.ChunkType? type,
             global::Instill.Reference? reference,
             global::Instill.Reference? markdownReference,
             long? startPos,
@@ -132,7 +132,7 @@ namespace Instill
             this.Tokens = tokens;
             this.CreateTime = createTime;
             this.OriginalFileUid = originalFileUid;
-            this.ContentType = contentType;
+            this.Type = type;
             this.Reference = reference;
             this.MarkdownReference = markdownReference;
             this.StartPos = startPos;

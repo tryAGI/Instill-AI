@@ -3,10 +3,10 @@
 namespace Instill.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class ContentTypeJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Instill.ContentType>
+    public sealed class ChunkType2NullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Instill.ChunkType2?>
     {
         /// <inheritdoc />
-        public override global::Instill.ContentType Read(
+        public override global::Instill.ChunkType2? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Instill.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Instill.ContentTypeExtensions.ToEnum(stringValue) ?? default;
+                        return global::Instill.ChunkType2Extensions.ToEnum(stringValue);
                     }
                     
                     break;
@@ -26,11 +26,11 @@ namespace Instill.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Instill.ContentType)numValue;
+                    return (global::Instill.ChunkType2)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::Instill.ContentType);
+                    return default(global::Instill.ChunkType2?);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,12 +42,19 @@ namespace Instill.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Instill.ContentType value,
+            global::Instill.ChunkType2? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            writer.WriteStringValue(global::Instill.ContentTypeExtensions.ToValueString(value));
+            if (value == null)
+            {
+                writer.WriteNullValue();
+            }
+            else
+            {
+                writer.WriteStringValue(global::Instill.ChunkType2Extensions.ToValueString(value.Value));
+            }
         }
     }
 }

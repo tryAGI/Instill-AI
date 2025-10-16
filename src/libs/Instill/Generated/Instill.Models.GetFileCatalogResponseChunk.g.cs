@@ -20,8 +20,8 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.ChunkTypeJsonConverter))]
-        public global::Instill.ChunkType? Type { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.ChunkType2JsonConverter))]
+        public global::Instill.ChunkType2? Type { get; set; }
 
         /// <summary>
         /// Start position in the text.<br/>
@@ -122,7 +122,7 @@ namespace Instill
 #endif
         public GetFileCatalogResponseChunk(
             string? uid,
-            global::Instill.ChunkType? type,
+            global::Instill.ChunkType2? type,
             int? startPosition,
             int? endPosition,
             string? content,

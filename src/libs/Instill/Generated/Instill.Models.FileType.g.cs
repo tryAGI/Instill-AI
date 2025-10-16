@@ -4,199 +4,200 @@
 namespace Instill
 {
     /// <summary>
-    /// - FILE_TYPE_TEXT: Text-based document types<br/>
+    /// Supported file types by the pipeline-backend.<br/>
+    ///  - TYPE_TEXT: Text-based document types<br/>
     /// text<br/>
-    ///  - FILE_TYPE_PDF: PDF<br/>
-    ///  - FILE_TYPE_MARKDOWN: MARKDOWN<br/>
-    ///  - FILE_TYPE_HTML: HTML<br/>
-    ///  - FILE_TYPE_CSV: CSV<br/>
-    ///  - FILE_TYPE_DOCX: Microsoft Office document types<br/>
+    ///  - TYPE_PDF: PDF<br/>
+    ///  - TYPE_MARKDOWN: MARKDOWN<br/>
+    ///  - TYPE_HTML: HTML<br/>
+    ///  - TYPE_CSV: CSV<br/>
+    ///  - TYPE_DOCX: Microsoft Office document types<br/>
     /// DOCX<br/>
-    ///  - FILE_TYPE_DOC: DOC<br/>
-    ///  - FILE_TYPE_PPT: PPT<br/>
-    ///  - FILE_TYPE_PPTX: PPTX<br/>
-    ///  - FILE_TYPE_XLS: XLS<br/>
-    ///  - FILE_TYPE_XLSX: XLSX<br/>
-    ///  - FILE_TYPE_PNG: Image types (supported by pipeline-backend/pkg/data/image.go)<br/>
+    ///  - TYPE_DOC: DOC<br/>
+    ///  - TYPE_PPT: PPT<br/>
+    ///  - TYPE_PPTX: PPTX<br/>
+    ///  - TYPE_XLS: XLS<br/>
+    ///  - TYPE_XLSX: XLSX<br/>
+    ///  - TYPE_PNG: Image types (supported by pipeline-backend/pkg/data/image.go)<br/>
     /// PNG<br/>
-    ///  - FILE_TYPE_JPEG: JPEG<br/>
-    ///  - FILE_TYPE_JPG: JPG<br/>
-    ///  - FILE_TYPE_GIF: GIF<br/>
-    ///  - FILE_TYPE_WEBP: WEBP<br/>
-    ///  - FILE_TYPE_TIFF: TIFF<br/>
-    ///  - FILE_TYPE_BMP: BMP<br/>
-    ///  - FILE_TYPE_HEIC: HEIC<br/>
-    ///  - FILE_TYPE_HEIF: HEIF<br/>
-    ///  - FILE_TYPE_AVIF: AVIF<br/>
-    ///  - FILE_TYPE_MP3: Audio types (supported by pipeline-backend/pkg/data/audio.go)<br/>
+    ///  - TYPE_JPEG: JPEG<br/>
+    ///  - TYPE_JPG: JPG<br/>
+    ///  - TYPE_GIF: GIF<br/>
+    ///  - TYPE_WEBP: WEBP<br/>
+    ///  - TYPE_TIFF: TIFF<br/>
+    ///  - TYPE_BMP: BMP<br/>
+    ///  - TYPE_HEIC: HEIC<br/>
+    ///  - TYPE_HEIF: HEIF<br/>
+    ///  - TYPE_AVIF: AVIF<br/>
+    ///  - TYPE_MP3: Audio types (supported by pipeline-backend/pkg/data/audio.go)<br/>
     /// MP3<br/>
-    ///  - FILE_TYPE_WAV: WAV<br/>
-    ///  - FILE_TYPE_AAC: AAC<br/>
-    ///  - FILE_TYPE_OGG: OGG<br/>
-    ///  - FILE_TYPE_FLAC: FLAC<br/>
-    ///  - FILE_TYPE_M4A: M4A<br/>
-    ///  - FILE_TYPE_WMA: WMA<br/>
-    ///  - FILE_TYPE_AIFF: AIFF<br/>
-    ///  - FILE_TYPE_MP4: Video types (supported by pipeline-backend/pkg/data/video.go)<br/>
+    ///  - TYPE_WAV: WAV<br/>
+    ///  - TYPE_AAC: AAC<br/>
+    ///  - TYPE_OGG: OGG<br/>
+    ///  - TYPE_FLAC: FLAC<br/>
+    ///  - TYPE_M4A: M4A<br/>
+    ///  - TYPE_WMA: WMA<br/>
+    ///  - TYPE_AIFF: AIFF<br/>
+    ///  - TYPE_MP4: Video types (supported by pipeline-backend/pkg/data/video.go)<br/>
     /// MP4<br/>
-    ///  - FILE_TYPE_AVI: AVI<br/>
-    ///  - FILE_TYPE_MOV: MOV<br/>
-    ///  - FILE_TYPE_WEBM_VIDEO: WEBM (video)<br/>
-    ///  - FILE_TYPE_MKV: MKV<br/>
-    ///  - FILE_TYPE_FLV: FLV<br/>
-    ///  - FILE_TYPE_WMV: WMV<br/>
-    ///  - FILE_TYPE_MPEG: MPEG
+    ///  - TYPE_AVI: AVI<br/>
+    ///  - TYPE_MOV: MOV<br/>
+    ///  - TYPE_WEBM_VIDEO: WEBM (video)<br/>
+    ///  - TYPE_MKV: MKV<br/>
+    ///  - TYPE_FLV: FLV<br/>
+    ///  - TYPE_WMV: WMV<br/>
+    ///  - TYPE_MPEG: MPEG
     /// </summary>
     public enum FileType
     {
         /// <summary>
         /// Text-based document types
         /// </summary>
-        TEXT,
+        TYPETEXT,
         /// <summary>
         /// PDF
         /// </summary>
-        PDF,
+        TYPEPDF,
         /// <summary>
         /// MARKDOWN
         /// </summary>
-        MARKDOWN,
+        TYPEMARKDOWN,
         /// <summary>
         /// HTML
         /// </summary>
-        HTML,
+        TYPEHTML,
         /// <summary>
         /// CSV
         /// </summary>
-        CSV,
+        TYPECSV,
         /// <summary>
         /// Microsoft Office document types
         /// </summary>
-        DOCX,
+        TYPEDOCX,
         /// <summary>
         /// Microsoft Office document types
         /// </summary>
-        DOC,
+        TYPEDOC,
         /// <summary>
         /// PPT
         /// </summary>
-        PPT,
+        TYPEPPT,
         /// <summary>
         /// PPTX
         /// </summary>
-        PPTX,
+        TYPEPPTX,
         /// <summary>
         /// XLS
         /// </summary>
-        XLS,
+        TYPEXLS,
         /// <summary>
         /// XLSX
         /// </summary>
-        XLSX,
+        TYPEXLSX,
         /// <summary>
         /// Image types (supported by pipeline-backend/pkg/data/image.go)
         /// </summary>
-        PNG,
+        TYPEPNG,
         /// <summary>
         /// JPEG
         /// </summary>
-        JPEG,
+        TYPEJPEG,
         /// <summary>
         /// JPG
         /// </summary>
-        JPG,
+        TYPEJPG,
         /// <summary>
         /// GIF
         /// </summary>
-        GIF,
+        TYPEGIF,
         /// <summary>
         /// WEBP
         /// </summary>
-        WEBP,
+        TYPEWEBP,
         /// <summary>
         /// TIFF
         /// </summary>
-        TIFF,
+        TYPETIFF,
         /// <summary>
         /// BMP
         /// </summary>
-        BMP,
+        TYPEBMP,
         /// <summary>
         /// HEIC
         /// </summary>
-        HEIC,
+        TYPEHEIC,
         /// <summary>
         /// HEIF
         /// </summary>
-        HEIF,
+        TYPEHEIF,
         /// <summary>
         /// AVIF
         /// </summary>
-        AVIF,
+        TYPEAVIF,
         /// <summary>
         /// Audio types (supported by pipeline-backend/pkg/data/audio.go)
         /// </summary>
-        MP3,
+        TYPEMP3,
         /// <summary>
         /// WAV
         /// </summary>
-        WAV,
+        TYPEWAV,
         /// <summary>
         /// AAC
         /// </summary>
-        AAC,
+        TYPEAAC,
         /// <summary>
         /// OGG
         /// </summary>
-        OGG,
+        TYPEOGG,
         /// <summary>
         /// FLAC
         /// </summary>
-        FLAC,
+        TYPEFLAC,
         /// <summary>
         /// M4A
         /// </summary>
-        M4A,
+        TYPEM4A,
         /// <summary>
         /// WMA
         /// </summary>
-        WMA,
+        TYPEWMA,
         /// <summary>
         /// AIFF
         /// </summary>
-        AIFF,
+        TYPEAIFF,
         /// <summary>
         /// Video types (supported by pipeline-backend/pkg/data/video.go)
         /// </summary>
-        MP4,
+        TYPEMP4,
         /// <summary>
         /// AVIF
         /// </summary>
-        AVI,
+        TYPEAVI,
         /// <summary>
         /// MOV
         /// </summary>
-        MOV,
+        TYPEMOV,
         /// <summary>
         /// WEBM (video)
         /// </summary>
-        WEBMVIDEO,
+        TYPEWEBMVIDEO,
         /// <summary>
         /// MKV
         /// </summary>
-        MKV,
+        TYPEMKV,
         /// <summary>
         /// FLV
         /// </summary>
-        FLV,
+        TYPEFLV,
         /// <summary>
         /// WMV
         /// </summary>
-        WMV,
+        TYPEWMV,
         /// <summary>
         /// MPEG
         /// </summary>
-        MPEG,
+        TYPEMPEG,
     }
 
     /// <summary>
@@ -211,43 +212,43 @@ namespace Instill
         {
             return value switch
             {
-                FileType.TEXT => "FILE_TYPE_TEXT",
-                FileType.PDF => "FILE_TYPE_PDF",
-                FileType.MARKDOWN => "FILE_TYPE_MARKDOWN",
-                FileType.HTML => "FILE_TYPE_HTML",
-                FileType.CSV => "FILE_TYPE_CSV",
-                FileType.DOCX => "FILE_TYPE_DOCX",
-                FileType.DOC => "FILE_TYPE_DOC",
-                FileType.PPT => "FILE_TYPE_PPT",
-                FileType.PPTX => "FILE_TYPE_PPTX",
-                FileType.XLS => "FILE_TYPE_XLS",
-                FileType.XLSX => "FILE_TYPE_XLSX",
-                FileType.PNG => "FILE_TYPE_PNG",
-                FileType.JPEG => "FILE_TYPE_JPEG",
-                FileType.JPG => "FILE_TYPE_JPG",
-                FileType.GIF => "FILE_TYPE_GIF",
-                FileType.WEBP => "FILE_TYPE_WEBP",
-                FileType.TIFF => "FILE_TYPE_TIFF",
-                FileType.BMP => "FILE_TYPE_BMP",
-                FileType.HEIC => "FILE_TYPE_HEIC",
-                FileType.HEIF => "FILE_TYPE_HEIF",
-                FileType.AVIF => "FILE_TYPE_AVIF",
-                FileType.MP3 => "FILE_TYPE_MP3",
-                FileType.WAV => "FILE_TYPE_WAV",
-                FileType.AAC => "FILE_TYPE_AAC",
-                FileType.OGG => "FILE_TYPE_OGG",
-                FileType.FLAC => "FILE_TYPE_FLAC",
-                FileType.M4A => "FILE_TYPE_M4A",
-                FileType.WMA => "FILE_TYPE_WMA",
-                FileType.AIFF => "FILE_TYPE_AIFF",
-                FileType.MP4 => "FILE_TYPE_MP4",
-                FileType.AVI => "FILE_TYPE_AVI",
-                FileType.MOV => "FILE_TYPE_MOV",
-                FileType.WEBMVIDEO => "FILE_TYPE_WEBM_VIDEO",
-                FileType.MKV => "FILE_TYPE_MKV",
-                FileType.FLV => "FILE_TYPE_FLV",
-                FileType.WMV => "FILE_TYPE_WMV",
-                FileType.MPEG => "FILE_TYPE_MPEG",
+                FileType.TYPETEXT => "TYPE_TEXT",
+                FileType.TYPEPDF => "TYPE_PDF",
+                FileType.TYPEMARKDOWN => "TYPE_MARKDOWN",
+                FileType.TYPEHTML => "TYPE_HTML",
+                FileType.TYPECSV => "TYPE_CSV",
+                FileType.TYPEDOCX => "TYPE_DOCX",
+                FileType.TYPEDOC => "TYPE_DOC",
+                FileType.TYPEPPT => "TYPE_PPT",
+                FileType.TYPEPPTX => "TYPE_PPTX",
+                FileType.TYPEXLS => "TYPE_XLS",
+                FileType.TYPEXLSX => "TYPE_XLSX",
+                FileType.TYPEPNG => "TYPE_PNG",
+                FileType.TYPEJPEG => "TYPE_JPEG",
+                FileType.TYPEJPG => "TYPE_JPG",
+                FileType.TYPEGIF => "TYPE_GIF",
+                FileType.TYPEWEBP => "TYPE_WEBP",
+                FileType.TYPETIFF => "TYPE_TIFF",
+                FileType.TYPEBMP => "TYPE_BMP",
+                FileType.TYPEHEIC => "TYPE_HEIC",
+                FileType.TYPEHEIF => "TYPE_HEIF",
+                FileType.TYPEAVIF => "TYPE_AVIF",
+                FileType.TYPEMP3 => "TYPE_MP3",
+                FileType.TYPEWAV => "TYPE_WAV",
+                FileType.TYPEAAC => "TYPE_AAC",
+                FileType.TYPEOGG => "TYPE_OGG",
+                FileType.TYPEFLAC => "TYPE_FLAC",
+                FileType.TYPEM4A => "TYPE_M4A",
+                FileType.TYPEWMA => "TYPE_WMA",
+                FileType.TYPEAIFF => "TYPE_AIFF",
+                FileType.TYPEMP4 => "TYPE_MP4",
+                FileType.TYPEAVI => "TYPE_AVI",
+                FileType.TYPEMOV => "TYPE_MOV",
+                FileType.TYPEWEBMVIDEO => "TYPE_WEBM_VIDEO",
+                FileType.TYPEMKV => "TYPE_MKV",
+                FileType.TYPEFLV => "TYPE_FLV",
+                FileType.TYPEWMV => "TYPE_WMV",
+                FileType.TYPEMPEG => "TYPE_MPEG",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -258,43 +259,43 @@ namespace Instill
         {
             return value switch
             {
-                "FILE_TYPE_TEXT" => FileType.TEXT,
-                "FILE_TYPE_PDF" => FileType.PDF,
-                "FILE_TYPE_MARKDOWN" => FileType.MARKDOWN,
-                "FILE_TYPE_HTML" => FileType.HTML,
-                "FILE_TYPE_CSV" => FileType.CSV,
-                "FILE_TYPE_DOCX" => FileType.DOCX,
-                "FILE_TYPE_DOC" => FileType.DOC,
-                "FILE_TYPE_PPT" => FileType.PPT,
-                "FILE_TYPE_PPTX" => FileType.PPTX,
-                "FILE_TYPE_XLS" => FileType.XLS,
-                "FILE_TYPE_XLSX" => FileType.XLSX,
-                "FILE_TYPE_PNG" => FileType.PNG,
-                "FILE_TYPE_JPEG" => FileType.JPEG,
-                "FILE_TYPE_JPG" => FileType.JPG,
-                "FILE_TYPE_GIF" => FileType.GIF,
-                "FILE_TYPE_WEBP" => FileType.WEBP,
-                "FILE_TYPE_TIFF" => FileType.TIFF,
-                "FILE_TYPE_BMP" => FileType.BMP,
-                "FILE_TYPE_HEIC" => FileType.HEIC,
-                "FILE_TYPE_HEIF" => FileType.HEIF,
-                "FILE_TYPE_AVIF" => FileType.AVIF,
-                "FILE_TYPE_MP3" => FileType.MP3,
-                "FILE_TYPE_WAV" => FileType.WAV,
-                "FILE_TYPE_AAC" => FileType.AAC,
-                "FILE_TYPE_OGG" => FileType.OGG,
-                "FILE_TYPE_FLAC" => FileType.FLAC,
-                "FILE_TYPE_M4A" => FileType.M4A,
-                "FILE_TYPE_WMA" => FileType.WMA,
-                "FILE_TYPE_AIFF" => FileType.AIFF,
-                "FILE_TYPE_MP4" => FileType.MP4,
-                "FILE_TYPE_AVI" => FileType.AVI,
-                "FILE_TYPE_MOV" => FileType.MOV,
-                "FILE_TYPE_WEBM_VIDEO" => FileType.WEBMVIDEO,
-                "FILE_TYPE_MKV" => FileType.MKV,
-                "FILE_TYPE_FLV" => FileType.FLV,
-                "FILE_TYPE_WMV" => FileType.WMV,
-                "FILE_TYPE_MPEG" => FileType.MPEG,
+                "TYPE_TEXT" => FileType.TYPETEXT,
+                "TYPE_PDF" => FileType.TYPEPDF,
+                "TYPE_MARKDOWN" => FileType.TYPEMARKDOWN,
+                "TYPE_HTML" => FileType.TYPEHTML,
+                "TYPE_CSV" => FileType.TYPECSV,
+                "TYPE_DOCX" => FileType.TYPEDOCX,
+                "TYPE_DOC" => FileType.TYPEDOC,
+                "TYPE_PPT" => FileType.TYPEPPT,
+                "TYPE_PPTX" => FileType.TYPEPPTX,
+                "TYPE_XLS" => FileType.TYPEXLS,
+                "TYPE_XLSX" => FileType.TYPEXLSX,
+                "TYPE_PNG" => FileType.TYPEPNG,
+                "TYPE_JPEG" => FileType.TYPEJPEG,
+                "TYPE_JPG" => FileType.TYPEJPG,
+                "TYPE_GIF" => FileType.TYPEGIF,
+                "TYPE_WEBP" => FileType.TYPEWEBP,
+                "TYPE_TIFF" => FileType.TYPETIFF,
+                "TYPE_BMP" => FileType.TYPEBMP,
+                "TYPE_HEIC" => FileType.TYPEHEIC,
+                "TYPE_HEIF" => FileType.TYPEHEIF,
+                "TYPE_AVIF" => FileType.TYPEAVIF,
+                "TYPE_MP3" => FileType.TYPEMP3,
+                "TYPE_WAV" => FileType.TYPEWAV,
+                "TYPE_AAC" => FileType.TYPEAAC,
+                "TYPE_OGG" => FileType.TYPEOGG,
+                "TYPE_FLAC" => FileType.TYPEFLAC,
+                "TYPE_M4A" => FileType.TYPEM4A,
+                "TYPE_WMA" => FileType.TYPEWMA,
+                "TYPE_AIFF" => FileType.TYPEAIFF,
+                "TYPE_MP4" => FileType.TYPEMP4,
+                "TYPE_AVI" => FileType.TYPEAVI,
+                "TYPE_MOV" => FileType.TYPEMOV,
+                "TYPE_WEBM_VIDEO" => FileType.TYPEWEBMVIDEO,
+                "TYPE_MKV" => FileType.TYPEMKV,
+                "TYPE_FLV" => FileType.TYPEFLV,
+                "TYPE_WMV" => FileType.TYPEWMV,
+                "TYPE_MPEG" => FileType.TYPEMPEG,
                 _ => null,
             };
         }

@@ -5510,6 +5510,13 @@ components:
         - NAMESPACE_RESERVED
       type: string
       description: "Namespace contains information about the availability of a namespace.\n\n - NAMESPACE_AVAILABLE: Available.\n - NAMESPACE_USER: Namespace belongs to a user.\n - NAMESPACE_ORGANIZATION: Namespace belongs to an organization.\n - NAMESPACE_RESERVED: Reserved."
+    Chunk.Type:
+      enum:
+        - TYPE_CONTENT
+        - TYPE_SUMMARY
+        - TYPE_AUGMENTED
+      type: string
+      description: "Type describes the type of a chunk content.\n\n - TYPE_CONTENT: Content.\n - TYPE_SUMMARY: Summary.\n - TYPE_AUGMENTED: Augmented."
     ChunkType:
       enum:
         - CHUNK_TYPE_TEXT
@@ -5837,13 +5844,6 @@ components:
           format: date-time
           readOnly: true
       description: "Connection contains the parameters to communicate with a 3rd party app. A\ncomponent may reference a connection in their setup. One connection may be\nused by several components and pipelines."
-    ContentType:
-      enum:
-        - CONTENT_TYPE_CHUNK
-        - CONTENT_TYPE_SUMMARY
-        - CONTENT_TYPE_AUGMENTED
-      type: string
-      description: "ContentType describes the type of a chunk content.\n\n - CONTENT_TYPE_CHUNK: Chunk.\n - CONTENT_TYPE_SUMMARY: Summary.\n - CONTENT_TYPE_AUGMENTED: Augmented."
     CreateCatalogBody:
       type: object
       properties:
@@ -6076,7 +6076,6 @@ components:
           readOnly: true
       description: EventSpecification describes the JSON schema of component event setup and examples.
     File:
-      title: file
       required:
         - fileUid
       type: object
@@ -6091,7 +6090,7 @@ components:
         type:
           title: file type
           allOf:
-            - $ref: '#/components/schemas/FileType'
+            - $ref: '#/components/schemas/File.Type'
         processStatus:
           title: file process status
           allOf:
@@ -6177,6 +6176,48 @@ components:
           type: array
           items:
             type: string
+      description: File represents a file in a catalog.
+    File.Type:
+      enum:
+        - TYPE_TEXT
+        - TYPE_PDF
+        - TYPE_MARKDOWN
+        - TYPE_HTML
+        - TYPE_CSV
+        - TYPE_DOCX
+        - TYPE_DOC
+        - TYPE_PPT
+        - TYPE_PPTX
+        - TYPE_XLS
+        - TYPE_XLSX
+        - TYPE_PNG
+        - TYPE_JPEG
+        - TYPE_JPG
+        - TYPE_GIF
+        - TYPE_WEBP
+        - TYPE_TIFF
+        - TYPE_BMP
+        - TYPE_HEIC
+        - TYPE_HEIF
+        - TYPE_AVIF
+        - TYPE_MP3
+        - TYPE_WAV
+        - TYPE_AAC
+        - TYPE_OGG
+        - TYPE_FLAC
+        - TYPE_M4A
+        - TYPE_WMA
+        - TYPE_AIFF
+        - TYPE_MP4
+        - TYPE_AVI
+        - TYPE_MOV
+        - TYPE_WEBM_VIDEO
+        - TYPE_MKV
+        - TYPE_FLV
+        - TYPE_WMV
+        - TYPE_MPEG
+      type: string
+      description: "Supported file types by the pipeline-backend.\n\n - TYPE_TEXT: Text-based document types\ntext\n - TYPE_PDF: PDF\n - TYPE_MARKDOWN: MARKDOWN\n - TYPE_HTML: HTML\n - TYPE_CSV: CSV\n - TYPE_DOCX: Microsoft Office document types\nDOCX\n - TYPE_DOC: DOC\n - TYPE_PPT: PPT\n - TYPE_PPTX: PPTX\n - TYPE_XLS: XLS\n - TYPE_XLSX: XLSX\n - TYPE_PNG: Image types (supported by pipeline-backend/pkg/data/image.go)\nPNG\n - TYPE_JPEG: JPEG\n - TYPE_JPG: JPG\n - TYPE_GIF: GIF\n - TYPE_WEBP: WEBP\n - TYPE_TIFF: TIFF\n - TYPE_BMP: BMP\n - TYPE_HEIC: HEIC\n - TYPE_HEIF: HEIF\n - TYPE_AVIF: AVIF\n - TYPE_MP3: Audio types (supported by pipeline-backend/pkg/data/audio.go)\nMP3\n - TYPE_WAV: WAV\n - TYPE_AAC: AAC\n - TYPE_OGG: OGG\n - TYPE_FLAC: FLAC\n - TYPE_M4A: M4A\n - TYPE_WMA: WMA\n - TYPE_AIFF: AIFF\n - TYPE_MP4: Video types (supported by pipeline-backend/pkg/data/video.go)\nMP4\n - TYPE_AVI: AVI\n - TYPE_MOV: MOV\n - TYPE_WEBM_VIDEO: WEBM (video)\n - TYPE_MKV: MKV\n - TYPE_FLV: FLV\n - TYPE_WMV: WMV\n - TYPE_MPEG: MPEG"
     FileMediaType:
       enum:
         - FILE_MEDIA_TYPE_DOCUMENT
@@ -6198,7 +6239,7 @@ components:
           readOnly: true
         fileType:
           allOf:
-            - $ref: '#/components/schemas/FileType'
+            - $ref: '#/components/schemas/File.Type'
           description: File Type.
           readOnly: true
         size:
@@ -6253,48 +6294,6 @@ components:
           type: string
           description: 'URL of the file (e.g., S3 URL).'
       description: FileReference represents metadata for a file.
-    FileType:
-      title: file type
-      enum:
-        - FILE_TYPE_TEXT
-        - FILE_TYPE_PDF
-        - FILE_TYPE_MARKDOWN
-        - FILE_TYPE_HTML
-        - FILE_TYPE_CSV
-        - FILE_TYPE_DOCX
-        - FILE_TYPE_DOC
-        - FILE_TYPE_PPT
-        - FILE_TYPE_PPTX
-        - FILE_TYPE_XLS
-        - FILE_TYPE_XLSX
-        - FILE_TYPE_PNG
-        - FILE_TYPE_JPEG
-        - FILE_TYPE_JPG
-        - FILE_TYPE_GIF
-        - FILE_TYPE_WEBP
-        - FILE_TYPE_TIFF
-        - FILE_TYPE_BMP
-        - FILE_TYPE_HEIC
-        - FILE_TYPE_HEIF
-        - FILE_TYPE_AVIF
-        - FILE_TYPE_MP3
-        - FILE_TYPE_WAV
-        - FILE_TYPE_AAC
-        - FILE_TYPE_OGG
-        - FILE_TYPE_FLAC
-        - FILE_TYPE_M4A
-        - FILE_TYPE_WMA
-        - FILE_TYPE_AIFF
-        - FILE_TYPE_MP4
-        - FILE_TYPE_AVI
-        - FILE_TYPE_MOV
-        - FILE_TYPE_WEBM_VIDEO
-        - FILE_TYPE_MKV
-        - FILE_TYPE_FLV
-        - FILE_TYPE_WMV
-        - FILE_TYPE_MPEG
-      type: string
-      description: "- FILE_TYPE_TEXT: Text-based document types\ntext\n - FILE_TYPE_PDF: PDF\n - FILE_TYPE_MARKDOWN: MARKDOWN\n - FILE_TYPE_HTML: HTML\n - FILE_TYPE_CSV: CSV\n - FILE_TYPE_DOCX: Microsoft Office document types\nDOCX\n - FILE_TYPE_DOC: DOC\n - FILE_TYPE_PPT: PPT\n - FILE_TYPE_PPTX: PPTX\n - FILE_TYPE_XLS: XLS\n - FILE_TYPE_XLSX: XLSX\n - FILE_TYPE_PNG: Image types (supported by pipeline-backend/pkg/data/image.go)\nPNG\n - FILE_TYPE_JPEG: JPEG\n - FILE_TYPE_JPG: JPG\n - FILE_TYPE_GIF: GIF\n - FILE_TYPE_WEBP: WEBP\n - FILE_TYPE_TIFF: TIFF\n - FILE_TYPE_BMP: BMP\n - FILE_TYPE_HEIC: HEIC\n - FILE_TYPE_HEIF: HEIF\n - FILE_TYPE_AVIF: AVIF\n - FILE_TYPE_MP3: Audio types (supported by pipeline-backend/pkg/data/audio.go)\nMP3\n - FILE_TYPE_WAV: WAV\n - FILE_TYPE_AAC: AAC\n - FILE_TYPE_OGG: OGG\n - FILE_TYPE_FLAC: FLAC\n - FILE_TYPE_M4A: M4A\n - FILE_TYPE_WMA: WMA\n - FILE_TYPE_AIFF: AIFF\n - FILE_TYPE_MP4: Video types (supported by pipeline-backend/pkg/data/video.go)\nMP4\n - FILE_TYPE_AVI: AVI\n - FILE_TYPE_MOV: MOV\n - FILE_TYPE_WEBM_VIDEO: WEBM (video)\n - FILE_TYPE_MKV: MKV\n - FILE_TYPE_FLV: FLV\n - FILE_TYPE_WMV: WMV\n - FILE_TYPE_MPEG: MPEG"
     FruitCosts:
       type: object
       properties:
@@ -8600,10 +8599,10 @@ components:
           type: integer
           description: 'Top K. Default value: 5.'
           format: int64
-        contentType:
+        type:
           allOf:
-            - $ref: '#/components/schemas/ContentType'
-          description: Content type.
+            - $ref: '#/components/schemas/Chunk.Type'
+          description: Chunk type.
         fileMediaType:
           allOf:
             - $ref: '#/components/schemas/FileMediaType'
@@ -9441,10 +9440,10 @@ components:
           title: original file unique identifier
           type: string
           readOnly: true
-        contentType:
-          title: content type
+        type:
+          title: chunk type
           allOf:
-            - $ref: '#/components/schemas/ContentType'
+            - $ref: '#/components/schemas/Chunk.Type'
           readOnly: true
         reference:
           allOf:

@@ -22,11 +22,11 @@ namespace Instill
         public long? TopK { get; set; }
 
         /// <summary>
-        /// Content type.
+        /// Chunk type.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("contentType")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.ContentTypeJsonConverter))]
-        public global::Instill.ContentType? ContentType { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.ChunkTypeJsonConverter))]
+        public global::Instill.ChunkType? Type { get; set; }
 
         /// <summary>
         /// File type.
@@ -64,8 +64,8 @@ namespace Instill
         /// <param name="topK">
         /// Top K. Default value: 5.
         /// </param>
-        /// <param name="contentType">
-        /// Content type.
+        /// <param name="type">
+        /// Chunk type.
         /// </param>
         /// <param name="fileMediaType">
         /// File type.
@@ -84,14 +84,14 @@ namespace Instill
         public SimilarityChunksSearchBody(
             string textPrompt,
             long? topK,
-            global::Instill.ContentType? contentType,
+            global::Instill.ChunkType? type,
             global::Instill.FileMediaType? fileMediaType,
             global::System.Collections.Generic.IList<string>? fileUids,
             global::System.Collections.Generic.IList<string>? tags)
         {
             this.TextPrompt = textPrompt ?? throw new global::System.ArgumentNullException(nameof(textPrompt));
             this.TopK = topK;
-            this.ContentType = contentType;
+            this.Type = type;
             this.FileMediaType = fileMediaType;
             this.FileUids = fileUids;
             this.Tags = tags;

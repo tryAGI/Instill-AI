@@ -4,7 +4,7 @@
 namespace Instill
 {
     /// <summary>
-    /// 
+    /// File represents a file in a catalog.
     /// </summary>
     public sealed partial class File
     {

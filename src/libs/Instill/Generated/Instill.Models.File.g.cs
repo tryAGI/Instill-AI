@@ -121,6 +121,9 @@ namespace Instill
         public string? ObjectUid { get; set; }
 
         /// <summary>
+        /// Summary of the file.<br/>
+        /// Deprecated: Use the GetFileSummary API endpoint to retrieve file summaries.<br/>
+        /// This field now returns an empty string as summaries are stored separately in MinIO.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("summary")]
@@ -235,6 +238,9 @@ namespace Instill
         /// then no need the base64 encoding for the file content.
         /// </param>
         /// <param name="summary">
+        /// Summary of the file.<br/>
+        /// Deprecated: Use the GetFileSummary API endpoint to retrieve file summaries.<br/>
+        /// This field now returns an empty string as summaries are stored separately in MinIO.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="downloadUrl">

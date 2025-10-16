@@ -6157,8 +6157,8 @@ components:
           type: string
           description: "objectUid in blob storage. user can upload to blob storage directly, then put objectUid here.\nthen no need the base64 encoding for the file content."
         summary:
-          title: summary of the file
           type: string
+          description: "Summary of the file.\nDeprecated: Use the GetFileSummary API endpoint to retrieve file summaries.\nThis field now returns an empty string as summaries are stored separately in MinIO."
           readOnly: true
         downloadUrl:
           title: download url of the file

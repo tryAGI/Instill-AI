@@ -7,6 +7,7 @@ namespace Instill
     {
         partial void PreparePipelinePublicServiceListPipelinesArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref string parent,
             ref int? pageSize,
             ref string? pageToken,
             ref global::Instill.PipelinePublicServiceListPipelinesView? view,
@@ -17,6 +18,7 @@ namespace Instill
         partial void PreparePipelinePublicServiceListPipelinesRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            string parent,
             int? pageSize,
             string? pageToken,
             global::Instill.PipelinePublicServiceListPipelinesView? view,
@@ -34,9 +36,10 @@ namespace Instill
             ref string content);
 
         /// <summary>
-        /// List accessible pipelines<br/>
-        /// Returns a paginated list of pipelines that are visible to the requester.
+        /// List namespace pipelines<br/>
+        /// Returns a paginated list of pipelines of a namespace
         /// </summary>
+        /// <param name="parent"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
         /// <param name="view"></param>
@@ -47,6 +50,7 @@ namespace Instill
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Instill.ListPipelinesResponse> PipelinePublicServiceListPipelinesAsync(
+            string parent,
             int? pageSize = default,
             string? pageToken = default,
             global::Instill.PipelinePublicServiceListPipelinesView? view = default,
@@ -60,6 +64,7 @@ namespace Instill
                 client: HttpClient);
             PreparePipelinePublicServiceListPipelinesArguments(
                 httpClient: HttpClient,
+                parent: ref parent,
                 pageSize: ref pageSize,
                 pageToken: ref pageToken,
                 view: ref view,
@@ -69,7 +74,7 @@ namespace Instill
                 orderBy: ref orderBy);
 
             var __pathBuilder = new global::Instill.PathBuilder(
-                path: "/v1beta/pipelines",
+                path: $"/v1beta/{parent}/pipelines",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
                 .AddOptionalParameter("pageSize", pageSize?.ToString())
@@ -111,6 +116,7 @@ namespace Instill
             PreparePipelinePublicServiceListPipelinesRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
+                parent: parent,
                 pageSize: pageSize,
                 pageToken: pageToken,
                 view: view,

@@ -7,6 +7,7 @@ namespace Instill
     {
         partial void PrepareModelPublicServiceListModelsArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref string parent,
             ref int? pageSize,
             ref string? pageToken,
             ref global::Instill.ModelPublicServiceListModelsView? view,
@@ -17,6 +18,7 @@ namespace Instill
         partial void PrepareModelPublicServiceListModelsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            string parent,
             int? pageSize,
             string? pageToken,
             global::Instill.ModelPublicServiceListModelsView? view,
@@ -37,6 +39,7 @@ namespace Instill
         /// List models<br/>
         /// Returns a paginated list of models.
         /// </summary>
+        /// <param name="parent"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
         /// <param name="view"></param>
@@ -47,6 +50,7 @@ namespace Instill
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Instill.ListModelsResponse> ModelPublicServiceListModelsAsync(
+            string parent,
             int? pageSize = default,
             string? pageToken = default,
             global::Instill.ModelPublicServiceListModelsView? view = default,
@@ -60,6 +64,7 @@ namespace Instill
                 client: HttpClient);
             PrepareModelPublicServiceListModelsArguments(
                 httpClient: HttpClient,
+                parent: ref parent,
                 pageSize: ref pageSize,
                 pageToken: ref pageToken,
                 view: ref view,
@@ -69,7 +74,7 @@ namespace Instill
                 orderBy: ref orderBy);
 
             var __pathBuilder = new global::Instill.PathBuilder(
-                path: "/v1alpha/models",
+                path: $"/v1alpha/{parent}/models",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
                 .AddOptionalParameter("pageSize", pageSize?.ToString())
@@ -111,6 +116,7 @@ namespace Instill
             PrepareModelPublicServiceListModelsRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
+                parent: parent,
                 pageSize: pageSize,
                 pageToken: pageToken,
                 view: view,

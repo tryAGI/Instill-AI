@@ -4,7 +4,7 @@
 namespace Instill
 {
     /// <summary>
-    /// 
+    /// UpdateChunkResponse represents a response for updating a chunk.
     /// </summary>
     public sealed partial class UpdateChunkResponse
     {

@@ -62,5 +62,15 @@ namespace Instill
         /// </summary>
         public MetricsClient Metrics { get; }
 
+        /// <summary>
+        /// Connections to 3rd party apps for use in pipelines.
+        /// </summary>
+        public ConnectionClient Connection { get; }
+
+        /// <summary>
+        /// Integration definitions for creating connections.
+        /// </summary>
+        public IntegrationClient Integration { get; }
+
     }
 }

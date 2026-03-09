@@ -7,23 +7,23 @@ namespace Instill
     {
         partial void PreparePipelinePublicServiceListPipelineRunsByRequesterArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref string requester,
             ref int? page,
             ref int? pageSize,
             ref string? filter,
             ref string? orderBy,
             ref global::System.DateTime? start,
-            ref global::System.DateTime? stop,
-            ref string requesterId);
+            ref global::System.DateTime? stop);
         partial void PreparePipelinePublicServiceListPipelineRunsByRequesterRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            string requester,
             int? page,
             int? pageSize,
             string? filter,
             string? orderBy,
             global::System.DateTime? start,
-            global::System.DateTime? stop,
-            string requesterId);
+            global::System.DateTime? stop);
         partial void ProcessPipelinePublicServiceListPipelineRunsByRequesterResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -38,17 +38,17 @@ namespace Instill
         /// Returns a paginated list of runs for requested by a namespace. The<br/>
         /// response may contain runs from several pipelines.
         /// </summary>
+        /// <param name="requester"></param>
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
         /// <param name="filter"></param>
         /// <param name="orderBy"></param>
         /// <param name="start"></param>
         /// <param name="stop"></param>
-        /// <param name="requesterId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Instill.ListPipelineRunsByRequesterResponse> PipelinePublicServiceListPipelineRunsByRequesterAsync(
-            string requesterId,
+            string requester,
             int? page = default,
             int? pageSize = default,
             string? filter = default,
@@ -61,25 +61,25 @@ namespace Instill
                 client: HttpClient);
             PreparePipelinePublicServiceListPipelineRunsByRequesterArguments(
                 httpClient: HttpClient,
+                requester: ref requester,
                 page: ref page,
                 pageSize: ref pageSize,
                 filter: ref filter,
                 orderBy: ref orderBy,
                 start: ref start,
-                stop: ref stop,
-                requesterId: ref requesterId);
+                stop: ref stop);
 
             var __pathBuilder = new global::Instill.PathBuilder(
                 path: "/v1beta/dashboard/pipelines/runs",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
+                .AddRequiredParameter("requester", requester)
                 .AddOptionalParameter("page", page?.ToString())
                 .AddOptionalParameter("pageSize", pageSize?.ToString())
                 .AddOptionalParameter("filter", filter)
                 .AddOptionalParameter("orderBy", orderBy)
                 .AddOptionalParameter("start", start?.ToString("yyyy-MM-ddTHH:mm:ssZ"))
-                .AddOptionalParameter("stop", stop?.ToString("yyyy-MM-ddTHH:mm:ssZ"))
-                .AddRequiredParameter("requesterId", requesterId) 
+                .AddOptionalParameter("stop", stop?.ToString("yyyy-MM-ddTHH:mm:ssZ")) 
                 ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -112,13 +112,13 @@ namespace Instill
             PreparePipelinePublicServiceListPipelineRunsByRequesterRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
+                requester: requester,
                 page: page,
                 pageSize: pageSize,
                 filter: filter,
                 orderBy: orderBy,
                 start: start,
-                stop: stop,
-                requesterId: requesterId);
+                stop: stop);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,

@@ -9,11 +9,10 @@ namespace Instill
     public sealed partial class ValidateTokenResponse
     {
         /// <summary>
-        /// If token is valid, UUID of the user that owns it.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("userUid")]
-        public string? UserUid { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("user")]
+        public string? User { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -24,17 +23,16 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="ValidateTokenResponse" /> class.
         /// </summary>
-        /// <param name="userUid">
-        /// If token is valid, UUID of the user that owns it.<br/>
+        /// <param name="user">
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ValidateTokenResponse(
-            string? userUid)
+            string? user)
         {
-            this.UserUid = userUid;
+            this.User = user;
         }
 
         /// <summary>

@@ -7,13 +7,13 @@ namespace Instill
     {
         partial void PreparePipelinePublicServiceListNamespaceSecretsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string namespaceId,
+            ref string parent,
             ref int? pageSize,
             ref string? pageToken);
         partial void PreparePipelinePublicServiceListNamespaceSecretsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string namespaceId,
+            string parent,
             int? pageSize,
             string? pageToken);
         partial void ProcessPipelinePublicServiceListNamespaceSecretsResponse(
@@ -30,13 +30,13 @@ namespace Instill
         /// Returns a paginated list of secrets that belong to the specified<br/>
         /// namespace.
         /// </summary>
-        /// <param name="namespaceId"></param>
+        /// <param name="parent"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Instill.ListNamespaceSecretsResponse> PipelinePublicServiceListNamespaceSecretsAsync(
-            string namespaceId,
+            string parent,
             int? pageSize = default,
             string? pageToken = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -45,12 +45,12 @@ namespace Instill
                 client: HttpClient);
             PreparePipelinePublicServiceListNamespaceSecretsArguments(
                 httpClient: HttpClient,
-                namespaceId: ref namespaceId,
+                parent: ref parent,
                 pageSize: ref pageSize,
                 pageToken: ref pageToken);
 
             var __pathBuilder = new global::Instill.PathBuilder(
-                path: $"/v1beta/namespaces/{namespaceId}/secrets",
+                path: $"/v1beta/{parent}/secrets",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
                 .AddOptionalParameter("pageSize", pageSize?.ToString())
@@ -87,7 +87,7 @@ namespace Instill
             PreparePipelinePublicServiceListNamespaceSecretsRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                namespaceId: namespaceId,
+                parent: parent,
                 pageSize: pageSize,
                 pageToken: pageToken);
 

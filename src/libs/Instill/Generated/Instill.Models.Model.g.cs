@@ -9,59 +9,83 @@ namespace Instill
     public sealed partial class Model
     {
         /// <summary>
-        /// The resource name of the model, which allows its access by owner and ID.<br/>
-        /// - Format: `users/{user.id}/models/{model.id}`.<br/>
+        /// Field 1: Canonical resource name.<br/>
+        /// Format: `namespaces/{namespace}/models/{model}`.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         public string? Name { get; set; }
 
         /// <summary>
-        /// Model UUID.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("uid")]
-        public string? Uid { get; set; }
-
-        /// <summary>
-        /// Model resource ID (used in `name` as the last segment). This conforms to<br/>
-        /// RFC-1034, which restricts to letters, numbers, and hyphen, with the first<br/>
-        /// character a letter, the last a letter or a number, and a 63 character<br/>
-        /// maximum.
-        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public string Id { get; set; } = default!;
+        public string? Id { get; set; }
 
         /// <summary>
-        /// Model description.
+        /// Field 3: Human-readable display name for UI.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string DisplayName { get; set; }
+
+        /// <summary>
+        /// Field 4: URL-friendly slug (NO prefix).<br/>
+        /// If omitted, server generates from display_name.<br/>
+        /// Slug is NOT part of resource identity.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("slug")]
+        public string? Slug { get; set; }
+
+        /// <summary>
+        /// Field 5: Previous slugs for backward compatibility.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("aliases")]
+        public global::System.Collections.Generic.IList<string>? Aliases { get; set; }
+
+        /// <summary>
+        /// Field 6: Optional description.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("description")]
         public string? Description { get; set; }
+
+        /// <summary>
+        /// Field 7: Creation time.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
+        public global::System.DateTime? CreateTime { get; set; }
+
+        /// <summary>
+        /// Field 8: Last update time.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
+        public global::System.DateTime? UpdateTime { get; set; }
 
         /// <summary>
         /// The model definition that has been used to import the model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("modelDefinition")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string ModelDefinition { get; set; } = default!;
+        public required string ModelDefinition { get; set; }
 
         /// <summary>
         /// Model configuration. This field is validated against the model<br/>
-        /// specification in the model definition (i.e. the `model_spec` field in the<br/>
-        /// model definition).
+        /// specification in the model definition.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("configuration")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public object Configuration { get; set; } = default!;
+        public required object Configuration { get; set; }
 
         /// <summary>
         /// Model task.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("task")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.AITaskJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.TaskJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Instill.AITask Task { get; set; } = default!;
+        public required global::Instill.Task Task { get; set; }
 
         /// <summary>
         /// Model visibility.
@@ -69,56 +93,62 @@ namespace Instill
         [global::System.Text.Json.Serialization.JsonPropertyName("visibility")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.ModelVisibilityJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Instill.ModelVisibility Visibility { get; set; } = default!;
+        public required global::Instill.ModelVisibility Visibility { get; set; }
 
         /// <summary>
-        /// Model creation time.<br/>
+        /// Permission defines how the model can be used.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
-        public global::System.DateTime? CreateTime { get; set; }
-
-        /// <summary>
-        /// Model update time.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
-        public global::System.DateTime? UpdateTime { get; set; }
-
-        /// <summary>
-        /// Model deletion time.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("deleteTime")]
-        public global::System.DateTime? DeleteTime { get; set; }
-
-        /// <summary>
-        /// Resource name of the owner.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("ownerName")]
-        public string? OwnerName { get; set; }
-
-        /// <summary>
-        /// Model owner.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("owner")]
-        public global::Instill.Owner? Owner { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("permission")]
+        public global::Instill.V1alphaPermission? Permission { get; set; }
 
         /// <summary>
         /// Region of choice for the particular provider to host the model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("region")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Region { get; set; } = default!;
+        public required string Region { get; set; }
 
         /// <summary>
         /// Hardware of choice to serve the model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("hardware")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Hardware { get; set; } = default!;
+        public required string Hardware { get; set; }
+
+        /// <summary>
+        /// Input schema for the model.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("inputSchema")]
+        public object? InputSchema { get; set; }
+
+        /// <summary>
+        /// Output schema for the model.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("outputSchema")]
+        public object? OutputSchema { get; set; }
+
+        /// <summary>
+        /// Tags.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("tags")]
+        public global::System.Collections.Generic.IList<string>? Tags { get; set; }
+
+        /// <summary>
+        /// Version names.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("versions")]
+        public global::System.Collections.Generic.IList<string>? Versions { get; set; }
+
+        /// <summary>
+        /// Statistic data.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("stats")]
+        public global::Instill.ModelStats? Stats { get; set; }
 
         /// <summary>
         /// README holds the model documentation.
@@ -151,44 +181,38 @@ namespace Instill
         public string? ProfileImage { get; set; }
 
         /// <summary>
-        /// Permission defines how a pipeline can be used.<br/>
+        /// Resource name of the owner namespace.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("permission")]
-        public global::Instill.Permission? Permission { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("ownerName")]
+        public string? OwnerName { get; set; }
+
+        /// <summary>
+        /// Model owner (User or Organization).<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("owner")]
+        public global::Instill.Owner? Owner { get; set; }
 
         /// <summary>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("inputSchema")]
-        public object? InputSchema { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("creatorName")]
+        public string? CreatorName { get; set; }
 
         /// <summary>
+        /// The user who created this model.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("outputSchema")]
-        public object? OutputSchema { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("creator")]
+        public global::Instill.V1betaUser? Creator { get; set; }
 
         /// <summary>
-        /// Tags.<br/>
+        /// Soft delete timestamp.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tags")]
-        public global::System.Collections.Generic.IList<string>? Tags { get; set; }
-
-        /// <summary>
-        /// Version names.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("versions")]
-        public global::System.Collections.Generic.IList<string>? Versions { get; set; }
-
-        /// <summary>
-        /// Statistic data.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("stats")]
-        public global::Instill.ModelStats? Stats { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("deleteTime")]
+        public global::System.DateTime? DeleteTime { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -200,30 +224,42 @@ namespace Instill
         /// Initializes a new instance of the <see cref="Model" /> class.
         /// </summary>
         /// <param name="name">
-        /// The resource name of the model, which allows its access by owner and ID.<br/>
-        /// - Format: `users/{user.id}/models/{model.id}`.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="uid">
-        /// Model UUID.<br/>
+        /// Field 1: Canonical resource name.<br/>
+        /// Format: `namespaces/{namespace}/models/{model}`.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="id">
-        /// Model resource ID (used in `name` as the last segment). This conforms to<br/>
-        /// RFC-1034, which restricts to letters, numbers, and hyphen, with the first<br/>
-        /// character a letter, the last a letter or a number, and a 63 character<br/>
-        /// maximum.
+        /// Included only in responses
+        /// </param>
+        /// <param name="displayName">
+        /// Field 3: Human-readable display name for UI.
+        /// </param>
+        /// <param name="slug">
+        /// Field 4: URL-friendly slug (NO prefix).<br/>
+        /// If omitted, server generates from display_name.<br/>
+        /// Slug is NOT part of resource identity.
+        /// </param>
+        /// <param name="aliases">
+        /// Field 5: Previous slugs for backward compatibility.<br/>
+        /// Included only in responses
         /// </param>
         /// <param name="description">
-        /// Model description.
+        /// Field 6: Optional description.
+        /// </param>
+        /// <param name="createTime">
+        /// Field 7: Creation time.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="updateTime">
+        /// Field 8: Last update time.<br/>
+        /// Included only in responses
         /// </param>
         /// <param name="modelDefinition">
         /// The model definition that has been used to import the model.
         /// </param>
         /// <param name="configuration">
         /// Model configuration. This field is validated against the model<br/>
-        /// specification in the model definition (i.e. the `model_spec` field in the<br/>
-        /// model definition).
+        /// specification in the model definition.
         /// </param>
         /// <param name="task">
         /// Model task.
@@ -231,24 +267,8 @@ namespace Instill
         /// <param name="visibility">
         /// Model visibility.
         /// </param>
-        /// <param name="createTime">
-        /// Model creation time.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="updateTime">
-        /// Model update time.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="deleteTime">
-        /// Model deletion time.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="ownerName">
-        /// Resource name of the owner.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="owner">
-        /// Model owner.<br/>
+        /// <param name="permission">
+        /// Permission defines how the model can be used.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="region">
@@ -256,6 +276,25 @@ namespace Instill
         /// </param>
         /// <param name="hardware">
         /// Hardware of choice to serve the model.
+        /// </param>
+        /// <param name="inputSchema">
+        /// Input schema for the model.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="outputSchema">
+        /// Output schema for the model.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="tags">
+        /// Tags.
+        /// </param>
+        /// <param name="versions">
+        /// Version names.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="stats">
+        /// Statistic data.<br/>
+        /// Included only in responses
         /// </param>
         /// <param name="readme">
         /// README holds the model documentation.
@@ -272,60 +311,61 @@ namespace Instill
         /// <param name="profileImage">
         /// Model profile image in base64 format.
         /// </param>
-        /// <param name="permission">
-        /// Permission defines how a pipeline can be used.<br/>
+        /// <param name="ownerName">
+        /// Resource name of the owner namespace.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="inputSchema">
+        /// <param name="owner">
+        /// Model owner (User or Organization).<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="outputSchema">
+        /// <param name="creatorName">
         /// Included only in responses
         /// </param>
-        /// <param name="tags">
-        /// Tags.<br/>
+        /// <param name="creator">
+        /// The user who created this model.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="versions">
-        /// Version names.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="stats">
-        /// Statistic data.<br/>
+        /// <param name="deleteTime">
+        /// Soft delete timestamp.<br/>
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Model(
-            string id,
+            string displayName,
             string modelDefinition,
             object configuration,
-            global::Instill.AITask task,
+            global::Instill.Task task,
             global::Instill.ModelVisibility visibility,
             string region,
             string hardware,
             string? name,
-            string? uid,
+            string? id,
+            string? slug,
+            global::System.Collections.Generic.IList<string>? aliases,
             string? description,
             global::System.DateTime? createTime,
             global::System.DateTime? updateTime,
-            global::System.DateTime? deleteTime,
-            string? ownerName,
-            global::Instill.Owner? owner,
+            global::Instill.V1alphaPermission? permission,
+            object? inputSchema,
+            object? outputSchema,
+            global::System.Collections.Generic.IList<string>? tags,
+            global::System.Collections.Generic.IList<string>? versions,
+            global::Instill.ModelStats? stats,
             string? readme,
             string? sourceUrl,
             string? documentationUrl,
             string? license,
             string? profileImage,
-            global::Instill.Permission? permission,
-            object? inputSchema,
-            object? outputSchema,
-            global::System.Collections.Generic.IList<string>? tags,
-            global::System.Collections.Generic.IList<string>? versions,
-            global::Instill.ModelStats? stats)
+            string? ownerName,
+            global::Instill.Owner? owner,
+            string? creatorName,
+            global::Instill.V1betaUser? creator,
+            global::System.DateTime? deleteTime)
         {
-            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
+            this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
             this.ModelDefinition = modelDefinition ?? throw new global::System.ArgumentNullException(nameof(modelDefinition));
             this.Configuration = configuration ?? throw new global::System.ArgumentNullException(nameof(configuration));
             this.Task = task;
@@ -333,24 +373,28 @@ namespace Instill
             this.Region = region ?? throw new global::System.ArgumentNullException(nameof(region));
             this.Hardware = hardware ?? throw new global::System.ArgumentNullException(nameof(hardware));
             this.Name = name;
-            this.Uid = uid;
+            this.Id = id;
+            this.Slug = slug;
+            this.Aliases = aliases;
             this.Description = description;
             this.CreateTime = createTime;
             this.UpdateTime = updateTime;
-            this.DeleteTime = deleteTime;
-            this.OwnerName = ownerName;
-            this.Owner = owner;
-            this.Readme = readme;
-            this.SourceUrl = sourceUrl;
-            this.DocumentationUrl = documentationUrl;
-            this.License = license;
-            this.ProfileImage = profileImage;
             this.Permission = permission;
             this.InputSchema = inputSchema;
             this.OutputSchema = outputSchema;
             this.Tags = tags;
             this.Versions = versions;
             this.Stats = stats;
+            this.Readme = readme;
+            this.SourceUrl = sourceUrl;
+            this.DocumentationUrl = documentationUrl;
+            this.License = license;
+            this.ProfileImage = profileImage;
+            this.OwnerName = ownerName;
+            this.Owner = owner;
+            this.CreatorName = creatorName;
+            this.Creator = creator;
+            this.DeleteTime = deleteTime;
         }
 
         /// <summary>

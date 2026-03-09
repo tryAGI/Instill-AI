@@ -7,12 +7,12 @@ namespace Instill
     {
         partial void PrepareModelPublicServiceGetModelOperationArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string operationId,
+            ref string name1,
             ref global::Instill.ModelPublicServiceGetModelOperationView? view);
         partial void PrepareModelPublicServiceGetModelOperationRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string operationId,
+            string name1,
             global::Instill.ModelPublicServiceGetModelOperationView? view);
         partial void ProcessModelPublicServiceGetModelOperationResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -24,16 +24,16 @@ namespace Instill
             ref string content);
 
         /// <summary>
-        /// Get the details of a long-running operation<br/>
+        /// Get the details of the latest long-running operation from a model<br/>
         /// This method allows requesters to request the status and outcome of<br/>
         /// long-running operations in a model, such as trigger.
         /// </summary>
-        /// <param name="operationId"></param>
+        /// <param name="name1"></param>
         /// <param name="view"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Instill.GetModelOperationResponse> ModelPublicServiceGetModelOperationAsync(
-            string operationId,
+            string name1,
             global::Instill.ModelPublicServiceGetModelOperationView? view = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -41,11 +41,11 @@ namespace Instill
                 client: HttpClient);
             PrepareModelPublicServiceGetModelOperationArguments(
                 httpClient: HttpClient,
-                operationId: ref operationId,
+                name1: ref name1,
                 view: ref view);
 
             var __pathBuilder = new global::Instill.PathBuilder(
-                path: $"/v1alpha/operations/{operationId}",
+                path: $"/v1alpha/{name1}/operation",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
                 .AddOptionalParameter("view", view?.ToValueString()) 
@@ -81,7 +81,7 @@ namespace Instill
             PrepareModelPublicServiceGetModelOperationRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                operationId: operationId,
+                name1: name1,
                 view: view);
 
             using var __response = await HttpClient.SendAsync(

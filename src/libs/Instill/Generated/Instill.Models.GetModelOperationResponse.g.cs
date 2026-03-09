@@ -4,8 +4,8 @@
 namespace Instill
 {
     /// <summary>
-    /// GetModelOperationRequest represents a request to query a long-running<br/>
-    /// operation.
+    /// GetModelOperationResponse represents a response to query a<br/>
+    /// long-running operation.
     /// </summary>
     public sealed partial class GetModelOperationResponse
     {

@@ -7,15 +7,13 @@ namespace Instill
     {
         partial void PreparePipelinePublicServiceUpdateNamespaceSecretArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string namespaceId,
-            ref string secretId,
-            global::Instill.Secret request);
+            ref string secretName,
+            global::Instill.PipelinePublicServiceUpdateNamespaceSecretRequest request);
         partial void PreparePipelinePublicServiceUpdateNamespaceSecretRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string namespaceId,
-            string secretId,
-            global::Instill.Secret request);
+            string secretName,
+            global::Instill.PipelinePublicServiceUpdateNamespaceSecretRequest request);
         partial void ProcessPipelinePublicServiceUpdateNamespaceSecretResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -31,16 +29,14 @@ namespace Instill
         /// In REST requests, only the supplied secret fields will be taken into<br/>
         /// account when updating the resource.
         /// </summary>
-        /// <param name="namespaceId"></param>
-        /// <param name="secretId"></param>
+        /// <param name="secretName"></param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Instill.UpdateNamespaceSecretResponse> PipelinePublicServiceUpdateNamespaceSecretAsync(
-            string namespaceId,
-            string secretId,
+            string secretName,
 
-            global::Instill.Secret request,
+            global::Instill.PipelinePublicServiceUpdateNamespaceSecretRequest request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -49,12 +45,11 @@ namespace Instill
                 client: HttpClient);
             PreparePipelinePublicServiceUpdateNamespaceSecretArguments(
                 httpClient: HttpClient,
-                namespaceId: ref namespaceId,
-                secretId: ref secretId,
+                secretName: ref secretName,
                 request: request);
 
             var __pathBuilder = new global::Instill.PathBuilder(
-                path: $"/v1beta/namespaces/{namespaceId}/secrets/{secretId}",
+                path: $"/v1beta/{secretName}",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -93,8 +88,7 @@ namespace Instill
             PreparePipelinePublicServiceUpdateNamespaceSecretRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                namespaceId: namespaceId,
-                secretId: secretId,
+                secretName: secretName,
                 request: request);
 
             using var __response = await HttpClient.SendAsync(
@@ -261,38 +255,37 @@ namespace Instill
         /// In REST requests, only the supplied secret fields will be taken into<br/>
         /// account when updating the resource.
         /// </summary>
-        /// <param name="namespaceId"></param>
-        /// <param name="secretId"></param>
-        /// <param name="id">
-        /// Secret resource ID (used in `name` as the last segment). This conforms<br/>
-        /// to RFC-1034, which restricts to letters, numbers, and hyphen, with the<br/>
-        /// first character a letter, the last a letter or a number, and a 63<br/>
-        /// character maximum.
+        /// <param name="secretName"></param>
+        /// <param name="displayName">
+        /// Field 3: Human-readable display name for UI.
+        /// </param>
+        /// <param name="slug"></param>
+        /// <param name="description">
+        /// Field 6: Optional description.
         /// </param>
         /// <param name="value">
-        /// The value of the secret, which is input-only and will never be returned in API responses.
+        /// Field 9: The value of the secret, which is input-only and will never be returned in API responses.
         /// </param>
-        /// <param name="description"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Instill.UpdateNamespaceSecretResponse> PipelinePublicServiceUpdateNamespaceSecretAsync(
-            string namespaceId,
-            string secretId,
-            string? id = default,
-            string? value = default,
+            string secretName,
+            string displayName,
+            string? slug = default,
             string? description = default,
+            string? value = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Instill.Secret
+            var __request = new global::Instill.PipelinePublicServiceUpdateNamespaceSecretRequest
             {
-                Id = id,
-                Value = value,
+                DisplayName = displayName,
+                Slug = slug,
                 Description = description,
+                Value = value,
             };
 
             return await PipelinePublicServiceUpdateNamespaceSecretAsync(
-                namespaceId: namespaceId,
-                secretId: secretId,
+                secretName: secretName,
                 request: __request,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
         }

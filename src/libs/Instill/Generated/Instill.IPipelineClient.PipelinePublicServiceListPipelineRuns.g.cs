@@ -12,8 +12,7 @@ namespace Instill
         /// sensitive data like e.g. the trigger input and output). Other requesters<br/>
         /// will only be able to see the runs requested by themselves.
         /// </summary>
-        /// <param name="namespaceId"></param>
-        /// <param name="pipelineId"></param>
+        /// <param name="parent"></param>
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
         /// <param name="filter"></param>
@@ -22,8 +21,7 @@ namespace Instill
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Instill.ListPipelineRunsResponse> PipelinePublicServiceListPipelineRunsAsync(
-            string namespaceId,
-            string pipelineId,
+            string parent,
             int? page = default,
             int? pageSize = default,
             string? filter = default,

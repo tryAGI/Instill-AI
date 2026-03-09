@@ -9,10 +9,20 @@ namespace Instill
     public sealed partial class Chunk
     {
         /// <summary>
+        /// Field 1: The resource name of the chunk.<br/>
+        /// Format:<br/>
+        /// `namespaces/{namespace}/knowledge-bases/{knowledge_base}/files/{file}/chunks/{chunk}`.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("chunkUid")]
-        public string? ChunkUid { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Field 2: The chunk id (unique identifier).<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
 
         /// <summary>
         /// Included only in responses
@@ -35,8 +45,8 @@ namespace Instill
         /// <summary>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("originalFileUid")]
-        public string? OriginalFileUid { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("originalFile")]
+        public string? OriginalFile { get; set; }
 
         /// <summary>
         /// Included only in responses
@@ -60,18 +70,6 @@ namespace Instill
         public global::Instill.Reference? MarkdownReference { get; set; }
 
         /// <summary>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("startPos")]
-        public long? StartPos { get; set; }
-
-        /// <summary>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("endPos")]
-        public long? EndPos { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -80,7 +78,14 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="Chunk" /> class.
         /// </summary>
-        /// <param name="chunkUid">
+        /// <param name="name">
+        /// Field 1: The resource name of the chunk.<br/>
+        /// Format:<br/>
+        /// `namespaces/{namespace}/knowledge-bases/{knowledge_base}/files/{file}/chunks/{chunk}`.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="id">
+        /// Field 2: The chunk id (unique identifier).<br/>
         /// Included only in responses
         /// </param>
         /// <param name="retrievable">
@@ -92,7 +97,7 @@ namespace Instill
         /// <param name="createTime">
         /// Included only in responses
         /// </param>
-        /// <param name="originalFileUid">
+        /// <param name="originalFile">
         /// Included only in responses
         /// </param>
         /// <param name="type">
@@ -106,37 +111,29 @@ namespace Instill
         /// Reference to the position of the chunk within the Markdown (source) file.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="startPos">
-        /// Included only in responses
-        /// </param>
-        /// <param name="endPos">
-        /// Included only in responses
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Chunk(
-            string? chunkUid,
+            string? name,
+            string? id,
             bool? retrievable,
             long? tokens,
             global::System.DateTime? createTime,
-            string? originalFileUid,
+            string? originalFile,
             global::Instill.ChunkType? type,
             global::Instill.Reference? reference,
-            global::Instill.Reference? markdownReference,
-            long? startPos,
-            long? endPos)
+            global::Instill.Reference? markdownReference)
         {
-            this.ChunkUid = chunkUid;
+            this.Name = name;
+            this.Id = id;
             this.Retrievable = retrievable;
             this.Tokens = tokens;
             this.CreateTime = createTime;
-            this.OriginalFileUid = originalFileUid;
+            this.OriginalFile = originalFile;
             this.Type = type;
             this.Reference = reference;
             this.MarkdownReference = markdownReference;
-            this.StartPos = startPos;
-            this.EndPos = endPos;
         }
 
         /// <summary>

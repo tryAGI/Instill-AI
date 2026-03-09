@@ -5,9 +5,10 @@ namespace Instill
     public partial interface IPipelineClient
     {
         /// <summary>
-        /// List accessible pipelines<br/>
-        /// Returns a paginated list of pipelines that are visible to the requester.
+        /// List namespace pipelines<br/>
+        /// Returns a paginated list of pipelines of a namespace
         /// </summary>
+        /// <param name="parent"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
         /// <param name="view"></param>
@@ -18,6 +19,7 @@ namespace Instill
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Instill.ListPipelinesResponse> PipelinePublicServiceListPipelinesAsync(
+            string parent,
             int? pageSize = default,
             string? pageToken = default,
             global::Instill.PipelinePublicServiceListPipelinesView? view = default,

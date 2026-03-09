@@ -9,17 +9,17 @@ namespace Instill
         /// Returns a paginated list of runs requested by a namespace. The response<br/>
         /// may contain runs from several models.
         /// </summary>
+        /// <param name="requester"></param>
         /// <param name="pageSize"></param>
         /// <param name="page"></param>
         /// <param name="orderBy"></param>
         /// <param name="filter"></param>
         /// <param name="start"></param>
         /// <param name="stop"></param>
-        /// <param name="requesterId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Instill.ListModelRunsByRequesterResponse> ModelPublicServiceListModelRunsByRequesterAsync(
-            string requesterId,
+            string requester,
             int? pageSize = default,
             int? page = default,
             string? orderBy = default,

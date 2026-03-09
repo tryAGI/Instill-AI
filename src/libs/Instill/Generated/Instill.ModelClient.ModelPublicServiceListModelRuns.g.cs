@@ -7,8 +7,7 @@ namespace Instill
     {
         partial void PrepareModelPublicServiceListModelRunsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string namespaceId,
-            ref string modelId,
+            ref string parent,
             ref int? pageSize,
             ref int? page,
             ref string? orderBy,
@@ -17,8 +16,7 @@ namespace Instill
         partial void PrepareModelPublicServiceListModelRunsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string namespaceId,
-            string modelId,
+            string parent,
             int? pageSize,
             int? page,
             string? orderBy,
@@ -41,8 +39,7 @@ namespace Instill
         /// sensitive data like e.g. the trigger input and output). Other requesters<br/>
         /// will only be able to see the runs requested by themselves.
         /// </summary>
-        /// <param name="namespaceId"></param>
-        /// <param name="modelId"></param>
+        /// <param name="parent"></param>
         /// <param name="pageSize"></param>
         /// <param name="page"></param>
         /// <param name="orderBy"></param>
@@ -51,8 +48,7 @@ namespace Instill
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Instill.ListModelRunsResponse> ModelPublicServiceListModelRunsAsync(
-            string namespaceId,
-            string modelId,
+            string parent,
             int? pageSize = default,
             int? page = default,
             string? orderBy = default,
@@ -64,8 +60,7 @@ namespace Instill
                 client: HttpClient);
             PrepareModelPublicServiceListModelRunsArguments(
                 httpClient: HttpClient,
-                namespaceId: ref namespaceId,
-                modelId: ref modelId,
+                parent: ref parent,
                 pageSize: ref pageSize,
                 page: ref page,
                 orderBy: ref orderBy,
@@ -73,7 +68,7 @@ namespace Instill
                 instillRequesterUid: ref instillRequesterUid);
 
             var __pathBuilder = new global::Instill.PathBuilder(
-                path: $"/v1alpha/namespaces/{namespaceId}/models/{modelId}/runs",
+                path: $"/v1alpha/{parent}/runs",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
                 .AddOptionalParameter("pageSize", pageSize?.ToString())
@@ -118,8 +113,7 @@ namespace Instill
             PrepareModelPublicServiceListModelRunsRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                namespaceId: namespaceId,
-                modelId: modelId,
+                parent: parent,
                 pageSize: pageSize,
                 page: page,
                 orderBy: orderBy,

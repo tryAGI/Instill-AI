@@ -1,0 +1,29 @@
+#nullable enable
+
+namespace Instill
+{
+    public partial interface IPipelineClient
+    {
+        /// <summary>
+        /// List the releases in a pipeline<br/>
+        /// Lists the commited versions of a pipeline, identified by its resource<br/>
+        /// name, which is formed by the parent namespace and ID of the pipeline.
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="pageToken"></param>
+        /// <param name="view"></param>
+        /// <param name="filter"></param>
+        /// <param name="showDeleted"></param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Instill.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Instill.ListPipelineReleasesResponse> PipelinePublicServiceListPipelineReleasesAsync(
+            string parent,
+            int? pageSize = default,
+            string? pageToken = default,
+            global::Instill.PipelinePublicServiceListPipelineReleasesView? view = default,
+            string? filter = default,
+            bool? showDeleted = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+    }
+}

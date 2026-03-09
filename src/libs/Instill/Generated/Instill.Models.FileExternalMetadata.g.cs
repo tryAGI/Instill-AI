@@ -4,7 +4,7 @@
 namespace Instill
 {
     /// <summary>
-    /// 
+    /// Custom metadata provided by the user during file upload.
     /// </summary>
     public sealed partial class FileExternalMetadata
     {

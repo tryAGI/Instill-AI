@@ -4,7 +4,7 @@
 namespace Instill
 {
     /// <summary>
-    /// Position within a file, as coordinates in a a specific unit. The<br/>
+    /// Position within a file, as coordinates in a specific unit. The<br/>
     /// number of dimensions of the coordinate depends on the unit type.
     /// </summary>
     public sealed partial class Position

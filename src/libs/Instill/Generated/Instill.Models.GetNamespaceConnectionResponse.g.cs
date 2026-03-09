@@ -13,7 +13,7 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("connection")]
-        public global::Instill.Connection? Connection { get; set; }
+        public global::Instill.MgmtV1betaConnection? Connection { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -32,7 +32,7 @@ namespace Instill
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GetNamespaceConnectionResponse(
-            global::Instill.Connection? connection)
+            global::Instill.MgmtV1betaConnection? connection)
         {
             this.Connection = connection;
         }

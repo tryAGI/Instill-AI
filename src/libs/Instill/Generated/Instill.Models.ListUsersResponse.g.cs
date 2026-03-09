@@ -13,7 +13,7 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("users")]
-        public global::System.Collections.Generic.IList<global::Instill.User>? Users { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.V1betaUser>? Users { get; set; }
 
         /// <summary>
         /// Next page token.<br/>
@@ -54,7 +54,7 @@ namespace Instill
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ListUsersResponse(
-            global::System.Collections.Generic.IList<global::Instill.User>? users,
+            global::System.Collections.Generic.IList<global::Instill.V1betaUser>? users,
             string? nextPageToken,
             int? totalSize)
         {

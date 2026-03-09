@@ -7,23 +7,23 @@ namespace Instill
     {
         partial void PrepareModelPublicServiceListModelRunsByRequesterArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref string requester,
             ref int? pageSize,
             ref int? page,
             ref string? orderBy,
             ref string? filter,
             ref global::System.DateTime? start,
-            ref global::System.DateTime? stop,
-            ref string requesterId);
+            ref global::System.DateTime? stop);
         partial void PrepareModelPublicServiceListModelRunsByRequesterRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            string requester,
             int? pageSize,
             int? page,
             string? orderBy,
             string? filter,
             global::System.DateTime? start,
-            global::System.DateTime? stop,
-            string requesterId);
+            global::System.DateTime? stop);
         partial void ProcessModelPublicServiceListModelRunsByRequesterResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -38,17 +38,17 @@ namespace Instill
         /// Returns a paginated list of runs requested by a namespace. The response<br/>
         /// may contain runs from several models.
         /// </summary>
+        /// <param name="requester"></param>
         /// <param name="pageSize"></param>
         /// <param name="page"></param>
         /// <param name="orderBy"></param>
         /// <param name="filter"></param>
         /// <param name="start"></param>
         /// <param name="stop"></param>
-        /// <param name="requesterId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Instill.ListModelRunsByRequesterResponse> ModelPublicServiceListModelRunsByRequesterAsync(
-            string requesterId,
+            string requester,
             int? pageSize = default,
             int? page = default,
             string? orderBy = default,
@@ -61,25 +61,25 @@ namespace Instill
                 client: HttpClient);
             PrepareModelPublicServiceListModelRunsByRequesterArguments(
                 httpClient: HttpClient,
+                requester: ref requester,
                 pageSize: ref pageSize,
                 page: ref page,
                 orderBy: ref orderBy,
                 filter: ref filter,
                 start: ref start,
-                stop: ref stop,
-                requesterId: ref requesterId);
+                stop: ref stop);
 
             var __pathBuilder = new global::Instill.PathBuilder(
                 path: "/v1alpha/dashboard/models/runs",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
+                .AddRequiredParameter("requester", requester)
                 .AddOptionalParameter("pageSize", pageSize?.ToString())
                 .AddOptionalParameter("page", page?.ToString())
                 .AddOptionalParameter("orderBy", orderBy)
                 .AddOptionalParameter("filter", filter)
                 .AddOptionalParameter("start", start?.ToString("yyyy-MM-ddTHH:mm:ssZ"))
-                .AddOptionalParameter("stop", stop?.ToString("yyyy-MM-ddTHH:mm:ssZ"))
-                .AddRequiredParameter("requesterId", requesterId) 
+                .AddOptionalParameter("stop", stop?.ToString("yyyy-MM-ddTHH:mm:ssZ")) 
                 ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -112,13 +112,13 @@ namespace Instill
             PrepareModelPublicServiceListModelRunsByRequesterRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
+                requester: requester,
                 pageSize: pageSize,
                 page: page,
                 orderBy: orderBy,
                 filter: filter,
                 start: start,
-                stop: stop,
-                requesterId: requesterId);
+                stop: stop);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,

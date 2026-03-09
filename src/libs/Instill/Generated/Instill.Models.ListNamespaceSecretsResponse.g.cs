@@ -16,7 +16,7 @@ namespace Instill
         public global::System.Collections.Generic.IList<global::Instill.Secret>? Secrets { get; set; }
 
         /// <summary>
-        /// Next page secret.<br/>
+        /// Next page token.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("nextPageToken")]
@@ -43,7 +43,7 @@ namespace Instill
         /// Included only in responses
         /// </param>
         /// <param name="nextPageToken">
-        /// Next page secret.<br/>
+        /// Next page token.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="totalSize">

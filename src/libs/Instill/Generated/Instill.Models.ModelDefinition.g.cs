@@ -59,8 +59,8 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("releaseStage")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.ReleaseStageJsonConverter))]
-        public global::Instill.ReleaseStage? ReleaseStage { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.V1alphaReleaseStageJsonConverter))]
+        public global::Instill.V1alphaReleaseStage? ReleaseStage { get; set; }
 
         /// <summary>
         /// The model specification represented by a JSON schema. It is used to<br/>
@@ -154,7 +154,7 @@ namespace Instill
             string? title,
             string? documentationUrl,
             string? icon,
-            global::Instill.ReleaseStage? releaseStage,
+            global::Instill.V1alphaReleaseStage? releaseStage,
             object? modelSpec,
             global::System.DateTime? createTime,
             global::System.DateTime? updateTime)

@@ -13,7 +13,7 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("retrievable")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public bool Retrievable { get; set; } = default!;
+        public required bool Retrievable { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

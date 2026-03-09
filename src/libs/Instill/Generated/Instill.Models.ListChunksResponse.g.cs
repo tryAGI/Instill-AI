@@ -4,7 +4,8 @@
 namespace Instill
 {
     /// <summary>
-    /// The ListChunksResponse message represents a response containing a list of chunks in the artifact system.
+    /// ListChunksResponse represents a response containing a list of chunks in the<br/>
+    /// artifact system.
     /// </summary>
     public sealed partial class ListChunksResponse
     {

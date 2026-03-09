@@ -4,7 +4,7 @@
 namespace Instill
 {
     /// <summary>
-    /// FileMediaType describes the type of a catalog file.<br/>
+    /// FileMediaType describes the media category of a knowledge base file.<br/>
     ///  - FILE_MEDIA_TYPE_DOCUMENT: Document.<br/>
     ///  - FILE_MEDIA_TYPE_IMAGE: Image.<br/>
     ///  - FILE_MEDIA_TYPE_AUDIO: Audio.<br/>

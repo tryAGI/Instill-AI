@@ -83,6 +83,24 @@ namespace Instill
         };
 
         /// <summary>
+        /// Connections to 3rd party apps for use in pipelines.
+        /// </summary>
+        public ConnectionClient Connection => new ConnectionClient(HttpClient, authorizations: Authorizations)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// Integration definitions for creating connections.
+        /// </summary>
+        public IntegrationClient Integration => new IntegrationClient(HttpClient, authorizations: Authorizations)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
         /// Creates a new instance of the InstillClient.
         /// If no httpClient is provided, a new one will be created.
         /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.

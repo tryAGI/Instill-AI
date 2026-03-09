@@ -4,15 +4,15 @@
 namespace Instill
 {
     /// <summary>
-    /// 
+    /// GetObjectResponse contains the requested object.
     /// </summary>
     public sealed partial class GetObjectResponse
     {
         /// <summary>
-        /// 
+        /// The requested object.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("object")]
-        public global::Instill.AIObject? Object { get; set; }
+        public global::Instill.Object? Object { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -23,12 +23,14 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="GetObjectResponse" /> class.
         /// </summary>
-        /// <param name="object"></param>
+        /// <param name="object">
+        /// The requested object.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GetObjectResponse(
-            global::Instill.AIObject? @object)
+            global::Instill.Object? @object)
         {
             this.Object = @object;
         }

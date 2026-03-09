@@ -1,0 +1,19 @@
+
+#nullable enable
+
+namespace Instill
+{
+    /// <summary>
+    /// Model configuration. This field is validated against the model<br/>
+    /// specification in the model definition.
+    /// </summary>
+    public sealed partial class ModelPublicServiceUpdateModelRequestConfiguration
+    {
+
+        /// <summary>
+        /// Additional properties that are not explicitly defined in the schema
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonExtensionData]
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+    }
+}

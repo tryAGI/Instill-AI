@@ -7,8 +7,7 @@ namespace Instill
     {
         partial void PreparePipelinePublicServiceListPipelineRunsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string namespaceId,
-            ref string pipelineId,
+            ref string parent,
             ref int? page,
             ref int? pageSize,
             ref string? filter,
@@ -17,8 +16,7 @@ namespace Instill
         partial void PreparePipelinePublicServiceListPipelineRunsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string namespaceId,
-            string pipelineId,
+            string parent,
             int? page,
             int? pageSize,
             string? filter,
@@ -41,8 +39,7 @@ namespace Instill
         /// sensitive data like e.g. the trigger input and output). Other requesters<br/>
         /// will only be able to see the runs requested by themselves.
         /// </summary>
-        /// <param name="namespaceId"></param>
-        /// <param name="pipelineId"></param>
+        /// <param name="parent"></param>
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
         /// <param name="filter"></param>
@@ -51,8 +48,7 @@ namespace Instill
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Instill.ListPipelineRunsResponse> PipelinePublicServiceListPipelineRunsAsync(
-            string namespaceId,
-            string pipelineId,
+            string parent,
             int? page = default,
             int? pageSize = default,
             string? filter = default,
@@ -64,8 +60,7 @@ namespace Instill
                 client: HttpClient);
             PreparePipelinePublicServiceListPipelineRunsArguments(
                 httpClient: HttpClient,
-                namespaceId: ref namespaceId,
-                pipelineId: ref pipelineId,
+                parent: ref parent,
                 page: ref page,
                 pageSize: ref pageSize,
                 filter: ref filter,
@@ -73,7 +68,7 @@ namespace Instill
                 instillRequesterUid: ref instillRequesterUid);
 
             var __pathBuilder = new global::Instill.PathBuilder(
-                path: $"/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/runs",
+                path: $"/v1beta/{parent}/runs",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
                 .AddOptionalParameter("page", page?.ToString())
@@ -118,8 +113,7 @@ namespace Instill
             PreparePipelinePublicServiceListPipelineRunsRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                namespaceId: namespaceId,
-                pipelineId: pipelineId,
+                parent: parent,
                 page: page,
                 pageSize: pageSize,
                 filter: filter,

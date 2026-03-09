@@ -7,13 +7,11 @@ namespace Instill
     {
         partial void PreparePipelinePublicServiceDeleteNamespaceSecretArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string namespaceId,
-            ref string secretId);
+            ref string name4);
         partial void PreparePipelinePublicServiceDeleteNamespaceSecretRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string namespaceId,
-            string secretId);
+            string name4);
         partial void ProcessPipelinePublicServiceDeleteNamespaceSecretResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -28,24 +26,21 @@ namespace Instill
         /// Deletes a secret, accesing it by its resource name, which is defined by<br/>
         /// the parent namespace and the ID of the secret.
         /// </summary>
-        /// <param name="namespaceId"></param>
-        /// <param name="secretId"></param>
+        /// <param name="name4"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<string> PipelinePublicServiceDeleteNamespaceSecretAsync(
-            string namespaceId,
-            string secretId,
+            string name4,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
             PreparePipelinePublicServiceDeleteNamespaceSecretArguments(
                 httpClient: HttpClient,
-                namespaceId: ref namespaceId,
-                secretId: ref secretId);
+                name4: ref name4);
 
             var __pathBuilder = new global::Instill.PathBuilder(
-                path: $"/v1beta/namespaces/{namespaceId}/secrets/{secretId}",
+                path: $"/v1beta/{name4}",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -78,8 +73,7 @@ namespace Instill
             PreparePipelinePublicServiceDeleteNamespaceSecretRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                namespaceId: namespaceId,
-                secretId: secretId);
+                name4: name4);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,

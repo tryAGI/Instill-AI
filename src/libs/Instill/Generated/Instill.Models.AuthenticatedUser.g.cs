@@ -6,45 +6,70 @@ namespace Instill
     /// <summary>
     /// AuthenticatedUser contains the information of an authenticated user, i.e.,<br/>
     /// the public user information plus some fields that should only be accessed by<br/>
-    /// the user themselves.
+    /// the user themselves.<br/>
+    /// AIP Standard Field Ordering:<br/>
+    /// - name (field 1): Canonical resource name<br/>
+    /// - id (field 2): Immutable canonical resource ID<br/>
+    /// - display_name (field 3): Human-readable display name<br/>
+    /// - slug (field 4): URL-friendly slug<br/>
+    /// - aliases (field 5): Previous slugs for backward compatibility<br/>
+    /// - description (field 6): Optional description<br/>
+    /// - create_time (field 7): Creation timestamp<br/>
+    /// - update_time (field 8): Update timestamp
     /// </summary>
     public sealed partial class AuthenticatedUser
     {
         /// <summary>
-        /// The name of the user, defined by its ID.<br/>
-        /// - Format: `users/{user.id}`.<br/>
+        /// Field 1: Canonical resource name.<br/>
+        /// Format: `users/{user}`.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         public string? Name { get; set; }
 
         /// <summary>
-        /// User UUID. This field is optionally set by users on creation (it will be<br/>
-        /// server-generated if unspecified).
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("uid")]
-        public string? Uid { get; set; }
-
-        /// <summary>
-        /// Resource ID (used in `name` as the last segment). This conforms to<br/>
-        /// RFC-1034, which restricts to letters, numbers, and hyphen, with the first<br/>
-        /// character a letter, the last a letter or a number, and a 63 character<br/>
-        /// maximum.<br/>
-        /// Note that the ID can be updated.
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public string Id { get; set; } = default!;
+        public string? Id { get; set; }
 
         /// <summary>
-        /// Creation time.<br/>
+        /// Field 3: Human-readable display name for UI.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
+        public string? DisplayName { get; set; }
+
+        /// <summary>
+        /// Field 4: URL-friendly slug (NO prefix).<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("slug")]
+        public string? Slug { get; set; }
+
+        /// <summary>
+        /// Field 5: Previous slugs for backward compatibility.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("aliases")]
+        public global::System.Collections.Generic.IList<string>? Aliases { get; set; }
+
+        /// <summary>
+        /// Field 6: Optional description / bio.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Field 7: Creation time.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
         public global::System.DateTime? CreateTime { get; set; }
 
         /// <summary>
-        /// Update time.<br/>
+        /// Field 8: Update time.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
@@ -55,14 +80,7 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("email")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Email { get; set; } = default!;
-
-        /// <summary>
-        /// Stripe customer ID. This field is used in Instill Cloud.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("customerId")]
-        public string? CustomerId { get; set; }
+        public required string Email { get; set; }
 
         /// <summary>
         /// Role.<br/>
@@ -83,7 +101,7 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("newsletterSubscription")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public bool NewsletterSubscription { get; set; } = default!;
+        public required bool NewsletterSubscription { get; set; }
 
         /// <summary>
         /// Console cookie token.
@@ -122,35 +140,39 @@ namespace Instill
         /// Initializes a new instance of the <see cref="AuthenticatedUser" /> class.
         /// </summary>
         /// <param name="name">
-        /// The name of the user, defined by its ID.<br/>
-        /// - Format: `users/{user.id}`.<br/>
+        /// Field 1: Canonical resource name.<br/>
+        /// Format: `users/{user}`.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="uid">
-        /// User UUID. This field is optionally set by users on creation (it will be<br/>
-        /// server-generated if unspecified).
-        /// </param>
         /// <param name="id">
-        /// Resource ID (used in `name` as the last segment). This conforms to<br/>
-        /// RFC-1034, which restricts to letters, numbers, and hyphen, with the first<br/>
-        /// character a letter, the last a letter or a number, and a 63 character<br/>
-        /// maximum.<br/>
-        /// Note that the ID can be updated.
+        /// Included only in responses
+        /// </param>
+        /// <param name="displayName">
+        /// Field 3: Human-readable display name for UI.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="slug">
+        /// Field 4: URL-friendly slug (NO prefix).<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="aliases">
+        /// Field 5: Previous slugs for backward compatibility.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="description">
+        /// Field 6: Optional description / bio.<br/>
+        /// Included only in responses
         /// </param>
         /// <param name="createTime">
-        /// Creation time.<br/>
+        /// Field 7: Creation time.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="updateTime">
-        /// Update time.<br/>
+        /// Field 8: Update time.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="email">
         /// Email.
-        /// </param>
-        /// <param name="customerId">
-        /// Stripe customer ID. This field is used in Instill Cloud.<br/>
-        /// Included only in responses
         /// </param>
         /// <param name="role">
         /// Role.<br/>
@@ -184,28 +206,32 @@ namespace Instill
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AuthenticatedUser(
-            string id,
             string email,
             bool newsletterSubscription,
             string? name,
-            string? uid,
+            string? id,
+            string? displayName,
+            string? slug,
+            global::System.Collections.Generic.IList<string>? aliases,
+            string? description,
             global::System.DateTime? createTime,
             global::System.DateTime? updateTime,
-            string? customerId,
             string? role,
             string? cookieToken,
             global::Instill.OnboardingStatus? onboardingStatus,
             global::Instill.UserProfile? profile,
             bool? isEligibleForOrganizationTrial)
         {
-            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Email = email ?? throw new global::System.ArgumentNullException(nameof(email));
             this.NewsletterSubscription = newsletterSubscription;
             this.Name = name;
-            this.Uid = uid;
+            this.Id = id;
+            this.DisplayName = displayName;
+            this.Slug = slug;
+            this.Aliases = aliases;
+            this.Description = description;
             this.CreateTime = createTime;
             this.UpdateTime = updateTime;
-            this.CustomerId = customerId;
             this.Role = role;
             this.CookieToken = cookieToken;
             this.OnboardingStatus = onboardingStatus;

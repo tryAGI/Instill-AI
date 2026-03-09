@@ -4,7 +4,8 @@
 namespace Instill
 {
     /// <summary>
-    /// ListPipelineRunsByRequesterResponse is the response message for ListPipelineRunsByRequester.
+    /// ListPipelineRunsByRequesterResponse is the response message for<br/>
+    /// ListPipelineRunsByRequester.
     /// </summary>
     public sealed partial class ListPipelineRunsByRequesterResponse
     {

@@ -4,31 +4,77 @@
 namespace Instill
 {
     /// <summary>
-    /// File represents a file in a catalog.
+    /// 
     /// </summary>
     public sealed partial class File
     {
         /// <summary>
+        /// Field 1: Canonical resource name.<br/>
+        /// Format:<br/>
+        /// `namespaces/{namespace}/knowledge-bases/{knowledge_base}/files/{file}`.<br/>
         /// Included only in responses
-        /// </summary>
-        /// <default>default!</default>
-        [global::System.Text.Json.Serialization.JsonPropertyName("fileUid")]
-        public string FileUid { get; set; } = default!;
-
-        /// <summary>
-        /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         public string? Name { get; set; }
 
         /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Field 3: Human-readable display name (filename) for UI.<br/>
+        /// This is typically the original filename of the uploaded file.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string DisplayName { get; set; }
+
+        /// <summary>
         /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("slug")]
+        public string? Slug { get; set; }
+
+        /// <summary>
+        /// Field 5: Previous slugs for backward compatibility.<br/>
+        /// When display_name changes, a new slug is generated and old slugs are stored<br/>
+        /// here.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("aliases")]
+        public global::System.Collections.Generic.IList<string>? Aliases { get; set; }
+
+        /// <summary>
+        /// Field 6: Optional description.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Field 7: Creation time.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
+        public global::System.DateTime? CreateTime { get; set; }
+
+        /// <summary>
+        /// Field 8: Last update time.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
+        public global::System.DateTime? UpdateTime { get; set; }
+
+        /// <summary>
+        /// File type.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.FileTypeJsonConverter))]
         public global::Instill.FileType? Type { get; set; }
 
         /// <summary>
+        /// File process status.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("processStatus")]
@@ -36,100 +82,92 @@ namespace Instill
         public global::Instill.FileProcessStatus? ProcessStatus { get; set; }
 
         /// <summary>
+        /// File process outcome message.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("processOutcome")]
         public string? ProcessOutcome { get; set; }
 
         /// <summary>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("retrievable")]
-        public bool? Retrievable { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
-        public string? Content { get; set; }
-
-        /// <summary>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("ownerUid")]
-        public string? OwnerUid { get; set; }
-
-        /// <summary>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("creatorUid")]
-        public string? CreatorUid { get; set; }
-
-        /// <summary>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("catalogUid")]
-        public string? CatalogUid { get; set; }
-
-        /// <summary>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
-        public global::System.DateTime? CreateTime { get; set; }
-
-        /// <summary>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
-        public global::System.DateTime? UpdateTime { get; set; }
-
-        /// <summary>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("deleteTime")]
-        public global::System.DateTime? DeleteTime { get; set; }
-
-        /// <summary>
+        /// File size in bytes.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("size")]
         public string? Size { get; set; }
 
         /// <summary>
+        /// Total number of chunks created from this file.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("totalChunks")]
         public int? TotalChunks { get; set; }
 
         /// <summary>
+        /// Total number of tokens in this file.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("totalTokens")]
         public int? TotalTokens { get; set; }
 
         /// <summary>
-        /// 
+        /// Array of tags associated with the file.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("tags")]
+        public global::System.Collections.Generic.IList<string>? Tags { get; set; }
+
+        /// <summary>
+        /// Custom metadata provided by the user during file upload.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("externalMetadata")]
         public object? ExternalMetadata { get; set; }
 
         /// <summary>
-        /// objectUid in blob storage. user can upload to blob storage directly, then put objectUid here.<br/>
-        /// then no need the base64 encoding for the file content.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("objectUid")]
-        public string? ObjectUid { get; set; }
-
-        /// <summary>
-        /// Summary of the file.<br/>
-        /// Deprecated: Use the GetFileSummary API endpoint to retrieve file summaries.<br/>
-        /// This field now returns an empty string as summaries are stored separately in MinIO.<br/>
+        /// Knowledge base resource names that this file is associated with.<br/>
+        /// Format: `namespaces/{namespace}/knowledge-bases/{knowledge_base}`<br/>
+        /// A file can belong to multiple knowledge bases within the same namespace.<br/>
+        /// This field is populated from the file_knowledge_base junction table.<br/>
+        /// Follows AIP-122 for resource name references.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("summary")]
-        public string? Summary { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("knowledgeBases")]
+        public global::System.Collections.Generic.IList<string>? KnowledgeBases { get; set; }
 
         /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ownerName")]
+        public string? OwnerName { get; set; }
+
+        /// <summary>
+        /// File owner (User or Organization).<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("owner")]
+        public global::Instill.Owner? Owner { get; set; }
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("creatorName")]
+        public string? CreatorName { get; set; }
+
+        /// <summary>
+        /// The user who created this file.<br/>
+        /// Populated when creator_name is present.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("creator")]
+        public global::Instill.V1betaUser? Creator { get; set; }
+
+        /// <summary>
+        /// Base64-encoded file content for inline upload.<br/>
+        /// Alternative to object field for smaller files.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
+        public string? Content { get; set; }
+
+        /// <summary>
+        /// Pre-signed download URL for the file.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("downloadUrl")]
@@ -137,49 +175,48 @@ namespace Instill
 
         /// <summary>
         /// Pipeline used for converting the file to Markdown if the file is a<br/>
-        /// document (i.e., a file with pdf, doc[x] or ppt[x] extension). The value<br/>
-        /// identifies the pipeline release and and MUST have the format<br/>
-        /// `{namespaceID}/{pipelineID}@{version}`.<br/>
-        /// The pipeline recipe MUST have the following variable and output fields:<br/>
-        /// ```yaml variable<br/>
-        /// variable:<br/>
-        ///   document_input:<br/>
-        ///     title: document-input<br/>
-        ///     description: Upload a document (PDF/DOCX/DOC/PPTX/PPT)<br/>
-        ///     type: file<br/>
-        /// ```<br/>
-        /// The `convert_result` output should be a list of strings, one per page.<br/>
-        /// ```yaml output<br/>
-        /// output:<br/>
-        ///  convert_result:<br/>
-        ///    title: convert-result<br/>
-        ///    value: ${merge-markdown-refinement.output.results[0]}<br/>
-        /// ```<br/>
-        /// Other variable and output fields will be ignored.<br/>
-        /// The pipeline will be executed first, falling back to the catalog's<br/>
-        /// conversion pipelines if the conversion doesn't yield a non-empty result<br/>
-        /// (see the catalog creation endpoint documentation).<br/>
-        /// For non-document catalog files, the conversion pipeline is deterministic<br/>
-        /// (such files are typically trivial to convert and don't require a dedicated<br/>
-        /// pipeline to improve the conversion performance).
+        /// document (i.e., a file with pdf, doc[x] or ppt[x] extension).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("convertingPipeline")]
         public string? ConvertingPipeline { get; set; }
 
         /// <summary>
-        /// Length of the file in the specified unit type. It is defined as the number<br/>
-        /// of positions (the unit will depend on the file type) that can be accessed<br/>
-        /// in the file.<br/>
+        /// Length of the file in the specified unit type.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("length")]
         public global::Instill.Position? Length { get; set; }
 
         /// <summary>
-        /// 
+        /// Collection resource names that this file belongs to.<br/>
+        /// Format: `namespaces/{namespace}/collections/{collection}`<br/>
+        /// This field is system-managed and populated from collection membership.<br/>
+        /// Follows AIP-122 for resource name references.<br/>
+        /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tags")]
-        public global::System.Collections.Generic.IList<string>? Tags { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("collections")]
+        public global::System.Collections.Generic.IList<string>? Collections { get; set; }
+
+        /// <summary>
+        /// Soft delete timestamp.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("deleteTime")]
+        public global::System.DateTime? DeleteTime { get; set; }
+
+        /// <summary>
+        /// Object resource name reference for blob storage upload.<br/>
+        /// Format: `namespaces/{namespace}/objects/{object}`<br/>
+        /// Two upload approaches are supported:<br/>
+        /// 1. Direct upload: Upload file directly to MinIO via GetObjectUploadURL,<br/>
+        ///    then provide the object resource name here.<br/>
+        ///    This avoids base64 encoding overhead and is preferred for large files.<br/>
+        /// 2. Inline content: Provide base64-encoded file content in the 'content'<br/>
+        ///    field. When object is provided, the 'content' field is ignored.<br/>
+        /// Follows AIP-122 for resource name references.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("object")]
+        public string? Object { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -190,148 +227,188 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="File" /> class.
         /// </summary>
-        /// <param name="fileUid">
+        /// <param name="name">
+        /// Field 1: Canonical resource name.<br/>
+        /// Format:<br/>
+        /// `namespaces/{namespace}/knowledge-bases/{knowledge_base}/files/{file}`.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="name"></param>
-        /// <param name="type"></param>
-        /// <param name="processStatus">
+        /// <param name="id">
         /// Included only in responses
         /// </param>
-        /// <param name="processOutcome">
+        /// <param name="displayName">
+        /// Field 3: Human-readable display name (filename) for UI.<br/>
+        /// This is typically the original filename of the uploaded file.
+        /// </param>
+        /// <param name="slug"></param>
+        /// <param name="aliases">
+        /// Field 5: Previous slugs for backward compatibility.<br/>
+        /// When display_name changes, a new slug is generated and old slugs are stored<br/>
+        /// here.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="retrievable">
-        /// Included only in responses
-        /// </param>
-        /// <param name="content"></param>
-        /// <param name="ownerUid">
-        /// Included only in responses
-        /// </param>
-        /// <param name="creatorUid">
-        /// Included only in responses
-        /// </param>
-        /// <param name="catalogUid">
-        /// Included only in responses
+        /// <param name="description">
+        /// Field 6: Optional description.
         /// </param>
         /// <param name="createTime">
+        /// Field 7: Creation time.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="updateTime">
+        /// Field 8: Last update time.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="deleteTime">
+        /// <param name="type">
+        /// File type.
+        /// </param>
+        /// <param name="processStatus">
+        /// File process status.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="processOutcome">
+        /// File process outcome message.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="size">
+        /// File size in bytes.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="totalChunks">
+        /// Total number of chunks created from this file.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="totalTokens">
+        /// Total number of tokens in this file.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="externalMetadata"></param>
-        /// <param name="objectUid">
-        /// objectUid in blob storage. user can upload to blob storage directly, then put objectUid here.<br/>
-        /// then no need the base64 encoding for the file content.
+        /// <param name="tags">
+        /// Array of tags associated with the file.
         /// </param>
-        /// <param name="summary">
-        /// Summary of the file.<br/>
-        /// Deprecated: Use the GetFileSummary API endpoint to retrieve file summaries.<br/>
-        /// This field now returns an empty string as summaries are stored separately in MinIO.<br/>
+        /// <param name="externalMetadata">
+        /// Custom metadata provided by the user during file upload.
+        /// </param>
+        /// <param name="knowledgeBases">
+        /// Knowledge base resource names that this file is associated with.<br/>
+        /// Format: `namespaces/{namespace}/knowledge-bases/{knowledge_base}`<br/>
+        /// A file can belong to multiple knowledge bases within the same namespace.<br/>
+        /// This field is populated from the file_knowledge_base junction table.<br/>
+        /// Follows AIP-122 for resource name references.<br/>
         /// Included only in responses
+        /// </param>
+        /// <param name="ownerName">
+        /// Included only in responses
+        /// </param>
+        /// <param name="owner">
+        /// File owner (User or Organization).<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="creatorName">
+        /// Included only in responses
+        /// </param>
+        /// <param name="creator">
+        /// The user who created this file.<br/>
+        /// Populated when creator_name is present.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="content">
+        /// Base64-encoded file content for inline upload.<br/>
+        /// Alternative to object field for smaller files.
         /// </param>
         /// <param name="downloadUrl">
+        /// Pre-signed download URL for the file.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="convertingPipeline">
         /// Pipeline used for converting the file to Markdown if the file is a<br/>
-        /// document (i.e., a file with pdf, doc[x] or ppt[x] extension). The value<br/>
-        /// identifies the pipeline release and and MUST have the format<br/>
-        /// `{namespaceID}/{pipelineID}@{version}`.<br/>
-        /// The pipeline recipe MUST have the following variable and output fields:<br/>
-        /// ```yaml variable<br/>
-        /// variable:<br/>
-        ///   document_input:<br/>
-        ///     title: document-input<br/>
-        ///     description: Upload a document (PDF/DOCX/DOC/PPTX/PPT)<br/>
-        ///     type: file<br/>
-        /// ```<br/>
-        /// The `convert_result` output should be a list of strings, one per page.<br/>
-        /// ```yaml output<br/>
-        /// output:<br/>
-        ///  convert_result:<br/>
-        ///    title: convert-result<br/>
-        ///    value: ${merge-markdown-refinement.output.results[0]}<br/>
-        /// ```<br/>
-        /// Other variable and output fields will be ignored.<br/>
-        /// The pipeline will be executed first, falling back to the catalog's<br/>
-        /// conversion pipelines if the conversion doesn't yield a non-empty result<br/>
-        /// (see the catalog creation endpoint documentation).<br/>
-        /// For non-document catalog files, the conversion pipeline is deterministic<br/>
-        /// (such files are typically trivial to convert and don't require a dedicated<br/>
-        /// pipeline to improve the conversion performance).
+        /// document (i.e., a file with pdf, doc[x] or ppt[x] extension).
         /// </param>
         /// <param name="length">
-        /// Length of the file in the specified unit type. It is defined as the number<br/>
-        /// of positions (the unit will depend on the file type) that can be accessed<br/>
-        /// in the file.<br/>
+        /// Length of the file in the specified unit type.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="tags"></param>
+        /// <param name="collections">
+        /// Collection resource names that this file belongs to.<br/>
+        /// Format: `namespaces/{namespace}/collections/{collection}`<br/>
+        /// This field is system-managed and populated from collection membership.<br/>
+        /// Follows AIP-122 for resource name references.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="deleteTime">
+        /// Soft delete timestamp.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="object">
+        /// Object resource name reference for blob storage upload.<br/>
+        /// Format: `namespaces/{namespace}/objects/{object}`<br/>
+        /// Two upload approaches are supported:<br/>
+        /// 1. Direct upload: Upload file directly to MinIO via GetObjectUploadURL,<br/>
+        ///    then provide the object resource name here.<br/>
+        ///    This avoids base64 encoding overhead and is preferred for large files.<br/>
+        /// 2. Inline content: Provide base64-encoded file content in the 'content'<br/>
+        ///    field. When object is provided, the 'content' field is ignored.<br/>
+        /// Follows AIP-122 for resource name references.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public File(
+            string displayName,
             string? name,
+            string? id,
+            string? slug,
+            global::System.Collections.Generic.IList<string>? aliases,
+            string? description,
+            global::System.DateTime? createTime,
+            global::System.DateTime? updateTime,
             global::Instill.FileType? type,
             global::Instill.FileProcessStatus? processStatus,
             string? processOutcome,
-            bool? retrievable,
-            string? content,
-            string? ownerUid,
-            string? creatorUid,
-            string? catalogUid,
-            global::System.DateTime? createTime,
-            global::System.DateTime? updateTime,
-            global::System.DateTime? deleteTime,
             string? size,
             int? totalChunks,
             int? totalTokens,
+            global::System.Collections.Generic.IList<string>? tags,
             object? externalMetadata,
-            string? objectUid,
-            string? summary,
+            global::System.Collections.Generic.IList<string>? knowledgeBases,
+            string? ownerName,
+            global::Instill.Owner? owner,
+            string? creatorName,
+            global::Instill.V1betaUser? creator,
+            string? content,
             string? downloadUrl,
             string? convertingPipeline,
             global::Instill.Position? length,
-            global::System.Collections.Generic.IList<string>? tags,
-            string fileUid = default!)
+            global::System.Collections.Generic.IList<string>? collections,
+            global::System.DateTime? deleteTime,
+            string? @object)
         {
-            this.FileUid = fileUid;
+            this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
             this.Name = name;
+            this.Id = id;
+            this.Slug = slug;
+            this.Aliases = aliases;
+            this.Description = description;
+            this.CreateTime = createTime;
+            this.UpdateTime = updateTime;
             this.Type = type;
             this.ProcessStatus = processStatus;
             this.ProcessOutcome = processOutcome;
-            this.Retrievable = retrievable;
-            this.Content = content;
-            this.OwnerUid = ownerUid;
-            this.CreatorUid = creatorUid;
-            this.CatalogUid = catalogUid;
-            this.CreateTime = createTime;
-            this.UpdateTime = updateTime;
-            this.DeleteTime = deleteTime;
             this.Size = size;
             this.TotalChunks = totalChunks;
             this.TotalTokens = totalTokens;
+            this.Tags = tags;
             this.ExternalMetadata = externalMetadata;
-            this.ObjectUid = objectUid;
-            this.Summary = summary;
+            this.KnowledgeBases = knowledgeBases;
+            this.OwnerName = ownerName;
+            this.Owner = owner;
+            this.CreatorName = creatorName;
+            this.Creator = creator;
+            this.Content = content;
             this.DownloadUrl = downloadUrl;
             this.ConvertingPipeline = convertingPipeline;
             this.Length = length;
-            this.Tags = tags;
+            this.Collections = collections;
+            this.DeleteTime = deleteTime;
+            this.Object = @object;
         }
 
         /// <summary>

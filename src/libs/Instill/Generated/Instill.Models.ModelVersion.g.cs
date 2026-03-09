@@ -9,13 +9,8 @@ namespace Instill
     public sealed partial class ModelVersion
     {
         /// <summary>
-        /// The parent resource, i.e., the user that created the models.<br/>
-        /// - Format: `users/{user.id}`.<br/>
-        /// The resource name of the model, which allows its access by parent user<br/>
-        /// and ID.<br/>
-        /// - Format: `users/{user.id}/models/{model.id}`.<br/>
-        /// The name of the Version.<br/>
-        /// - Format: `users/{user.id}/models/{model.id}/versions/{version.id}`.
+        /// The resource name of the model version.<br/>
+        /// Format: `namespaces/{namespace}/models/{model}/versions/{version}`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         public string? Name { get; set; }
@@ -37,8 +32,8 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("state")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.StateJsonConverter))]
-        public global::Instill.State? State { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.V1alphaStateJsonConverter))]
+        public global::Instill.V1alphaState? State { get; set; }
 
         /// <summary>
         /// Version update time, i.e. timestamp of the last push.<br/>
@@ -57,13 +52,8 @@ namespace Instill
         /// Initializes a new instance of the <see cref="ModelVersion" /> class.
         /// </summary>
         /// <param name="name">
-        /// The parent resource, i.e., the user that created the models.<br/>
-        /// - Format: `users/{user.id}`.<br/>
-        /// The resource name of the model, which allows its access by parent user<br/>
-        /// and ID.<br/>
-        /// - Format: `users/{user.id}/models/{model.id}`.<br/>
-        /// The name of the Version.<br/>
-        /// - Format: `users/{user.id}/models/{model.id}/versions/{version.id}`.
+        /// The resource name of the model version.<br/>
+        /// Format: `namespaces/{namespace}/models/{model}/versions/{version}`.
         /// </param>
         /// <param name="version">
         /// The model version identifier, which is equal to image tag.
@@ -86,7 +76,7 @@ namespace Instill
             string? name,
             string? version,
             string? digest,
-            global::Instill.State? state,
+            global::Instill.V1alphaState? state,
             global::System.DateTime? updateTime)
         {
             this.Name = name;

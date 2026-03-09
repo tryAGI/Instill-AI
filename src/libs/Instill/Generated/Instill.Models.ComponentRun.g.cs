@@ -4,23 +4,43 @@
 namespace Instill
 {
     /// <summary>
-    /// ComponentRun represents the execution details of a single component within a pipeline run.
+    /// ComponentRun represents the execution details of a single component within a<br/>
+    /// pipeline run.
     /// </summary>
     public sealed partial class ComponentRun
     {
         /// <summary>
-        /// Links to the parent PipelineRun.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("pipelineRunUid")]
-        public string? PipelineRunUid { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier for each pipeline component.<br/>
+        /// Unique identifier for the component within the pipeline.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("componentId")]
-        public string? ComponentId { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Time when the component run was created.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
+        public global::System.DateTime? CreateTime { get; set; }
+
+        /// <summary>
+        /// Time when the component run was last updated.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
+        public global::System.DateTime? UpdateTime { get; set; }
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("pipelineRun")]
+        public string? PipelineRun { get; set; }
 
         /// <summary>
         /// Completion status of the component.<br/>
@@ -94,10 +114,7 @@ namespace Instill
         public float? CreditAmount { get; set; }
 
         /// <summary>
-        /// Expiration time for the blob data associated with the component run (e.g.<br/>
-        /// input / output data). When the run is accessed after the expiration, that<br/>
-        /// information will be empty, but this field will allow the user identify<br/>
-        /// that the data isn't there because it has expired.<br/>
+        /// Expiration time for the blob data associated with the component run.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("blobDataExpirationTime")]
@@ -112,12 +129,22 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="ComponentRun" /> class.
         /// </summary>
-        /// <param name="pipelineRunUid">
-        /// Links to the parent PipelineRun.<br/>
+        /// <param name="name">
         /// Included only in responses
         /// </param>
-        /// <param name="componentId">
-        /// Unique identifier for each pipeline component.<br/>
+        /// <param name="id">
+        /// Unique identifier for the component within the pipeline.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="createTime">
+        /// Time when the component run was created.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="updateTime">
+        /// Time when the component run was last updated.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="pipelineRun">
         /// Included only in responses
         /// </param>
         /// <param name="status">
@@ -161,18 +188,18 @@ namespace Instill
         /// Included only in responses
         /// </param>
         /// <param name="blobDataExpirationTime">
-        /// Expiration time for the blob data associated with the component run (e.g.<br/>
-        /// input / output data). When the run is accessed after the expiration, that<br/>
-        /// information will be empty, but this field will allow the user identify<br/>
-        /// that the data isn't there because it has expired.<br/>
+        /// Expiration time for the blob data associated with the component run.<br/>
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ComponentRun(
-            string? pipelineRunUid,
-            string? componentId,
+            string? name,
+            string? id,
+            global::System.DateTime? createTime,
+            global::System.DateTime? updateTime,
+            string? pipelineRun,
             global::Instill.RunStatus? status,
             int? totalDuration,
             global::System.DateTime? startTime,
@@ -185,8 +212,11 @@ namespace Instill
             float? creditAmount,
             global::System.DateTime? blobDataExpirationTime)
         {
-            this.PipelineRunUid = pipelineRunUid;
-            this.ComponentId = componentId;
+            this.Name = name;
+            this.Id = id;
+            this.CreateTime = createTime;
+            this.UpdateTime = updateTime;
+            this.PipelineRun = pipelineRun;
             this.Status = status;
             this.TotalDuration = totalDuration;
             this.StartTime = startTime;

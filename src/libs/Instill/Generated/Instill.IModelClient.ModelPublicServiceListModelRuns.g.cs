@@ -12,8 +12,7 @@ namespace Instill
         /// sensitive data like e.g. the trigger input and output). Other requesters<br/>
         /// will only be able to see the runs requested by themselves.
         /// </summary>
-        /// <param name="namespaceId"></param>
-        /// <param name="modelId"></param>
+        /// <param name="parent"></param>
         /// <param name="pageSize"></param>
         /// <param name="page"></param>
         /// <param name="orderBy"></param>
@@ -22,8 +21,7 @@ namespace Instill
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Instill.ListModelRunsResponse> ModelPublicServiceListModelRunsAsync(
-            string namespaceId,
-            string modelId,
+            string parent,
             int? pageSize = default,
             int? page = default,
             string? orderBy = default,

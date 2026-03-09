@@ -9,27 +9,10 @@ namespace Instill
     public sealed partial class ApiToken
     {
         /// <summary>
-        /// When users trigger a pipeline which uses an API token, the token is<br/>
-        /// updated with the current time. This field is used to track the last time<br/>
-        /// the token was used.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("lastUseTime")]
-        public global::System.DateTime? LastUseTime { get; set; }
-
-        /// <summary>
-        /// The name of the token, define by its ID.<br/>
-        /// - Format: `tokens/{token.id}`.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         public string? Name { get; set; }
-
-        /// <summary>
-        /// API token UUID.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("uid")]
-        public string? Uid { get; set; }
 
         /// <summary>
         /// API token resource ID (used in `name` as the last segment). This conforms<br/>
@@ -80,6 +63,15 @@ namespace Instill
         public string? TokenType { get; set; }
 
         /// <summary>
+        /// When users trigger a pipeline which uses an API token, the token is<br/>
+        /// updated with the current time. This field is used to track the last time<br/>
+        /// the token was used.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("lastUseTime")]
+        public global::System.DateTime? LastUseTime { get; set; }
+
+        /// <summary>
         /// The time-to-live in seconds for this resource.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ttl")]
@@ -100,18 +92,7 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiToken" /> class.
         /// </summary>
-        /// <param name="lastUseTime">
-        /// When users trigger a pipeline which uses an API token, the token is<br/>
-        /// updated with the current time. This field is used to track the last time<br/>
-        /// the token was used.
-        /// </param>
         /// <param name="name">
-        /// The name of the token, define by its ID.<br/>
-        /// - Format: `tokens/{token.id}`.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="uid">
-        /// API token UUID.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="id">
@@ -143,6 +124,12 @@ namespace Instill
         /// Token type. Value is fixed to "Bearer".<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="lastUseTime">
+        /// When users trigger a pipeline which uses an API token, the token is<br/>
+        /// updated with the current time. This field is used to track the last time<br/>
+        /// the token was used.<br/>
+        /// Included only in responses
+        /// </param>
         /// <param name="ttl">
         /// The time-to-live in seconds for this resource.
         /// </param>
@@ -153,27 +140,25 @@ namespace Instill
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ApiToken(
-            global::System.DateTime? lastUseTime,
             string? name,
-            string? uid,
             string? id,
             global::System.DateTime? createTime,
             global::System.DateTime? updateTime,
             string? accessToken,
             global::Instill.ApiTokenState? state,
             string? tokenType,
+            global::System.DateTime? lastUseTime,
             int? ttl,
             global::System.DateTime? expireTime)
         {
-            this.LastUseTime = lastUseTime;
             this.Name = name;
-            this.Uid = uid;
             this.Id = id;
             this.CreateTime = createTime;
             this.UpdateTime = updateTime;
             this.AccessToken = accessToken;
             this.State = state;
             this.TokenType = tokenType;
+            this.LastUseTime = lastUseTime;
             this.Ttl = ttl;
             this.ExpireTime = expireTime;
         }

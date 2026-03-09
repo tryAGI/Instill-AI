@@ -7,13 +7,11 @@ namespace Instill
     {
         partial void PreparePipelinePublicServiceGetNamespaceSecretArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string namespaceId,
-            ref string secretId);
+            ref string name5);
         partial void PreparePipelinePublicServiceGetNamespaceSecretRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string namespaceId,
-            string secretId);
+            string name5);
         partial void ProcessPipelinePublicServiceGetNamespaceSecretResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -28,24 +26,21 @@ namespace Instill
         /// Returns the details of an namespace-owned secret by its resource name,<br/>
         /// which is defined by the parent namespace and the ID of the secret.
         /// </summary>
-        /// <param name="namespaceId"></param>
-        /// <param name="secretId"></param>
+        /// <param name="name5"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Instill.GetNamespaceSecretResponse> PipelinePublicServiceGetNamespaceSecretAsync(
-            string namespaceId,
-            string secretId,
+            string name5,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
             PreparePipelinePublicServiceGetNamespaceSecretArguments(
                 httpClient: HttpClient,
-                namespaceId: ref namespaceId,
-                secretId: ref secretId);
+                name5: ref name5);
 
             var __pathBuilder = new global::Instill.PathBuilder(
-                path: $"/v1beta/namespaces/{namespaceId}/secrets/{secretId}",
+                path: $"/v1beta/{name5}",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -78,8 +73,7 @@ namespace Instill
             PreparePipelinePublicServiceGetNamespaceSecretRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                namespaceId: namespaceId,
-                secretId: secretId);
+                name5: name5);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,

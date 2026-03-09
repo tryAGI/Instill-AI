@@ -1,0 +1,26 @@
+#nullable enable
+
+namespace Instill
+{
+    public partial interface IArtifactClient
+    {
+        /// <summary>
+        /// Get Object Upload URL<br/>
+        /// Returns the upload URL of an object.
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="displayName"></param>
+        /// <param name="urlExpireDays"></param>
+        /// <param name="lastModifiedTime"></param>
+        /// <param name="objectExpireDays"></param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Instill.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Instill.GetObjectUploadURLResponse> ArtifactPublicServiceGetObjectUploadURLAsync(
+            string parent,
+            string displayName,
+            int? urlExpireDays = default,
+            global::System.DateTime? lastModifiedTime = default,
+            int? objectExpireDays = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+    }
+}

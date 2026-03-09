@@ -6,68 +6,90 @@ namespace Instill
     /// <summary>
     /// A Pipeline is an end-to-end workflow that automates a sequence of components<br/>
     /// to process data.<br/>
-    /// For more information, see [Pipeline](https://instill-ai.dev/docs/pipeline/introduction) in<br/>
-    /// the official documentation.
+    /// For more information, see<br/>
+    /// [Pipeline](https://instill-ai.dev/docs/pipeline/introduction) in the official<br/>
+    /// documentation. Pipeline represents a data pipeline for AI/ML workflows. Field<br/>
+    /// ordering follows AIP standard: name(1), id(2), display_name(3), slug(4),<br/>
+    /// aliases(5), description(6)
     /// </summary>
     public sealed partial class Pipeline
     {
         /// <summary>
-        /// The name of the pipeline, defined by its parent and ID.<br/>
-        /// - Format: `{parent_type}/{parent.id}/pipelines/{pipeline.id}`.<br/>
+        /// Field 1: Canonical resource name.<br/>
+        /// Format: `namespaces/{namespace}/pipelines/{pipeline}`.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         public string? Name { get; set; }
 
         /// <summary>
-        /// Pipeline UUID.<br/>
         /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("uid")]
-        public string? Uid { get; set; }
-
-        /// <summary>
-        /// Pipeline resource ID (used in `name` as the last segment). This conforms<br/>
-        /// to RFC-1034, which restricts to letters, numbers, and hyphen, with the<br/>
-        /// first character a letter, the last a letter or a number, and a 63<br/>
-        /// character maximum.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// Pipeline description.
+        /// Field 3: Human-readable display name for UI.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string DisplayName { get; set; }
+
+        /// <summary>
+        /// Field 4: URL-friendly slug (NO prefix).<br/>
+        /// If omitted, server generates from display_name.<br/>
+        /// Slug is NOT part of resource identity.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("slug")]
+        public string? Slug { get; set; }
+
+        /// <summary>
+        /// Field 5: Previous slugs for backward compatibility.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("aliases")]
+        public global::System.Collections.Generic.IList<string>? Aliases { get; set; }
+
+        /// <summary>
+        /// Field 6: Optional description.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("description")]
         public string? Description { get; set; }
 
         /// <summary>
-        /// Recipe describes the components of a Pipeline and how they are connected.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("recipe")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public object Recipe { get; set; } = default!;
-
-        /// <summary>
-        /// Pipeline creation time.<br/>
+        /// Field 7: Creation time.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
         public global::System.DateTime? CreateTime { get; set; }
 
         /// <summary>
-        /// Pipeline update time.<br/>
+        /// Field 8: Last update time.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
         public global::System.DateTime? UpdateTime { get; set; }
 
         /// <summary>
-        /// Pipeline delete time.<br/>
-        /// Included only in responses
+        /// Recipe describes the components of a Pipeline and how they are connected.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("deleteTime")]
-        public global::System.DateTime? DeleteTime { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("recipe")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object Recipe { get; set; }
+
+        /// <summary>
+        /// Recipe in YAML format.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("rawRecipe")]
+        public string? RawRecipe { get; set; }
+
+        /// <summary>
+        /// Pipeline visibility.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("visibility")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.PipelineVisibilityJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Instill.PipelineVisibility Visibility { get; set; }
 
         /// <summary>
         /// Pipeline sharing information.
@@ -76,52 +98,11 @@ namespace Instill
         public global::Instill.Sharing? Sharing { get; set; }
 
         /// <summary>
-        /// Metadata holds console-related data such as the pipeline builder layout.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
-        public object? Metadata { get; set; }
-
-        /// <summary>
-        /// Owner Name.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("ownerName")]
-        public string? OwnerName { get; set; }
-
-        /// <summary>
-        /// Releases holds the history of pipeline versions.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("releases")]
-        public global::System.Collections.Generic.IList<global::Instill.PipelineRelease>? Releases { get; set; }
-
-        /// <summary>
-        /// README holds the pipeline documentation.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("readme")]
-        public string? Readme { get; set; }
-
-        /// <summary>
         /// Permission defines how a pipeline can be used.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("permission")]
         public global::Instill.PipelineV1betaPermission? Permission { get; set; }
-
-        /// <summary>
-        /// Pipeline visibility.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("visibility")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.PipelineVisibilityJsonConverter))]
-        public global::Instill.PipelineVisibility? Visibility { get; set; }
-
-        /// <summary>
-        /// Pipeline owner.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("owner")]
-        public global::Instill.Owner? Owner { get; set; }
 
         /// <summary>
         /// Data specifications.<br/>
@@ -144,11 +125,30 @@ namespace Instill
         public global::Instill.PipelineStats? Stats { get; set; }
 
         /// <summary>
-        /// Recipe in YAML format describes the components of a pipeline and how they<br/>
-        /// are connected.
+        /// Metadata holds console-related data such as the pipeline builder layout.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("rawRecipe")]
-        public string? RawRecipe { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
+        public object? Metadata { get; set; }
+
+        /// <summary>
+        /// README holds the pipeline documentation.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("readme")]
+        public string? Readme { get; set; }
+
+        /// <summary>
+        /// Releases holds the history of pipeline versions.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("releases")]
+        public global::System.Collections.Generic.IList<global::Instill.PipelineRelease>? Releases { get; set; }
+
+        /// <summary>
+        /// Pipeline endpoints.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("endpoints")]
+        public global::Instill.Endpoints? Endpoints { get; set; }
 
         /// <summary>
         /// A link to the source code of the pipeline (e.g. to a GitHub repository).
@@ -175,11 +175,38 @@ namespace Instill
         public string? ProfileImage { get; set; }
 
         /// <summary>
-        /// Pipeline endpoints.<br/>
+        /// Resource name of the owner namespace.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("endpoints")]
-        public global::Instill.Endpoints? Endpoints { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("ownerName")]
+        public string? OwnerName { get; set; }
+
+        /// <summary>
+        /// Pipeline owner (User or Organization).<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("owner")]
+        public global::Instill.Owner? Owner { get; set; }
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("creatorName")]
+        public string? CreatorName { get; set; }
+
+        /// <summary>
+        /// The user who created this pipeline.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("creator")]
+        public global::Instill.V1betaUser? Creator { get; set; }
+
+        /// <summary>
+        /// Soft delete timestamp.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("deleteTime")]
+        public global::System.DateTime? DeleteTime { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -191,65 +218,50 @@ namespace Instill
         /// Initializes a new instance of the <see cref="Pipeline" /> class.
         /// </summary>
         /// <param name="name">
-        /// The name of the pipeline, defined by its parent and ID.<br/>
-        /// - Format: `{parent_type}/{parent.id}/pipelines/{pipeline.id}`.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="uid">
-        /// Pipeline UUID.<br/>
+        /// Field 1: Canonical resource name.<br/>
+        /// Format: `namespaces/{namespace}/pipelines/{pipeline}`.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="id">
-        /// Pipeline resource ID (used in `name` as the last segment). This conforms<br/>
-        /// to RFC-1034, which restricts to letters, numbers, and hyphen, with the<br/>
-        /// first character a letter, the last a letter or a number, and a 63<br/>
-        /// character maximum.
+        /// Included only in responses
+        /// </param>
+        /// <param name="displayName">
+        /// Field 3: Human-readable display name for UI.
+        /// </param>
+        /// <param name="slug">
+        /// Field 4: URL-friendly slug (NO prefix).<br/>
+        /// If omitted, server generates from display_name.<br/>
+        /// Slug is NOT part of resource identity.
+        /// </param>
+        /// <param name="aliases">
+        /// Field 5: Previous slugs for backward compatibility.<br/>
+        /// Included only in responses
         /// </param>
         /// <param name="description">
-        /// Pipeline description.
+        /// Field 6: Optional description.
+        /// </param>
+        /// <param name="createTime">
+        /// Field 7: Creation time.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="updateTime">
+        /// Field 8: Last update time.<br/>
+        /// Included only in responses
         /// </param>
         /// <param name="recipe">
         /// Recipe describes the components of a Pipeline and how they are connected.
         /// </param>
-        /// <param name="createTime">
-        /// Pipeline creation time.<br/>
-        /// Included only in responses
+        /// <param name="rawRecipe">
+        /// Recipe in YAML format.
         /// </param>
-        /// <param name="updateTime">
-        /// Pipeline update time.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="deleteTime">
-        /// Pipeline delete time.<br/>
-        /// Included only in responses
+        /// <param name="visibility">
+        /// Pipeline visibility.
         /// </param>
         /// <param name="sharing">
         /// Pipeline sharing information.
         /// </param>
-        /// <param name="metadata">
-        /// Metadata holds console-related data such as the pipeline builder layout.
-        /// </param>
-        /// <param name="ownerName">
-        /// Owner Name.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="releases">
-        /// Releases holds the history of pipeline versions.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="readme">
-        /// README holds the pipeline documentation.
-        /// </param>
         /// <param name="permission">
         /// Permission defines how a pipeline can be used.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="visibility">
-        /// Pipeline visibility.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="owner">
-        /// Pipeline owner.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="dataSpecification">
@@ -263,9 +275,19 @@ namespace Instill
         /// Statistic data.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="rawRecipe">
-        /// Recipe in YAML format describes the components of a pipeline and how they<br/>
-        /// are connected.
+        /// <param name="metadata">
+        /// Metadata holds console-related data such as the pipeline builder layout.
+        /// </param>
+        /// <param name="readme">
+        /// README holds the pipeline documentation.
+        /// </param>
+        /// <param name="releases">
+        /// Releases holds the history of pipeline versions.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="endpoints">
+        /// Pipeline endpoints.<br/>
+        /// Included only in responses
         /// </param>
         /// <param name="sourceUrl">
         /// A link to the source code of the pipeline (e.g. to a GitHub repository).
@@ -279,65 +301,88 @@ namespace Instill
         /// <param name="profileImage">
         /// Pipeline profile image in base64 format.
         /// </param>
-        /// <param name="endpoints">
-        /// Pipeline endpoints.<br/>
+        /// <param name="ownerName">
+        /// Resource name of the owner namespace.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="owner">
+        /// Pipeline owner (User or Organization).<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="creatorName">
+        /// Included only in responses
+        /// </param>
+        /// <param name="creator">
+        /// The user who created this pipeline.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="deleteTime">
+        /// Soft delete timestamp.<br/>
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Pipeline(
+            string displayName,
             object recipe,
+            global::Instill.PipelineVisibility visibility,
             string? name,
-            string? uid,
             string? id,
+            string? slug,
+            global::System.Collections.Generic.IList<string>? aliases,
             string? description,
             global::System.DateTime? createTime,
             global::System.DateTime? updateTime,
-            global::System.DateTime? deleteTime,
+            string? rawRecipe,
             global::Instill.Sharing? sharing,
-            object? metadata,
-            string? ownerName,
-            global::System.Collections.Generic.IList<global::Instill.PipelineRelease>? releases,
-            string? readme,
             global::Instill.PipelineV1betaPermission? permission,
-            global::Instill.PipelineVisibility? visibility,
-            global::Instill.Owner? owner,
             global::Instill.DataSpecification? dataSpecification,
             global::System.Collections.Generic.IList<string>? tags,
             global::Instill.PipelineStats? stats,
-            string? rawRecipe,
+            object? metadata,
+            string? readme,
+            global::System.Collections.Generic.IList<global::Instill.PipelineRelease>? releases,
+            global::Instill.Endpoints? endpoints,
             string? sourceUrl,
             string? documentationUrl,
             string? license,
             string? profileImage,
-            global::Instill.Endpoints? endpoints)
+            string? ownerName,
+            global::Instill.Owner? owner,
+            string? creatorName,
+            global::Instill.V1betaUser? creator,
+            global::System.DateTime? deleteTime)
         {
+            this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
             this.Recipe = recipe ?? throw new global::System.ArgumentNullException(nameof(recipe));
+            this.Visibility = visibility;
             this.Name = name;
-            this.Uid = uid;
             this.Id = id;
+            this.Slug = slug;
+            this.Aliases = aliases;
             this.Description = description;
             this.CreateTime = createTime;
             this.UpdateTime = updateTime;
-            this.DeleteTime = deleteTime;
+            this.RawRecipe = rawRecipe;
             this.Sharing = sharing;
-            this.Metadata = metadata;
-            this.OwnerName = ownerName;
-            this.Releases = releases;
-            this.Readme = readme;
             this.Permission = permission;
-            this.Visibility = visibility;
-            this.Owner = owner;
             this.DataSpecification = dataSpecification;
             this.Tags = tags;
             this.Stats = stats;
-            this.RawRecipe = rawRecipe;
+            this.Metadata = metadata;
+            this.Readme = readme;
+            this.Releases = releases;
+            this.Endpoints = endpoints;
             this.SourceUrl = sourceUrl;
             this.DocumentationUrl = documentationUrl;
             this.License = license;
             this.ProfileImage = profileImage;
-            this.Endpoints = endpoints;
+            this.OwnerName = ownerName;
+            this.Owner = owner;
+            this.CreatorName = creatorName;
+            this.Creator = creator;
+            this.DeleteTime = deleteTime;
         }
 
         /// <summary>

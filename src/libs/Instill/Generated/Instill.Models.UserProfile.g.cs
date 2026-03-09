@@ -9,10 +9,11 @@ namespace Instill
     public sealed partial class UserProfile
     {
         /// <summary>
-        /// Display name.
+        /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
-        public string? DisplayName { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string DisplayName { get; set; }
 
         /// <summary>
         /// Biography.
@@ -46,6 +47,19 @@ namespace Instill
         public global::System.Collections.Generic.Dictionary<string, string>? SocialProfileLinks { get; set; }
 
         /// <summary>
+        /// Full legal name. Used for formal communications.<br/>
+        /// Example: "John Doe" - this is also used to auto-generate the user ID.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("fullName")]
+        public string? FullName { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
+        public object? Metadata { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -54,9 +68,7 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="UserProfile" /> class.
         /// </summary>
-        /// <param name="displayName">
-        /// Display name.
-        /// </param>
+        /// <param name="displayName"></param>
         /// <param name="bio">
         /// Biography.
         /// </param>
@@ -73,23 +85,32 @@ namespace Instill
         /// Social profile links list the links to the user's social profiles.<br/>
         /// The key represents the provider, and the value is the corresponding URL.
         /// </param>
+        /// <param name="fullName">
+        /// Full legal name. Used for formal communications.<br/>
+        /// Example: "John Doe" - this is also used to auto-generate the user ID.
+        /// </param>
+        /// <param name="metadata"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UserProfile(
-            string? displayName,
+            string displayName,
             string? bio,
             string? avatar,
             string? publicEmail,
             string? companyName,
-            global::System.Collections.Generic.Dictionary<string, string>? socialProfileLinks)
+            global::System.Collections.Generic.Dictionary<string, string>? socialProfileLinks,
+            string? fullName,
+            object? metadata)
         {
-            this.DisplayName = displayName;
+            this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
             this.Bio = bio;
             this.Avatar = avatar;
             this.PublicEmail = publicEmail;
             this.CompanyName = companyName;
             this.SocialProfileLinks = socialProfileLinks;
+            this.FullName = fullName;
+            this.Metadata = metadata;
         }
 
         /// <summary>

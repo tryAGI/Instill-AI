@@ -4,24 +4,23 @@
 namespace Instill
 {
     /// <summary>
-    /// Supported file types by the pipeline-backend.<br/>
-    ///  - TYPE_TEXT: Text-based document types<br/>
+    /// - TYPE_TEXT: Text-based document types<br/>
     /// text<br/>
-    ///  - TYPE_PDF: PDF<br/>
     ///  - TYPE_MARKDOWN: MARKDOWN<br/>
     ///  - TYPE_HTML: HTML<br/>
     ///  - TYPE_CSV: CSV<br/>
-    ///  - TYPE_DOCX: Microsoft Office document types<br/>
-    /// DOCX<br/>
+    ///  - TYPE_JSON: JSON<br/>
+    ///  - TYPE_PDF: Container-based document types<br/>
+    /// PDF<br/>
     ///  - TYPE_DOC: DOC<br/>
+    ///  - TYPE_DOCX: DOCX<br/>
     ///  - TYPE_PPT: PPT<br/>
     ///  - TYPE_PPTX: PPTX<br/>
     ///  - TYPE_XLS: XLS<br/>
     ///  - TYPE_XLSX: XLSX<br/>
-    ///  - TYPE_PNG: Image types (supported by pipeline-backend/pkg/data/image.go)<br/>
+    ///  - TYPE_PNG: Image types<br/>
     /// PNG<br/>
     ///  - TYPE_JPEG: JPEG<br/>
-    ///  - TYPE_JPG: JPG<br/>
     ///  - TYPE_GIF: GIF<br/>
     ///  - TYPE_WEBP: WEBP<br/>
     ///  - TYPE_TIFF: TIFF<br/>
@@ -29,7 +28,8 @@ namespace Instill
     ///  - TYPE_HEIC: HEIC<br/>
     ///  - TYPE_HEIF: HEIF<br/>
     ///  - TYPE_AVIF: AVIF<br/>
-    ///  - TYPE_MP3: Audio types (supported by pipeline-backend/pkg/data/audio.go)<br/>
+    ///  - TYPE_SVG: SVG<br/>
+    ///  - TYPE_MP3: Audio types<br/>
     /// MP3<br/>
     ///  - TYPE_WAV: WAV<br/>
     ///  - TYPE_AAC: AAC<br/>
@@ -38,15 +38,16 @@ namespace Instill
     ///  - TYPE_M4A: M4A<br/>
     ///  - TYPE_WMA: WMA<br/>
     ///  - TYPE_AIFF: AIFF<br/>
-    ///  - TYPE_MP4: Video types (supported by pipeline-backend/pkg/data/video.go)<br/>
+    ///  - TYPE_WEBM_AUDIO: WEBM (audio)<br/>
+    ///  - TYPE_MP4: Video types<br/>
     /// MP4<br/>
     ///  - TYPE_AVI: AVI<br/>
     ///  - TYPE_MOV: MOV<br/>
-    ///  - TYPE_WEBM_VIDEO: WEBM (video)<br/>
     ///  - TYPE_MKV: MKV<br/>
     ///  - TYPE_FLV: FLV<br/>
     ///  - TYPE_WMV: WMV<br/>
-    ///  - TYPE_MPEG: MPEG
+    ///  - TYPE_MPEG: MPEG<br/>
+    ///  - TYPE_WEBM_VIDEO: WEBM (video)
     /// </summary>
     public enum FileType
     {
@@ -54,10 +55,6 @@ namespace Instill
         /// Text-based document types
         /// </summary>
         TypeText,
-        /// <summary>
-        /// PDF
-        /// </summary>
-        TypePdf,
         /// <summary>
         /// MARKDOWN
         /// </summary>
@@ -71,13 +68,21 @@ namespace Instill
         /// </summary>
         TypeCsv,
         /// <summary>
-        /// Microsoft Office document types
+        /// JSON
         /// </summary>
-        TypeDocx,
+        TypeJson,
         /// <summary>
-        /// Microsoft Office document types
+        /// Container-based document types
+        /// </summary>
+        TypePdf,
+        /// <summary>
+        /// DOC
         /// </summary>
         TypeDoc,
+        /// <summary>
+        /// DOCX
+        /// </summary>
+        TypeDocx,
         /// <summary>
         /// PPT
         /// </summary>
@@ -95,17 +100,13 @@ namespace Instill
         /// </summary>
         TypeXlsx,
         /// <summary>
-        /// Image types (supported by pipeline-backend/pkg/data/image.go)
+        /// Image types
         /// </summary>
         TypePng,
         /// <summary>
         /// JPEG
         /// </summary>
         TypeJpeg,
-        /// <summary>
-        /// JPG
-        /// </summary>
-        TypeJpg,
         /// <summary>
         /// GIF
         /// </summary>
@@ -135,7 +136,11 @@ namespace Instill
         /// </summary>
         TypeAvif,
         /// <summary>
-        /// Audio types (supported by pipeline-backend/pkg/data/audio.go)
+        /// SVG
+        /// </summary>
+        TypeSvg,
+        /// <summary>
+        /// Audio types
         /// </summary>
         TypeMp3,
         /// <summary>
@@ -167,7 +172,11 @@ namespace Instill
         /// </summary>
         TypeAiff,
         /// <summary>
-        /// Video types (supported by pipeline-backend/pkg/data/video.go)
+        /// WEBM (audio)
+        /// </summary>
+        TypeWebmAudio,
+        /// <summary>
+        /// Video types
         /// </summary>
         TypeMp4,
         /// <summary>
@@ -178,10 +187,6 @@ namespace Instill
         /// MOV
         /// </summary>
         TypeMov,
-        /// <summary>
-        /// WEBM (video)
-        /// </summary>
-        TypeWebmVideo,
         /// <summary>
         /// MKV
         /// </summary>
@@ -198,6 +203,10 @@ namespace Instill
         /// MPEG
         /// </summary>
         TypeMpeg,
+        /// <summary>
+        /// WEBM (video)
+        /// </summary>
+        TypeWebmVideo,
     }
 
     /// <summary>
@@ -213,19 +222,19 @@ namespace Instill
             return value switch
             {
                 FileType.TypeText => "TYPE_TEXT",
-                FileType.TypePdf => "TYPE_PDF",
                 FileType.TypeMarkdown => "TYPE_MARKDOWN",
                 FileType.TypeHtml => "TYPE_HTML",
                 FileType.TypeCsv => "TYPE_CSV",
-                FileType.TypeDocx => "TYPE_DOCX",
+                FileType.TypeJson => "TYPE_JSON",
+                FileType.TypePdf => "TYPE_PDF",
                 FileType.TypeDoc => "TYPE_DOC",
+                FileType.TypeDocx => "TYPE_DOCX",
                 FileType.TypePpt => "TYPE_PPT",
                 FileType.TypePptx => "TYPE_PPTX",
                 FileType.TypeXls => "TYPE_XLS",
                 FileType.TypeXlsx => "TYPE_XLSX",
                 FileType.TypePng => "TYPE_PNG",
                 FileType.TypeJpeg => "TYPE_JPEG",
-                FileType.TypeJpg => "TYPE_JPG",
                 FileType.TypeGif => "TYPE_GIF",
                 FileType.TypeWebp => "TYPE_WEBP",
                 FileType.TypeTiff => "TYPE_TIFF",
@@ -233,6 +242,7 @@ namespace Instill
                 FileType.TypeHeic => "TYPE_HEIC",
                 FileType.TypeHeif => "TYPE_HEIF",
                 FileType.TypeAvif => "TYPE_AVIF",
+                FileType.TypeSvg => "TYPE_SVG",
                 FileType.TypeMp3 => "TYPE_MP3",
                 FileType.TypeWav => "TYPE_WAV",
                 FileType.TypeAac => "TYPE_AAC",
@@ -241,14 +251,15 @@ namespace Instill
                 FileType.TypeM4a => "TYPE_M4A",
                 FileType.TypeWma => "TYPE_WMA",
                 FileType.TypeAiff => "TYPE_AIFF",
+                FileType.TypeWebmAudio => "TYPE_WEBM_AUDIO",
                 FileType.TypeMp4 => "TYPE_MP4",
                 FileType.TypeAvi => "TYPE_AVI",
                 FileType.TypeMov => "TYPE_MOV",
-                FileType.TypeWebmVideo => "TYPE_WEBM_VIDEO",
                 FileType.TypeMkv => "TYPE_MKV",
                 FileType.TypeFlv => "TYPE_FLV",
                 FileType.TypeWmv => "TYPE_WMV",
                 FileType.TypeMpeg => "TYPE_MPEG",
+                FileType.TypeWebmVideo => "TYPE_WEBM_VIDEO",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -260,19 +271,19 @@ namespace Instill
             return value switch
             {
                 "TYPE_TEXT" => FileType.TypeText,
-                "TYPE_PDF" => FileType.TypePdf,
                 "TYPE_MARKDOWN" => FileType.TypeMarkdown,
                 "TYPE_HTML" => FileType.TypeHtml,
                 "TYPE_CSV" => FileType.TypeCsv,
-                "TYPE_DOCX" => FileType.TypeDocx,
+                "TYPE_JSON" => FileType.TypeJson,
+                "TYPE_PDF" => FileType.TypePdf,
                 "TYPE_DOC" => FileType.TypeDoc,
+                "TYPE_DOCX" => FileType.TypeDocx,
                 "TYPE_PPT" => FileType.TypePpt,
                 "TYPE_PPTX" => FileType.TypePptx,
                 "TYPE_XLS" => FileType.TypeXls,
                 "TYPE_XLSX" => FileType.TypeXlsx,
                 "TYPE_PNG" => FileType.TypePng,
                 "TYPE_JPEG" => FileType.TypeJpeg,
-                "TYPE_JPG" => FileType.TypeJpg,
                 "TYPE_GIF" => FileType.TypeGif,
                 "TYPE_WEBP" => FileType.TypeWebp,
                 "TYPE_TIFF" => FileType.TypeTiff,
@@ -280,6 +291,7 @@ namespace Instill
                 "TYPE_HEIC" => FileType.TypeHeic,
                 "TYPE_HEIF" => FileType.TypeHeif,
                 "TYPE_AVIF" => FileType.TypeAvif,
+                "TYPE_SVG" => FileType.TypeSvg,
                 "TYPE_MP3" => FileType.TypeMp3,
                 "TYPE_WAV" => FileType.TypeWav,
                 "TYPE_AAC" => FileType.TypeAac,
@@ -288,14 +300,15 @@ namespace Instill
                 "TYPE_M4A" => FileType.TypeM4a,
                 "TYPE_WMA" => FileType.TypeWma,
                 "TYPE_AIFF" => FileType.TypeAiff,
+                "TYPE_WEBM_AUDIO" => FileType.TypeWebmAudio,
                 "TYPE_MP4" => FileType.TypeMp4,
                 "TYPE_AVI" => FileType.TypeAvi,
                 "TYPE_MOV" => FileType.TypeMov,
-                "TYPE_WEBM_VIDEO" => FileType.TypeWebmVideo,
                 "TYPE_MKV" => FileType.TypeMkv,
                 "TYPE_FLV" => FileType.TypeFlv,
                 "TYPE_WMV" => FileType.TypeWmv,
                 "TYPE_MPEG" => FileType.TypeMpeg,
+                "TYPE_WEBM_VIDEO" => FileType.TypeWebmVideo,
                 _ => null,
             };
         }

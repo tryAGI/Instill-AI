@@ -4,59 +4,70 @@
 namespace Instill
 {
     /// <summary>
-    /// API secrets allow users to make requests to the Instill AI API.
+    /// 
     /// </summary>
     public sealed partial class Secret
     {
         /// <summary>
-        /// The name of the secret, define by its ID.<br/>
-        /// - Format: `secrets/{secret.id}`.<br/>
+        /// Field 1: Canonical resource name.<br/>
+        /// Format: `namespaces/{namespace}/secrets/{secret}`.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         public string? Name { get; set; }
 
         /// <summary>
-        /// Secret UUID.<br/>
         /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("uid")]
-        public string? Uid { get; set; }
-
-        /// <summary>
-        /// Secret resource ID (used in `name` as the last segment). This conforms<br/>
-        /// to RFC-1034, which restricts to letters, numbers, and hyphen, with the<br/>
-        /// first character a letter, the last a letter or a number, and a 63<br/>
-        /// character maximum.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// Creation time.<br/>
+        /// Field 3: Human-readable display name for UI.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string DisplayName { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("slug")]
+        public string? Slug { get; set; }
+
+        /// <summary>
+        /// Field 5: Previous slugs for backward compatibility.<br/>
+        /// When display_name changes, a new slug is generated and old slugs are stored here.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("aliases")]
+        public global::System.Collections.Generic.IList<string>? Aliases { get; set; }
+
+        /// <summary>
+        /// Field 6: Optional description.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Field 7: Creation time.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
         public global::System.DateTime? CreateTime { get; set; }
 
         /// <summary>
-        /// Update time.<br/>
+        /// Field 8: Last update time.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
         public global::System.DateTime? UpdateTime { get; set; }
 
         /// <summary>
-        /// The value of the secret, which is input-only and will never be returned in API responses.
+        /// Field 9: The value of the secret, which is input-only and will never be returned in API responses.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("value")]
         public string? Value { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
-        public string? Description { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -68,51 +79,59 @@ namespace Instill
         /// Initializes a new instance of the <see cref="Secret" /> class.
         /// </summary>
         /// <param name="name">
-        /// The name of the secret, define by its ID.<br/>
-        /// - Format: `secrets/{secret.id}`.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="uid">
-        /// Secret UUID.<br/>
+        /// Field 1: Canonical resource name.<br/>
+        /// Format: `namespaces/{namespace}/secrets/{secret}`.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="id">
-        /// Secret resource ID (used in `name` as the last segment). This conforms<br/>
-        /// to RFC-1034, which restricts to letters, numbers, and hyphen, with the<br/>
-        /// first character a letter, the last a letter or a number, and a 63<br/>
-        /// character maximum.
+        /// Included only in responses
+        /// </param>
+        /// <param name="displayName">
+        /// Field 3: Human-readable display name for UI.
+        /// </param>
+        /// <param name="slug"></param>
+        /// <param name="aliases">
+        /// Field 5: Previous slugs for backward compatibility.<br/>
+        /// When display_name changes, a new slug is generated and old slugs are stored here.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="description">
+        /// Field 6: Optional description.
         /// </param>
         /// <param name="createTime">
-        /// Creation time.<br/>
+        /// Field 7: Creation time.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="updateTime">
-        /// Update time.<br/>
+        /// Field 8: Last update time.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="value">
-        /// The value of the secret, which is input-only and will never be returned in API responses.
+        /// Field 9: The value of the secret, which is input-only and will never be returned in API responses.
         /// </param>
-        /// <param name="description"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Secret(
+            string displayName,
             string? name,
-            string? uid,
             string? id,
+            string? slug,
+            global::System.Collections.Generic.IList<string>? aliases,
+            string? description,
             global::System.DateTime? createTime,
             global::System.DateTime? updateTime,
-            string? value,
-            string? description)
+            string? value)
         {
+            this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
             this.Name = name;
-            this.Uid = uid;
             this.Id = id;
+            this.Slug = slug;
+            this.Aliases = aliases;
+            this.Description = description;
             this.CreateTime = createTime;
             this.UpdateTime = updateTime;
             this.Value = value;
-            this.Description = description;
         }
 
         /// <summary>

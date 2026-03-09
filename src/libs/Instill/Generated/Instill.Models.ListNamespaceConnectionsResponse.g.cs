@@ -13,7 +13,7 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("connections")]
-        public global::System.Collections.Generic.IList<global::Instill.Connection>? Connections { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.MgmtV1betaConnection>? Connections { get; set; }
 
         /// <summary>
         /// Next page token.<br/>
@@ -54,7 +54,7 @@ namespace Instill
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ListNamespaceConnectionsResponse(
-            global::System.Collections.Generic.IList<global::Instill.Connection>? connections,
+            global::System.Collections.Generic.IList<global::Instill.MgmtV1betaConnection>? connections,
             string? nextPageToken,
             int? totalSize)
         {

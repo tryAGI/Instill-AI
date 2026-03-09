@@ -9,11 +9,53 @@ namespace Instill
     public sealed partial class PipelineRun
     {
         /// <summary>
-        /// Unique identifier for each run.<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("pipelineRunUid")]
-        public string? PipelineRunUid { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Unique identifier for each run (immutable).<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Time when the run was created.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("createTime")]
+        public global::System.DateTime? CreateTime { get; set; }
+
+        /// <summary>
+        /// Time when the run was last updated.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("updateTime")]
+        public global::System.DateTime? UpdateTime { get; set; }
+
+        /// <summary>
+        /// Runner who triggered the run.<br/>
+        /// Full resource name: users/{user}.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("runner")]
+        public string? Runner { get; set; }
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("pipeline")]
+        public string? Pipeline { get; set; }
+
+        /// <summary>
+        /// Requester namespace.<br/>
+        /// Full resource name: namespaces/{namespace}.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("requester")]
+        public string? Requester { get; set; }
 
         /// <summary>
         /// Pipeline version used in the run.<br/>
@@ -44,14 +86,6 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("totalDuration")]
         public int? TotalDuration { get; set; }
-
-        /// <summary>
-        /// Runner ID. The authenticated user that triggered the run. If current<br/>
-        /// viewing requester does not have enough permission, it will return null.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("runnerId")]
-        public string? RunnerId { get; set; }
 
         /// <summary>
         /// Pipeline input parameters.<br/>
@@ -110,31 +144,7 @@ namespace Instill
         public global::Instill.DataSpecification? DataSpecification { get; set; }
 
         /// <summary>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("pipelineId")]
-        public string? PipelineId { get; set; }
-
-        /// <summary>
-        /// Requester ID. The namespace used to trigger the run. This field might be<br/>
-        /// empty if the pipeline run belongs to a deleted namespace.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("requesterId")]
-        public string? RequesterId { get; set; }
-
-        /// <summary>
-        /// ID of the namespace that owns the pipeline.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("pipelineNamespaceId")]
-        public string? PipelineNamespaceId { get; set; }
-
-        /// <summary>
-        /// Expiration time for the blob data associated with the pipeline run (e.g.<br/>
-        /// input data, recipe). When the run is accessed after the expiration, that<br/>
-        /// information will be empty, but this field will allow the user identify<br/>
-        /// that the data isn't there because it has expired.<br/>
+        /// Expiration time for the blob data associated with the pipeline run.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("blobDataExpirationTime")]
@@ -149,8 +159,32 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="PipelineRun" /> class.
         /// </summary>
-        /// <param name="pipelineRunUid">
-        /// Unique identifier for each run.<br/>
+        /// <param name="name">
+        /// Included only in responses
+        /// </param>
+        /// <param name="id">
+        /// Unique identifier for each run (immutable).<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="createTime">
+        /// Time when the run was created.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="updateTime">
+        /// Time when the run was last updated.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="runner">
+        /// Runner who triggered the run.<br/>
+        /// Full resource name: users/{user}.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="pipeline">
+        /// Included only in responses
+        /// </param>
+        /// <param name="requester">
+        /// Requester namespace.<br/>
+        /// Full resource name: namespaces/{namespace}.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="pipelineVersion">
@@ -167,11 +201,6 @@ namespace Instill
         /// </param>
         /// <param name="totalDuration">
         /// Time taken to complete the run in milliseconds.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="runnerId">
-        /// Runner ID. The authenticated user that triggered the run. If current<br/>
-        /// viewing requester does not have enough permission, it will return null.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="inputs">
@@ -206,35 +235,25 @@ namespace Instill
         /// Data specifications.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="pipelineId">
-        /// Included only in responses
-        /// </param>
-        /// <param name="requesterId">
-        /// Requester ID. The namespace used to trigger the run. This field might be<br/>
-        /// empty if the pipeline run belongs to a deleted namespace.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="pipelineNamespaceId">
-        /// ID of the namespace that owns the pipeline.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="blobDataExpirationTime">
-        /// Expiration time for the blob data associated with the pipeline run (e.g.<br/>
-        /// input data, recipe). When the run is accessed after the expiration, that<br/>
-        /// information will be empty, but this field will allow the user identify<br/>
-        /// that the data isn't there because it has expired.<br/>
+        /// Expiration time for the blob data associated with the pipeline run.<br/>
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public PipelineRun(
-            string? pipelineRunUid,
+            string? name,
+            string? id,
+            global::System.DateTime? createTime,
+            global::System.DateTime? updateTime,
+            string? runner,
+            string? pipeline,
+            string? requester,
             string? pipelineVersion,
             global::Instill.RunStatus? status,
             global::Instill.RunSource? source,
             int? totalDuration,
-            string? runnerId,
             global::System.Collections.Generic.IList<object>? inputs,
             global::System.Collections.Generic.IList<object>? outputs,
             object? recipeSnapshot,
@@ -243,17 +262,19 @@ namespace Instill
             string? error,
             float? creditAmount,
             global::Instill.DataSpecification? dataSpecification,
-            string? pipelineId,
-            string? requesterId,
-            string? pipelineNamespaceId,
             global::System.DateTime? blobDataExpirationTime)
         {
-            this.PipelineRunUid = pipelineRunUid;
+            this.Name = name;
+            this.Id = id;
+            this.CreateTime = createTime;
+            this.UpdateTime = updateTime;
+            this.Runner = runner;
+            this.Pipeline = pipeline;
+            this.Requester = requester;
             this.PipelineVersion = pipelineVersion;
             this.Status = status;
             this.Source = source;
             this.TotalDuration = totalDuration;
-            this.RunnerId = runnerId;
             this.Inputs = inputs;
             this.Outputs = outputs;
             this.RecipeSnapshot = recipeSnapshot;
@@ -262,9 +283,6 @@ namespace Instill
             this.Error = error;
             this.CreditAmount = creditAmount;
             this.DataSpecification = dataSpecification;
-            this.PipelineId = pipelineId;
-            this.RequesterId = requesterId;
-            this.PipelineNamespaceId = pipelineNamespaceId;
             this.BlobDataExpirationTime = blobDataExpirationTime;
         }
 

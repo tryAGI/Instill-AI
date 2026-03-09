@@ -13,7 +13,7 @@ namespace Instill
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("user")]
-        public global::Instill.User? User { get; set; }
+        public global::Instill.V1betaUser? User { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -32,7 +32,7 @@ namespace Instill
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GetUserResponse(
-            global::Instill.User? user)
+            global::Instill.V1betaUser? user)
         {
             this.User = user;
         }

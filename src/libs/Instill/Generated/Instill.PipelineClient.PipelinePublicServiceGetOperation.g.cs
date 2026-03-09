@@ -32,7 +32,7 @@ namespace Instill
         /// <param name="instillRequesterUid"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Instill.GetOperationResponse> PipelinePublicServiceGetOperationAsync(
+        public async global::System.Threading.Tasks.Task<global::Instill.V1betaGetOperationResponse> PipelinePublicServiceGetOperationAsync(
             string operationId,
             string? instillRequesterUid = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -195,7 +195,7 @@ namespace Instill
                     __response.EnsureSuccessStatusCode();
 
                     return
-                        global::Instill.GetOperationResponse.FromJson(__content, JsonSerializerContext) ??
+                        global::Instill.V1betaGetOperationResponse.FromJson(__content, JsonSerializerContext) ??
                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
                 catch (global::System.Exception __ex)
@@ -226,7 +226,7 @@ namespace Instill
                     ).ConfigureAwait(false);
 
                     return
-                        await global::Instill.GetOperationResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        await global::Instill.V1betaGetOperationResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
                 catch (global::System.Exception __ex)

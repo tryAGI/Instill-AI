@@ -8,6 +8,7 @@ namespace Instill
         /// List models<br/>
         /// Returns a paginated list of models.
         /// </summary>
+        /// <param name="parent"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
         /// <param name="view"></param>
@@ -18,6 +19,7 @@ namespace Instill
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Instill.ListModelsResponse> ModelPublicServiceListModelsAsync(
+            string parent,
             int? pageSize = default,
             string? pageToken = default,
             global::Instill.ModelPublicServiceListModelsView? view = default,

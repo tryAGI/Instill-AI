@@ -24,7 +24,7 @@ namespace Instill
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("object")]
-        public global::Instill.AIObject? Object { get; set; }
+        public global::Instill.Object? Object { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -44,7 +44,7 @@ namespace Instill
         public GetObjectUploadURLResponse(
             string? uploadUrl,
             global::System.DateTime? urlExpireAt,
-            global::Instill.AIObject? @object)
+            global::Instill.Object? @object)
         {
             this.UploadUrl = uploadUrl;
             this.UrlExpireAt = urlExpireAt;

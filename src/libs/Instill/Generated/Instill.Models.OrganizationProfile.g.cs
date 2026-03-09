@@ -9,10 +9,11 @@ namespace Instill
     public sealed partial class OrganizationProfile
     {
         /// <summary>
-        /// Display name.
+        /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
-        public string? DisplayName { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string DisplayName { get; set; }
 
         /// <summary>
         /// Biography.
@@ -40,6 +41,18 @@ namespace Instill
         public global::System.Collections.Generic.Dictionary<string, string>? SocialProfileLinks { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
+        public object? Metadata { get; set; }
+
+        /// <summary>
+        /// Full legal name. Used for formal communications.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("fullName")]
+        public string? FullName { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -48,9 +61,7 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="OrganizationProfile" /> class.
         /// </summary>
-        /// <param name="displayName">
-        /// Display name.
-        /// </param>
+        /// <param name="displayName"></param>
         /// <param name="bio">
         /// Biography.
         /// </param>
@@ -64,21 +75,29 @@ namespace Instill
         /// Social profile links list the links to the organization's social profiles.<br/>
         /// The key represents the provider, and the value is the corresponding URL.
         /// </param>
+        /// <param name="metadata"></param>
+        /// <param name="fullName">
+        /// Full legal name. Used for formal communications.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public OrganizationProfile(
-            string? displayName,
+            string displayName,
             string? bio,
             string? avatar,
             string? publicEmail,
-            global::System.Collections.Generic.Dictionary<string, string>? socialProfileLinks)
+            global::System.Collections.Generic.Dictionary<string, string>? socialProfileLinks,
+            object? metadata,
+            string? fullName)
         {
-            this.DisplayName = displayName;
+            this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
             this.Bio = bio;
             this.Avatar = avatar;
             this.PublicEmail = publicEmail;
             this.SocialProfileLinks = socialProfileLinks;
+            this.Metadata = metadata;
+            this.FullName = fullName;
         }
 
         /// <summary>

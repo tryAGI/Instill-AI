@@ -1,0 +1,44 @@
+#nullable enable
+
+namespace Instill
+{
+    public partial interface INamespaceClient
+    {
+        /// <summary>
+        /// Create an API token<br/>
+        /// Creates an API token for the authenticated user.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Instill.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Instill.CreateTokenResponse> MgmtPublicServiceCreateTokenAsync(
+
+            global::Instill.ApiToken request,
+            global::System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Create an API token<br/>
+        /// Creates an API token for the authenticated user.
+        /// </summary>
+        /// <param name="id">
+        /// API token resource ID (used in `name` as the last segment). This conforms<br/>
+        /// to RFC-1034, which restricts to letters, numbers, and hyphen, with the<br/>
+        /// first character a letter, the last a letter or a number, and a 63<br/>
+        /// character maximum.<br/>
+        /// This field can reflect the client(s) that will use the token.
+        /// </param>
+        /// <param name="ttl">
+        /// The time-to-live in seconds for this resource.
+        /// </param>
+        /// <param name="expireTime">
+        /// Expiration time.
+        /// </param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        global::System.Threading.Tasks.Task<global::Instill.CreateTokenResponse> MgmtPublicServiceCreateTokenAsync(
+            string? id = default,
+            int? ttl = default,
+            global::System.DateTime? expireTime = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+    }
+}

@@ -4,6 +4,7 @@
 namespace Instill
 {
     /// <summary>
+    /// Output schema for the model.<br/>
     /// Included only in responses
     /// </summary>
     public sealed partial class ModelOutputSchema

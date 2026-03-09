@@ -5,8 +5,7 @@ namespace Instill
 {
     /// <summary>
     /// Model configuration. This field is validated against the model<br/>
-    /// specification in the model definition (i.e. the `model_spec` field in the<br/>
-    /// model definition).
+    /// specification in the model definition.
     /// </summary>
     public sealed partial class ModelConfiguration
     {

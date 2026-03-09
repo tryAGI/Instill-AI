@@ -4,35 +4,47 @@
 namespace Instill
 {
     /// <summary>
-    /// Pipeline releases contain the version control information of a pipeline.<br/>
-    /// This allows users to track changes in the pipeline over time.
+    /// 
     /// </summary>
     public sealed partial class PipelineRelease
     {
         /// <summary>
-        /// The name of the release, defined by its parent and ID.<br/>
-        /// - Format: `{parent_type}/{parent.id}/pipelines/{pipeline.id}/releases/{release.id}`.<br/>
+        /// Field 1: The name of the release.<br/>
+        /// - Format: `namespaces/{namespace}/pipelines/{pipeline}/releases/{release}`.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         public string? Name { get; set; }
 
         /// <summary>
-        /// Release UUID.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("uid")]
-        public string? Uid { get; set; }
-
-        /// <summary>
-        /// Release resource ID (used in `name` as the last segment). It must be a<br/>
-        /// sematic version vX.Y.Z.
+        /// Field 2: Release resource ID (used in `name` as the last segment). It must<br/>
+        /// be a sematic version vX.Y.Z.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// Release description.
+        /// Field 3: Human-readable display name for UI.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("displayName")]
+        public string? DisplayName { get; set; }
+
+        /// <summary>
+        /// Field 4: URL-friendly slug (alias for the release).<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("slug")]
+        public string? Slug { get; set; }
+
+        /// <summary>
+        /// Field 5: Previous slugs for backward compatibility.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("aliases")]
+        public global::System.Collections.Generic.IList<string>? Aliases { get; set; }
+
+        /// <summary>
+        /// Field 6: Release description.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("description")]
         public string? Description { get; set; }
@@ -64,13 +76,6 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("deleteTime")]
         public global::System.DateTime? DeleteTime { get; set; }
-
-        /// <summary>
-        /// Alias.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("alias")]
-        public string? Alias { get; set; }
 
         /// <summary>
         /// Key-value object with console-related data such as the pipeline builder<br/>
@@ -116,20 +121,27 @@ namespace Instill
         /// Initializes a new instance of the <see cref="PipelineRelease" /> class.
         /// </summary>
         /// <param name="name">
-        /// The name of the release, defined by its parent and ID.<br/>
-        /// - Format: `{parent_type}/{parent.id}/pipelines/{pipeline.id}/releases/{release.id}`.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="uid">
-        /// Release UUID.<br/>
+        /// Field 1: The name of the release.<br/>
+        /// - Format: `namespaces/{namespace}/pipelines/{pipeline}/releases/{release}`.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="id">
-        /// Release resource ID (used in `name` as the last segment). It must be a<br/>
-        /// sematic version vX.Y.Z.
+        /// Field 2: Release resource ID (used in `name` as the last segment). It must<br/>
+        /// be a sematic version vX.Y.Z.
+        /// </param>
+        /// <param name="displayName">
+        /// Field 3: Human-readable display name for UI.
+        /// </param>
+        /// <param name="slug">
+        /// Field 4: URL-friendly slug (alias for the release).<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="aliases">
+        /// Field 5: Previous slugs for backward compatibility.<br/>
+        /// Included only in responses
         /// </param>
         /// <param name="description">
-        /// Release description.
+        /// Field 6: Release description.
         /// </param>
         /// <param name="recipe">
         /// Recipe of the versioned pipeline.<br/>
@@ -145,10 +157,6 @@ namespace Instill
         /// </param>
         /// <param name="deleteTime">
         /// Pipeline deletion time.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="alias">
-        /// Alias.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="metadata">
@@ -175,14 +183,15 @@ namespace Instill
 #endif
         public PipelineRelease(
             string? name,
-            string? uid,
             string? id,
+            string? displayName,
+            string? slug,
+            global::System.Collections.Generic.IList<string>? aliases,
             string? description,
             object? recipe,
             global::System.DateTime? createTime,
             global::System.DateTime? updateTime,
             global::System.DateTime? deleteTime,
-            string? alias,
             object? metadata,
             string? readme,
             global::Instill.DataSpecification? dataSpecification,
@@ -190,14 +199,15 @@ namespace Instill
             global::Instill.Endpoints? endpoints)
         {
             this.Name = name;
-            this.Uid = uid;
             this.Id = id;
+            this.DisplayName = displayName;
+            this.Slug = slug;
+            this.Aliases = aliases;
             this.Description = description;
             this.Recipe = recipe;
             this.CreateTime = createTime;
             this.UpdateTime = updateTime;
             this.DeleteTime = deleteTime;
-            this.Alias = alias;
             this.Metadata = metadata;
             this.Readme = readme;
             this.DataSpecification = dataSpecification;

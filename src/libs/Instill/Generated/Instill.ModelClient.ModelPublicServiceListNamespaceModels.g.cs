@@ -49,9 +49,6 @@ namespace Instill
         /// <param name="orderBy"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
-#endif
         public async global::System.Threading.Tasks.Task<global::Instill.ListNamespaceModelsResponse> ModelPublicServiceListNamespaceModelsAsync(
             string namespaceId,
             int? pageSize = default,
@@ -79,13 +76,13 @@ namespace Instill
             var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/models",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
-                .AddOptionalParameter("pageSize", pageSize?.ToString()) 
-                .AddOptionalParameter("pageToken", pageToken) 
-                .AddOptionalParameter("view", view?.ToValueString()) 
-                .AddOptionalParameter("showDeleted", showDeleted?.ToString()) 
-                .AddOptionalParameter("filter", filter) 
-                .AddOptionalParameter("visibility", visibility?.ToValueString()) 
+            __pathBuilder
+                .AddOptionalParameter("pageSize", pageSize?.ToString())
+                .AddOptionalParameter("pageToken", pageToken)
+                .AddOptionalParameter("view", view?.ToValueString())
+                .AddOptionalParameter("showDeleted", showDeleted?.ToString())
+                .AddOptionalParameter("filter", filter)
+                .AddOptionalParameter("visibility", visibility?.ToValueString())
                 .AddOptionalParameter("orderBy", orderBy) 
                 ; 
             var __path = __pathBuilder.ToString();

@@ -47,9 +47,6 @@ namespace Instill
         /// <param name="requesterId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
-#endif
         public async global::System.Threading.Tasks.Task<global::Instill.ListModelRunsByRequesterResponse> ModelPublicServiceListModelRunsByRequesterAsync(
             string requesterId,
             int? pageSize = default,
@@ -75,13 +72,13 @@ namespace Instill
             var __pathBuilder = new global::Instill.PathBuilder(
                 path: "/v1alpha/dashboard/models/runs",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
-                .AddOptionalParameter("pageSize", pageSize?.ToString()) 
-                .AddOptionalParameter("page", page?.ToString()) 
-                .AddOptionalParameter("orderBy", orderBy) 
-                .AddOptionalParameter("filter", filter) 
-                .AddOptionalParameter("start", start?.ToString("yyyy-MM-ddTHH:mm:ssZ")) 
-                .AddOptionalParameter("stop", stop?.ToString("yyyy-MM-ddTHH:mm:ssZ")) 
+            __pathBuilder
+                .AddOptionalParameter("pageSize", pageSize?.ToString())
+                .AddOptionalParameter("page", page?.ToString())
+                .AddOptionalParameter("orderBy", orderBy)
+                .AddOptionalParameter("filter", filter)
+                .AddOptionalParameter("start", start?.ToString("yyyy-MM-ddTHH:mm:ssZ"))
+                .AddOptionalParameter("stop", stop?.ToString("yyyy-MM-ddTHH:mm:ssZ"))
                 .AddRequiredParameter("requesterId", requesterId) 
                 ; 
             var __path = __pathBuilder.ToString();

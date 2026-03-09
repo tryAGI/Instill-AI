@@ -13,7 +13,7 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("catalog")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Instill.Catalog Catalog { get; set; }
+        public global::Instill.Catalog Catalog { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

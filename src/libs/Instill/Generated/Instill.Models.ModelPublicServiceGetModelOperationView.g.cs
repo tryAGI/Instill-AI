@@ -11,11 +11,11 @@ namespace Instill
         /// <summary>
         /// Default view, only includes basic information (omits `model_spec`).
         /// </summary>
-        VIEWBASIC,
+        ViewBasic,
         /// <summary>
         /// Full representation.
         /// </summary>
-        VIEWFULL,
+        ViewFull,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace Instill
         {
             return value switch
             {
-                ModelPublicServiceGetModelOperationView.VIEWBASIC => "VIEW_BASIC",
-                ModelPublicServiceGetModelOperationView.VIEWFULL => "VIEW_FULL",
+                ModelPublicServiceGetModelOperationView.ViewBasic => "VIEW_BASIC",
+                ModelPublicServiceGetModelOperationView.ViewFull => "VIEW_FULL",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace Instill
         {
             return value switch
             {
-                "VIEW_BASIC" => ModelPublicServiceGetModelOperationView.VIEWBASIC,
-                "VIEW_FULL" => ModelPublicServiceGetModelOperationView.VIEWFULL,
+                "VIEW_BASIC" => ModelPublicServiceGetModelOperationView.ViewBasic,
+                "VIEW_FULL" => ModelPublicServiceGetModelOperationView.ViewFull,
                 _ => null,
             };
         }

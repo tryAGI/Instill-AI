@@ -16,19 +16,19 @@ namespace Instill
         /// <summary>
         /// Character positions (for Markdown and other text files).
         /// </summary>
-        CHARACTER,
+        Character,
         /// <summary>
         /// Page positions (for documents). For pages, positions are 1-indexed
         /// </summary>
-        PAGE,
+        Page,
         /// <summary>
         /// Time positions in milliseconds (for audio/video files).
         /// </summary>
-        TIMEMS,
+        TimeMs,
         /// <summary>
         /// Pixel positions (for images and other 2D content).
         /// </summary>
-        PIXEL,
+        Pixel,
     }
 
     /// <summary>
@@ -43,10 +43,10 @@ namespace Instill
         {
             return value switch
             {
-                Unit.CHARACTER => "UNIT_CHARACTER",
-                Unit.PAGE => "UNIT_PAGE",
-                Unit.TIMEMS => "UNIT_TIME_MS",
-                Unit.PIXEL => "UNIT_PIXEL",
+                Unit.Character => "UNIT_CHARACTER",
+                Unit.Page => "UNIT_PAGE",
+                Unit.TimeMs => "UNIT_TIME_MS",
+                Unit.Pixel => "UNIT_PIXEL",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -57,10 +57,10 @@ namespace Instill
         {
             return value switch
             {
-                "UNIT_CHARACTER" => Unit.CHARACTER,
-                "UNIT_PAGE" => Unit.PAGE,
-                "UNIT_TIME_MS" => Unit.TIMEMS,
-                "UNIT_PIXEL" => Unit.PIXEL,
+                "UNIT_CHARACTER" => Unit.Character,
+                "UNIT_PAGE" => Unit.Page,
+                "UNIT_TIME_MS" => Unit.TimeMs,
+                "UNIT_PIXEL" => Unit.Pixel,
                 _ => null,
             };
         }

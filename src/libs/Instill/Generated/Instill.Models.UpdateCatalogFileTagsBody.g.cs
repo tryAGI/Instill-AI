@@ -13,7 +13,7 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tags")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<string> Tags { get; set; }
+        public global::System.Collections.Generic.IList<string> Tags { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

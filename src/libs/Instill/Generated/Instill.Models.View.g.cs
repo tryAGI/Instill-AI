@@ -13,11 +13,11 @@ namespace Instill
         /// <summary>
         /// Default view, only includes basic information (omits `model_spec`).
         /// </summary>
-        BASIC,
+        Basic,
         /// <summary>
         /// Full representation.
         /// </summary>
-        FULL,
+        Full,
     }
 
     /// <summary>
@@ -32,8 +32,8 @@ namespace Instill
         {
             return value switch
             {
-                View.BASIC => "VIEW_BASIC",
-                View.FULL => "VIEW_FULL",
+                View.Basic => "VIEW_BASIC",
+                View.Full => "VIEW_FULL",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -44,8 +44,8 @@ namespace Instill
         {
             return value switch
             {
-                "VIEW_BASIC" => View.BASIC,
-                "VIEW_FULL" => View.FULL,
+                "VIEW_BASIC" => View.Basic,
+                "VIEW_FULL" => View.Full,
                 _ => null,
             };
         }

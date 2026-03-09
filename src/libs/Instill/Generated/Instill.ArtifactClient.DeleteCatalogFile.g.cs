@@ -28,9 +28,6 @@ namespace Instill
         /// <param name="fileUid"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
-#endif
         public async global::System.Threading.Tasks.Task<global::Instill.DeleteCatalogFileResponse> DeleteCatalogFileAsync(
             string fileUid,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -44,7 +41,7 @@ namespace Instill
             var __pathBuilder = new global::Instill.PathBuilder(
                 path: "/v1alpha/catalogs/files",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
+            __pathBuilder
                 .AddRequiredParameter("fileUid", fileUid) 
                 ; 
             var __path = __pathBuilder.ToString();

@@ -26,14 +26,14 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("targetNamespaceId")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string TargetNamespaceId { get; set; }
+        public string TargetNamespaceId { get; set; } = default!;
 
         /// <summary>
         /// Target Pipeline ID.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("targetPipelineId")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string TargetPipelineId { get; set; }
+        public string TargetPipelineId { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

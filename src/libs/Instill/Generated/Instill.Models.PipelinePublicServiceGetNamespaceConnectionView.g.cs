@@ -11,11 +11,11 @@ namespace Instill
         /// <summary>
         /// Default view.
         /// </summary>
-        VIEWBASIC,
+        ViewBasic,
         /// <summary>
         /// Full representation.
         /// </summary>
-        VIEWFULL,
+        ViewFull,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace Instill
         {
             return value switch
             {
-                PipelinePublicServiceGetNamespaceConnectionView.VIEWBASIC => "VIEW_BASIC",
-                PipelinePublicServiceGetNamespaceConnectionView.VIEWFULL => "VIEW_FULL",
+                PipelinePublicServiceGetNamespaceConnectionView.ViewBasic => "VIEW_BASIC",
+                PipelinePublicServiceGetNamespaceConnectionView.ViewFull => "VIEW_FULL",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace Instill
         {
             return value switch
             {
-                "VIEW_BASIC" => PipelinePublicServiceGetNamespaceConnectionView.VIEWBASIC,
-                "VIEW_FULL" => PipelinePublicServiceGetNamespaceConnectionView.VIEWFULL,
+                "VIEW_BASIC" => PipelinePublicServiceGetNamespaceConnectionView.ViewBasic,
+                "VIEW_FULL" => PipelinePublicServiceGetNamespaceConnectionView.ViewFull,
                 _ => null,
             };
         }

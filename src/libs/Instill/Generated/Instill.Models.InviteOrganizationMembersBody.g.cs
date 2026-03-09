@@ -14,7 +14,7 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("emails")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<string> Emails { get; set; }
+        public global::System.Collections.Generic.IList<string> Emails { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

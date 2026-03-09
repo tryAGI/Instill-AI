@@ -34,9 +34,6 @@ namespace Instill
         /// <param name="view"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
-#endif
         public async global::System.Threading.Tasks.Task<global::Instill.ListModelDefinitionsResponse> ModelPublicServiceListModelDefinitionsAsync(
             int? pageSize = default,
             string? pageToken = default,
@@ -54,9 +51,9 @@ namespace Instill
             var __pathBuilder = new global::Instill.PathBuilder(
                 path: "/v1alpha/model-definitions",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
-                .AddOptionalParameter("pageSize", pageSize?.ToString()) 
-                .AddOptionalParameter("pageToken", pageToken) 
+            __pathBuilder
+                .AddOptionalParameter("pageSize", pageSize?.ToString())
+                .AddOptionalParameter("pageToken", pageToken)
                 .AddOptionalParameter("view", view?.ToValueString()) 
                 ; 
             var __path = __pathBuilder.ToString();

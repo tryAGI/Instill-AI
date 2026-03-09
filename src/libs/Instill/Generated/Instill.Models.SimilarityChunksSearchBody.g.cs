@@ -13,7 +13,7 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("textPrompt")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string TextPrompt { get; set; }
+        public string TextPrompt { get; set; } = default!;
 
         /// <summary>
         /// Top K. Default value: 5.

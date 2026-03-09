@@ -12,11 +12,11 @@ namespace Instill
         /// <summary>
         /// PERSISTENT
         /// </summary>
-        PERSISTENT,
+        Persistent,
         /// <summary>
         /// EPHEMERAL
         /// </summary>
-        EPHEMERAL,
+        Ephemeral,
     }
 
     /// <summary>
@@ -31,8 +31,8 @@ namespace Instill
         {
             return value switch
             {
-                CatalogType.PERSISTENT => "CATALOG_TYPE_PERSISTENT",
-                CatalogType.EPHEMERAL => "CATALOG_TYPE_EPHEMERAL",
+                CatalogType.Persistent => "CATALOG_TYPE_PERSISTENT",
+                CatalogType.Ephemeral => "CATALOG_TYPE_EPHEMERAL",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -43,8 +43,8 @@ namespace Instill
         {
             return value switch
             {
-                "CATALOG_TYPE_PERSISTENT" => CatalogType.PERSISTENT,
-                "CATALOG_TYPE_EPHEMERAL" => CatalogType.EPHEMERAL,
+                "CATALOG_TYPE_PERSISTENT" => CatalogType.Persistent,
+                "CATALOG_TYPE_EPHEMERAL" => CatalogType.Ephemeral,
                 _ => null,
             };
         }

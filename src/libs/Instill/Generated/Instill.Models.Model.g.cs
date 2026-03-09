@@ -31,7 +31,7 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Id { get; set; }
+        public string Id { get; set; } = default!;
 
         /// <summary>
         /// Model description.
@@ -44,7 +44,7 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("modelDefinition")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string ModelDefinition { get; set; }
+        public string ModelDefinition { get; set; } = default!;
 
         /// <summary>
         /// Model configuration. This field is validated against the model<br/>
@@ -53,7 +53,7 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("configuration")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required object Configuration { get; set; }
+        public object Configuration { get; set; } = default!;
 
         /// <summary>
         /// Model task.
@@ -61,7 +61,7 @@ namespace Instill
         [global::System.Text.Json.Serialization.JsonPropertyName("task")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.AITaskJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Instill.AITask Task { get; set; }
+        public global::Instill.AITask Task { get; set; } = default!;
 
         /// <summary>
         /// Model visibility.
@@ -69,7 +69,7 @@ namespace Instill
         [global::System.Text.Json.Serialization.JsonPropertyName("visibility")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.ModelVisibilityJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Instill.ModelVisibility Visibility { get; set; }
+        public global::Instill.ModelVisibility Visibility { get; set; } = default!;
 
         /// <summary>
         /// Model creation time.<br/>
@@ -111,14 +111,14 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("region")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Region { get; set; }
+        public string Region { get; set; } = default!;
 
         /// <summary>
         /// Hardware of choice to serve the model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("hardware")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Hardware { get; set; }
+        public string Hardware { get; set; } = default!;
 
         /// <summary>
         /// README holds the model documentation.

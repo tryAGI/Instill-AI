@@ -35,9 +35,6 @@ namespace Instill
         /// <param name="view"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
-#endif
         public async global::System.Threading.Tasks.Task<global::Instill.GetNamespaceLatestModelOperationResponse> ModelPublicServiceGetNamespaceLatestModelOperationAsync(
             string namespaceId,
             string modelId,
@@ -55,7 +52,7 @@ namespace Instill
             var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/models/{modelId}/operation",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
+            __pathBuilder
                 .AddOptionalParameter("view", view?.ToValueString()) 
                 ; 
             var __path = __pathBuilder.ToString();

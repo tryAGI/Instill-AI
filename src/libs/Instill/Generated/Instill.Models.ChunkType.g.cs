@@ -14,15 +14,15 @@ namespace Instill
         /// <summary>
         /// Content.
         /// </summary>
-        TYPECONTENT,
+        TypeContent,
         /// <summary>
         /// Summary.
         /// </summary>
-        TYPESUMMARY,
+        TypeSummary,
         /// <summary>
         /// Augmented.
         /// </summary>
-        TYPEAUGMENTED,
+        TypeAugmented,
     }
 
     /// <summary>
@@ -37,9 +37,9 @@ namespace Instill
         {
             return value switch
             {
-                ChunkType.TYPECONTENT => "TYPE_CONTENT",
-                ChunkType.TYPESUMMARY => "TYPE_SUMMARY",
-                ChunkType.TYPEAUGMENTED => "TYPE_AUGMENTED",
+                ChunkType.TypeContent => "TYPE_CONTENT",
+                ChunkType.TypeSummary => "TYPE_SUMMARY",
+                ChunkType.TypeAugmented => "TYPE_AUGMENTED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -50,9 +50,9 @@ namespace Instill
         {
             return value switch
             {
-                "TYPE_CONTENT" => ChunkType.TYPECONTENT,
-                "TYPE_SUMMARY" => ChunkType.TYPESUMMARY,
-                "TYPE_AUGMENTED" => ChunkType.TYPEAUGMENTED,
+                "TYPE_CONTENT" => ChunkType.TypeContent,
+                "TYPE_SUMMARY" => ChunkType.TypeSummary,
+                "TYPE_AUGMENTED" => ChunkType.TypeAugmented,
                 _ => null,
             };
         }

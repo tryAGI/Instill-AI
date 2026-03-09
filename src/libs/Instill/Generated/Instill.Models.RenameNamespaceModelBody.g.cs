@@ -14,7 +14,7 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("newModelId")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string NewModelId { get; set; }
+        public string NewModelId { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

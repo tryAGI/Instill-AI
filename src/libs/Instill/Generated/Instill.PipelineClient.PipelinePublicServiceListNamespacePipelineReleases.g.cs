@@ -47,9 +47,6 @@ namespace Instill
         /// <param name="showDeleted"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
-#endif
         public async global::System.Threading.Tasks.Task<global::Instill.ListNamespacePipelineReleasesResponse> PipelinePublicServiceListNamespacePipelineReleasesAsync(
             string namespaceId,
             string pipelineId,
@@ -75,11 +72,11 @@ namespace Instill
             var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/releases",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
-                .AddOptionalParameter("pageSize", pageSize?.ToString()) 
-                .AddOptionalParameter("pageToken", pageToken) 
-                .AddOptionalParameter("view", view?.ToValueString()) 
-                .AddOptionalParameter("filter", filter) 
+            __pathBuilder
+                .AddOptionalParameter("pageSize", pageSize?.ToString())
+                .AddOptionalParameter("pageToken", pageToken)
+                .AddOptionalParameter("view", view?.ToValueString())
+                .AddOptionalParameter("filter", filter)
                 .AddOptionalParameter("showDeleted", showDeleted?.ToString()) 
                 ; 
             var __path = __pathBuilder.ToString();

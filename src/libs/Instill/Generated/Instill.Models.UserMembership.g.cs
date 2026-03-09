@@ -31,7 +31,7 @@ namespace Instill
         [global::System.Text.Json.Serialization.JsonPropertyName("state")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.MembershipStateJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Instill.MembershipState State { get; set; }
+        public global::Instill.MembershipState State { get; set; } = default!;
 
         /// <summary>
         /// User information.<br/>

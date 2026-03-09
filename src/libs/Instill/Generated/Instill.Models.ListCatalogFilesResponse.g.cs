@@ -13,7 +13,7 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("files")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Instill.File> Files { get; set; }
+        public global::System.Collections.Generic.IList<global::Instill.File> Files { get; set; } = default!;
 
         /// <summary>
         /// The total number of files.

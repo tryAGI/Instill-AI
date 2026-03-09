@@ -13,7 +13,7 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("file")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Instill.File File { get; set; }
+        public global::Instill.File File { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

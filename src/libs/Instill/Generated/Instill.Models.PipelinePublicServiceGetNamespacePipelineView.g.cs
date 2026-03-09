@@ -11,15 +11,15 @@ namespace Instill
         /// <summary>
         /// Default view, only includes basic information.
         /// </summary>
-        VIEWBASIC,
+        ViewBasic,
         /// <summary>
         /// Full representation.
         /// </summary>
-        VIEWFULL,
+        ViewFull,
         /// <summary>
         /// Contains the recipe of the resource.
         /// </summary>
-        VIEWRECIPE,
+        ViewRecipe,
     }
 
     /// <summary>
@@ -34,9 +34,9 @@ namespace Instill
         {
             return value switch
             {
-                PipelinePublicServiceGetNamespacePipelineView.VIEWBASIC => "VIEW_BASIC",
-                PipelinePublicServiceGetNamespacePipelineView.VIEWFULL => "VIEW_FULL",
-                PipelinePublicServiceGetNamespacePipelineView.VIEWRECIPE => "VIEW_RECIPE",
+                PipelinePublicServiceGetNamespacePipelineView.ViewBasic => "VIEW_BASIC",
+                PipelinePublicServiceGetNamespacePipelineView.ViewFull => "VIEW_FULL",
+                PipelinePublicServiceGetNamespacePipelineView.ViewRecipe => "VIEW_RECIPE",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -47,9 +47,9 @@ namespace Instill
         {
             return value switch
             {
-                "VIEW_BASIC" => PipelinePublicServiceGetNamespacePipelineView.VIEWBASIC,
-                "VIEW_FULL" => PipelinePublicServiceGetNamespacePipelineView.VIEWFULL,
-                "VIEW_RECIPE" => PipelinePublicServiceGetNamespacePipelineView.VIEWRECIPE,
+                "VIEW_BASIC" => PipelinePublicServiceGetNamespacePipelineView.ViewBasic,
+                "VIEW_FULL" => PipelinePublicServiceGetNamespacePipelineView.ViewFull,
+                "VIEW_RECIPE" => PipelinePublicServiceGetNamespacePipelineView.ViewRecipe,
                 _ => null,
             };
         }

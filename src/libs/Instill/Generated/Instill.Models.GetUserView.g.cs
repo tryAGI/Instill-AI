@@ -11,11 +11,11 @@ namespace Instill
         /// <summary>
         /// Default view, only includes basic information.
         /// </summary>
-        VIEWBASIC,
+        ViewBasic,
         /// <summary>
         /// Full representation.
         /// </summary>
-        VIEWFULL,
+        ViewFull,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace Instill
         {
             return value switch
             {
-                GetUserView.VIEWBASIC => "VIEW_BASIC",
-                GetUserView.VIEWFULL => "VIEW_FULL",
+                GetUserView.ViewBasic => "VIEW_BASIC",
+                GetUserView.ViewFull => "VIEW_FULL",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace Instill
         {
             return value switch
             {
-                "VIEW_BASIC" => GetUserView.VIEWBASIC,
-                "VIEW_FULL" => GetUserView.VIEWFULL,
+                "VIEW_BASIC" => GetUserView.ViewBasic,
+                "VIEW_FULL" => GetUserView.ViewFull,
                 _ => null,
             };
         }

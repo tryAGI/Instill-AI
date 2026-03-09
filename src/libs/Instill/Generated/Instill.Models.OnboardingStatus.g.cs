@@ -14,11 +14,11 @@ namespace Instill
         /// <summary>
         /// In progress, i.e., the user has initiated the onboarding process
         /// </summary>
-        INPROGRESS,
+        InProgress,
         /// <summary>
         /// Completed.
         /// </summary>
-        COMPLETED,
+        Completed,
     }
 
     /// <summary>
@@ -33,8 +33,8 @@ namespace Instill
         {
             return value switch
             {
-                OnboardingStatus.INPROGRESS => "ONBOARDING_STATUS_IN_PROGRESS",
-                OnboardingStatus.COMPLETED => "ONBOARDING_STATUS_COMPLETED",
+                OnboardingStatus.InProgress => "ONBOARDING_STATUS_IN_PROGRESS",
+                OnboardingStatus.Completed => "ONBOARDING_STATUS_COMPLETED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -45,8 +45,8 @@ namespace Instill
         {
             return value switch
             {
-                "ONBOARDING_STATUS_IN_PROGRESS" => OnboardingStatus.INPROGRESS,
-                "ONBOARDING_STATUS_COMPLETED" => OnboardingStatus.COMPLETED,
+                "ONBOARDING_STATUS_IN_PROGRESS" => OnboardingStatus.InProgress,
+                "ONBOARDING_STATUS_COMPLETED" => OnboardingStatus.Completed,
                 _ => null,
             };
         }

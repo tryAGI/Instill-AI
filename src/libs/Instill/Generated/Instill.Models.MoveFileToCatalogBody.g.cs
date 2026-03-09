@@ -13,14 +13,14 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("fileUid")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string FileUid { get; set; }
+        public string FileUid { get; set; } = default!;
 
         /// <summary>
         /// The target catalog id.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("toCatalogId")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string ToCatalogId { get; set; }
+        public string ToCatalogId { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

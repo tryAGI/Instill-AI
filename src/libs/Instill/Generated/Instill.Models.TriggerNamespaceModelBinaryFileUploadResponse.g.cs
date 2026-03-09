@@ -15,7 +15,7 @@ namespace Instill
         [global::System.Text.Json.Serialization.JsonPropertyName("task")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.AITaskJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Instill.AITask Task { get; set; }
+        public global::Instill.AITask Task { get; set; } = default!;
 
         /// <summary>
         /// Model inference outputs.<br/>

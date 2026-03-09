@@ -32,7 +32,7 @@ public partial class Tests
             namespaceId: "havendv",
             catalogId: catalog.CatalogId,
             name: "midsummer-nights-dream.pdf",
-            type: FileType.PDF,
+            type: FileType.TypePdf,
             content: Convert.ToBase64String(H.Resources.midsummer_nights_dream_pdf.AsBytes()),
             cancellationToken: cancellationToken);
         
@@ -51,7 +51,7 @@ public partial class Tests
             fileUids: [file.FileUid],
             cancellationToken: cancellationToken);
         
-        processFilesResponse.Files[0].ProcessStatus.Should().Be(FileProcessStatus.WAITING);
+        processFilesResponse.Files[0].ProcessStatus.Should().Be(FileProcessStatus.Waiting);
 
         while (!cancellationToken.IsCancellationRequested)
         {
@@ -63,8 +63,8 @@ public partial class Tests
                 cancellationToken: cancellationToken);
 
             if (listFilesResponse.Files[0].ProcessStatus is
-                    FileProcessStatus.COMPLETED or
-                    FileProcessStatus.FAILED)
+                    FileProcessStatus.Completed or
+                    FileProcessStatus.Failed)
             {
                 break;
             }

@@ -1,4 +1,4 @@
-openapi: 3.0.4
+openapi: '3.2.0'
 info:
   title: Instill Core API
   description: Interact with Instill Core through API
@@ -248,7 +248,6 @@ paths:
         - name: filter.fileUids
           in: query
           description: File UIDs.
-          style: form
           schema:
             type: array
             items:
@@ -603,7 +602,6 @@ paths:
           in: query
           description: search file uid
           required: true
-          style: form
           schema:
             type: array
             items:

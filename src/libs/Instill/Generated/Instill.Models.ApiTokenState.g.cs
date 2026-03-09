@@ -14,15 +14,15 @@ namespace Instill
         /// <summary>
         /// Inactive.
         /// </summary>
-        STATEINACTIVE,
+        StateInactive,
         /// <summary>
         /// Active.
         /// </summary>
-        STATEACTIVE,
+        StateActive,
         /// <summary>
         /// Expired.
         /// </summary>
-        STATEEXPIRED,
+        StateExpired,
     }
 
     /// <summary>
@@ -37,9 +37,9 @@ namespace Instill
         {
             return value switch
             {
-                ApiTokenState.STATEINACTIVE => "STATE_INACTIVE",
-                ApiTokenState.STATEACTIVE => "STATE_ACTIVE",
-                ApiTokenState.STATEEXPIRED => "STATE_EXPIRED",
+                ApiTokenState.StateInactive => "STATE_INACTIVE",
+                ApiTokenState.StateActive => "STATE_ACTIVE",
+                ApiTokenState.StateExpired => "STATE_EXPIRED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -50,9 +50,9 @@ namespace Instill
         {
             return value switch
             {
-                "STATE_INACTIVE" => ApiTokenState.STATEINACTIVE,
-                "STATE_ACTIVE" => ApiTokenState.STATEACTIVE,
-                "STATE_EXPIRED" => ApiTokenState.STATEEXPIRED,
+                "STATE_INACTIVE" => ApiTokenState.StateInactive,
+                "STATE_ACTIVE" => ApiTokenState.StateActive,
+                "STATE_EXPIRED" => ApiTokenState.StateExpired,
                 _ => null,
             };
         }

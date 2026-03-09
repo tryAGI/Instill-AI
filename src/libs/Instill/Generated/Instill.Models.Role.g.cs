@@ -13,11 +13,11 @@ namespace Instill
         /// <summary>
         /// Viewers can see the resource properties.
         /// </summary>
-        VIEWER,
+        Viewer,
         /// <summary>
         /// Executors can execute the resource (e.g. trigger a pipeline).
         /// </summary>
-        EXECUTOR,
+        Executor,
     }
 
     /// <summary>
@@ -32,8 +32,8 @@ namespace Instill
         {
             return value switch
             {
-                Role.VIEWER => "ROLE_VIEWER",
-                Role.EXECUTOR => "ROLE_EXECUTOR",
+                Role.Viewer => "ROLE_VIEWER",
+                Role.Executor => "ROLE_EXECUTOR",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -44,8 +44,8 @@ namespace Instill
         {
             return value switch
             {
-                "ROLE_VIEWER" => Role.VIEWER,
-                "ROLE_EXECUTOR" => Role.EXECUTOR,
+                "ROLE_VIEWER" => Role.Viewer,
+                "ROLE_EXECUTOR" => Role.Executor,
                 _ => null,
             };
         }

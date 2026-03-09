@@ -31,9 +31,6 @@ namespace Instill
         /// <param name="fileUids"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
-#endif
         public async global::System.Threading.Tasks.Task<global::Instill.SearchSourceFilesResponse> SearchSourceFilesAsync(
             string namespaceId,
             global::System.Collections.Generic.IList<string> fileUids,
@@ -49,7 +46,7 @@ namespace Instill
             var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/source-files",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
+            __pathBuilder
                 .AddRequiredParameter("fileUids", fileUids, delimiter: ",", explode: true) 
                 ; 
             var __path = __pathBuilder.ToString();

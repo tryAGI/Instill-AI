@@ -23,7 +23,7 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("role")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Role { get; set; }
+        public string Role { get; set; } = default!;
 
         /// <summary>
         /// State of the membership.<br/>

@@ -13,11 +13,11 @@ namespace Instill
         /// <summary>
         /// Only the user can see the pipeline.
         /// </summary>
-        VISIBILITYPRIVATE,
+        VisibilityPrivate,
         /// <summary>
         /// Other users can see the pipeline.
         /// </summary>
-        VISIBILITYPUBLIC,
+        VisibilityPublic,
     }
 
     /// <summary>
@@ -32,8 +32,8 @@ namespace Instill
         {
             return value switch
             {
-                PipelineVisibility.VISIBILITYPRIVATE => "VISIBILITY_PRIVATE",
-                PipelineVisibility.VISIBILITYPUBLIC => "VISIBILITY_PUBLIC",
+                PipelineVisibility.VisibilityPrivate => "VISIBILITY_PRIVATE",
+                PipelineVisibility.VisibilityPublic => "VISIBILITY_PUBLIC",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -44,8 +44,8 @@ namespace Instill
         {
             return value switch
             {
-                "VISIBILITY_PRIVATE" => PipelineVisibility.VISIBILITYPRIVATE,
-                "VISIBILITY_PUBLIC" => PipelineVisibility.VISIBILITYPUBLIC,
+                "VISIBILITY_PRIVATE" => PipelineVisibility.VisibilityPrivate,
+                "VISIBILITY_PUBLIC" => PipelineVisibility.VisibilityPublic,
                 _ => null,
             };
         }

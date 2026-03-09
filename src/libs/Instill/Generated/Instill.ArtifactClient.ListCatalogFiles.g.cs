@@ -43,9 +43,6 @@ namespace Instill
         /// <param name="filterProcessStatus"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
-#endif
         public async global::System.Threading.Tasks.Task<global::Instill.ListCatalogFilesResponse> ListCatalogFilesAsync(
             string namespaceId,
             string catalogId,
@@ -69,10 +66,10 @@ namespace Instill
             var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/namespaces/{namespaceId}/catalogs/{catalogId}/files",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
-                .AddOptionalParameter("pageSize", pageSize?.ToString()) 
-                .AddOptionalParameter("pageToken", pageToken) 
-                .AddOptionalParameter("filter.fileUids", filterFileUids, delimiter: ",", explode: true) 
+            __pathBuilder
+                .AddOptionalParameter("pageSize", pageSize?.ToString())
+                .AddOptionalParameter("pageToken", pageToken)
+                .AddOptionalParameter("filter.fileUids", filterFileUids, delimiter: ",", explode: true)
                 .AddOptionalParameter("filter.processStatus", filterProcessStatus?.ToValueString()) 
                 ; 
             var __path = __pathBuilder.ToString();

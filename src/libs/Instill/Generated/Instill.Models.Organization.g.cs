@@ -60,7 +60,7 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("profile")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Instill.OrganizationProfile Profile { get; set; }
+        public global::Instill.OrganizationProfile Profile { get; set; } = default!;
 
         /// <summary>
         /// Included only in responses

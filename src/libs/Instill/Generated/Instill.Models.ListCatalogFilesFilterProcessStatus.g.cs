@@ -11,39 +11,39 @@ namespace Instill
         /// <summary>
         /// NOTSTARTED
         /// </summary>
-        FILEPROCESSSTATUSNOTSTARTED,
+        FileProcessStatusNotstarted,
         /// <summary>
         /// file is waiting for embedding process (deprecated - sequential architecture)
         /// </summary>
-        FILEPROCESSSTATUSWAITING,
+        FileProcessStatusWaiting,
         /// <summary>
         /// file is converting (deprecated - sequential architecture)
         /// </summary>
-        FILEPROCESSSTATUSCONVERTING,
+        FileProcessStatusConverting,
         /// <summary>
         /// file is chunking
         /// </summary>
-        FILEPROCESSSTATUSCHUNKING,
+        FileProcessStatusChunking,
         /// <summary>
         /// file is embedding
         /// </summary>
-        FILEPROCESSSTATUSEMBEDDING,
+        FileProcessStatusEmbedding,
         /// <summary>
         /// completed
         /// </summary>
-        FILEPROCESSSTATUSCOMPLETED,
+        FileProcessStatusCompleted,
         /// <summary>
         /// failed
         /// </summary>
-        FILEPROCESSSTATUSFAILED,
+        FileProcessStatusFailed,
         /// <summary>
         /// file is summarizing (deprecated - sequential architecture)
         /// </summary>
-        FILEPROCESSSTATUSSUMMARIZING,
+        FileProcessStatusSummarizing,
         /// <summary>
         /// file is being processed (parallel architecture: conversion + summarization)
         /// </summary>
-        FILEPROCESSSTATUSPROCESSING,
+        FileProcessStatusProcessing,
     }
 
     /// <summary>
@@ -58,15 +58,15 @@ namespace Instill
         {
             return value switch
             {
-                ListCatalogFilesFilterProcessStatus.FILEPROCESSSTATUSNOTSTARTED => "FILE_PROCESS_STATUS_NOTSTARTED",
-                ListCatalogFilesFilterProcessStatus.FILEPROCESSSTATUSWAITING => "FILE_PROCESS_STATUS_WAITING",
-                ListCatalogFilesFilterProcessStatus.FILEPROCESSSTATUSCONVERTING => "FILE_PROCESS_STATUS_CONVERTING",
-                ListCatalogFilesFilterProcessStatus.FILEPROCESSSTATUSCHUNKING => "FILE_PROCESS_STATUS_CHUNKING",
-                ListCatalogFilesFilterProcessStatus.FILEPROCESSSTATUSEMBEDDING => "FILE_PROCESS_STATUS_EMBEDDING",
-                ListCatalogFilesFilterProcessStatus.FILEPROCESSSTATUSCOMPLETED => "FILE_PROCESS_STATUS_COMPLETED",
-                ListCatalogFilesFilterProcessStatus.FILEPROCESSSTATUSFAILED => "FILE_PROCESS_STATUS_FAILED",
-                ListCatalogFilesFilterProcessStatus.FILEPROCESSSTATUSSUMMARIZING => "FILE_PROCESS_STATUS_SUMMARIZING",
-                ListCatalogFilesFilterProcessStatus.FILEPROCESSSTATUSPROCESSING => "FILE_PROCESS_STATUS_PROCESSING",
+                ListCatalogFilesFilterProcessStatus.FileProcessStatusNotstarted => "FILE_PROCESS_STATUS_NOTSTARTED",
+                ListCatalogFilesFilterProcessStatus.FileProcessStatusWaiting => "FILE_PROCESS_STATUS_WAITING",
+                ListCatalogFilesFilterProcessStatus.FileProcessStatusConverting => "FILE_PROCESS_STATUS_CONVERTING",
+                ListCatalogFilesFilterProcessStatus.FileProcessStatusChunking => "FILE_PROCESS_STATUS_CHUNKING",
+                ListCatalogFilesFilterProcessStatus.FileProcessStatusEmbedding => "FILE_PROCESS_STATUS_EMBEDDING",
+                ListCatalogFilesFilterProcessStatus.FileProcessStatusCompleted => "FILE_PROCESS_STATUS_COMPLETED",
+                ListCatalogFilesFilterProcessStatus.FileProcessStatusFailed => "FILE_PROCESS_STATUS_FAILED",
+                ListCatalogFilesFilterProcessStatus.FileProcessStatusSummarizing => "FILE_PROCESS_STATUS_SUMMARIZING",
+                ListCatalogFilesFilterProcessStatus.FileProcessStatusProcessing => "FILE_PROCESS_STATUS_PROCESSING",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -77,15 +77,15 @@ namespace Instill
         {
             return value switch
             {
-                "FILE_PROCESS_STATUS_NOTSTARTED" => ListCatalogFilesFilterProcessStatus.FILEPROCESSSTATUSNOTSTARTED,
-                "FILE_PROCESS_STATUS_WAITING" => ListCatalogFilesFilterProcessStatus.FILEPROCESSSTATUSWAITING,
-                "FILE_PROCESS_STATUS_CONVERTING" => ListCatalogFilesFilterProcessStatus.FILEPROCESSSTATUSCONVERTING,
-                "FILE_PROCESS_STATUS_CHUNKING" => ListCatalogFilesFilterProcessStatus.FILEPROCESSSTATUSCHUNKING,
-                "FILE_PROCESS_STATUS_EMBEDDING" => ListCatalogFilesFilterProcessStatus.FILEPROCESSSTATUSEMBEDDING,
-                "FILE_PROCESS_STATUS_COMPLETED" => ListCatalogFilesFilterProcessStatus.FILEPROCESSSTATUSCOMPLETED,
-                "FILE_PROCESS_STATUS_FAILED" => ListCatalogFilesFilterProcessStatus.FILEPROCESSSTATUSFAILED,
-                "FILE_PROCESS_STATUS_SUMMARIZING" => ListCatalogFilesFilterProcessStatus.FILEPROCESSSTATUSSUMMARIZING,
-                "FILE_PROCESS_STATUS_PROCESSING" => ListCatalogFilesFilterProcessStatus.FILEPROCESSSTATUSPROCESSING,
+                "FILE_PROCESS_STATUS_NOTSTARTED" => ListCatalogFilesFilterProcessStatus.FileProcessStatusNotstarted,
+                "FILE_PROCESS_STATUS_WAITING" => ListCatalogFilesFilterProcessStatus.FileProcessStatusWaiting,
+                "FILE_PROCESS_STATUS_CONVERTING" => ListCatalogFilesFilterProcessStatus.FileProcessStatusConverting,
+                "FILE_PROCESS_STATUS_CHUNKING" => ListCatalogFilesFilterProcessStatus.FileProcessStatusChunking,
+                "FILE_PROCESS_STATUS_EMBEDDING" => ListCatalogFilesFilterProcessStatus.FileProcessStatusEmbedding,
+                "FILE_PROCESS_STATUS_COMPLETED" => ListCatalogFilesFilterProcessStatus.FileProcessStatusCompleted,
+                "FILE_PROCESS_STATUS_FAILED" => ListCatalogFilesFilterProcessStatus.FileProcessStatusFailed,
+                "FILE_PROCESS_STATUS_SUMMARIZING" => ListCatalogFilesFilterProcessStatus.FileProcessStatusSummarizing,
+                "FILE_PROCESS_STATUS_PROCESSING" => ListCatalogFilesFilterProcessStatus.FileProcessStatusProcessing,
                 _ => null,
             };
         }

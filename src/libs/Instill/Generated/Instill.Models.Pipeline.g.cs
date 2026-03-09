@@ -46,7 +46,7 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("recipe")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required object Recipe { get; set; }
+        public object Recipe { get; set; } = default!;
 
         /// <summary>
         /// Pipeline creation time.<br/>

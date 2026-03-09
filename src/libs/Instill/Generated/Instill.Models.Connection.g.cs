@@ -22,7 +22,7 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Id { get; set; }
+        public string Id { get; set; } = default!;
 
         /// <summary>
         /// ID of the namespace owning the connection.<br/>
@@ -37,7 +37,7 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("integrationId")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string IntegrationId { get; set; }
+        public string IntegrationId { get; set; } = default!;
 
         /// <summary>
         /// Integration title. This helps the console display the results grouped by<br/>
@@ -55,7 +55,7 @@ namespace Instill
         [global::System.Text.Json.Serialization.JsonPropertyName("method")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.MethodJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Instill.Method Method { get; set; }
+        public global::Instill.Method Method { get; set; } = default!;
 
         /// <summary>
         /// Connection details. This field is required on creation, optional on view.<br/>
@@ -63,7 +63,7 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("setup")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required object Setup { get; set; }
+        public object Setup { get; set; } = default!;
 
         /// <summary>
         /// A list of scopes that identify the resources that the connection will be<br/>

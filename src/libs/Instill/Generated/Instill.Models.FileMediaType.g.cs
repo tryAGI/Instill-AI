@@ -15,19 +15,19 @@ namespace Instill
         /// <summary>
         /// Document.
         /// </summary>
-        DOCUMENT,
+        Document,
         /// <summary>
         /// Image.
         /// </summary>
-        IMAGE,
+        Image,
         /// <summary>
         /// Audio.
         /// </summary>
-        AUDIO,
+        Audio,
         /// <summary>
         /// Video.
         /// </summary>
-        VIDEO,
+        Video,
     }
 
     /// <summary>
@@ -42,10 +42,10 @@ namespace Instill
         {
             return value switch
             {
-                FileMediaType.DOCUMENT => "FILE_MEDIA_TYPE_DOCUMENT",
-                FileMediaType.IMAGE => "FILE_MEDIA_TYPE_IMAGE",
-                FileMediaType.AUDIO => "FILE_MEDIA_TYPE_AUDIO",
-                FileMediaType.VIDEO => "FILE_MEDIA_TYPE_VIDEO",
+                FileMediaType.Document => "FILE_MEDIA_TYPE_DOCUMENT",
+                FileMediaType.Image => "FILE_MEDIA_TYPE_IMAGE",
+                FileMediaType.Audio => "FILE_MEDIA_TYPE_AUDIO",
+                FileMediaType.Video => "FILE_MEDIA_TYPE_VIDEO",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -56,10 +56,10 @@ namespace Instill
         {
             return value switch
             {
-                "FILE_MEDIA_TYPE_DOCUMENT" => FileMediaType.DOCUMENT,
-                "FILE_MEDIA_TYPE_IMAGE" => FileMediaType.IMAGE,
-                "FILE_MEDIA_TYPE_AUDIO" => FileMediaType.AUDIO,
-                "FILE_MEDIA_TYPE_VIDEO" => FileMediaType.VIDEO,
+                "FILE_MEDIA_TYPE_DOCUMENT" => FileMediaType.Document,
+                "FILE_MEDIA_TYPE_IMAGE" => FileMediaType.Image,
+                "FILE_MEDIA_TYPE_AUDIO" => FileMediaType.Audio,
+                "FILE_MEDIA_TYPE_VIDEO" => FileMediaType.Video,
                 _ => null,
             };
         }

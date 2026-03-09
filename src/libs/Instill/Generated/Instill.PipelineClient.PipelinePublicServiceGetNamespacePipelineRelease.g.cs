@@ -38,9 +38,6 @@ namespace Instill
         /// <param name="view"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
-#endif
         public async global::System.Threading.Tasks.Task<global::Instill.GetNamespacePipelineReleaseResponse> PipelinePublicServiceGetNamespacePipelineReleaseAsync(
             string namespaceId,
             string pipelineId,
@@ -60,7 +57,7 @@ namespace Instill
             var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1beta/namespaces/{namespaceId}/pipelines/{pipelineId}/releases/{releaseId}",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
+            __pathBuilder
                 .AddOptionalParameter("view", view?.ToValueString()) 
                 ; 
             var __path = __pathBuilder.ToString();

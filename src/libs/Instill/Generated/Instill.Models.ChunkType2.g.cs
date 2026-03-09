@@ -15,19 +15,19 @@ namespace Instill
         /// <summary>
         /// Text.
         /// </summary>
-        CHUNKTYPETEXT,
+        ChunkTypeText,
         /// <summary>
         /// Image.
         /// </summary>
-        CHUNKTYPEIMAGE,
+        ChunkTypeImage,
         /// <summary>
         /// Audio.
         /// </summary>
-        CHUNKTYPEAUDIO,
+        ChunkTypeAudio,
         /// <summary>
         /// Video.
         /// </summary>
-        CHUNKTYPEVIDEO,
+        ChunkTypeVideo,
     }
 
     /// <summary>
@@ -42,10 +42,10 @@ namespace Instill
         {
             return value switch
             {
-                ChunkType2.CHUNKTYPETEXT => "CHUNK_TYPE_TEXT",
-                ChunkType2.CHUNKTYPEIMAGE => "CHUNK_TYPE_IMAGE",
-                ChunkType2.CHUNKTYPEAUDIO => "CHUNK_TYPE_AUDIO",
-                ChunkType2.CHUNKTYPEVIDEO => "CHUNK_TYPE_VIDEO",
+                ChunkType2.ChunkTypeText => "CHUNK_TYPE_TEXT",
+                ChunkType2.ChunkTypeImage => "CHUNK_TYPE_IMAGE",
+                ChunkType2.ChunkTypeAudio => "CHUNK_TYPE_AUDIO",
+                ChunkType2.ChunkTypeVideo => "CHUNK_TYPE_VIDEO",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -56,10 +56,10 @@ namespace Instill
         {
             return value switch
             {
-                "CHUNK_TYPE_TEXT" => ChunkType2.CHUNKTYPETEXT,
-                "CHUNK_TYPE_IMAGE" => ChunkType2.CHUNKTYPEIMAGE,
-                "CHUNK_TYPE_AUDIO" => ChunkType2.CHUNKTYPEAUDIO,
-                "CHUNK_TYPE_VIDEO" => ChunkType2.CHUNKTYPEVIDEO,
+                "CHUNK_TYPE_TEXT" => ChunkType2.ChunkTypeText,
+                "CHUNK_TYPE_IMAGE" => ChunkType2.ChunkTypeImage,
+                "CHUNK_TYPE_AUDIO" => ChunkType2.ChunkTypeAudio,
+                "CHUNK_TYPE_VIDEO" => ChunkType2.ChunkTypeVideo,
                 _ => null,
             };
         }

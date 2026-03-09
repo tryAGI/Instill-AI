@@ -34,7 +34,7 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Id { get; set; }
+        public string Id { get; set; } = default!;
 
         /// <summary>
         /// Creation time.<br/>
@@ -55,7 +55,7 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("email")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Email { get; set; }
+        public string Email { get; set; } = default!;
 
         /// <summary>
         /// Stripe customer ID. This field is used in Instill Cloud.<br/>
@@ -83,7 +83,7 @@ namespace Instill
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("newsletterSubscription")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required bool NewsletterSubscription { get; set; }
+        public bool NewsletterSubscription { get; set; } = default!;
 
         /// <summary>
         /// Console cookie token.

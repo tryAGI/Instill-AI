@@ -10,10 +10,10 @@ C# SDK for the [Instill AI](https://www.instill.tech/) platform (VDP / Artifact 
 
 ```bash
 # Build the solution
-dotnet build Instill.sln
+dotnet build Instill.slnx
 
 # Build for release (also produces NuGet package)
-dotnet build Instill.sln -c Release
+dotnet build Instill.slnx -c Release
 
 # Run integration tests (requires API_KEY or INSTILL_API_TOKEN env var)
 dotnet test src/tests/IntegrationTests/Instill.IntegrationTests.csproj

@@ -18,6 +18,9 @@ namespace Instill
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
+#if NET8_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
+#endif
         global::System.Threading.Tasks.Task<global::Instill.TriggerAsyncPipelineReleaseResponse> PipelinePublicServiceTriggerAsyncPipelineReleaseAsync(
             string name1,
 
@@ -42,6 +45,9 @@ namespace Instill
         /// <param name="data"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
+#if NET8_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
+#endif
         global::System.Threading.Tasks.Task<global::Instill.TriggerAsyncPipelineReleaseResponse> PipelinePublicServiceTriggerAsyncPipelineReleaseAsync(
             string name1,
             string? instillRequesterUid = default,

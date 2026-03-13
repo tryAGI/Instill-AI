@@ -39,6 +39,9 @@ namespace Instill
         /// <param name="stop"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
+#if NET8_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
+#endif
         public async global::System.Threading.Tasks.Task<global::Instill.ListPipelineTriggerChartRecordsResponse> MgmtPublicServiceListPipelineTriggerChartRecordsAsync(
             string requesterId,
             string? aggregationWindow = default,

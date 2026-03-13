@@ -30,6 +30,9 @@ namespace Instill
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
+#if NET8_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
+#endif
         public async global::System.Threading.Tasks.Task<global::Instill.PatchAuthenticatedUserResponse> MgmtPublicServicePatchAuthenticatedUserAsync(
 
             global::Instill.AuthenticatedUser request,
@@ -274,6 +277,9 @@ namespace Instill
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
+#if NET8_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
+#endif
         public async global::System.Threading.Tasks.Task<global::Instill.PatchAuthenticatedUserResponse> MgmtPublicServicePatchAuthenticatedUserAsync(
             string email,
             bool newsletterSubscription,

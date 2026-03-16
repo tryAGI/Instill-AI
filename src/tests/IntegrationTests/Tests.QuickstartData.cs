@@ -6,99 +6,128 @@ namespace Instill.IntegrationTests;
 public partial class Tests
 {
     [TestMethod]
-    public async Task QuickstartData()
+    public async System.Threading.Tasks.Task QuickstartData()
     {
         using var client = GetAuthenticatedClient();
         using var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromMinutes(5));
         var cancellationToken = cancellationTokenSource.Token;
 
-        CreateCatalogResponse createCatalogResponse = await client.Artifact.CreateCatalogAsync(
-            namespaceId: "havendv",
-            name: $"shakespeare_{Random.Shared.Next(1_000_000)}",
-            description: "Works of Shakespeare",
-            cancellationToken: cancellationToken);
-        
-        var catalog = createCatalogResponse.Catalog;
-        Console.WriteLine($"CatalogId: {catalog.CatalogId}");
-        Console.WriteLine($"Name: {catalog.Name}");
-        Console.WriteLine($"Description: {catalog.Description}");
-        Console.WriteLine($"TotalFiles: {catalog.TotalFiles}");
-        Console.WriteLine($"TotalTokens: {catalog.TotalTokens}");
-        
-        catalog.Should().NotBeNull();
-        catalog.CatalogId.Should().NotBeNull();
-        
-        UploadCatalogFileResponse uploadFileResponse = await client.Artifact.UploadCatalogFileAsync(
-            namespaceId: "havendv",
-            catalogId: catalog.CatalogId,
-            name: "midsummer-nights-dream.pdf",
-            type: FileType.TypePdf,
-            content: Convert.ToBase64String(H.Resources.midsummer_nights_dream_pdf.AsBytes()),
-            cancellationToken: cancellationToken);
-        
-        var file = uploadFileResponse.File;
-        Console.WriteLine($"FileUid: {file.FileUid}");
-        Console.WriteLine($"Name: {file.Name}");
-        Console.WriteLine($"Type: {file.Type}");
-        Console.WriteLine($"Size: {file.Size}");
-        Console.WriteLine($"TotalTokens: {file.TotalTokens}");
-        Console.WriteLine($"TotalChunks: {file.TotalChunks}");
-        
-        file.Should().NotBeNull();
-        file.FileUid.Should().NotBeNull();
-        
-        ProcessCatalogFilesResponse processFilesResponse = await client.Artifact.ProcessCatalogFilesAsync(
-            fileUids: [file.FileUid],
-            cancellationToken: cancellationToken);
-        
-        processFilesResponse.Files[0].ProcessStatus.Should().Be(FileProcessStatus.Waiting);
+        const string namespaceName = "namespaces/havendv";
+        string? knowledgeBaseName = null;
+        string? fileName = null;
 
-        while (!cancellationToken.IsCancellationRequested)
+        try
         {
-            await Task.Delay(TimeSpan.FromSeconds(5), cancellationToken);
-            
-            ListCatalogFilesResponse listFilesResponse = await client.Artifact.ListCatalogFilesAsync(
-                namespaceId: "havendv",
-                catalogId: catalog.CatalogId,
+            CreateKnowledgeBaseResponse createKnowledgeBaseResponse = await client.Artifact.ArtifactPublicServiceCreateKnowledgeBaseAsync(
+                parent: namespaceName,
+                displayName: $"shakespeare-{Random.Shared.Next(1_000_000)}",
+                description: "Works of Shakespeare",
                 cancellationToken: cancellationToken);
 
-            if (listFilesResponse.Files[0].ProcessStatus is
-                    FileProcessStatus.Completed or
-                    FileProcessStatus.Failed)
+            var knowledgeBase = createKnowledgeBaseResponse.KnowledgeBase;
+            knowledgeBase.Should().NotBeNull();
+            knowledgeBase.Name.Should().NotBeNullOrEmpty();
+            knowledgeBaseName = knowledgeBase.Name!;
+
+            Console.WriteLine($"KnowledgeBaseName: {knowledgeBaseName}");
+            Console.WriteLine($"Id: {knowledgeBase.Id}");
+            Console.WriteLine($"DisplayName: {knowledgeBase.DisplayName}");
+            Console.WriteLine($"Description: {knowledgeBase.Description}");
+            Console.WriteLine($"TotalFiles: {knowledgeBase.TotalFiles}");
+            Console.WriteLine($"TotalTokens: {knowledgeBase.TotalTokens}");
+
+            CreateFileResponse createFileResponse = await client.Artifact.ArtifactPublicServiceCreateFileAsync(
+                parent: knowledgeBaseName,
+                displayName: "midsummer-nights-dream.pdf",
+                type: FileType.TypePdf,
+                content: Convert.ToBase64String(H.Resources.midsummer_nights_dream_pdf.AsBytes()),
+                cancellationToken: cancellationToken);
+
+            var file = createFileResponse.File;
+            file.Should().NotBeNull();
+            file.Name.Should().NotBeNullOrEmpty();
+            fileName = file.Name!;
+
+            Console.WriteLine($"FileName: {fileName}");
+            Console.WriteLine($"Id: {file.Id}");
+            Console.WriteLine($"DisplayName: {file.DisplayName}");
+            Console.WriteLine($"Type: {file.Type}");
+            Console.WriteLine($"ProcessStatus: {file.ProcessStatus}");
+            Console.WriteLine($"Size: {file.Size}");
+            Console.WriteLine($"TotalTokens: {file.TotalTokens}");
+            Console.WriteLine($"TotalChunks: {file.TotalChunks}");
+
+            while (!cancellationToken.IsCancellationRequested)
             {
-                break;
+                GetFileResponse getFileResponse = await client.Artifact.ArtifactPublicServiceGetFileAsync(
+                    fileName,
+                    cancellationToken: cancellationToken);
+
+                file = getFileResponse.File;
+                file.Should().NotBeNull();
+
+                Console.WriteLine($"PolledProcessStatus: {file.ProcessStatus}");
+                Console.WriteLine($"PolledProcessOutcome: {file.ProcessOutcome}");
+
+                if (file.ProcessStatus is FileProcessStatus.Completed or FileProcessStatus.Failed)
+                {
+                    break;
+                }
+
+                await System.Threading.Tasks.Task.Delay(TimeSpan.FromSeconds(5), cancellationToken);
+            }
+
+            if (file.ProcessStatus == FileProcessStatus.Failed)
+            {
+                Assert.Fail($"File processing failed: {file.ProcessOutcome}");
+            }
+
+            file.ProcessStatus.Should().Be(FileProcessStatus.Completed);
+            file.TotalChunks.Should().NotBeNull();
+            file.TotalChunks.Should().BeGreaterThan(0);
+
+            const string question = "Who are the main characters involved in the love triangle in Act I?";
+            Console.WriteLine($"Question: {question}");
+
+            SearchChunksResponse searchChunksResponse = await client.Artifact.ArtifactPublicServiceSearchChunksAsync(
+                parent: namespaceName,
+                knowledgeBase: knowledgeBaseName,
+                textPrompt: question,
+                topK: 5,
+                cancellationToken: cancellationToken);
+
+            searchChunksResponse.SimilarChunks.Should().NotBeNullOrEmpty();
+
+            Console.WriteLine("SimilarChunks:");
+
+            foreach (var chunk in searchChunksResponse.SimilarChunks ?? [])
+            {
+                Console.WriteLine($"  Chunk: {chunk.Chunk}");
+                Console.WriteLine($"  SimilarityScore: {chunk.SimilarityScore}");
+                Console.WriteLine($"  TextContent: {chunk.TextContent}");
+                Console.WriteLine($"  File: {chunk.File}");
+                Console.WriteLine("----------------------------------------");
             }
         }
-        
-        const string question = "Who are the main characters involved in the love triangle in Act I?";
-        Console.WriteLine($"Question: {question}");
-        
-        QuestionAnsweringResponse questionAnsweringResponse = await client.Artifact.QuestionAnsweringAsync(
-            namespaceId: "havendv",
-            catalogId: catalog.CatalogId,
-            question: question,
-            topK: 5,
-            cancellationToken: cancellationToken);
-        
-        Console.WriteLine($"Answer: {questionAnsweringResponse.Answer}");
-        // Answer: The main characters involved in the love triangle in Act I are Hermia, Lysander, and Demetrius.
-        
-        Console.WriteLine("SimilarChunks:");
-
-        foreach (var chunk in questionAnsweringResponse.SimilarChunks ?? [])
+        finally
         {
-            Console.WriteLine($"  ChunkUid: {chunk.ChunkUid}");
-            Console.WriteLine($"  SimilarityScore: {chunk.SimilarityScore}");
-            Console.WriteLine($"  TextContent: {chunk.TextContent}");
-            Console.WriteLine($"  SourceFile: {chunk.SourceFile}");
-            Console.WriteLine("----------------------------------------");
+            if (fileName is not null)
+            {
+                DeleteFileResponse deleteFileResponse = await client.Artifact.ArtifactPublicServiceDeleteFileAsync(
+                    fileName,
+                    cancellationToken: CancellationToken.None);
+
+                deleteFileResponse.Name.Should().Be(fileName);
+            }
+
+            if (knowledgeBaseName is not null)
+            {
+                DeleteKnowledgeBaseResponse deleteKnowledgeBaseResponse = await client.Artifact.ArtifactPublicServiceDeleteKnowledgeBaseAsync(
+                    knowledgeBaseName,
+                    cancellationToken: CancellationToken.None);
+
+                deleteKnowledgeBaseResponse.KnowledgeBase?.Name.Should().Be(knowledgeBaseName);
+            }
         }
-        
-        DeleteCatalogResponse deleteCatalogResponse = await client.Artifact.DeleteCatalogAsync(
-            namespaceId: "havendv",
-            catalogId: catalog.CatalogId,
-            cancellationToken: cancellationToken);
-        
-        deleteCatalogResponse.Catalog?.CatalogId.Should().Be(catalog.CatalogId);
     }
 }

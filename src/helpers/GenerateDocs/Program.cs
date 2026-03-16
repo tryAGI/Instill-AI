@@ -16,10 +16,22 @@ foreach (var path in Directory.EnumerateFiles(sampleDirectory, "Tests.*.cs", Sea
     var code = await File.ReadAllTextAsync(path);
 
     var start = code.IndexOf("\n    {", StringComparison.Ordinal);
-    var end = code.IndexOf("\n    }", StringComparison.Ordinal);
-    code = code.Substring(start + 4, end - start + 4);
-    
-    var lines = code.Split('\n')[1..^2];
+    var end = code.LastIndexOf("\n    }", StringComparison.Ordinal);
+    if (start < 0 || end <= start)
+    {
+        Console.WriteLine($"Skipping {path} because no sample body was found.");
+        continue;
+    }
+
+    code = code.Substring(start + 6, end - start - 6);
+
+    var lines = code
+        .Split('\n')
+        .SkipWhile(string.IsNullOrWhiteSpace)
+        .Reverse()
+        .SkipWhile(string.IsNullOrWhiteSpace)
+        .Reverse()
+        .ToArray();
     code = string.Join('\n', lines
         .Where(x => !x.Contains(".Should()"))
         .Select(x => x.Length > 8 ? x[8..] : string.Empty));
@@ -43,4 +55,3 @@ var newMkDocs = mkDocs.Replace(
     .Select(x => $@"
   - {Path.GetFileNameWithoutExtension(x)}: samples/{Path.GetFileNameWithoutExtension(x)}.md"))}");
 await File.WriteAllTextAsync(mkDocsPath, newMkDocs);
-

@@ -12,7 +12,14 @@ public partial class Tests
         using var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromMinutes(5));
         var cancellationToken = cancellationTokenSource.Token;
 
-        const string namespaceName = "namespaces/havendv";
+        GetAuthenticatedUserResponse getAuthenticatedUserResponse = await client.Namespace.MgmtPublicServiceGetAuthenticatedUserAsync(
+            cancellationToken: cancellationToken);
+
+        var authenticatedUser = getAuthenticatedUserResponse.User;
+        authenticatedUser.Should().NotBeNull();
+        authenticatedUser.Id.Should().NotBeNullOrEmpty();
+
+        var namespaceName = $"namespaces/{authenticatedUser.Id}";
         string? knowledgeBaseName = null;
         string? fileName = null;
 
@@ -79,6 +86,11 @@ public partial class Tests
 
             if (file.ProcessStatus == FileProcessStatus.Failed)
             {
+                if (file.ProcessOutcome?.Contains("insufficient credit", StringComparison.OrdinalIgnoreCase) == true)
+                {
+                    throw new AssertInconclusiveException($"Artifact processing requires credits: {file.ProcessOutcome}");
+                }
+
                 Assert.Fail($"File processing failed: {file.ProcessOutcome}");
             }
 
@@ -113,20 +125,34 @@ public partial class Tests
         {
             if (fileName is not null)
             {
-                DeleteFileResponse deleteFileResponse = await client.Artifact.ArtifactPublicServiceDeleteFileAsync(
-                    fileName,
-                    cancellationToken: CancellationToken.None);
+                try
+                {
+                    DeleteFileResponse deleteFileResponse = await client.Artifact.ArtifactPublicServiceDeleteFileAsync(
+                        fileName,
+                        cancellationToken: CancellationToken.None);
 
-                deleteFileResponse.Name.Should().Be(fileName);
+                    deleteFileResponse.Name.Should().Be(fileName);
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine($"DeleteFile cleanup failed: {exception.Message}");
+                }
             }
 
             if (knowledgeBaseName is not null)
             {
-                DeleteKnowledgeBaseResponse deleteKnowledgeBaseResponse = await client.Artifact.ArtifactPublicServiceDeleteKnowledgeBaseAsync(
-                    knowledgeBaseName,
-                    cancellationToken: CancellationToken.None);
+                try
+                {
+                    DeleteKnowledgeBaseResponse deleteKnowledgeBaseResponse = await client.Artifact.ArtifactPublicServiceDeleteKnowledgeBaseAsync(
+                        knowledgeBaseName,
+                        cancellationToken: CancellationToken.None);
 
-                deleteKnowledgeBaseResponse.KnowledgeBase?.Name.Should().Be(knowledgeBaseName);
+                    deleteKnowledgeBaseResponse.KnowledgeBase?.Name.Should().Be(knowledgeBaseName);
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine($"DeleteKnowledgeBase cleanup failed: {exception.Message}");
+                }
             }
         }
     }

@@ -6,8 +6,8 @@ public partial class Tests
     public static InstillClient GetAuthenticatedClient()
     {
         var apiKey =
-            Environment.GetEnvironmentVariable("API_KEY") ??
-            Environment.GetEnvironmentVariable("INSTILL_API_TOKEN") ??
+            GetNonEmptyEnvVar("API_KEY") ??
+            GetNonEmptyEnvVar("INSTILL_API_TOKEN") ??
             TryReadDotEnvVariable("API_KEY") ??
             TryReadDotEnvVariable("INSTILL_API_TOKEN") ??
             throw new AssertInconclusiveException("INSTILL_API_TOKEN environment variable is not found.");
@@ -15,6 +15,12 @@ public partial class Tests
         var client = new InstillClient(apiKey);
         
         return client;
+    }
+
+    private static string? GetNonEmptyEnvVar(string name)
+    {
+        var value = Environment.GetEnvironmentVariable(name);
+        return string.IsNullOrWhiteSpace(value) ? null : value;
     }
 
     private static string? TryReadDotEnvVariable(string key)

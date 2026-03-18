@@ -29,7 +29,6 @@ cd src/libs/Instill && ./generate.sh
 The SDK code is **entirely auto-generated** — do not manually edit files in `src/libs/Instill/Generated/`.
 
 1. `src/libs/Instill/openapi.yaml` — the Instill OpenAPI spec (fetched from `https://raw.githubusercontent.com/instill-ai/protobufs/refs/heads/main/openapi/v2/service.swagger.yaml`)
-2. `src/helpers/FixOpenApiSpec/` — converts OpenAPI 3.1 → 3.0 format for compatibility
 3. `src/libs/Instill/generate.sh` — orchestrates: download spec → fix spec → run AutoSDK CLI → output to `Generated/`
 4. CI auto-updates the spec every 3 hours and creates PRs if changes are detected
 
@@ -39,8 +38,6 @@ The SDK code is **entirely auto-generated** — do not manually edit files in `s
 |---------|---------|
 | `src/libs/Instill/` | Main SDK library (`InstillClient`) |
 | `src/tests/IntegrationTests/` | Integration tests against real Instill API |
-| `src/helpers/FixOpenApiSpec/` | OpenAPI spec fixer tool |
-| `src/helpers/GenerateDocs/` | Documentation generator from integration tests |
 
 ### Build Configuration
 

@@ -1,3 +1,9 @@
+/*
+order: 10
+title: Quickstart Data
+slug: quickstart-data
+*/
+
 namespace Instill.IntegrationTests;
 
 #pragma warning disable INSTILL_BETA_001

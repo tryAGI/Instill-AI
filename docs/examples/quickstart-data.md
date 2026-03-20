@@ -1,3 +1,9 @@
+# Quickstart Data
+
+
+
+This example assumes `using Instill;` is in scope and `apiKey` contains your Instill API key.
+
 ```csharp
 using var client = new InstillClient(apiKey);
 using var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromMinutes(5));

@@ -3,7 +3,10 @@ nav:
 - Overview: index.md
 # EXAMPLES:START
 - Examples:
-  - QuickstartData: samples/QuickstartData.md
+  - Quickstart Data: examples/quickstart-data.md
+  - Get Authenticated User: examples/get-authenticated-user.md
+  - List Pipelines: examples/list-pipelines.md
+  - List Models: examples/list-models.md
 # EXAMPLES:END
         
 theme:

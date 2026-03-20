@@ -4,6 +4,7 @@ namespace Instill
 {
     public partial interface IIntegrationClient
     {
+
         /// <summary>
         /// List integrations<br/>
         /// Returns a paginated list of available integrations.

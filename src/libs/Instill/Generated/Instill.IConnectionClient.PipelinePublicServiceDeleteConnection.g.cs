@@ -4,6 +4,7 @@ namespace Instill
 {
     public partial interface IConnectionClient
     {
+
         /// <summary>
         /// Delete a connection<br/>
         /// Deletes a connection.

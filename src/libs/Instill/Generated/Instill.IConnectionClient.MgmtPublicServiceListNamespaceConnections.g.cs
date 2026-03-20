@@ -4,6 +4,7 @@ namespace Instill
 {
     public partial interface IConnectionClient
     {
+
         /// <summary>
         /// List namespace connections<br/>
         /// Returns a paginated list of connections created by a namespace.

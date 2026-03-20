@@ -4,10 +4,12 @@ namespace Instill
 {
     public partial interface INamespaceClient
     {
+
         /// <summary>
         /// Create an API token<br/>
         /// Creates an API token for the authenticated user.
         /// </summary>
+
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>

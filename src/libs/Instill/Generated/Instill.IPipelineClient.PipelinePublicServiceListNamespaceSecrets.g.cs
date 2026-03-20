@@ -4,6 +4,7 @@ namespace Instill
 {
     public partial interface IPipelineClient
     {
+
         /// <summary>
         /// List secrets<br/>
         /// Returns a paginated list of secrets that belong to the specified<br/>

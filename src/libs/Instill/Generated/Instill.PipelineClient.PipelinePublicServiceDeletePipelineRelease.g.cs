@@ -21,6 +21,7 @@ namespace Instill
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
+
         /// <summary>
         /// Delete a pipeline release<br/>
         /// Deletes a pipeline release, where the pipeline is identified by its<br/>

@@ -4,6 +4,7 @@ namespace Instill
 {
     public partial interface IArtifactClient
     {
+
         /// <summary>
         /// List chunks<br/>
         /// Returns a paginated list of chunks.

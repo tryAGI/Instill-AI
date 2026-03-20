@@ -4,6 +4,7 @@ namespace Instill
 {
     public partial interface IPipelineClient
     {
+
         /// <summary>
         /// Validate a pipeline<br/>
         /// Validates a pipeline by its resource name, which is defined by the parent<br/>
@@ -12,6 +13,7 @@ namespace Instill
         /// components.
         /// </summary>
         /// <param name="name"></param>
+
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>

@@ -4,6 +4,7 @@ namespace Instill
 {
     public partial interface IPipelineClient
     {
+
         /// <summary>
         /// List the releases in a pipeline<br/>
         /// Lists the commited versions of a pipeline, identified by its resource<br/>

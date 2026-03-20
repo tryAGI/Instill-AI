@@ -4,6 +4,7 @@ namespace Instill
 {
     public partial interface IPipelineClient
     {
+
         /// <summary>
         /// List Pipeline Runs By Requester<br/>
         /// Returns a paginated list of runs for requested by a namespace. The<br/>

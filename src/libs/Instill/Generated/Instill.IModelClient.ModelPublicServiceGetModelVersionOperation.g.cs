@@ -4,6 +4,7 @@ namespace Instill
 {
     public partial interface IModelClient
     {
+
         /// <summary>
         /// Get the details of the long-running operation from a model version<br/>
         /// This method allows requesters to request the status and outcome of<br/>

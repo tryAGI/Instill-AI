@@ -21,6 +21,7 @@ namespace Instill
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
+
         /// <summary>
         /// Watch the state of the latest model version<br/>
         /// Returns the state of the latest model version. The model resource<br/>

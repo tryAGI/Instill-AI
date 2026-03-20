@@ -27,6 +27,7 @@ namespace Instill
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
+
         /// <summary>
         /// Get all knowledge bases info<br/>
         /// Returns a paginated list of knowledge bases.

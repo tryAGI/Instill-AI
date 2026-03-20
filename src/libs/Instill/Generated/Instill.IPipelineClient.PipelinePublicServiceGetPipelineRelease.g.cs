@@ -4,6 +4,7 @@ namespace Instill
 {
     public partial interface IPipelineClient
     {
+
         /// <summary>
         /// Get a pipeline release<br/>
         /// Gets the details of a pipeline release, where the pipeline is identified<br/>

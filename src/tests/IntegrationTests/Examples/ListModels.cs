@@ -18,8 +18,11 @@ public partial class Tests
     {
         using var client = GetAuthenticatedClient();
 
+        GetAuthenticatedUserResponse userResponse = await client.Namespace.MgmtPublicServiceGetAuthenticatedUserAsync();
+        var namespaceName = $"namespaces/{userResponse.User.Id}";
+
         ListModelsResponse response = await client.Model.ModelPublicServiceListModelsAsync(
-            parent: "users/me");
+            parent: namespaceName);
 
         response.Should().NotBeNull();
 

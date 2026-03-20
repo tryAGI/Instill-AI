@@ -18,8 +18,11 @@ public partial class Tests
     {
         using var client = GetAuthenticatedClient();
 
+        GetAuthenticatedUserResponse userResponse = await client.Namespace.MgmtPublicServiceGetAuthenticatedUserAsync();
+        var namespaceName = $"namespaces/{userResponse.User.Id}";
+
         ListPipelinesResponse response = await client.Pipeline.PipelinePublicServiceListPipelinesAsync(
-            parent: "users/me");
+            parent: namespaceName);
 
         response.Should().NotBeNull();
 

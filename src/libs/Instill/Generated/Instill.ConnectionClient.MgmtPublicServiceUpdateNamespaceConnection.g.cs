@@ -23,13 +23,11 @@ namespace Instill
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// Update a connection<br/>
         /// Updates a connection with the supplied connection fields.
         /// </summary>
         /// <param name="connectionName"></param>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
@@ -267,7 +265,6 @@ namespace Instill
                 }
             }
         }
-
         /// <summary>
         /// Update a connection<br/>
         /// Updates a connection with the supplied connection fields.

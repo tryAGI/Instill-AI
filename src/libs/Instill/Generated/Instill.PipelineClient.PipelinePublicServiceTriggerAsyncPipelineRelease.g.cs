@@ -25,7 +25,6 @@ namespace Instill
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// Trigger a pipeline release asynchronously<br/>
         /// Triggers the asynchronous execution of of a pipeline. While the trigger<br/>
@@ -37,7 +36,6 @@ namespace Instill
         /// </summary>
         /// <param name="name1"></param>
         /// <param name="instillRequesterUid"></param>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
@@ -284,7 +282,6 @@ namespace Instill
                 }
             }
         }
-
         /// <summary>
         /// Trigger a pipeline release asynchronously<br/>
         /// Triggers the asynchronous execution of of a pipeline. While the trigger<br/>

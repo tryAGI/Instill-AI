@@ -4,7 +4,6 @@ namespace Instill
 {
     public partial interface IPipelineClient
     {
-
         /// <summary>
         /// Delete a pipeline release<br/>
         /// Deletes a pipeline release, where the pipeline is identified by its<br/>

@@ -25,7 +25,6 @@ namespace Instill
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// Get Object Download URL<br/>
         /// Returns the download URL of an object.

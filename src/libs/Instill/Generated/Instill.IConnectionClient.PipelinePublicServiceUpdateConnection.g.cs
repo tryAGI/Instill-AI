@@ -4,13 +4,11 @@ namespace Instill
 {
     public partial interface IConnectionClient
     {
-
         /// <summary>
         /// Update a connection<br/>
         /// Updates a connection with the supplied connection fields.
         /// </summary>
         /// <param name="connectionName1"></param>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
@@ -22,7 +20,6 @@ namespace Instill
 
             global::Instill.PipelinePublicServiceUpdateConnectionRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Update a connection<br/>
         /// Updates a connection with the supplied connection fields.

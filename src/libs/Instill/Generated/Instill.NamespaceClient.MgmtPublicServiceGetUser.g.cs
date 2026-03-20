@@ -23,7 +23,6 @@ namespace Instill
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// Get a user<br/>
         /// Returns the details of a user by their ID.

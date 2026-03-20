@@ -4,7 +4,6 @@ namespace Instill
 {
     public partial interface IArtifactClient
     {
-
         /// <summary>
         /// Get all knowledge bases info<br/>
         /// Returns a paginated list of knowledge bases.

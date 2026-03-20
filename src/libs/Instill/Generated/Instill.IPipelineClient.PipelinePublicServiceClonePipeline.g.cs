@@ -4,14 +4,12 @@ namespace Instill
 {
     public partial interface IPipelineClient
     {
-
         /// <summary>
         /// Clone a pipeline<br/>
         /// Clones a pipeline owned by a namespace. The new pipeline may have a<br/>
         /// different parent, and this can be either a namespace or an organization.
         /// </summary>
         /// <param name="name"></param>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
@@ -23,7 +21,6 @@ namespace Instill
 
             global::Instill.ClonePipelineBody request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Clone a pipeline<br/>
         /// Clones a pipeline owned by a namespace. The new pipeline may have a<br/>

@@ -33,7 +33,6 @@ namespace Instill
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// List Model Runs By Requester<br/>
         /// Returns a paginated list of runs requested by a namespace. The response<br/>

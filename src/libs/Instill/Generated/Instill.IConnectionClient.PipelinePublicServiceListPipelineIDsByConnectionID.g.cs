@@ -4,7 +4,6 @@ namespace Instill
 {
     public partial interface IConnectionClient
     {
-
         /// <summary>
         /// List pipelines that reference a connection<br/>
         /// Returns a paginated list with the IDs of the pipelines that reference a<br/>

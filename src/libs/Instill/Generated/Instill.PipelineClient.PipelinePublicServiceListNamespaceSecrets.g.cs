@@ -25,7 +25,6 @@ namespace Instill
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// List secrets<br/>
         /// Returns a paginated list of secrets that belong to the specified<br/>

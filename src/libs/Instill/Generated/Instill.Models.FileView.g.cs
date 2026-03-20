@@ -15,7 +15,8 @@ namespace Instill
     /// - Audio → OGG<br/>
     /// - Video → MP4<br/>
     ///  - VIEW_ORIGINAL_FILE_TYPE: Returns MinIO pre-signed URL to the original uploaded file.<br/>
-    ///  - VIEW_CACHE: Returns Gemini cache resource name.
+    ///  - VIEW_CACHE: Returns Gemini cache resource name.<br/>
+    ///  - VIEW_PATCH: Returns MinIO pre-signed URL to patch.md (user-submitted content patches).
     /// </summary>
     public enum FileView
     {
@@ -47,6 +48,10 @@ namespace Instill
         /// Returns Gemini cache resource name.
         /// </summary>
         ViewCache,
+        /// <summary>
+        /// Returns MinIO pre-signed URL to patch.md (user-submitted content patches).
+        /// </summary>
+        ViewPatch,
     }
 
     /// <summary>
@@ -68,6 +73,7 @@ namespace Instill
                 FileView.ViewStandardFileType => "VIEW_STANDARD_FILE_TYPE",
                 FileView.ViewOriginalFileType => "VIEW_ORIGINAL_FILE_TYPE",
                 FileView.ViewCache => "VIEW_CACHE",
+                FileView.ViewPatch => "VIEW_PATCH",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -85,6 +91,7 @@ namespace Instill
                 "VIEW_STANDARD_FILE_TYPE" => FileView.ViewStandardFileType,
                 "VIEW_ORIGINAL_FILE_TYPE" => FileView.ViewOriginalFileType,
                 "VIEW_CACHE" => FileView.ViewCache,
+                "VIEW_PATCH" => FileView.ViewPatch,
                 _ => null,
             };
         }

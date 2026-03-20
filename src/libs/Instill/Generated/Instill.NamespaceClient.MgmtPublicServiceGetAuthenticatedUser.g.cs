@@ -19,7 +19,6 @@ namespace Instill
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// Get the authenticated user<br/>
         /// Returns the details of the authenticated user.

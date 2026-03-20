@@ -35,7 +35,6 @@ namespace Instill
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// List namespace pipelines<br/>
         /// Returns a paginated list of pipelines of a namespace

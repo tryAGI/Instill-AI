@@ -4,13 +4,11 @@ namespace Instill
 {
     public partial interface IArtifactClient
     {
-
         /// <summary>
         /// Create a file<br/>
         /// Uploads and converts a file.
         /// </summary>
         /// <param name="parent"></param>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
@@ -22,7 +20,6 @@ namespace Instill
 
             global::Instill.File request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Create a file<br/>
         /// Uploads and converts a file.

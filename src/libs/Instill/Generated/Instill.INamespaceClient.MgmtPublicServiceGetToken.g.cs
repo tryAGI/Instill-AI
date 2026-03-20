@@ -4,7 +4,6 @@ namespace Instill
 {
     public partial interface INamespaceClient
     {
-
         /// <summary>
         /// Get an API token<br/>
         /// Returns the details of an API token.

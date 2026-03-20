@@ -4,7 +4,6 @@ namespace Instill
 {
     public partial interface IModelClient
     {
-
         /// <summary>
         /// Trigger model inference<br/>
         /// Triggers a deployed model to infer the result of a set of task or<br/>
@@ -12,7 +11,6 @@ namespace Instill
         /// </summary>
         /// <param name="name"></param>
         /// <param name="instillRequesterUid"></param>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
@@ -25,7 +23,6 @@ namespace Instill
             global::Instill.TriggerModelVersionBody request,
             string? instillRequesterUid = default,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Trigger model inference<br/>
         /// Triggers a deployed model to infer the result of a set of task or<br/>

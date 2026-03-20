@@ -23,14 +23,12 @@ namespace Instill
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// Clone a pipeline release<br/>
         /// Clones a pipeline release owned by a namespace. The new pipeline may have a<br/>
         /// different parent, and this can be either a namespace or an organization.
         /// </summary>
         /// <param name="name1"></param>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
@@ -264,7 +262,6 @@ namespace Instill
                 }
             }
         }
-
         /// <summary>
         /// Clone a pipeline release<br/>
         /// Clones a pipeline release owned by a namespace. The new pipeline may have a<br/>

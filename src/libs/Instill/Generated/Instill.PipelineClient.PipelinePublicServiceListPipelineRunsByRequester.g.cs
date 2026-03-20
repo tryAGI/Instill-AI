@@ -33,7 +33,6 @@ namespace Instill
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// List Pipeline Runs By Requester<br/>
         /// Returns a paginated list of runs for requested by a namespace. The<br/>

@@ -4,6 +4,7 @@ namespace Instill
 {
     public partial interface IPipelineClient
     {
+
         /// <summary>
         /// Create a pipeline release<br/>
         /// Commits the version of a pipeline, identified by its resource name, which<br/>
@@ -12,6 +13,7 @@ namespace Instill
         /// perform this action.
         /// </summary>
         /// <param name="parent"></param>
+
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>

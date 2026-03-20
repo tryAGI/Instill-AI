@@ -4,6 +4,7 @@ namespace Instill
 {
     public partial interface IPipelineClient
     {
+
         /// <summary>
         /// List namespace pipelines<br/>
         /// Returns a paginated list of pipelines of a namespace

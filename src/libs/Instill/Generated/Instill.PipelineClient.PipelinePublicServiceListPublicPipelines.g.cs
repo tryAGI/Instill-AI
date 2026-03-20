@@ -33,6 +33,7 @@ namespace Instill
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
+
         /// <summary>
         /// List accessible pipelines<br/>
         /// Returns a paginated list of pipelines that are visible to the requester.

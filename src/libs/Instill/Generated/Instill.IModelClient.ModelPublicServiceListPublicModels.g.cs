@@ -4,6 +4,7 @@ namespace Instill
 {
     public partial interface IModelClient
     {
+
         /// <summary>
         /// List public models<br/>
         /// Returns a paginated list of public models.

@@ -4,6 +4,7 @@ namespace Instill
 {
     public partial interface IArtifactClient
     {
+
         /// <summary>
         /// Get Object Upload URL<br/>
         /// Returns the upload URL of an object.

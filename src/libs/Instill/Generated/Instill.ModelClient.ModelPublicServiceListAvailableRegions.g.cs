@@ -19,6 +19,7 @@ namespace Instill
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
+
         /// <summary>
         /// List available regions<br/>
         /// Returns a paginated list of available regions.

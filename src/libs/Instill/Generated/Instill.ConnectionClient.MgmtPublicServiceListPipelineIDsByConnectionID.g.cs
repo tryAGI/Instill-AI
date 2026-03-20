@@ -29,6 +29,7 @@ namespace Instill
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
+
         /// <summary>
         /// List pipelines that reference a connection<br/>
         /// Returns a paginated list with the IDs of the pipelines that reference a<br/>

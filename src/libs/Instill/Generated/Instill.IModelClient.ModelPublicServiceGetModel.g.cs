@@ -4,6 +4,7 @@ namespace Instill
 {
     public partial interface IModelClient
     {
+
         /// <summary>
         /// Get a model<br/>
         /// Returns the detail of a model, accessing it by the model ID and its parent<br/>

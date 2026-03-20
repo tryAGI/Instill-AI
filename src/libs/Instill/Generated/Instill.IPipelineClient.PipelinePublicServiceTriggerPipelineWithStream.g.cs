@@ -4,6 +4,7 @@ namespace Instill
 {
     public partial interface IPipelineClient
     {
+
         /// <summary>
         /// Trigger a pipeline via streaming<br/>
         /// Triggers the execution of a pipeline asynchronously and streams back the<br/>
@@ -14,6 +15,7 @@ namespace Instill
         /// </summary>
         /// <param name="name"></param>
         /// <param name="instillRequesterUid"></param>
+
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>

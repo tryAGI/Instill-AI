@@ -23,6 +23,7 @@ namespace Instill
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
+
         /// <summary>
         /// Get the details of the long-running operation from a model version<br/>
         /// This method allows requesters to request the status and outcome of<br/>

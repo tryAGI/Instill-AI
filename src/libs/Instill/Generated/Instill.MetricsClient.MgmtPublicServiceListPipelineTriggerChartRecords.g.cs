@@ -27,6 +27,7 @@ namespace Instill
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
+
         /// <summary>
         /// List pipeline trigger time charts<br/>
         /// Returns a timeline of pipeline trigger counts for a given requester. The<br/>

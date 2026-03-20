@@ -4,6 +4,7 @@ namespace Instill
 {
     public partial interface IArtifactClient
     {
+
         /// <summary>
         /// Get a chunk<br/>
         /// Returns the details of a chunk.

@@ -4,6 +4,7 @@ namespace Instill
 {
     public partial interface IModelClient
     {
+
         /// <summary>
         /// Watch the state of the latest model version<br/>
         /// Returns the state of the latest model version. The model resource<br/>

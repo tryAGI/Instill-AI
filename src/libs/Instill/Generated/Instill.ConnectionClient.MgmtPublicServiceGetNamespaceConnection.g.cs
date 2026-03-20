@@ -23,6 +23,7 @@ namespace Instill
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
+
         /// <summary>
         /// Get a namespace connection<br/>
         /// Returns the details of a connection.

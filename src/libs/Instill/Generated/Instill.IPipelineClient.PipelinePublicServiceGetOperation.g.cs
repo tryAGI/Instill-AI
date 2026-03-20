@@ -4,6 +4,7 @@ namespace Instill
 {
     public partial interface IPipelineClient
     {
+
         /// <summary>
         /// Get the details of a long-running operation<br/>
         /// This method allows requesters to request the status and outcome of<br/>

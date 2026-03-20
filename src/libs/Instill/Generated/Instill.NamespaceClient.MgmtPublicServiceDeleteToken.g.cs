@@ -21,6 +21,7 @@ namespace Instill
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
+
         /// <summary>
         /// Delete an API token<br/>
         /// Deletes an API token.

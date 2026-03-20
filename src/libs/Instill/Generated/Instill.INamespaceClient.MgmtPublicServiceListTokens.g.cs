@@ -4,6 +4,7 @@ namespace Instill
 {
     public partial interface INamespaceClient
     {
+
         /// <summary>
         /// List API tokens<br/>
         /// Returns a paginated list of the API tokens of the authenticated user.

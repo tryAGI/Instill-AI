@@ -18,7 +18,8 @@ public partial class Tests
     {
         using var client = GetAuthenticatedClient();
 
-        ListPipelinesResponse response = await client.Pipeline.PipelinePublicServiceListPipelinesAsync();
+        ListPipelinesResponse response = await client.Pipeline.PipelinePublicServiceListPipelinesAsync(
+            parent: "users/me");
 
         response.Should().NotBeNull();
 

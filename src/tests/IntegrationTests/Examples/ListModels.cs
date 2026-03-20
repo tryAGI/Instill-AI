@@ -18,7 +18,8 @@ public partial class Tests
     {
         using var client = GetAuthenticatedClient();
 
-        ListModelsResponse response = await client.Model.ModelPublicServiceListModelsAsync();
+        ListModelsResponse response = await client.Model.ModelPublicServiceListModelsAsync(
+            parent: "users/me");
 
         response.Should().NotBeNull();
 

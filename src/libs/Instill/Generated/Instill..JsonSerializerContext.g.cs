@@ -17,10 +17,6 @@ namespace Instill
 
             typeof(global::Instill.JsonConverters.ApiTokenStateNullableJsonConverter),
 
-            typeof(global::Instill.JsonConverters.OnboardingStatusJsonConverter),
-
-            typeof(global::Instill.JsonConverters.OnboardingStatusNullableJsonConverter),
-
             typeof(global::Instill.JsonConverters.CheckNamespaceResponseNamespaceJsonConverter),
 
             typeof(global::Instill.JsonConverters.CheckNamespaceResponseNamespaceNullableJsonConverter),
@@ -28,18 +24,6 @@ namespace Instill
             typeof(global::Instill.JsonConverters.ChunkTypeJsonConverter),
 
             typeof(global::Instill.JsonConverters.ChunkTypeNullableJsonConverter),
-
-            typeof(global::Instill.JsonConverters.UnitJsonConverter),
-
-            typeof(global::Instill.JsonConverters.UnitNullableJsonConverter),
-
-            typeof(global::Instill.JsonConverters.RoleJsonConverter),
-
-            typeof(global::Instill.JsonConverters.RoleNullableJsonConverter),
-
-            typeof(global::Instill.JsonConverters.ComponentTypeJsonConverter),
-
-            typeof(global::Instill.JsonConverters.ComponentTypeNullableJsonConverter),
 
             typeof(global::Instill.JsonConverters.ComponentDefinitionReleaseStageJsonConverter),
 
@@ -49,49 +33,13 @@ namespace Instill
 
             typeof(global::Instill.JsonConverters.ComponentDefinitionViewNullableJsonConverter),
 
-            typeof(global::Instill.JsonConverters.RunStatusJsonConverter),
+            typeof(global::Instill.JsonConverters.ComponentTypeJsonConverter),
 
-            typeof(global::Instill.JsonConverters.RunStatusNullableJsonConverter),
-
-            typeof(global::Instill.JsonConverters.PipelineV1betaConnectionMethodJsonConverter),
-
-            typeof(global::Instill.JsonConverters.PipelineV1betaConnectionMethodNullableJsonConverter),
-
-            typeof(global::Instill.JsonConverters.PipelineV1betaViewJsonConverter),
-
-            typeof(global::Instill.JsonConverters.PipelineV1betaViewNullableJsonConverter),
+            typeof(global::Instill.JsonConverters.ComponentTypeNullableJsonConverter),
 
             typeof(global::Instill.JsonConverters.FileTypeJsonConverter),
 
             typeof(global::Instill.JsonConverters.FileTypeNullableJsonConverter),
-
-            typeof(global::Instill.JsonConverters.FileProcessStatusJsonConverter),
-
-            typeof(global::Instill.JsonConverters.FileProcessStatusNullableJsonConverter),
-
-            typeof(global::Instill.JsonConverters.KnowledgeBaseTypeJsonConverter),
-
-            typeof(global::Instill.JsonConverters.KnowledgeBaseTypeNullableJsonConverter),
-
-            typeof(global::Instill.JsonConverters.TaskJsonConverter),
-
-            typeof(global::Instill.JsonConverters.TaskNullableJsonConverter),
-
-            typeof(global::Instill.JsonConverters.ModelVisibilityJsonConverter),
-
-            typeof(global::Instill.JsonConverters.ModelVisibilityNullableJsonConverter),
-
-            typeof(global::Instill.JsonConverters.MgmtV1betaConnectionMethodJsonConverter),
-
-            typeof(global::Instill.JsonConverters.MgmtV1betaConnectionMethodNullableJsonConverter),
-
-            typeof(global::Instill.JsonConverters.MgmtV1betaViewJsonConverter),
-
-            typeof(global::Instill.JsonConverters.MgmtV1betaViewNullableJsonConverter),
-
-            typeof(global::Instill.JsonConverters.PipelineVisibilityJsonConverter),
-
-            typeof(global::Instill.JsonConverters.PipelineVisibilityNullableJsonConverter),
 
             typeof(global::Instill.JsonConverters.FileViewJsonConverter),
 
@@ -101,29 +49,81 @@ namespace Instill
 
             typeof(global::Instill.JsonConverters.FileMediaTypeNullableJsonConverter),
 
-            typeof(global::Instill.JsonConverters.V1alphaReleaseStageJsonConverter),
+            typeof(global::Instill.JsonConverters.FileProcessStatusJsonConverter),
 
-            typeof(global::Instill.JsonConverters.V1alphaReleaseStageNullableJsonConverter),
+            typeof(global::Instill.JsonConverters.FileProcessStatusNullableJsonConverter),
 
-            typeof(global::Instill.JsonConverters.RunSourceJsonConverter),
+            typeof(global::Instill.JsonConverters.KnowledgeBaseTypeJsonConverter),
 
-            typeof(global::Instill.JsonConverters.RunSourceNullableJsonConverter),
+            typeof(global::Instill.JsonConverters.KnowledgeBaseTypeNullableJsonConverter),
 
-            typeof(global::Instill.JsonConverters.V1alphaStateJsonConverter),
+            typeof(global::Instill.JsonConverters.ModelVisibilityJsonConverter),
 
-            typeof(global::Instill.JsonConverters.V1alphaStateNullableJsonConverter),
+            typeof(global::Instill.JsonConverters.ModelVisibilityNullableJsonConverter),
+
+            typeof(global::Instill.JsonConverters.OnboardingStatusJsonConverter),
+
+            typeof(global::Instill.JsonConverters.OnboardingStatusNullableJsonConverter),
 
             typeof(global::Instill.JsonConverters.PipelineViewJsonConverter),
 
             typeof(global::Instill.JsonConverters.PipelineViewNullableJsonConverter),
 
+            typeof(global::Instill.JsonConverters.PipelineVisibilityJsonConverter),
+
+            typeof(global::Instill.JsonConverters.PipelineVisibilityNullableJsonConverter),
+
+            typeof(global::Instill.JsonConverters.RoleJsonConverter),
+
+            typeof(global::Instill.JsonConverters.RoleNullableJsonConverter),
+
+            typeof(global::Instill.JsonConverters.RunSourceJsonConverter),
+
+            typeof(global::Instill.JsonConverters.RunSourceNullableJsonConverter),
+
+            typeof(global::Instill.JsonConverters.RunStatusJsonConverter),
+
+            typeof(global::Instill.JsonConverters.RunStatusNullableJsonConverter),
+
             typeof(global::Instill.JsonConverters.StorageProviderJsonConverter),
 
             typeof(global::Instill.JsonConverters.StorageProviderNullableJsonConverter),
 
+            typeof(global::Instill.JsonConverters.TaskJsonConverter),
+
+            typeof(global::Instill.JsonConverters.TaskNullableJsonConverter),
+
             typeof(global::Instill.JsonConverters.TraceStatusJsonConverter),
 
             typeof(global::Instill.JsonConverters.TraceStatusNullableJsonConverter),
+
+            typeof(global::Instill.JsonConverters.UnitJsonConverter),
+
+            typeof(global::Instill.JsonConverters.UnitNullableJsonConverter),
+
+            typeof(global::Instill.JsonConverters.MgmtV1betaConnectionMethodJsonConverter),
+
+            typeof(global::Instill.JsonConverters.MgmtV1betaConnectionMethodNullableJsonConverter),
+
+            typeof(global::Instill.JsonConverters.MgmtV1betaViewJsonConverter),
+
+            typeof(global::Instill.JsonConverters.MgmtV1betaViewNullableJsonConverter),
+
+            typeof(global::Instill.JsonConverters.PipelineV1betaConnectionMethodJsonConverter),
+
+            typeof(global::Instill.JsonConverters.PipelineV1betaConnectionMethodNullableJsonConverter),
+
+            typeof(global::Instill.JsonConverters.PipelineV1betaViewJsonConverter),
+
+            typeof(global::Instill.JsonConverters.PipelineV1betaViewNullableJsonConverter),
+
+            typeof(global::Instill.JsonConverters.V1alphaReleaseStageJsonConverter),
+
+            typeof(global::Instill.JsonConverters.V1alphaReleaseStageNullableJsonConverter),
+
+            typeof(global::Instill.JsonConverters.V1alphaStateJsonConverter),
+
+            typeof(global::Instill.JsonConverters.V1alphaStateNullableJsonConverter),
 
             typeof(global::Instill.JsonConverters.V1alphaViewJsonConverter),
 
@@ -252,7 +252,6 @@ namespace Instill
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.OnboardingStatus))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.UserProfile))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.CheckNamespaceRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.CheckNamespaceResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.CheckNamespaceResponseNamespace))]
@@ -260,23 +259,11 @@ namespace Instill
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(long))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ChunkType))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.Reference))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.Position))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.Unit))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<long>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ClonePipelineBody))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.Sharing))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::Instill.SharingUser>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.SharingUser))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.Role))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ShareCode))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ClonePipelineReleaseBody))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ComponentDefinition))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.Spec))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::Instill.DataSpecification>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.DataSpecification))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::Instill.EventSpecification>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.EventSpecification))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<object>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ComponentType))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Instill.ComponentTask>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ComponentTask))]
@@ -288,52 +275,39 @@ namespace Instill
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.RunStatus))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Instill.FileReference>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.FileReference))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<object>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(float))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.CreateConnectionResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.PipelineV1betaConnection))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.PipelineV1betaConnectionMethod))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.PipelineV1betaView))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.CreateFileResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.File))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.FileType))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.FileProcessStatus))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.Owner))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.V1betaUser))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.Organization))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.OrganizationProfile))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.MgmtV1betaPermission))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.OrganizationStats))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.CreateKnowledgeBaseResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.KnowledgeBase))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.KnowledgeBaseType))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.EmbeddingConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.CreateModelResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.Model))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.Task))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ModelVisibility))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.V1alphaPermission))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ModelStats))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.CreateNamespaceConnectionResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.MgmtV1betaConnection))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.MgmtV1betaConnectionMethod))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.MgmtV1betaView))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.CreateNamespaceSecretResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.Secret))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.CreatePipelineReleaseResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.PipelineRelease))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.CreatePipelineResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.Pipeline))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.CreateTokenResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.DataSpecification))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.DeleteFileResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.DeleteKnowledgeBaseResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.EmbeddingConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.Endpoints))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::Instill.WebhookEndpoint>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.WebhookEndpoint))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.CreatePipelineResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.Pipeline))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.PipelineVisibility))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.PipelineV1betaPermission))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.PipelineStats))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Instill.PipelineRelease>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.CreateTokenResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.DeleteFileResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.DeleteKnowledgeBaseResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ErrPipelineValidation))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.EventSpecification))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.FileType))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.FileProcessStatus))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.Owner))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.V1betaUser))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.Position))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.FileView))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.FileMediaType))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.GetAuthenticatedUserResponse))]
@@ -343,11 +317,8 @@ namespace Instill
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.GetKnowledgeBaseResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.GetModelDefinitionResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ModelDefinition))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.V1alphaReleaseStage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.GetModelOperationResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.LongrunningOperation))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.RpcStatus))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Instill.Any>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.GetModelResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.GetModelVersionOperationResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.GetNamespaceConnectionResponse))]
@@ -361,10 +332,10 @@ namespace Instill
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.GetTokenResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.GetUserResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.Hardware))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.KnowledgeBaseType))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ListAvailableRegionsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Instill.Region>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.Region))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Instill.Hardware>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ListChunksResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Instill.Chunk>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ListComponentDefinitionsResponse))]
@@ -382,17 +353,13 @@ namespace Instill
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ListModelRunsByRequesterResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Instill.ModelRun>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ModelRun))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.RunSource))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ListModelRunsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ListModelTriggerChartRecordsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Instill.ModelTriggerChartRecord>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ModelTriggerChartRecord))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::System.DateTime>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<int>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ListModelVersionsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Instill.ModelVersion>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ModelVersion))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.V1alphaState))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ListModelsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Instill.Model>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ListNamespaceConnectionsResponse))]
@@ -400,6 +367,7 @@ namespace Instill
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ListNamespaceSecretsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Instill.Secret>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ListPipelineReleasesResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Instill.PipelineRelease>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ListPipelineRunsByRequesterResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Instill.PipelineRun>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.PipelineRun))]
@@ -415,17 +383,43 @@ namespace Instill
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Instill.ApiToken>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ListUsersResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Instill.V1betaUser>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.Task))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ModelVisibility))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.V1alphaPermission))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ModelStats))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.V1alphaReleaseStage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.RunSource))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::System.DateTime>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<int>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.V1alphaState))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.Organization))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.OrganizationProfile))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.MgmtV1betaPermission))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.OrganizationStats))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.PatchAuthenticatedUserResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.PipelineVisibility))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.PipelineV1betaPermission))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.PipelineStats))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.PipelineView))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.Unit))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<long>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Instill.Hardware>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.RenameModelBody))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.RenameModelResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.RenamePipelineBody))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.RenamePipelineResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ReprocessFileResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.Role))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.SearchChunksBody))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.SearchChunksResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Instill.SimilarityChunk>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.SimilarityChunk))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ShareCode))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::Instill.SharingUser>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.SharingUser))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::Instill.DataSpecification>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::Instill.EventSpecification>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.StorageProvider))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.Trace))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Instill.TraceStatus>))]
@@ -470,6 +464,9 @@ namespace Instill
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ValidateTokenResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.WatchModelResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.WatchModelVersionResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.RpcStatus))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.MgmtV1betaConnectionMethod))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.MgmtV1betaView))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.MgmtV1betaGetIntegrationResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.MgmtV1betaIntegration))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.MgmtV1betaIntegrationLink))]
@@ -477,6 +474,8 @@ namespace Instill
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.MgmtV1betaListIntegrationsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Instill.MgmtV1betaIntegration>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.MgmtV1betaListPipelineIDsByConnectionIDResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.PipelineV1betaConnectionMethod))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.PipelineV1betaView))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.PipelineV1betaGetIntegrationResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.PipelineV1betaIntegration))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.PipelineV1betaIntegrationLink))]
@@ -484,6 +483,7 @@ namespace Instill
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.PipelineV1betaListIntegrationsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Instill.PipelineV1betaIntegration>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.PipelineV1betaListPipelineIDsByConnectionIDResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Instill.Any>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.V1alphaGetOperationResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.V1alphaView))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.V1betaGetOperationResponse))]
@@ -524,15 +524,11 @@ namespace Instill
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.PipelinePublicServiceGetConnectionView))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.PipelinePublicServiceTriggerPipelineWithStreamResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<long>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.ComponentTask>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.ComponentEvent>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.FileReference>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.PipelineRelease>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.Any>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.Region>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.Hardware>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.Chunk>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.ComponentDefinition>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.ComponentRun>))]
@@ -542,23 +538,27 @@ namespace Instill
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.ModelDefinition>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.ModelRun>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.ModelTriggerChartRecord>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::System.DateTime>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<int>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.ModelVersion>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.Model>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.MgmtV1betaConnection>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.Secret>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.PipelineRelease>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.PipelineRun>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.PipelineTriggerChartRecord>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.Pipeline>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.ApiToken>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.V1betaUser>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::System.DateTime>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<int>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<long>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.Hardware>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.SimilarityChunk>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.TraceStatus>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.TriggerData>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.ErrPipelineValidation>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.MgmtV1betaIntegration>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.PipelineV1betaIntegration>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Instill.Any>))]
     public sealed partial class SourceGenerationContext : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }

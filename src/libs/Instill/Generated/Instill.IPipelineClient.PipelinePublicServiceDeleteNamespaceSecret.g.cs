@@ -4,7 +4,6 @@ namespace Instill
 {
     public partial interface IPipelineClient
     {
-
         /// <summary>
         /// Delete a secret<br/>
         /// Deletes a secret, accesing it by its resource name, which is defined by<br/>

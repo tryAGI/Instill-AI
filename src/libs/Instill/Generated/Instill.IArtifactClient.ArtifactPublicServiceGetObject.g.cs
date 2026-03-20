@@ -4,7 +4,6 @@ namespace Instill
 {
     public partial interface IArtifactClient
     {
-
         /// <summary>
         /// Get Object<br/>
         /// Returns the details of an object.

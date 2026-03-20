@@ -21,12 +21,10 @@ namespace Instill
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// Create an API token<br/>
         /// Creates an API token for the authenticated user.
         /// </summary>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
@@ -261,7 +259,6 @@ namespace Instill
                 }
             }
         }
-
         /// <summary>
         /// Create an API token<br/>
         /// Creates an API token for the authenticated user.

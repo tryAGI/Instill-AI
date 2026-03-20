@@ -25,7 +25,6 @@ namespace Instill
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// Trigger model inference asynchronously<br/>
         /// Triggers the latest deployed model version to infer the result of a set of<br/>
@@ -33,7 +32,6 @@ namespace Instill
         /// </summary>
         /// <param name="name1"></param>
         /// <param name="instillRequesterUid"></param>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
@@ -280,7 +278,6 @@ namespace Instill
                 }
             }
         }
-
         /// <summary>
         /// Trigger model inference asynchronously<br/>
         /// Triggers the latest deployed model version to infer the result of a set of<br/>

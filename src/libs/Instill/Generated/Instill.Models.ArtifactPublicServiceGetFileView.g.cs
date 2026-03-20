@@ -36,6 +36,10 @@ namespace Instill
         /// Returns Gemini cache resource name.
         /// </summary>
         ViewCache,
+        /// <summary>
+        /// Returns MinIO pre-signed URL to patch.md (user-submitted content patches).
+        /// </summary>
+        ViewPatch,
     }
 
     /// <summary>
@@ -57,6 +61,7 @@ namespace Instill
                 ArtifactPublicServiceGetFileView.ViewStandardFileType => "VIEW_STANDARD_FILE_TYPE",
                 ArtifactPublicServiceGetFileView.ViewOriginalFileType => "VIEW_ORIGINAL_FILE_TYPE",
                 ArtifactPublicServiceGetFileView.ViewCache => "VIEW_CACHE",
+                ArtifactPublicServiceGetFileView.ViewPatch => "VIEW_PATCH",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -74,6 +79,7 @@ namespace Instill
                 "VIEW_STANDARD_FILE_TYPE" => ArtifactPublicServiceGetFileView.ViewStandardFileType,
                 "VIEW_ORIGINAL_FILE_TYPE" => ArtifactPublicServiceGetFileView.ViewOriginalFileType,
                 "VIEW_CACHE" => ArtifactPublicServiceGetFileView.ViewCache,
+                "VIEW_PATCH" => ArtifactPublicServiceGetFileView.ViewPatch,
                 _ => null,
             };
         }

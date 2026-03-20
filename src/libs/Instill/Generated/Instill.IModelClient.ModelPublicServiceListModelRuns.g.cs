@@ -4,7 +4,6 @@ namespace Instill
 {
     public partial interface IModelClient
     {
-
         /// <summary>
         /// List Model Runs<br/>
         /// Returns a paginated list of runs for a given model. When the requester is<br/>

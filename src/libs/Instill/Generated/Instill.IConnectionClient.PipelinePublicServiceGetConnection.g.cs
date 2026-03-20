@@ -4,7 +4,6 @@ namespace Instill
 {
     public partial interface IConnectionClient
     {
-
         /// <summary>
         /// Get a connection<br/>
         /// Returns the details of a connection.

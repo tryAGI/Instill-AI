@@ -4,7 +4,6 @@ namespace Instill
 {
     public partial interface IArtifactClient
     {
-
         /// <summary>
         /// List files<br/>
         /// Returns a paginated list of files.

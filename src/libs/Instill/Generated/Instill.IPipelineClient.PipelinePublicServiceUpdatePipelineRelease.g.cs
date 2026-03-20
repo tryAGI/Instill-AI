@@ -4,7 +4,6 @@ namespace Instill
 {
     public partial interface IPipelineClient
     {
-
         /// <summary>
         /// Update a pipeline release<br/>
         /// Updates the details of a pipeline release, where the pipeline is<br/>
@@ -13,7 +12,6 @@ namespace Instill
         /// perform this action.
         /// </summary>
         /// <param name="releaseName"></param>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
@@ -25,7 +23,6 @@ namespace Instill
 
             global::Instill.PipelinePublicServiceUpdatePipelineReleaseRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Update a pipeline release<br/>
         /// Updates the details of a pipeline release, where the pipeline is<br/>

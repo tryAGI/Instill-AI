@@ -23,7 +23,6 @@ namespace Instill
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// Create a new model<br/>
         /// Creates a new model under the parenthood of a namespace. This is an<br/>
@@ -33,7 +32,6 @@ namespace Instill
         /// operation.
         /// </summary>
         /// <param name="parent"></param>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
@@ -271,7 +269,6 @@ namespace Instill
                 }
             }
         }
-
         /// <summary>
         /// Create a new model<br/>
         /// Creates a new model under the parenthood of a namespace. This is an<br/>

@@ -27,7 +27,6 @@ namespace Instill
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// List model trigger time charts<br/>
         /// Returns a timeline of model trigger counts for a given requester. The<br/>

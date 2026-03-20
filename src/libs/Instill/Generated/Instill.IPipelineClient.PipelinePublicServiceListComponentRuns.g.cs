@@ -4,7 +4,6 @@ namespace Instill
 {
     public partial interface IPipelineClient
     {
-
         /// <summary>
         /// List Component Runs<br/>
         /// Returns the information of each component execution within a pipeline run.

@@ -4,14 +4,12 @@ namespace Instill
 {
     public partial interface IArtifactClient
     {
-
         /// <summary>
         /// Search chunks<br/>
         /// Returns the top-K most similar chunks to a text prompt.
         /// </summary>
         /// <param name="parent"></param>
         /// <param name="instillRequesterUid"></param>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
@@ -24,7 +22,6 @@ namespace Instill
             global::Instill.SearchChunksBody request,
             string? instillRequesterUid = default,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Search chunks<br/>
         /// Returns the top-K most similar chunks to a text prompt.

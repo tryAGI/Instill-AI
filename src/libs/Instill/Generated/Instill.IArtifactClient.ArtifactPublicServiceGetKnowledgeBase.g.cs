@@ -4,7 +4,6 @@ namespace Instill
 {
     public partial interface IArtifactClient
     {
-
         /// <summary>
         /// Get a knowledge base<br/>
         /// Returns the details of a knowledge base.

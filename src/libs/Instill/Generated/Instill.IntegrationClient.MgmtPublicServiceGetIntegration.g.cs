@@ -23,7 +23,6 @@ namespace Instill
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// Get an integration<br/>
         /// Returns the details of an integration.

@@ -21,7 +21,6 @@ namespace Instill
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// Get the details of a long-running operation<br/>
         /// This method allows requesters to request the status and outcome of<br/>

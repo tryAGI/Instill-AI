@@ -23,7 +23,6 @@ namespace Instill
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// Get a chunk<br/>
         /// Returns the details of a chunk.

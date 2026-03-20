@@ -23,7 +23,6 @@ namespace Instill
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// Update a pipeline release<br/>
         /// Updates the details of a pipeline release, where the pipeline is<br/>
@@ -32,7 +31,6 @@ namespace Instill
         /// perform this action.
         /// </summary>
         /// <param name="releaseName"></param>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
@@ -270,7 +268,6 @@ namespace Instill
                 }
             }
         }
-
         /// <summary>
         /// Update a pipeline release<br/>
         /// Updates the details of a pipeline release, where the pipeline is<br/>

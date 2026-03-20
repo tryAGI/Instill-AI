@@ -4,13 +4,11 @@ namespace Instill
 {
     public partial interface IPipelineClient
     {
-
         /// <summary>
         /// Create a secret<br/>
         /// Creates a new secret under the parenthood of an namespace.
         /// </summary>
         /// <param name="parent"></param>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
@@ -22,7 +20,6 @@ namespace Instill
 
             global::Instill.Secret request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Create a secret<br/>
         /// Creates a new secret under the parenthood of an namespace.

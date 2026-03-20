@@ -4,7 +4,6 @@ namespace Instill
 {
     public partial interface IModelClient
     {
-
         /// <summary>
         /// Update a model<br/>
         /// Updates a model, accessing it by its resource name, which is defined by<br/>
@@ -13,7 +12,6 @@ namespace Instill
         /// account when updating the resource.
         /// </summary>
         /// <param name="modelName"></param>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
@@ -25,7 +23,6 @@ namespace Instill
 
             global::Instill.ModelPublicServiceUpdateModelRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Update a model<br/>
         /// Updates a model, accessing it by its resource name, which is defined by<br/>

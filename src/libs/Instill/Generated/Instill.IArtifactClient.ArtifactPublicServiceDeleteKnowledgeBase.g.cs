@@ -4,7 +4,6 @@ namespace Instill
 {
     public partial interface IArtifactClient
     {
-
         /// <summary>
         /// Delete a knowledge base<br/>
         /// Deletes a knowledge base.

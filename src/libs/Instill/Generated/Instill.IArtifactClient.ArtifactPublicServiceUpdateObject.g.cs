@@ -4,13 +4,11 @@ namespace Instill
 {
     public partial interface IArtifactClient
     {
-
         /// <summary>
         /// Update Object<br/>
         /// Updates an object.
         /// </summary>
         /// <param name="objectName"></param>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
@@ -22,7 +20,6 @@ namespace Instill
 
             global::Instill.UpdateObjectBody request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Update Object<br/>
         /// Updates an object.

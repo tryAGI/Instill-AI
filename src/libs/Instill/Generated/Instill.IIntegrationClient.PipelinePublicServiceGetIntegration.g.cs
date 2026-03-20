@@ -4,7 +4,6 @@ namespace Instill
 {
     public partial interface IIntegrationClient
     {
-
         /// <summary>
         /// Get an integration<br/>
         /// Returns the details of an integration.

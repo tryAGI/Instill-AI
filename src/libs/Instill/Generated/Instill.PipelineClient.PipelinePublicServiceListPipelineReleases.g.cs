@@ -75,7 +75,7 @@ namespace Instill
                 .AddOptionalParameter("pageToken", pageToken)
                 .AddOptionalParameter("view", view?.ToValueString())
                 .AddOptionalParameter("filter", filter)
-                .AddOptionalParameter("showDeleted", showDeleted?.ToString()) 
+                .AddOptionalParameter("showDeleted", showDeleted?.ToString().ToLowerInvariant()) 
                 ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(

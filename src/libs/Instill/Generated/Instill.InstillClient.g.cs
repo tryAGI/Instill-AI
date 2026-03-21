@@ -38,45 +38,9 @@ namespace Instill
 
 
         /// <summary>
-        /// Namespaces (e.g. User, Organization) that structure the resource hierarchy.
-        /// </summary>
-        public NamespaceClient Namespace => new NamespaceClient(HttpClient, authorizations: Authorizations)
-        {
-            ReadResponseAsString = ReadResponseAsString,
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
-        /// Pipeline orchestration.
-        /// </summary>
-        public PipelineClient Pipeline => new PipelineClient(HttpClient, authorizations: Authorizations)
-        {
-            ReadResponseAsString = ReadResponseAsString,
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
         /// Data orchestration for unified unstructured data representation.
         /// </summary>
         public ArtifactClient Artifact => new ArtifactClient(HttpClient, authorizations: Authorizations)
-        {
-            ReadResponseAsString = ReadResponseAsString,
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
-        /// AI Model orchestration
-        /// </summary>
-        public ModelClient Model => new ModelClient(HttpClient, authorizations: Authorizations)
-        {
-            ReadResponseAsString = ReadResponseAsString,
-            JsonSerializerContext = JsonSerializerContext,
-        };
-
-        /// <summary>
-        /// Resource usage metrics.
-        /// </summary>
-        public MetricsClient Metrics => new MetricsClient(HttpClient, authorizations: Authorizations)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -95,6 +59,42 @@ namespace Instill
         /// Integration definitions for creating connections.
         /// </summary>
         public IntegrationClient Integration => new IntegrationClient(HttpClient, authorizations: Authorizations)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// Resource usage metrics.
+        /// </summary>
+        public MetricsClient Metrics => new MetricsClient(HttpClient, authorizations: Authorizations)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// AI Model orchestration
+        /// </summary>
+        public ModelClient Model => new ModelClient(HttpClient, authorizations: Authorizations)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// Namespaces (e.g. User, Organization) that structure the resource hierarchy.
+        /// </summary>
+        public NamespaceClient Namespace => new NamespaceClient(HttpClient, authorizations: Authorizations)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// Pipeline orchestration.
+        /// </summary>
+        public PipelineClient Pipeline => new PipelineClient(HttpClient, authorizations: Authorizations)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,

@@ -41,29 +41,9 @@ namespace Instill
 
 
         /// <summary>
-        /// Namespaces (e.g. User, Organization) that structure the resource hierarchy.
-        /// </summary>
-        public NamespaceClient Namespace { get; }
-
-        /// <summary>
-        /// Pipeline orchestration.
-        /// </summary>
-        public PipelineClient Pipeline { get; }
-
-        /// <summary>
         /// Data orchestration for unified unstructured data representation.
         /// </summary>
         public ArtifactClient Artifact { get; }
-
-        /// <summary>
-        /// AI Model orchestration
-        /// </summary>
-        public ModelClient Model { get; }
-
-        /// <summary>
-        /// Resource usage metrics.
-        /// </summary>
-        public MetricsClient Metrics { get; }
 
         /// <summary>
         /// Connections to 3rd party apps for use in pipelines.
@@ -74,6 +54,26 @@ namespace Instill
         /// Integration definitions for creating connections.
         /// </summary>
         public IntegrationClient Integration { get; }
+
+        /// <summary>
+        /// Resource usage metrics.
+        /// </summary>
+        public MetricsClient Metrics { get; }
+
+        /// <summary>
+        /// AI Model orchestration
+        /// </summary>
+        public ModelClient Model { get; }
+
+        /// <summary>
+        /// Namespaces (e.g. User, Organization) that structure the resource hierarchy.
+        /// </summary>
+        public NamespaceClient Namespace { get; }
+
+        /// <summary>
+        /// Pipeline orchestration.
+        /// </summary>
+        public PipelineClient Pipeline { get; }
 
     }
 }

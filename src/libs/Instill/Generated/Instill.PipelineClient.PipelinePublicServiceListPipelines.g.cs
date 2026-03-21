@@ -84,7 +84,7 @@ namespace Instill
                 .AddOptionalParameter("pageToken", pageToken)
                 .AddOptionalParameter("view", view?.ToValueString())
                 .AddOptionalParameter("filter", filter)
-                .AddOptionalParameter("showDeleted", showDeleted?.ToString())
+                .AddOptionalParameter("showDeleted", showDeleted?.ToString().ToLowerInvariant())
                 .AddOptionalParameter("visibility", visibility?.ToValueString())
                 .AddOptionalParameter("orderBy", orderBy) 
                 ; 

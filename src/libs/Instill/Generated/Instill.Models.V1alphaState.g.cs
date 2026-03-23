@@ -21,33 +21,33 @@ namespace Instill
     public enum V1alphaState
     {
         /// <summary>
-        /// Offline is the state when the model instance number is 0.
-        /// </summary>
-        StateOffline,
-        /// <summary>
         /// Active is the state when a model is processing requests.
         /// </summary>
         StateActive,
-        /// <summary>
-        /// Idle is the state when a model is alive but not processing requests.
-        /// </summary>
-        StateIdle,
         /// <summary>
         /// Error is the state when the model is undeployable.
         /// </summary>
         StateError,
         /// <summary>
-        /// Starting is the state when the system is provisioning the necessary
+        /// Idle is the state when a model is alive but not processing requests.
         /// </summary>
-        StateStarting,
+        StateIdle,
+        /// <summary>
+        /// Offline is the state when the model instance number is 0.
+        /// </summary>
+        StateOffline,
+        /// <summary>
+        /// Scaling is the transition state when the system is releasing compute
+        /// </summary>
+        StateScalingDown,
         /// <summary>
         /// Scaling Up is the transition state when the system is provisioning compute
         /// </summary>
         StateScalingUp,
         /// <summary>
-        /// Scaling is the transition state when the system is releasing compute
+        /// Starting is the state when the system is provisioning the necessary
         /// </summary>
-        StateScalingDown,
+        StateStarting,
     }
 
     /// <summary>
@@ -62,13 +62,13 @@ namespace Instill
         {
             return value switch
             {
-                V1alphaState.StateOffline => "STATE_OFFLINE",
                 V1alphaState.StateActive => "STATE_ACTIVE",
-                V1alphaState.StateIdle => "STATE_IDLE",
                 V1alphaState.StateError => "STATE_ERROR",
-                V1alphaState.StateStarting => "STATE_STARTING",
-                V1alphaState.StateScalingUp => "STATE_SCALING_UP",
+                V1alphaState.StateIdle => "STATE_IDLE",
+                V1alphaState.StateOffline => "STATE_OFFLINE",
                 V1alphaState.StateScalingDown => "STATE_SCALING_DOWN",
+                V1alphaState.StateScalingUp => "STATE_SCALING_UP",
+                V1alphaState.StateStarting => "STATE_STARTING",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -79,13 +79,13 @@ namespace Instill
         {
             return value switch
             {
-                "STATE_OFFLINE" => V1alphaState.StateOffline,
                 "STATE_ACTIVE" => V1alphaState.StateActive,
-                "STATE_IDLE" => V1alphaState.StateIdle,
                 "STATE_ERROR" => V1alphaState.StateError,
-                "STATE_STARTING" => V1alphaState.StateStarting,
-                "STATE_SCALING_UP" => V1alphaState.StateScalingUp,
+                "STATE_IDLE" => V1alphaState.StateIdle,
+                "STATE_OFFLINE" => V1alphaState.StateOffline,
                 "STATE_SCALING_DOWN" => V1alphaState.StateScalingDown,
+                "STATE_SCALING_UP" => V1alphaState.StateScalingUp,
+                "STATE_STARTING" => V1alphaState.StateStarting,
                 _ => null,
             };
         }

@@ -9,13 +9,13 @@ namespace Instill
     public enum ArtifactPublicServiceGetFileStorageProvider
     {
         /// <summary>
-        /// Returns MinIO
-        /// </summary>
-        StorageProviderMinio,
-        /// <summary>
         /// Uploads file to GCS if not present (with cache
         /// </summary>
         StorageProviderGcs,
+        /// <summary>
+        /// Returns MinIO
+        /// </summary>
+        StorageProviderMinio,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace Instill
         {
             return value switch
             {
-                ArtifactPublicServiceGetFileStorageProvider.StorageProviderMinio => "STORAGE_PROVIDER_MINIO",
                 ArtifactPublicServiceGetFileStorageProvider.StorageProviderGcs => "STORAGE_PROVIDER_GCS",
+                ArtifactPublicServiceGetFileStorageProvider.StorageProviderMinio => "STORAGE_PROVIDER_MINIO",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace Instill
         {
             return value switch
             {
-                "STORAGE_PROVIDER_MINIO" => ArtifactPublicServiceGetFileStorageProvider.StorageProviderMinio,
                 "STORAGE_PROVIDER_GCS" => ArtifactPublicServiceGetFileStorageProvider.StorageProviderGcs,
+                "STORAGE_PROVIDER_MINIO" => ArtifactPublicServiceGetFileStorageProvider.StorageProviderMinio,
                 _ => null,
             };
         }

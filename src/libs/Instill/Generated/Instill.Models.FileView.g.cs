@@ -25,33 +25,33 @@ namespace Instill
         /// </summary>
         ViewBasic,
         /// <summary>
-        /// Full representation with all metadata.
+        /// Returns Gemini cache resource name.
         /// </summary>
-        ViewFull,
-        /// <summary>
-        /// Returns MinIO pre-signed URL to converted summary content.
-        /// </summary>
-        ViewSummary,
+        ViewCache,
         /// <summary>
         /// Returns MinIO pre-signed URL to converted markdown content.
         /// </summary>
         ViewContent,
         /// <summary>
-        /// Returns MinIO pre-signed URL to standardized file:
+        /// Full representation with all metadata.
         /// </summary>
-        ViewStandardFileType,
+        ViewFull,
         /// <summary>
         /// Returns MinIO pre-signed URL to the original uploaded file.
         /// </summary>
         ViewOriginalFileType,
         /// <summary>
-        /// Returns Gemini cache resource name.
-        /// </summary>
-        ViewCache,
-        /// <summary>
         /// Returns MinIO pre-signed URL to patch.md (user-submitted content patches).
         /// </summary>
         ViewPatch,
+        /// <summary>
+        /// Returns MinIO pre-signed URL to standardized file:
+        /// </summary>
+        ViewStandardFileType,
+        /// <summary>
+        /// Returns MinIO pre-signed URL to converted summary content.
+        /// </summary>
+        ViewSummary,
     }
 
     /// <summary>
@@ -67,13 +67,13 @@ namespace Instill
             return value switch
             {
                 FileView.ViewBasic => "VIEW_BASIC",
-                FileView.ViewFull => "VIEW_FULL",
-                FileView.ViewSummary => "VIEW_SUMMARY",
-                FileView.ViewContent => "VIEW_CONTENT",
-                FileView.ViewStandardFileType => "VIEW_STANDARD_FILE_TYPE",
-                FileView.ViewOriginalFileType => "VIEW_ORIGINAL_FILE_TYPE",
                 FileView.ViewCache => "VIEW_CACHE",
+                FileView.ViewContent => "VIEW_CONTENT",
+                FileView.ViewFull => "VIEW_FULL",
+                FileView.ViewOriginalFileType => "VIEW_ORIGINAL_FILE_TYPE",
                 FileView.ViewPatch => "VIEW_PATCH",
+                FileView.ViewStandardFileType => "VIEW_STANDARD_FILE_TYPE",
+                FileView.ViewSummary => "VIEW_SUMMARY",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -85,13 +85,13 @@ namespace Instill
             return value switch
             {
                 "VIEW_BASIC" => FileView.ViewBasic,
-                "VIEW_FULL" => FileView.ViewFull,
-                "VIEW_SUMMARY" => FileView.ViewSummary,
-                "VIEW_CONTENT" => FileView.ViewContent,
-                "VIEW_STANDARD_FILE_TYPE" => FileView.ViewStandardFileType,
-                "VIEW_ORIGINAL_FILE_TYPE" => FileView.ViewOriginalFileType,
                 "VIEW_CACHE" => FileView.ViewCache,
+                "VIEW_CONTENT" => FileView.ViewContent,
+                "VIEW_FULL" => FileView.ViewFull,
+                "VIEW_ORIGINAL_FILE_TYPE" => FileView.ViewOriginalFileType,
                 "VIEW_PATCH" => FileView.ViewPatch,
+                "VIEW_STANDARD_FILE_TYPE" => FileView.ViewStandardFileType,
+                "VIEW_SUMMARY" => FileView.ViewSummary,
                 _ => null,
             };
         }

@@ -13,6 +13,10 @@ namespace Instill
     public enum FileMediaType
     {
         /// <summary>
+        /// Audio.
+        /// </summary>
+        Audio,
+        /// <summary>
         /// Document.
         /// </summary>
         Document,
@@ -20,10 +24,6 @@ namespace Instill
         /// Image.
         /// </summary>
         Image,
-        /// <summary>
-        /// Audio.
-        /// </summary>
-        Audio,
         /// <summary>
         /// Video.
         /// </summary>
@@ -42,9 +42,9 @@ namespace Instill
         {
             return value switch
             {
+                FileMediaType.Audio => "FILE_MEDIA_TYPE_AUDIO",
                 FileMediaType.Document => "FILE_MEDIA_TYPE_DOCUMENT",
                 FileMediaType.Image => "FILE_MEDIA_TYPE_IMAGE",
-                FileMediaType.Audio => "FILE_MEDIA_TYPE_AUDIO",
                 FileMediaType.Video => "FILE_MEDIA_TYPE_VIDEO",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -56,9 +56,9 @@ namespace Instill
         {
             return value switch
             {
+                "FILE_MEDIA_TYPE_AUDIO" => FileMediaType.Audio,
                 "FILE_MEDIA_TYPE_DOCUMENT" => FileMediaType.Document,
                 "FILE_MEDIA_TYPE_IMAGE" => FileMediaType.Image,
-                "FILE_MEDIA_TYPE_AUDIO" => FileMediaType.Audio,
                 "FILE_MEDIA_TYPE_VIDEO" => FileMediaType.Video,
                 _ => null,
             };

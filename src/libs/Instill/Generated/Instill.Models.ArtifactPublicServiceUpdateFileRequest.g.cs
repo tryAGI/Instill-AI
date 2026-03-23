@@ -210,6 +210,18 @@ namespace Instill
         public string? Object { get; set; }
 
         /// <summary>
+        /// Whether the document contains a native text layer (true) or is<br/>
+        /// image-based / scanned (false). Determined during file processing by<br/>
+        /// attempting PDF text extraction. Used for visual grounding: text-based<br/>
+        /// documents get precise text highlighting while image-based documents<br/>
+        /// get bounding-box overlays.<br/>
+        /// Only meaningful for document file types (PDF, DOCX, PPTX, etc.).<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("isTextBased")]
+        public bool? IsTextBased { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -333,6 +345,15 @@ namespace Instill
         ///    field. When object is provided, the 'content' field is ignored.<br/>
         /// Follows AIP-122 for resource name references.
         /// </param>
+        /// <param name="isTextBased">
+        /// Whether the document contains a native text layer (true) or is<br/>
+        /// image-based / scanned (false). Determined during file processing by<br/>
+        /// attempting PDF text extraction. Used for visual grounding: text-based<br/>
+        /// documents get precise text highlighting while image-based documents<br/>
+        /// get bounding-box overlays.<br/>
+        /// Only meaningful for document file types (PDF, DOCX, PPTX, etc.).<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -363,7 +384,8 @@ namespace Instill
             global::Instill.Position? length,
             global::System.Collections.Generic.IList<string>? collections,
             global::System.DateTime? deleteTime,
-            string? @object)
+            string? @object,
+            bool? isTextBased)
         {
             this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
             this.Id = id;
@@ -392,6 +414,7 @@ namespace Instill
             this.Collections = collections;
             this.DeleteTime = deleteTime;
             this.Object = @object;
+            this.IsTextBased = isTextBased;
         }
 
         /// <summary>

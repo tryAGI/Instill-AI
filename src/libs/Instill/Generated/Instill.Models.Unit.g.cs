@@ -22,13 +22,13 @@ namespace Instill
         /// </summary>
         Page,
         /// <summary>
-        /// Time positions in milliseconds (for audio/video files).
-        /// </summary>
-        TimeMs,
-        /// <summary>
         /// Pixel positions (for images and other 2D content).
         /// </summary>
         Pixel,
+        /// <summary>
+        /// Time positions in milliseconds (for audio/video files).
+        /// </summary>
+        TimeMs,
     }
 
     /// <summary>
@@ -45,8 +45,8 @@ namespace Instill
             {
                 Unit.Character => "UNIT_CHARACTER",
                 Unit.Page => "UNIT_PAGE",
-                Unit.TimeMs => "UNIT_TIME_MS",
                 Unit.Pixel => "UNIT_PIXEL",
+                Unit.TimeMs => "UNIT_TIME_MS",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -59,8 +59,8 @@ namespace Instill
             {
                 "UNIT_CHARACTER" => Unit.Character,
                 "UNIT_PAGE" => Unit.Page,
-                "UNIT_TIME_MS" => Unit.TimeMs,
                 "UNIT_PIXEL" => Unit.Pixel,
+                "UNIT_TIME_MS" => Unit.TimeMs,
                 _ => null,
             };
         }

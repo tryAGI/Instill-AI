@@ -12,6 +12,10 @@ namespace Instill
     public enum ChunkType
     {
         /// <summary>
+        /// Augmented.
+        /// </summary>
+        TypeAugmented,
+        /// <summary>
         /// Content.
         /// </summary>
         TypeContent,
@@ -19,10 +23,6 @@ namespace Instill
         /// Summary.
         /// </summary>
         TypeSummary,
-        /// <summary>
-        /// Augmented.
-        /// </summary>
-        TypeAugmented,
     }
 
     /// <summary>
@@ -37,9 +37,9 @@ namespace Instill
         {
             return value switch
             {
+                ChunkType.TypeAugmented => "TYPE_AUGMENTED",
                 ChunkType.TypeContent => "TYPE_CONTENT",
                 ChunkType.TypeSummary => "TYPE_SUMMARY",
-                ChunkType.TypeAugmented => "TYPE_AUGMENTED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -50,9 +50,9 @@ namespace Instill
         {
             return value switch
             {
+                "TYPE_AUGMENTED" => ChunkType.TypeAugmented,
                 "TYPE_CONTENT" => ChunkType.TypeContent,
                 "TYPE_SUMMARY" => ChunkType.TypeSummary,
-                "TYPE_AUGMENTED" => ChunkType.TypeAugmented,
                 _ => null,
             };
         }

@@ -22,13 +22,37 @@ namespace Instill
     public enum Task
     {
         /// <summary>
+        /// Conversational Text Generation - generate text as responses to a dialog input.
+        /// </summary>
+        Chat,
+        /// <summary>
         /// Image Classification - classify images into predefined categories.
         /// </summary>
         Classification,
         /// <summary>
+        /// Completion Text Generation - generate text following the input prompt.
+        /// </summary>
+        Completion,
+        /// <summary>
+        /// Custom - custom task type for free form input/output.
+        /// </summary>
+        Custom,
+        /// <summary>
         /// Object Detection - detect and localize multiple objects in images.
         /// </summary>
         Detection,
+        /// <summary>
+        /// Embedding - generate an embedding (a representation as coordinates) from a multimodal input.
+        /// </summary>
+        Embedding,
+        /// <summary>
+        /// Image to Image - generate an image from another image.
+        /// </summary>
+        ImageToImage,
+        /// <summary>
+        /// Instance Segmentation - detect, localize and delineate multiple objects in images.
+        /// </summary>
+        InstanceSegmentation,
         /// <summary>
         /// Keypoint Detection - detect and localize multiple keypoints of objects in images.
         /// </summary>
@@ -38,41 +62,17 @@ namespace Instill
         /// </summary>
         Ocr,
         /// <summary>
-        /// Instance Segmentation - detect, localize and delineate multiple objects in images.
-        /// </summary>
-        InstanceSegmentation,
-        /// <summary>
         /// Semantic Segmentation - classify image pixels into predefined categories.
         /// </summary>
         SemanticSegmentation,
-        /// <summary>
-        /// Text to Image - generate images from input text prompts.
-        /// </summary>
-        TextToImage,
-        /// <summary>
-        /// Image to Image - generate an image from another image.
-        /// </summary>
-        ImageToImage,
-        /// <summary>
-        /// Embedding - generate an embedding (a representation as coordinates) from a multimodal input.
-        /// </summary>
-        Embedding,
         /// <summary>
         /// Speech Recognition - transcribe the words in an audio input.
         /// </summary>
         SpeechRecognition,
         /// <summary>
-        /// Conversational Text Generation - generate text as responses to a dialog input.
+        /// Text to Image - generate images from input text prompts.
         /// </summary>
-        Chat,
-        /// <summary>
-        /// Completion Text Generation - generate text following the input prompt.
-        /// </summary>
-        Completion,
-        /// <summary>
-        /// Custom - custom task type for free form input/output.
-        /// </summary>
-        Custom,
+        TextToImage,
     }
 
     /// <summary>
@@ -87,19 +87,19 @@ namespace Instill
         {
             return value switch
             {
-                Task.Classification => "TASK_CLASSIFICATION",
-                Task.Detection => "TASK_DETECTION",
-                Task.Keypoint => "TASK_KEYPOINT",
-                Task.Ocr => "TASK_OCR",
-                Task.InstanceSegmentation => "TASK_INSTANCE_SEGMENTATION",
-                Task.SemanticSegmentation => "TASK_SEMANTIC_SEGMENTATION",
-                Task.TextToImage => "TASK_TEXT_TO_IMAGE",
-                Task.ImageToImage => "TASK_IMAGE_TO_IMAGE",
-                Task.Embedding => "TASK_EMBEDDING",
-                Task.SpeechRecognition => "TASK_SPEECH_RECOGNITION",
                 Task.Chat => "TASK_CHAT",
+                Task.Classification => "TASK_CLASSIFICATION",
                 Task.Completion => "TASK_COMPLETION",
                 Task.Custom => "TASK_CUSTOM",
+                Task.Detection => "TASK_DETECTION",
+                Task.Embedding => "TASK_EMBEDDING",
+                Task.ImageToImage => "TASK_IMAGE_TO_IMAGE",
+                Task.InstanceSegmentation => "TASK_INSTANCE_SEGMENTATION",
+                Task.Keypoint => "TASK_KEYPOINT",
+                Task.Ocr => "TASK_OCR",
+                Task.SemanticSegmentation => "TASK_SEMANTIC_SEGMENTATION",
+                Task.SpeechRecognition => "TASK_SPEECH_RECOGNITION",
+                Task.TextToImage => "TASK_TEXT_TO_IMAGE",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -110,19 +110,19 @@ namespace Instill
         {
             return value switch
             {
-                "TASK_CLASSIFICATION" => Task.Classification,
-                "TASK_DETECTION" => Task.Detection,
-                "TASK_KEYPOINT" => Task.Keypoint,
-                "TASK_OCR" => Task.Ocr,
-                "TASK_INSTANCE_SEGMENTATION" => Task.InstanceSegmentation,
-                "TASK_SEMANTIC_SEGMENTATION" => Task.SemanticSegmentation,
-                "TASK_TEXT_TO_IMAGE" => Task.TextToImage,
-                "TASK_IMAGE_TO_IMAGE" => Task.ImageToImage,
-                "TASK_EMBEDDING" => Task.Embedding,
-                "TASK_SPEECH_RECOGNITION" => Task.SpeechRecognition,
                 "TASK_CHAT" => Task.Chat,
+                "TASK_CLASSIFICATION" => Task.Classification,
                 "TASK_COMPLETION" => Task.Completion,
                 "TASK_CUSTOM" => Task.Custom,
+                "TASK_DETECTION" => Task.Detection,
+                "TASK_EMBEDDING" => Task.Embedding,
+                "TASK_IMAGE_TO_IMAGE" => Task.ImageToImage,
+                "TASK_INSTANCE_SEGMENTATION" => Task.InstanceSegmentation,
+                "TASK_KEYPOINT" => Task.Keypoint,
+                "TASK_OCR" => Task.Ocr,
+                "TASK_SEMANTIC_SEGMENTATION" => Task.SemanticSegmentation,
+                "TASK_SPEECH_RECOGNITION" => Task.SpeechRecognition,
+                "TASK_TEXT_TO_IMAGE" => Task.TextToImage,
                 _ => null,
             };
         }

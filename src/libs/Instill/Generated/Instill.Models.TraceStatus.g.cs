@@ -16,13 +16,13 @@ namespace Instill
         /// </summary>
         StatusCompleted,
         /// <summary>
-        /// Skipped.
-        /// </summary>
-        StatusSkipped,
-        /// <summary>
         /// Aborted with error.
         /// </summary>
         StatusError,
+        /// <summary>
+        /// Skipped.
+        /// </summary>
+        StatusSkipped,
     }
 
     /// <summary>
@@ -38,8 +38,8 @@ namespace Instill
             return value switch
             {
                 TraceStatus.StatusCompleted => "STATUS_COMPLETED",
-                TraceStatus.StatusSkipped => "STATUS_SKIPPED",
                 TraceStatus.StatusError => "STATUS_ERROR",
+                TraceStatus.StatusSkipped => "STATUS_SKIPPED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -51,8 +51,8 @@ namespace Instill
             return value switch
             {
                 "STATUS_COMPLETED" => TraceStatus.StatusCompleted,
-                "STATUS_SKIPPED" => TraceStatus.StatusSkipped,
                 "STATUS_ERROR" => TraceStatus.StatusError,
+                "STATUS_SKIPPED" => TraceStatus.StatusSkipped,
                 _ => null,
             };
         }

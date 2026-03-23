@@ -52,29 +52,29 @@ namespace Instill
     public enum FileType
     {
         /// <summary>
-        /// Text-based document types
+        /// AAC
         /// </summary>
-        TypeText,
+        TypeAac,
         /// <summary>
-        /// MARKDOWN
+        /// AIFF
         /// </summary>
-        TypeMarkdown,
+        TypeAiff,
         /// <summary>
-        /// HTML
+        /// AVIF
         /// </summary>
-        TypeHtml,
+        TypeAvi,
+        /// <summary>
+        /// AVIF
+        /// </summary>
+        TypeAvif,
+        /// <summary>
+        /// BMP
+        /// </summary>
+        TypeBmp,
         /// <summary>
         /// CSV
         /// </summary>
         TypeCsv,
-        /// <summary>
-        /// JSON
-        /// </summary>
-        TypeJson,
-        /// <summary>
-        /// Container-based document types
-        /// </summary>
-        TypePdf,
         /// <summary>
         /// DOC
         /// </summary>
@@ -84,45 +84,17 @@ namespace Instill
         /// </summary>
         TypeDocx,
         /// <summary>
-        /// PPT
+        /// FLAC
         /// </summary>
-        TypePpt,
+        TypeFlac,
         /// <summary>
-        /// PPTX
+        /// FLV
         /// </summary>
-        TypePptx,
-        /// <summary>
-        /// XLS
-        /// </summary>
-        TypeXls,
-        /// <summary>
-        /// XLSX
-        /// </summary>
-        TypeXlsx,
-        /// <summary>
-        /// Image types
-        /// </summary>
-        TypePng,
-        /// <summary>
-        /// JPEG
-        /// </summary>
-        TypeJpeg,
+        TypeFlv,
         /// <summary>
         /// GIF
         /// </summary>
         TypeGif,
-        /// <summary>
-        /// WEBP
-        /// </summary>
-        TypeWebp,
-        /// <summary>
-        /// TIFF
-        /// </summary>
-        TypeTiff,
-        /// <summary>
-        /// BMP
-        /// </summary>
-        TypeBmp,
         /// <summary>
         /// HEIC
         /// </summary>
@@ -132,81 +104,109 @@ namespace Instill
         /// </summary>
         TypeHeif,
         /// <summary>
-        /// AVIF
+        /// HTML
         /// </summary>
-        TypeAvif,
+        TypeHtml,
         /// <summary>
-        /// SVG
+        /// JPEG
         /// </summary>
-        TypeSvg,
+        TypeJpeg,
         /// <summary>
-        /// Audio types
+        /// JSON
         /// </summary>
-        TypeMp3,
-        /// <summary>
-        /// WAV
-        /// </summary>
-        TypeWav,
-        /// <summary>
-        /// AAC
-        /// </summary>
-        TypeAac,
-        /// <summary>
-        /// OGG
-        /// </summary>
-        TypeOgg,
-        /// <summary>
-        /// FLAC
-        /// </summary>
-        TypeFlac,
+        TypeJson,
         /// <summary>
         /// M4A
         /// </summary>
         TypeM4a,
         /// <summary>
-        /// WMA
+        /// MARKDOWN
         /// </summary>
-        TypeWma,
-        /// <summary>
-        /// AIFF
-        /// </summary>
-        TypeAiff,
-        /// <summary>
-        /// WEBM (audio)
-        /// </summary>
-        TypeWebmAudio,
-        /// <summary>
-        /// Video types
-        /// </summary>
-        TypeMp4,
-        /// <summary>
-        /// AVIF
-        /// </summary>
-        TypeAvi,
-        /// <summary>
-        /// MOV
-        /// </summary>
-        TypeMov,
+        TypeMarkdown,
         /// <summary>
         /// MKV
         /// </summary>
         TypeMkv,
         /// <summary>
-        /// FLV
+        /// MOV
         /// </summary>
-        TypeFlv,
+        TypeMov,
         /// <summary>
-        /// WMV
+        /// Audio types
         /// </summary>
-        TypeWmv,
+        TypeMp3,
+        /// <summary>
+        /// Video types
+        /// </summary>
+        TypeMp4,
         /// <summary>
         /// MPEG
         /// </summary>
         TypeMpeg,
         /// <summary>
+        /// OGG
+        /// </summary>
+        TypeOgg,
+        /// <summary>
+        /// Container-based document types
+        /// </summary>
+        TypePdf,
+        /// <summary>
+        /// Image types
+        /// </summary>
+        TypePng,
+        /// <summary>
+        /// PPT
+        /// </summary>
+        TypePpt,
+        /// <summary>
+        /// PPTX
+        /// </summary>
+        TypePptx,
+        /// <summary>
+        /// SVG
+        /// </summary>
+        TypeSvg,
+        /// <summary>
+        /// Text-based document types
+        /// </summary>
+        TypeText,
+        /// <summary>
+        /// TIFF
+        /// </summary>
+        TypeTiff,
+        /// <summary>
+        /// WAV
+        /// </summary>
+        TypeWav,
+        /// <summary>
+        /// WEBM (audio)
+        /// </summary>
+        TypeWebmAudio,
+        /// <summary>
         /// WEBM (video)
         /// </summary>
         TypeWebmVideo,
+        /// <summary>
+        /// WEBP
+        /// </summary>
+        TypeWebp,
+        /// <summary>
+        /// WMA
+        /// </summary>
+        TypeWma,
+        /// <summary>
+        /// WMV
+        /// </summary>
+        TypeWmv,
+        /// <summary>
+        /// XLS
+        /// </summary>
+        TypeXls,
+        /// <summary>
+        /// XLSX
+        /// </summary>
+        TypeXlsx,
     }
 
     /// <summary>
@@ -221,45 +221,45 @@ namespace Instill
         {
             return value switch
             {
-                FileType.TypeText => "TYPE_TEXT",
-                FileType.TypeMarkdown => "TYPE_MARKDOWN",
-                FileType.TypeHtml => "TYPE_HTML",
+                FileType.TypeAac => "TYPE_AAC",
+                FileType.TypeAiff => "TYPE_AIFF",
+                FileType.TypeAvi => "TYPE_AVI",
+                FileType.TypeAvif => "TYPE_AVIF",
+                FileType.TypeBmp => "TYPE_BMP",
                 FileType.TypeCsv => "TYPE_CSV",
-                FileType.TypeJson => "TYPE_JSON",
-                FileType.TypePdf => "TYPE_PDF",
                 FileType.TypeDoc => "TYPE_DOC",
                 FileType.TypeDocx => "TYPE_DOCX",
-                FileType.TypePpt => "TYPE_PPT",
-                FileType.TypePptx => "TYPE_PPTX",
-                FileType.TypeXls => "TYPE_XLS",
-                FileType.TypeXlsx => "TYPE_XLSX",
-                FileType.TypePng => "TYPE_PNG",
-                FileType.TypeJpeg => "TYPE_JPEG",
+                FileType.TypeFlac => "TYPE_FLAC",
+                FileType.TypeFlv => "TYPE_FLV",
                 FileType.TypeGif => "TYPE_GIF",
-                FileType.TypeWebp => "TYPE_WEBP",
-                FileType.TypeTiff => "TYPE_TIFF",
-                FileType.TypeBmp => "TYPE_BMP",
                 FileType.TypeHeic => "TYPE_HEIC",
                 FileType.TypeHeif => "TYPE_HEIF",
-                FileType.TypeAvif => "TYPE_AVIF",
-                FileType.TypeSvg => "TYPE_SVG",
-                FileType.TypeMp3 => "TYPE_MP3",
-                FileType.TypeWav => "TYPE_WAV",
-                FileType.TypeAac => "TYPE_AAC",
-                FileType.TypeOgg => "TYPE_OGG",
-                FileType.TypeFlac => "TYPE_FLAC",
+                FileType.TypeHtml => "TYPE_HTML",
+                FileType.TypeJpeg => "TYPE_JPEG",
+                FileType.TypeJson => "TYPE_JSON",
                 FileType.TypeM4a => "TYPE_M4A",
-                FileType.TypeWma => "TYPE_WMA",
-                FileType.TypeAiff => "TYPE_AIFF",
-                FileType.TypeWebmAudio => "TYPE_WEBM_AUDIO",
-                FileType.TypeMp4 => "TYPE_MP4",
-                FileType.TypeAvi => "TYPE_AVI",
-                FileType.TypeMov => "TYPE_MOV",
+                FileType.TypeMarkdown => "TYPE_MARKDOWN",
                 FileType.TypeMkv => "TYPE_MKV",
-                FileType.TypeFlv => "TYPE_FLV",
-                FileType.TypeWmv => "TYPE_WMV",
+                FileType.TypeMov => "TYPE_MOV",
+                FileType.TypeMp3 => "TYPE_MP3",
+                FileType.TypeMp4 => "TYPE_MP4",
                 FileType.TypeMpeg => "TYPE_MPEG",
+                FileType.TypeOgg => "TYPE_OGG",
+                FileType.TypePdf => "TYPE_PDF",
+                FileType.TypePng => "TYPE_PNG",
+                FileType.TypePpt => "TYPE_PPT",
+                FileType.TypePptx => "TYPE_PPTX",
+                FileType.TypeSvg => "TYPE_SVG",
+                FileType.TypeText => "TYPE_TEXT",
+                FileType.TypeTiff => "TYPE_TIFF",
+                FileType.TypeWav => "TYPE_WAV",
+                FileType.TypeWebmAudio => "TYPE_WEBM_AUDIO",
                 FileType.TypeWebmVideo => "TYPE_WEBM_VIDEO",
+                FileType.TypeWebp => "TYPE_WEBP",
+                FileType.TypeWma => "TYPE_WMA",
+                FileType.TypeWmv => "TYPE_WMV",
+                FileType.TypeXls => "TYPE_XLS",
+                FileType.TypeXlsx => "TYPE_XLSX",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -270,45 +270,45 @@ namespace Instill
         {
             return value switch
             {
-                "TYPE_TEXT" => FileType.TypeText,
-                "TYPE_MARKDOWN" => FileType.TypeMarkdown,
-                "TYPE_HTML" => FileType.TypeHtml,
+                "TYPE_AAC" => FileType.TypeAac,
+                "TYPE_AIFF" => FileType.TypeAiff,
+                "TYPE_AVI" => FileType.TypeAvi,
+                "TYPE_AVIF" => FileType.TypeAvif,
+                "TYPE_BMP" => FileType.TypeBmp,
                 "TYPE_CSV" => FileType.TypeCsv,
-                "TYPE_JSON" => FileType.TypeJson,
-                "TYPE_PDF" => FileType.TypePdf,
                 "TYPE_DOC" => FileType.TypeDoc,
                 "TYPE_DOCX" => FileType.TypeDocx,
-                "TYPE_PPT" => FileType.TypePpt,
-                "TYPE_PPTX" => FileType.TypePptx,
-                "TYPE_XLS" => FileType.TypeXls,
-                "TYPE_XLSX" => FileType.TypeXlsx,
-                "TYPE_PNG" => FileType.TypePng,
-                "TYPE_JPEG" => FileType.TypeJpeg,
+                "TYPE_FLAC" => FileType.TypeFlac,
+                "TYPE_FLV" => FileType.TypeFlv,
                 "TYPE_GIF" => FileType.TypeGif,
-                "TYPE_WEBP" => FileType.TypeWebp,
-                "TYPE_TIFF" => FileType.TypeTiff,
-                "TYPE_BMP" => FileType.TypeBmp,
                 "TYPE_HEIC" => FileType.TypeHeic,
                 "TYPE_HEIF" => FileType.TypeHeif,
-                "TYPE_AVIF" => FileType.TypeAvif,
-                "TYPE_SVG" => FileType.TypeSvg,
-                "TYPE_MP3" => FileType.TypeMp3,
-                "TYPE_WAV" => FileType.TypeWav,
-                "TYPE_AAC" => FileType.TypeAac,
-                "TYPE_OGG" => FileType.TypeOgg,
-                "TYPE_FLAC" => FileType.TypeFlac,
+                "TYPE_HTML" => FileType.TypeHtml,
+                "TYPE_JPEG" => FileType.TypeJpeg,
+                "TYPE_JSON" => FileType.TypeJson,
                 "TYPE_M4A" => FileType.TypeM4a,
-                "TYPE_WMA" => FileType.TypeWma,
-                "TYPE_AIFF" => FileType.TypeAiff,
-                "TYPE_WEBM_AUDIO" => FileType.TypeWebmAudio,
-                "TYPE_MP4" => FileType.TypeMp4,
-                "TYPE_AVI" => FileType.TypeAvi,
-                "TYPE_MOV" => FileType.TypeMov,
+                "TYPE_MARKDOWN" => FileType.TypeMarkdown,
                 "TYPE_MKV" => FileType.TypeMkv,
-                "TYPE_FLV" => FileType.TypeFlv,
-                "TYPE_WMV" => FileType.TypeWmv,
+                "TYPE_MOV" => FileType.TypeMov,
+                "TYPE_MP3" => FileType.TypeMp3,
+                "TYPE_MP4" => FileType.TypeMp4,
                 "TYPE_MPEG" => FileType.TypeMpeg,
+                "TYPE_OGG" => FileType.TypeOgg,
+                "TYPE_PDF" => FileType.TypePdf,
+                "TYPE_PNG" => FileType.TypePng,
+                "TYPE_PPT" => FileType.TypePpt,
+                "TYPE_PPTX" => FileType.TypePptx,
+                "TYPE_SVG" => FileType.TypeSvg,
+                "TYPE_TEXT" => FileType.TypeText,
+                "TYPE_TIFF" => FileType.TypeTiff,
+                "TYPE_WAV" => FileType.TypeWav,
+                "TYPE_WEBM_AUDIO" => FileType.TypeWebmAudio,
                 "TYPE_WEBM_VIDEO" => FileType.TypeWebmVideo,
+                "TYPE_WEBP" => FileType.TypeWebp,
+                "TYPE_WMA" => FileType.TypeWma,
+                "TYPE_WMV" => FileType.TypeWmv,
+                "TYPE_XLS" => FileType.TypeXls,
+                "TYPE_XLSX" => FileType.TypeXlsx,
                 _ => null,
             };
         }

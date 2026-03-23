@@ -21,13 +21,13 @@ namespace Instill
         /// </summary>
         ReleaseStageBeta,
         /// <summary>
-        /// Generally available.
-        /// </summary>
-        ReleaseStageGenerallyAvailable,
-        /// <summary>
         /// Custom.
         /// </summary>
         ReleaseStageCustom,
+        /// <summary>
+        /// Generally available.
+        /// </summary>
+        ReleaseStageGenerallyAvailable,
     }
 
     /// <summary>
@@ -44,8 +44,8 @@ namespace Instill
             {
                 V1alphaReleaseStage.ReleaseStageAlpha => "RELEASE_STAGE_ALPHA",
                 V1alphaReleaseStage.ReleaseStageBeta => "RELEASE_STAGE_BETA",
-                V1alphaReleaseStage.ReleaseStageGenerallyAvailable => "RELEASE_STAGE_GENERALLY_AVAILABLE",
                 V1alphaReleaseStage.ReleaseStageCustom => "RELEASE_STAGE_CUSTOM",
+                V1alphaReleaseStage.ReleaseStageGenerallyAvailable => "RELEASE_STAGE_GENERALLY_AVAILABLE",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -58,8 +58,8 @@ namespace Instill
             {
                 "RELEASE_STAGE_ALPHA" => V1alphaReleaseStage.ReleaseStageAlpha,
                 "RELEASE_STAGE_BETA" => V1alphaReleaseStage.ReleaseStageBeta,
-                "RELEASE_STAGE_GENERALLY_AVAILABLE" => V1alphaReleaseStage.ReleaseStageGenerallyAvailable,
                 "RELEASE_STAGE_CUSTOM" => V1alphaReleaseStage.ReleaseStageCustom,
+                "RELEASE_STAGE_GENERALLY_AVAILABLE" => V1alphaReleaseStage.ReleaseStageGenerallyAvailable,
                 _ => null,
             };
         }

@@ -28,14 +28,6 @@ namespace Instill
     public enum ComponentDefinitionReleaseStage
     {
         /// <summary>
-        /// This component is unimplemented and community contributions are welcome
-        /// </summary>
-        ReleaseStageOpenForContribution,
-        /// <summary>
-        /// The implementation of this component is planned and will be tackled by
-        /// </summary>
-        ReleaseStageComingSoon,
-        /// <summary>
         /// Initial implementation intended to gather feedback and issues from early
         /// </summary>
         ReleaseStageAlpha,
@@ -44,9 +36,17 @@ namespace Instill
         /// </summary>
         ReleaseStageBeta,
         /// <summary>
+        /// The implementation of this component is planned and will be tackled by
+        /// </summary>
+        ReleaseStageComingSoon,
+        /// <summary>
         /// Generally available - ready for use in production and fully supported by
         /// </summary>
         ReleaseStageGa,
+        /// <summary>
+        /// This component is unimplemented and community contributions are welcome
+        /// </summary>
+        ReleaseStageOpenForContribution,
     }
 
     /// <summary>
@@ -61,11 +61,11 @@ namespace Instill
         {
             return value switch
             {
-                ComponentDefinitionReleaseStage.ReleaseStageOpenForContribution => "RELEASE_STAGE_OPEN_FOR_CONTRIBUTION",
-                ComponentDefinitionReleaseStage.ReleaseStageComingSoon => "RELEASE_STAGE_COMING_SOON",
                 ComponentDefinitionReleaseStage.ReleaseStageAlpha => "RELEASE_STAGE_ALPHA",
                 ComponentDefinitionReleaseStage.ReleaseStageBeta => "RELEASE_STAGE_BETA",
+                ComponentDefinitionReleaseStage.ReleaseStageComingSoon => "RELEASE_STAGE_COMING_SOON",
                 ComponentDefinitionReleaseStage.ReleaseStageGa => "RELEASE_STAGE_GA",
+                ComponentDefinitionReleaseStage.ReleaseStageOpenForContribution => "RELEASE_STAGE_OPEN_FOR_CONTRIBUTION",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -76,11 +76,11 @@ namespace Instill
         {
             return value switch
             {
-                "RELEASE_STAGE_OPEN_FOR_CONTRIBUTION" => ComponentDefinitionReleaseStage.ReleaseStageOpenForContribution,
-                "RELEASE_STAGE_COMING_SOON" => ComponentDefinitionReleaseStage.ReleaseStageComingSoon,
                 "RELEASE_STAGE_ALPHA" => ComponentDefinitionReleaseStage.ReleaseStageAlpha,
                 "RELEASE_STAGE_BETA" => ComponentDefinitionReleaseStage.ReleaseStageBeta,
+                "RELEASE_STAGE_COMING_SOON" => ComponentDefinitionReleaseStage.ReleaseStageComingSoon,
                 "RELEASE_STAGE_GA" => ComponentDefinitionReleaseStage.ReleaseStageGa,
+                "RELEASE_STAGE_OPEN_FOR_CONTRIBUTION" => ComponentDefinitionReleaseStage.ReleaseStageOpenForContribution,
                 _ => null,
             };
         }

@@ -10,13 +10,13 @@ namespace Instill
     public enum KnowledgeBaseType
     {
         /// <summary>
-        /// PERSISTENT
-        /// </summary>
-        Persistent,
-        /// <summary>
         /// EPHEMERAL
         /// </summary>
         Ephemeral,
+        /// <summary>
+        /// PERSISTENT
+        /// </summary>
+        Persistent,
     }
 
     /// <summary>
@@ -31,8 +31,8 @@ namespace Instill
         {
             return value switch
             {
-                KnowledgeBaseType.Persistent => "KNOWLEDGE_BASE_TYPE_PERSISTENT",
                 KnowledgeBaseType.Ephemeral => "KNOWLEDGE_BASE_TYPE_EPHEMERAL",
+                KnowledgeBaseType.Persistent => "KNOWLEDGE_BASE_TYPE_PERSISTENT",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -43,8 +43,8 @@ namespace Instill
         {
             return value switch
             {
-                "KNOWLEDGE_BASE_TYPE_PERSISTENT" => KnowledgeBaseType.Persistent,
                 "KNOWLEDGE_BASE_TYPE_EPHEMERAL" => KnowledgeBaseType.Ephemeral,
+                "KNOWLEDGE_BASE_TYPE_PERSISTENT" => KnowledgeBaseType.Persistent,
                 _ => null,
             };
         }

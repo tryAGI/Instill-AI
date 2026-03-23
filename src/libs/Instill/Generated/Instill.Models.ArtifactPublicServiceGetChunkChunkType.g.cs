@@ -9,6 +9,10 @@ namespace Instill
     public enum ArtifactPublicServiceGetChunkChunkType
     {
         /// <summary>
+        /// Augmented.
+        /// </summary>
+        TypeAugmented,
+        /// <summary>
         /// Content.
         /// </summary>
         TypeContent,
@@ -16,10 +20,6 @@ namespace Instill
         /// Summary.
         /// </summary>
         TypeSummary,
-        /// <summary>
-        /// Augmented.
-        /// </summary>
-        TypeAugmented,
     }
 
     /// <summary>
@@ -34,9 +34,9 @@ namespace Instill
         {
             return value switch
             {
+                ArtifactPublicServiceGetChunkChunkType.TypeAugmented => "TYPE_AUGMENTED",
                 ArtifactPublicServiceGetChunkChunkType.TypeContent => "TYPE_CONTENT",
                 ArtifactPublicServiceGetChunkChunkType.TypeSummary => "TYPE_SUMMARY",
-                ArtifactPublicServiceGetChunkChunkType.TypeAugmented => "TYPE_AUGMENTED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -47,9 +47,9 @@ namespace Instill
         {
             return value switch
             {
+                "TYPE_AUGMENTED" => ArtifactPublicServiceGetChunkChunkType.TypeAugmented,
                 "TYPE_CONTENT" => ArtifactPublicServiceGetChunkChunkType.TypeContent,
                 "TYPE_SUMMARY" => ArtifactPublicServiceGetChunkChunkType.TypeSummary,
-                "TYPE_AUGMENTED" => ArtifactPublicServiceGetChunkChunkType.TypeAugmented,
                 _ => null,
             };
         }

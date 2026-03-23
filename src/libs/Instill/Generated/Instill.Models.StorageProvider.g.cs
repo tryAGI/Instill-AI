@@ -10,13 +10,13 @@ namespace Instill
     public enum StorageProvider
     {
         /// <summary>
-        /// Use MinIO as the storage backend (default)
-        /// </summary>
-        Minio,
-        /// <summary>
         /// Use Google Cloud Storage as the storage backend
         /// </summary>
         Gcs,
+        /// <summary>
+        /// Use MinIO as the storage backend (default)
+        /// </summary>
+        Minio,
     }
 
     /// <summary>
@@ -31,8 +31,8 @@ namespace Instill
         {
             return value switch
             {
-                StorageProvider.Minio => "STORAGE_PROVIDER_MINIO",
                 StorageProvider.Gcs => "STORAGE_PROVIDER_GCS",
+                StorageProvider.Minio => "STORAGE_PROVIDER_MINIO",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -43,8 +43,8 @@ namespace Instill
         {
             return value switch
             {
-                "STORAGE_PROVIDER_MINIO" => StorageProvider.Minio,
                 "STORAGE_PROVIDER_GCS" => StorageProvider.Gcs,
+                "STORAGE_PROVIDER_MINIO" => StorageProvider.Minio,
                 _ => null,
             };
         }

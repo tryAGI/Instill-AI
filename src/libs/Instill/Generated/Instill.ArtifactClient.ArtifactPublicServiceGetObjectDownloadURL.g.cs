@@ -9,13 +9,15 @@ namespace Instill
             global::System.Net.Http.HttpClient httpClient,
             ref string name,
             ref int? urlExpireDays,
-            ref string? downloadFilename);
+            ref string? downloadFilename,
+            ref string? format);
         partial void PrepareArtifactPublicServiceGetObjectDownloadURLRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string name,
             int? urlExpireDays,
-            string? downloadFilename);
+            string? downloadFilename,
+            string? format);
         partial void ProcessArtifactPublicServiceGetObjectDownloadURLResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -32,6 +34,7 @@ namespace Instill
         /// <param name="name"></param>
         /// <param name="urlExpireDays"></param>
         /// <param name="downloadFilename"></param>
+        /// <param name="format"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
 #if NET8_0_OR_GREATER
@@ -41,6 +44,7 @@ namespace Instill
             string name,
             int? urlExpireDays = default,
             string? downloadFilename = default,
+            string? format = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
@@ -49,14 +53,16 @@ namespace Instill
                 httpClient: HttpClient,
                 name: ref name,
                 urlExpireDays: ref urlExpireDays,
-                downloadFilename: ref downloadFilename);
+                downloadFilename: ref downloadFilename,
+                format: ref format);
 
             var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/{name}/download-url",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
                 .AddOptionalParameter("urlExpireDays", urlExpireDays?.ToString())
-                .AddOptionalParameter("downloadFilename", downloadFilename) 
+                .AddOptionalParameter("downloadFilename", downloadFilename)
+                .AddOptionalParameter("format", format) 
                 ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -91,7 +97,8 @@ namespace Instill
                 httpRequestMessage: __httpRequest,
                 name: name,
                 urlExpireDays: urlExpireDays,
-                downloadFilename: downloadFilename);
+                downloadFilename: downloadFilename,
+                format: format);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,

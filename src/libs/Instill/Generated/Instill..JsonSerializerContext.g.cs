@@ -324,7 +324,7 @@ namespace Instill
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.GetNamespaceConnectionResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.GetNamespaceSecretResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.GetObjectDownloadURLResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.Object))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.Object), TypeInfoPropertyName = "Object_Instill_Object")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.GetObjectResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.GetObjectUploadURLResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.GetPipelineReleaseResponse))]

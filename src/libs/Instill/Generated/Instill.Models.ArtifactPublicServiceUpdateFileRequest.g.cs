@@ -222,6 +222,15 @@ namespace Instill
         public bool? IsTextBased { get; set; }
 
         /// <summary>
+        /// SHA256 hash of the file content for content-based deduplication.<br/>
+        /// Computed at ingestion time for both inline content uploads and object<br/>
+        /// reference uploads.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("contentSha256")]
+        public string? ContentSha256 { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -354,6 +363,12 @@ namespace Instill
         /// Only meaningful for document file types (PDF, DOCX, PPTX, etc.).<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="contentSha256">
+        /// SHA256 hash of the file content for content-based deduplication.<br/>
+        /// Computed at ingestion time for both inline content uploads and object<br/>
+        /// reference uploads.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -385,7 +400,8 @@ namespace Instill
             global::System.Collections.Generic.IList<string>? collections,
             global::System.DateTime? deleteTime,
             string? @object,
-            bool? isTextBased)
+            bool? isTextBased,
+            string? contentSha256)
         {
             this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
             this.Id = id;
@@ -415,6 +431,7 @@ namespace Instill
             this.DeleteTime = deleteTime;
             this.Object = @object;
             this.IsTextBased = isTextBased;
+            this.ContentSha256 = contentSha256;
         }
 
         /// <summary>

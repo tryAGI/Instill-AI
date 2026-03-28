@@ -14,7 +14,7 @@ namespace Instill
 #if NET8_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
 #endif
-        global::System.Threading.Tasks.Task<string> MgmtPublicServiceDeleteTokenAsync(
+        global::System.Threading.Tasks.Task<global::Instill.DeleteTokenResponse> MgmtPublicServiceDeleteTokenAsync(
             string name,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

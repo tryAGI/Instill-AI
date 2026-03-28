@@ -19,7 +19,7 @@ namespace Instill
 #if NET8_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
 #endif
-        global::System.Threading.Tasks.Task<string> PipelinePublicServiceTestConnectionAsync(
+        global::System.Threading.Tasks.Task<global::Instill.TestConnectionResponse> PipelinePublicServiceTestConnectionAsync(
             string name1,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

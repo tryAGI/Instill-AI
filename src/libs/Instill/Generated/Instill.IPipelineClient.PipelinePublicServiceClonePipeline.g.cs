@@ -16,7 +16,7 @@ namespace Instill
 #if NET8_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
 #endif
-        global::System.Threading.Tasks.Task<string> PipelinePublicServiceClonePipelineAsync(
+        global::System.Threading.Tasks.Task<global::Instill.ClonePipelineResponse> PipelinePublicServiceClonePipelineAsync(
             string name,
 
             global::Instill.ClonePipelineBody request,
@@ -39,7 +39,7 @@ namespace Instill
 #if NET8_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
 #endif
-        global::System.Threading.Tasks.Task<string> PipelinePublicServiceClonePipelineAsync(
+        global::System.Threading.Tasks.Task<global::Instill.ClonePipelineResponse> PipelinePublicServiceClonePipelineAsync(
             string name,
             string target,
             string? description = default,

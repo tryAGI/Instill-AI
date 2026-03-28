@@ -8,12 +8,12 @@ namespace Instill
         partial void PrepareArtifactPublicServiceReprocessFileArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string name,
-            object request);
+            global::Instill.ReprocessFileBody request);
         partial void PrepareArtifactPublicServiceReprocessFileRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string name,
-            object request);
+            global::Instill.ReprocessFileBody request);
         partial void ProcessArtifactPublicServiceReprocessFileResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -38,7 +38,7 @@ namespace Instill
         public async global::System.Threading.Tasks.Task<global::Instill.ReprocessFileResponse> ArtifactPublicServiceReprocessFileAsync(
             string name,
 
-            object request,
+            global::Instill.ReprocessFileBody request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -77,7 +77,7 @@ namespace Instill
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 }
             }
-            var __httpRequestContentBody = global::System.Text.Json.JsonSerializer.Serialize(request, request.GetType(), JsonSerializerContext);
+            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
             var __httpRequestContent = new global::System.Net.Http.StringContent(
                 content: __httpRequestContentBody,
                 encoding: global::System.Text.Encoding.UTF8,
@@ -281,7 +281,7 @@ namespace Instill
             string name,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new object
+            var __request = new global::Instill.ReprocessFileBody
             {
             };
 

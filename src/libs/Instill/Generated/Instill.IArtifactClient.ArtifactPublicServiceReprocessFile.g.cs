@@ -19,7 +19,7 @@ namespace Instill
         global::System.Threading.Tasks.Task<global::Instill.ReprocessFileResponse> ArtifactPublicServiceReprocessFileAsync(
             string name,
 
-            object request,
+            global::Instill.ReprocessFileBody request,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Reprocess a file<br/>

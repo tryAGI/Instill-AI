@@ -2,7 +2,7 @@
 set -euo pipefail
 dotnet tool install --global autosdk.cli --prerelease
 rm -rf Generated
-curl --fail --silent --show-error -o openapi.yaml https://raw.githubusercontent.com/instill-ai/protobufs/refs/heads/main/openapi/v2/service.swagger.yaml
+curl --fail --silent --show-error -L -o openapi.yaml https://raw.githubusercontent.com/instill-ai/protobufs/refs/heads/main/openapi/v2/service.swagger.yaml
 autosdk generate openapi.yaml \
   --namespace Instill \
   --clientClassName InstillClient \

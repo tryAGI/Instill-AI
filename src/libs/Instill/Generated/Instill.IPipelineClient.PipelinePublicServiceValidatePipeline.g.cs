@@ -21,7 +21,7 @@ namespace Instill
         global::System.Threading.Tasks.Task<global::Instill.ValidatePipelineResponse> PipelinePublicServiceValidatePipelineAsync(
             string name,
 
-            object request,
+            global::Instill.ValidatePipelineBody request,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Validate a pipeline<br/>

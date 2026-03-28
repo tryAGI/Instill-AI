@@ -32,7 +32,7 @@ namespace Instill
 #if NET8_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
 #endif
-        public async global::System.Threading.Tasks.Task<string> ModelPublicServiceDeleteModelVersionAsync(
+        public async global::System.Threading.Tasks.Task<global::Instill.DeleteModelVersionResponse> ModelPublicServiceDeleteModelVersionAsync(
             string name4,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -187,7 +187,9 @@ namespace Instill
                 {
                     __response.EnsureSuccessStatusCode();
 
-                    return __content;
+                    return
+                        global::Instill.DeleteModelVersionResponse.FromJson(__content, JsonSerializerContext) ??
+                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
                 catch (global::System.Exception __ex)
                 {
@@ -210,13 +212,15 @@ namespace Instill
                 {
                     __response.EnsureSuccessStatusCode();
 
-                    var __content = await __response.Content.ReadAsStringAsync(
+                    using var __content = await __response.Content.ReadAsStreamAsync(
 #if NET5_0_OR_GREATER
                         cancellationToken
 #endif
                     ).ConfigureAwait(false);
 
-                    return __content;
+                    return
+                        await global::Instill.DeleteModelVersionResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
                 catch (global::System.Exception __ex)
                 {

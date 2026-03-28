@@ -15,7 +15,7 @@ namespace Instill
 #if NET8_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
 #endif
-        global::System.Threading.Tasks.Task<string> ModelPublicServiceDeleteModelVersionAsync(
+        global::System.Threading.Tasks.Task<global::Instill.DeleteModelVersionResponse> ModelPublicServiceDeleteModelVersionAsync(
             string name4,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

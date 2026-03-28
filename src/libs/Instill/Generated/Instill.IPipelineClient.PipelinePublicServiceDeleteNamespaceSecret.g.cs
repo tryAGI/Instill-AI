@@ -15,7 +15,7 @@ namespace Instill
 #if NET8_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
 #endif
-        global::System.Threading.Tasks.Task<string> PipelinePublicServiceDeleteNamespaceSecretAsync(
+        global::System.Threading.Tasks.Task<global::Instill.DeleteNamespaceSecretResponse> PipelinePublicServiceDeleteNamespaceSecretAsync(
             string name4,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

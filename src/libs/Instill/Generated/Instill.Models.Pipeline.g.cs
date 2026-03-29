@@ -217,6 +217,15 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="Pipeline" /> class.
         /// </summary>
+        /// <param name="displayName">
+        /// Field 3: Human-readable display name for UI.
+        /// </param>
+        /// <param name="recipe">
+        /// Recipe describes the components of a Pipeline and how they are connected.
+        /// </param>
+        /// <param name="visibility">
+        /// Pipeline visibility.
+        /// </param>
         /// <param name="name">
         /// Field 1: Canonical resource name.<br/>
         /// Format: `namespaces/{namespace}/pipelines/{pipeline}`.<br/>
@@ -224,9 +233,6 @@ namespace Instill
         /// </param>
         /// <param name="id">
         /// Included only in responses
-        /// </param>
-        /// <param name="displayName">
-        /// Field 3: Human-readable display name for UI.
         /// </param>
         /// <param name="slug">
         /// Field 4: URL-friendly slug (NO prefix).<br/>
@@ -248,14 +254,8 @@ namespace Instill
         /// Field 8: Last update time.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="recipe">
-        /// Recipe describes the components of a Pipeline and how they are connected.
-        /// </param>
         /// <param name="rawRecipe">
         /// Recipe in YAML format.
-        /// </param>
-        /// <param name="visibility">
-        /// Pipeline visibility.
         /// </param>
         /// <param name="sharing">
         /// Pipeline sharing information.
@@ -354,17 +354,17 @@ namespace Instill
             global::Instill.V1betaUser? creator,
             global::System.DateTime? deleteTime)
         {
-            this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
-            this.Recipe = recipe ?? throw new global::System.ArgumentNullException(nameof(recipe));
-            this.Visibility = visibility;
             this.Name = name;
             this.Id = id;
+            this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
             this.Slug = slug;
             this.Aliases = aliases;
             this.Description = description;
             this.CreateTime = createTime;
             this.UpdateTime = updateTime;
+            this.Recipe = recipe ?? throw new global::System.ArgumentNullException(nameof(recipe));
             this.RawRecipe = rawRecipe;
+            this.Visibility = visibility;
             this.Sharing = sharing;
             this.Permission = permission;
             this.DataSpecification = dataSpecification;

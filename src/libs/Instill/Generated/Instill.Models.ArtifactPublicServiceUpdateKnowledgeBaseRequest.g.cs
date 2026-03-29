@@ -162,11 +162,11 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="ArtifactPublicServiceUpdateKnowledgeBaseRequest" /> class.
         /// </summary>
-        /// <param name="id">
-        /// Included only in responses
-        /// </param>
         /// <param name="displayName">
         /// Field 3: Human-readable display name for UI.
+        /// </param>
+        /// <param name="id">
+        /// Included only in responses
         /// </param>
         /// <param name="slug"></param>
         /// <param name="aliases">
@@ -268,8 +268,8 @@ namespace Instill
             string? usedStorage,
             global::System.Collections.Generic.IList<string>? downstreamApps)
         {
-            this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
             this.Id = id;
+            this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
             this.Slug = slug;
             this.Aliases = aliases;
             this.Description = description;

@@ -139,6 +139,12 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthenticatedUser" /> class.
         /// </summary>
+        /// <param name="email">
+        /// Email.
+        /// </param>
+        /// <param name="newsletterSubscription">
+        /// This defines whether the user is subscribed to Instill AI's newsletter.
+        /// </param>
         /// <param name="name">
         /// Field 1: Canonical resource name.<br/>
         /// Format: `users/{user}`.<br/>
@@ -171,9 +177,6 @@ namespace Instill
         /// Field 8: Update time.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="email">
-        /// Email.
-        /// </param>
         /// <param name="role">
         /// Role.<br/>
         /// It must be one of the following allowed roles:<br/>
@@ -184,9 +187,6 @@ namespace Instill
         /// - `data-scientist`<br/>
         /// - `analytics-engineer`<br/>
         /// - `hobbyist`
-        /// </param>
-        /// <param name="newsletterSubscription">
-        /// This defines whether the user is subscribed to Instill AI's newsletter.
         /// </param>
         /// <param name="cookieToken">
         /// Console cookie token.
@@ -222,8 +222,6 @@ namespace Instill
             global::Instill.UserProfile? profile,
             bool? isEligibleForOrganizationTrial)
         {
-            this.Email = email ?? throw new global::System.ArgumentNullException(nameof(email));
-            this.NewsletterSubscription = newsletterSubscription;
             this.Name = name;
             this.Id = id;
             this.DisplayName = displayName;
@@ -232,7 +230,9 @@ namespace Instill
             this.Description = description;
             this.CreateTime = createTime;
             this.UpdateTime = updateTime;
+            this.Email = email ?? throw new global::System.ArgumentNullException(nameof(email));
             this.Role = role;
+            this.NewsletterSubscription = newsletterSubscription;
             this.CookieToken = cookieToken;
             this.OnboardingStatus = onboardingStatus;
             this.Profile = profile;

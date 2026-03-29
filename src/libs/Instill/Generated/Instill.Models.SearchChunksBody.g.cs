@@ -63,10 +63,10 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="SearchChunksBody" /> class.
         /// </summary>
-        /// <param name="knowledgeBase"></param>
         /// <param name="textPrompt">
         /// Text prompt to look for similarities.
         /// </param>
+        /// <param name="knowledgeBase"></param>
         /// <param name="topK">
         /// Top K. Default value: 5.
         /// </param>
@@ -93,8 +93,8 @@ namespace Instill
             global::System.Collections.Generic.IList<string>? files,
             global::System.Collections.Generic.IList<string>? tags)
         {
-            this.TextPrompt = textPrompt ?? throw new global::System.ArgumentNullException(nameof(textPrompt));
             this.KnowledgeBase = knowledgeBase;
+            this.TextPrompt = textPrompt ?? throw new global::System.ArgumentNullException(nameof(textPrompt));
             this.TopK = topK;
             this.Type = type;
             this.FileMediaType = fileMediaType;

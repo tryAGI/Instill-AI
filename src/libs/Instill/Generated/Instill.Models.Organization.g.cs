@@ -113,6 +113,9 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="Organization" /> class.
         /// </summary>
+        /// <param name="profile">
+        /// Profile containing additional organization information.
+        /// </param>
         /// <param name="name">
         /// Included only in responses
         /// </param>
@@ -150,9 +153,6 @@ namespace Instill
         /// Format: `users/{user}`.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="profile">
-        /// Profile containing additional organization information.
-        /// </param>
         /// <param name="permission">
         /// Included only in responses
         /// </param>
@@ -177,7 +177,6 @@ namespace Instill
             global::Instill.MgmtV1betaPermission? permission,
             global::Instill.OrganizationStats? stats)
         {
-            this.Profile = profile ?? throw new global::System.ArgumentNullException(nameof(profile));
             this.Name = name;
             this.Id = id;
             this.DisplayName = displayName;
@@ -187,6 +186,7 @@ namespace Instill
             this.CreateTime = createTime;
             this.UpdateTime = updateTime;
             this.Owner = owner;
+            this.Profile = profile ?? throw new global::System.ArgumentNullException(nameof(profile));
             this.Permission = permission;
             this.Stats = stats;
         }

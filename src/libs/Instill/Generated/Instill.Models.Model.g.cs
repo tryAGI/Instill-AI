@@ -223,6 +223,28 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="Model" /> class.
         /// </summary>
+        /// <param name="displayName">
+        /// Field 3: Human-readable display name for UI.
+        /// </param>
+        /// <param name="modelDefinition">
+        /// The model definition that has been used to import the model.
+        /// </param>
+        /// <param name="configuration">
+        /// Model configuration. This field is validated against the model<br/>
+        /// specification in the model definition.
+        /// </param>
+        /// <param name="task">
+        /// Model task.
+        /// </param>
+        /// <param name="visibility">
+        /// Model visibility.
+        /// </param>
+        /// <param name="region">
+        /// Region of choice for the particular provider to host the model.
+        /// </param>
+        /// <param name="hardware">
+        /// Hardware of choice to serve the model.
+        /// </param>
         /// <param name="name">
         /// Field 1: Canonical resource name.<br/>
         /// Format: `namespaces/{namespace}/models/{model}`.<br/>
@@ -230,9 +252,6 @@ namespace Instill
         /// </param>
         /// <param name="id">
         /// Included only in responses
-        /// </param>
-        /// <param name="displayName">
-        /// Field 3: Human-readable display name for UI.
         /// </param>
         /// <param name="slug">
         /// Field 4: URL-friendly slug (NO prefix).<br/>
@@ -254,28 +273,9 @@ namespace Instill
         /// Field 8: Last update time.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="modelDefinition">
-        /// The model definition that has been used to import the model.
-        /// </param>
-        /// <param name="configuration">
-        /// Model configuration. This field is validated against the model<br/>
-        /// specification in the model definition.
-        /// </param>
-        /// <param name="task">
-        /// Model task.
-        /// </param>
-        /// <param name="visibility">
-        /// Model visibility.
-        /// </param>
         /// <param name="permission">
         /// Permission defines how the model can be used.<br/>
         /// Included only in responses
-        /// </param>
-        /// <param name="region">
-        /// Region of choice for the particular provider to host the model.
-        /// </param>
-        /// <param name="hardware">
-        /// Hardware of choice to serve the model.
         /// </param>
         /// <param name="inputSchema">
         /// Input schema for the model.<br/>
@@ -365,21 +365,21 @@ namespace Instill
             global::Instill.V1betaUser? creator,
             global::System.DateTime? deleteTime)
         {
-            this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
-            this.ModelDefinition = modelDefinition ?? throw new global::System.ArgumentNullException(nameof(modelDefinition));
-            this.Configuration = configuration ?? throw new global::System.ArgumentNullException(nameof(configuration));
-            this.Task = task;
-            this.Visibility = visibility;
-            this.Region = region ?? throw new global::System.ArgumentNullException(nameof(region));
-            this.Hardware = hardware ?? throw new global::System.ArgumentNullException(nameof(hardware));
             this.Name = name;
             this.Id = id;
+            this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
             this.Slug = slug;
             this.Aliases = aliases;
             this.Description = description;
             this.CreateTime = createTime;
             this.UpdateTime = updateTime;
+            this.ModelDefinition = modelDefinition ?? throw new global::System.ArgumentNullException(nameof(modelDefinition));
+            this.Configuration = configuration ?? throw new global::System.ArgumentNullException(nameof(configuration));
+            this.Task = task;
+            this.Visibility = visibility;
             this.Permission = permission;
+            this.Region = region ?? throw new global::System.ArgumentNullException(nameof(region));
+            this.Hardware = hardware ?? throw new global::System.ArgumentNullException(nameof(hardware));
             this.InputSchema = inputSchema;
             this.OutputSchema = outputSchema;
             this.Tags = tags;

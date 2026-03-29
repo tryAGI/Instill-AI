@@ -78,6 +78,9 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="Secret" /> class.
         /// </summary>
+        /// <param name="displayName">
+        /// Field 3: Human-readable display name for UI.
+        /// </param>
         /// <param name="name">
         /// Field 1: Canonical resource name.<br/>
         /// Format: `namespaces/{namespace}/secrets/{secret}`.<br/>
@@ -85,9 +88,6 @@ namespace Instill
         /// </param>
         /// <param name="id">
         /// Included only in responses
-        /// </param>
-        /// <param name="displayName">
-        /// Field 3: Human-readable display name for UI.
         /// </param>
         /// <param name="slug"></param>
         /// <param name="aliases">
@@ -123,9 +123,9 @@ namespace Instill
             global::System.DateTime? updateTime,
             string? value)
         {
-            this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
             this.Name = name;
             this.Id = id;
+            this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
             this.Slug = slug;
             this.Aliases = aliases;
             this.Description = description;

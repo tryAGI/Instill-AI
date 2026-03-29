@@ -239,12 +239,12 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="ArtifactPublicServiceUpdateFileRequest" /> class.
         /// </summary>
-        /// <param name="id">
-        /// Included only in responses
-        /// </param>
         /// <param name="displayName">
         /// Field 3: Human-readable display name (filename) for UI.<br/>
         /// This is typically the original filename of the uploaded file.
+        /// </param>
+        /// <param name="id">
+        /// Included only in responses
         /// </param>
         /// <param name="slug"></param>
         /// <param name="aliases">
@@ -403,8 +403,8 @@ namespace Instill
             bool? isTextBased,
             string? contentSha256)
         {
-            this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
             this.Id = id;
+            this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
             this.Slug = slug;
             this.Aliases = aliases;
             this.Description = description;

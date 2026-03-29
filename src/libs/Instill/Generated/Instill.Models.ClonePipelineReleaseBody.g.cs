@@ -37,13 +37,13 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="ClonePipelineReleaseBody" /> class.
         /// </summary>
+        /// <param name="target"></param>
         /// <param name="description">
         /// Pipeline description.
         /// </param>
         /// <param name="sharing">
         /// Pipeline sharing information.
         /// </param>
-        /// <param name="target"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -52,9 +52,9 @@ namespace Instill
             string? description,
             global::Instill.Sharing? sharing)
         {
-            this.Target = target ?? throw new global::System.ArgumentNullException(nameof(target));
             this.Description = description;
             this.Sharing = sharing;
+            this.Target = target ?? throw new global::System.ArgumentNullException(nameof(target));
         }
 
         /// <summary>

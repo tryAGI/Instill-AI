@@ -139,11 +139,24 @@ namespace Instill
         /// <summary>
         /// Initializes a new instance of the <see cref="PipelinePublicServiceUpdateConnectionRequest" /> class.
         /// </summary>
-        /// <param name="id">
-        /// Included only in responses
-        /// </param>
         /// <param name="displayName">
         /// Field 3: Human-readable display name for UI.
+        /// </param>
+        /// <param name="integrationId">
+        /// Field 10: Integration ID. It determines for which type of components can<br/>
+        /// reference this connection.
+        /// </param>
+        /// <param name="method">
+        /// Field 12: Connection method. It references the setup schema provided by the<br/>
+        /// integration.
+        /// </param>
+        /// <param name="setup">
+        /// Field 13: Connection details. This field is required on creation, optional<br/>
+        /// on view. When viewing the connection details, the setup values will be<br/>
+        /// redacted.
+        /// </param>
+        /// <param name="id">
+        /// Included only in responses
         /// </param>
         /// <param name="slug"></param>
         /// <param name="aliases">
@@ -167,24 +180,11 @@ namespace Instill
         /// Field 9: ID of the namespace owning the connection.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="integrationId">
-        /// Field 10: Integration ID. It determines for which type of components can<br/>
-        /// reference this connection.
-        /// </param>
         /// <param name="integrationTitle">
         /// Field 11: Integration title. This helps the console display the results<br/>
         /// grouped by integration ID without needing an extra call to fetch title by<br/>
         /// integration ID.<br/>
         /// Included only in responses
-        /// </param>
-        /// <param name="method">
-        /// Field 12: Connection method. It references the setup schema provided by the<br/>
-        /// integration.
-        /// </param>
-        /// <param name="setup">
-        /// Field 13: Connection details. This field is required on creation, optional<br/>
-        /// on view. When viewing the connection details, the setup values will be<br/>
-        /// redacted.
         /// </param>
         /// <param name="view">
         /// Included only in responses
@@ -226,18 +226,18 @@ namespace Instill
             object? oAuthAccessDetails,
             string? identity)
         {
-            this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
-            this.IntegrationId = integrationId ?? throw new global::System.ArgumentNullException(nameof(integrationId));
-            this.Method = method;
-            this.Setup = setup ?? throw new global::System.ArgumentNullException(nameof(setup));
             this.Id = id;
+            this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
             this.Slug = slug;
             this.Aliases = aliases;
             this.Description = description;
             this.CreateTime = createTime;
             this.UpdateTime = updateTime;
             this.NamespaceId = namespaceId;
+            this.IntegrationId = integrationId ?? throw new global::System.ArgumentNullException(nameof(integrationId));
             this.IntegrationTitle = integrationTitle;
+            this.Method = method;
+            this.Setup = setup ?? throw new global::System.ArgumentNullException(nameof(setup));
             this.View = view;
             this.Scopes = scopes;
             this.OAuthAccessDetails = oAuthAccessDetails;

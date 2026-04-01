@@ -296,6 +296,7 @@ namespace Instill
             string newPipelineId,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+
             var __request = new global::Instill.RenamePipelineBody
             {
                 NewPipelineId = newPipelineId,

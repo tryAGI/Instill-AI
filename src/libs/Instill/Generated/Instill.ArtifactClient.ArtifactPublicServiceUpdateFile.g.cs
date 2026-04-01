@@ -324,7 +324,6 @@ namespace Instill
             string? @object = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new global::Instill.ArtifactPublicServiceUpdateFileRequest
             {
                 DisplayName = displayName,

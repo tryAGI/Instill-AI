@@ -293,7 +293,6 @@ namespace Instill
             string? value = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new global::Instill.Secret
             {
                 DisplayName = displayName,

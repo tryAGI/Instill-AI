@@ -285,7 +285,6 @@ namespace Instill
             string? updateMask = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new global::Instill.UpdateObjectBody
             {
                 Object = @object,

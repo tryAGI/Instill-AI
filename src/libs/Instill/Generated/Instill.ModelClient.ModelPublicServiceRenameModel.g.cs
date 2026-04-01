@@ -286,6 +286,7 @@ namespace Instill
             string newModelId,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+
             var __request = new global::Instill.RenameModelBody
             {
                 NewModelId = newModelId,

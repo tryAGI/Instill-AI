@@ -281,6 +281,7 @@ namespace Instill
             bool retrievable,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+
             var __request = new global::Instill.UpdateChunkBody
             {
                 Retrievable = retrievable,

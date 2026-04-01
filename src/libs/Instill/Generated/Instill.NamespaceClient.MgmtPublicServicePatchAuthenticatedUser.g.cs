@@ -303,6 +303,7 @@ namespace Instill
             global::Instill.OnboardingStatus? onboardingStatus = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+
             var __request = new global::Instill.AuthenticatedUser
             {
                 Email = email,

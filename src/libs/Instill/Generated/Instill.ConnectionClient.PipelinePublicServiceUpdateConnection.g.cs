@@ -324,6 +324,7 @@ namespace Instill
             string? identity = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+
             var __request = new global::Instill.PipelinePublicServiceUpdateConnectionRequest
             {
                 DisplayName = displayName,

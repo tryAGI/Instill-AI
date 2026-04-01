@@ -348,7 +348,6 @@ namespace Instill
             string? profileImage = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new global::Instill.ModelPublicServiceUpdateModelRequest
             {
                 DisplayName = displayName,

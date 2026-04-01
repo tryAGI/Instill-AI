@@ -277,7 +277,6 @@ namespace Instill
             string id,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new global::Instill.CheckNamespaceRequest
             {
                 Id = id,

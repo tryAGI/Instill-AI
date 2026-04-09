@@ -4,7 +4,7 @@
 namespace Instill
 {
     /// <summary>
-    /// AI Model orchestration<br/>
+    /// AI Model orchestration.<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
@@ -13,7 +13,7 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public const string DefaultBaseUrl = "https://api.instill-ai.com";
+        public const string DefaultBaseUrl = "https://api.instill-ai.com/";
 
         private bool _disposeHttpClient = true;
 

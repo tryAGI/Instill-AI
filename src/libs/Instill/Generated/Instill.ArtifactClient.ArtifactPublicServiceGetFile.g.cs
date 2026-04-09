@@ -5,6 +5,25 @@ namespace Instill
 {
     public partial class ArtifactClient
     {
+
+
+        private static readonly global::Instill.EndPointSecurityRequirement s_ArtifactPublicServiceGetFileSecurityRequirement0 =
+            new global::Instill.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Instill.EndPointAuthorizationRequirement[]
+                {                    new global::Instill.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Header",
+                        Name = "Authorization",
+                        FriendlyName = "ApiKeyInHeader",
+                    },
+                },
+            };
+        private static readonly global::Instill.EndPointSecurityRequirement[] s_ArtifactPublicServiceGetFileSecurityRequirements =
+            new global::Instill.EndPointSecurityRequirement[]
+            {                s_ArtifactPublicServiceGetFileSecurityRequirement0,
+            };
         partial void PrepareArtifactPublicServiceGetFileArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string name1,
@@ -51,13 +70,19 @@ namespace Instill
                 view: ref view,
                 storageProvider: ref storageProvider);
 
+
+            var __authorizations = global::Instill.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_ArtifactPublicServiceGetFileSecurityRequirements,
+                operationName: "ArtifactPublicServiceGetFileAsync");
+
             var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/{name1}",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
                 .AddOptionalParameter("view", view?.ToValueString())
                 .AddOptionalParameter("storageProvider", storageProvider?.ToValueString()) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -67,7 +92,7 @@ namespace Instill
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

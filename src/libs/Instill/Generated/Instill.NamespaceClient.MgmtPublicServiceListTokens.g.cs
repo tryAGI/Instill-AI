@@ -5,6 +5,25 @@ namespace Instill
 {
     public partial class NamespaceClient
     {
+
+
+        private static readonly global::Instill.EndPointSecurityRequirement s_MgmtPublicServiceListTokensSecurityRequirement0 =
+            new global::Instill.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Instill.EndPointAuthorizationRequirement[]
+                {                    new global::Instill.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Header",
+                        Name = "Authorization",
+                        FriendlyName = "ApiKeyInHeader",
+                    },
+                },
+            };
+        private static readonly global::Instill.EndPointSecurityRequirement[] s_MgmtPublicServiceListTokensSecurityRequirements =
+            new global::Instill.EndPointSecurityRequirement[]
+            {                s_MgmtPublicServiceListTokensSecurityRequirement0,
+            };
         partial void PrepareMgmtPublicServiceListTokensArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string? parent,
@@ -51,6 +70,12 @@ namespace Instill
                 pageSize: ref pageSize,
                 pageToken: ref pageToken);
 
+
+            var __authorizations = global::Instill.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_MgmtPublicServiceListTokensSecurityRequirements,
+                operationName: "MgmtPublicServiceListTokensAsync");
+
             var __pathBuilder = new global::Instill.PathBuilder(
                 path: "/v1beta/tokens",
                 baseUri: HttpClient.BaseAddress); 
@@ -58,7 +83,7 @@ namespace Instill
                 .AddOptionalParameter("parent", parent)
                 .AddOptionalParameter("pageSize", pageSize?.ToString())
                 .AddOptionalParameter("pageToken", pageToken) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -68,7 +93,7 @@ namespace Instill
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

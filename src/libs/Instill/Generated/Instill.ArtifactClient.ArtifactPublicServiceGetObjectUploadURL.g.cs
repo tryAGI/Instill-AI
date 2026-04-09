@@ -5,6 +5,25 @@ namespace Instill
 {
     public partial class ArtifactClient
     {
+
+
+        private static readonly global::Instill.EndPointSecurityRequirement s_ArtifactPublicServiceGetObjectUploadURLSecurityRequirement0 =
+            new global::Instill.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Instill.EndPointAuthorizationRequirement[]
+                {                    new global::Instill.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Header",
+                        Name = "Authorization",
+                        FriendlyName = "ApiKeyInHeader",
+                    },
+                },
+            };
+        private static readonly global::Instill.EndPointSecurityRequirement[] s_ArtifactPublicServiceGetObjectUploadURLSecurityRequirements =
+            new global::Instill.EndPointSecurityRequirement[]
+            {                s_ArtifactPublicServiceGetObjectUploadURLSecurityRequirement0,
+            };
         partial void PrepareArtifactPublicServiceGetObjectUploadURLArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string parent,
@@ -61,6 +80,12 @@ namespace Instill
                 lastModifiedTime: ref lastModifiedTime,
                 objectExpireDays: ref objectExpireDays);
 
+
+            var __authorizations = global::Instill.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_ArtifactPublicServiceGetObjectUploadURLSecurityRequirements,
+                operationName: "ArtifactPublicServiceGetObjectUploadURLAsync");
+
             var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/{parent}/object-upload-url",
                 baseUri: HttpClient.BaseAddress); 
@@ -69,7 +94,7 @@ namespace Instill
                 .AddOptionalParameter("urlExpireDays", urlExpireDays?.ToString())
                 .AddOptionalParameter("lastModifiedTime", lastModifiedTime?.ToString("yyyy-MM-ddTHH:mm:ssZ"))
                 .AddOptionalParameter("objectExpireDays", objectExpireDays?.ToString()) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -79,7 +104,7 @@ namespace Instill
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

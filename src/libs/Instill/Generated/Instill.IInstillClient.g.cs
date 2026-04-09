@@ -61,7 +61,7 @@ namespace Instill
         public MetricsClient Metrics { get; }
 
         /// <summary>
-        /// AI Model orchestration
+        /// AI Model orchestration.
         /// </summary>
         public ModelClient Model { get; }
 

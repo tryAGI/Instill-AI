@@ -5,6 +5,25 @@ namespace Instill
 {
     public partial class ArtifactClient
     {
+
+
+        private static readonly global::Instill.EndPointSecurityRequirement s_ArtifactPublicServiceDeleteFileSecurityRequirement0 =
+            new global::Instill.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Instill.EndPointAuthorizationRequirement[]
+                {                    new global::Instill.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Header",
+                        Name = "Authorization",
+                        FriendlyName = "ApiKeyInHeader",
+                    },
+                },
+            };
+        private static readonly global::Instill.EndPointSecurityRequirement[] s_ArtifactPublicServiceDeleteFileSecurityRequirements =
+            new global::Instill.EndPointSecurityRequirement[]
+            {                s_ArtifactPublicServiceDeleteFileSecurityRequirement0,
+            };
         partial void PrepareArtifactPublicServiceDeleteFileArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string name1);
@@ -41,9 +60,15 @@ namespace Instill
                 httpClient: HttpClient,
                 name1: ref name1);
 
+
+            var __authorizations = global::Instill.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_ArtifactPublicServiceDeleteFileSecurityRequirements,
+                operationName: "ArtifactPublicServiceDeleteFileAsync");
+
             var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1alpha/{name1}",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Delete,
@@ -53,7 +78,7 @@ namespace Instill
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

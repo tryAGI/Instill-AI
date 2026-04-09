@@ -5,6 +5,25 @@ namespace Instill
 {
     public partial class ConnectionClient
     {
+
+
+        private static readonly global::Instill.EndPointSecurityRequirement s_PipelinePublicServiceCreateConnectionSecurityRequirement0 =
+            new global::Instill.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Instill.EndPointAuthorizationRequirement[]
+                {                    new global::Instill.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Header",
+                        Name = "Authorization",
+                        FriendlyName = "ApiKeyInHeader",
+                    },
+                },
+            };
+        private static readonly global::Instill.EndPointSecurityRequirement[] s_PipelinePublicServiceCreateConnectionSecurityRequirements =
+            new global::Instill.EndPointSecurityRequirement[]
+            {                s_PipelinePublicServiceCreateConnectionSecurityRequirement0,
+            };
         partial void PreparePipelinePublicServiceCreateConnectionArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string parent1,
@@ -49,9 +68,15 @@ namespace Instill
                 parent1: ref parent1,
                 request: request);
 
+
+            var __authorizations = global::Instill.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_PipelinePublicServiceCreateConnectionSecurityRequirements,
+                operationName: "PipelinePublicServiceCreateConnectionAsync");
+
             var __pathBuilder = new global::Instill.PathBuilder(
                 path: $"/v1beta/{parent1}/connections",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -61,7 +86,7 @@ namespace Instill
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

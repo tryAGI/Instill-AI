@@ -5,6 +5,25 @@ namespace Instill
 {
     public partial class ModelClient
     {
+
+
+        private static readonly global::Instill.EndPointSecurityRequirement s_ModelPublicServiceListAvailableRegionsSecurityRequirement0 =
+            new global::Instill.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Instill.EndPointAuthorizationRequirement[]
+                {                    new global::Instill.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Header",
+                        Name = "Authorization",
+                        FriendlyName = "ApiKeyInHeader",
+                    },
+                },
+            };
+        private static readonly global::Instill.EndPointSecurityRequirement[] s_ModelPublicServiceListAvailableRegionsSecurityRequirements =
+            new global::Instill.EndPointSecurityRequirement[]
+            {                s_ModelPublicServiceListAvailableRegionsSecurityRequirement0,
+            };
         partial void PrepareModelPublicServiceListAvailableRegionsArguments(
             global::System.Net.Http.HttpClient httpClient);
         partial void PrepareModelPublicServiceListAvailableRegionsRequest(
@@ -36,9 +55,15 @@ namespace Instill
             PrepareModelPublicServiceListAvailableRegionsArguments(
                 httpClient: HttpClient);
 
+
+            var __authorizations = global::Instill.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_ModelPublicServiceListAvailableRegionsSecurityRequirements,
+                operationName: "ModelPublicServiceListAvailableRegionsAsync");
+
             var __pathBuilder = new global::Instill.PathBuilder(
                 path: "/v1alpha/available-regions",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -48,7 +73,7 @@ namespace Instill
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

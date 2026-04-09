@@ -13,7 +13,7 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public const string DefaultBaseUrl = "https://api.instill-ai.com";
+        public const string DefaultBaseUrl = "https://api.instill-ai.com/";
 
         private bool _disposeHttpClient = true;
 
@@ -74,7 +74,7 @@ namespace Instill
         };
 
         /// <summary>
-        /// AI Model orchestration
+        /// AI Model orchestration.
         /// </summary>
         public ModelClient Model => new ModelClient(HttpClient, authorizations: Authorizations)
         {

@@ -11,6 +11,7 @@ namespace Instill
         /// </summary>
         /// <param name="name1"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
 #if NET8_0_OR_GREATER
@@ -20,6 +21,7 @@ namespace Instill
             string name1,
 
             global::Instill.ClonePipelineReleaseBody request,
+            global::Instill.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Clone a pipeline release<br/>
@@ -34,6 +36,7 @@ namespace Instill
         /// Pipeline sharing information.
         /// </param>
         /// <param name="target"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
 #if NET8_0_OR_GREATER
@@ -44,6 +47,7 @@ namespace Instill
             string target,
             string? description = default,
             global::Instill.Sharing? sharing = default,
+            global::Instill.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

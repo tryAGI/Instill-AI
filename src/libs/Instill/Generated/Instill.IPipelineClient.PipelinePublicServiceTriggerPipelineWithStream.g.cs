@@ -15,6 +15,7 @@ namespace Instill
         /// <param name="name"></param>
         /// <param name="instillRequesterUid"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
 #if NET8_0_OR_GREATER
@@ -25,6 +26,7 @@ namespace Instill
 
             global::Instill.TriggerPipelineWithStreamBody request,
             string? instillRequesterUid = default,
+            global::Instill.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Trigger a pipeline via streaming<br/>
@@ -40,6 +42,7 @@ namespace Instill
         /// Pipeline input parameters, it will be deprecated soon.
         /// </param>
         /// <param name="data"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
 #if NET8_0_OR_GREATER
@@ -50,6 +53,7 @@ namespace Instill
             string? instillRequesterUid = default,
             global::System.Collections.Generic.IList<object>? inputs = default,
             global::System.Collections.Generic.IList<global::Instill.TriggerData>? data = default,
+            global::Instill.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

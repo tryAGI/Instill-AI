@@ -26,6 +26,7 @@ namespace Instill
             Authorizations.Add(new global::Instill.EndPointAuthorization
             {
                 Type = "ApiKey",
+                SchemeId = "Bearer",
                 Location = "Header",
                 Name = "Authorization",
                 Value = apiKey,

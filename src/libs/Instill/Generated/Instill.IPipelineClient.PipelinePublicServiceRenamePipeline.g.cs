@@ -16,6 +16,7 @@ namespace Instill
         /// </summary>
         /// <param name="name"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
 #if NET8_0_OR_GREATER
@@ -25,6 +26,7 @@ namespace Instill
             string name,
 
             global::Instill.RenamePipelineBody request,
+            global::Instill.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Rename a pipeline<br/>
@@ -41,6 +43,7 @@ namespace Instill
         /// The new resource ID. This will transform the resource name into<br/>
         /// `namespaces/{namespace}/pipelines/{new_pipeline_id}`.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
 #if NET8_0_OR_GREATER
@@ -49,6 +52,7 @@ namespace Instill
         global::System.Threading.Tasks.Task<global::Instill.RenamePipelineResponse> PipelinePublicServiceRenamePipelineAsync(
             string name,
             string newPipelineId,
+            global::Instill.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

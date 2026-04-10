@@ -10,6 +10,7 @@ namespace Instill
         /// </summary>
         /// <param name="parent"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
 #if NET8_0_OR_GREATER
@@ -19,6 +20,7 @@ namespace Instill
             string parent,
 
             global::Instill.Pipeline request,
+            global::Instill.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create a new pipeline<br/>
@@ -69,6 +71,7 @@ namespace Instill
         /// <param name="profileImage">
         /// Pipeline profile image in base64 format.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
 #if NET8_0_OR_GREATER
@@ -90,6 +93,7 @@ namespace Instill
             string? documentationUrl = default,
             string? license = default,
             string? profileImage = default,
+            global::Instill.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

@@ -15,6 +15,7 @@ namespace Instill
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
         /// <param name="filter"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
 #if NET8_0_OR_GREATER
@@ -26,6 +27,7 @@ namespace Instill
             int? pageSize = default,
             string? pageToken = default,
             string? filter = default,
+            global::Instill.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

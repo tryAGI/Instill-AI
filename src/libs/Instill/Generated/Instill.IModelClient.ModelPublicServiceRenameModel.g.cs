@@ -11,6 +11,7 @@ namespace Instill
         /// </summary>
         /// <param name="name"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
 #if NET8_0_OR_GREATER
@@ -20,6 +21,7 @@ namespace Instill
             string name,
 
             global::Instill.RenameModelBody request,
+            global::Instill.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Rename a model<br/>
@@ -31,6 +33,7 @@ namespace Instill
         /// The new resource ID. This will transform the resource name into<br/>
         /// `namespaces/{namespace}/models/{new_model_id}`.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
 #if NET8_0_OR_GREATER
@@ -39,6 +42,7 @@ namespace Instill
         global::System.Threading.Tasks.Task<global::Instill.RenameModelResponse> ModelPublicServiceRenameModelAsync(
             string name,
             string newModelId,
+            global::Instill.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

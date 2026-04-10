@@ -10,6 +10,7 @@ namespace Instill
         /// </summary>
         /// <param name="parent"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
 #if NET8_0_OR_GREATER
@@ -19,6 +20,7 @@ namespace Instill
             string parent,
 
             global::Instill.KnowledgeBase request,
+            global::Instill.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create a knowledge base<br/>
@@ -48,6 +50,7 @@ namespace Instill
         /// <param name="embeddingConfig">
         /// The embedding configuration for the knowledge base.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
 #if NET8_0_OR_GREATER
@@ -62,6 +65,7 @@ namespace Instill
             global::Instill.KnowledgeBaseType? type = default,
             string? system = default,
             global::Instill.EmbeddingConfig? embeddingConfig = default,
+            global::Instill.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

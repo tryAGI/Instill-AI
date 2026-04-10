@@ -31,6 +31,9 @@ namespace Instill
 #if DEBUG
             = true;
 #endif
+
+        /// <inheritdoc/>
+        public global::Instill.AutoSDKClientOptions Options { get; }
         /// <summary>
         /// 
         /// </summary>
@@ -40,7 +43,7 @@ namespace Instill
         /// <summary>
         /// Data orchestration for unified unstructured data representation.
         /// </summary>
-        public ArtifactClient Artifact => new ArtifactClient(HttpClient, authorizations: Authorizations)
+        public ArtifactClient Artifact => new ArtifactClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -49,7 +52,7 @@ namespace Instill
         /// <summary>
         /// Connections to 3rd party apps for use in pipelines.
         /// </summary>
-        public ConnectionClient Connection => new ConnectionClient(HttpClient, authorizations: Authorizations)
+        public ConnectionClient Connection => new ConnectionClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -58,7 +61,7 @@ namespace Instill
         /// <summary>
         /// Integration definitions for creating connections.
         /// </summary>
-        public IntegrationClient Integration => new IntegrationClient(HttpClient, authorizations: Authorizations)
+        public IntegrationClient Integration => new IntegrationClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -67,7 +70,7 @@ namespace Instill
         /// <summary>
         /// Resource usage metrics.
         /// </summary>
-        public MetricsClient Metrics => new MetricsClient(HttpClient, authorizations: Authorizations)
+        public MetricsClient Metrics => new MetricsClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -76,7 +79,7 @@ namespace Instill
         /// <summary>
         /// AI Model orchestration.
         /// </summary>
-        public ModelClient Model => new ModelClient(HttpClient, authorizations: Authorizations)
+        public ModelClient Model => new ModelClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -85,7 +88,7 @@ namespace Instill
         /// <summary>
         /// Namespaces (e.g. User, Organization) that structure the resource hierarchy.
         /// </summary>
-        public NamespaceClient Namespace => new NamespaceClient(HttpClient, authorizations: Authorizations)
+        public NamespaceClient Namespace => new NamespaceClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -94,7 +97,7 @@ namespace Instill
         /// <summary>
         /// Pipeline orchestration.
         /// </summary>
-        public PipelineClient Pipeline => new PipelineClient(HttpClient, authorizations: Authorizations)
+        public PipelineClient Pipeline => new PipelineClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -113,11 +116,37 @@ namespace Instill
             global::System.Net.Http.HttpClient? httpClient = null,
             global::System.Uri? baseUri = null,
             global::System.Collections.Generic.List<global::Instill.EndPointAuthorization>? authorizations = null,
+            bool disposeHttpClient = true) : this(
+                httpClient,
+                baseUri,
+                authorizations,
+                options: null,
+                disposeHttpClient: disposeHttpClient)
+        {
+        }
+
+        /// <summary>
+        /// Creates a new instance of the InstillClient.
+        /// If no httpClient is provided, a new one will be created.
+        /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
+        /// </summary>
+        /// <param name="httpClient">The HttpClient instance. If not provided, a new one will be created.</param>
+        /// <param name="baseUri">The base URL for the API. If not provided, the default baseUri from OpenAPI spec will be used.</param>
+        /// <param name="authorizations">The authorizations to use for the requests.</param>
+        /// <param name="options">Client-wide request defaults such as headers, query parameters, retries, and timeout.</param>
+        /// <param name="disposeHttpClient">Dispose the HttpClient when the instance is disposed. True by default.</param>
+        public InstillClient(
+            global::System.Net.Http.HttpClient? httpClient = null,
+            global::System.Uri? baseUri = null,
+            global::System.Collections.Generic.List<global::Instill.EndPointAuthorization>? authorizations = null,
+            global::Instill.AutoSDKClientOptions? options = null,
             bool disposeHttpClient = true)
         {
+
             HttpClient = httpClient ?? new global::System.Net.Http.HttpClient();
             HttpClient.BaseAddress ??= baseUri ?? new global::System.Uri(DefaultBaseUrl);
             Authorizations = authorizations ?? new global::System.Collections.Generic.List<global::Instill.EndPointAuthorization>();
+            Options = options ?? new global::Instill.AutoSDKClientOptions();
             _disposeHttpClient = disposeHttpClient;
 
             Initialized(HttpClient);

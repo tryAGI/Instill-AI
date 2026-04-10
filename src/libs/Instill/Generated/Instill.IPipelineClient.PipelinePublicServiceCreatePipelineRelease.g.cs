@@ -13,6 +13,7 @@ namespace Instill
         /// </summary>
         /// <param name="parent"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
 #if NET8_0_OR_GREATER
@@ -22,6 +23,7 @@ namespace Instill
             string parent,
 
             global::Instill.PipelineRelease request,
+            global::Instill.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create a pipeline release<br/>
@@ -52,6 +54,7 @@ namespace Instill
         /// Recipe in YAML format describes the components of a pipeline and how they<br/>
         /// are connected.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
 #if NET8_0_OR_GREATER
@@ -65,6 +68,7 @@ namespace Instill
             object? metadata = default,
             string? readme = default,
             string? rawRecipe = default,
+            global::Instill.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

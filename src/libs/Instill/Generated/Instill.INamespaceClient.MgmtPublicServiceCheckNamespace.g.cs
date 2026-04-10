@@ -10,6 +10,7 @@ namespace Instill
         /// resource that is using it.
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
 #if NET8_0_OR_GREATER
@@ -18,6 +19,7 @@ namespace Instill
         global::System.Threading.Tasks.Task<global::Instill.CheckNamespaceResponse> MgmtPublicServiceCheckNamespaceAsync(
 
             global::Instill.CheckNamespaceRequest request,
+            global::Instill.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Check if a namespace is in use<br/>
@@ -27,6 +29,7 @@ namespace Instill
         /// <param name="id">
         /// The namespace ID to be checked.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
 #if NET8_0_OR_GREATER
@@ -34,6 +37,7 @@ namespace Instill
 #endif
         global::System.Threading.Tasks.Task<global::Instill.CheckNamespaceResponse> MgmtPublicServiceCheckNamespaceAsync(
             string id,
+            global::Instill.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

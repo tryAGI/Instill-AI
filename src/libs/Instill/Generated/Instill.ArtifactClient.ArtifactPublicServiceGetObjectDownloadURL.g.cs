@@ -6,6 +6,19 @@ namespace Instill
     public partial class ArtifactClient
     {
 
+        private static readonly global::Instill.AutoSDKServer[] s_ArtifactPublicServiceGetObjectDownloadURLServers = new global::Instill.AutoSDKServer[]
+        {            new global::Instill.AutoSDKServer(
+                id: "https-api-instill-ai-com",
+                name: "api.instill-ai.com",
+                url: "https://api.instill-ai.com/",
+                description: ""),
+            new global::Instill.AutoSDKServer(
+                id: "http-api-instill-ai-com",
+                name: "api.instill-ai.com",
+                url: "http://api.instill-ai.com/",
+                description: ""),
+        };
+
 
         private static readonly global::Instill.EndPointSecurityRequirement s_ArtifactPublicServiceGetObjectDownloadURLSecurityRequirement0 =
             new global::Instill.EndPointSecurityRequirement
@@ -102,7 +115,9 @@ namespace Instill
             {
                             var __pathBuilder = new global::Instill.PathBuilder(
                                 path: $"/v1alpha/{name}/download-url",
-                                baseUri: HttpClient.BaseAddress); 
+                                baseUri: ResolveBaseUri(
+                                servers: s_ArtifactPublicServiceGetObjectDownloadURLServers,
+                                defaultBaseUrl: "https://api.instill-ai.com/")); 
                             __pathBuilder
                                 .AddOptionalParameter("urlExpireDays", urlExpireDays?.ToString())
                                 .AddOptionalParameter("downloadFilename", downloadFilename)

@@ -6,6 +6,19 @@ namespace Instill
     public partial class IntegrationClient
     {
 
+        private static readonly global::Instill.AutoSDKServer[] s_MgmtPublicServiceGetIntegrationServers = new global::Instill.AutoSDKServer[]
+        {            new global::Instill.AutoSDKServer(
+                id: "https-api-instill-ai-com",
+                name: "api.instill-ai.com",
+                url: "https://api.instill-ai.com/",
+                description: ""),
+            new global::Instill.AutoSDKServer(
+                id: "http-api-instill-ai-com",
+                name: "api.instill-ai.com",
+                url: "http://api.instill-ai.com/",
+                description: ""),
+        };
+
 
         private static readonly global::Instill.EndPointSecurityRequirement s_MgmtPublicServiceGetIntegrationSecurityRequirement0 =
             new global::Instill.EndPointSecurityRequirement
@@ -92,7 +105,9 @@ namespace Instill
             {
                             var __pathBuilder = new global::Instill.PathBuilder(
                                 path: $"/v1beta/integrations/{integrationId}",
-                                baseUri: HttpClient.BaseAddress); 
+                                baseUri: ResolveBaseUri(
+                                servers: s_MgmtPublicServiceGetIntegrationServers,
+                                defaultBaseUrl: "https://api.instill-ai.com/")); 
                             __pathBuilder
                                 .AddOptionalParameter("view", view?.ToValueString()) 
                                 ;

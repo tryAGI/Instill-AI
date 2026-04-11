@@ -4,7 +4,7 @@
 namespace Instill
 {
     /// <summary>
-    /// AI Model orchestration.<br/>
+    /// AI Model orchestration<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
@@ -20,6 +20,27 @@ namespace Instill
         /// </summary>
         public System.Uri? BaseUri { get; }
 
+
+        /// <summary>
+        /// The server options available for this client.
+        /// </summary>
+        public global::System.Collections.Generic.IReadOnlyList<global::Instill.AutoSDKServer> AvailableServers { get; }
+
+        /// <summary>
+        /// The currently selected server for this client, if any.
+        /// </summary>
+        public global::Instill.AutoSDKServer? SelectedServer { get; set; }
+
+        /// <summary>
+        /// Selects one of the generated server options by id.
+        /// </summary>
+        public bool TrySelectServer(string serverId);
+
+        /// <summary>
+        /// Clears the currently selected server.
+        /// </summary>
+        public void ClearSelectedServer();
+
         /// <summary>
         /// The authorizations to use for the requests.
         /// </summary>
@@ -33,11 +54,11 @@ namespace Instill
         /// ensuring <see cref="ApiException.ResponseBody"/> is populated.
         /// </summary>
         public bool ReadResponseAsString { get; set; }
-
         /// <summary>
         /// Client-wide request defaults such as headers, query parameters, retries, and timeout.
         /// </summary>
         public global::Instill.AutoSDKClientOptions Options { get; }
+
 
         /// <summary>
         /// 

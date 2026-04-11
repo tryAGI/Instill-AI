@@ -6,6 +6,19 @@ namespace Instill
     public partial class ArtifactClient
     {
 
+        private static readonly global::Instill.AutoSDKServer[] s_ArtifactPublicServiceGetObjectUploadURLServers = new global::Instill.AutoSDKServer[]
+        {            new global::Instill.AutoSDKServer(
+                id: "https-api-instill-ai-com",
+                name: "api.instill-ai.com",
+                url: "https://api.instill-ai.com/",
+                description: ""),
+            new global::Instill.AutoSDKServer(
+                id: "http-api-instill-ai-com",
+                name: "api.instill-ai.com",
+                url: "http://api.instill-ai.com/",
+                description: ""),
+        };
+
 
         private static readonly global::Instill.EndPointSecurityRequirement s_ArtifactPublicServiceGetObjectUploadURLSecurityRequirement0 =
             new global::Instill.EndPointSecurityRequirement
@@ -107,7 +120,9 @@ namespace Instill
             {
                             var __pathBuilder = new global::Instill.PathBuilder(
                                 path: $"/v1alpha/{parent}/object-upload-url",
-                                baseUri: HttpClient.BaseAddress); 
+                                baseUri: ResolveBaseUri(
+                                servers: s_ArtifactPublicServiceGetObjectUploadURLServers,
+                                defaultBaseUrl: "https://api.instill-ai.com/")); 
                             __pathBuilder
                                 .AddRequiredParameter("displayName", displayName)
                                 .AddOptionalParameter("urlExpireDays", urlExpireDays?.ToString())

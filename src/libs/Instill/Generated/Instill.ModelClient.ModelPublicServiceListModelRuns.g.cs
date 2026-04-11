@@ -6,6 +6,19 @@ namespace Instill
     public partial class ModelClient
     {
 
+        private static readonly global::Instill.AutoSDKServer[] s_ModelPublicServiceListModelRunsServers = new global::Instill.AutoSDKServer[]
+        {            new global::Instill.AutoSDKServer(
+                id: "https-api-instill-ai-com",
+                name: "api.instill-ai.com",
+                url: "https://api.instill-ai.com/",
+                description: ""),
+            new global::Instill.AutoSDKServer(
+                id: "http-api-instill-ai-com",
+                name: "api.instill-ai.com",
+                url: "http://api.instill-ai.com/",
+                description: ""),
+        };
+
 
         private static readonly global::Instill.EndPointSecurityRequirement s_ModelPublicServiceListModelRunsSecurityRequirement0 =
             new global::Instill.EndPointSecurityRequirement
@@ -116,7 +129,9 @@ namespace Instill
             {
                             var __pathBuilder = new global::Instill.PathBuilder(
                                 path: $"/v1alpha/{parent}/runs",
-                                baseUri: HttpClient.BaseAddress); 
+                                baseUri: ResolveBaseUri(
+                                servers: s_ModelPublicServiceListModelRunsServers,
+                                defaultBaseUrl: "https://api.instill-ai.com/")); 
                             __pathBuilder
                                 .AddOptionalParameter("pageSize", pageSize?.ToString())
                                 .AddOptionalParameter("page", page?.ToString())
@@ -153,10 +168,10 @@ namespace Instill
                 } 
             }
 
-                if (instillRequesterUid != default)
-                {
-                    __httpRequest.Headers.TryAddWithoutValidation("Instill-Requester-Uid", instillRequesterUid.ToString());
-                }
+            if (instillRequesterUid != default)
+            {
+                __httpRequest.Headers.TryAddWithoutValidation("Instill-Requester-Uid", instillRequesterUid.ToString());
+            }
 
                 global::Instill.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,

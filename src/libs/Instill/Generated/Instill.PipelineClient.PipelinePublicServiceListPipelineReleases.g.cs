@@ -6,6 +6,19 @@ namespace Instill
     public partial class PipelineClient
     {
 
+        private static readonly global::Instill.AutoSDKServer[] s_PipelinePublicServiceListPipelineReleasesServers = new global::Instill.AutoSDKServer[]
+        {            new global::Instill.AutoSDKServer(
+                id: "https-api-instill-ai-com",
+                name: "api.instill-ai.com",
+                url: "https://api.instill-ai.com/",
+                description: ""),
+            new global::Instill.AutoSDKServer(
+                id: "http-api-instill-ai-com",
+                name: "api.instill-ai.com",
+                url: "http://api.instill-ai.com/",
+                description: ""),
+        };
+
 
         private static readonly global::Instill.EndPointSecurityRequirement s_PipelinePublicServiceListPipelineReleasesSecurityRequirement0 =
             new global::Instill.EndPointSecurityRequirement
@@ -113,7 +126,9 @@ namespace Instill
             {
                             var __pathBuilder = new global::Instill.PathBuilder(
                                 path: $"/v1beta/{parent}/releases",
-                                baseUri: HttpClient.BaseAddress); 
+                                baseUri: ResolveBaseUri(
+                                servers: s_PipelinePublicServiceListPipelineReleasesServers,
+                                defaultBaseUrl: "https://api.instill-ai.com/")); 
                             __pathBuilder
                                 .AddOptionalParameter("pageSize", pageSize?.ToString())
                                 .AddOptionalParameter("pageToken", pageToken)

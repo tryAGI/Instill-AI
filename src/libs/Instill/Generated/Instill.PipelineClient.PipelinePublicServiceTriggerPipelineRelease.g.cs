@@ -6,6 +6,19 @@ namespace Instill
     public partial class PipelineClient
     {
 
+        private static readonly global::Instill.AutoSDKServer[] s_PipelinePublicServiceTriggerPipelineReleaseServers = new global::Instill.AutoSDKServer[]
+        {            new global::Instill.AutoSDKServer(
+                id: "https-api-instill-ai-com",
+                name: "api.instill-ai.com",
+                url: "https://api.instill-ai.com/",
+                description: ""),
+            new global::Instill.AutoSDKServer(
+                id: "http-api-instill-ai-com",
+                name: "api.instill-ai.com",
+                url: "http://api.instill-ai.com/",
+                description: ""),
+        };
+
 
         private static readonly global::Instill.EndPointSecurityRequirement s_PipelinePublicServiceTriggerPipelineReleaseSecurityRequirement0 =
             new global::Instill.EndPointSecurityRequirement
@@ -105,7 +118,9 @@ namespace Instill
             {
                             var __pathBuilder = new global::Instill.PathBuilder(
                                 path: $"/v1beta/{name1}/trigger",
-                                baseUri: HttpClient.BaseAddress);
+                                baseUri: ResolveBaseUri(
+                                servers: s_PipelinePublicServiceTriggerPipelineReleaseServers,
+                                defaultBaseUrl: "https://api.instill-ai.com/"));
                             var __path = __pathBuilder.ToString();
                 __path = global::Instill.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -136,10 +151,10 @@ namespace Instill
                 } 
             }
 
-                if (instillRequesterUid != default)
-                {
-                    __httpRequest.Headers.TryAddWithoutValidation("Instill-Requester-Uid", instillRequesterUid.ToString());
-                }
+            if (instillRequesterUid != default)
+            {
+                __httpRequest.Headers.TryAddWithoutValidation("Instill-Requester-Uid", instillRequesterUid.ToString());
+            }
 
                             var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
                             var __httpRequestContent = new global::System.Net.Http.StringContent(

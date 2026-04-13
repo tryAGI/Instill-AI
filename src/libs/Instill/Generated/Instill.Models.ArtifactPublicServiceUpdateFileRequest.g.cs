@@ -130,25 +130,10 @@ namespace Instill
         public string? OwnerName { get; set; }
 
         /// <summary>
-        /// File owner (User or Organization).<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("owner")]
-        public global::Instill.Owner? Owner { get; set; }
-
-        /// <summary>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("creatorName")]
         public string? CreatorName { get; set; }
-
-        /// <summary>
-        /// The user who created this file.<br/>
-        /// Populated when creator_name is present.<br/>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("creator")]
-        public global::Instill.V1betaUser? Creator { get; set; }
 
         /// <summary>
         /// Base64-encoded file content for inline upload.<br/>
@@ -231,6 +216,39 @@ namespace Instill
         public string? ContentSha256 { get; set; }
 
         /// <summary>
+        /// Human-readable display name of the owner namespace.<br/>
+        /// Populated server-side to avoid an extra frontend API call.<br/>
+        /// Example: "Instill AI" (for an org) or "John Doe" (for a user).<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ownerDisplayName")]
+        public string? OwnerDisplayName { get; set; }
+
+        /// <summary>
+        /// Avatar URL of the owner namespace.<br/>
+        /// Populated server-side alongside owner_display_name.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ownerAvatar")]
+        public string? OwnerAvatar { get; set; }
+
+        /// <summary>
+        /// Human-readable display name of the user who created this file.<br/>
+        /// Populated server-side to avoid an extra frontend API call.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("creatorDisplayName")]
+        public string? CreatorDisplayName { get; set; }
+
+        /// <summary>
+        /// Avatar URL of the user who created this file.<br/>
+        /// Populated server-side alongside creator_display_name.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("creatorAvatar")]
+        public string? CreatorAvatar { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -304,16 +322,7 @@ namespace Instill
         /// <param name="ownerName">
         /// Included only in responses
         /// </param>
-        /// <param name="owner">
-        /// File owner (User or Organization).<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="creatorName">
-        /// Included only in responses
-        /// </param>
-        /// <param name="creator">
-        /// The user who created this file.<br/>
-        /// Populated when creator_name is present.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="content">
@@ -369,6 +378,27 @@ namespace Instill
         /// reference uploads.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="ownerDisplayName">
+        /// Human-readable display name of the owner namespace.<br/>
+        /// Populated server-side to avoid an extra frontend API call.<br/>
+        /// Example: "Instill AI" (for an org) or "John Doe" (for a user).<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="ownerAvatar">
+        /// Avatar URL of the owner namespace.<br/>
+        /// Populated server-side alongside owner_display_name.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="creatorDisplayName">
+        /// Human-readable display name of the user who created this file.<br/>
+        /// Populated server-side to avoid an extra frontend API call.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="creatorAvatar">
+        /// Avatar URL of the user who created this file.<br/>
+        /// Populated server-side alongside creator_display_name.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -390,9 +420,7 @@ namespace Instill
             object? externalMetadata,
             global::System.Collections.Generic.IList<string>? knowledgeBases,
             string? ownerName,
-            global::Instill.Owner? owner,
             string? creatorName,
-            global::Instill.V1betaUser? creator,
             string? content,
             string? downloadUrl,
             string? convertingPipeline,
@@ -401,7 +429,11 @@ namespace Instill
             global::System.DateTime? deleteTime,
             string? @object,
             bool? isTextBased,
-            string? contentSha256)
+            string? contentSha256,
+            string? ownerDisplayName,
+            string? ownerAvatar,
+            string? creatorDisplayName,
+            string? creatorAvatar)
         {
             this.Id = id;
             this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
@@ -420,9 +452,7 @@ namespace Instill
             this.ExternalMetadata = externalMetadata;
             this.KnowledgeBases = knowledgeBases;
             this.OwnerName = ownerName;
-            this.Owner = owner;
             this.CreatorName = creatorName;
-            this.Creator = creator;
             this.Content = content;
             this.DownloadUrl = downloadUrl;
             this.ConvertingPipeline = convertingPipeline;
@@ -432,6 +462,10 @@ namespace Instill
             this.Object = @object;
             this.IsTextBased = isTextBased;
             this.ContentSha256 = contentSha256;
+            this.OwnerDisplayName = ownerDisplayName;
+            this.OwnerAvatar = ownerAvatar;
+            this.CreatorDisplayName = creatorDisplayName;
+            this.CreatorAvatar = creatorAvatar;
         }
 
         /// <summary>

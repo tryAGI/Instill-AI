@@ -332,115 +332,115 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Owner? Type76 { get; set; }
+        public global::Instill.Position? Type76 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.V1betaUser? Type77 { get; set; }
+        public global::Instill.FileView? Type77 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Position? Type78 { get; set; }
+        public global::Instill.FileMediaType? Type78 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.FileView? Type79 { get; set; }
+        public global::Instill.GetAuthenticatedUserResponse? Type79 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.FileMediaType? Type80 { get; set; }
+        public global::Instill.GetChunkResponse? Type80 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetAuthenticatedUserResponse? Type81 { get; set; }
+        public global::Instill.GetConnectionResponse? Type81 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetChunkResponse? Type82 { get; set; }
+        public global::Instill.GetFileResponse? Type82 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetConnectionResponse? Type83 { get; set; }
+        public global::Instill.GetKnowledgeBaseResponse? Type83 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetFileResponse? Type84 { get; set; }
+        public global::Instill.GetModelDefinitionResponse? Type84 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetKnowledgeBaseResponse? Type85 { get; set; }
+        public global::Instill.ModelDefinition? Type85 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetModelDefinitionResponse? Type86 { get; set; }
+        public global::Instill.GetModelOperationResponse? Type86 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ModelDefinition? Type87 { get; set; }
+        public global::Instill.LongrunningOperation? Type87 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetModelOperationResponse? Type88 { get; set; }
+        public global::Instill.GetModelResponse? Type88 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.LongrunningOperation? Type89 { get; set; }
+        public global::Instill.GetModelVersionOperationResponse? Type89 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetModelResponse? Type90 { get; set; }
+        public global::Instill.GetNamespaceConnectionResponse? Type90 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetModelVersionOperationResponse? Type91 { get; set; }
+        public global::Instill.GetNamespaceSecretResponse? Type91 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetNamespaceConnectionResponse? Type92 { get; set; }
+        public global::Instill.GetObjectDownloadURLResponse? Type92 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetNamespaceSecretResponse? Type93 { get; set; }
+        public global::Instill.Object? Type93 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetObjectDownloadURLResponse? Type94 { get; set; }
+        public global::Instill.GetObjectResponse? Type94 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Object? Type95 { get; set; }
+        public global::Instill.GetObjectUploadURLResponse? Type95 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetObjectResponse? Type96 { get; set; }
+        public global::Instill.GetPipelineReleaseResponse? Type96 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetObjectUploadURLResponse? Type97 { get; set; }
+        public global::Instill.GetPipelineResponse? Type97 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetPipelineReleaseResponse? Type98 { get; set; }
+        public global::Instill.GetTokenResponse? Type98 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetPipelineResponse? Type99 { get; set; }
+        public global::Instill.GetUserResponse? Type99 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetTokenResponse? Type100 { get; set; }
+        public global::Instill.V1betaUser? Type100 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.GetUserResponse? Type101 { get; set; }
+        public global::Instill.Hardware? Type101 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.Hardware? Type102 { get; set; }
+        public global::Instill.KnowledgeBaseType? Type102 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.KnowledgeBaseType? Type103 { get; set; }
+        public global::Instill.Owner? Type103 { get; set; }
         /// <summary>
         /// 
         /// </summary>

@@ -55,6 +55,19 @@ namespace Instill
         public global::System.Collections.Generic.IList<string>? Tags { get; set; }
 
         /// <summary>
+        /// When true, results are grouped by file so that no single file dominates<br/>
+        /// the result set. At most group_size chunks are returned per file.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("groupByFile")]
+        public bool? GroupByFile { get; set; }
+
+        /// <summary>
+        /// Max chunks per file when group_by_file is true. Default: 1.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("groupSize")]
+        public int? GroupSize { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -81,6 +94,13 @@ namespace Instill
         /// Tags to filter by. When multiple tags are provided, OR logic is applied.<br/>
         /// Note: File filter takes precedence over tags, as tags apply to files.
         /// </param>
+        /// <param name="groupByFile">
+        /// When true, results are grouped by file so that no single file dominates<br/>
+        /// the result set. At most group_size chunks are returned per file.
+        /// </param>
+        /// <param name="groupSize">
+        /// Max chunks per file when group_by_file is true. Default: 1.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -91,7 +111,9 @@ namespace Instill
             global::Instill.ChunkType? type,
             global::Instill.FileMediaType? fileMediaType,
             global::System.Collections.Generic.IList<string>? files,
-            global::System.Collections.Generic.IList<string>? tags)
+            global::System.Collections.Generic.IList<string>? tags,
+            bool? groupByFile,
+            int? groupSize)
         {
             this.KnowledgeBase = knowledgeBase;
             this.TextPrompt = textPrompt ?? throw new global::System.ArgumentNullException(nameof(textPrompt));
@@ -100,6 +122,8 @@ namespace Instill
             this.FileMediaType = fileMediaType;
             this.Files = files;
             this.Tags = tags;
+            this.GroupByFile = groupByFile;
+            this.GroupSize = groupSize;
         }
 
         /// <summary>

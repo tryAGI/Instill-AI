@@ -48,6 +48,13 @@ namespace Instill
         /// Tags to filter by. When multiple tags are provided, OR logic is applied.<br/>
         /// Note: File filter takes precedence over tags, as tags apply to files.
         /// </param>
+        /// <param name="groupByFile">
+        /// When true, results are grouped by file so that no single file dominates<br/>
+        /// the result set. At most group_size chunks are returned per file.
+        /// </param>
+        /// <param name="groupSize">
+        /// Max chunks per file when group_by_file is true. Default: 1.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -64,6 +71,8 @@ namespace Instill
             global::Instill.FileMediaType? fileMediaType = default,
             global::System.Collections.Generic.IList<string>? files = default,
             global::System.Collections.Generic.IList<string>? tags = default,
+            bool? groupByFile = default,
+            int? groupSize = default,
             global::Instill.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

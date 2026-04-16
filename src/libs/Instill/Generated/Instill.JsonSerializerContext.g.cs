@@ -45,6 +45,10 @@ namespace Instill
 
             typeof(global::Instill.JsonConverters.FileViewNullableJsonConverter),
 
+            typeof(global::Instill.JsonConverters.FileVisibilityJsonConverter),
+
+            typeof(global::Instill.JsonConverters.FileVisibilityNullableJsonConverter),
+
             typeof(global::Instill.JsonConverters.FileMediaTypeJsonConverter),
 
             typeof(global::Instill.JsonConverters.FileMediaTypeNullableJsonConverter),
@@ -317,6 +321,7 @@ namespace Instill
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.FileType), TypeInfoPropertyName = "FileType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.FileProcessStatus), TypeInfoPropertyName = "FileProcessStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.Position))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.FileVisibility), TypeInfoPropertyName = "FileVisibility2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.FileView), TypeInfoPropertyName = "FileView2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.FileMediaType), TypeInfoPropertyName = "FileMediaType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.GetAuthenticatedUserResponse))]

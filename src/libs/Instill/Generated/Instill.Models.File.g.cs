@@ -258,6 +258,13 @@ namespace Instill
         public string? CreatorAvatar { get; set; }
 
         /// <summary>
+        /// Visibility of the file.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("visibility")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Instill.JsonConverters.FileVisibilityJsonConverter))]
+        public global::Instill.FileVisibility? Visibility { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -414,6 +421,9 @@ namespace Instill
         /// Populated server-side alongside creator_display_name.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="visibility">
+        /// Visibility of the file.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -449,7 +459,8 @@ namespace Instill
             string? ownerDisplayName,
             string? ownerAvatar,
             string? creatorDisplayName,
-            string? creatorAvatar)
+            string? creatorAvatar,
+            global::Instill.FileVisibility? visibility)
         {
             this.Name = name;
             this.Id = id;
@@ -483,6 +494,7 @@ namespace Instill
             this.OwnerAvatar = ownerAvatar;
             this.CreatorDisplayName = creatorDisplayName;
             this.CreatorAvatar = creatorAvatar;
+            this.Visibility = visibility;
         }
 
         /// <summary>

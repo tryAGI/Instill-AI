@@ -63,6 +63,9 @@ namespace Instill
         ///    field. When object is provided, the 'content' field is ignored.<br/>
         /// Follows AIP-122 for resource name references.
         /// </param>
+        /// <param name="visibility">
+        /// Visibility of the file.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -80,6 +83,7 @@ namespace Instill
             string? content = default,
             string? convertingPipeline = default,
             string? @object = default,
+            global::Instill.FileVisibility? visibility = default,
             global::Instill.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

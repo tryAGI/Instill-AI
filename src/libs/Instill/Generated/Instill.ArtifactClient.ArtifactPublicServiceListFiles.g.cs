@@ -43,14 +43,16 @@ namespace Instill
             ref string parent,
             ref int? pageSize,
             ref string? pageToken,
-            ref string? filter);
+            ref string? filter,
+            ref global::Instill.ArtifactPublicServiceListFilesView? view);
         partial void PrepareArtifactPublicServiceListFilesRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string parent,
             int? pageSize,
             string? pageToken,
-            string? filter);
+            string? filter,
+            global::Instill.ArtifactPublicServiceListFilesView? view);
         partial void ProcessArtifactPublicServiceListFilesResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -68,6 +70,7 @@ namespace Instill
         /// <param name="pageSize"></param>
         /// <param name="pageToken"></param>
         /// <param name="filter"></param>
+        /// <param name="view"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Instill.ApiException"></exception>
@@ -79,6 +82,7 @@ namespace Instill
             int? pageSize = default,
             string? pageToken = default,
             string? filter = default,
+            global::Instill.ArtifactPublicServiceListFilesView? view = default,
             global::Instill.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -89,7 +93,8 @@ namespace Instill
                 parent: ref parent,
                 pageSize: ref pageSize,
                 pageToken: ref pageToken,
-                filter: ref filter);
+                filter: ref filter,
+                view: ref view);
 
 
             var __authorizations = global::Instill.EndPointSecurityResolver.ResolveAuthorizations(
@@ -121,7 +126,8 @@ namespace Instill
                             __pathBuilder
                                 .AddOptionalParameter("pageSize", pageSize?.ToString())
                                 .AddOptionalParameter("pageToken", pageToken)
-                                .AddOptionalParameter("filter", filter) 
+                                .AddOptionalParameter("filter", filter)
+                                .AddOptionalParameter("view", view?.ToValueString()) 
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Instill.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -166,7 +172,8 @@ namespace Instill
                     parent: parent,
                     pageSize: pageSize,
                     pageToken: pageToken,
-                    filter: filter);
+                    filter: filter,
+                    view: view);
 
                 return __httpRequest;
             }

@@ -265,6 +265,35 @@ namespace Instill
         public global::Instill.FileVisibility? Visibility { get; set; }
 
         /// <summary>
+        /// Derived resource URI populated on `ListFiles` / `GetFile` responses when<br/>
+        /// the caller requested an explicit `File.View` (SUMMARY, CONTENT,<br/>
+        /// STANDARD_FILE_TYPE, ORIGINAL_FILE_TYPE, CACHE, PATCH). Mirrors the<br/>
+        /// long-standing `GetFileResponse.derived_resource_uri` slot so<br/>
+        /// list-shaped responses can carry per-row URIs without an extra per-file<br/>
+        /// `GetFile` round trip. Empty when no view was requested. Subject to the<br/>
+        /// short-lived MinIO/GCS presign TTL — treat as ephemeral and do not<br/>
+        /// cross-cache.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("derivedResourceUri")]
+        public string? DerivedResourceUri { get; set; }
+
+        /// <summary>
+        /// Stable, cache-friendly URL to a small (~1024px WebP) thumbnail of the<br/>
+        /// file, populated whenever a `CONVERTED_FILE_TYPE_THUMBNAIL` row exists<br/>
+        /// for this file. Resolved through the gateway's<br/>
+        /// `/v1alpha/blob-urls/{object_uid}` route so the URL itself is stable<br/>
+        /// across presign rotations and CDN-cacheable. Empty for files whose<br/>
+        /// thumbnail has not yet been generated (backfill workflow covers<br/>
+        /// historical rows; ingest covers new ones). Clients should treat this as<br/>
+        /// the preferred card-tile source and fall back to `derived_resource_uri`<br/>
+        /// / mime-type icon when absent.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("thumbnailUri")]
+        public string? ThumbnailUri { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -424,6 +453,29 @@ namespace Instill
         /// <param name="visibility">
         /// Visibility of the file.
         /// </param>
+        /// <param name="derivedResourceUri">
+        /// Derived resource URI populated on `ListFiles` / `GetFile` responses when<br/>
+        /// the caller requested an explicit `File.View` (SUMMARY, CONTENT,<br/>
+        /// STANDARD_FILE_TYPE, ORIGINAL_FILE_TYPE, CACHE, PATCH). Mirrors the<br/>
+        /// long-standing `GetFileResponse.derived_resource_uri` slot so<br/>
+        /// list-shaped responses can carry per-row URIs without an extra per-file<br/>
+        /// `GetFile` round trip. Empty when no view was requested. Subject to the<br/>
+        /// short-lived MinIO/GCS presign TTL — treat as ephemeral and do not<br/>
+        /// cross-cache.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="thumbnailUri">
+        /// Stable, cache-friendly URL to a small (~1024px WebP) thumbnail of the<br/>
+        /// file, populated whenever a `CONVERTED_FILE_TYPE_THUMBNAIL` row exists<br/>
+        /// for this file. Resolved through the gateway's<br/>
+        /// `/v1alpha/blob-urls/{object_uid}` route so the URL itself is stable<br/>
+        /// across presign rotations and CDN-cacheable. Empty for files whose<br/>
+        /// thumbnail has not yet been generated (backfill workflow covers<br/>
+        /// historical rows; ingest covers new ones). Clients should treat this as<br/>
+        /// the preferred card-tile source and fall back to `derived_resource_uri`<br/>
+        /// / mime-type icon when absent.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -460,7 +512,9 @@ namespace Instill
             string? ownerAvatar,
             string? creatorDisplayName,
             string? creatorAvatar,
-            global::Instill.FileVisibility? visibility)
+            global::Instill.FileVisibility? visibility,
+            string? derivedResourceUri,
+            string? thumbnailUri)
         {
             this.Name = name;
             this.Id = id;
@@ -495,6 +549,8 @@ namespace Instill
             this.CreatorDisplayName = creatorDisplayName;
             this.CreatorAvatar = creatorAvatar;
             this.Visibility = visibility;
+            this.DerivedResourceUri = derivedResourceUri;
+            this.ThumbnailUri = thumbnailUri;
         }
 
         /// <summary>

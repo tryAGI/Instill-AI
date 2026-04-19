@@ -133,6 +133,10 @@ namespace Instill
 
             typeof(global::Instill.JsonConverters.V1alphaViewNullableJsonConverter),
 
+            typeof(global::Instill.JsonConverters.ArtifactPublicServiceListFilesViewJsonConverter),
+
+            typeof(global::Instill.JsonConverters.ArtifactPublicServiceListFilesViewNullableJsonConverter),
+
             typeof(global::Instill.JsonConverters.ArtifactPublicServiceGetFileViewJsonConverter),
 
             typeof(global::Instill.JsonConverters.ArtifactPublicServiceGetFileViewNullableJsonConverter),
@@ -515,6 +519,7 @@ namespace Instill
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.PipelinePublicServiceUpdatePipelineReleaseRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.PipelinePublicServiceUpdateNamespaceSecretRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.PipelinePublicServiceUpdateConnectionRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ArtifactPublicServiceListFilesView), TypeInfoPropertyName = "ArtifactPublicServiceListFilesView2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ArtifactPublicServiceGetFileView), TypeInfoPropertyName = "ArtifactPublicServiceGetFileView2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ArtifactPublicServiceGetFileStorageProvider), TypeInfoPropertyName = "ArtifactPublicServiceGetFileStorageProvider2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.ArtifactPublicServiceGetChunkChunkType), TypeInfoPropertyName = "ArtifactPublicServiceGetChunkChunkType2")]

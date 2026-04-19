@@ -1112,115 +1112,119 @@ namespace Instill
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ArtifactPublicServiceGetFileView? Type271 { get; set; }
+        public global::Instill.ArtifactPublicServiceListFilesView? Type271 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ArtifactPublicServiceGetFileStorageProvider? Type272 { get; set; }
+        public global::Instill.ArtifactPublicServiceGetFileView? Type272 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ArtifactPublicServiceGetChunkChunkType? Type273 { get; set; }
+        public global::Instill.ArtifactPublicServiceGetFileStorageProvider? Type273 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.MgmtPublicServiceListUsersView? Type274 { get; set; }
+        public global::Instill.ArtifactPublicServiceGetChunkChunkType? Type274 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.MgmtPublicServiceGetUserView? Type275 { get; set; }
+        public global::Instill.MgmtPublicServiceListUsersView? Type275 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.MgmtPublicServiceGetNamespaceConnectionView? Type276 { get; set; }
+        public global::Instill.MgmtPublicServiceGetUserView? Type276 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.MgmtPublicServiceGetIntegrationView? Type277 { get; set; }
+        public global::Instill.MgmtPublicServiceGetNamespaceConnectionView? Type277 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ModelPublicServiceListModelDefinitionsView? Type278 { get; set; }
+        public global::Instill.MgmtPublicServiceGetIntegrationView? Type278 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ModelPublicServiceGetModelDefinitionView? Type279 { get; set; }
+        public global::Instill.ModelPublicServiceListModelDefinitionsView? Type279 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ModelPublicServiceListPublicModelsView? Type280 { get; set; }
+        public global::Instill.ModelPublicServiceGetModelDefinitionView? Type280 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ModelPublicServiceListPublicModelsVisibility? Type281 { get; set; }
+        public global::Instill.ModelPublicServiceListPublicModelsView? Type281 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ModelPublicServiceListModelsView? Type282 { get; set; }
+        public global::Instill.ModelPublicServiceListPublicModelsVisibility? Type282 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ModelPublicServiceListModelsVisibility? Type283 { get; set; }
+        public global::Instill.ModelPublicServiceListModelsView? Type283 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ModelPublicServiceGetModelView? Type284 { get; set; }
+        public global::Instill.ModelPublicServiceListModelsVisibility? Type284 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ModelPublicServiceGetModelVersionOperationView? Type285 { get; set; }
+        public global::Instill.ModelPublicServiceGetModelView? Type285 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.ModelPublicServiceGetModelOperationView? Type286 { get; set; }
+        public global::Instill.ModelPublicServiceGetModelVersionOperationView? Type286 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelinePublicServiceListPublicPipelinesView? Type287 { get; set; }
+        public global::Instill.ModelPublicServiceGetModelOperationView? Type287 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelinePublicServiceListPublicPipelinesVisibility? Type288 { get; set; }
+        public global::Instill.PipelinePublicServiceListPublicPipelinesView? Type288 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelinePublicServiceListPipelinesView? Type289 { get; set; }
+        public global::Instill.PipelinePublicServiceListPublicPipelinesVisibility? Type289 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelinePublicServiceListPipelinesVisibility? Type290 { get; set; }
+        public global::Instill.PipelinePublicServiceListPipelinesView? Type290 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelinePublicServiceGetPipelineView? Type291 { get; set; }
+        public global::Instill.PipelinePublicServiceListPipelinesVisibility? Type291 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelinePublicServiceListPipelineReleasesView? Type292 { get; set; }
+        public global::Instill.PipelinePublicServiceGetPipelineView? Type292 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelinePublicServiceGetPipelineReleaseView? Type293 { get; set; }
+        public global::Instill.PipelinePublicServiceListPipelineReleasesView? Type293 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelinePublicServiceListComponentDefinitionsView? Type294 { get; set; }
+        public global::Instill.PipelinePublicServiceGetPipelineReleaseView? Type294 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelinePublicServiceListComponentRunsView? Type295 { get; set; }
+        public global::Instill.PipelinePublicServiceListComponentDefinitionsView? Type295 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelinePublicServiceGetIntegrationView? Type296 { get; set; }
+        public global::Instill.PipelinePublicServiceListComponentRunsView? Type296 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelinePublicServiceGetConnectionView? Type297 { get; set; }
+        public global::Instill.PipelinePublicServiceGetIntegrationView? Type297 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Instill.PipelinePublicServiceTriggerPipelineWithStreamResponse? Type298 { get; set; }
+        public global::Instill.PipelinePublicServiceGetConnectionView? Type298 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Instill.PipelinePublicServiceTriggerPipelineWithStreamResponse? Type299 { get; set; }
 
         /// <summary>
         /// 

@@ -77,6 +77,10 @@ namespace Instill
 
             typeof(global::Instill.JsonConverters.PipelineVisibilityNullableJsonConverter),
 
+            typeof(global::Instill.JsonConverters.RankerJsonConverter),
+
+            typeof(global::Instill.JsonConverters.RankerNullableJsonConverter),
+
             typeof(global::Instill.JsonConverters.RoleJsonConverter),
 
             typeof(global::Instill.JsonConverters.RoleNullableJsonConverter),
@@ -424,6 +428,7 @@ namespace Instill
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.PipelineView), TypeInfoPropertyName = "PipelineView2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.Unit), TypeInfoPropertyName = "Unit2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<long>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.Ranker), TypeInfoPropertyName = "Ranker2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Instill.Hardware>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.RenameModelBody))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Instill.RenameModelResponse))]

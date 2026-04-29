@@ -160,7 +160,7 @@ namespace Instill
                 PreparePipelinePublicServiceValidatePipelineRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    name: name,
+                    name: name!,
                     request: request);
 
                 return __httpRequest;

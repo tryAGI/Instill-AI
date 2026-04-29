@@ -143,7 +143,7 @@ namespace Instill
                 PrepareArtifactPublicServiceGetObjectRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    name3: name3);
+                    name3: name3!);
 
                 return __httpRequest;
             }

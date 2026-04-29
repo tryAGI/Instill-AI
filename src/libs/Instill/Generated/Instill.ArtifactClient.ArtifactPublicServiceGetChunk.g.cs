@@ -151,7 +151,7 @@ namespace Instill
                 PrepareArtifactPublicServiceGetChunkRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    name2: name2,
+                    name2: name2!,
                     chunkType: chunkType);
 
                 return __httpRequest;

@@ -161,7 +161,7 @@ namespace Instill
                 PreparePipelinePublicServiceUpdatePipelineRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    pipelineName: pipelineName,
+                    pipelineName: pipelineName!,
                     request: request);
 
                 return __httpRequest;

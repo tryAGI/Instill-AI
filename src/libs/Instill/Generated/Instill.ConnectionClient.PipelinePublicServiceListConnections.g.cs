@@ -163,7 +163,7 @@ namespace Instill
                 PreparePipelinePublicServiceListConnectionsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    parent1: parent1,
+                    parent1: parent1!,
                     pageSize: pageSize,
                     pageToken: pageToken,
                     filter: filter);

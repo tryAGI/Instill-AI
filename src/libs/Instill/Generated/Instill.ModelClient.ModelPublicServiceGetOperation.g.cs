@@ -144,7 +144,7 @@ namespace Instill
                 PrepareModelPublicServiceGetOperationRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    operationId: operationId);
+                    operationId: operationId!);
 
                 return __httpRequest;
             }

@@ -157,7 +157,7 @@ namespace Instill
                 PrepareArtifactPublicServiceUpdateFileRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    fileName: fileName,
+                    fileName: fileName!,
                     request: request);
 
                 return __httpRequest;

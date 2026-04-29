@@ -169,8 +169,8 @@ namespace Instill
                 PrepareArtifactPublicServiceGetObjectUploadURLRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    parent: parent,
-                    displayName: displayName,
+                    parent: parent!,
+                    displayName: displayName!,
                     urlExpireDays: urlExpireDays,
                     lastModifiedTime: lastModifiedTime,
                     objectExpireDays: objectExpireDays);

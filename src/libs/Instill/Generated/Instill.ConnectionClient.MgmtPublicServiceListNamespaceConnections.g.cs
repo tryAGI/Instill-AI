@@ -163,7 +163,7 @@ namespace Instill
                 PrepareMgmtPublicServiceListNamespaceConnectionsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    parent: parent,
+                    parent: parent!,
                     pageSize: pageSize,
                     pageToken: pageToken,
                     filter: filter);

@@ -157,7 +157,7 @@ namespace Instill
                 PrepareArtifactPublicServiceUpdateKnowledgeBaseRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    knowledgeBaseName: knowledgeBaseName,
+                    knowledgeBaseName: knowledgeBaseName!,
                     request: request);
 
                 return __httpRequest;

@@ -148,7 +148,7 @@ namespace Instill
                 PreparePipelinePublicServiceTestConnectionRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    name1: name1);
+                    name1: name1!);
 
                 return __httpRequest;
             }

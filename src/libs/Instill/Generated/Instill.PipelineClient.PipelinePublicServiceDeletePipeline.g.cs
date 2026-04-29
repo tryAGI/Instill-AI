@@ -145,7 +145,7 @@ namespace Instill
                 PreparePipelinePublicServiceDeletePipelineRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    name2: name2);
+                    name2: name2!);
 
                 return __httpRequest;
             }

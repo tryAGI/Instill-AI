@@ -151,7 +151,7 @@ namespace Instill
                 PrepareMgmtPublicServiceGetIntegrationRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    integrationId: integrationId,
+                    integrationId: integrationId!,
                     view: view);
 
                 return __httpRequest;

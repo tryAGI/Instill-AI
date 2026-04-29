@@ -144,7 +144,7 @@ namespace Instill
                 PreparePipelinePublicServiceGetNamespaceSecretRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    name5: name5);
+                    name5: name5!);
 
                 return __httpRequest;
             }

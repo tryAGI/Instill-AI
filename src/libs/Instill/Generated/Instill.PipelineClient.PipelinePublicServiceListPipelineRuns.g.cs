@@ -184,7 +184,7 @@ namespace Instill
                 PreparePipelinePublicServiceListPipelineRunsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    parent: parent,
+                    parent: parent!,
                     page: page,
                     pageSize: pageSize,
                     filter: filter,

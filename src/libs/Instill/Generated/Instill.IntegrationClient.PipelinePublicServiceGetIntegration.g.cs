@@ -151,7 +151,7 @@ namespace Instill
                 PreparePipelinePublicServiceGetIntegrationRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    integrationId1: integrationId1,
+                    integrationId1: integrationId1!,
                     view: view);
 
                 return __httpRequest;

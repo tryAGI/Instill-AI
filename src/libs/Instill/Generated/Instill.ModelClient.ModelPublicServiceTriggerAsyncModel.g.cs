@@ -169,7 +169,7 @@ namespace Instill
                 PrepareModelPublicServiceTriggerAsyncModelRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    name1: name1,
+                    name1: name1!,
                     instillRequesterUid: instillRequesterUid,
                     request: request);
 

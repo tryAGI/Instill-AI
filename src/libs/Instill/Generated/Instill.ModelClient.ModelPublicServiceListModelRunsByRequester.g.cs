@@ -183,7 +183,7 @@ namespace Instill
                 PrepareModelPublicServiceListModelRunsByRequesterRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    requester: requester,
+                    requester: requester!,
                     pageSize: pageSize,
                     page: page,
                     orderBy: orderBy,

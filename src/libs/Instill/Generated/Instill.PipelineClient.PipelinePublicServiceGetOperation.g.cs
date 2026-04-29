@@ -155,7 +155,7 @@ namespace Instill
                 PreparePipelinePublicServiceGetOperationRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    operationId: operationId,
+                    operationId: operationId!,
                     instillRequesterUid: instillRequesterUid);
 
                 return __httpRequest;

@@ -160,7 +160,7 @@ namespace Instill
                 PreparePipelinePublicServiceUpdatePipelineReleaseRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    releaseName: releaseName,
+                    releaseName: releaseName!,
                     request: request);
 
                 return __httpRequest;

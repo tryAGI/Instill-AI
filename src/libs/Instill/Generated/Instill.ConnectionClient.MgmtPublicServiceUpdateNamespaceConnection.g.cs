@@ -157,7 +157,7 @@ namespace Instill
                 PrepareMgmtPublicServiceUpdateNamespaceConnectionRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    connectionName: connectionName,
+                    connectionName: connectionName!,
                     request: request);
 
                 return __httpRequest;

@@ -151,7 +151,7 @@ namespace Instill
                 PrepareModelPublicServiceGetModelDefinitionRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    modelDefinitionId: modelDefinitionId,
+                    modelDefinitionId: modelDefinitionId!,
                     view: view);
 
                 return __httpRequest;

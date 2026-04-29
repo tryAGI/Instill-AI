@@ -144,7 +144,7 @@ namespace Instill
                 PreparePipelinePublicServiceDeleteNamespaceSecretRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    name4: name4);
+                    name4: name4!);
 
                 return __httpRequest;
             }

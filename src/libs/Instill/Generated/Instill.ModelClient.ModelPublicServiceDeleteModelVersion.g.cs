@@ -144,7 +144,7 @@ namespace Instill
                 PrepareModelPublicServiceDeleteModelVersionRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    name4: name4);
+                    name4: name4!);
 
                 return __httpRequest;
             }

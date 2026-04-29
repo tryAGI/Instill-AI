@@ -150,8 +150,8 @@ namespace Instill
                 PrepareModelPublicServiceWatchModelVersionRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    name: name,
-                    version: version);
+                    name: name!,
+                    version: version!);
 
                 return __httpRequest;
             }

@@ -163,7 +163,7 @@ namespace Instill
                 PrepareArtifactPublicServiceGetObjectDownloadURLRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    name: name,
+                    name: name!,
                     urlExpireDays: urlExpireDays,
                     downloadFilename: downloadFilename,
                     format: format);

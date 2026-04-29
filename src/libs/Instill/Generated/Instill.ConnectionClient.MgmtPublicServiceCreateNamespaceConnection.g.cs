@@ -157,7 +157,7 @@ namespace Instill
                 PrepareMgmtPublicServiceCreateNamespaceConnectionRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    parent: parent,
+                    parent: parent!,
                     request: request);
 
                 return __httpRequest;

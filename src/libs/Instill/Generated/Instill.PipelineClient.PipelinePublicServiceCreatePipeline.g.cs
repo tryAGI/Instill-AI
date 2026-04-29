@@ -157,7 +157,7 @@ namespace Instill
                 PreparePipelinePublicServiceCreatePipelineRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    parent: parent,
+                    parent: parent!,
                     request: request);
 
                 return __httpRequest;

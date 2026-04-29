@@ -152,7 +152,7 @@ namespace Instill
                 PrepareModelPublicServiceGetModelRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    name4: name4,
+                    name4: name4!,
                     view: view);
 
                 return __httpRequest;

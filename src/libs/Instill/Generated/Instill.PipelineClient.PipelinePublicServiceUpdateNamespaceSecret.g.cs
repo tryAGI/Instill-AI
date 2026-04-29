@@ -159,7 +159,7 @@ namespace Instill
                 PreparePipelinePublicServiceUpdateNamespaceSecretRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    secretName: secretName,
+                    secretName: secretName!,
                     request: request);
 
                 return __httpRequest;

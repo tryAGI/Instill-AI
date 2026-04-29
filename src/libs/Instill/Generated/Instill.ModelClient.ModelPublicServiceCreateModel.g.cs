@@ -161,7 +161,7 @@ namespace Instill
                 PrepareModelPublicServiceCreateModelRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    parent: parent,
+                    parent: parent!,
                     request: request);
 
                 return __httpRequest;

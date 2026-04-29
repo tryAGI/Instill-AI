@@ -170,8 +170,8 @@ namespace Instill
                 PreparePipelinePublicServiceListPipelineIDsByConnectionIDRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    namespaceId1: namespaceId1,
-                    connectionId: connectionId,
+                    namespaceId1: namespaceId1!,
+                    connectionId: connectionId!,
                     pageSize: pageSize,
                     pageToken: pageToken,
                     filter: filter);

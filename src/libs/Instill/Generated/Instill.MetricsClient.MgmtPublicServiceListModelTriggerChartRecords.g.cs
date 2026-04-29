@@ -166,7 +166,7 @@ namespace Instill
                 PrepareMgmtPublicServiceListModelTriggerChartRecordsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    requesterId: requesterId,
+                    requesterId: requesterId!,
                     aggregationWindow: aggregationWindow,
                     start: start,
                     stop: stop);

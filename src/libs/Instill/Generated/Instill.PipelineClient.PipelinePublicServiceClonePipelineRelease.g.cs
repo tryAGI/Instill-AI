@@ -158,7 +158,7 @@ namespace Instill
                 PreparePipelinePublicServiceClonePipelineReleaseRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    name1: name1,
+                    name1: name1!,
                     request: request);
 
                 return __httpRequest;

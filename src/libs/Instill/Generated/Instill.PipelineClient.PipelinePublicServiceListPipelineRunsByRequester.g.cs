@@ -183,7 +183,7 @@ namespace Instill
                 PreparePipelinePublicServiceListPipelineRunsByRequesterRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    requester: requester,
+                    requester: requester!,
                     page: page,
                     pageSize: pageSize,
                     filter: filter,

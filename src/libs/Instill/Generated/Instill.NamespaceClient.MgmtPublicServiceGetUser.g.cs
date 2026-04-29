@@ -151,7 +151,7 @@ namespace Instill
                 PrepareMgmtPublicServiceGetUserRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    name: name,
+                    name: name!,
                     view: view);
 
                 return __httpRequest;

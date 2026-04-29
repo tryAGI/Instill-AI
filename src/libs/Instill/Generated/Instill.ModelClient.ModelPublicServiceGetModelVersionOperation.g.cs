@@ -152,7 +152,7 @@ namespace Instill
                 PrepareModelPublicServiceGetModelVersionOperationRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    name: name,
+                    name: name!,
                     view: view);
 
                 return __httpRequest;

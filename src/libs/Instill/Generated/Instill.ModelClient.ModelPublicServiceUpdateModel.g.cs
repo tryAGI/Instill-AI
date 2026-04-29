@@ -160,7 +160,7 @@ namespace Instill
                 PrepareModelPublicServiceUpdateModelRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    modelName: modelName,
+                    modelName: modelName!,
                     request: request);
 
                 return __httpRequest;

@@ -157,7 +157,7 @@ namespace Instill
                 PrepareArtifactPublicServiceCreateFileRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    parent: parent,
+                    parent: parent!,
                     request: request);
 
                 return __httpRequest;

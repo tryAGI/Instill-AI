@@ -184,7 +184,7 @@ namespace Instill
                 PrepareModelPublicServiceListModelRunsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    parent: parent,
+                    parent: parent!,
                     pageSize: pageSize,
                     page: page,
                     orderBy: orderBy,

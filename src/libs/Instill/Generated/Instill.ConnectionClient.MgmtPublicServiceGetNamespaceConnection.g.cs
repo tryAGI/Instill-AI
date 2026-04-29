@@ -151,7 +151,7 @@ namespace Instill
                 PrepareMgmtPublicServiceGetNamespaceConnectionRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    name2: name2,
+                    name2: name2!,
                     view: view);
 
                 return __httpRequest;

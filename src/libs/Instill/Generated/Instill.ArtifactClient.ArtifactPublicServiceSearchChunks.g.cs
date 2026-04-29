@@ -168,7 +168,7 @@ namespace Instill
                 PrepareArtifactPublicServiceSearchChunksRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    parent: parent,
+                    parent: parent!,
                     instillRequesterUid: instillRequesterUid,
                     request: request);
 

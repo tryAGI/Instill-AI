@@ -294,6 +294,19 @@ namespace Instill
         public string? ThumbnailUri { get; set; }
 
         /// <summary>
+        /// The project that this file belongs to (single parent).<br/>
+        /// File permissions cascade from this project — the file inherits<br/>
+        /// viewer/editor/commenter/resource_owner from its parent project.<br/>
+        /// Format: `namespaces/{namespace}/projects/{project}`<br/>
+        /// Populated server-side from the file's parent_project_uid DB column.<br/>
+        /// Files without an explicit parent project default to the namespace's<br/>
+        /// root project ("Workspace").<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("parentProject")]
+        public string? ParentProject { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -476,6 +489,16 @@ namespace Instill
         /// / mime-type icon when absent.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="parentProject">
+        /// The project that this file belongs to (single parent).<br/>
+        /// File permissions cascade from this project — the file inherits<br/>
+        /// viewer/editor/commenter/resource_owner from its parent project.<br/>
+        /// Format: `namespaces/{namespace}/projects/{project}`<br/>
+        /// Populated server-side from the file's parent_project_uid DB column.<br/>
+        /// Files without an explicit parent project default to the namespace's<br/>
+        /// root project ("Workspace").<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -514,7 +537,8 @@ namespace Instill
             string? creatorAvatar,
             global::Instill.FileVisibility? visibility,
             string? derivedResourceUri,
-            string? thumbnailUri)
+            string? thumbnailUri,
+            string? parentProject)
         {
             this.Name = name;
             this.Id = id;
@@ -551,6 +575,7 @@ namespace Instill
             this.Visibility = visibility;
             this.DerivedResourceUri = derivedResourceUri;
             this.ThumbnailUri = thumbnailUri;
+            this.ParentProject = parentProject;
         }
 
         /// <summary>

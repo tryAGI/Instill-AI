@@ -75,6 +75,34 @@ namespace Instill
             global::Instill.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            var __response = await ModelPublicServiceGetModelOperationAsResponseAsync(
+                name1: name1,
+                view: view,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// Get the details of the latest long-running operation from a model<br/>
+        /// This method allows requesters to request the status and outcome of<br/>
+        /// long-running operations in a model, such as trigger.
+        /// </summary>
+        /// <param name="name1"></param>
+        /// <param name="view"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Instill.ApiException"></exception>
+#if NET8_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
+#endif
+        public async global::System.Threading.Tasks.Task<global::Instill.AutoSDKHttpResponse<global::Instill.GetModelOperationResponse>> ModelPublicServiceGetModelOperationAsResponseAsync(
+            string name1,
+            global::Instill.ModelPublicServiceGetModelOperationView? view = default,
+            global::Instill.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
             PrepareArguments(
                 client: HttpClient);
             PrepareModelPublicServiceGetModelOperationArguments(
@@ -104,13 +132,14 @@ namespace Instill
 
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
+
                             var __pathBuilder = new global::Instill.PathBuilder(
                                 path: $"/v1alpha/{name1}/operation",
                                 baseUri: ResolveBaseUri(
                                 servers: s_ModelPublicServiceGetModelOperationServers,
-                                defaultBaseUrl: "https://api.instill-ai.com/")); 
+                                defaultBaseUrl: "https://api.instill-ai.com/"));
                             __pathBuilder
-                                .AddOptionalParameter("view", view?.ToValueString()) 
+                                .AddOptionalParameter("view", view?.ToValueString())
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Instill.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -183,6 +212,8 @@ namespace Instill
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                     try
                     {
@@ -193,6 +224,11 @@ namespace Instill
                     }
                     catch (global::System.Net.Http.HttpRequestException __exception)
                     {
+                        var __retryDelay = global::Instill.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
                         var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
                         await global::Instill.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
@@ -210,6 +246,8 @@ namespace Instill
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         if (!__willRetry)
                         {
@@ -219,8 +257,7 @@ namespace Instill
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Instill.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -229,6 +266,11 @@ namespace Instill
                         __attempt < __maxAttempts &&
                         global::Instill.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
                     {
+                        var __retryDelay = global::Instill.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
                         await global::Instill.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Instill.AutoSDKRequestOptionsSupport.CreateHookContext(
@@ -245,14 +287,15 @@ namespace Instill
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         __response.Dispose();
                         __response = null;
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Instill.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -292,6 +335,8 @@ namespace Instill
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                 else
@@ -312,6 +357,8 @@ namespace Instill
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                             // Returned when the client credentials are not valid.
@@ -412,9 +459,13 @@ namespace Instill
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    return
-                                        global::Instill.GetModelOperationResponse.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Instill.GetModelOperationResponse.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::Instill.AutoSDKHttpResponse<global::Instill.GetModelOperationResponse>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Instill.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -442,9 +493,13 @@ namespace Instill
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    return
-                                        await global::Instill.GetModelOperationResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Instill.GetModelOperationResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::Instill.AutoSDKHttpResponse<global::Instill.GetModelOperationResponse>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Instill.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {

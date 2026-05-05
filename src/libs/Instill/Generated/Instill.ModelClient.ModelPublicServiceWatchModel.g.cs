@@ -72,6 +72,32 @@ namespace Instill
             global::Instill.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            var __response = await ModelPublicServiceWatchModelAsResponseAsync(
+                name: name,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// Watch the state of the latest model version<br/>
+        /// Returns the state of the latest model version. The model resource<br/>
+        /// allocation and scaling actions take some time, during which a model will be<br/>
+        /// in various state. This endpoint allows clients to track the state.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Instill.ApiException"></exception>
+#if NET8_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
+#endif
+        public async global::System.Threading.Tasks.Task<global::Instill.AutoSDKHttpResponse<global::Instill.WatchModelResponse>> ModelPublicServiceWatchModelAsResponseAsync(
+            string name,
+            global::Instill.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
             PrepareArguments(
                 client: HttpClient);
             PrepareModelPublicServiceWatchModelArguments(
@@ -100,6 +126,7 @@ namespace Instill
 
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
+
                             var __pathBuilder = new global::Instill.PathBuilder(
                                 path: $"/v1alpha/{name}/watch",
                                 baseUri: ResolveBaseUri(
@@ -175,6 +202,8 @@ namespace Instill
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                     try
                     {
@@ -185,6 +214,11 @@ namespace Instill
                     }
                     catch (global::System.Net.Http.HttpRequestException __exception)
                     {
+                        var __retryDelay = global::Instill.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
                         var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
                         await global::Instill.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
@@ -202,6 +236,8 @@ namespace Instill
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         if (!__willRetry)
                         {
@@ -211,8 +247,7 @@ namespace Instill
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Instill.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -221,6 +256,11 @@ namespace Instill
                         __attempt < __maxAttempts &&
                         global::Instill.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
                     {
+                        var __retryDelay = global::Instill.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
                         await global::Instill.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Instill.AutoSDKRequestOptionsSupport.CreateHookContext(
@@ -237,14 +277,15 @@ namespace Instill
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         __response.Dispose();
                         __response = null;
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Instill.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -284,6 +325,8 @@ namespace Instill
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                 else
@@ -304,6 +347,8 @@ namespace Instill
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                             // Returned when the client credentials are not valid.
@@ -404,9 +449,13 @@ namespace Instill
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    return
-                                        global::Instill.WatchModelResponse.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Instill.WatchModelResponse.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::Instill.AutoSDKHttpResponse<global::Instill.WatchModelResponse>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Instill.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -434,9 +483,13 @@ namespace Instill
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    return
-                                        await global::Instill.WatchModelResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Instill.WatchModelResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::Instill.AutoSDKHttpResponse<global::Instill.WatchModelResponse>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Instill.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {

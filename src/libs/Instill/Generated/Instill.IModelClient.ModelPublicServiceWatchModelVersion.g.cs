@@ -23,5 +23,24 @@ namespace Instill
             string version,
             global::Instill.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Watch the state of a model version<br/>
+        /// Returns the state of a model. The model resource allocation and scaling<br/>
+        /// actions take some time, during which a model will be in various state. This<br/>
+        /// endpoint allows clients to track the state.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="version"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Instill.ApiException"></exception>
+#if NET8_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
+#endif
+        global::System.Threading.Tasks.Task<global::Instill.AutoSDKHttpResponse<global::Instill.WatchModelVersionResponse>> ModelPublicServiceWatchModelVersionAsResponseAsync(
+            string name,
+            string version,
+            global::Instill.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

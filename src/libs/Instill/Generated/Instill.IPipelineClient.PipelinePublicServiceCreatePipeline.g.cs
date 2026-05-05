@@ -27,6 +27,24 @@ namespace Instill
         /// Creates a new pipeline under a namespace.
         /// </summary>
         /// <param name="parent"></param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Instill.ApiException"></exception>
+#if NET8_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
+#endif
+        global::System.Threading.Tasks.Task<global::Instill.AutoSDKHttpResponse<global::Instill.CreatePipelineResponse>> PipelinePublicServiceCreatePipelineAsResponseAsync(
+            string parent,
+
+            global::Instill.Pipeline request,
+            global::Instill.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Create a new pipeline<br/>
+        /// Creates a new pipeline under a namespace.
+        /// </summary>
+        /// <param name="parent"></param>
         /// <param name="displayName">
         /// Field 3: Human-readable display name for UI.
         /// </param>

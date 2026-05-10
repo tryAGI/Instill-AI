@@ -265,5 +265,6 @@ namespace Instill
         public PipelineV1betaConnection()
         {
         }
+
     }
 }

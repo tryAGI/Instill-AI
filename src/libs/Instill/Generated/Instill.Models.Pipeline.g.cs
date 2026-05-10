@@ -391,5 +391,6 @@ namespace Instill
         public Pipeline()
         {
         }
+
     }
 }

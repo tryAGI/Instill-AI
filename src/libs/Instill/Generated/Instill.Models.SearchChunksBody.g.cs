@@ -132,5 +132,6 @@ namespace Instill
         public SearchChunksBody()
         {
         }
+
     }
 }

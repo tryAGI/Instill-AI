@@ -168,5 +168,6 @@ namespace Instill
         public V1betaUser()
         {
         }
+
     }
 }

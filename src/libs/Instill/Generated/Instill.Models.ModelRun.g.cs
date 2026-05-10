@@ -240,5 +240,6 @@ namespace Instill
         public ModelRun()
         {
         }
+
     }
 }

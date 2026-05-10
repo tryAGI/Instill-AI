@@ -295,5 +295,6 @@ namespace Instill
         public ComponentDefinition()
         {
         }
+
     }
 }

@@ -79,5 +79,6 @@ namespace Instill
         public ShareCode()
         {
         }
+
     }
 }

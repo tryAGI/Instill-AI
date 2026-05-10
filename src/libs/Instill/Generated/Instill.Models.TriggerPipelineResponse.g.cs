@@ -57,5 +57,6 @@ namespace Instill
         public TriggerPipelineResponse()
         {
         }
+
     }
 }

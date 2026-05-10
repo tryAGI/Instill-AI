@@ -80,5 +80,6 @@ namespace Instill
         public ListFilesResponse()
         {
         }
+
     }
 }

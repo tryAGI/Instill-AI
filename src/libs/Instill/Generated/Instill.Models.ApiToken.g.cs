@@ -169,5 +169,6 @@ namespace Instill
         public ApiToken()
         {
         }
+
     }
 }

@@ -47,5 +47,6 @@ namespace Instill
         public GetChunkResponse()
         {
         }
+
     }
 }

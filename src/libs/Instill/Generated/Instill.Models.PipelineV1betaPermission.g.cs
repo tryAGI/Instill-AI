@@ -63,5 +63,6 @@ namespace Instill
         public PipelineV1betaPermission()
         {
         }
+
     }
 }

@@ -55,5 +55,6 @@ namespace Instill
         public WatchModelVersionResponse()
         {
         }
+
     }
 }

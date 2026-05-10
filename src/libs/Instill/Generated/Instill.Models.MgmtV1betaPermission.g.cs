@@ -43,5 +43,6 @@ namespace Instill
         public MgmtV1betaPermission()
         {
         }
+
     }
 }

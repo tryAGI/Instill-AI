@@ -51,5 +51,6 @@ namespace Instill
         public TriggerPipelineReleaseBody()
         {
         }
+
     }
 }

@@ -177,5 +177,6 @@ namespace Instill
         public ModelDefinition()
         {
         }
+
     }
 }

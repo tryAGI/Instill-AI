@@ -44,5 +44,6 @@ namespace Instill
         public GetModelOperationResponse()
         {
         }
+
     }
 }

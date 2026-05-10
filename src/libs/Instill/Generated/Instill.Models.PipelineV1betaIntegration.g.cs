@@ -165,5 +165,6 @@ namespace Instill
         public PipelineV1betaIntegration()
         {
         }
+
     }
 }

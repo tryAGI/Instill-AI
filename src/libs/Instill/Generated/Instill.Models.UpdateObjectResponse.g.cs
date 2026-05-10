@@ -41,5 +41,6 @@ namespace Instill
         public UpdateObjectResponse()
         {
         }
+
     }
 }

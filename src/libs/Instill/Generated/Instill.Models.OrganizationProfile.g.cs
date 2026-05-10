@@ -106,5 +106,6 @@ namespace Instill
         public OrganizationProfile()
         {
         }
+
     }
 }

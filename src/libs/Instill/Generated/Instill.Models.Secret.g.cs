@@ -140,5 +140,6 @@ namespace Instill
         public Secret()
         {
         }
+
     }
 }

@@ -83,5 +83,6 @@ namespace Instill
         public ListPipelineRunsByRequesterResponse()
         {
         }
+
     }
 }

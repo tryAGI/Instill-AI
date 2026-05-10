@@ -45,5 +45,6 @@ namespace Instill
         public TriggerMetadata()
         {
         }
+
     }
 }

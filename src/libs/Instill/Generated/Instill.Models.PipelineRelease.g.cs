@@ -221,5 +221,6 @@ namespace Instill
         public PipelineRelease()
         {
         }
+
     }
 }

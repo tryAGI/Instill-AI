@@ -64,5 +64,6 @@ namespace Instill
         public PipelinePublicServiceTriggerPipelineWithStreamResponse()
         {
         }
+
     }
 }

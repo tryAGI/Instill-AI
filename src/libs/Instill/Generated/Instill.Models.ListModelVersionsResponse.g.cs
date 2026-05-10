@@ -82,5 +82,6 @@ namespace Instill
         public ListModelVersionsResponse()
         {
         }
+
     }
 }

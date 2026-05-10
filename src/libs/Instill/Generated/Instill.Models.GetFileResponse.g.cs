@@ -66,5 +66,6 @@ namespace Instill
         public GetFileResponse()
         {
         }
+
     }
 }

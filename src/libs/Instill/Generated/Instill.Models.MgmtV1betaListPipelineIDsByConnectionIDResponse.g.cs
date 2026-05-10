@@ -70,5 +70,6 @@ namespace Instill
         public MgmtV1betaListPipelineIDsByConnectionIDResponse()
         {
         }
+
     }
 }

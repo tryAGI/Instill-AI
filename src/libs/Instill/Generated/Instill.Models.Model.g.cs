@@ -403,5 +403,6 @@ namespace Instill
         public Model()
         {
         }
+
     }
 }

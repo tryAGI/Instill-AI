@@ -76,5 +76,6 @@ namespace Instill
         public PipelineV1betaIntegrationOAuthConfig()
         {
         }
+
     }
 }

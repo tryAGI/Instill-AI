@@ -74,5 +74,6 @@ namespace Instill
         public ListComponentDefinitionsResponse()
         {
         }
+
     }
 }

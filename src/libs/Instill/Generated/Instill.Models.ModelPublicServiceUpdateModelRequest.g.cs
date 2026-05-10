@@ -388,5 +388,6 @@ namespace Instill
         public ModelPublicServiceUpdateModelRequest()
         {
         }
+
     }
 }

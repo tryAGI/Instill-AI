@@ -296,5 +296,6 @@ namespace Instill
         public ArtifactPublicServiceUpdateKnowledgeBaseRequest()
         {
         }
+
     }
 }

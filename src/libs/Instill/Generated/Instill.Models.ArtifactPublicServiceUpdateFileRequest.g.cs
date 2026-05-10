@@ -567,5 +567,6 @@ namespace Instill
         public ArtifactPublicServiceUpdateFileRequest()
         {
         }
+
     }
 }

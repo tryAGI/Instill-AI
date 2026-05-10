@@ -95,5 +95,6 @@ namespace Instill
         public EventSpecification()
         {
         }
+
     }
 }

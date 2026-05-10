@@ -69,5 +69,6 @@ namespace Instill
         public MgmtV1betaListIntegrationsResponse()
         {
         }
+
     }
 }

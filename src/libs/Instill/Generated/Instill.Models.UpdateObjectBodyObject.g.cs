@@ -202,5 +202,6 @@ namespace Instill
         public UpdateObjectBodyObject()
         {
         }
+
     }
 }

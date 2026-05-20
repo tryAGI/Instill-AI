@@ -44,6 +44,33 @@ namespace Instill
         /// </summary>
         /// <param name="name"></param>
         /// <param name="instillRequesterUid"></param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Instill.ApiException"></exception>
+#if NET8_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
+#endif
+        global::System.Threading.Tasks.Task<global::Instill.AutoSDKHttpResponse<global::Instill.TriggerAsyncPipelineResponse>> PipelinePublicServiceTriggerAsyncPipelineAsResponseAsync(
+            string name,
+
+            global::Instill.TriggerAsyncPipelineBody request,
+            string? instillRequesterUid = default,
+            global::Instill.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Trigger a pipeline asynchronously<br/>
+        /// Triggers the execution of a pipeline asynchronously, i.e., the result<br/>
+        /// contains the necessary information to access the result and status of the<br/>
+        /// operation. This method is intended for cases that require long-running<br/>
+        /// workloads.<br/>
+        /// The pipeline is identified by its resource name, formed by the parent<br/>
+        /// namespace and ID of the pipeline.<br/>
+        /// For more information, see [Run<br/>
+        /// Pipeline](https://instill-ai.dev/docs/pipeline/run-pipeline).
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="instillRequesterUid"></param>
         /// <param name="inputs">
         /// Pipeline input parameters, it will be deprecated soon.
         /// </param>

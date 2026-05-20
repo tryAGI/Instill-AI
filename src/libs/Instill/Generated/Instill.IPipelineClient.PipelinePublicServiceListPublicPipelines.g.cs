@@ -31,5 +31,32 @@ namespace Instill
             string? orderBy = default,
             global::Instill.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// List accessible pipelines<br/>
+        /// Returns a paginated list of pipelines that are visible to the requester.
+        /// </summary>
+        /// <param name="pageSize"></param>
+        /// <param name="pageToken"></param>
+        /// <param name="view"></param>
+        /// <param name="filter"></param>
+        /// <param name="showDeleted"></param>
+        /// <param name="visibility"></param>
+        /// <param name="orderBy"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Instill.ApiException"></exception>
+#if NET8_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
+#endif
+        global::System.Threading.Tasks.Task<global::Instill.AutoSDKHttpResponse<global::Instill.ListPublicPipelinesResponse>> PipelinePublicServiceListPublicPipelinesAsResponseAsync(
+            int? pageSize = default,
+            string? pageToken = default,
+            global::Instill.PipelinePublicServiceListPublicPipelinesView? view = default,
+            string? filter = default,
+            bool? showDeleted = default,
+            global::Instill.PipelinePublicServiceListPublicPipelinesVisibility? visibility = default,
+            string? orderBy = default,
+            global::Instill.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

@@ -56,5 +56,6 @@ namespace Instill
         public MgmtV1betaIntegrationLink()
         {
         }
+
     }
 }

@@ -84,5 +84,6 @@ namespace Instill
         public ModelTriggerChartRecord()
         {
         }
+
     }
 }

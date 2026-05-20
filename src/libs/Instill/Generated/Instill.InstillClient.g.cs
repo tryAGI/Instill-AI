@@ -46,7 +46,7 @@ namespace Instill
         /// <summary>
         /// Data orchestration for unified unstructured data representation.
         /// </summary>
-        public ArtifactClient Artifact => new ArtifactClient(HttpClient, authorizations: Authorizations, options: Options)
+        public ArtifactClient Artifact => new ArtifactClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -56,7 +56,7 @@ namespace Instill
         /// <summary>
         /// Connections to 3rd party apps for use in pipelines.
         /// </summary>
-        public ConnectionClient Connection => new ConnectionClient(HttpClient, authorizations: Authorizations, options: Options)
+        public ConnectionClient Connection => new ConnectionClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -66,7 +66,7 @@ namespace Instill
         /// <summary>
         /// Integration definitions for creating connections.
         /// </summary>
-        public IntegrationClient Integration => new IntegrationClient(HttpClient, authorizations: Authorizations, options: Options)
+        public IntegrationClient Integration => new IntegrationClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -76,7 +76,7 @@ namespace Instill
         /// <summary>
         /// Resource usage metrics.
         /// </summary>
-        public MetricsClient Metrics => new MetricsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public MetricsClient Metrics => new MetricsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -86,7 +86,7 @@ namespace Instill
         /// <summary>
         /// AI Model orchestration.
         /// </summary>
-        public ModelClient Model => new ModelClient(HttpClient, authorizations: Authorizations, options: Options)
+        public ModelClient Model => new ModelClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -96,7 +96,7 @@ namespace Instill
         /// <summary>
         /// Namespaces (e.g. User, Organization) that structure the resource hierarchy.
         /// </summary>
-        public NamespaceClient Namespace => new NamespaceClient(HttpClient, authorizations: Authorizations, options: Options)
+        public NamespaceClient Namespace => new NamespaceClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -106,7 +106,7 @@ namespace Instill
         /// <summary>
         /// Pipeline orchestration.
         /// </summary>
-        public PipelineClient Pipeline => new PipelineClient(HttpClient, authorizations: Authorizations, options: Options)
+        public PipelineClient Pipeline => new PipelineClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -164,6 +164,27 @@ namespace Instill
         }
 
         /// <summary>
+        /// Creates a new instance of the InstillClient with explicit options but no base URL override.
+        /// Skips passing <c>baseUri</c> so the default base URL from the OpenAPI spec applies.
+        /// </summary>
+        /// <param name="httpClient">The HttpClient instance. If not provided, a new one will be created.</param>
+        /// <param name="authorizations">The authorizations to use for the requests.</param>
+        /// <param name="options">Client-wide request defaults such as headers, query parameters, retries, and timeout.</param>
+        /// <param name="disposeHttpClient">Dispose the HttpClient when the instance is disposed. True by default.</param>
+        public InstillClient(
+            global::System.Net.Http.HttpClient? httpClient,
+            global::System.Collections.Generic.List<global::Instill.EndPointAuthorization>? authorizations,
+            global::Instill.AutoSDKClientOptions? options,
+            bool disposeHttpClient = true) : this(
+                httpClient,
+                baseUri: null,
+                authorizations,
+                options,
+                disposeHttpClient: disposeHttpClient)
+        {
+        }
+
+        /// <summary>
         /// Creates a new instance of the InstillClient.
         /// If no httpClient is provided, a new one will be created.
         /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
@@ -174,10 +195,10 @@ namespace Instill
         /// <param name="options">Client-wide request defaults such as headers, query parameters, retries, and timeout.</param>
         /// <param name="disposeHttpClient">Dispose the HttpClient when the instance is disposed. True by default.</param>
         public InstillClient(
-            global::System.Net.Http.HttpClient? httpClient = null,
-            global::System.Uri? baseUri = null,
-            global::System.Collections.Generic.List<global::Instill.EndPointAuthorization>? authorizations = null,
-            global::Instill.AutoSDKClientOptions? options = null,
+            global::System.Net.Http.HttpClient? httpClient,
+            global::System.Uri? baseUri,
+            global::System.Collections.Generic.List<global::Instill.EndPointAuthorization>? authorizations,
+            global::Instill.AutoSDKClientOptions? options,
             bool disposeHttpClient = true)
         {
 

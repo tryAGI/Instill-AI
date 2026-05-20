@@ -197,5 +197,6 @@ namespace Instill
         public Organization()
         {
         }
+
     }
 }

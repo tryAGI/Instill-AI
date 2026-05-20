@@ -75,5 +75,6 @@ namespace Instill
         public Spec()
         {
         }
+
     }
 }

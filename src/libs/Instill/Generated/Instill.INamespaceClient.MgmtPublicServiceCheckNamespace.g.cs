@@ -26,6 +26,23 @@ namespace Instill
         /// Returns the availability of a namespace or, alternatively, the type of<br/>
         /// resource that is using it.
         /// </summary>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Instill.ApiException"></exception>
+#if NET8_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_BETA_001")]
+#endif
+        global::System.Threading.Tasks.Task<global::Instill.AutoSDKHttpResponse<global::Instill.CheckNamespaceResponse>> MgmtPublicServiceCheckNamespaceAsResponseAsync(
+
+            global::Instill.CheckNamespaceRequest request,
+            global::Instill.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Check if a namespace is in use<br/>
+        /// Returns the availability of a namespace or, alternatively, the type of<br/>
+        /// resource that is using it.
+        /// </summary>
         /// <param name="id">
         /// The namespace ID to be checked.
         /// </param>

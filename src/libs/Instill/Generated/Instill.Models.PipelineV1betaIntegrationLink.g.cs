@@ -56,5 +56,6 @@ namespace Instill
         public PipelineV1betaIntegrationLink()
         {
         }
+
     }
 }

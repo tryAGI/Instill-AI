@@ -70,5 +70,6 @@ namespace Instill
         public PipelineV1betaListPipelineIDsByConnectionIDResponse()
         {
         }
+
     }
 }

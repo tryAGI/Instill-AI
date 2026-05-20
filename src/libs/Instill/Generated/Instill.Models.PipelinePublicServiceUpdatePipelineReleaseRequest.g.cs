@@ -206,5 +206,6 @@ namespace Instill
         public PipelinePublicServiceUpdatePipelineReleaseRequest()
         {
         }
+
     }
 }

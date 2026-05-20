@@ -42,5 +42,6 @@ namespace Instill
         public ListChunksResponse()
         {
         }
+
     }
 }

@@ -370,5 +370,6 @@ namespace Instill
         public PipelinePublicServiceUpdatePipelineRequest()
         {
         }
+
     }
 }

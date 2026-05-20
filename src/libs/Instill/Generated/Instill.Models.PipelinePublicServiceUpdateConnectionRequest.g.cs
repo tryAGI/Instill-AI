@@ -250,5 +250,6 @@ namespace Instill
         public PipelinePublicServiceUpdateConnectionRequest()
         {
         }
+
     }
 }

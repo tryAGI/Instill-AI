@@ -119,5 +119,6 @@ namespace Instill
         public UserProfile()
         {
         }
+
     }
 }

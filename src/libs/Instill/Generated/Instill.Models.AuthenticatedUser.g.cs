@@ -245,5 +245,6 @@ namespace Instill
         public AuthenticatedUser()
         {
         }
+
     }
 }

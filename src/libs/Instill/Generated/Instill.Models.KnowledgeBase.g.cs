@@ -311,5 +311,6 @@ namespace Instill
         public KnowledgeBase()
         {
         }
+
     }
 }

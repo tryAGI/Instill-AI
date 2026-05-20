@@ -27,6 +27,24 @@ namespace Instill
         /// Uploads and converts a file.
         /// </summary>
         /// <param name="parent"></param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Instill.ApiException"></exception>
+#if NET8_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.Experimental(diagnosticId: "INSTILL_ALPHA_001")]
+#endif
+        global::System.Threading.Tasks.Task<global::Instill.AutoSDKHttpResponse<global::Instill.CreateFileResponse>> ArtifactPublicServiceCreateFileAsResponseAsync(
+            string parent,
+
+            global::Instill.File request,
+            global::Instill.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Create a file<br/>
+        /// Uploads and converts a file.
+        /// </summary>
+        /// <param name="parent"></param>
         /// <param name="displayName">
         /// Field 3: Human-readable display name (filename) for UI.<br/>
         /// This is typically the original filename of the uploaded file.

@@ -19,10 +19,19 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
 
         GetAuthenticatedUserResponse userResponse = await client.Namespace.MgmtPublicServiceGetAuthenticatedUserAsync();
-        var namespaceName = $"namespaces/{userResponse.User.Id}";
+        userResponse.User.Should().NotBeNull();
+        var namespaceName = $"namespaces/{userResponse.User!.Id}";
 
-        ListModelsResponse response = await client.Model.ModelPublicServiceListModelsAsync(
-            parent: namespaceName);
+        ListModelsResponse response;
+        try
+        {
+            response = await client.Model.ModelPublicServiceListModelsAsync(
+                parent: namespaceName);
+        }
+        catch (ApiException<RpcStatus> ex) when (ex.Message.Contains("core-model-backend", StringComparison.Ordinal))
+        {
+            throw new AssertInconclusiveException("Instill model backend is currently unavailable.", ex);
+        }
 
         response.Should().NotBeNull();
 

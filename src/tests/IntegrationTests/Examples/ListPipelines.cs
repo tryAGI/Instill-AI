@@ -19,7 +19,8 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
 
         GetAuthenticatedUserResponse userResponse = await client.Namespace.MgmtPublicServiceGetAuthenticatedUserAsync();
-        var namespaceName = $"namespaces/{userResponse.User.Id}";
+        userResponse.User.Should().NotBeNull();
+        var namespaceName = $"namespaces/{userResponse.User!.Id}";
 
         ListPipelinesResponse response = await client.Pipeline.PipelinePublicServiceListPipelinesAsync(
             parent: namespaceName);

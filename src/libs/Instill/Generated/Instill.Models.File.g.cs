@@ -294,17 +294,17 @@ namespace Instill
         public string? ThumbnailUri { get; set; }
 
         /// <summary>
-        /// The project that this file belongs to (single parent).<br/>
-        /// File permissions cascade from this project — the file inherits<br/>
-        /// viewer/editor/commenter/resource_owner from its parent project.<br/>
-        /// Format: `namespaces/{namespace}/projects/{project}`<br/>
-        /// Populated server-side from the file's parent_project_uid DB column.<br/>
-        /// Files without an explicit parent project default to the namespace's<br/>
-        /// root project ("Workspace").<br/>
+        /// The folder that this file belongs to (single parent).<br/>
+        /// File permissions cascade from this folder — the file inherits<br/>
+        /// viewer/editor/commenter/resource_owner from its parent folder.<br/>
+        /// Format: `namespaces/{namespace}/folders/{folder}`<br/>
+        /// Populated server-side from the file's parent_folder_uid DB column.<br/>
+        /// Files without an explicit parent folder default to the namespace's<br/>
+        /// root folder ("Workspace").<br/>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("parentProject")]
-        public string? ParentProject { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("parentFolder")]
+        public string? ParentFolder { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -489,14 +489,14 @@ namespace Instill
         /// / mime-type icon when absent.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="parentProject">
-        /// The project that this file belongs to (single parent).<br/>
-        /// File permissions cascade from this project — the file inherits<br/>
-        /// viewer/editor/commenter/resource_owner from its parent project.<br/>
-        /// Format: `namespaces/{namespace}/projects/{project}`<br/>
-        /// Populated server-side from the file's parent_project_uid DB column.<br/>
-        /// Files without an explicit parent project default to the namespace's<br/>
-        /// root project ("Workspace").<br/>
+        /// <param name="parentFolder">
+        /// The folder that this file belongs to (single parent).<br/>
+        /// File permissions cascade from this folder — the file inherits<br/>
+        /// viewer/editor/commenter/resource_owner from its parent folder.<br/>
+        /// Format: `namespaces/{namespace}/folders/{folder}`<br/>
+        /// Populated server-side from the file's parent_folder_uid DB column.<br/>
+        /// Files without an explicit parent folder default to the namespace's<br/>
+        /// root folder ("Workspace").<br/>
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
@@ -538,7 +538,7 @@ namespace Instill
             global::Instill.FileVisibility? visibility,
             string? derivedResourceUri,
             string? thumbnailUri,
-            string? parentProject)
+            string? parentFolder)
         {
             this.Name = name;
             this.Id = id;
@@ -575,7 +575,7 @@ namespace Instill
             this.Visibility = visibility;
             this.DerivedResourceUri = derivedResourceUri;
             this.ThumbnailUri = thumbnailUri;
-            this.ParentProject = parentProject;
+            this.ParentFolder = parentFolder;
         }
 
         /// <summary>

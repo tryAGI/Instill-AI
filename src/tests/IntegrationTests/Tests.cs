@@ -12,9 +12,48 @@ public partial class Tests
             TryReadDotEnvVariable("INSTILL_API_TOKEN") ??
             throw new AssertInconclusiveException("INSTILL_API_TOKEN environment variable is not found.");
 
-        var client = new InstillClient(apiKey);
+        var httpClient = new HttpClient(new InstillTransportInconclusiveHandler());
+        var client = new InstillClient(apiKey, httpClient, disposeHttpClient: true);
         
         return client;
+    }
+
+    private static bool IsInstillTransportUnavailable(Exception exception)
+    {
+        for (var current = exception; current is not null; current = current.InnerException)
+        {
+            if (current.Message.Contains("unexpected EOF", StringComparison.OrdinalIgnoreCase) ||
+                current.Message.Contains("0 bytes from the transport stream", StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private sealed class InstillTransportInconclusiveHandler : DelegatingHandler
+    {
+        public InstillTransportInconclusiveHandler()
+            : base(new HttpClientHandler())
+        {
+        }
+
+        protected override async Task<HttpResponseMessage> SendAsync(
+            HttpRequestMessage request,
+            CancellationToken cancellationToken)
+        {
+            try
+            {
+                return await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+            }
+            catch (HttpRequestException ex) when (IsInstillTransportUnavailable(ex))
+            {
+                throw new AssertInconclusiveException(
+                    "Instill API TLS handshake failed before a response was received.",
+                    ex);
+            }
+        }
     }
 
     private static string? GetNonEmptyEnvVar(string name)

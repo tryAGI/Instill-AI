@@ -20,7 +20,7 @@ namespace Instill.JsonConverters
                     {
                         return global::Instill.StorageProviderExtensions.ToEnum(stringValue) ?? default;
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

@@ -22,7 +22,7 @@ namespace Instill
         public global::Instill.Sharing? Sharing { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("target")]
         [global::System.Text.Json.Serialization.JsonRequired]

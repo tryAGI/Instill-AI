@@ -17,7 +17,7 @@ namespace Instill
         public required global::System.Collections.Generic.IList<object> Inputs { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
         [global::System.Text.Json.Serialization.JsonRequired]

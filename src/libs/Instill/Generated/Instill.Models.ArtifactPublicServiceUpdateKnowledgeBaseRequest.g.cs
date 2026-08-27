@@ -4,7 +4,7 @@
 namespace Instill
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class ArtifactPublicServiceUpdateKnowledgeBaseRequest
     {
@@ -22,7 +22,7 @@ namespace Instill
         public required string DisplayName { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("slug")]
         public string? Slug { get; set; }

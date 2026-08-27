@@ -165,7 +165,7 @@ namespace Instill
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                } 
+                }
             }
                 global::Instill.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,

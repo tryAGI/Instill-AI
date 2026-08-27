@@ -4,7 +4,7 @@
 namespace Instill
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum PipelinePublicServiceListComponentDefinitionsView
     {

@@ -96,7 +96,7 @@ namespace Instill
         public global::System.DateTime? DeleteTime { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("slug")]
         public string? Slug { get; set; }

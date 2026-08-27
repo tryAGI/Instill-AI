@@ -20,7 +20,7 @@ namespace Instill.JsonConverters
                     {
                         return global::Instill.ArtifactPublicServiceListFilesViewExtensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

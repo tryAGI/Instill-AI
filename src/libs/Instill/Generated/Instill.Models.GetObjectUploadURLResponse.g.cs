@@ -4,24 +4,24 @@
 namespace Instill
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class GetObjectUploadURLResponse
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("uploadUrl")]
         public string? UploadUrl { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("urlExpireAt")]
         public global::System.DateTime? UrlExpireAt { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("object")]
         public global::Instill.Object? Object { get; set; }

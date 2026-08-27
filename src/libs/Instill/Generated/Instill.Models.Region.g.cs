@@ -10,13 +10,13 @@ namespace Instill
     public sealed partial class Region
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("regionName")]
         public string? RegionName { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("hardware")]
         public global::System.Collections.Generic.IList<global::Instill.Hardware>? Hardware { get; set; }

@@ -10,7 +10,7 @@ namespace Instill
     public sealed partial class UpdateObjectBody
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("object")]
         [global::System.Text.Json.Serialization.JsonRequired]

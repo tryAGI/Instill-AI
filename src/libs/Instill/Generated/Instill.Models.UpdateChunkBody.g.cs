@@ -4,12 +4,12 @@
 namespace Instill
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class UpdateChunkBody
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("retrievable")]
         [global::System.Text.Json.Serialization.JsonRequired]

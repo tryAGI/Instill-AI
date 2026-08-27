@@ -9,7 +9,7 @@ namespace Instill
     public sealed partial class SearchChunksBody
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("knowledgeBase")]
         public string? KnowledgeBase { get; set; }
@@ -42,7 +42,7 @@ namespace Instill
         public global::Instill.FileMediaType? FileMediaType { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("files")]
         public global::System.Collections.Generic.IList<string>? Files { get; set; }

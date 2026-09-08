@@ -22,7 +22,12 @@ public partial class Tests
     {
         for (var current = exception; current is not null; current = current.InnerException)
         {
-            if (current.Message.Contains("unexpected EOF", StringComparison.OrdinalIgnoreCase) ||
+            if (current is System.Net.Sockets.SocketException
+                {
+                    SocketErrorCode: System.Net.Sockets.SocketError.ConnectionReset
+                } ||
+                current.Message.Contains("connection reset by peer", StringComparison.OrdinalIgnoreCase) ||
+                current.Message.Contains("unexpected EOF", StringComparison.OrdinalIgnoreCase) ||
                 current.Message.Contains("0 bytes from the transport stream", StringComparison.OrdinalIgnoreCase))
             {
                 return true;

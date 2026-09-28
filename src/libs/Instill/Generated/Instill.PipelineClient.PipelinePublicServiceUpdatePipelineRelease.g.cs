@@ -193,7 +193,7 @@ namespace Instill
                 PreparePipelinePublicServiceUpdatePipelineReleaseRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    releaseName: releaseName!,
+                    releaseName: releaseName,
                     request: request);
 
                 return __httpRequest;
@@ -216,7 +216,7 @@ namespace Instill
                                 pathTemplate: "$\"/v1beta/{releaseName}\"",
                                 httpMethod: "PATCH",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -250,7 +250,7 @@ namespace Instill
                                 pathTemplate: "$\"/v1beta/{releaseName}\"",
                                 httpMethod: "PATCH",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -291,7 +291,7 @@ namespace Instill
                                 pathTemplate: "$\"/v1beta/{releaseName}\"",
                                 httpMethod: "PATCH",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -339,7 +339,7 @@ namespace Instill
                                 pathTemplate: "$\"/v1beta/{releaseName}\"",
                                 httpMethod: "PATCH",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -361,7 +361,7 @@ namespace Instill
                                 pathTemplate: "$\"/v1beta/{releaseName}\"",
                                 httpMethod: "PATCH",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,

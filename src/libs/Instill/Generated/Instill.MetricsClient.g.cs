@@ -38,14 +38,14 @@ namespace Instill
 
         internal global::Instill.AutoSDKServerConfiguration AutoSDKServerConfiguration { get; set; } = new global::Instill.AutoSDKServerConfiguration();
 
-        internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::Instill.MetricsSourceGenerationContext.Default);
+        internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext>? JsonSerializerContextProvider { get; set; }
 
         /// <summary>
         ///
         /// </summary>
         public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext
         {
-            get => JsonSerializerContextProvider.Value;
+            get => JsonSerializerContextProvider?.Value ?? global::Instill.MetricsSourceGenerationContext.Default;
             set => JsonSerializerContextProvider = new(() => value);
         }
 
